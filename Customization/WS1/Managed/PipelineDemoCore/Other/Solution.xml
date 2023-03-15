@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of PipelineDemoCore" languagecode="1033" />
     </Descriptions>
-    <Version>1.4.0.0</Version>
+    <Version>1.5.0.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -80,15 +80,24 @@
       </Addresses>
     </Publisher>
     <RootComponents>
+      <RootComponent type="1" schemaName="bsr_buildingapplication" behavior="2" />
       <RootComponent type="1" schemaName="contact" behavior="2" />
       <RootComponent type="1" schemaName="incident" behavior="1" />
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
+        <Dependent type="1" schemaName="bsr_buildingapplication" displayName="Building Application" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
           <package>msdynce_ServiceAnchor (9.0.23023.1013)</package>
         </Required>
         <Dependent type="1" schemaName="incident" displayName="Case" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="bsr_buildingapplications" displayName="bsr_buildingapplications" solution="Active" />
+        <Dependent type="1" schemaName="bsr_buildingapplication" displayName="Building Application" />
       </MissingDependency>
     </MissingDependencies>
   </SolutionManifest>
