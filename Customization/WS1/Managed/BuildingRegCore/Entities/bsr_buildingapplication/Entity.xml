@@ -38,7 +38,7 @@
           <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
           <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
           <IsDataSourceSecret>0</IsDataSourceSecret>
-          <AutoNumberFormat>HRB{SEQNUM:9}</AutoNumberFormat>
+          <AutoNumberFormat>HRB{SEQNUM:5}{RANDSTRING:4}</AutoNumberFormat>
           <IsSearchable>1</IsSearchable>
           <IsFilterable>0</IsFilterable>
           <IsRetrievable>0</IsRetrievable>
@@ -47,10 +47,10 @@
           <MaxLength>100</MaxLength>
           <Length>200</Length>
           <displaynames>
-            <displayname description="Application ID" languagecode="1033" />
+            <displayname description="Application/Return ID" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="" languagecode="1033" />
+            <Description description="Application ID also used as Return Code to return and continue an application." languagecode="1033" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="bsr_applicationreturncode">
@@ -58,7 +58,7 @@
           <Name>bsr_applicationreturncode</Name>
           <LogicalName>bsr_applicationreturncode</LogicalName>
           <RequiredLevel>none</RequiredLevel>
-          <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+          <DisplayMask>ValidForForm|ValidForGrid</DisplayMask>
           <ImeMode>auto</ImeMode>
           <ValidForUpdateApi>1</ValidForUpdateApi>
           <ValidForReadApi>1</ValidForReadApi>
@@ -87,7 +87,7 @@
           <MaxLength>100</MaxLength>
           <Length>200</Length>
           <displaynames>
-            <displayname description="Return Code" languagecode="1033" />
+            <displayname description="Return Code DEPRECATED" languagecode="1033" />
           </displaynames>
           <Descriptions>
             <Description description="!2 character return code so users can save and return to an in-progress application." languagecode="1033" />
@@ -1765,6 +1765,20 @@
           </Descriptions>
         </attribute>
       </attributes>
+      <EntityKeys>
+        <EntityKey>
+          <Name>bsr_applicationid</Name>
+          <LogicalName>bsr_applicationid</LogicalName>
+          <IntroducedVersion>1.12.1.0</IntroducedVersion>
+          <IsCustomizable>0</IsCustomizable>
+          <EntityKeyAttributes>
+            <AttributeName>bsr_applicationid</AttributeName>
+          </EntityKeyAttributes>
+          <displaynames>
+            <displayname description="Application ID" languagecode="1033" />
+          </displaynames>
+        </EntityKey>
+      </EntityKeys>
       <EntitySetName>bsr_buildingapplications</EntitySetName>
       <IsDuplicateCheckSupported>1</IsDuplicateCheckSupported>
       <IsBusinessProcessEnabled>0</IsBusinessProcessEnabled>

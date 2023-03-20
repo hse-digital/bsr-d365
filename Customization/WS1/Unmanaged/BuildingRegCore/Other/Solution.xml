@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ImportExportXml version="9.2.23024.188" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
-    <UniqueName>BuildingRegCore_Patch_2f84cb09</UniqueName>
+    <UniqueName>BuildingRegCore_Patch_286457b8</UniqueName>
     <LocalizedNames>
       <LocalizedName description="Building Reg Core S6" languagecode="1033" />
     </LocalizedNames>
@@ -9,7 +9,7 @@
       <Description description="Patch for Building Reg Core" languagecode="1033" />
     </Descriptions>
     <ParentUniqueName>BuildingRegCore</ParentUniqueName>
-    <Version>1.11.1.0</Version>
+    <Version>1.12.1.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -81,13 +81,15 @@
       </Addresses>
     </Publisher>
     <RootComponents>
-      <RootComponent type="1" schemaName="account" behavior="1" />
+      <RootComponent type="1" schemaName="bsr_accountableperson" behavior="2" />
       <RootComponent type="1" schemaName="bsr_buildingapplication" behavior="2" />
-      <RootComponent type="1" schemaName="bsr_contacttype" behavior="2" />
-      <RootComponent type="1" schemaName="contact" behavior="2" />
-      <RootComponent type="9" schemaName="bsr_whoareyou" behavior="0" />
+      <RootComponent type="29" id="{3a4c881b-40c7-ed11-b596-6045bd0b9760}" behavior="0" />
     </RootComponents>
     <MissingDependencies>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_accountableperson" displayName="Accountable Person" solution="Active" />
+        <Dependent type="1" schemaName="bsr_accountableperson" displayName="Accountable Person" />
+      </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_applicationstatustimestamp" displayName="Application Status Timestamp" solution="Active" />
         <Dependent type="60" displayName="Information" parentDisplayName="Building Application" id="{952702f7-b07e-44ab-ab8a-2488163af7e9}" />
@@ -101,10 +103,6 @@
         <Dependent type="1" schemaName="bsr_buildingapplication" displayName="Building Application" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_contacttype" displayName="Contact Type" solution="Active" />
-        <Dependent type="1" schemaName="bsr_contacttype" displayName="Contact Type" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="1" schemaName="bsr_payment" displayName="Gov UK Payment" solution="Active" />
         <Dependent type="60" displayName="Information" parentDisplayName="Building Application" id="{952702f7-b07e-44ab-ab8a-2488163af7e9}" />
       </MissingDependency>
@@ -113,15 +111,20 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Building Application" id="{952702f7-b07e-44ab-ab8a-2488163af7e9}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_customerasset" displayName="Customer Asset" solution="msdyn_AssetCommon (1.0.30.47)">
-          <package>FieldService_Anchor (8.8.84.16)</package>
-          <package>msdynce_ServiceAnchor (9.0.23023.1013)</package>
-        </Required>
-        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
+        <Required type="10" schemaName="bsr_accountableperson_contact" displayName="bsr_accountableperson_contact" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent type="10" schemaName="bsr_contact_bsr_accountableperson_914" displayName="bsr_contact_bsr_accountableperson_914" parentSchemaName="contact" parentDisplayName="Contact" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="10" schemaName="bsr_accounttype_account" displayName="bsr_accounttype_account" parentSchemaName="bsr_accounttype" parentDisplayName="Account Type" solution="Active" />
-        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
+        <Required type="10" schemaName="bsr_accountableperson_contact" displayName="bsr_accountableperson_contact" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Accountable Person" id="{a9165b5f-9e39-417a-96bd-b542ec89b549}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="bsr_accountableperson_Independentsection" displayName="bsr_accountableperson_Independentsection" parentSchemaName="bsr_block" parentDisplayName="Independent Section" solution="Active" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Accountable Person" id="{a9165b5f-9e39-417a-96bd-b542ec89b549}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="bsr_accountableperson_SectionArea" displayName="bsr_accountableperson_SectionArea" parentSchemaName="bsr_blockarea" parentDisplayName="Section Area" solution="Active" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Accountable Person" id="{a9165b5f-9e39-417a-96bd-b542ec89b549}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="bsr_applicationstatustimestamp_BuildingApplic" displayName="bsr_applicationstatustimestamp_BuildingApplic" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
@@ -148,55 +151,44 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Building Application" id="{952702f7-b07e-44ab-ab8a-2488163af7e9}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="10" schemaName="bsr_contact_bsr_accountableperson_914" displayName="bsr_contact_bsr_accountableperson_914" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent type="10" schemaName="bsr_contact_bsr_accountableperson_914" displayName="bsr_contact_bsr_accountableperson_914" parentSchemaName="contact" parentDisplayName="Contact" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="10" schemaName="bsr_contact_buildingapplication" displayName="bsr_contact_buildingapplication" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
         <Dependent type="60" displayName="Information" parentDisplayName="Building Application" id="{952702f7-b07e-44ab-ab8a-2488163af7e9}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="10" schemaName="bsr_contact_JobRole" displayName="bsr_contact_JobRole" parentSchemaName="bsr_jobrole" parentDisplayName="Job Role" solution="Active" />
-        <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="10" schemaName="bsr_contacttype_contact" displayName="bsr_contacttype_contact" parentSchemaName="bsr_contacttype" parentDisplayName="Contact Type" solution="Active" />
-        <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="10" schemaName="bsr_country_account_Address1CountryCode" displayName="bsr_country_account_Address1CountryCode" parentSchemaName="bsr_country" parentDisplayName="Country" solution="Active" />
-        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="10" schemaName="bsr_country_contact_Address1CountryCode" displayName="bsr_country_contact_Address1CountryCode" parentSchemaName="bsr_country" parentDisplayName="Country" solution="Active" />
-        <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="bsr_qualityassurance_buildingapplication" displayName="bsr_qualityassurance_buildingapplication" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
         <Dependent type="60" displayName="Information" parentDisplayName="Building Application" id="{952702f7-b07e-44ab-ab8a-2488163af7e9}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="10" schemaName="msdyn_account_msdyn_customerasset_Account" displayName="msdyn_account_msdyn_customerasset_Account" parentSchemaName="msdyn_customerasset" parentDisplayName="Customer Asset" solution="msdyn_AssetCommon (1.0.30.47)">
-          <package>FieldService_Anchor (8.8.84.16)</package>
-          <package>msdynce_ServiceAnchor (9.0.23023.1013)</package>
-        </Required>
-        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
+        <Required type="2" schemaName="bsr_accountablepersontype" displayName="Accountable Person Type" parentSchemaName="bsr_accountableperson" parentDisplayName="Accountable Person" solution="Active" />
+        <Dependent type="29" displayName="Show and Hide 'AP Org Lead Contact' in Accountable Person" id="{3a4c881b-40c7-ed11-b596-6045bd0b9760}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_accounttype_accountid" displayName="Organisation Type" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
-        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
+        <Required type="2" schemaName="bsr_accountablepersontype" displayName="Accountable Person Type" parentSchemaName="bsr_accountableperson" parentDisplayName="Accountable Person" solution="Active" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Accountable Person" id="{a9165b5f-9e39-417a-96bd-b542ec89b549}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_address1countrycode" displayName="Address1 Country Code" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
-        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
+        <Required type="2" schemaName="bsr_apid" displayName="Accountable Person" parentSchemaName="bsr_accountableperson" parentDisplayName="Accountable Person" solution="Active" />
+        <Dependent type="10" schemaName="bsr_contact_bsr_accountableperson_914" displayName="bsr_contact_bsr_accountableperson_914" parentSchemaName="contact" parentDisplayName="Contact" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_address1countrycode" displayName="Address1 Country Code" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
-        <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
+        <Required type="2" schemaName="bsr_apid" displayName="Accountable Person" parentSchemaName="bsr_accountableperson" parentDisplayName="Accountable Person" solution="Active" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Accountable Person" id="{a9165b5f-9e39-417a-96bd-b542ec89b549}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_applicationid" displayName="Application ID" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
-        <Dependent type="60" displayName="Information" parentDisplayName="Building Application" id="{952702f7-b07e-44ab-ab8a-2488163af7e9}" />
+        <Required type="2" schemaName="bsr_aporgleadcontact" displayName="AP Org Lead Contact" parentSchemaName="bsr_accountableperson" parentDisplayName="Accountable Person" solution="Active" />
+        <Dependent type="10" schemaName="bsr_contact_bsr_accountableperson_914" displayName="bsr_contact_bsr_accountableperson_914" parentSchemaName="contact" parentDisplayName="Contact" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_applicationreturncode" displayName="Return Code" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
-        <Dependent type="60" displayName="Information" parentDisplayName="Building Application" id="{952702f7-b07e-44ab-ab8a-2488163af7e9}" />
+        <Required type="2" schemaName="bsr_aporgleadcontact" displayName="AP Org Lead Contact" parentSchemaName="bsr_accountableperson" parentDisplayName="Accountable Person" solution="Active" />
+        <Dependent type="29" displayName="Show and Hide 'AP Org Lead Contact' in Accountable Person" id="{3a4c881b-40c7-ed11-b596-6045bd0b9760}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_aporgleadcontact" displayName="AP Org Lead Contact" parentSchemaName="bsr_accountableperson" parentDisplayName="Accountable Person" solution="Active" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Accountable Person" id="{a9165b5f-9e39-417a-96bd-b542ec89b549}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_applicationstage" displayName="Building Application Stage" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
@@ -211,10 +203,6 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Building Application" id="{952702f7-b07e-44ab-ab8a-2488163af7e9}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_contacttypeid" displayName="Contact Type" parentSchemaName="bsr_contacttype" parentDisplayName="Contact Type" solution="Active" />
-        <Dependent type="26" schemaName="Active Contact Types" displayName="Active Contact Types" parentSchemaName="bsr_contacttype" parentDisplayName="Contact Type" id="{3ffa3cce-cffd-4ae4-bcf5-c99639ce456b}" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="2" schemaName="bsr_continuedanyway" displayName="Continued anyway" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
         <Dependent type="60" displayName="Information" parentDisplayName="Building Application" id="{952702f7-b07e-44ab-ab8a-2488163af7e9}" />
       </MissingDependency>
@@ -227,24 +215,12 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Building Application" id="{952702f7-b07e-44ab-ab8a-2488163af7e9}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_jobrole" displayName="Job Role" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
-        <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_manualaddress" displayName="Manual Address" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
-        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_manualaddress" displayName="Manual Address" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
-        <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
+        <Required type="2" schemaName="bsr_independentsection" displayName="Independent section" parentSchemaName="bsr_accountableperson" parentDisplayName="Accountable Person" solution="Active" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Accountable Person" id="{a9165b5f-9e39-417a-96bd-b542ec89b549}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
         <Dependent type="60" displayName="Information" parentDisplayName="Building Application" id="{952702f7-b07e-44ab-ab8a-2488163af7e9}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_contacttype" parentDisplayName="Contact Type" solution="Active" />
-        <Dependent type="26" schemaName="Active Contact Types" displayName="Active Contact Types" parentSchemaName="bsr_contacttype" parentDisplayName="Contact Type" id="{3ffa3cce-cffd-4ae4-bcf5-c99639ce456b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_onholdreasonid" displayName="On Hold Reason" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
@@ -253,10 +229,6 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_onholdreminderdate" displayName="On Hold Reminder Date" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
         <Dependent type="60" displayName="Information" parentDisplayName="Building Application" id="{952702f7-b07e-44ab-ab8a-2488163af7e9}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_otherorganisationtype" displayName="Other Organisation type" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
-        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_papid" displayName="PAP" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
@@ -283,6 +255,10 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Building Application" id="{952702f7-b07e-44ab-ab8a-2488163af7e9}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_sectionarea" displayName="Section Area" parentSchemaName="bsr_accountableperson" parentDisplayName="Accountable Person" solution="Active" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Accountable Person" id="{a9165b5f-9e39-417a-96bd-b542ec89b549}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_submittedon" displayName="Submitted on " parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
         <Dependent type="60" displayName="Information" parentDisplayName="Building Application" id="{952702f7-b07e-44ab-ab8a-2488163af7e9}" />
       </MissingDependency>
@@ -295,65 +271,20 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Building Application" id="{952702f7-b07e-44ab-ab8a-2488163af7e9}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="originatingleadid" displayName="Originating Lead" parentSchemaName="account" parentDisplayName="Account" solution="msdynce_LeadManagement (9.0.4.0066)">
-          <package>msdynce_LeadManagementAnchor (9.0.23023.10001)</package>
-        </Required>
-        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
+        <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="bsr_accountableperson" parentDisplayName="Accountable Person" solution="Active" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Accountable Person" id="{a9165b5f-9e39-417a-96bd-b542ec89b549}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
         <Dependent type="60" displayName="Information" parentDisplayName="Building Application" id="{952702f7-b07e-44ab-ab8a-2488163af7e9}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="statecode" displayName="Status" parentSchemaName="bsr_contacttype" parentDisplayName="Contact Type" solution="Active" />
-        <Dependent type="26" schemaName="Active Contact Types" displayName="Active Contact Types" parentSchemaName="bsr_contacttype" parentDisplayName="Contact Type" id="{3ffa3cce-cffd-4ae4-bcf5-c99639ce456b}" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Application Status" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
         <Dependent type="60" displayName="Information" parentDisplayName="Building Application" id="{952702f7-b07e-44ab-ab8a-2488163af7e9}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="20" displayName="BSR Ops Team" solution="Active" id="{0b90c986-fda6-ed11-aad1-0022481b5e4f}" />
-        <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="20" displayName="BSR Ops Team" solution="Active" id="{0b90c986-fda6-ed11-aad1-0022481b5e4f}" />
-        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="20" displayName="BSR CAT" solution="Active" id="{42e1d306-fea6-ed11-aad1-0022481b5e4f}" />
-        <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="20" displayName="BSR CAT" solution="Active" id="{42e1d306-fea6-ed11-aad1-0022481b5e4f}" />
-        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="20" displayName="BSR Data Analysts" solution="Active" id="{b6ced331-fea6-ed11-aad1-0022481b5e4f}" />
-        <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="20" displayName="BSR Data Analysts" solution="Active" id="{b6ced331-fea6-ed11-aad1-0022481b5e4f}" />
-        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="20" displayName="BSR Admin" solution="Active" id="{c835c6d5-fda6-ed11-aad1-0022481b5e4f}" />
-        <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="20" displayName="BSR Admin" solution="Active" id="{c835c6d5-fda6-ed11-aad1-0022481b5e4f}" />
-        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="26" schemaName="Active Application Status Timestamps" displayName="Active Application Status Timestamps" parentSchemaName="bsr_applicationstatustimestamp" parentDisplayName="Application Status Timestamp" solution="Active" id="{3ca7c4f8-9f50-4184-b49c-8f1a896ba232}" />
         <Dependent type="60" displayName="Information" parentDisplayName="Building Application" id="{952702f7-b07e-44ab-ab8a-2488163af7e9}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="26" schemaName="Active Customer Assets" displayName="Active Customer Assets" parentSchemaName="msdyn_customerasset" parentDisplayName="Customer Asset" solution="msdyn_AssetCommon (1.0.30.47)" id="{6ecb03a4-acda-44ae-83e3-c60ba8338dbb}">
-          <package>FieldService_Anchor (8.8.84.16)</package>
-          <package>msdynce_ServiceAnchor (9.0.23023.1013)</package>
-        </Required>
-        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Active Independent Sections" displayName="Active Independent Sections" parentSchemaName="bsr_block" parentDisplayName="Independent Section" solution="Active" id="{34c821fc-f8e6-4ecd-abe4-284f12b84538}" />
@@ -368,18 +299,6 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Building Application" id="{952702f7-b07e-44ab-ab8a-2488163af7e9}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="26" schemaName="Customer Asset associated view with alerts" displayName="Customer Asset associated view with alerts" parentSchemaName="msdyn_customerasset" parentDisplayName="Customer Asset" solution="msdyn_ConnectedCustomerService (9.0.20115.1027)" id="{38cc036f-fbfe-e911-a81c-000d3ac2c6cb}">
-          <package>msdynce_ServiceAnchor (9.0.23023.1013)</package>
-        </Required>
-        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="60" displayName="account contact card" parentDisplayName="Contact" solution="msdynce_AppCommon (9.0.4.0066)" id="{29de27bc-a257-4f29-99cf-bab4a84e688f}">
-          <package>msdynce_AppCommonAnchor (9.0.23023.10002)</package>
-        </Required>
-        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="60" displayName="BSR Contact details quick view form" parentDisplayName="Contact" solution="Active" id="{61f19af2-96b7-ed11-b597-0022481b5e4f}" />
         <Dependent type="60" displayName="Information" parentDisplayName="Building Application" id="{952702f7-b07e-44ab-ab8a-2488163af7e9}" />
       </MissingDependency>
@@ -392,30 +311,12 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Building Application" id="{952702f7-b07e-44ab-ab8a-2488163af7e9}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="61" schemaName="bsr_accountablepersonn" displayName="bsr_accountablepersonn" solution="Active" />
+        <Dependent type="1" schemaName="bsr_accountableperson" displayName="Accountable Person" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="61" schemaName="bsr_buildingapplications" displayName="bsr_buildingapplications" solution="Active" />
         <Dependent type="1" schemaName="bsr_buildingapplication" displayName="Building Application" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="61" schemaName="bsr_contacttype" displayName="bsr_contacttype" solution="Active" />
-        <Dependent type="1" schemaName="bsr_contacttype" displayName="Contact Type" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="61" schemaName="msdyn_/ConnectedCustomerService/Account/AccountForm.js" displayName="msdyn_/ConnectedCustomerService/Account/AccountForm.js" solution="msdyn_ConnectedCustomerService (9.0.20115.1027)">
-          <package>msdynce_ServiceAnchor (9.0.23023.1013)</package>
-        </Required>
-        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="61" schemaName="msdyn_/Contact/Contact.Library.js" displayName="msdyn_/Contact/Contact.Library.js" solution="FieldService (8.8.0.88)">
-          <package>FieldService_Anchor (8.8.84.16)</package>
-        </Required>
-        <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="61" schemaName="msdyn_talkingpointsloader.js" displayName="msdyn_talkingpointsloader.js" solution="msdynce_Talkingpoints (9.0.1.701894)">
-          <package>msdynce_SalesInsightsAnchor (9.0.23023.10002)</package>
-        </Required>
-        <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
     </MissingDependencies>
   </SolutionManifest>
