@@ -20,11 +20,11 @@
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{adcb73c1-35be-4734-bf6f-6a1e1adc6eaf}" colspan="1" rowspan="1" showlabel="true" locklevel="0">
+                      <cell id="{adcb73c1-35be-4734-bf6f-6a1e1adc6eaf}" colspan="1" rowspan="1">
                         <labels>
                           <label description="Name" languagecode="1033" />
                         </labels>
-                        <control id="bsr_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="bsr_name" uniqueid="{91d5da27-862b-1986-ddb7-b567a92b71a9}" disabled="false" />
+                        <control id="bsr_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="bsr_name" />
                       </cell>
                       <cell id="{372a1acc-63e1-43ca-adba-ef733c76350f}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
@@ -167,7 +167,18 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar></NavBar>
+        <NavBar>
+          <NavBarByRelationshipItem Area="Info" Show="false" RelationshipName="bsr_address_connectedbuil" Id="nav_bsr_address_connectedbuil" Sequence="10000">
+            <Titles>
+              <Title Text="Connected Buildings" LCID="1033" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem Area="Info" Show="false" RelationshipName="bsr_address_Contact" Id="nav_bsr_address_Contact" Sequence="10000">
+            <Titles>
+              <Title Text="Contacts" LCID="1033" />
+            </Titles>
+          </NavBarByRelationshipItem>
+        </NavBar>
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
