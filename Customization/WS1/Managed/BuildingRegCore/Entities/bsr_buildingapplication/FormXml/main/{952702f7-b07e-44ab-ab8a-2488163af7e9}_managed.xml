@@ -30,9 +30,9 @@
                     <row>
                       <cell id="{cd26a8be-f1db-4086-8ca8-07b30e43806f}" locklevel="0" colspan="1" rowspan="1" showlabel="true">
                         <labels>
-                          <label description="Application ID" languagecode="1033" />
+                          <label description="Application/Return ID" languagecode="1033" />
                         </labels>
-                        <control id="bsr_applicationid" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_applicationid" disabled="false" uniqueid="{b9d14498-228b-c8c9-b01e-78d2bbd44e2e}" />
+                        <control id="bsr_applicationid" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_applicationid" disabled="true" uniqueid="{b9d14498-228b-c8c9-b01e-78d2bbd44e2e}" />
                       </cell>
                     </row>
                     <row>
@@ -41,14 +41,6 @@
                           <label description="Applicant" languagecode="1033" />
                         </labels>
                         <control id="bsr_registreeid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_registreeid" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{d874e3d7-0df6-4678-bc0a-3eb591702192}" locklevel="0" colspan="1" rowspan="1">
-                        <labels>
-                          <label description="Return Code" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_applicationreturncode" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_applicationreturncode" disabled="true" />
                       </cell>
                     </row>
                     <row>
@@ -115,6 +107,34 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{ad239943-d1d1-d2a6-37a3-c0160d452bbe}" showlabel="false" colspan="1" auto="false" rowspan="1">
+                        <labels>
+                          <label description="PAP Details Account" languagecode="1033" />
+                        </labels>
+                        <control id="PAP_Details_Account" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="bsr_papid" disabled="false">
+                          <parameters>
+                            <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="account"&gt;70ec01c1-98b7-ed11-b597-0022481b5e4f&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
+                            <ControlMode>Edit</ControlMode>
+                            <DisplayAsCustomer360Tile>false</DisplayAsCustomer360Tile>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{64680c1e-5e33-d841-0652-2b365e916d3c}" showlabel="false" colspan="1" auto="false" rowspan="1">
+                        <labels>
+                          <label description="PAP Details Contact" languagecode="1033" />
+                        </labels>
+                        <control id="PAP_Details_Contact" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="bsr_papid" disabled="false">
+                          <parameters>
+                            <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="contact"&gt;61f19af2-96b7-ed11-b597-0022481b5e4f&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
+                            <ControlMode>Edit</ControlMode>
+                            <DisplayAsCustomer360Tile>false</DisplayAsCustomer360Tile>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{ddfbe0b8-5cda-4944-84cf-36666b34ed5c}" locklevel="0" colspan="1" rowspan="1" showlabel="true">
                         <labels>
                           <label description="Are you the PAP" languagecode="1033" />
@@ -131,39 +151,11 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{64680c1e-5e33-d841-0652-2b365e916d3c}" showlabel="false" colspan="1" auto="false">
-                        <labels>
-                          <label description="PAP Details Contact" languagecode="1033" />
-                        </labels>
-                        <control id="PAP_Details_Contact" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="bsr_papid" disabled="false">
-                          <parameters>
-                            <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="contact"&gt;61f19af2-96b7-ed11-b597-0022481b5e4f&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
-                            <ControlMode>Edit</ControlMode>
-                            <DisplayAsCustomer360Tile>false</DisplayAsCustomer360Tile>
-                          </parameters>
-                        </control>
-                      </cell>
-                    </row>
-                    <row>
                       <cell id="{f099bbef-c15a-4708-9a18-b21a0afd8396}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="PAP Org Lead Contact" languagecode="1033" />
                         </labels>
                         <control id="bsr_paporgleadcontactid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_paporgleadcontactid" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{ad239943-d1d1-d2a6-37a3-c0160d452bbe}" showlabel="false" colspan="1" auto="false">
-                        <labels>
-                          <label description="PAP Details Account" languagecode="1033" />
-                        </labels>
-                        <control id="PAP_Details_Account" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="bsr_papid" disabled="false">
-                          <parameters>
-                            <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="account"&gt;70ec01c1-98b7-ed11-b597-0022481b5e4f&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
-                            <ControlMode>Edit</ControlMode>
-                            <DisplayAsCustomer360Tile>false</DisplayAsCustomer360Tile>
-                          </parameters>
-                        </control>
                       </cell>
                     </row>
                     <row>
@@ -376,7 +368,7 @@
                           <parameters>
                             <ViewId>{4C31B814-DF2D-4DD7-8A0E-47290446AC32}</ViewId>
                             <IsUserView>false</IsUserView>
-                            <RelationshipName>bsr_bsr_payment_Metadata_bsr_buildingapplicat</RelationshipName>
+                            <RelationshipName>bsr_bsr_payment_buildingapplicationid_bsr_bui</RelationshipName>
                             <TargetEntityType>bsr_payment</TargetEntityType>
                             <AutoExpand>Fixed</AutoExpand>
                             <EnableQuickFind>false</EnableQuickFind>
@@ -384,7 +376,6 @@
                             <ViewIds>{4C31B814-DF2D-4DD7-8A0E-47290446AC32}</ViewIds>
                             <EnableJumpBar>false</EnableJumpBar>
                             <ChartGridMode>All</ChartGridMode>
-                            <VisualizationId />
                             <IsUserChart>false</IsUserChart>
                             <EnableChartPicker>true</EnableChartPicker>
                             <RecordsPerPage>4</RecordsPerPage>
