@@ -15,6 +15,10 @@
           <cell name="bsr_building" width="100" />
           <cell name="a_bcc009d4a5a0ed11aad10022481b5e4f.bsr_numberofsectionsassociatedtoabuilding" width="100" disableSorting="1" />
           <cell name="bsr_paptype" width="100" />
+          <cell name="bsr_papid" width="100" />
+          <cell name="a_81c4ad3be2124edcb95f672af37a1841.bsr_manualaddress" width="100" />
+          <cell name="a_b04f5795db0448c3a04dbb6f87b7abe7.bsr_manualaddress" width="100" />
+          <cell name="bsr_numberofmanuallyenteredaddresses" width="100" />
           <cell name="bsr_registreeid" width="100" />
           <cell name="bsr_applicationstage" width="100" />
           <cell name="statuscode" width="100" />
@@ -45,6 +49,14 @@
           <attribute name="statuscode" />
           <attribute name="bsr_applicationstage" />
           <attribute name="bsr_buildingapplicationid" />
+          <attribute name="bsr_papid" />
+          <link-entity alias="a_81c4ad3be2124edcb95f672af37a1841" name="account" to="bsr_papid" from="accountid" link-type="outer" visible="false">
+            <attribute name="bsr_manualaddress" />
+          </link-entity>
+          <link-entity alias="a_b04f5795db0448c3a04dbb6f87b7abe7" name="contact" to="bsr_papid" from="contactid" link-type="outer" visible="false">
+            <attribute name="bsr_manualaddress" />
+          </link-entity>
+          <attribute name="bsr_numberofmanuallyenteredaddresses" />
         </entity>
       </fetch>
     </fetchxml>

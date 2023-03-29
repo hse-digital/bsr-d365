@@ -15,12 +15,13 @@
           <cell name="bsr_building" width="100" />
           <cell name="a_bcc009d4a5a0ed11aad10022481b5e4f.bsr_numberofsectionsassociatedtoabuilding" width="100" disableSorting="1" />
           <cell name="bsr_paptype" width="100" />
+          <cell name="bsr_papid" width="100" />
+          <cell name="a_f4e7a0db9f5d4e92befbf9f0785a0be2.bsr_manualaddress" width="100" />
+          <cell name="a_e0bbebe15dd1436cb5d837d7641219b4.bsr_manualaddress" width="100" />
+          <cell name="bsr_numberofmanuallyenteredaddresses" width="100" />
           <cell name="bsr_registreeid" width="100" />
           <cell name="bsr_applicationstage" width="100" />
-          <cell name="bsr_continuedanyway" width="100" />
           <cell name="statuscode" width="100" />
-          <cell name="a_bc0b49a96fa2ed11aad10022481b5e4f.address1_city" width="100" disableSorting="1" />
-          <cell name="a_bc0b49a96fa2ed11aad10022481b5e4f.address1_country" width="100" disableSorting="1" />
           <cell name="ownerid" width="100" />
           <cell name="createdon" width="125" />
         </row>
@@ -47,12 +48,15 @@
           </link-entity>
           <attribute name="statuscode" />
           <attribute name="bsr_applicationstage" />
-          <attribute name="bsr_continuedanyway" />
-          <link-entity alias="a_bc0b49a96fa2ed11aad10022481b5e4f" name="contact" from="contactid" to="bsr_registreeid" link-type="outer" visible="false">
-            <attribute name="address1_country" />
-            <attribute name="address1_city" />
-          </link-entity>
           <attribute name="bsr_buildingapplicationid" />
+          <attribute name="bsr_papid" />
+          <link-entity alias="a_e0bbebe15dd1436cb5d837d7641219b4" name="account" to="bsr_papid" from="accountid" link-type="outer" visible="false">
+            <attribute name="bsr_manualaddress" />
+          </link-entity>
+          <link-entity alias="a_f4e7a0db9f5d4e92befbf9f0785a0be2" name="contact" to="bsr_papid" from="contactid" link-type="outer" visible="false">
+            <attribute name="bsr_manualaddress" />
+          </link-entity>
+          <attribute name="bsr_numberofmanuallyenteredaddresses" />
         </entity>
       </fetch>
     </fetchxml>
