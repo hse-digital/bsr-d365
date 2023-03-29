@@ -63,7 +63,8 @@
             "parameters": {
               "entityName": "bsr_qualityassurances",
               "item/bsr_BuildingApplication@odata.bind": "\\bsr_buildingapplications\\@{triggerOutputs()?['body/bsr_buildingapplicationid']}",
-              "item/bsr_name": "@triggerOutputs()?['body/bsr_name']"
+              "item/bsr_name": "@triggerOutputs()?['body/bsr_name']",
+              "item/ownerid@odata.bind": "systemusers(@{triggerOutputs()?['body/_ownerid_value']})"
             },
             "authentication": "@parameters('$authentication')"
           }

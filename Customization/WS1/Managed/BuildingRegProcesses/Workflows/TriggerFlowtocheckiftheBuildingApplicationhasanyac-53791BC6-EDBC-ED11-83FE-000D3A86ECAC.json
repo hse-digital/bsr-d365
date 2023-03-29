@@ -40,7 +40,7 @@
               "subscriptionRequest/message": 4,
               "subscriptionRequest/entityname": "bsr_buildingapplication",
               "subscriptionRequest/scope": 4,
-              "subscriptionRequest/filteringattributes": "statuscode"
+              "subscriptionRequest/filteringattributes": "statuscode,bsr_applicationstage"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -112,7 +112,7 @@
                     },
                     "parameters": {
                       "entityName": "bsr_applicationstatustimestamps",
-                      "item/bsr_applicationstage": "@outputs('Update_a_row')?['body/bsr_applicationstage']",
+                      "item/bsr_applicationstage": "@triggerOutputs()?['body/bsr_applicationstage']",
                       "item/bsr_AssigneeUser@odata.bind": "\\systemusers\\@{triggerOutputs()?['body/_ownerid_value']}",
                       "item/bsr_BuildingApplication@odata.bind": "\\bsr_buildingapplications\\@{triggerOutputs()?['body/bsr_buildingapplicationid']}",
                       "item/bsr_name": "@outputs('Update_a_row')?['body/_bsr_buildingapplication_value']",
