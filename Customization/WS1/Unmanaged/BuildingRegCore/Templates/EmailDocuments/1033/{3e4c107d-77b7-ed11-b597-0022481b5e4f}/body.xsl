@@ -3,7 +3,7 @@
 <div><div>&nbsp;</div>
 <div><span style="font-family:Arial,Helvetica,sans-serif">We have received your application to register.&nbsp;&nbsp;</span></div>
 <div>&nbsp;</div>
-<div><span style="font-family:Arial,Helvetica,sans-serif">Your application number is</span>&nbsp;<span><span class="ab ac ae af ag ah ai aj ak b c d e f g h i j k l m n o p q r s t u ui-provider v w x xo y z" dir="ltr">%applicationId%</span></span></div>
+<div><span style="font-family:Arial,Helvetica,sans-serif">Your application number is</span>&nbsp;<span style="font-family:Arial,Helvetica,sans-serif"><span class="ab ac ae af ag ah ai aj ak b c d e f g h i j k l m n o p q r s t u ui-provider v w x xo y z" dir="ltr">%applicationId%</span></span></div>
 <div>&nbsp;</div>
 <div><span style="font-family:Arial,Helvetica,sans-serif">Keep this safe. You will need it again when you return to your application&nbsp;</span></div>
 <div>&nbsp;</div>
