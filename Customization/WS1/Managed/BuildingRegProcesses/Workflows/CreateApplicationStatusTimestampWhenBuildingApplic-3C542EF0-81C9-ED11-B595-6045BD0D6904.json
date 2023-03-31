@@ -64,7 +64,7 @@
                 "parameters": {
                   "entityName": "bsr_applicationstatustimestamps",
                   "$filter": "_bsr_buildingapplication_value eq @{triggerOutputs()?['body/bsr_buildingapplicationid']}",
-                  "fetchXml": "<fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\">\n  <entity name=\"bsr_applicationstatustimestamp\">\n    <attribute name=\"bsr_applicationstatustimestampid\" />\n    <attribute name=\"bsr_name\" />\n    <attribute name=\"createdon\" />\n    <order attribute=\"bsr_name\" descending=\"false\" />\n    <filter type=\"and\">\n      <condition attribute=\"statecode\" operator=\"eq\" value=\"0\" />\n    </filter>\n  </entity>\n</fetch>",
+                  "fetchXml": "<fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\">\n  <entity name=\"bsr_applicationstatustimestamp\">\n    <attribute name=\"bsr_applicationstatustimestampid\" />\n    <attribute name=\"bsr_name\" />\n    <attribute name=\"createdon\" />\n    <order attribute=\"bsr_name\" descending=\"false\" />\n    <filter type=\"and\">\n      <condition attribute=\"statuscode\" operator=\"not-null\" />\n      <condition attribute=\"bsr_statusenddate\" operator=\"null\" />\n    </filter>\n  </entity>\n</fetch>",
                   "$top": 1
                 },
                 "authentication": "@parameters('$authentication')"
@@ -90,7 +90,6 @@
                         "parameters": {
                           "entityName": "bsr_applicationstatustimestamps",
                           "recordId": "@items('Apply_to_each')?['bsr_applicationstatustimestampid']",
-                          "item/statecode": 1,
                           "item/bsr_statusenddate": "@triggerOutputs()?['body/modifiedon']"
                         },
                         "authentication": "@parameters('$authentication')"
@@ -114,10 +113,9 @@
                         },
                         "parameters": {
                           "entityName": "bsr_applicationstatustimestamps",
-                          "item/bsr_applicationstage": "@triggerOutputs()?['body/bsr_applicationstage']",
                           "item/bsr_AssigneeTeam@odata.bind": "\\teams\\@{triggerOutputs()?['body/_ownerid_value']}",
                           "item/bsr_BuildingApplication@odata.bind": "\\bsr_buildingapplications\\@{triggerOutputs()?['body/bsr_buildingapplicationid']}",
-                          "item/bsr_name": "@triggerOutputs()?['body/statuscode']",
+                          "item/bsr_applicationstage": "@triggerOutputs()?['body/bsr_applicationstage']",
                           "item/statuscode": "@triggerOutputs()?['body/statuscode']",
                           "item/bsr_statusstartdate": "@triggerOutputs()?['body/modifiedon']"
                         },
@@ -153,10 +151,9 @@
                       },
                       "parameters": {
                         "entityName": "bsr_applicationstatustimestamps",
-                        "item/bsr_applicationstage": "@triggerOutputs()?['body/bsr_applicationstage']",
                         "item/bsr_AssigneeTeam@odata.bind": "\\teams\\@{triggerOutputs()?['body/_ownerid_value']}",
                         "item/bsr_BuildingApplication@odata.bind": "\\bsr_buildingapplications\\@{triggerOutputs()?['body/bsr_buildingapplicationid']}",
-                        "item/bsr_name": "@triggerOutputs()?['body/statuscode']",
+                        "item/bsr_applicationstage": "@triggerOutputs()?['body/bsr_applicationstage']",
                         "item/statuscode": "@triggerOutputs()?['body/statuscode']",
                         "item/bsr_statusstartdate": "@triggerOutputs()?['body/modifiedon']"
                       },
