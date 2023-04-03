@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23031.170" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23032.180" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>BuildingRegUX</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Reg UX" languagecode="1033" />
     </Descriptions>
-    <Version>1.11.0.0</Version>
+    <Version>1.11.1.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -213,8 +213,16 @@
         <Dependent type="62" schemaName="bsr_BSR" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="bsr_completioncertificate" displayName="Completion Certificate" solution="Active" />
+        <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="bsr_connectedblock" displayName="Connected Block" solution="Active" />
         <Dependent type="62" schemaName="bsr_BSR" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_connectedblock" displayName="Connected Block" solution="Active" />
+        <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_connectedbuilding" displayName="Connected Building" solution="Active" />
@@ -299,6 +307,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_onholdreason" displayName="HRB App On Hold Reason" solution="Active" />
         <Dependent type="62" schemaName="bsr_BSR" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_onholdreason" displayName="HRB App On Hold Reason" solution="Active" />
+        <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_payment" displayName="Gov UK Payment" solution="Active" />
@@ -518,8 +530,8 @@
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_slakpi" displayName="SLA KPI" solution="msdynce_ServiceLevelAgreementExtension (9.0.23031.1006)">
-          <package>msdynce_ServiceLevelAgreementAnchor (9.0.23031.1006)</package>
+        <Required type="1" schemaName="msdyn_slakpi" displayName="SLA KPI" solution="msdynce_ServiceLevelAgreementExtension (9.0.23031.1007)">
+          <package>msdynce_ServiceLevelAgreementAnchor (9.0.23031.1007)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
@@ -669,6 +681,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="BSR Contact" parentDisplayName="Contact" solution="Active" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
+        <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="BSR Ops Management Overview" solution="Active" id="{aa40f6f7-1fd2-ed11-a7c6-6045bd0d6904}" />
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
