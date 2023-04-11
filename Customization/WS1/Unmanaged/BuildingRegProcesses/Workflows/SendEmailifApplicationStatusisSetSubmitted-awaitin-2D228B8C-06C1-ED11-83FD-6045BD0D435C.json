@@ -192,7 +192,7 @@
                           ],
                           "item/description": "@replace(variables('EmailBody'),'%applicationId%',triggerOutputs()?['body/bsr_applicationid'])\r\n",
                           "item/regardingobjectid_bsr_buildingapplication_email@odata.bind": "\\bsr_buildingapplications\\@{triggerOutputs()?['body/bsr_buildingapplicationid']}",
-                          "item/subject": "@replace(body('Html_to_text'),'%buildingName%',outputs('Get_Building_Name')?['body/bsr_name'])"
+                          "item/subject": "@replace(outputs('Html_to_text')?['body'],'%buildingName%',outputs('Get_Building_Name')?['body/bsr_name'])"
                         },
                         "authentication": "@parameters('$authentication')"
                       }
@@ -240,7 +240,7 @@
                     ]
                   },
                   "metadata": {
-                    "operationMetadataId": "5a80aea1-0bdc-45e0-a50b-93654512d8ba"
+                    "operationMetadataId": "72bd19c1-002c-4fcc-b16b-d52a0bfa4e20"
                   },
                   "type": "OpenApiConnection",
                   "inputs": {
@@ -466,7 +466,7 @@
                                 ],
                                 "item/description": "@replace(variables('EmailBody'),'%applicationId%',triggerOutputs()?['body/bsr_applicationid'])\n",
                                 "item/regardingobjectid_bsr_buildingapplication_email@odata.bind": "\\bsr_buildingapplications\\@{triggerOutputs()?['body/bsr_buildingapplicationid']}",
-                                "item/subject": "@{outputs('Get_Building_Name1')?['body/bsr_name']} registration"
+                                "item/subject": "@{replace(outputs('Html_to_text_2')?['body'],'%buildingName%',outputs('Get_Building_Name1')?['body/bsr_name'])}  "
                               },
                               "authentication": "@parameters('$authentication')"
                             }
@@ -618,7 +618,7 @@
                                 ],
                                 "item/description": "@outputs('Compose_8')",
                                 "item/regardingobjectid_bsr_buildingapplication_email@odata.bind": "\\bsr_buildingapplications\\@{triggerOutputs()?['body/bsr_buildingapplicationid']}",
-                                "item/subject": "Principal accountable person for @{outputs('Get_Building_Name1')?['body/bsr_name']}"
+                                "item/subject": " @{replace(outputs('Html_to_text_3')?['body'],'%buildingName%',outputs('Get_Building_Name1')?['body/bsr_name'])}"
                               },
                               "authentication": "@parameters('$authentication')"
                             }
@@ -878,7 +878,7 @@
                                   ],
                                   "item/description": "@replace(variables('EmailBody'),'%applicationId%',triggerOutputs()?['body/bsr_applicationid'])",
                                   "item/regardingobjectid_bsr_buildingapplication_email@odata.bind": "\\bsr_buildingapplications\\@{triggerOutputs()?['body/bsr_buildingapplicationid']}",
-                                  "item/subject": "@{outputs('Get_Building_Name2')?['body/bsr_name']} registration"
+                                  "item/subject": "@replace(outputs('Html_to_text_4')?['body'],'%buildingName%',outputs('Get_Building_Name2')?['body/bsr_name'])"
                                 },
                                 "authentication": "@parameters('$authentication')"
                               }
@@ -1030,7 +1030,7 @@
                                   ],
                                   "item/description": "@outputs('Compose_10')",
                                   "item/regardingobjectid_bsr_buildingapplication_email@odata.bind": "\\bsr_buildingapplications\\@{triggerOutputs()?['body/bsr_buildingapplicationid']}",
-                                  "item/subject": "Principal accountable person for @{outputs('Get_Building_Name2')?['body/bsr_name']}"
+                                  "item/subject": "@replace(outputs('Html_to_text_5')?['body'],'%buildingName%',outputs('Get_Building_Name2')?['body/bsr_name'])"
                                 },
                                 "authentication": "@parameters('$authentication')"
                               }
