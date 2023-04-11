@@ -5,7 +5,7 @@
 <div>&nbsp;</div>
 <div><span style="font-family:Arial,Helvetica,sans-serif">They named you as the&nbsp;<span class="ab ac ae af ag ah ai aj ak b c d e f g gp h i j k l m n o p q r s t u ui-provider v w x y z" dir="ltr">principal accountable person</span></span>&nbsp;</div>
 <div>&nbsp;</div>
-<div><span style="font-family:Arial,Helvetica,sans-serif">if you are not the Principal accountable person for this building contact us at&nbsp;<span style="font-size:11pt"><span style="line-height:107%">www.hse.gov.uk/register-a-rise-building/contact</span></span></span></div>
+<div><span style="font-family:Arial,Helvetica,sans-serif">if you are not the Principal accountable person for this building contact us at&nbsp;</span><span style="font-size:12pt"><span style="font-family:Arial,Helvetica,sans-serif"><a href="https://hse.gov.uk/contact/tell-us-about-health-and-safety-issue.html" style="font-family:HelveticaNeue,&quot;Helvetica Neue&quot;,Arial,Helvetica,sans-serif; color:rgb(29,112,184)">hse.gov.uk/contact/tell-us-about-health-and-safety-issue.html</a>.</span></span></div>
 <div>&nbsp;</div>
 <div><span style="font-family:Arial,Helvetica,sans-serif"><strong><span style="font-size:14pt"><span style="line-height:107%">Application Number</span></span></strong></span></div>
 <div>&nbsp;</div>
@@ -15,7 +15,7 @@
 <div>&nbsp;</div>
 <div><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:14pt"><strong>View the application</strong></span></span></div>
 <div>&nbsp;</div>
-<div><span style="font-family:Arial,Helvetica,sans-serif">You can&nbsp;<a href="https://icy-stone-00138e503.2.azurestaticapps.net/application/%applicationId%/summary">view the completed application</a></span></div>
+<div><span style="font-family:Arial,Helvetica,sans-serif">You can&nbsp;</span><span style="font-size:12pt"><span style="font-family:Arial,Helvetica,sans-serif"><a href="https://register-high-rise-building.hse.gov.uk/returning-application" style="font-family:HelveticaNeue,&quot;Helvetica Neue&quot;,Arial,Helvetica,sans-serif; color:rgb(29,112,184)">view your completed application</a>.</span></span></div>
 <div>&nbsp;</div>
 <div><div><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:14pt"><strong>What you need to do next</strong></span>&nbsp;</span></div>
 <div>&nbsp;</div>
@@ -29,6 +29,6 @@
 <div>&nbsp;</div>
 <div><span style="font-family:Arial,Helvetica,sans-serif">From Health and Safety Executive.</span></div>
 <div>&nbsp;</div>
-<div><span style="font-size:12pt"><span style="font-family:Arial,Helvetica,sans-serif"><span style="line-height:107%">You can apply to register at another high-rise building at any time at www.hse.gov.uk/register-a-rise-building</span>&nbsp; &nbsp;</span></span></div></div>
+<div><span style="font-size:12pt"><span style="font-family:Arial,Helvetica,sans-serif"><span style="line-height:107%">You can apply to register at another high-rise building at any time at&nbsp;</span><a href="https://register-high-rise-building.hse.gov.uk" style="font-family:HelveticaNeue,&quot;Helvetica Neue&quot;,Arial,Helvetica,sans-serif; color:rgb(29,112,184)">register-high-rise-building.hse.gov.uk</a>.</span></span></div></div>
 <div>&nbsp;</div>
 <div>&nbsp;</div>]]></xsl:template></xsl:stylesheet>
