@@ -11,7 +11,7 @@
 <div>&nbsp;</div>
 <div><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:14pt"><strong>View your application</strong></span></span></div>
 <div>&nbsp;</div>
-<div><span style="font-family:Arial,Helvetica,sans-serif">You can&nbsp;</span><span style="font-size:12pt"><span style="font-family:Arial,Helvetica,sans-serif"><a href="https://register-high-rise-building.hse.gov.uk/returning-application" style="font-family:HelveticaNeue,&quot;Helvetica Neue&quot;,Arial,Helvetica,sans-serif; color:rgb(29,112,184)">view your completed application</a>.</span></span></div>
+<div><span style="font-family:Arial,Helvetica,sans-serif">You can&nbsp;</span><span style="font-size:12pt"><span style="font-family:Arial,Helvetica,sans-serif"><a href="https://register-high-rise-building.hse.gov.uk/application/%applicationId%/summary" style="font-family:HelveticaNeue,&quot;Helvetica Neue&quot;,Arial,Helvetica,sans-serif; color:rgb(29,112,184)">view your completed application</a>.</span></span></div>
 <div>&nbsp;</div>
 <div><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:14pt"><strong>What you need to do next</strong></span>&nbsp;</span></div>
 <div>&nbsp;</div>
@@ -24,4 +24,4 @@
 <div>&nbsp;</div>
 <div><span style="font-size:12pt"><span style="font-family:Arial,Helvetica,sans-serif"><span style="line-height:107%">From Health and Safety Executive</span></span></span></div>
 <div>&nbsp;</div>
-<div><span style="font-size:12pt"><span style="font-family:Arial,Helvetica,sans-serif"><span style="line-height:107%">You can apply to register at another high-rise building at any time at </span><a href="https://register-high-rise-building.hse.gov.uk" style="font-family:HelveticaNeue,&quot;Helvetica Neue&quot;,Arial,Helvetica,sans-serif; color:rgb(29,112,184)">register-high-rise-building.hse.gov.uk</a>.</span></span></div>]]></xsl:template></xsl:stylesheet>
+<div><span style="font-size:12pt"><span style="font-family:Arial,Helvetica,sans-serif"><span style="line-height:107%">You can apply to register at another high-rise building at any time at </span><a href="https://register-high-rise-building.hse.gov.uk/select" style="font-family:HelveticaNeue,&quot;Helvetica Neue&quot;,Arial,Helvetica,sans-serif; color:rgb(29,112,184)">register-high-rise-building.hse.gov.uk</a>.</span></span></div>]]></xsl:template></xsl:stylesheet>
