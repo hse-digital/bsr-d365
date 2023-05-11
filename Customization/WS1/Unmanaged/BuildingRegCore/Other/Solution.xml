@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Reg Core" languagecode="1033" />
     </Descriptions>
-    <Version>1.17.12.0</Version>
+    <Version>1.17.13.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -107,6 +107,7 @@
       <RootComponent type="1" schemaName="bsr_externalwallsystem" behavior="0" />
       <RootComponent type="1" schemaName="bsr_firesmokeprovision" behavior="0" />
       <RootComponent type="1" schemaName="bsr_jobrole" behavior="0" />
+      <RootComponent type="1" schemaName="bsr_lift" behavior="0" />
       <RootComponent type="1" schemaName="bsr_material" behavior="0" />
       <RootComponent type="1" schemaName="bsr_onholdreason" behavior="0" />
       <RootComponent type="1" schemaName="bsr_payment" behavior="0" />
@@ -115,6 +116,7 @@
       <RootComponent type="1" schemaName="bsr_residentialarea" behavior="0" />
       <RootComponent type="1" schemaName="bsr_sectioncompletionyearrange" behavior="0" />
       <RootComponent type="1" schemaName="bsr_structureconnectiontype" behavior="0" />
+      <RootComponent type="1" schemaName="bsr_structurelift" behavior="0" />
       <RootComponent type="1" schemaName="bsr_structuretype" behavior="0" />
       <RootComponent type="1" schemaName="bsr_wallinsulationtype" behavior="0" />
       <RootComponent type="1" schemaName="bsr_year" behavior="0" />
@@ -176,12 +178,14 @@
       <RootComponent type="61" schemaName="bsr_evacuationn" behavior="0" />
       <RootComponent type="61" schemaName="bsr_evacuationpolicy" behavior="0" />
       <RootComponent type="61" schemaName="bsr_jobrole" behavior="0" />
+      <RootComponent type="61" schemaName="bsr_lift" behavior="0" />
       <RootComponent type="61" schemaName="bsr_materials" behavior="0" />
       <RootComponent type="61" schemaName="bsr_onhold" behavior="0" />
       <RootComponent type="61" schemaName="bsr_Payment" behavior="0" />
       <RootComponent type="61" schemaName="bsr_qualityassurance" behavior="0" />
       <RootComponent type="61" schemaName="bsr_refund" behavior="0" />
       <RootComponent type="61" schemaName="bsr_residentialareas" behavior="0" />
+      <RootComponent type="61" schemaName="bsr_structurelift" behavior="0" />
       <RootComponent type="61" schemaName="bsr_timestamp" behavior="0" />
       <RootComponent type="61" schemaName="bsr_wallinsulationtype" behavior="0" />
       <RootComponent type="61" schemaName="bsr_years" behavior="0" />
@@ -190,11 +194,14 @@
       <RootComponent type="9" schemaName="bsr_cardtypecreditdebit" behavior="0" />
       <RootComponent type="9" schemaName="bsr_doyouknowtheblocksexact" behavior="0" />
       <RootComponent type="9" schemaName="bsr_manualaddress" behavior="0" />
+      <RootComponent type="9" schemaName="bsr_materialtype" behavior="0" />
       <RootComponent type="9" schemaName="bsr_onholdreason" behavior="0" />
       <RootComponent type="9" schemaName="bsr_paptype" behavior="0" />
       <RootComponent type="9" schemaName="bsr_paymentreconciliationstatus" behavior="0" />
       <RootComponent type="9" schemaName="bsr_qaresult" behavior="0" />
       <RootComponent type="9" schemaName="bsr_rejectionreason" behavior="0" />
+      <RootComponent type="9" schemaName="bsr_roofstructurelayerofinsulation" behavior="0" />
+      <RootComponent type="9" schemaName="bsr_typeofroof" behavior="0" />
       <RootComponent type="9" schemaName="bsr_whoareyou" behavior="0" />
       <RootComponent type="9" schemaName="bsr_withdrawalreason" behavior="0" />
     </RootComponents>
@@ -260,7 +267,7 @@
         <Required type="59" schemaName="Tasks by Month Due" displayName="Tasks by Month Due" parentSchemaName="task" parentDisplayName="Task" solution="msdynce_AppCommon (9.0.4.0066)" id="{9e6a8b06-6d14-46e6-bbf5-95c388c6eb7a}">
           <package>msdynce_AppCommonAnchor (9.0.23043.10005)</package>
         </Required>
-        <Dependent type="60" displayName="Independent Section" parentDisplayName="Independent Section" id="{58e353f6-2098-ed11-aad1-0022481b5e4f}" />
+        <Dependent type="60" displayName="Structure" parentDisplayName="Independent Section" id="{58e353f6-2098-ed11-aad1-0022481b5e4f}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="Task" parentDisplayName="Task" solution="msdynce_Activities (9.0.1.2033)" id="{16654191-19ad-48ca-9e46-c4b4fbdad76f}" />
