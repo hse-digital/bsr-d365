@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23043.200" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23051.230" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>BuildingRegCore</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Reg Core" languagecode="1033" />
     </Descriptions>
-    <Version>1.17.15.0</Version>
+    <Version>1.17.16.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -115,8 +115,11 @@
       <RootComponent type="1" schemaName="bsr_refundreason" behavior="0" />
       <RootComponent type="1" schemaName="bsr_residentialarea" behavior="0" />
       <RootComponent type="1" schemaName="bsr_sectioncompletionyearrange" behavior="0" />
+      <RootComponent type="1" schemaName="bsr_structurebuildingwork" behavior="0" />
       <RootComponent type="1" schemaName="bsr_structureconnectiontype" behavior="0" />
+      <RootComponent type="1" schemaName="bsr_structureenergy" behavior="0" />
       <RootComponent type="1" schemaName="bsr_structurelift" behavior="0" />
+      <RootComponent type="1" schemaName="bsr_structurematerial" behavior="0" />
       <RootComponent type="1" schemaName="bsr_structuretype" behavior="0" />
       <RootComponent type="1" schemaName="bsr_wallinsulationtype" behavior="0" />
       <RootComponent type="1" schemaName="bsr_year" behavior="0" />
@@ -133,12 +136,15 @@
       <RootComponent type="29" id="{39f10235-12b9-ed11-b597-0022481b5e4f}" behavior="0" />
       <RootComponent type="29" id="{3a4c881b-40c7-ed11-b596-6045bd0b9760}" behavior="0" />
       <RootComponent type="29" id="{3dcd1190-b8b9-ed11-b597-0022481b5e4f}" behavior="0" />
+      <RootComponent type="29" id="{4dd32d03-a0f9-ed11-8f6d-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{5526d550-3fb8-ed11-b597-0022481b5e4f}" behavior="0" />
       <RootComponent type="29" id="{8d6464d0-5bb8-ed11-b597-0022481b5e4f}" behavior="0" />
+      <RootComponent type="29" id="{92d6b5ef-50f9-ed11-8f6d-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{acde83ef-a1b6-ed11-b597-0022481b568f}" behavior="0" />
       <RootComponent type="29" id="{b1dab775-1db9-ed11-b597-0022481b5e4f}" behavior="0" />
       <RootComponent type="29" id="{b4460691-24ad-ed11-83ff-0022481b5e4f}" behavior="0" />
       <RootComponent type="29" id="{c0b12492-13b9-ed11-b597-0022481b5e4f}" behavior="0" />
+      <RootComponent type="29" id="{c16e3275-45f9-ed11-8f6d-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{d05d0779-13b8-ed11-b597-0022481b5e4f}" behavior="0" />
       <RootComponent type="29" id="{edf5a1ef-13b8-ed11-b597-0022481b5e4f}" behavior="0" />
       <RootComponent type="29" id="{fba8c077-42b8-ed11-b597-0022481b5e4f}" behavior="0" />
@@ -185,14 +191,19 @@
       <RootComponent type="61" schemaName="bsr_qualityassurance" behavior="0" />
       <RootComponent type="61" schemaName="bsr_refund" behavior="0" />
       <RootComponent type="61" schemaName="bsr_residentialareas" behavior="0" />
+      <RootComponent type="61" schemaName="bsr_structurebuildingwork" behavior="0" />
+      <RootComponent type="61" schemaName="bsr_structureenergy" behavior="0" />
       <RootComponent type="61" schemaName="bsr_structurelift" behavior="0" />
+      <RootComponent type="61" schemaName="bsr_structurematerial" behavior="0" />
       <RootComponent type="61" schemaName="bsr_timestamp" behavior="0" />
       <RootComponent type="61" schemaName="bsr_wallinsulationtype" behavior="0" />
       <RootComponent type="61" schemaName="bsr_years" behavior="0" />
+      <RootComponent type="9" schemaName="bsr_acmhpl" behavior="0" />
       <RootComponent type="9" schemaName="bsr_addresstype" behavior="0" />
       <RootComponent type="9" schemaName="bsr_applicationstage" behavior="0" />
       <RootComponent type="9" schemaName="bsr_cardtypecreditdebit" behavior="0" />
       <RootComponent type="9" schemaName="bsr_doyouknowtheblocksexact" behavior="0" />
+      <RootComponent type="9" schemaName="bsr_energytype" behavior="0" />
       <RootComponent type="9" schemaName="bsr_manualaddress" behavior="0" />
       <RootComponent type="9" schemaName="bsr_materialtype" behavior="0" />
       <RootComponent type="9" schemaName="bsr_onholdreason" behavior="0" />
@@ -208,64 +219,64 @@
     <MissingDependencies>
       <MissingDependency>
         <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23043.1005)</package>
+          <package>msdynce_ServiceAnchor (9.0.23051.1008)</package>
         </Required>
         <Dependent type="1" schemaName="incident" displayName="Case" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="msdyn_customerasset" displayName="Customer Asset" solution="msdyn_AssetCommon (1.0.37.1)">
-          <package>FieldService_Anchor (8.8.89.38)</package>
-          <package>msdynce_ServiceAnchor (9.0.23043.1005)</package>
+          <package>FieldService_Anchor (8.8.91.36)</package>
+          <package>msdynce_ServiceAnchor (9.0.23051.1008)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="msdyn_account_msdyn_customerasset_Account" displayName="msdyn_account_msdyn_customerasset_Account" parentSchemaName="msdyn_customerasset" parentDisplayName="Customer Asset" solution="msdyn_AssetCommon (1.0.37.1)">
-          <package>FieldService_Anchor (8.8.89.38)</package>
-          <package>msdynce_ServiceAnchor (9.0.23043.1005)</package>
+          <package>FieldService_Anchor (8.8.91.36)</package>
+          <package>msdynce_ServiceAnchor (9.0.23051.1008)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="defaultpricelevelid" displayName="Price List" parentSchemaName="account" parentDisplayName="Account" solution="msdynce_ProductManagement (9.0.4.0066)">
-          <package>msdynce_ProductManagementAnchor (9.0.23043.10001)</package>
+          <package>msdynce_ProductManagementAnchor (9.0.23051.10001)</package>
         </Required>
         <Dependent type="60" displayName="Information" parentDisplayName="Account" id="{b053a39a-041a-4356-acef-ddf00182762b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="originatingleadid" displayName="Originating Lead" parentSchemaName="account" parentDisplayName="Account" solution="msdynce_LeadManagement (9.0.4.0066)">
-          <package>msdynce_LeadManagementAnchor (9.0.23043.10001)</package>
+          <package>msdynce_LeadManagementAnchor (9.0.23051.10001)</package>
         </Required>
         <Dependent type="60" displayName="Information" parentDisplayName="Account" id="{b053a39a-041a-4356-acef-ddf00182762b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="originatingleadid" displayName="Originating Lead" parentSchemaName="account" parentDisplayName="Account" solution="msdynce_LeadManagement (9.0.4.0066)">
-          <package>msdynce_LeadManagementAnchor (9.0.23043.10001)</package>
+          <package>msdynce_LeadManagementAnchor (9.0.23051.10001)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="territoryid" displayName="Territory" parentSchemaName="account" parentDisplayName="Account" solution="msdynce_Sales (9.0.4.0076)">
-          <package>msdynce_SalesAnchor (9.0.23043.10002)</package>
+          <package>msdynce_SalesAnchor (9.0.23051.10043)</package>
         </Required>
         <Dependent type="60" displayName="Information" parentDisplayName="Account" id="{b053a39a-041a-4356-acef-ddf00182762b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Active Customer Assets" displayName="Active Customer Assets" parentSchemaName="msdyn_customerasset" parentDisplayName="Customer Asset" solution="msdyn_AssetCommon (1.0.37.1)" id="{6ecb03a4-acda-44ae-83e3-c60ba8338dbb}">
-          <package>FieldService_Anchor (8.8.89.38)</package>
-          <package>msdynce_ServiceAnchor (9.0.23043.1005)</package>
+          <package>FieldService_Anchor (8.8.91.36)</package>
+          <package>msdynce_ServiceAnchor (9.0.23051.1008)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Customer Asset associated view with alerts" displayName="Customer Asset associated view with alerts" parentSchemaName="msdyn_customerasset" parentDisplayName="Customer Asset" solution="msdyn_ConnectedCustomerService (9.0.20115.1027)" id="{38cc036f-fbfe-e911-a81c-000d3ac2c6cb}">
-          <package>msdynce_ServiceAnchor (9.0.23043.1005)</package>
+          <package>msdynce_ServiceAnchor (9.0.23051.1008)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="59" schemaName="Tasks by Month Due" displayName="Tasks by Month Due" parentSchemaName="task" parentDisplayName="Task" solution="msdynce_AppCommon (9.0.4.0066)" id="{9e6a8b06-6d14-46e6-bbf5-95c388c6eb7a}">
-          <package>msdynce_AppCommonAnchor (9.0.23043.10005)</package>
+          <package>msdynce_AppCommonAnchor (9.0.23051.10001)</package>
         </Required>
         <Dependent type="60" displayName="Structure" parentDisplayName="Structure" id="{58e353f6-2098-ed11-aad1-0022481b5e4f}" />
       </MissingDependency>
@@ -275,43 +286,43 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="account contact card" parentDisplayName="Contact" solution="msdynce_AppCommon (9.0.4.0066)" id="{29de27bc-a257-4f29-99cf-bab4a84e688f}">
-          <package>msdynce_AppCommonAnchor (9.0.23043.10005)</package>
+          <package>msdynce_AppCommonAnchor (9.0.23051.10001)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="60" displayName="TimelineWallControl - Contact - Main" parentDisplayName="Contact" solution="OmnichannelBase (1.5.0.6022)" id="{986258b5-2985-4ae0-970a-5e1d108ab793}">
-          <package>UnifiedRoutingPrimeAnchor (1.5.16.6542)</package>
+        <Required type="60" displayName="TimelineWallControl - Contact - Main" parentDisplayName="Contact" solution="OmnichannelBase (1.5.0.6027)" id="{986258b5-2985-4ae0-970a-5e1d108ab793}">
+          <package>UnifiedRoutingPrimeAnchor (1.5.16.6555)</package>
         </Required>
         <Dependent type="60" displayName="TimelineWallControl - Contact - Main" parentDisplayName="Contact" id="{986258b5-2985-4ae0-970a-5e1d108ab793}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="Information" parentDisplayName="Account" solution="msdynce_AppCommon (9.0.4.0066)" id="{b053a39a-041a-4356-acef-ddf00182762b}">
-          <package>msdynce_AppCommonAnchor (9.0.23043.10005)</package>
+          <package>msdynce_AppCommonAnchor (9.0.23051.10001)</package>
         </Required>
         <Dependent type="60" displayName="Information" parentDisplayName="Account" id="{b053a39a-041a-4356-acef-ddf00182762b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="60" displayName="In Context Form" parentDisplayName="Account" solution="msdynce_DealManager (9.0.230303.6)" id="{face3aa6-99c4-4b7e-af07-55f121cdca86}">
-          <package>msdynce_SalesInsightsAnchor (9.0.23043.10006)</package>
+        <Required type="60" displayName="In Context Form" parentDisplayName="Account" solution="msdynce_DealManager (9.0.230303.12)" id="{face3aa6-99c4-4b7e-af07-55f121cdca86}">
+          <package>msdynce_SalesInsightsAnchor (9.0.23051.10007)</package>
         </Required>
         <Dependent type="60" displayName="In Context Form" parentDisplayName="Account" id="{face3aa6-99c4-4b7e-af07-55f121cdca86}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="AppCommon/Account/Account_main_system_library.js" displayName="AppCommon/Account/Account_main_system_library.js" solution="msdynce_AppCommon (9.0.4.0066)">
-          <package>msdynce_AppCommonAnchor (9.0.23043.10005)</package>
+          <package>msdynce_AppCommonAnchor (9.0.23051.10001)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="AppCommon/Account/Account_main_system_library.js" displayName="AppCommon/Account/Account_main_system_library.js" solution="msdynce_AppCommon (9.0.4.0066)">
-          <package>msdynce_AppCommonAnchor (9.0.23043.10005)</package>
+          <package>msdynce_AppCommonAnchor (9.0.23051.10001)</package>
         </Required>
         <Dependent type="60" displayName="In Context Form" parentDisplayName="Account" id="{face3aa6-99c4-4b7e-af07-55f121cdca86}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="AppCommon/Contact/Contact_main_system_library.js" displayName="AppCommon/Contact/Contact_main_system_library.js" solution="msdynce_AppCommon (9.0.4.0066)">
-          <package>msdynce_AppCommonAnchor (9.0.23043.10005)</package>
+          <package>msdynce_AppCommonAnchor (9.0.23051.10001)</package>
         </Required>
         <Dependent type="60" displayName="TimelineWallControl - Contact - Main" parentDisplayName="Contact" id="{986258b5-2985-4ae0-970a-5e1d108ab793}" />
       </MissingDependency>
@@ -321,7 +332,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_/ConnectedCustomerService/Account/AccountForm.js" displayName="msdyn_/ConnectedCustomerService/Account/AccountForm.js" solution="msdyn_ConnectedCustomerService (9.0.20115.1027)">
-          <package>msdynce_ServiceAnchor (9.0.23043.1005)</package>
+          <package>msdynce_ServiceAnchor (9.0.23051.1008)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
@@ -331,12 +342,12 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_talkingpointsloader.js" displayName="msdyn_talkingpointsloader.js" solution="msdynce_Talkingpoints (9.0.1.701894)">
-          <package>msdynce_SalesInsightsAnchor (9.0.23043.10006)</package>
+          <package>msdynce_SalesInsightsAnchor (9.0.23051.10007)</package>
         </Required>
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.CardFeedContainer.CardFeedContainer" displayName="MscrmControls.CardFeedContainer.CardFeedContainer" solution="BaseCustomControlsCore (9.0.2304.3012)" />
+        <Required type="66" schemaName="MscrmControls.CardFeedContainer.CardFeedContainer" displayName="MscrmControls.CardFeedContainer.CardFeedContainer" solution="BaseCustomControlsCore (9.0.2305.1013)" />
         <Dependent type="60" displayName="In Context Form" parentDisplayName="Account" id="{face3aa6-99c4-4b7e-af07-55f121cdca86}" />
       </MissingDependency>
     </MissingDependencies>

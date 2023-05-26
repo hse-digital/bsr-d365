@@ -162,6 +162,22 @@
                         <control id="bsr_primarymaterialofroof" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_primarymaterialofroof" disabled="false" />
                       </cell>
                     </row>
+                    <row>
+                      <cell id="{85478651-66a3-4fb3-931c-75649eb2aeb7}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Total number of staircases" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_totalnumberofstaircases" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_totalnumberofstaircases" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ff0a3473-e086-419b-82fa-e9632f37912d}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Number of internal staircases from ground level" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_numberofinternalstaircasesfromgroundlevel" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_numberofinternalstaircasesfromgroundlevel" disabled="false" />
+                      </cell>
+                    </row>
                   </rows>
                 </section>
               </sections>
@@ -595,9 +611,173 @@
             </column>
           </columns>
         </tab>
-        <tab name="tab_5" id="{d6e4a9e0-2646-d111-8db1-0ccdb60c03aa}" IsUserDefined="0" locklevel="0" showlabel="true" expanded="true">
+        <tab name="tab_12" id="e3b63973-fab7-45e1-b19d-0d057fbad374" IsUserDefined="0" locklevel="0" showlabel="true">
           <labels>
-            <label description="Block Structures" languagecode="1033" />
+            <label description="Structure Type" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_12_section_1" id="5c691a87-9bf9-437c-a443-0c14bbec2202" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{02aec8a9-ad2b-b42d-d313-60a9e9bdbd43}" showlabel="true" colspan="1" auto="false" rowspan="7">
+                        <labels>
+                          <label description="Structure Materials" languagecode="1033" />
+                        </labels>
+                        <control id="StructureMaterials" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <ViewId>{BFE09ACA-8CF8-ED11-8F6D-002248C727E7}</ViewId>
+                            <IsUserView>false</IsUserView>
+                            <RelationshipName>bsr_structurematerial_block</RelationshipName>
+                            <TargetEntityType>bsr_structurematerial</TargetEntityType>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <ViewIds>{F3D9CDD5-348C-4697-B349-91573DB7564E},{BFE09ACA-8CF8-ED11-8F6D-002248C727E7}</ViewIds>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>All</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_13" id="fd87a510-2479-40c8-a11c-28f2f8edd2a9" IsUserDefined="0" locklevel="0" showlabel="true">
+          <labels>
+            <label description="External Walls" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_13_section_1" id="f8f228c6-96ae-4897-9308-ba67ec702bfc" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{30512260-0713-a2e5-e0a0-2252b8477eab}" showlabel="true" colspan="1" auto="false" rowspan="7">
+                        <labels>
+                          <label description="External Walls" languagecode="1033" />
+                        </labels>
+                        <control id="StructureMaterialsWithExternalWalls" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true" uniqueid="{920a4838-41d5-2ba0-9d0a-406821144e9d}">
+                          <parameters>
+                            <ViewId>{0F230C1D-49F9-ED11-8F6D-002248C725DA}</ViewId>
+                            <IsUserView>false</IsUserView>
+                            <RelationshipName>bsr_structurematerial_block</RelationshipName>
+                            <TargetEntityType>bsr_structurematerial</TargetEntityType>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <ViewIds>{F3D9CDD5-348C-4697-B349-91573DB7564E},{0F230C1D-49F9-ED11-8F6D-002248C725DA}</ViewIds>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>All</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row>
+                      <cell id="{eba5db69-85bd-2711-10d4-b907183db19e}" showlabel="true" colspan="1" auto="false" rowspan="7">
+                        <labels>
+                          <label description="Insulation" languagecode="1033" />
+                        </labels>
+                        <control id="StructureMaterialsWithInsulation" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true" uniqueid="{be9a990a-53a5-0d27-1dac-68d2344c5060}">
+                          <parameters>
+                            <ViewId>{A32E651D-7AF9-ED11-8F6D-002248C725DA}</ViewId>
+                            <IsUserView>false</IsUserView>
+                            <RelationshipName>bsr_structurematerial_block</RelationshipName>
+                            <TargetEntityType>bsr_structurematerial</TargetEntityType>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <ViewIds>{F3D9CDD5-348C-4697-B349-91573DB7564E},{A32E651D-7AF9-ED11-8F6D-002248C725DA}</ViewIds>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>All</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row>
+                      <cell id="{69c15528-3540-9646-7811-30aebde14d09}" showlabel="true" colspan="1" auto="false" rowspan="7">
+                        <labels>
+                          <label description="Structure External Featuress" languagecode="1033" />
+                        </labels>
+                        <control id="StructureExternalFeatures" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <ViewId>{0DB5C21B-D4A3-4BCA-9369-8C1DEBCF5FAC}</ViewId>
+                            <IsUserView>false</IsUserView>
+                            <RelationshipName>bsr_block_blockexternalfeature</RelationshipName>
+                            <TargetEntityType>bsr_blockexternalfeature</TargetEntityType>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <ViewIds>{0DB5C21B-D4A3-4BCA-9369-8C1DEBCF5FAC}</ViewIds>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>All</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_5" id="{d6e4a9e0-2646-d111-8db1-0ccdb60c03aa}" IsUserDefined="0" locklevel="0" showlabel="true" expanded="true" visible="false">
+          <labels>
+            <label description="Structure Type of Structures - DEPRECATED" languagecode="1033" />
           </labels>
           <columns>
             <column width="100%">
@@ -633,6 +813,120 @@
                         </control>
                       </cell>
                     </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_10" id="a3a4107b-3737-4ee2-b3d9-10543d197bbe" IsUserDefined="0" locklevel="0" showlabel="true">
+          <labels>
+            <label description="Energy" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_10_section_1" id="0a6361b0-d69b-4192-aed0-542ad688269c" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{037ba48a-7e84-2d14-1d62-ce706b42e6aa}" showlabel="true" colspan="1" auto="false" rowspan="7">
+                        <labels>
+                          <label description="Energy Storage" languagecode="1033" />
+                        </labels>
+                        <control id="EnergyStorage" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <ViewId>{CB1F7DD5-D3F3-ED11-8848-6045BD0D6922}</ViewId>
+                            <IsUserView>false</IsUserView>
+                            <RelationshipName>bsr_structureenergy_block</RelationshipName>
+                            <TargetEntityType>bsr_structureenergy</TargetEntityType>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <ViewIds>{ACF8CAE7-7117-4F58-A13D-A547C7080CFF},{CB1F7DD5-D3F3-ED11-8848-6045BD0D6922}</ViewIds>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>All</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row>
+                      <cell id="{0a23b137-e47a-ca8e-78e6-b49b197970e2}" showlabel="true" colspan="1" auto="false" rowspan="7">
+                        <labels>
+                          <label description="Energy Supplies" languagecode="1033" />
+                        </labels>
+                        <control id="energysupplies" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <ViewId>{5BD4C664-DAF3-ED11-8848-6045BD0D6904}</ViewId>
+                            <IsUserView>false</IsUserView>
+                            <RelationshipName>bsr_structureenergy_block</RelationshipName>
+                            <TargetEntityType>bsr_structureenergy</TargetEntityType>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <ViewIds>{ACF8CAE7-7117-4F58-A13D-A547C7080CFF},{5BD4C664-DAF3-ED11-8848-6045BD0D6904}</ViewIds>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>All</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row>
+                      <cell id="{6451b33c-586a-1ece-5011-4c17a47ed257}" showlabel="true" colspan="1" auto="false" rowspan="7">
+                        <labels>
+                          <label description="On site energy generation" languagecode="1033" />
+                        </labels>
+                        <control id="Onsiteenergygeneration" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <ViewId>{A3ACB73A-DAF3-ED11-8848-6045BD0D6904}</ViewId>
+                            <IsUserView>false</IsUserView>
+                            <RelationshipName>bsr_structureenergy_block</RelationshipName>
+                            <TargetEntityType>bsr_structureenergy</TargetEntityType>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <ViewIds>{ACF8CAE7-7117-4F58-A13D-A547C7080CFF},{A3ACB73A-DAF3-ED11-8848-6045BD0D6904}</ViewIds>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>All</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
                     <row />
                     <row />
                     <row />
@@ -749,15 +1043,77 @@
           <columns>
             <column width="100%">
               <sections>
+                <section name="tab_11_section_3" id="d559b24c-9323-4738-8dcc-459ee9c89c6a" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{1c551705-50e3-4e6b-befa-6bf0a05b01d7}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Primary Use" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_primaryuse" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_primaryuse" disabled="false" />
+                      </cell>
+                      <cell id="{de192f53-1223-493c-91ee-04b5b415baac}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Number of floors below ground level" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_numberoffloorsbelowgroundlevel" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_numberoffloorsbelowgroundlevel" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{76cbc85d-0e47-4d26-921b-746a20f33088}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Primary Use of building below ground level" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_primaryuseofbuildingbelowgroundlevel" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_primaryuseofbuildingbelowgroundlevel" disabled="false" />
+                      </cell>
+                      <cell id="{cfe6b279-bf8f-4507-b44f-52bdcaf7de1a}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Different primary use in the past" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_differentprimaryuseinthepast" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="bsr_differentprimaryuseinthepast" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4bdb39a0-470c-4c4a-b75b-e974227728a8}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Previous Use of building" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_previoususeofbuilding" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_previoususeofbuilding" disabled="false" />
+                      </cell>
+                      <cell id="{34421502-1673-4fbb-93d6-83ba9c0d9384}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Change of use year" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_changeofuseyear" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_changeofuseyear" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{486a0575-e931-4e39-b95d-e1fcc6c1ef0b}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Year of most recent change" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_yearofmostrecentchange" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_yearofmostrecentchange" disabled="false" />
+                      </cell>
+                      <cell locklevel="0" id="{47f22bd4-ad47-4f56-b19d-ebda603271be}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
                 <section name="tab_11_section_1" showlabel="false" showbar="false" locklevel="0" id="{3d9de24b-607b-3198-c879-48dc3919ba3e}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115">
                   <labels>
                     <label description="Section" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{37aec9a1-7177-b964-3ae7-9317e7bce094}" showlabel="false" colspan="1" auto="false" rowspan="6">
+                      <cell id="{37aec9a1-7177-b964-3ae7-9317e7bce094}" showlabel="true" colspan="1" auto="false" rowspan="6">
                         <labels>
-                          <label description="Block Uses" languagecode="1033" />
+                          <label description="Secondary Uses" languagecode="1033" />
                         </labels>
                         <control id="Block_Uses" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
                           <parameters>
@@ -781,6 +1137,38 @@
                         </control>
                       </cell>
                     </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row>
+                      <cell id="{b4bcc8c6-4508-9840-ce14-8bbda98accc1}" showlabel="true" colspan="1" auto="false" rowspan="7">
+                        <labels>
+                          <label description="Building Works" languagecode="1033" />
+                        </labels>
+                        <control id="BuildingWorks" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true" uniqueid="{5b4c83c6-0d30-311c-0188-07d3ee964ba1}">
+                          <parameters>
+                            <ViewId>{0C69F279-51A9-47AC-9468-222F19CAFE46}</ViewId>
+                            <IsUserView>false</IsUserView>
+                            <RelationshipName>bsr_structurebuildingwork_structure</RelationshipName>
+                            <TargetEntityType>bsr_structurebuildingwork</TargetEntityType>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <ViewIds>{0C69F279-51A9-47AC-9468-222F19CAFE46}</ViewIds>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>All</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
                     <row />
                     <row />
                     <row />

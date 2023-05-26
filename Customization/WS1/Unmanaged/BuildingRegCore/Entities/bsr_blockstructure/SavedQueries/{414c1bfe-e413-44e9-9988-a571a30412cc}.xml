@@ -11,6 +11,8 @@
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_blockstructureid">
           <cell name="bsr_name" width="300" />
+          <cell name="bsr_blockid" width="100" />
+          <cell name="bsr_structuretypeid" width="123" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -26,12 +28,14 @@
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <attribute name="bsr_blockid" />
+          <attribute name="bsr_structuretypeid" />
         </entity>
       </fetch>
     </fetchxml>
     <IntroducedVersion>1.0.6.0</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="Active Block Structures" languagecode="1033" />
+      <LocalizedName description="Active Structure Type of Structures" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>
