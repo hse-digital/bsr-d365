@@ -143,13 +143,19 @@
                         </labels>
                         <control id="bsr_numberofsectionsassociatedtoabuilding" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_numberofsectionsassociatedtoabuilding" disabled="false" />
                       </cell>
+                      <cell id="{93b685ab-0fc5-4834-a301-1beb9cede162}" locklevel="0" colspan="1" rowspan="1" showlabel="true">
+                        <labels>
+                          <label description="Manual Validation Required" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_manualvalidationrequired" classid="{B0C6723A-8503-4fd7-BB28-C8A06AC933C2}" datafieldname="bsr_manualvalidationrequired" disabled="false" uniqueid="{8a3c6490-ed08-17be-6d08-d717dd555398}" />
+                      </cell>
                     </row>
                     <row>
-                      <cell id="{0c1c0dc2-1e13-3a18-90ba-0a84b613238c}" showlabel="false" colspan="2" auto="false" rowspan="6">
+                      <cell id="{0c1c0dc2-1e13-3a18-90ba-0a84b613238c}" showlabel="true" colspan="2" auto="false" rowspan="7">
                         <labels>
-                          <label description="Blocks (Building)" languagecode="1033" />
+                          <label description="Structures" languagecode="1033" />
                         </labels>
-                        <control id="Blocks" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                        <control id="Blocks" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true" uniqueid="{b5e99e82-11db-d61b-913a-a4c0584b764d}">
                           <parameters>
                             <ViewId>{34C821FC-F8E6-4ECD-ABE4-284F12B84538}</ViewId>
                             <IsUserView>false</IsUserView>
@@ -170,6 +176,134 @@
                         </control>
                       </cell>
                     </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row>
+                      <cell id="{35cfb889-6b8b-48dc-a711-5fee32c88436}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Connection to other high rise residential building" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_connectiontootherhighriseresidentialbuilding" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="bsr_connectiontootherhighriseresidentialbuilding" disabled="false" />
+                      </cell>
+                      <cell locklevel="0" id="{8c53f18b-003f-4cbd-94a9-f5a86b4412ad}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e054e472-dd1c-824e-edd8-b4b177ad6e69}" showlabel="true" colspan="2" auto="false" rowspan="7">
+                        <labels>
+                          <label description="Structural Connections" languagecode="1033" />
+                        </labels>
+                        <control id="StructuralConnections" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true" uniqueid="{7071e6ed-735a-c303-981a-d82dcb852914}">
+                          <parameters>
+                            <ViewId>{295D9DCE-E1FB-ED11-8F6D-002248C725DA}</ViewId>
+                            <IsUserView>false</IsUserView>
+                            <RelationshipName>bsr_connectedstructure_building</RelationshipName>
+                            <TargetEntityType>bsr_connectedblock</TargetEntityType>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <ViewIds>{40D34362-413C-464C-AFB1-6566BB06A325},{295D9DCE-E1FB-ED11-8F6D-002248C725DA}</ViewIds>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>All</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row>
+                      <cell id="{8da2a52e-70d0-4aa5-b10a-efac8f092240}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Connection to other building" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_connectiontootherbuilding" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="bsr_connectiontootherbuilding" disabled="false" />
+                      </cell>
+                      <cell locklevel="0" id="{76d03178-b47f-4782-aeff-2f1d6c634018}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ac86ed1d-615e-339b-e503-1b1c9ab1dd53}" showlabel="true" colspan="2" auto="false" rowspan="7">
+                        <labels>
+                          <label description="Connections to other high rise residential buildings" languagecode="1033" />
+                        </labels>
+                        <control id="Connectionstootherhighriseresidentialbuildings" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <ViewId>{1A416F5B-FBFD-ED11-8F6C-002248C725DA}</ViewId>
+                            <IsUserView>false</IsUserView>
+                            <RelationshipName>bsr_connectedstructure_building</RelationshipName>
+                            <TargetEntityType>bsr_connectedblock</TargetEntityType>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <ViewIds>{40D34362-413C-464C-AFB1-6566BB06A325},{1A416F5B-FBFD-ED11-8F6C-002248C725DA}</ViewIds>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>All</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row>
+                      <cell id="{b98e947c-8694-d02d-6778-23a025148526}" showlabel="true" colspan="2" auto="false" rowspan="7">
+                        <labels>
+                          <label description="Connections to other buildings" languagecode="1033" />
+                        </labels>
+                        <control id="Connectionstootherbuildings" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <ViewId>{7D989C95-FDFD-ED11-8F6C-002248C727E7}</ViewId>
+                            <IsUserView>false</IsUserView>
+                            <RelationshipName>bsr_connectedstructure_building</RelationshipName>
+                            <TargetEntityType>bsr_connectedblock</TargetEntityType>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <ViewIds>{40D34362-413C-464C-AFB1-6566BB06A325},{7D989C95-FDFD-ED11-8F6C-002248C727E7}</ViewIds>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>All</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
                   </rows>
                 </section>
               </sections>
@@ -179,11 +313,6 @@
       </tabs>
       <Navigation>
         <NavBar>
-          <NavBarByRelationshipItem Area="Info" Show="false" RelationshipName="bsr_building_contact" Id="nav_bsr_building_contact" Sequence="10000">
-            <Titles>
-              <Title Text="Contacts" LCID="1033" />
-            </Titles>
-          </NavBarByRelationshipItem>
           <NavBarByRelationshipItem Area="Info" Show="false" RelationshipName="bsr_building_block" Id="nav_bsr_building_block" Sequence="10000">
             <Titles>
               <Title Text="Independent Sections" LCID="1033" />
@@ -237,7 +366,7 @@
                 <label description="" languagecode="1033" />
               </labels>
             </cell>
-            <cell locklevel="0" id="{d2231661-8976-49bf-a0df-b95413e1e756}">
+            <cell locklevel="0" id="{d2231661-8976-49bf-a0df-b95413e1e756}" showlabel="false">
               <labels>
                 <label description="" languagecode="1033" />
               </labels>
