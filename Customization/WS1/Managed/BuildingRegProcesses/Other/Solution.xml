@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23051.230" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23053.224" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>BuildingRegProcesses</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Reg Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.12.5.0</Version>
+    <Version>1.12.6.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -89,8 +89,10 @@
       <RootComponent type="29" id="{4e9f01c2-58a9-ed11-aad1-0022481b5e4f}" behavior="0" />
       <RootComponent type="29" id="{53791bc6-edbc-ed11-83fe-000d3a86ecac}" behavior="0" />
       <RootComponent type="29" id="{7f165d07-03a7-ed11-aad1-0022481b5e4f}" behavior="0" />
+      <RootComponent type="29" id="{7faddab7-17fa-ed11-8f6d-002248c727e7}" behavior="0" />
       <RootComponent type="29" id="{9c334b9e-f2bc-ed11-83fe-000d3a86ecac}" behavior="0" />
       <RootComponent type="29" id="{cdf3d0a3-43c7-ed11-b596-6045bd0b9760}" behavior="0" />
+      <RootComponent type="29" id="{d1a53032-2601-ee11-8f6c-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{ddb5e613-64a9-ed11-aad1-0022481b5e4f}" behavior="0" />
       <RootComponent type="29" id="{edadf639-95d4-ed11-a7c6-6045bd0d6610}" behavior="0" />
     </RootComponents>
@@ -132,6 +134,14 @@
         <Dependent type="29" displayName="Send Email if  Application Status is Set Submitted - awaiting allocation " id="{2d228b8c-06c1-ed11-83fd-6045bd0d435c}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
+        <Dependent type="29" displayName="Send Email notifications for Registered Building Application" id="{7faddab7-17fa-ed11-8f6d-002248c727e7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
+        <Dependent type="29" displayName="Send Email Notification when KBI Declared check box is selected on the Building" id="{d1a53032-2601-ee11-8f6c-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
         <Dependent type="29" displayName="Set the Building Application Name field to ApplicationId and Building Name " id="{041ef549-a2b7-ed11-b597-0022481b568f}" />
       </MissingDependency>
@@ -150,6 +160,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
         <Dependent type="29" displayName="Trigger Flow to check if the Building Application has any active status timestamp records" id="{53791bc6-edbc-ed11-83fe-000d3a86ecac}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
+        <Dependent type="29" displayName="Send Email notifications for Registered Building Application" id="{7faddab7-17fa-ed11-8f6d-002248c727e7}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
@@ -216,6 +230,10 @@
         <Dependent type="29" displayName="Set the Building Application Name field to ApplicationId and Building Name " id="{041ef549-a2b7-ed11-b597-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_kbideclaration" displayName="KBI Declaration" parentSchemaName="bsr_building" parentDisplayName="Building" solution="Active" />
+        <Dependent type="29" displayName="Send Email Notification when KBI Declared check box is selected on the Building" id="{d1a53032-2601-ee11-8f6c-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_paymentreconciliationstatus" displayName="Payment Reconciliation Status" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="Active" />
         <Dependent type="29" displayName="Set the Building Application status on Payment update of Payment Reconciliation status" id="{9c334b9e-f2bc-ed11-83fe-000d3a86ecac}" />
       </MissingDependency>
@@ -234,6 +252,10 @@
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Application Status" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
         <Dependent type="29" displayName="Trigger Flow to check if the Building Application has any active status timestamp records" id="{53791bc6-edbc-ed11-83fe-000d3a86ecac}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Application Status" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
+        <Dependent type="29" displayName="Send Email notifications for Registered Building Application" id="{7faddab7-17fa-ed11-8f6d-002248c727e7}" />
       </MissingDependency>
     </MissingDependencies>
   </SolutionManifest>
