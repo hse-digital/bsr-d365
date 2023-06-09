@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Reg Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.12.7.0</Version>
+    <Version>1.12.8.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -83,14 +83,17 @@
       <RootComponent type="29" id="{041ef549-a2b7-ed11-b597-0022481b568f}" behavior="0" />
       <RootComponent type="29" id="{0f0464dc-a1bd-ed11-83fe-000d3a86e5b0}" behavior="0" />
       <RootComponent type="29" id="{2d228b8c-06c1-ed11-83fd-6045bd0d435c}" behavior="0" />
+      <RootComponent type="29" id="{3254c77b-d906-ee11-8f6e-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{38dd974b-89f8-ed11-8f6d-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{3c542ef0-81c9-ed11-b595-6045bd0d6904}" behavior="0" />
       <RootComponent type="29" id="{49442064-3ff3-ed11-8848-6045bd0d6904}" behavior="0" />
+      <RootComponent type="29" id="{4d6e1a16-d806-ee11-8f6e-002248c727e7}" behavior="0" />
       <RootComponent type="29" id="{4e9f01c2-58a9-ed11-aad1-0022481b5e4f}" behavior="0" />
       <RootComponent type="29" id="{53791bc6-edbc-ed11-83fe-000d3a86ecac}" behavior="0" />
       <RootComponent type="29" id="{7f165d07-03a7-ed11-aad1-0022481b5e4f}" behavior="0" />
       <RootComponent type="29" id="{7faddab7-17fa-ed11-8f6d-002248c727e7}" behavior="0" />
       <RootComponent type="29" id="{9c334b9e-f2bc-ed11-83fe-000d3a86ecac}" behavior="0" />
+      <RootComponent type="29" id="{a29c510f-d406-ee11-8f6e-002248c727e7}" behavior="0" />
       <RootComponent type="29" id="{cdf3d0a3-43c7-ed11-b596-6045bd0b9760}" behavior="0" />
       <RootComponent type="29" id="{d1a53032-2601-ee11-8f6c-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{ddb5e613-64a9-ed11-aad1-0022481b5e4f}" behavior="0" />
@@ -111,6 +114,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_block" displayName="Structure" solution="Active" />
+        <Dependent type="29" displayName="Auto Populate Name field for 'Structure Lifts' table" id="{3254c77b-d906-ee11-8f6e-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_block" displayName="Structure" solution="Active" />
         <Dependent type="29" displayName="Auto Populate Name field for 'Structure Material' table" id="{38dd974b-89f8-ed11-8f6d-002248c725da}" />
       </MissingDependency>
       <MissingDependency>
@@ -119,11 +126,27 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_block" displayName="Structure" solution="Active" />
+        <Dependent type="29" displayName="Auto Populate Name field for 'Structure Fire Smoke Provision' table" id="{4d6e1a16-d806-ee11-8f6e-002248c727e7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_block" displayName="Structure" solution="Active" />
+        <Dependent type="29" displayName="Auto Populate Name field for 'Structure External Feature' table" id="{a29c510f-d406-ee11-8f6e-002248c727e7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_block" displayName="Structure" solution="Active" />
         <Dependent type="29" displayName="Populate the Name field of Accountable Person" id="{cdf3d0a3-43c7-ed11-b596-6045bd0b9760}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_blockarea" displayName="Structure Area" solution="Active" />
         <Dependent type="29" displayName="Populate the Name field of Accountable Person" id="{cdf3d0a3-43c7-ed11-b596-6045bd0b9760}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_blockexternalfeature" displayName="Structure External Feature" solution="Active" />
+        <Dependent type="29" displayName="Auto Populate Name field for 'Structure External Feature' table" id="{a29c510f-d406-ee11-8f6e-002248c727e7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_blockfiresmokeprovision" displayName="Structure Fire Smoke Provision" solution="Active" />
+        <Dependent type="29" displayName="Auto Populate Name field for 'Structure Fire Smoke Provision' table" id="{4d6e1a16-d806-ee11-8f6e-002248c727e7}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
@@ -190,6 +213,18 @@
         <Dependent type="29" displayName="Auto Populate Name field for 'Structure Energy' table" id="{49442064-3ff3-ed11-8848-6045bd0d6904}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="bsr_externalfeaturetype" displayName="External Feature" solution="Active" />
+        <Dependent type="29" displayName="Auto Populate Name field for 'Structure External Feature' table" id="{a29c510f-d406-ee11-8f6e-002248c727e7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_firesmokeprovision" displayName="Fire Smoke Provision" solution="Active" />
+        <Dependent type="29" displayName="Auto Populate Name field for 'Structure Fire Smoke Provision' table" id="{4d6e1a16-d806-ee11-8f6e-002248c727e7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_lift" displayName="Lift" solution="Active" />
+        <Dependent type="29" displayName="Auto Populate Name field for 'Structure Lifts' table" id="{3254c77b-d906-ee11-8f6e-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="bsr_material" displayName="Material" solution="Active" />
         <Dependent type="29" displayName="Auto Populate Name field for 'Structure Material' table" id="{38dd974b-89f8-ed11-8f6d-002248c725da}" />
       </MissingDependency>
@@ -204,6 +239,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_structureenergy" displayName="Structure Energy" solution="Active" />
         <Dependent type="29" displayName="Auto Populate Name field for 'Structure Energy' table" id="{49442064-3ff3-ed11-8848-6045bd0d6904}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_structurelift" displayName="Structure Lift" solution="Active" />
+        <Dependent type="29" displayName="Auto Populate Name field for 'Structure Lifts' table" id="{3254c77b-d906-ee11-8f6e-002248c725da}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_structurematerial" displayName="Structure Material" solution="Active" />
