@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23053.224" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23054.196" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>BuildingRegProcesses</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Reg Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.12.8.0</Version>
+    <Version>1.12.9.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -82,6 +82,7 @@
     <RootComponents>
       <RootComponent type="29" id="{041ef549-a2b7-ed11-b597-0022481b568f}" behavior="0" />
       <RootComponent type="29" id="{0f0464dc-a1bd-ed11-83fe-000d3a86e5b0}" behavior="0" />
+      <RootComponent type="29" id="{1cfbd44f-cd09-ee11-8f6e-002248c727e7}" behavior="0" />
       <RootComponent type="29" id="{2d228b8c-06c1-ed11-83fd-6045bd0d435c}" behavior="0" />
       <RootComponent type="29" id="{3254c77b-d906-ee11-8f6e-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{38dd974b-89f8-ed11-8f6d-002248c725da}" behavior="0" />
@@ -96,6 +97,7 @@
       <RootComponent type="29" id="{a29c510f-d406-ee11-8f6e-002248c727e7}" behavior="0" />
       <RootComponent type="29" id="{cdf3d0a3-43c7-ed11-b596-6045bd0b9760}" behavior="0" />
       <RootComponent type="29" id="{d1a53032-2601-ee11-8f6c-002248c725da}" behavior="0" />
+      <RootComponent type="29" id="{db4bcb3e-cb09-ee11-8f6e-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{ddb5e613-64a9-ed11-aad1-0022481b5e4f}" behavior="0" />
       <RootComponent type="29" id="{edadf639-95d4-ed11-a7c6-6045bd0d6610}" behavior="0" />
     </RootComponents>
@@ -137,6 +139,10 @@
         <Dependent type="29" displayName="Populate the Name field of Accountable Person" id="{cdf3d0a3-43c7-ed11-b596-6045bd0b9760}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="bsr_block" displayName="Structure" solution="Active" />
+        <Dependent type="29" displayName="Auto Populate Name field for 'Structure Building Works' table" id="{db4bcb3e-cb09-ee11-8f6e-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="bsr_blockarea" displayName="Structure Area" solution="Active" />
         <Dependent type="29" displayName="Populate the Name field of Accountable Person" id="{cdf3d0a3-43c7-ed11-b596-6045bd0b9760}" />
       </MissingDependency>
@@ -149,8 +155,16 @@
         <Dependent type="29" displayName="Auto Populate Name field for 'Structure Fire Smoke Provision' table" id="{4d6e1a16-d806-ee11-8f6e-002248c727e7}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="bsr_blockmaterialchange" displayName="Building Work" solution="Active" />
+        <Dependent type="29" displayName="Auto Populate Name field for 'Structure Building Works' table" id="{db4bcb3e-cb09-ee11-8f6e-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
         <Dependent type="29" displayName="Set the Building Application Name field to ApplicationId and Building Name " id="{041ef549-a2b7-ed11-b597-0022481b568f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
+        <Dependent type="29" displayName="Auto Populate Name field for 'Structure Connections' table" id="{1cfbd44f-cd09-ee11-8f6e-002248c727e7}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
@@ -201,6 +215,10 @@
         <Dependent type="29" displayName="Send Application Return Code" id="{edadf639-95d4-ed11-a7c6-6045bd0d6610}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="bsr_connectedblock" displayName="Connected Structure" solution="Active" />
+        <Dependent type="29" displayName="Auto Populate Name field for 'Structure Connections' table" id="{1cfbd44f-cd09-ee11-8f6e-002248c727e7}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="bsr_country" displayName="Country" solution="Active" />
         <Dependent type="29" displayName="Populate Country Field Post Account" id="{4e9f01c2-58a9-ed11-aad1-0022481b5e4f}" />
       </MissingDependency>
@@ -235,6 +253,14 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_qualityassurance" displayName="Quality Assurance" solution="Active" />
         <Dependent type="29" displayName="Create a Quality Assurance record when an Application Status is QA in progress" id="{0f0464dc-a1bd-ed11-83fe-000d3a86e5b0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_structurebuildingwork" displayName="Structure Building Work" solution="Active" />
+        <Dependent type="29" displayName="Auto Populate Name field for 'Structure Building Works' table" id="{db4bcb3e-cb09-ee11-8f6e-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_structureconnectiontype" displayName="Structure Connection Type" solution="Active" />
+        <Dependent type="29" displayName="Auto Populate Name field for 'Structure Connections' table" id="{1cfbd44f-cd09-ee11-8f6e-002248c727e7}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_structureenergy" displayName="Structure Energy" solution="Active" />
