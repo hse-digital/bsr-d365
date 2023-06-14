@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{b305b18b-d106-ee11-8f6e-0022481b5210}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
+        <row name="result" id="bsr_buildingprofessionapplicationid">
+          <cell name="bsr_applicantid" width="100" />
+          <cell name="statuscode" width="144" />
+          <cell name="bsr_buildingprofessiontypecode" width="183" />
+          <cell name="bsr_buildingproappid" width="167" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
+        <entity name="bsr_buildingprofessionapplication">
+          <attribute name="bsr_buildingprofessionapplicationid" />
+          <attribute name="bsr_applicantid" />
+          <attribute name="statuscode" />
+          <attribute name="bsr_buildingprofessiontypecode" />
+          <filter type="and">
+            <condition attribute="bsr_buildingprofessiontypecode" operator="eq" value="760810000" />
+            <condition attribute="statuscode" operator="eq" value="760810001" />
+          </filter>
+          <attribute name="bsr_buildingproappid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Incomplete Building Inspector Applications" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
