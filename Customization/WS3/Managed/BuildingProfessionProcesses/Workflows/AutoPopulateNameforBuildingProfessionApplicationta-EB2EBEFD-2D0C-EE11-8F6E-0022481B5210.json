@@ -1,0 +1,185 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS3"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_Building_profession_Application_row_is_added": {
+          "metadata": {
+            "operationMetadataId": "076c1851-9608-4c56-bb1a-6a2bd85f937a"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 1,
+              "subscriptionRequest/entityname": "bsr_buildingprofessionapplication",
+              "subscriptionRequest/scope": 4
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Check_if_Applicant_is_a_Contact_or_an_Account": {
+          "actions": {
+            "Get_Contact_row_by_ID": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "4fc1e16f-ae90-4c56-b201-0ea6cfcf9cda"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "contacts",
+                  "recordId": "@triggerOutputs()?['body/_bsr_applicantid_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Set_varApplicantName_to_the_Contact": {
+              "runAfter": {
+                "Get_Contact_row_by_ID": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "abcff454-9b62-40ef-bea5-3356a61f82c3"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "varApplicantName",
+                "value": "@outputs('Get_Contact_row_by_ID')?['body/fullname']"
+              }
+            }
+          },
+          "runAfter": {
+            "Initialize_varApplicantName": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Get_Account_row_by_ID": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "e7da7527-807f-4ba9-8821-d6e0e0e531a7"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps_1",
+                    "operationId": "GetItem",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "accounts",
+                    "recordId": "@triggerOutputs()?['body/_bsr_applicantid_value']"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              },
+              "Set_varApplicantName_to_the_Account": {
+                "runAfter": {
+                  "Get_Account_row_by_ID": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "ef3d54a0-c0be-4a51-8914-6c81942c0f96"
+                },
+                "type": "SetVariable",
+                "inputs": {
+                  "name": "varApplicantName",
+                  "value": "@outputs('Get_Account_row_by_ID')?['body/name']"
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/_bsr_applicantid_value@Microsoft.Dynamics.CRM.lookuplogicalname']",
+              "contact"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "8f193cd1-658b-46c3-aa8a-5b67cbc6a752"
+          },
+          "type": "If"
+        },
+        "Initialize_varApplicantName": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "a7e73fb0-bb62-4641-850b-4345822337bd"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varApplicantName",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Update_the_Name_field_in_the_Building_Profession_Application_record": {
+          "runAfter": {
+            "Check_if_Applicant_is_a_Contact_or_an_Account": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "5715da5c-4318-40ff-ab43-ec1c287473f8"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_buildingprofessionapplications",
+              "recordId": "@triggerOutputs()?['body/bsr_buildingprofessionapplicationid']",
+              "item/bsr_name": "@{triggerOutputs()?['body/bsr_buildingproappid']}: @{variables('varApplicantName')}"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}
