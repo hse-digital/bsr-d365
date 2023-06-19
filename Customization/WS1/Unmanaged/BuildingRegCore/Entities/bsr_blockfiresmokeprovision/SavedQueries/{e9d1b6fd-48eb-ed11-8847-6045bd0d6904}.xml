@@ -23,12 +23,12 @@
         <entity name="bsr_blockfiresmokeprovision">
           <attribute name="bsr_name" />
           <attribute name="bsr_blockfiresmokeprovisionid" />
-          <filter type="and">
-            <condition attribute="bsr_residentialareaid" operator="not-null" />
-          </filter>
           <attribute name="bsr_blockid" />
           <attribute name="bsr_firesmokeprovisionid" />
           <attribute name="bsr_residentialareaid" />
+          <filter type="and">
+            <condition attribute="bsr_firesmokeprovisiontypecode" operator="eq" value="760810000" />
+          </filter>
         </entity>
       </fetch>
     </fetchxml>
