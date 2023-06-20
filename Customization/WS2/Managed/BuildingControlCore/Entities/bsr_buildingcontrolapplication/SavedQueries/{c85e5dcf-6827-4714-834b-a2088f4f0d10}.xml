@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{c85e5dcf-6827-4714-834b-a2088f4f0d10}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
+        <row name="result" id="bsr_buildingcontrolapplicationid">
+          <cell name="bsr_name" width="175" />
+          <cell name="bsr_applicationid" width="167" />
+          <cell name="bsr_numberofstages" width="142" />
+          <cell name="bsr_hrbtypecode" width="101" />
+          <cell name="bsr_applicantid" width="100" />
+          <cell name="ownerid" width="100" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="bsr_buildingcontrolapplication">
+          <attribute name="bsr_buildingcontrolapplicationid" />
+          <attribute name="bsr_name" />
+          <attribute name="createdon" />
+          <order attribute="bsr_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="bsr_applicantid" />
+          <attribute name="bsr_applicationid" />
+          <attribute name="bsr_hrbtypecode" />
+          <attribute name="bsr_numberofstages" />
+          <attribute name="ownerid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Building Control Applications" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
