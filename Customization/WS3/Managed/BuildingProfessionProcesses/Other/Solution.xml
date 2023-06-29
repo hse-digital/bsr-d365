@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23054.196" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23061.186" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>BuildingProfessionProcesses</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Profession Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.1.0</Version>
+    <Version>1.0.2.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -80,12 +80,21 @@
       </Addresses>
     </Publisher>
     <RootComponents>
+      <RootComponent type="29" id="{0de98ff2-a515-ee11-9cbe-0022481b5210}" behavior="0" />
       <RootComponent type="29" id="{eb2ebefd-2d0c-ee11-8f6e-0022481b5210}" behavior="0" />
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingprofessionapplication" displayName="Building Profession Application" solution="Active" />
+        <Dependent type="29" displayName="Send Building Profession Application Return Code" id="{0de98ff2-a515-ee11-9cbe-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingprofessionapplication" displayName="Building Profession Application" solution="Active" />
         <Dependent type="29" displayName="Auto Populate Name for 'Building Profession Application' table" id="{eb2ebefd-2d0c-ee11-8f6e-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="BuildingRegCore (1.17.31.2)" id.schemaname="bsr_noreplyqueueid" />
+        <Dependent type="29" displayName="Send Building Profession Application Return Code" id="{0de98ff2-a515-ee11-9cbe-0022481b5210}" />
       </MissingDependency>
     </MissingDependencies>
   </SolutionManifest>
