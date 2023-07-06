@@ -40,7 +40,7 @@
                         <labels>
                           <label description="HRB Type" languagecode="1033" />
                         </labels>
-                        <control id="bsr_hrbtypecode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_hrbtypecode" disabled="false" />
+                        <control id="bsr_hrbtypecode" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="bsr_hrbtypecode" disabled="false" uniqueid="{e49d2291-c48b-4533-9312-1a76aafcad3b}" />
                       </cell>
                     </row>
                     <row>
@@ -53,7 +53,7 @@
                     </row>
                   </rows>
                 </section>
-                <section name="tab_2_section_2" id="3d65dab7-716b-4d12-af59-1724aa25429b" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                <section name="tab_2_section_2" id="3d65dab7-716b-4d12-af59-1724aa25429b" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="false">
                   <labels>
                     <label description="Site Address" languagecode="1033" />
                   </labels>
@@ -70,7 +70,7 @@
                         <labels>
                           <label description="Does the site have an address?" languagecode="1033" />
                         </labels>
-                        <control id="bsr_havesiteaddress" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="bsr_havesiteaddress" disabled="false" />
+                        <control id="bsr_havesiteaddress" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="bsr_havesiteaddress" disabled="false" uniqueid="{f33a4e6b-c747-4335-8406-2faa905f60c4}" />
                       </cell>
                     </row>
                     <row>
@@ -196,7 +196,7 @@
             <label description="Application Submission" languagecode="1033" />
           </labels>
           <columns>
-            <column width="50%">
+            <column width="100%">
               <sections>
                 <section name="tab_3_section_1" id="4dfc41f7-9b30-4a54-ac2d-59ce0537ad43" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
@@ -215,25 +215,7 @@
                         <labels>
                           <label description="Do you have a building control reference number?" languagecode="1033" />
                         </labels>
-                        <control id="bsr_haverefnumber" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_haverefnumber" disabled="true" />
-                      </cell>
-                    </row>
-                  </rows>
-                </section>
-              </sections>
-            </column>
-            <column width="50%">
-              <sections>
-                <section name="tab_3_section_2" id="899ee395-6278-4379-8648-7263e3e7cd0a" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
-                  <labels>
-                    <label description="New Section" languagecode="1033" />
-                  </labels>
-                  <rows>
-                    <row>
-                      <cell showlabel="false" locklevel="0" id="{a4e0f599-997b-44ea-9069-fae45d4034d5}">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
+                        <control id="bsr_haverefnumber" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="bsr_haverefnumber" disabled="true" uniqueid="{74849bcf-2528-43a0-b15d-b0b554fb2b36}" />
                       </cell>
                     </row>
                   </rows>
@@ -324,6 +306,74 @@
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <controlDescriptions>
+        <controlDescription forControl="{f33a4e6b-c747-4335-8406-2faa905f60c4}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>bsr_havesiteaddress</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">bsr_havesiteaddress</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">bsr_havesiteaddress</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">bsr_havesiteaddress</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{e49d2291-c48b-4533-9312-1a76aafcad3b}">
+          <customControl id="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}">
+            <parameters>
+              <datafieldname>bsr_hrbtypecode</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.OptionSet.OptionSetControl">
+            <parameters>
+              <value type="OptionSet">bsr_hrbtypecode</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.OptionSet.OptionSetControl">
+            <parameters>
+              <value type="OptionSet">bsr_hrbtypecode</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.OptionSet.OptionSetControl">
+            <parameters>
+              <value type="OptionSet">bsr_hrbtypecode</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{74849bcf-2528-43a0-b15d-b0b554fb2b36}">
+          <customControl id="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}">
+            <parameters>
+              <datafieldname>bsr_haverefnumber</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.OptionSet.OptionSetControl">
+            <parameters>
+              <value type="OptionSet">bsr_haverefnumber</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.OptionSet.OptionSetControl">
+            <parameters>
+              <value type="OptionSet">bsr_haverefnumber</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.OptionSet.OptionSetControl">
+            <parameters>
+              <value type="OptionSet">bsr_haverefnumber</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
