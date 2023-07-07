@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Control Core" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.4.0</Version>
+    <Version>1.0.5.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -80,15 +80,102 @@
       </Addresses>
     </Publisher>
     <RootComponents>
+      <RootComponent type="1" schemaName="account" behavior="2" />
+      <RootComponent type="1" schemaName="bsr_building" behavior="0" />
       <RootComponent type="1" schemaName="bsr_buildingcontrolapplication" behavior="0" />
+      <RootComponent type="1" schemaName="bsr_buildingdetails" behavior="0" />
+      <RootComponent type="1" schemaName="bsr_site" behavior="0" />
       <RootComponent type="1" schemaName="contact" behavior="1" />
+      <RootComponent type="1" schemaName="processsession" behavior="2" />
+      <RootComponent type="1" schemaName="syncerror" behavior="2" />
       <RootComponent type="20" id="{2771850d-6700-ee11-8f6d-6045bdf1e965}" behavior="0" />
+      <RootComponent type="20" id="{49ea6622-741b-ee11-8f6d-6045bdf1e965}" behavior="0" />
       <RootComponent type="20" id="{6cc7a6f1-6600-ee11-8f6d-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="61" schemaName="bsr_/buildingcontrol/tables/bsr_buildingcontrolapplication/img/bsr_buildingcontrolapplication.svg" behavior="0" />
+      <RootComponent type="61" schemaName="bsr_addresses" behavior="0" />
+      <RootComponent type="61" schemaName="bsr_building" behavior="0" />
       <RootComponent type="9" schemaName="bsr_doyouhavebuildingrefcode" behavior="0" />
       <RootComponent type="9" schemaName="bsr_hrbtypechoice" behavior="0" />
     </RootComponents>
     <MissingDependencies>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_accountableperson" displayName="Accountable Person" solution="BuildingRegCore (1.17.31.2)" />
+        <Dependent type="1" schemaName="bsr_building" displayName="Building" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_block" displayName="Structure" solution="BuildingRegCore (1.17.31.2)" />
+        <Dependent type="1" schemaName="bsr_building" displayName="Building" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_building" displayName="Building" solution="BuildingRegCore (1.17.31.2)" />
+        <Dependent type="1" schemaName="bsr_building" displayName="Building" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="BuildingRegCore (1.17.31.2)" />
+        <Dependent type="1" schemaName="bsr_building" displayName="Building" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="BuildingRegCore (1.17.31.2)" />
+        <Dependent type="10" schemaName="bsr_buildingapplication_building" displayName="bsr_buildingapplication_building" parentSchemaName="bsr_building" parentDisplayName="Building" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingtype" displayName="Building Type" solution="BuildingRegCore (1.17.31.2)" />
+        <Dependent type="10" schemaName="bsr_bsr_building_BuildingTypeID_bsr_buildingt" displayName="bsr_bsr_building_BuildingTypeID_bsr_buildingt" parentSchemaName="bsr_building" parentDisplayName="Building" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_connectedblock" displayName="Connected Structure" solution="BuildingRegCore (1.17.31.2)" />
+        <Dependent type="1" schemaName="bsr_building" displayName="Building" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
+        </Required>
+        <Dependent type="1" schemaName="bsr_building" displayName="Building" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_buildingapplicationid" displayName="Building Application" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="BuildingRegCore (1.17.31.2)" />
+        <Dependent type="10" schemaName="bsr_buildingapplication_building" displayName="bsr_buildingapplication_building" parentSchemaName="bsr_building" parentDisplayName="Building" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_buildingtypeid" displayName="Building Type" parentSchemaName="bsr_buildingtype" parentDisplayName="Building Type" solution="BuildingRegCore (1.17.31.2)" />
+        <Dependent type="10" schemaName="bsr_bsr_building_BuildingTypeID_bsr_buildingt" displayName="bsr_bsr_building_BuildingTypeID_bsr_buildingt" parentSchemaName="bsr_building" parentDisplayName="Building" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="BuildingRegCore (1.17.31.2)" />
+        <Dependent type="10" schemaName="bsr_buildingapplication_building" displayName="bsr_buildingapplication_building" parentSchemaName="bsr_building" parentDisplayName="Building" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_buildingtype" parentDisplayName="Building Type" solution="BuildingRegCore (1.17.31.2)" />
+        <Dependent type="10" schemaName="bsr_bsr_building_BuildingTypeID_bsr_buildingt" displayName="bsr_bsr_building_BuildingTypeID_bsr_buildingt" parentSchemaName="bsr_building" parentDisplayName="Building" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="29" displayName="New business rule" solution="BuildingRegCore (1.17.31.2)" id="{d05d0779-13b8-ed11-b597-0022481b5e4f}" />
+        <Dependent type="29" displayName="New business rule" id="{d05d0779-13b8-ed11-b597-0022481b5e4f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="29" displayName="KBI Status Update" solution="BuildingRegCore (1.17.31.2)" id="{ec8f3329-9303-ee11-8f6e-002248c727e7}" />
+        <Dependent type="29" displayName="KBI Status Update" id="{ec8f3329-9303-ee11-8f6e-002248c727e7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="bsr_addresses" displayName="bsr_addresses" solution="BuildingRegCore (1.17.31.2)" />
+        <Dependent type="1" schemaName="bsr_site" displayName="Site" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="bsr_addresses" displayName="bsr_addresses" solution="BuildingRegCore (1.17.31.2)" />
+        <Dependent type="61" schemaName="bsr_addresses" displayName="bsr_addresses" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="bsr_building" displayName="bsr_building" solution="BuildingRegCore (1.17.31.2)" />
+        <Dependent type="1" schemaName="bsr_building" displayName="Building" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="bsr_building" displayName="bsr_building" solution="BuildingRegCore (1.17.31.2)" />
+        <Dependent type="1" schemaName="bsr_buildingdetails" displayName="Building Details" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="bsr_building" displayName="bsr_building" solution="BuildingRegCore (1.17.31.2)" />
+        <Dependent type="61" schemaName="bsr_building" displayName="bsr_building" />
+      </MissingDependency>
       <MissingDependency>
         <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2306.2012)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Building Control Application" id="{e775f7c6-149b-429d-bd84-417d949d6bae}" />
