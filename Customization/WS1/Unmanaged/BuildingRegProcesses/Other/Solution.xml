@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23062.168" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23063.162" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>BuildingRegProcesses</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Reg Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.12.12.0</Version>
+    <Version>1.12.13.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -101,6 +101,7 @@
       <RootComponent type="29" id="{db4bcb3e-cb09-ee11-8f6e-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{ddb5e613-64a9-ed11-aad1-0022481b5e4f}" behavior="0" />
       <RootComponent type="29" id="{edadf639-95d4-ed11-a7c6-6045bd0d6610}" behavior="0" />
+      <RootComponent type="29" id="{ef9daff4-3f1b-ee11-8f6d-002248c727e7}" behavior="0" />
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
@@ -220,6 +221,10 @@
         <Dependent type="29" displayName="Send Application Return Code" id="{edadf639-95d4-ed11-a7c6-6045bd0d6610}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
+        <Dependent type="29" displayName="Set the Building Application status and Application Stage on Payment update of Payment Reconciliati" id="{ef9daff4-3f1b-ee11-8f6d-002248c727e7}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="bsr_connectedblock" displayName="Connected Structure" solution="Active" />
         <Dependent type="29" displayName="Auto Populate Name field for 'Structure Connections' table" id="{1cfbd44f-cd09-ee11-8f6e-002248c727e7}" />
       </MissingDependency>
@@ -252,8 +257,12 @@
         <Dependent type="29" displayName="Auto Populate Name field for 'Structure Material' table" id="{38dd974b-89f8-ed11-8f6d-002248c725da}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_payment" displayName="Gov UK Payment" solution="Active" />
+        <Required type="1" schemaName="bsr_payment" displayName="Payment" solution="Active" />
         <Dependent type="29" displayName="Set the Building Application status on Payment update of Payment Reconciliation status" id="{9c334b9e-f2bc-ed11-83fe-000d3a86ecac}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_payment" displayName="Payment" solution="Active" />
+        <Dependent type="29" displayName="Set the Building Application status and Application Stage on Payment update of Payment Reconciliati" id="{ef9daff4-3f1b-ee11-8f6d-002248c727e7}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_qualityassurance" displayName="Quality Assurance" solution="Active" />
@@ -312,8 +321,12 @@
         <Dependent type="29" displayName="Set Applicant Email Recipient" id="{ae2c04a4-d614-ee11-9cbe-002248c725da}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_paymentreconciliationstatus" displayName="Payment Reconciliation Status" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="Active" />
+        <Required type="2" schemaName="bsr_paymentreconciliationstatus" displayName="Payment Reconciliation Status" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="Active" />
         <Dependent type="29" displayName="Set the Building Application status on Payment update of Payment Reconciliation status" id="{9c334b9e-f2bc-ed11-83fe-000d3a86ecac}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_paymentreconciliationstatus" displayName="Payment Reconciliation Status" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="Active" />
+        <Dependent type="29" displayName="Set the Building Application status and Application Stage on Payment update of Payment Reconciliati" id="{ef9daff4-3f1b-ee11-8f6d-002248c727e7}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_registreeid" displayName="Applicant" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
