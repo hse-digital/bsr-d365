@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23061.186" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23063.162" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>ContactBSRCore</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Contact BSR Core" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.1.0</Version>
+    <Version>1.0.2.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -80,6 +80,7 @@
       </Addresses>
     </Publisher>
     <RootComponents>
+      <RootComponent type="1" schemaName="account" behavior="2" />
       <RootComponent type="1" schemaName="bsr_appeal" behavior="0" />
       <RootComponent type="1" schemaName="bsr_block" behavior="2" />
       <RootComponent type="1" schemaName="bsr_building" behavior="2" />
@@ -113,31 +114,25 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="contract" displayName="Contract" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
         <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
         <Dependent type="1" schemaName="incident" displayName="Case" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="knowledgearticleincident" displayName="Knowledge Article Incident" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
         <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="bsr_bsr_block_BuildingApplicationID_bsr_build" displayName="bsr_bsr_block_BuildingApplicationID_bsr_build" parentSchemaName="bsr_block" parentDisplayName="Structure" solution="BuildingRegCore (1.17.31.2)" />
         <Dependent type="60" displayName="BSR Building structure case details" parentDisplayName="Structure" id="{b9d46b67-9a15-ee11-9cbe-6045bdd0ef4d}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="blockedprofile" displayName="Blocked Profile" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
-        </Required>
-        <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_addressline1" displayName="Address Line 1" parentSchemaName="bsr_block" parentDisplayName="Structure" solution="BuildingRegCore (1.17.31.2)" />
@@ -165,270 +160,174 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="casetypecode" displayName="Case Type" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
         <Dependent type="2" schemaName="casetypecode" displayName="Case Type" parentSchemaName="incident" parentDisplayName="Case" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="casetypecode" displayName="Case Type" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
-        </Required>
-        <Dependent type="26" schemaName="Active Cases" displayName="Active Cases" parentSchemaName="incident" parentDisplayName="Case" id="{00000000-0000-0000-00aa-000010001032}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="casetypecode" displayName="Case Type" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
-        </Required>
-        <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="2" schemaName="contractdetailid" displayName="Contract Line" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
         <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="contractid" displayName="Contract" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
         <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="contractservicelevelcode" displayName="Service Level" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
         <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="createdon" displayName="Created On" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
         <Dependent type="26" schemaName="Active Cases" displayName="Active Cases" parentSchemaName="incident" parentDisplayName="Case" id="{00000000-0000-0000-00aa-000010001032}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="customerid" displayName="Customer" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
         <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="escalatedon" displayName="Escalated On" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
+        <Required type="2" schemaName="description" displayName="Description" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
-        <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
+        <Dependent type="2" schemaName="description" displayName="Description" parentSchemaName="incident" parentDisplayName="Case" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="firstresponsebykpiid" displayName="First Response By KPI" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
-        </Required>
-        <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="firstresponsesent" displayName="First Response Sent" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
-        </Required>
-        <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="followupby" displayName="Follow Up By" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
+        <Required type="2" schemaName="description" displayName="Description" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
         <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="incidentid" displayName="Case" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
         <Dependent type="26" schemaName="Active Cases" displayName="Active Cases" parentSchemaName="incident" parentDisplayName="Case" id="{00000000-0000-0000-00aa-000010001032}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="incidentid" displayName="Case" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
-        </Required>
-        <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="influencescore" displayName="Influence Score" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
-        </Required>
-        <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="isescalated" displayName="Is Escalated" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
-        </Required>
-        <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="kbarticleid" displayName="Knowledge Base Article" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
-        </Required>
-        <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="messagetypecode" displayName="Received As" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
         <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
         <Dependent type="26" schemaName="Active Cases" displayName="Active Cases" parentSchemaName="incident" parentDisplayName="Case" id="{00000000-0000-0000-00aa-000010001032}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
-        </Required>
-        <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="parentcaseid" displayName="Parent Case" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
         <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="primarycontactid" displayName="Contact" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
         <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="prioritycode" displayName="Priority" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
         <Dependent type="26" schemaName="Active Cases" displayName="Active Cases" parentSchemaName="incident" parentDisplayName="Case" id="{00000000-0000-0000-00aa-000010001032}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="prioritycode" displayName="Priority" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
         <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="productserialnumber" displayName="Serial Number" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
-        </Required>
-        <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="resolvebykpiid" displayName="Resolve By KPI" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
         <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="routecase" displayName="Route Case" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
-        </Required>
-        <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="sentimentvalue" displayName="Sentiment Value" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
-        </Required>
-        <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="socialprofileid" displayName="Social Profile" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
         <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statecode" displayName="Status" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
         <Dependent type="26" schemaName="Active Cases" displayName="Active Cases" parentSchemaName="incident" parentDisplayName="Case" id="{00000000-0000-0000-00aa-000010001032}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
         <Dependent type="26" schemaName="Active Cases" displayName="Active Cases" parentSchemaName="incident" parentDisplayName="Case" id="{00000000-0000-0000-00aa-000010001032}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
         <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="ticketnumber" displayName="Case Number" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
         <Dependent type="2" schemaName="ticketnumber" displayName="Case Number" parentSchemaName="incident" parentDisplayName="Case" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="title" displayName="Case Title" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
         <Dependent type="2" schemaName="title" displayName="Case Title" parentSchemaName="incident" parentDisplayName="Case" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="traversedpath" displayName="(Deprecated) Traversed Path" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
-        </Required>
-        <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="26" schemaName="Active Cases" displayName="Active Cases" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)" id="{00000000-0000-0000-00aa-000010001032}">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
         <Dependent type="26" schemaName="Active Cases" displayName="Active Cases" parentSchemaName="incident" parentDisplayName="Case" id="{00000000-0000-0000-00aa-000010001032}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Active Contracts" displayName="Active Contracts" parentSchemaName="contract" parentDisplayName="Contract" solution="msdynce_Service (9.0.5.56)" id="{646de3ee-ebfb-4d19-8a44-4a619505e188}">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
         <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Associated Cases" displayName="Associated Cases" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)" id="{72210bbb-d9d5-42df-8efd-39395a3cd7a7}">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
         <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Associated Knowledge Records View" displayName="Associated Knowledge Records View" parentSchemaName="knowledgearticleincident" parentDisplayName="Knowledge Article Incident" solution="msdynce_Service (9.0.5.56)" id="{4ce7d553-9bba-4d8f-b209-899af9d3937c}">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
         <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Contract Line With Allotments" displayName="Contract Line With Allotments" parentSchemaName="contractdetail" parentDisplayName="Contract Line" solution="msdynce_Service (9.0.5.56)" id="{8fa2705c-7e4c-4c0e-b611-4593b35a4c9e}">
-          <package>msdynce_ServiceAnchor (9.0.23055.1007)</package>
-        </Required>
-        <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="60" displayName="Resolve By SLA" parentDisplayName="SLA KPI Instance" solution="msdynce_ServiceLevelAgreement (9.0.23055.1004)" id="{19b14c51-3d43-4d56-ab34-49c540bf468c}">
-          <package>msdynce_ServiceLevelAgreementAnchor (9.0.23055.1004)</package>
-        </Required>
-        <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="60" displayName="First Response SLA" parentDisplayName="SLA KPI Instance" solution="msdynce_ServiceLevelAgreement (9.0.23055.1004)" id="{ede9dac3-e143-4be4-acc8-237309e31210}">
-          <package>msdynce_ServiceLevelAgreementAnchor (9.0.23055.1004)</package>
+          <package>msdynce_ServiceAnchor (9.0.23062.1005)</package>
         </Required>
         <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_CopilotCaseSummaryLibrary.js" displayName="msdyn_CopilotCaseSummaryLibrary.js" solution="msdyn_CSIntelligence (9.0.23062.1004)">
-          <package>msdyn_ServiceExtendedAnchor (9.0.23055.1010)</package>
+          <package>msdyn_ServiceExtendedAnchor (9.0.23062.1025)</package>
         </Required>
         <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.CSIntelligence.CopilotCaseSummaryControl" displayName="MscrmControls.CSIntelligence.CopilotCaseSummaryControl" solution="msdyn_CSIntelligence (9.0.23062.1004)">
-          <package>msdyn_ServiceExtendedAnchor (9.0.23055.1010)</package>
-        </Required>
-        <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.OptionSet.OptionSetControl" displayName="MscrmControls.OptionSet.OptionSetControl" solution="CustomControlsCore (9.2.23061.00186)" />
+        <Required type="66" schemaName="MscrmControls.OptionSet.OptionSetControl" displayName="MscrmControls.OptionSet.OptionSetControl" solution="CustomControlsCore (9.2.23063.00162)" />
         <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
     </MissingDependencies>

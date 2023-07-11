@@ -650,7 +650,7 @@
           <ValidForReadApi>1</ValidForReadApi>
           <ValidForCreateApi>1</ValidForCreateApi>
           <IsCustomField>1</IsCustomField>
-          <IsAuditEnabled>0</IsAuditEnabled>
+          <IsAuditEnabled>1</IsAuditEnabled>
           <IsSecured>0</IsSecured>
           <IntroducedVersion>1.0.0.0</IntroducedVersion>
           <IsCustomizable>1</IsCustomizable>
@@ -1047,7 +1047,7 @@
           <MinValue>0</MinValue>
           <MaxValue>2147483647</MaxValue>
           <displaynames>
-            <displayname description="Minutes Spent on Follow Up" languagecode="1033" />
+            <displayname description="Follow Up Time Spent (Mins)" languagecode="1033" />
           </displaynames>
           <Descriptions>
             <Description description="" languagecode="1033" />
@@ -1402,7 +1402,7 @@
           <ValidForReadApi>1</ValidForReadApi>
           <ValidForCreateApi>1</ValidForCreateApi>
           <IsCustomField>1</IsCustomField>
-          <IsAuditEnabled>0</IsAuditEnabled>
+          <IsAuditEnabled>1</IsAuditEnabled>
           <IsSecured>0</IsSecured>
           <IntroducedVersion>1.0.0.0</IntroducedVersion>
           <IsCustomizable>1</IsCustomizable>
@@ -1507,6 +1507,113 @@
           </displaynames>
           <Descriptions>
             <Description description="" languagecode="1033" />
+          </Descriptions>
+        </attribute>
+        <attribute PhysicalName="bsr_triagetimespentmins">
+          <Type>int</Type>
+          <Name>bsr_triagetimespentmins</Name>
+          <LogicalName>bsr_triagetimespentmins</LogicalName>
+          <RequiredLevel>none</RequiredLevel>
+          <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+          <ImeMode>disabled</ImeMode>
+          <ValidForUpdateApi>1</ValidForUpdateApi>
+          <ValidForReadApi>1</ValidForReadApi>
+          <ValidForCreateApi>1</ValidForCreateApi>
+          <IsCustomField>1</IsCustomField>
+          <IsAuditEnabled>1</IsAuditEnabled>
+          <IsSecured>0</IsSecured>
+          <IntroducedVersion>1.0</IntroducedVersion>
+          <IsCustomizable>1</IsCustomizable>
+          <IsRenameable>1</IsRenameable>
+          <CanModifySearchSettings>1</CanModifySearchSettings>
+          <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+          <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+          <SourceType>0</SourceType>
+          <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+          <IsSortableEnabled>0</IsSortableEnabled>
+          <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+          <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+          <IsDataSourceSecret>0</IsDataSourceSecret>
+          <AutoNumberFormat></AutoNumberFormat>
+          <IsSearchable>0</IsSearchable>
+          <IsFilterable>0</IsFilterable>
+          <IsRetrievable>0</IsRetrievable>
+          <IsLocalizable>0</IsLocalizable>
+          <Format>duration</Format>
+          <MinValue>0</MinValue>
+          <MaxValue>2147483647</MaxValue>
+          <displaynames>
+            <displayname description="Triage Time Spent (Mins)" languagecode="1033" />
+          </displaynames>
+          <Descriptions>
+            <Description description="" languagecode="1033" />
+          </Descriptions>
+        </attribute>
+        <attribute PhysicalName="CaseTypeCode">
+          <Type>picklist</Type>
+          <Name>casetypecode</Name>
+          <LogicalName>casetypecode</LogicalName>
+          <RequiredLevel>none</RequiredLevel>
+          <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+          <ImeMode>auto</ImeMode>
+          <ValidForUpdateApi>1</ValidForUpdateApi>
+          <ValidForReadApi>1</ValidForReadApi>
+          <ValidForCreateApi>1</ValidForCreateApi>
+          <IsCustomField>0</IsCustomField>
+          <IsAuditEnabled>1</IsAuditEnabled>
+          <IsSecured>0</IsSecured>
+          <IntroducedVersion>5.0.0.0</IntroducedVersion>
+          <SourceType>0</SourceType>
+          <IsGlobalFilterEnabled>1</IsGlobalFilterEnabled>
+          <IsSortableEnabled>1</IsSortableEnabled>
+          <IsDataSourceSecret>0</IsDataSourceSecret>
+          <AutoNumberFormat></AutoNumberFormat>
+          <IsSearchable>0</IsSearchable>
+          <IsFilterable>0</IsFilterable>
+          <IsRetrievable>0</IsRetrievable>
+          <IsLocalizable>0</IsLocalizable>
+          <AppDefaultValue>-1</AppDefaultValue>
+          <optionset Name="incident_casetypecode">
+            <OptionSetType>picklist</OptionSetType>
+            <IntroducedVersion>5.0.0.0</IntroducedVersion>
+            <displaynames>
+              <displayname description="Case Type" languagecode="1033" />
+            </displaynames>
+            <Descriptions>
+              <Description description="Information that specifies the type of case." languagecode="1033" />
+            </Descriptions>
+            <options>
+              <option value="1" Color="#FF8C00">
+                <labels>
+                  <label description="Question" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="2" Color="#E71022">
+                <labels>
+                  <label description="Complaint" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="3" Color="#0072C6">
+                <labels>
+                  <label description="MOR" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="" languagecode="1033" />
+                </Descriptions>
+              </option>
+            </options>
+          </optionset>
+          <displaynames>
+            <displayname description="Case Type" languagecode="1033" />
+          </displaynames>
+          <Descriptions>
+            <Description description="Select the type of case to identify the incident for use in case routing and analysis." languagecode="1033" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="TicketNumber">
