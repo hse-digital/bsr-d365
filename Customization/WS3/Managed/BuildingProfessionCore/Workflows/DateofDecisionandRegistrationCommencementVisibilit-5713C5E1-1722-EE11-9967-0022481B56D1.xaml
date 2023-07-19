@@ -120,6 +120,11 @@
                     <Sequence DisplayName="SetVisibilityStep1: Show Date of Decision">
                       <mcwc:SetVisibility ControlId="bsr_decisiondate" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingprofessionapplication" IsVisible="True" />
                     </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep11: Required Date of Decision">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;bsr_buildingprofessionapplication&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="bsr_decisiondate" ControlType="standard" DisplayName="SetFieldRequiredLevelStep11" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingprofessionapplication" RequiredLevel="Required" />
+                    </Sequence>
                     <Sequence DisplayName="SetVisibilityStep2: Show Date of Registration Commencement">
                       <mcwc:SetVisibility ControlId="bsr_registrationcommencementdate" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingprofessionapplication" IsVisible="True" />
                     </Sequence>
@@ -209,6 +214,11 @@
                     <Sequence DisplayName="SetVisibilityStep5: Show Date of Decision">
                       <mcwc:SetVisibility ControlId="bsr_decisiondate" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingprofessionapplication" IsVisible="True" />
                     </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep12: Required Date of Decision">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;bsr_buildingprofessionapplication&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="bsr_decisiondate" ControlType="standard" DisplayName="SetFieldRequiredLevelStep12" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingprofessionapplication" RequiredLevel="Required" />
+                    </Sequence>
                     <Sequence DisplayName="SetVisibilityStep6: Hide Date of Registration Commencement">
                       <mcwc:SetVisibility ControlId="bsr_registrationcommencementdate" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingprofessionapplication" IsVisible="False" />
                     </Sequence>
@@ -245,6 +255,11 @@
                   <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
                     <Sequence DisplayName="SetVisibilityStep7: Hide Date of Decision">
                       <mcwc:SetVisibility ControlId="bsr_decisiondate" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingprofessionapplication" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep13: Optional Date of Decision">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;bsr_buildingprofessionapplication&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="bsr_decisiondate" ControlType="standard" DisplayName="SetFieldRequiredLevelStep13" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingprofessionapplication" RequiredLevel="None" />
                     </Sequence>
                     <Sequence DisplayName="SetVisibilityStep8: Hide Date of Registration Commencement">
                       <mcwc:SetVisibility ControlId="bsr_registrationcommencementdate" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingprofessionapplication" IsVisible="False" />
