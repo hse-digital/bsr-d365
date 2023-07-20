@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Profession Core" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.6.0</Version>
+    <Version>1.0.7.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -81,6 +81,12 @@
     </Publisher>
     <RootComponents>
       <RootComponent type="1" schemaName="account" behavior="1" />
+      <RootComponent type="1" schemaName="bsr_biactivity" behavior="0" />
+      <RootComponent type="1" schemaName="bsr_bibuildingcategory" behavior="0" />
+      <RootComponent type="1" schemaName="bsr_biclass" behavior="0" />
+      <RootComponent type="1" schemaName="bsr_biregactivity" behavior="0" />
+      <RootComponent type="1" schemaName="bsr_biregclass" behavior="0" />
+      <RootComponent type="1" schemaName="bsr_biregcountry" behavior="0" />
       <RootComponent type="1" schemaName="bsr_buildingprofessionapplication" behavior="0" />
       <RootComponent type="1" schemaName="bsr_payment" behavior="2" />
       <RootComponent type="1" schemaName="bsr_refundreason" behavior="2" />
@@ -90,7 +96,13 @@
       <RootComponent type="29" id="{5713c5e1-1722-ee11-9967-0022481b56d1}" behavior="0" />
       <RootComponent type="29" id="{c2adff57-7421-ee11-9967-0022481b56d1}" behavior="0" />
       <RootComponent type="36" id="{b86cdf8b-d115-ee11-9cbe-0022481b59de}" behavior="0" />
+      <RootComponent type="61" schemaName="bsr_/buildingprofession/tables/bsr_biactivity/img/bsr_biactivity.svg" behavior="0" />
+      <RootComponent type="61" schemaName="bsr_/buildingprofession/tables/bsr_bibuildingcategory/img/bsr_bibuildingcategory.svg" behavior="0" />
+      <RootComponent type="61" schemaName="bsr_/buildingprofession/tables/bsr_biregactivity/img/bsr_biregactivity.svg" behavior="0" />
+      <RootComponent type="61" schemaName="bsr_/buildingprofession/tables/bsr_biregclass/img/bsr_biregclass.svg" behavior="0" />
+      <RootComponent type="61" schemaName="bsr_/buildingprofession/tables/bsr_biregcountry/img/bsr_biregcountry.svg" behavior="0" />
       <RootComponent type="61" schemaName="bsr_/buildingprofession/tables/bsr_buildingprofessionapplication/img/bsr_buildingprofessionapp.svg" behavior="0" />
+      <RootComponent type="61" schemaName="bsr_/vuildingprofession/tables/bsr_biclass/img/bsr_biclass.svg" behavior="0" />
       <RootComponent type="61" schemaName="bsr_buildingprofessionapplicationicon" behavior="0" />
       <RootComponent type="9" schemaName="bsr_buildingprofessiontypecode" behavior="0" />
       <RootComponent type="9" schemaName="bsr_regulatorydecisionstatus" behavior="0" />
@@ -99,6 +111,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_contacttype" displayName="Contact Type" solution="BuildingRegCore (1.17.35.0)" />
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_country" displayName="Country" solution="BuildingRegCore (1.17.35.0)" />
+        <Dependent type="10" schemaName="bsr_biregcountry_country" displayName="bsr_biregcountry_country" parentSchemaName="bsr_country" parentDisplayName="Country" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_payment" displayName="Gov UK Payment" solution="BuildingRegCore (1.17.35.0)" />
@@ -209,6 +225,10 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Gov UK Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_countryid" displayName="Country" parentSchemaName="bsr_country" parentDisplayName="Country" solution="BuildingRegCore (1.17.35.0)" />
+        <Dependent type="10" schemaName="bsr_biregcountry_country" displayName="bsr_biregcountry_country" parentSchemaName="bsr_country" parentDisplayName="Country" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_govukpaymentid" displayName="Gov UK Payment ID" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.35.0)" />
         <Dependent type="26" schemaName="Building Profession Application Payments" displayName="Building Profession Application Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{269b9f78-af19-ee11-8f6d-0022481b5210}" />
       </MissingDependency>
@@ -251,6 +271,10 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_manualaddress" displayName="Manual Address" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.35.0)" />
         <Dependent type="60" displayName="BI Contact" parentDisplayName="Contact" id="{f8f3ffcd-b90a-ee11-8f6e-0022481b56d1}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_country" parentDisplayName="Country" solution="BuildingRegCore (1.17.35.0)" />
+        <Dependent type="10" schemaName="bsr_biregcountry_country" displayName="bsr_biregcountry_country" parentSchemaName="bsr_country" parentDisplayName="Country" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.35.0)" />
