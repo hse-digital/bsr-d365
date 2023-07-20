@@ -1,0 +1,144 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS3"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_BI_Registration_Activity_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "713d4842-ecf9-46c7-ae04-55013624d8ed"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "bsr_biregactivity",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "bsr_biapplicationid,\tbsr_biactivityid, bsr_bibuildingcategoryid"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_a_BI_Activity_row_by_ID": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "42b1adf6-c247-4fbf-8865-407b2a52698a"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_biactivities",
+              "recordId": "@triggerOutputs()?['body/_bsr_biactivityid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_a_BI_Building_Category_row_by_ID": {
+          "runAfter": {
+            "Get_a_BI_Activity_row_by_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b55ade0c-15a5-4ac0-9fa9-18f91fc84379"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_bibuildingcategories",
+              "recordId": "@triggerOutputs()?['body/_bsr_bibuildingcategoryid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Update_a_row": {
+          "runAfter": {
+            "Get_a_BPA_row_by_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "7434bf68-3d6e-48be-86ce-7ab67df73704"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_biregactivities",
+              "recordId": "@triggerOutputs()?['body/bsr_biregactivityid']",
+              "item/bsr_name": "@{outputs('Get_a_BPA_row_by_ID')?['body/bsr_name']}: @{outputs('Get_a_BI_Activity_row_by_ID')?['body/bsr_name']} - @{outputs('Get_a_BI_Building_Category_row_by_ID')?['body/bsr_name']}"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_a_BPA_row_by_ID": {
+          "runAfter": {
+            "Get_a_BI_Building_Category_row_by_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "14fdb70e-2b04-4715-8c66-4f8c70925c26"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_buildingprofessionapplications",
+              "recordId": "@triggerOutputs()?['body/_bsr_biapplicationid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}
