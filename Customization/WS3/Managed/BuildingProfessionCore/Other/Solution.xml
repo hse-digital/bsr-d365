@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Profession Core" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.9.0</Version>
+    <Version>1.0.10.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -110,6 +110,10 @@
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
+        <Required type="1" schemaName="bsr_contacttype" displayName="Contact Type" solution="BuildingRegCore (1.17.35.0)" />
+        <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="bsr_country" displayName="Country" solution="BuildingRegCore (1.17.35.0)" />
         <Dependent type="10" schemaName="bsr_biregcountry_country" displayName="bsr_biregcountry_country" parentSchemaName="bsr_country" parentDisplayName="Country" />
       </MissingDependency>
@@ -135,7 +139,19 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="bsr_contact_JobRole" displayName="bsr_contact_JobRole" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.35.0)" />
+        <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="bsr_contact_JobRole" displayName="bsr_contact_JobRole" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.35.0)" />
         <Dependent type="60" displayName="BI Contact" parentDisplayName="Contact" id="{f8f3ffcd-b90a-ee11-8f6e-0022481b56d1}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="bsr_contacttype_contact" displayName="bsr_contacttype_contact" parentSchemaName="bsr_contacttype" parentDisplayName="Contact Type" solution="BuildingRegCore (1.17.35.0)" />
+        <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="bsr_country_contact_Address1CountryCode" displayName="bsr_country_contact_Address1CountryCode" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.35.0)" />
+        <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="bsr_country_contact_Address1CountryCode" displayName="bsr_country_contact_Address1CountryCode" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.35.0)" />
@@ -148,6 +164,10 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_address1countrycode" displayName="Address1 Country Code" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.35.0)" />
         <Dependent type="26" schemaName="Building Inspectors" displayName="Building Inspectors" parentSchemaName="contact" parentDisplayName="Contact" id="{f8b74c82-d806-ee11-8f6e-0022481b56d1}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_address1countrycode" displayName="Address1 Country Code" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.35.0)" />
+        <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_address1countrycode" displayName="Address1 Country Code" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.35.0)" />
@@ -231,6 +251,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_jobrole" displayName="Job Role" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.35.0)" />
+        <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_jobrole" displayName="Job Role" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.35.0)" />
         <Dependent type="60" displayName="BI Contact" parentDisplayName="Contact" id="{f8f3ffcd-b90a-ee11-8f6e-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
@@ -240,6 +264,10 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_lastfourdigitsofcardnumber" displayName="Last four digits of card number" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.35.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Gov UK Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_manualaddress" displayName="Manual Address" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.35.0)" />
+        <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_manualaddress" displayName="Manual Address" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.35.0)" />
@@ -350,6 +378,26 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Gov UK Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="20" displayName="BSR Ops Team" solution="BuildingRegCore (1.17.35.0)" id="{0b90c986-fda6-ed11-aad1-0022481b5e4f}" />
+        <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="20" displayName="BSR CAT" solution="BuildingRegCore (1.17.35.0)" id="{42e1d306-fea6-ed11-aad1-0022481b5e4f}" />
+        <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="20" displayName="BSR Data Analysts" solution="BuildingRegCore (1.17.35.0)" id="{b6ced331-fea6-ed11-aad1-0022481b5e4f}" />
+        <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="20" displayName="BSR Admin" solution="BuildingRegCore (1.17.35.0)" id="{c835c6d5-fda6-ed11-aad1-0022481b5e4f}" />
+        <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Active Contact Types" displayName="Active Contact Types" parentSchemaName="bsr_contacttype" parentDisplayName="Contact Type" solution="BuildingRegCore (1.17.35.0)" id="{3ffa3cce-cffd-4ae4-bcf5-c99639ce456b}" />
+        <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="Active Payments" displayName="Active Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.35.0)" id="{4c31b814-df2d-4dd7-8a0e-47290446ac32}" />
         <Dependent type="60" displayName="Information" parentDisplayName="Building Profession Application" id="{9f4238b9-53a5-4868-88ef-317b5b3d19e2}" />
       </MissingDependency>
@@ -368,6 +416,12 @@
       <MissingDependency>
         <Required type="61" schemaName="bsr_Payment" displayName="bsr_Payment" solution="BuildingRegCore (1.17.35.0)" />
         <Dependent type="1" schemaName="bsr_payment" displayName="Gov UK Payment" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="msdyn_talkingpointsloader.js" displayName="msdyn_talkingpointsloader.js" solution="msdynce_Talkingpoints (9.0.1.701894)">
+          <package>msdynce_SalesInsightsAnchor (9.0.23064.10012)</package>
+        </Required>
+        <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
     </MissingDependencies>
   </SolutionManifest>
