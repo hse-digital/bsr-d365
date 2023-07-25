@@ -9,11 +9,12 @@
     <layoutxml>
       <grid name="resultset" jump="title" select="1" icon="1" preview="1">
         <row name="result" id="incidentid">
-          <cell name="title" width="300" />
-          <cell name="ticketnumber" width="150" />
+          <cell name="title" width="279" />
+          <cell name="customerid" width="110" />
           <cell name="casetypecode" width="100" />
           <cell name="prioritycode" width="150" />
           <cell name="createdon" width="150" />
+          <cell name="incidentstagecode" width="102" />
           <cell name="statuscode" width="150" />
           <cell name="ownerid" width="150" />
         </row>
@@ -24,7 +25,6 @@
       <fetch version="1.0" output-format="xml-platform" mapping="logical">
         <entity name="incident">
           <attribute name="incidentid" />
-          <attribute name="ticketnumber" />
           <attribute name="prioritycode" />
           <attribute name="title" />
           <attribute name="ownerid" />
@@ -35,6 +35,8 @@
           </filter>
           <order attribute="createdon" descending="true" />
           <attribute name="casetypecode" />
+          <attribute name="incidentstagecode" />
+          <attribute name="customerid" />
         </entity>
       </fetch>
     </fetchxml>
