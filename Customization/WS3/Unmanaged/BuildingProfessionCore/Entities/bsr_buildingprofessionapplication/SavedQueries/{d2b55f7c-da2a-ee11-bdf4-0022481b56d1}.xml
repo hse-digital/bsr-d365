@@ -6,14 +6,16 @@
     <isquickfindquery>0</isquickfindquery>
     <isprivate>0</isprivate>
     <isdefault>0</isdefault>
-    <savedqueryid>{6e8a08ea-391f-ee11-9967-0022481b56d1}</savedqueryid>
+    <savedqueryid>{d2b55f7c-da2a-ee11-bdf4-0022481b56d1}</savedqueryid>
     <layoutxml>
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_buildingprofessionapplicationid">
           <cell name="bsr_buildingproappid" width="167" />
           <cell name="bsr_applicantid" width="100" />
           <cell name="statuscode" width="144" />
-          <cell name="bsr_buildingprofessiontypecode" width="183" />
+          <cell name="bsr_holdreviewdate" width="145" />
+          <cell name="ownerid" width="100" />
+          <cell name="createdon" width="105" />
         </row>
       </grid>
     </layoutxml>
@@ -22,23 +24,25 @@
       <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
         <entity name="bsr_buildingprofessionapplication">
           <attribute name="bsr_buildingprofessionapplicationid" />
-          <attribute name="bsr_applicantid" />
-          <attribute name="statuscode" />
-          <attribute name="bsr_buildingprofessiontypecode" />
-          <attribute name="bsr_buildingproappid" />
           <filter type="and">
-            <condition attribute="statuscode" operator="eq" value="760810007" />
             <condition attribute="bsr_buildingprofessiontypecode" operator="eq" value="760810000" />
+            <condition attribute="bsr_holdreviewdate" operator="this-week" />
           </filter>
+          <attribute name="statuscode" />
+          <attribute name="bsr_holdreviewdate" />
+          <attribute name="bsr_buildingproappid" />
+          <attribute name="bsr_applicantid" />
+          <attribute name="ownerid" />
+          <attribute name="createdon" />
         </entity>
       </fetch>
     </fetchxml>
-    <IntroducedVersion>1.0.4.0</IntroducedVersion>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="BI Applications - Terminated" languagecode="1033" />
+      <LocalizedName description="BI Applications - On Hold Reviews for This Week" languagecode="1033" />
     </LocalizedNames>
     <Descriptions>
-      <Description description="View for the BSR app of Terminated BPAs" languagecode="1033" />
+      <Description description="Building Inspector BPAs with a hold review date this week" languagecode="1033" />
     </Descriptions>
   </savedquery>
 </savedqueries>
