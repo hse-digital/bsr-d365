@@ -1,0 +1,143 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS3"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_BPA_Application_Status_row_is_Modified": {
+          "metadata": {
+            "operationMetadataId": "6aa934f4-faa5-4629-998b-a660dd67bd50"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "bsr_buildingprofessionapplication",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "statuscode"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "If_Application_Status_is_Hold-Pending_information_correction": {
+          "actions": {
+            "Update_Hold_Review_Date_to_21_days_from_now": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "e665ff1e-8202-4fdb-a90c-dcc710cc45e7"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "bsr_buildingprofessionapplications",
+                  "recordId": "@triggerOutputs()?['body/bsr_buildingprofessionapplicationid']",
+                  "item/bsr_holdreviewdate": "@addDays(utcNow(), 21)"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Terminate": {
+              "runAfter": {
+                "Update_Hold_Review_Date_to_21_days_from_now": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "3f17a62b-f1c6-4a26-9641-fb8aa97b1fcf"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
+              }
+            }
+          },
+          "runAfter": {},
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/statuscode']",
+              760810004
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "6281f813-f3c3-4a3c-aa97-f5abe813c9f0"
+          },
+          "type": "If"
+        },
+        "If_Application_Status_is_Hold-Pending_IASO": {
+          "actions": {
+            "Update_Hold_Review_Date_to_10_days_from_now": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "48a1fcbd-1c51-4d2b-9e43-5bb79e60c031"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "bsr_buildingprofessionapplications",
+                  "recordId": "@triggerOutputs()?['body/bsr_buildingprofessionapplicationid']",
+                  "item/bsr_holdreviewdate": "@addDays(utcNow(), 10)"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "If_Application_Status_is_Hold-Pending_information_correction": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/statuscode']",
+              760810003
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "36df666d-bd12-40ac-a236-e1915d5004c2"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

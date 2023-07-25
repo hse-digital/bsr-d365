@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23064.176" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23071.154" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>BuildingProfessionProcesses</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Profession Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.6.0</Version>
+    <Version>1.0.7.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -84,6 +84,7 @@
       <RootComponent type="29" id="{2b12db6d-ad24-ee11-9965-0022481b56d1}" behavior="0" />
       <RootComponent type="29" id="{59404db4-9524-ee11-9965-0022481b56d1}" behavior="0" />
       <RootComponent type="29" id="{895b6bde-5b25-ee11-9965-0022481b5210}" behavior="0" />
+      <RootComponent type="29" id="{a4537a39-3a2a-ee11-bdf4-0022481b56d1}" behavior="0" />
       <RootComponent type="29" id="{b267ad7a-8b21-ee11-9966-0022481b59de}" behavior="0" />
       <RootComponent type="29" id="{ba0777e5-2126-ee11-9965-0022481b59de}" behavior="0" />
       <RootComponent type="29" id="{eb2ebefd-2d0c-ee11-8f6e-0022481b5210}" behavior="0" />
@@ -129,6 +130,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingprofessionapplication" displayName="Building Profession Application" solution="Active" />
         <Dependent type="29" displayName="Auto populate Name field for BI Registration Class" id="{895b6bde-5b25-ee11-9965-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingprofessionapplication" displayName="Building Profession Application" solution="Active" />
+        <Dependent type="29" displayName="Auto populate BPA Hold Review Date" id="{a4537a39-3a2a-ee11-bdf4-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingprofessionapplication" displayName="Building Profession Application" solution="Active" />
@@ -197,6 +202,10 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_regulatorydecisionstatus" displayName="Regulatory Decision Status" parentSchemaName="bsr_buildingprofessionapplication" parentDisplayName="Building Profession Application" solution="Active" />
         <Dependent type="29" displayName="Default BPA Date of Decision and Date of Registration" id="{b267ad7a-8b21-ee11-9966-0022481b59de}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Application Status" parentSchemaName="bsr_buildingprofessionapplication" parentDisplayName="Building Profession Application" solution="Active" />
+        <Dependent type="29" displayName="Auto populate BPA Hold Review Date" id="{a4537a39-3a2a-ee11-bdf4-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Application Status" parentSchemaName="bsr_buildingprofessionapplication" parentDisplayName="Building Profession Application" solution="Active" />
