@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Profession Core" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.13.0</Version>
+    <Version>1.0.14.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -84,6 +84,7 @@
       <RootComponent type="1" schemaName="bsr_biactivity" behavior="0" />
       <RootComponent type="1" schemaName="bsr_bibuildingcategory" behavior="0" />
       <RootComponent type="1" schemaName="bsr_biclass" behavior="0" />
+      <RootComponent type="1" schemaName="bsr_biprofessionalmembership" behavior="0" />
       <RootComponent type="1" schemaName="bsr_biregactivity" behavior="0" />
       <RootComponent type="1" schemaName="bsr_biregclass" behavior="0" />
       <RootComponent type="1" schemaName="bsr_biregcountry" behavior="0" />
@@ -101,6 +102,7 @@
       <RootComponent type="36" id="{b86cdf8b-d115-ee11-9cbe-0022481b59de}" behavior="0" />
       <RootComponent type="61" schemaName="bsr_/buildingprofession/tables/bsr_biactivity/img/bsr_biactivity.svg" behavior="0" />
       <RootComponent type="61" schemaName="bsr_/buildingprofession/tables/bsr_bibuildingcategory/img/bsr_bibuildingcategory.svg" behavior="0" />
+      <RootComponent type="61" schemaName="bsr_/buildingprofession/tables/bsr_biprofessionalmembership/img/bsr_biprofessionalmembership.svg" behavior="0" />
       <RootComponent type="61" schemaName="bsr_/buildingprofession/tables/bsr_biregactivity/img/bsr_biregactivity.svg" behavior="0" />
       <RootComponent type="61" schemaName="bsr_/buildingprofession/tables/bsr_biregclass/img/bsr_biregclass.svg" behavior="0" />
       <RootComponent type="61" schemaName="bsr_/buildingprofession/tables/bsr_biregcountry/img/bsr_biregcountry.svg" behavior="0" />
@@ -134,6 +136,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_refundreason" displayName="Refund Reason" solution="BuildingRegCore (1.17.35.0)" />
         <Dependent type="29" displayName="Other Refund Reason Visibility" id="{13416a02-361f-ee11-9967-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_year" displayName="Year" solution="BuildingRegCore (1.17.35.0)" />
+        <Dependent type="10" schemaName="bsr_biprofessionalmembership_year" displayName="bsr_biprofessionalmembership_year" parentSchemaName="bsr_year" parentDisplayName="Year" />
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="bsr_bsr_payment_buildingapplicationid_bsr_bui" displayName="bsr_bsr_payment_buildingapplicationid_bsr_bui" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.35.0)" />
@@ -300,6 +306,10 @@
         <Dependent type="29" displayName="Other Refund Reason Visibility" id="{13416a02-361f-ee11-9967-0022481b5210}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_year" parentDisplayName="Year" solution="BuildingRegCore (1.17.35.0)" />
+        <Dependent type="10" schemaName="bsr_biprofessionalmembership_year" displayName="bsr_biprofessionalmembership_year" parentSchemaName="bsr_year" parentDisplayName="Year" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_otherrefundreason" displayName="Other Refund Reason" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.35.0)" />
         <Dependent type="29" displayName="Other Refund Reason Visibility" id="{13416a02-361f-ee11-9967-0022481b5210}" />
       </MissingDependency>
@@ -366,6 +376,10 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_transactionid" displayName="Reference Number" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.35.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Gov UK Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_yearid" displayName="Year" parentSchemaName="bsr_year" parentDisplayName="Year" solution="BuildingRegCore (1.17.35.0)" />
+        <Dependent type="10" schemaName="bsr_biprofessionalmembership_year" displayName="bsr_biprofessionalmembership_year" parentSchemaName="bsr_year" parentDisplayName="Year" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="Active" />
