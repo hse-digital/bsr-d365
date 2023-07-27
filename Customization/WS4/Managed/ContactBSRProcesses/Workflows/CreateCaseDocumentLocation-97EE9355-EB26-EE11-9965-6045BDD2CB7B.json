@@ -1,0 +1,329 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS4"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_sharepointonline_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_SharePointWS4"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_Case_is_created": {
+          "metadata": {
+            "operationMetadataId": "f3238f3d-debe-45b6-a4bc-d8e5ae5eadf7"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 1,
+              "subscriptionRequest/entityname": "incident",
+              "subscriptionRequest/scope": 4
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Initialize_FolderName": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "924dbbff-cf18-4b93-8848-e15ff5dc37b5"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "FolderName",
+                "type": "string",
+                "value": "@triggerOutputs()?['body/ticketnumber']"
+              }
+            ]
+          }
+        },
+        "Get_Parent_Doc_Location": {
+          "runAfter": {
+            "Get_SharePoint_Site": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "19ac90ce-2bc1-4314-a458-865936c20f6b"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "sharepointdocumentlocations",
+              "$filter": "relativeurl eq 'incident'",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Validate_if_Parent_Doc_Location_Exists": {
+          "actions": {
+            "Apply_to_each": {
+              "foreach": "@outputs('Get_Parent_Doc_Location')?['body/value']",
+              "actions": {
+                "Set_ParentLocation_2": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "e673e3d2-072d-4924-8028-e8aca802c92e"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "ParentLocation",
+                    "value": "@items('Apply_to_each')?['sharepointdocumentlocationid']"
+                  }
+                }
+              },
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "45e50bd3-4411-4838-89f7-2457e337c969"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "Get_Parent_Doc_Location": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Apply_to_each_3": {
+                "foreach": "@outputs('Get_SharePoint_Site')?['body/value']",
+                "actions": {
+                  "Create_Parent_Doc_Location": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "e2592a42-474d-488c-99a8-1e8f8f64cabf"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps_1",
+                        "operationId": "CreateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "sharepointdocumentlocations",
+                        "item/name": "Documents on Default Site 1",
+                        "item/servicetype": 0,
+                        "item/locationtype": 0,
+                        "item/parentsiteorlocation_sharepointsite@odata.bind": "/sharepointsites/@{items('Apply_to_each_3')?['sharepointsiteid']}",
+                        "item/relativeurl": "incident"
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  },
+                  "Set_ParentLocation": {
+                    "runAfter": {
+                      "Create_Parent_Doc_Location": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "b95cfaab-1798-4034-a73a-dcb3ee399b96"
+                    },
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "ParentLocation",
+                      "value": "@outputs('Create_Parent_Doc_Location')?['body/sharepointdocumentlocationid']"
+                    }
+                  }
+                },
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "e348eb83-8043-4289-a2d1-c0dc1e1ed8a4"
+                },
+                "type": "Foreach"
+              }
+            }
+          },
+          "expression": {
+            "greater": [
+              "@length(outputs('Get_Parent_Doc_Location')?['body/value'])",
+              0
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "20fc4716-08dc-47ad-8394-e67b3938a94e"
+          },
+          "type": "If"
+        },
+        "Apply_to_each_2": {
+          "foreach": "@outputs('Get_SharePoint_Site')?['body/value']",
+          "actions": {
+            "Create_init_file": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "caf136c9-f19d-469d-995a-b56bd0786436"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_sharepointonline_1",
+                  "operationId": "CreateFile",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                },
+                "parameters": {
+                  "dataset": "@items('Apply_to_each_2')?['absoluteurl']",
+                  "folderPath": "incident/@{variables('FolderName')}",
+                  "name": "init",
+                  "body": "ZW1wdHk="
+                },
+                "authentication": "@parameters('$authentication')"
+              },
+              "runtimeConfiguration": {
+                "contentTransfer": {
+                  "transferMode": "Chunked"
+                }
+              }
+            },
+            "Delete_init_file": {
+              "runAfter": {
+                "Create_init_file": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "8bdb8014-5d07-43c0-9812-afb48e5ee151"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_sharepointonline_1",
+                  "operationId": "DeleteFile",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                },
+                "parameters": {
+                  "dataset": "@items('Apply_to_each_2')?['absoluteurl']",
+                  "id": "@outputs('Create_init_file')?['body/Id']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Create_Case_Document_Location": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c3d78cd2-4561-4467-9244-0054a30ec09a"
+          },
+          "type": "Foreach"
+        },
+        "Initialize_ParentLocation": {
+          "runAfter": {
+            "Initialize_FolderName": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "16aec738-194a-408f-a43d-2f2fa03035bb"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "ParentLocation",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Create_Case_Document_Location": {
+          "runAfter": {
+            "Validate_if_Parent_Doc_Location_Exists": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "7bdf6927-beae-47d6-b07d-117027ea45f2"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "sharepointdocumentlocations",
+              "item/name": "Documents on Default Site 1",
+              "item/servicetype": 0,
+              "item/locationtype": 0,
+              "item/parentsiteorlocation_sharepointdocumentlocation@odata.bind": "/sharepointdocumentlocations/@{variables('ParentLocation')}",
+              "item/regardingobjectid_incident@odata.bind": "/incidents/@{triggerOutputs()?['body/incidentid']}",
+              "item/relativeurl": "@variables('FolderName')"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_SharePoint_Site": {
+          "runAfter": {
+            "Initialize_ParentLocation": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "05a9660a-8970-4f82-9393-b50e013dc89e"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "sharepointsites",
+              "$filter": "(isdefault eq true)",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}
