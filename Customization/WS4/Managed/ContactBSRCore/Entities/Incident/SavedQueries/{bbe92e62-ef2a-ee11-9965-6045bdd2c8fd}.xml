@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{bbe92e62-ef2a-ee11-9965-6045bdd2c8fd}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="title" select="1" icon="1" preview="1">
+        <row name="result" id="incidentid">
+          <cell name="title" width="279" />
+          <cell name="customerid" width="110" />
+          <cell name="casetypecode" width="100" />
+          <cell name="prioritycode" width="150" />
+          <cell name="createdon" width="150" />
+          <cell name="incidentstagecode" width="102" />
+          <cell name="statuscode" width="150" />
+          <cell name="ownerid" width="150" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
+        <entity name="incident">
+          <attribute name="incidentid" />
+          <attribute name="prioritycode" />
+          <attribute name="title" />
+          <attribute name="ownerid" />
+          <attribute name="statuscode" />
+          <attribute name="createdon" />
+          <order attribute="createdon" descending="true" />
+          <attribute name="casetypecode" />
+          <attribute name="incidentstagecode" />
+          <attribute name="customerid" />
+          <filter type="and">
+            <condition attribute="ownerid" operator="eq-useroruserteams" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="My Teams Case's" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
