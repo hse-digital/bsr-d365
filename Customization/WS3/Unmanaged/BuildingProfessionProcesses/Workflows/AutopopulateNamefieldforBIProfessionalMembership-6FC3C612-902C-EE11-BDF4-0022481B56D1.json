@@ -1,0 +1,120 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_sharedcommondataserviceforapps_1f74f"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_BI_Professional_Membership_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "55ad0efd-2a73-409a-af0f-d5aa8a3f735a"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 1,
+              "subscriptionRequest/entityname": "bsr_biprofessionalmembership",
+              "subscriptionRequest/scope": 4
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_a_Building_Inspector_Contact_row_by_ID": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "42b1adf6-c247-4fbf-8865-407b2a52698a"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "contacts",
+              "recordId": "@triggerOutputs()?['body/_bsr_buildinginspectorid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Update_The_BI_Professional_Membership_Row": {
+          "runAfter": {
+            "Get_a_Professional_Body_Account_row_by_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "8c66ad5c-420b-48c5-ba2e-b463ce969996"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_biprofessionalmemberships",
+              "recordId": "@triggerOutputs()?['body/bsr_biprofessionalmembershipid']",
+              "item/bsr_name": "@{outputs('Get_a_Building_Inspector_Contact_row_by_ID')?['body/fullname']} Membership - @{outputs('Get_a_Professional_Body_Account_row_by_ID')?['body/name']}"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_a_Professional_Body_Account_row_by_ID": {
+          "runAfter": {
+            "Get_a_Building_Inspector_Contact_row_by_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "42b1adf6-c247-4fbf-8865-407b2a52698a"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "accounts",
+              "recordId": "@triggerOutputs()?['body/_bsr_professionalbodyid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}
