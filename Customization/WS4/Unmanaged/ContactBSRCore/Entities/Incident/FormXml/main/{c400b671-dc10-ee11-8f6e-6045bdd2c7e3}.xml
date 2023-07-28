@@ -169,6 +169,20 @@
                   </labels>
                   <rows>
                     <row>
+                      <cell id="{86589b43-5ad0-49a7-8f82-2b01c5aa5585}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Case Type" languagecode="1033" />
+                        </labels>
+                        <control id="casetypecode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="casetypecode" disabled="false" />
+                      </cell>
+                      <cell id="{c28f91c4-72b7-4bd1-b840-2be39030791e}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Origin" languagecode="1033" />
+                        </labels>
+                        <control id="caseorigincode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="caseorigincode" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{02aa4fd2-38b9-4585-ba3e-0dac3d794fa0}" locklevel="0" colspan="2" rowspan="1">
                         <labels>
                           <label description="Case Title" languagecode="1033" />
@@ -177,29 +191,39 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{1e701fcd-8f61-4346-9b11-2e73a21ce4d9}" locklevel="0" colspan="2" rowspan="1">
+                      <cell id="{1e701fcd-8f61-4346-9b11-2e73a21ce4d9}" locklevel="0" colspan="2" rowspan="4">
                         <labels>
                           <label description="Description" languagecode="1033" />
                         </labels>
                         <control id="description" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="description" disabled="false" />
                       </cell>
                     </row>
+                    <row />
+                    <row />
+                    <row />
                     <row>
-                      <cell id="{35cf6987-8f40-4605-ae27-94c4bb862800}" locklevel="0" colspan="2" rowspan="1">
+                      <cell id="{35cf6987-8f40-4605-ae27-94c4bb862800}" locklevel="0" colspan="2" rowspan="1" showlabel="true">
                         <labels>
                           <label description="Created On" languagecode="1033" />
                         </labels>
-                        <control id="createdon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="createdon" disabled="false" />
+                        <control id="createdon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="createdon" disabled="false" uniqueid="{2d6832e1-011c-98a5-03c1-94c64e5c7e99}" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{86589b43-5ad0-49a7-8f82-2b01c5aa5585}" locklevel="0" colspan="1" rowspan="1">
+                      <cell locklevel="0" id="{bd849977-714f-4ec2-a7fc-c8bb1a8a5ea7}" showlabel="false">
                         <labels>
-                          <label description="Case Type" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
-                        <control id="casetypecode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="casetypecode" disabled="false" />
                       </cell>
-                      <cell id="{3490e3fb-bb15-4130-bc75-a7916351ec9c}" locklevel="0" colspan="1" rowspan="1" visible="true">
+                      <cell id="{035861f0-acda-427a-857d-7ddc86513264}" locklevel="0" colspan="1" rowspan="1" visible="false">
+                        <labels>
+                          <label description="Minutes Spent on Call" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_minutesspentoncall" classid="{AA987274-CE4E-4271-A803-66164311A958}" datafieldname="bsr_minutesspentoncall" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3490e3fb-bb15-4130-bc75-a7916351ec9c}" locklevel="0" colspan="2" rowspan="1" visible="true">
                         <labels>
                           <label description="Subject" languagecode="1033" />
                         </labels>
@@ -208,35 +232,36 @@
                     </row>
                   </rows>
                 </section>
-                <section name="general_section_7" id="7e3e4572-0170-4056-b757-f9659986ebb0" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                <section name="ref_pan_general_section_9" showlabel="false" showbar="false" locklevel="0" id="{700d2785-8a72-09be-ca96-b464ec4abc37}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" rowheight="20" autoexpand="false" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
-                    <label description="Knowledge Search" languagecode="1033" />
+                    <label description="Reference Panel" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell showlabel="false" locklevel="0" id="{7b225343-c989-4073-b5d3-516b9883c906}">
+                      <cell id="{e4e9b36e-6e8c-54c7-1080-ce448674ede8}" showlabel="false" colspan="1" auto="false" rowspan="10">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="KB Search" languagecode="1033" />
                         </labels>
-                      </cell>
-                    </row>
-                    <row>
-                      <cell showlabel="true" locklevel="0" id="{9cdce956-b8d3-4b07-a8ea-c9831581d398}" rowspan="10" colspan="1">
-                        <labels>
-                          <label description="Knowledge" languagecode="1033" />
-                        </labels>
-                        <control id="Search_widget_new_1" classid="{E616A57F-20E0-4534-8662-A101B5DDF4E0}">
+                        <control id="kbsearch" classid="{7CCD1494-1F7A-4E3A-8BDE-F32069DAEB9F}">
                           <parameters>
-                            <NumberOfResults>10</NumberOfResults>
-                            <SelectDefaultLanguage>00000000-0000-0000-0000-000000000000</SelectDefaultLanguage>
                             <FilterResults>3</FilterResults>
-                            <ShowContextualActions>ShowAll</ShowContextualActions>
-                            <EnableAutoSuggestions>false</EnableAutoSuggestions>
-                            <EnableRating>false</EnableRating>
-                            <ShowLanguageFilter>false</ShowLanguageFilter>
                             <AllowChangingFiltersOnUI>true</AllowChangingFiltersOnUI>
+                            <ShowLanguageFilter>false</ShowLanguageFilter>
+                            <ShowDepartmentFilter>false</ShowDepartmentFilter>
+                            <EnableAutoSuggestions>true</EnableAutoSuggestions>
+                            <SearchForAutoSuggestionsUsing>title</SearchForAutoSuggestionsUsing>
+                            <EnableRating>false</EnableRating>
+                            <ShowRatingUsing>exchangerate</ShowRatingUsing>
                             <AutoSuggestionSource>0</AutoSuggestionSource>
-                            <SearchForAutoSuggestionsUsing>bsr_block_incidentid</SearchForAutoSuggestionsUsing>
+                            <NumberOfResults>10</NumberOfResults>
+                            <ShowContextualActions>ShowSelectedActions</ShowContextualActions>
+                            <ActionList>0,1,5,4</ActionList>
+                            <ReferencePanelSearchWidgetIconUrl>msdyncrm_/KnowledgeSearch/DefaultIcon.svg</ReferencePanelSearchWidgetIconUrl>
+                            <SelectDefaultLanguage>00000000-0000-0000-0000-000000000000</SelectDefaultLanguage>
+                            <SelectPrimaryCustomer>customerid</SelectPrimaryCustomer>
+                            <MappedFields>[{"kmAttr":"subjectid","srcAttr":"subjectid","shouldShowFilter":false}]</MappedFields>
+                            <EnableMDF>true</EnableMDF>
+                            <AllowDisablingMDFOnUI>true</AllowDisablingMDFOnUI>
                           </parameters>
                         </control>
                       </cell>
@@ -250,20 +275,38 @@
                     <row />
                     <row />
                     <row />
-                  </rows>
-                </section>
-                <section name="general_section_7" id="15435267-c119-494b-9134-43e36a23f920" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
-                  <labels>
-                    <label description="Supporting Information" languagecode="1033" />
-                  </labels>
-                  <rows>
                     <row>
-                      <cell showlabel="false" locklevel="0" id="{41e726a8-535c-4cb6-b972-e3fdb703d7cb}">
+                      <cell id="{dc031191-a9bc-9271-e029-8181721939be}" showlabel="false" colspan="1" auto="false" rowspan="6">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Similar Cases Suggestions" languagecode="1033" />
                         </labels>
+                        <control id="similarCaseRecordcontrol" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" uniqueid="{d282976a-c67c-ebd5-405e-e14b82439022}">
+                          <parameters>
+                            <ViewId>{00000000-0000-0000-00AA-000010001032}</ViewId>
+                            <IsUserView>false</IsUserView>
+                            <RelationshipName />
+                            <TargetEntityType>incident</TargetEntityType>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <ViewIds>{00000000-0000-0000-00AA-000010001032}</ViewIds>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>All</ChartGridMode>
+                            <VisualizationId>{4143B74E-4A07-4D01-9FFE-2CDCAA4208FD}</VisualizationId>
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                            <ReferencePanelSubgridIconUrl>msdyn_smartassistsimilarcaseicon.png</ReferencePanelSubgridIconUrl>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
                   </rows>
                 </section>
               </sections>
@@ -297,7 +340,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell locklevel="0" id="{f6d15238-1cf7-4f16-bb5c-489d494ab721}">
+                      <cell locklevel="0" id="{f6d15238-1cf7-4f16-bb5c-489d494ab721}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -317,11 +360,17 @@
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{a307f1c4-37e8-4a68-8500-f84fa267e50a}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{5f241be6-856b-41cf-956b-412f23dcd279}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="Region" languagecode="1033" />
                         </labels>
-                        <control id="bsr_buildingregion" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_buildingregion" disabled="true" />
+                        <control id="bsr_buildingregionlookup" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_buildingregionlookup" disabled="true" />
+                      </cell>
+                      <cell id="{b70b29bf-d9de-4dc6-8262-ec76d3c2d710}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Building Size" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_howbigisthebuilding" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_howbigisthebuilding" disabled="true" />
                       </cell>
                     </row>
                     <row>
@@ -331,10 +380,11 @@
                         </labels>
                         <control id="bsr_buildingaddressline1" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_buildingaddressline1" disabled="true" />
                       </cell>
-                      <cell locklevel="0" id="{129f5d9c-7e37-4092-926c-d908250ba0e5}">
+                      <cell id="{31d5c640-293d-4fdd-8a06-2992360a6203}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="2 or more residences in the building" languagecode="1033" />
                         </labels>
+                        <control id="bsr_2ormoreresidencesinbuilding" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_2ormoreresidencesinbuilding" disabled="true" />
                       </cell>
                     </row>
                     <row>
@@ -357,10 +407,11 @@
                         </labels>
                         <control id="bsr_buildingtowncity" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_buildingtowncity" disabled="true" />
                       </cell>
-                      <cell locklevel="0" id="{3c2fba6a-e9ba-4ec7-b734-a827433c0eec}">
+                      <cell id="{e254eb97-c1cc-4ff6-b4aa-5ad956ef5c18}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Height (m)" languagecode="1033" />
                         </labels>
+                        <control id="bsr_buildingheight" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_buildingheight" disabled="true" />
                       </cell>
                     </row>
                     <row>
@@ -370,11 +421,11 @@
                         </labels>
                         <control id="bsr_buildingcounty" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_buildingcounty" disabled="true" />
                       </cell>
-                      <cell id="{859a569d-9451-40bc-bb1a-508e902f7e69}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{f5e5dc75-b682-451b-b854-696f0cf0c7bb}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="Number of residential units" languagecode="1033" />
+                          <label description="Number of floors" languagecode="1033" />
                         </labels>
-                        <control id="bsr_numberofresidentialunits" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_numberofresidentialunits" disabled="true" />
+                        <control id="bsr_numberoffloors" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_numberoffloors" disabled="true" />
                       </cell>
                     </row>
                     <row>
@@ -384,50 +435,11 @@
                         </labels>
                         <control id="bsr_buildingpostcode" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_buildingpostcode" disabled="true" />
                       </cell>
-                      <cell id="{f5e5dc75-b682-451b-b854-696f0cf0c7bb}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{859a569d-9451-40bc-bb1a-508e902f7e69}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="Number of floors" languagecode="1033" />
+                          <label description="Number of residential units" languagecode="1033" />
                         </labels>
-                        <control id="bsr_numberoffloors" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_numberoffloors" disabled="true" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell locklevel="0" id="{9a0ef656-c044-475d-9592-598ea6a672c1}">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                      <cell id="{b70b29bf-d9de-4dc6-8262-ec76d3c2d710}" locklevel="0" colspan="1" rowspan="1">
-                        <labels>
-                          <label description="Building Size" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_howbigisthebuilding" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_howbigisthebuilding" disabled="true" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell locklevel="0" id="{f31888d4-6ec0-4413-844a-655b63f0628f}">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                      <cell id="{e254eb97-c1cc-4ff6-b4aa-5ad956ef5c18}" locklevel="0" colspan="1" rowspan="1">
-                        <labels>
-                          <label description="Building height (m)" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_buildingheight" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_buildingheight" disabled="true" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell locklevel="0" id="{badc2a12-fe93-48ed-aeac-8cb42f4a933b}">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                      <cell id="{31d5c640-293d-4fdd-8a06-2992360a6203}" locklevel="0" colspan="1" rowspan="1">
-                        <labels>
-                          <label description="2 or more residences in the building" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_2ormoreresidencesinbuilding" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_2ormoreresidencesinbuilding" disabled="true" />
+                        <control id="bsr_numberofresidentialunits" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_numberofresidentialunits" disabled="true" />
                       </cell>
                     </row>
                   </rows>
@@ -438,23 +450,10 @@
                   </labels>
                   <rows>
                     <row>
-                      <cell locklevel="0" id="{e7b66d9d-d612-4eff-9ec6-0f2741ce3a06}">
+                      <cell locklevel="0" id="{e7b66d9d-d612-4eff-9ec6-0f2741ce3a06}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
-                      </cell>
-                      <cell id="{ddc774f7-1b8a-46cb-bb2f-8f639bcfbac3}" userspacer="true" showlabel="false" colspan="1" rowspan="1">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{6b0f51e6-9805-46e2-a096-290a86f4cdbc}" locklevel="0" colspan="1" rowspan="1">
-                        <labels>
-                          <label description="First Name" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_contactfirstname" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_contactfirstname" disabled="true" />
                       </cell>
                       <cell id="{850758b1-74d0-430a-aa1a-703f28405e57}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
@@ -464,11 +463,11 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{fa82bbf4-d241-4457-86a4-f7c4282e6e28}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{6b0f51e6-9805-46e2-a096-290a86f4cdbc}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="Last Name" languagecode="1033" />
+                          <label description="First Name" languagecode="1033" />
                         </labels>
-                        <control id="bsr_contactlastname" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_contactlastname" disabled="true" />
+                        <control id="bsr_contactfirstname" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_contactfirstname" disabled="true" />
                       </cell>
                       <cell id="{29b69a25-30be-4e7a-9959-56f653f0def3}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
@@ -478,13 +477,26 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{fa82bbf4-d241-4457-86a4-f7c4282e6e28}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Last Name" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_contactlastname" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_contactlastname" disabled="true" />
+                      </cell>
+                      <cell id="{ddc774f7-1b8a-46cb-bb2f-8f639bcfbac3}" userspacer="true" showlabel="false" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{eb581fa4-62d6-4def-8bd1-56f79cfeb8b1}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="Share contact details?" languagecode="1033" />
                         </labels>
                         <control id="bsr_sharecontactdetails" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="bsr_sharecontactdetails" disabled="true" />
                       </cell>
-                      <cell locklevel="0" id="{1196df93-0ae2-4455-acc7-f8d3ab3e5682}">
+                      <cell locklevel="0" id="{1196df93-0ae2-4455-acc7-f8d3ab3e5682}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -516,30 +528,35 @@
                         </labels>
                         <control id="bsr_question" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_question" disabled="true" />
                       </cell>
-                    </row>
-                    <row>
-                      <cell locklevel="0" id="{c5a3c680-b458-4131-9106-06d4453ea659}">
+                      <cell id="{2ef09a7d-ab3d-4e9c-858b-797c6529a4db}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
                       </cell>
                     </row>
                     <row>
-                      <cell locklevel="0" id="{e2686ec0-25ef-4a0e-97d2-2f2b6244a8f8}">
+                      <cell locklevel="0" id="{c5a3c680-b458-4131-9106-06d4453ea659}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
                       </cell>
                     </row>
                     <row>
-                      <cell locklevel="0" id="{d73cabe8-c830-4e73-9668-76647588681b}">
+                      <cell locklevel="0" id="{e2686ec0-25ef-4a0e-97d2-2f2b6244a8f8}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
                       </cell>
                     </row>
                     <row>
-                      <cell locklevel="0" id="{6191f6e5-74ed-4be9-ac4f-3d1e6d041565}">
+                      <cell locklevel="0" id="{d73cabe8-c830-4e73-9668-76647588681b}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{6191f6e5-74ed-4be9-ac4f-3d1e6d041565}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -572,11 +589,11 @@
                     <row />
                     <row />
                     <row>
-                      <cell id="{cd80f543-72fc-4760-9023-22a415677c45}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{68229053-bc38-409d-bf48-2401dbe3bdd9}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="Have supporting information?" languagecode="1033" />
+                          <label description="Your Supporting Information" languagecode="1033" />
                         </labels>
-                        <control id="bsr_havesupportinginformation" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="bsr_havesupportinginformation" disabled="true" />
+                        <control id="bsr_yoursupportinginformation" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_yoursupportinginformation" disabled="true" />
                       </cell>
                     </row>
                   </rows>
@@ -613,19 +630,19 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{739d0aef-2475-4349-9305-3b3bd9857576}" locklevel="0" colspan="1" rowspan="1">
-                        <labels>
-                          <label description="For HSE" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_forhse" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="bsr_forhse" disabled="false" uniqueid="{cc5d3c0c-930e-46e3-87ec-4901e50950d1}" />
-                      </cell>
-                    </row>
-                    <row>
                       <cell id="{3bdf95ee-f83a-4540-98c9-27671d5902ae}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="For BSR" languagecode="1033" />
                         </labels>
                         <control id="bsr_forbsr" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="bsr_forbsr" disabled="false" uniqueid="{f7766391-9633-4a07-abe4-42f3e5dd697a}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{739d0aef-2475-4349-9305-3b3bd9857576}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="For HSE" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_forhse" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="bsr_forhse" disabled="false" uniqueid="{cc5d3c0c-930e-46e3-87ec-4901e50950d1}" />
                       </cell>
                     </row>
                     <row>
@@ -707,6 +724,55 @@
                     </row>
                   </rows>
                 </section>
+                <section name="tab_9_section_5" id="b001cf65-11cf-4a33-97a3-4208605ab64a" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Resolution" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" locklevel="0" id="{e4a8ad5f-e2a9-418a-8d66-b2a960255073}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e30cfcd3-9883-445b-bc3e-698f4d0e0763}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Case Outcome" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_caseoutcome" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_caseoutcome" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{beeb6cbb-0f36-4809-ae1a-29e3c34d9886}" locklevel="0" colspan="1" rowspan="4">
+                        <labels>
+                          <label description="Outcome Details" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_outcomedetails" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_outcomedetails" disabled="false" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row>
+                      <cell id="{acaa2269-ef97-40e2-ad59-9311f11e2f90}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Completed By" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_resolutioncompletedby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_resolutioncompletedby" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{8c1bcb78-c6f3-4f4e-8559-e8cdddbb34d2}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Completed On" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_resolutioncompletedon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_resolutioncompletedon" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
               </sections>
             </column>
             <column width="50%">
@@ -764,8 +830,78 @@
             <label description="Case Relationships" languagecode="1033" />
           </labels>
           <columns>
-            <column width="34%">
+            <column width="50%">
               <sections>
+                <section name="MergedCases" showlabel="false" showbar="false" id="{f344f3e4-c7c1-43ff-8514-6405d7b8fa35}" IsUserDefined="0" layout="varwidth" labelwidth="102" celllabelposition="Left" labelid="{ef80b0c0-823d-4871-8246-18cc832a73ad}">
+                  <labels>
+                    <label description="" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{db20c8bd-b402-4323-83ac-514921ab7ca5}" showlabel="true" colspan="1" auto="false" rowspan="7" labelid="{ca92d889-4456-47e5-9e30-56138dcadaeb}">
+                        <labels>
+                          <label description="MERGED CASES" languagecode="1033" />
+                        </labels>
+                        <control id="MergedCasesGrid" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}">
+                          <parameters>
+                            <ViewId>{72210bbb-d9d5-42df-8efd-39395a3cd7a7}</ViewId>
+                            <RelationshipName>incident_master_incident</RelationshipName>
+                            <TargetEntityType>incident</TargetEntityType>
+                            <AutoExpand>Auto</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>Grid</ChartGridMode>
+                            <EnableChartPicker>false</EnableChartPicker>
+                            <RecordsPerPage>5</RecordsPerPage>
+                            <EnableContextualActions>false</EnableContextualActions>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+                <section name="ChildCases" showlabel="false" showbar="false" id="{b1f997ea-9b7b-4a2d-9a33-eb3cb14e08f7}" IsUserDefined="0" layout="varwidth" labelwidth="102" celllabelposition="Left" labelid="{4f8fe919-15ca-4bdd-ab5a-309046b6b0dc}">
+                  <labels>
+                    <label description="" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{363a5e29-8bfe-492f-8a8f-d0e1c114f2f9}" showlabel="true" colspan="1" auto="false" rowspan="7" labelid="{eb189930-036a-4df5-8f5e-11166cf07ef2}">
+                        <labels>
+                          <label description="CHILD CASES" languagecode="1033" />
+                        </labels>
+                        <control id="ChildCasesGrid" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}">
+                          <parameters>
+                            <ViewId>{72210bbb-d9d5-42df-8efd-39395a3cd7a7}</ViewId>
+                            <RelationshipName>incident_parent_incident</RelationshipName>
+                            <TargetEntityType>incident</TargetEntityType>
+                            <AutoExpand>Auto</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>Grid</ChartGridMode>
+                            <EnableChartPicker>false</EnableChartPicker>
+                            <RecordsPerPage>5</RecordsPerPage>
+                            <EnableContextualActions>true</EnableContextualActions>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
                 <section name="Solutions" showlabel="false" showbar="false" id="{d2609a6b-8ee5-4731-9895-97c00b502e7c}" IsUserDefined="0" layout="varwidth" labelwidth="102" celllabelposition="Left" labelid="{11b47f02-523a-4361-b00b-1a0b496e2361}">
                   <labels>
                     <label description="" languagecode="1033" />
@@ -823,92 +959,7 @@
                 </section>
               </sections>
             </column>
-            <column width="33%">
-              <sections>
-                <section name="MergedCases" showlabel="false" showbar="false" id="{f344f3e4-c7c1-43ff-8514-6405d7b8fa35}" IsUserDefined="0" layout="varwidth" labelwidth="102" celllabelposition="Left" labelid="{ef80b0c0-823d-4871-8246-18cc832a73ad}">
-                  <labels>
-                    <label description="" languagecode="1033" />
-                  </labels>
-                  <rows>
-                    <row>
-                      <cell id="{db20c8bd-b402-4323-83ac-514921ab7ca5}" showlabel="true" colspan="1" auto="false" rowspan="7" labelid="{ca92d889-4456-47e5-9e30-56138dcadaeb}">
-                        <labels>
-                          <label description="MERGED CASES" languagecode="1033" />
-                        </labels>
-                        <control id="MergedCasesGrid" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}">
-                          <parameters>
-                            <ViewId>{72210bbb-d9d5-42df-8efd-39395a3cd7a7}</ViewId>
-                            <RelationshipName>incident_master_incident</RelationshipName>
-                            <TargetEntityType>incident</TargetEntityType>
-                            <AutoExpand>Auto</AutoExpand>
-                            <EnableQuickFind>false</EnableQuickFind>
-                            <EnableViewPicker>false</EnableViewPicker>
-                            <EnableJumpBar>false</EnableJumpBar>
-                            <ChartGridMode>Grid</ChartGridMode>
-                            <EnableChartPicker>false</EnableChartPicker>
-                            <RecordsPerPage>5</RecordsPerPage>
-                            <EnableContextualActions>false</EnableContextualActions>
-                          </parameters>
-                        </control>
-                      </cell>
-                    </row>
-                    <row />
-                    <row />
-                    <row />
-                    <row />
-                    <row />
-                    <row />
-                  </rows>
-                </section>
-              </sections>
-            </column>
-            <column width="33%">
-              <sections>
-                <section name="ChildCases" showlabel="false" showbar="false" id="{b1f997ea-9b7b-4a2d-9a33-eb3cb14e08f7}" IsUserDefined="0" layout="varwidth" labelwidth="102" celllabelposition="Left" labelid="{4f8fe919-15ca-4bdd-ab5a-309046b6b0dc}">
-                  <labels>
-                    <label description="" languagecode="1033" />
-                  </labels>
-                  <rows>
-                    <row>
-                      <cell id="{363a5e29-8bfe-492f-8a8f-d0e1c114f2f9}" showlabel="true" colspan="1" auto="false" rowspan="7" labelid="{eb189930-036a-4df5-8f5e-11166cf07ef2}">
-                        <labels>
-                          <label description="CHILD CASES" languagecode="1033" />
-                        </labels>
-                        <control id="ChildCasesGrid" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}">
-                          <parameters>
-                            <ViewId>{72210bbb-d9d5-42df-8efd-39395a3cd7a7}</ViewId>
-                            <RelationshipName>incident_parent_incident</RelationshipName>
-                            <TargetEntityType>incident</TargetEntityType>
-                            <AutoExpand>Auto</AutoExpand>
-                            <EnableQuickFind>false</EnableQuickFind>
-                            <EnableViewPicker>false</EnableViewPicker>
-                            <EnableJumpBar>false</EnableJumpBar>
-                            <ChartGridMode>Grid</ChartGridMode>
-                            <EnableChartPicker>false</EnableChartPicker>
-                            <RecordsPerPage>5</RecordsPerPage>
-                            <EnableContextualActions>true</EnableContextualActions>
-                          </parameters>
-                        </control>
-                      </cell>
-                    </row>
-                    <row />
-                    <row />
-                    <row />
-                    <row />
-                    <row />
-                    <row />
-                  </rows>
-                </section>
-              </sections>
-            </column>
-          </columns>
-        </tab>
-        <tab name="AssociatedKnowledgeBaseRecords" id="{39ba3269-5e29-49ff-9f59-a0c0e26c3ca7}" IsUserDefined="0" showlabel="true" expanded="false" labelid="{63b0299b-b451-4821-b516-718ed52c094c}">
-          <labels>
-            <label description="Associated Knowledge Records" languagecode="1033" />
-          </labels>
-          <columns>
-            <column width="100%">
+            <column width="50%">
               <sections>
                 <section name="Articles" showlabel="false" showbar="false" id="{59fe9aa7-81a3-41f7-8007-c3d865a30ab9}" IsUserDefined="0" layout="varwidth" labelwidth="102" celllabelposition="Left" labelid="{ce97b020-dafb-42bb-b722-e1316bb55fa7}">
                   <labels>
@@ -1119,13 +1170,19 @@
       <header id="{CF9CD80E-17E4-438D-9705-5575B9BDF2D1}" celllabelposition="Top" columns="1111" labelwidth="115">
         <rows>
           <row>
+            <cell id="{3314bb70-79ed-db56-9e14-be98d497d1ed}" showlabel="true" locklevel="0" colspan="1" rowspan="1">
+              <labels>
+                <label description="Case Number" languagecode="1033" />
+              </labels>
+              <control id="header_ticketnumber" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="ticketnumber" disabled="false" />
+            </cell>
             <cell id="{58a799a6-a483-30da-d32d-12c15ba0daa0}" showlabel="true" labelid="{fbbfc57e-f776-4725-a319-394886d111e8}">
               <labels>
                 <label description="Priority" languagecode="1033" />
               </labels>
               <control id="header_prioritycode" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="prioritycode" disabled="false" />
             </cell>
-            <cell locklevel="0" id="{3d8d2f7d-52b9-4c9e-b4bd-c595c18a7f44}">
+            <cell locklevel="0" id="{3d8d2f7d-52b9-4c9e-b4bd-c595c18a7f44}" showlabel="false">
               <labels>
                 <label description="" languagecode="1033" />
               </labels>
@@ -1145,53 +1202,6 @@
           </row>
         </rows>
       </header>
-      <DisplayConditions FallbackForm="true" Order="31">
-        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
-        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
-      </DisplayConditions>
-      <events>
-        <event name="onload" application="true" active="true">
-          <InternalHandlers>
-            <Handler functionName="Mscrm.IncidentMainSystemLibraryWebResource.form_onload" libraryName="Service/Incident/Incident_main_system_library.js" handlerUniqueId="76e18454-eeba-47c3-8a9d-6d701c77fbcc" enabled="true">
-              <dependencies>
-                <dependency id="contractid" />
-                <dependency id="contractdetailid" />
-              </dependencies>
-            </Handler>
-          </InternalHandlers>
-          <Handlers>
-            <Handler functionName="Mscrm.CSIntelligence.CopilotCaseSummary.setVisibilityOfCaseSummary" libraryName="msdyn_CopilotCaseSummaryLibrary.js" handlerUniqueId="{2927e531-7e9b-4129-a040-d92218384015}" enabled="true" parameters="&quot;traversedpath&quot;" passExecutionContext="true" />
-          </Handlers>
-        </event>
-        <event name="onchange" application="true" active="true" attribute="contractid">
-          <InternalHandlers>
-            <Handler functionName="Mscrm.contractid_onchange" libraryName="Service/Incident/Incident_main_system_library.js" handlerUniqueId="1ff26f3d-f9f4-470b-a379-bc74ce466a53" enabled="true">
-              <dependencies>
-                <dependency id="contractdetailid" />
-              </dependencies>
-            </Handler>
-          </InternalHandlers>
-        </event>
-        <event name="onchange" application="true" active="true" attribute="contractdetailid">
-          <InternalHandlers>
-            <Handler functionName="Mscrm.contractdetailid_onchange" libraryName="Service/Incident/Incident_main_system_library.js" handlerUniqueId="fde679b3-af20-4b24-ab99-13f7de54fbb1" enabled="true">
-              <dependencies>
-                <dependency id="contractid" />
-              </dependencies>
-            </Handler>
-          </InternalHandlers>
-        </event>
-        <event name="onchange" application="true" active="true" attribute="kbarticleid">
-          <InternalHandlers>
-            <Handler functionName="Mscrm.kbarticleid_onchange" libraryName="Service/Incident/Incident_main_system_library.js" handlerUniqueId="1d4f95de-79c3-44e4-a782-469a8fc6132d" enabled="true" />
-          </InternalHandlers>
-        </event>
-        <event name="onsave" application="true" active="true">
-          <InternalHandlers>
-            <Handler functionName="Mscrm.IncidentMainSystemLibraryWebResource.form_OnSave" libraryName="Service/Incident/Incident_main_system_library.js" handlerUniqueId="ed27ea24-dc09-47be-8af3-52721df36d96" enabled="true" passExecutionContext="true" />
-          </InternalHandlers>
-        </event>
-      </events>
       <clientresources>
         <internalresources>
           <clientincludes>
@@ -1206,17 +1216,50 @@
       </clientresources>
       <Navigation>
         <NavBar>
-          <NavBarByRelationshipItem RelationshipName="Incident_ActivityPointers" Id="navActivities" Icon="/_imgs/ico_18_act.gif">
+          <NavBarByRelationshipItem RelationshipName="Incident_ActivityPointers" Id="navActivities" Icon="/_imgs/ico_18_act.gif" Sequence="10" Area="Info">
             <Privileges>
               <Privilege Entity="" Privilege="ReadActivity" />
             </Privileges>
+            <Titles>
+              <Title LCID="1033" Text="Activities" />
+            </Titles>
           </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="Incident_ActivityPointers" Id="navActivityHistory" TitleResourceId="Tab_Label_History" Icon="/_imgs/ico_18_history.gif" ViewId="21E2B905-6FDB-470d-8517-AD69B4C01268" Sequence="20">
+          <NavBarByRelationshipItem RelationshipName="Incident_ActivityPointers" Id="navActivityHistory" TitleResourceId="Tab_Label_History" Icon="/_imgs/ico_18_history.gif" ViewId="21E2B905-6FDB-470d-8517-AD69B4C01268" Sequence="20" Area="Info">
             <Privileges>
               <Privilege Entity="" Privilege="ReadActivity" />
             </Privileges>
+            <Titles>
+              <Title LCID="1033" Text="Closed Activities" />
+            </Titles>
           </NavBarByRelationshipItem>
         </NavBar>
+        <NavBarAreas>
+          <NavBarArea Id="Info">
+            <Titles>
+              <Title LCID="1033" Text="Common" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Sales">
+            <Titles>
+              <Title LCID="1033" Text="Sales" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Service">
+            <Titles>
+              <Title LCID="1033" Text="Service" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Marketing">
+            <Titles>
+              <Title LCID="1033" Text="Marketing" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="ProcessCenter">
+            <Titles>
+              <Title LCID="1033" Text="Process Sessions" />
+            </Titles>
+          </NavBarArea>
+        </NavBarAreas>
       </Navigation>
       <controlDescriptions>
         <controlDescription forControl="{cc5d3c0c-930e-46e3-87ec-4901e50950d1}">
@@ -1263,14 +1306,49 @@
             </parameters>
           </customControl>
         </controlDescription>
+        <controlDescription forControl="{d282976a-c67c-ebd5-405e-e14b82439022}">
+          <customControl id="{E7A81278-8635-4d9e-8D4D-59480B391C5B}">
+            <parameters />
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.Containers.SimilarCasesGridControl">
+            <parameters>
+              <data-set name="SubGrid">
+                <ViewId>{00000000-0000-0000-00AA-000010001032}</ViewId>
+                <IsUserView>false</IsUserView>
+                <TargetEntityType>incident</TargetEntityType>
+                <EnableViewPicker>false</EnableViewPicker>
+                <FilteredViewIds>{00000000-0000-0000-00AA-000010001032}</FilteredViewIds>
+              </data-set>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.Containers.SimilarCasesGridControl">
+            <parameters>
+              <data-set name="SubGrid">
+                <ViewId>{00000000-0000-0000-00AA-000010001032}</ViewId>
+                <IsUserView>false</IsUserView>
+                <TargetEntityType>incident</TargetEntityType>
+                <EnableViewPicker>false</EnableViewPicker>
+                <FilteredViewIds>{00000000-0000-0000-00AA-000010001032}</FilteredViewIds>
+              </data-set>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.Containers.SimilarCasesGridControl">
+            <parameters>
+              <data-set name="SubGrid">
+                <ViewId>{00000000-0000-0000-00AA-000010001032}</ViewId>
+                <IsUserView>false</IsUserView>
+                <TargetEntityType>incident</TargetEntityType>
+                <EnableViewPicker>false</EnableViewPicker>
+                <FilteredViewIds>{00000000-0000-0000-00AA-000010001032}</FilteredViewIds>
+              </data-set>
+            </parameters>
+          </customControl>
+        </controlDescription>
       </controlDescriptions>
       <hiddencontrols>
         <data id="FirstResponseSLAStatus" datafieldname="firstresponseslastatus" classid="{5546E6CD-394C-4bee-94A8-4425E17EF6C6}" />
         <data id="ResolveBySLAStatus" datafieldname="resolvebyslastatus" classid="{5546E6CD-394C-4bee-94A8-4425E17EF6C6}" />
       </hiddencontrols>
-      <formLibraries>
-        <Library name="msdyn_CopilotCaseSummaryLibrary.js" libraryUniqueId="{3f5a62b9-5703-42b1-af14-31be938f80d2}" />
-      </formLibraries>
       <footer id="{008a8390-bd11-4967-a9c1-56eaee6d3490}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
         <rows>
           <row>
@@ -1292,6 +1370,56 @@
           </row>
         </rows>
       </footer>
+      <formLibraries>
+        <Library name="msdyn_CopilotCaseSummaryLibrary.js" libraryUniqueId="{3f5a62b9-5703-42b1-af14-31be938f80d2}" />
+      </formLibraries>
+      <events>
+        <event name="onload" application="true" active="true">
+          <InternalHandlers>
+            <Handler functionName="Mscrm.IncidentMainSystemLibraryWebResource.form_onload" libraryName="Service/Incident/Incident_main_system_library.js" handlerUniqueId="76e18454-eeba-47c3-8a9d-6d701c77fbcc" enabled="true">
+              <dependencies>
+                <dependency id="contractid" />
+                <dependency id="contractdetailid" />
+              </dependencies>
+            </Handler>
+          </InternalHandlers>
+          <Handlers>
+            <Handler functionName="Mscrm.CSIntelligence.CopilotCaseSummary.setVisibilityOfCaseSummary" libraryName="msdyn_CopilotCaseSummaryLibrary.js" handlerUniqueId="{2927e531-7e9b-4129-a040-d92218384015}" enabled="true" parameters="&quot;traversedpath&quot;" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="true" active="true" attribute="contractid">
+          <InternalHandlers>
+            <Handler functionName="Mscrm.contractid_onchange" libraryName="Service/Incident/Incident_main_system_library.js" handlerUniqueId="1ff26f3d-f9f4-470b-a379-bc74ce466a53" enabled="true">
+              <dependencies>
+                <dependency id="contractdetailid" />
+              </dependencies>
+            </Handler>
+          </InternalHandlers>
+        </event>
+        <event name="onchange" application="true" active="true" attribute="contractdetailid">
+          <InternalHandlers>
+            <Handler functionName="Mscrm.contractdetailid_onchange" libraryName="Service/Incident/Incident_main_system_library.js" handlerUniqueId="fde679b3-af20-4b24-ab99-13f7de54fbb1" enabled="true">
+              <dependencies>
+                <dependency id="contractid" />
+              </dependencies>
+            </Handler>
+          </InternalHandlers>
+        </event>
+        <event name="onchange" application="true" active="true" attribute="kbarticleid">
+          <InternalHandlers>
+            <Handler functionName="Mscrm.kbarticleid_onchange" libraryName="Service/Incident/Incident_main_system_library.js" handlerUniqueId="1d4f95de-79c3-44e4-a782-469a8fc6132d" enabled="true" />
+          </InternalHandlers>
+        </event>
+        <event name="onsave" application="true" active="true">
+          <InternalHandlers>
+            <Handler functionName="Mscrm.IncidentMainSystemLibraryWebResource.form_OnSave" libraryName="Service/Incident/Incident_main_system_library.js" handlerUniqueId="ed27ea24-dc09-47be-8af3-52721df36d96" enabled="true" passExecutionContext="true" />
+          </InternalHandlers>
+        </event>
+      </events>
+      <DisplayConditions FallbackForm="true" Order="31">
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
