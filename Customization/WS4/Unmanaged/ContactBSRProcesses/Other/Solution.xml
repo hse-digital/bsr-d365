@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23071.154" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23072.170" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>ContactBSRProcesses</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Contact BSR Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.5.0</Version>
+    <Version>1.0.6.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -82,6 +82,7 @@
     <RootComponents>
       <RootComponent type="1" schemaName="phonetocaseprocess" behavior="0" />
       <RootComponent type="29" id="{0ffbcde4-61c1-4355-aa89-aa1d7b2b8792}" behavior="0" />
+      <RootComponent type="29" id="{895c7f8f-9f2f-ee11-bdf3-6045bdd2c8fd}" behavior="0" />
       <RootComponent type="29" id="{97ee9355-eb26-ee11-9965-6045bdd2cb7b}" behavior="0" />
       <RootComponent type="29" id="{e6b75386-a82c-ee11-9965-6045bdd2c7c5}" behavior="0" />
     </RootComponents>
@@ -91,6 +92,12 @@
           <package>msdynce_ServiceAnchor (9.0.23064.1018)</package>
         </Required>
         <Dependent type="29" displayName="BSR Customer Services" id="{0ffbcde4-61c1-4355-aa89-aa1d7b2b8792}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
+          <package>msdynce_ServiceAnchor (9.0.23064.1018)</package>
+        </Required>
+        <Dependent type="29" displayName="Set Email Sender to BSR Customer Services" id="{895c7f8f-9f2f-ee11-bdf3-6045bdd2c8fd}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
@@ -238,6 +245,12 @@
         <Required type="2" schemaName="incidentid" displayName="Case" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
           <package>msdynce_ServiceAnchor (9.0.23064.1018)</package>
         </Required>
+        <Dependent type="29" displayName="Set Email Sender to BSR Customer Services" id="{895c7f8f-9f2f-ee11-bdf3-6045bdd2c8fd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="incidentid" displayName="Case" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
+          <package>msdynce_ServiceAnchor (9.0.23064.1018)</package>
+        </Required>
         <Dependent type="29" displayName="On Change - Active Stage - Update Case Status" id="{e6b75386-a82c-ee11-9965-6045bdd2c7c5}" />
       </MissingDependency>
       <MissingDependency>
@@ -269,6 +282,12 @@
           <package>msdynce_ServiceAnchor (9.0.23064.1018)</package>
         </Required>
         <Dependent type="29" displayName="BSR Customer Services" id="{0ffbcde4-61c1-4355-aa89-aa1d7b2b8792}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="title" displayName="Case Title" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
+          <package>msdynce_ServiceAnchor (9.0.23064.1018)</package>
+        </Required>
+        <Dependent type="29" displayName="Set Email Sender to BSR Customer Services" id="{895c7f8f-9f2f-ee11-bdf3-6045bdd2c8fd}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="title" displayName="Case Title" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
