@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23071.154" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23072.170" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>BuildingProfessionCore</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Profession Core" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.15.0</Version>
+    <Version>1.0.16.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -84,6 +84,7 @@
       <RootComponent type="1" schemaName="bsr_biactivity" behavior="0" />
       <RootComponent type="1" schemaName="bsr_bibuildingcategory" behavior="0" />
       <RootComponent type="1" schemaName="bsr_biclass" behavior="0" />
+      <RootComponent type="1" schemaName="bsr_biindependentassessment" behavior="0" />
       <RootComponent type="1" schemaName="bsr_biprofessionalmembership" behavior="0" />
       <RootComponent type="1" schemaName="bsr_biregactivity" behavior="0" />
       <RootComponent type="1" schemaName="bsr_biregclass" behavior="0" />
@@ -102,6 +103,7 @@
       <RootComponent type="36" id="{b86cdf8b-d115-ee11-9cbe-0022481b59de}" behavior="0" />
       <RootComponent type="61" schemaName="bsr_/buildingprofession/tables/bsr_biactivity/img/bsr_biactivity.svg" behavior="0" />
       <RootComponent type="61" schemaName="bsr_/buildingprofession/tables/bsr_bibuildingcategory/img/bsr_bibuildingcategory.svg" behavior="0" />
+      <RootComponent type="61" schemaName="bsr_/buildingprofession/tables/bsr_biindependentassessment/img/bsr_biindependentassessment.svg" behavior="0" />
       <RootComponent type="61" schemaName="bsr_/buildingprofession/tables/bsr_biprofessionalmembership/img/bsr_biprofessionalmembership.svg" behavior="0" />
       <RootComponent type="61" schemaName="bsr_/buildingprofession/tables/bsr_biregactivity/img/bsr_biregactivity.svg" behavior="0" />
       <RootComponent type="61" schemaName="bsr_/buildingprofession/tables/bsr_biregclass/img/bsr_biregclass.svg" behavior="0" />
@@ -109,10 +111,16 @@
       <RootComponent type="61" schemaName="bsr_/buildingprofession/tables/bsr_buildingprofessionapplication/img/bsr_buildingprofessionapp.svg" behavior="0" />
       <RootComponent type="61" schemaName="bsr_/vuildingprofession/tables/bsr_biclass/img/bsr_biclass.svg" behavior="0" />
       <RootComponent type="61" schemaName="bsr_buildingprofessionapplicationicon" behavior="0" />
+      <RootComponent type="9" schemaName="bsr_bicofclasscertified" behavior="0" />
       <RootComponent type="9" schemaName="bsr_buildingprofessiontypecode" behavior="0" />
+      <RootComponent type="9" schemaName="bsr_certificatestatus" behavior="0" />
       <RootComponent type="9" schemaName="bsr_regulatorydecisionstatus" behavior="0" />
     </RootComponents>
     <MissingDependencies>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_accounttype" displayName="Account Type" solution="BuildingRegCore (1.17.35.0)" />
+        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
+      </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_contacttype" displayName="Contact Type" solution="BuildingRegCore (1.17.35.0)" />
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
@@ -142,6 +150,16 @@
         <Dependent type="10" schemaName="bsr_biprofessionalmembership_year" displayName="bsr_biprofessionalmembership_year" parentSchemaName="bsr_year" parentDisplayName="Year" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="msdyn_customerasset" displayName="Customer Asset" solution="msdyn_AssetCommon (1.0.26.9)">
+          <package>msdynce_ServiceAnchor (9.0.23072.1019)</package>
+        </Required>
+        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="bsr_accounttype_account" displayName="bsr_accounttype_account" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.35.0)" />
+        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="10" schemaName="bsr_bsr_payment_buildingapplicationid_bsr_bui" displayName="bsr_bsr_payment_buildingapplicationid_bsr_bui" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.35.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Gov UK Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
@@ -158,6 +176,10 @@
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="10" schemaName="bsr_country_account_Address1CountryCode" displayName="bsr_country_account_Address1CountryCode" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.35.0)" />
+        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="10" schemaName="bsr_country_contact_Address1CountryCode" displayName="bsr_country_contact_Address1CountryCode" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.35.0)" />
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
@@ -168,6 +190,20 @@
       <MissingDependency>
         <Required type="10" schemaName="bsr_payment_RefundReason" displayName="bsr_payment_RefundReason" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.35.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Gov UK Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="msdyn_account_msdyn_customerasset_Account" displayName="msdyn_account_msdyn_customerasset_Account" parentSchemaName="account" parentDisplayName="Account" solution="msdyn_AssetCommon (1.0.26.9)">
+          <package>msdynce_ServiceAnchor (9.0.23072.1019)</package>
+        </Required>
+        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_accounttype_accountid" displayName="Organisation Type" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.35.0)" />
+        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_address1countrycode" displayName="Address1 Country Code" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.35.0)" />
+        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_address1countrycode" displayName="Address1 Country Code" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.35.0)" />
@@ -274,6 +310,10 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Gov UK Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_manualaddress" displayName="Manual Address" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.35.0)" />
+        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_manualaddress" displayName="Manual Address" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.35.0)" />
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
@@ -308,6 +348,10 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_year" parentDisplayName="Year" solution="BuildingRegCore (1.17.35.0)" />
         <Dependent type="10" schemaName="bsr_biprofessionalmembership_year" displayName="bsr_biprofessionalmembership_year" parentSchemaName="bsr_year" parentDisplayName="Year" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_otherorganisationtype" displayName="Other Organisation type" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.35.0)" />
+        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_otherrefundreason" displayName="Other Refund Reason" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.35.0)" />
@@ -382,6 +426,12 @@
         <Dependent type="10" schemaName="bsr_biprofessionalmembership_year" displayName="bsr_biprofessionalmembership_year" parentSchemaName="bsr_year" parentDisplayName="Year" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="originatingleadid" displayName="Originating Lead" parentSchemaName="account" parentDisplayName="Account" solution="msdynce_LeadManagement (9.0.4.0066)">
+          <package>msdynce_LeadManagementAnchor (9.0.23072.10001)</package>
+        </Required>
+        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="Active" />
         <Dependent type="60" displayName="Information" parentDisplayName="Gov UK Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
@@ -398,20 +448,46 @@
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="20" displayName="BSR Ops Team" solution="BuildingRegCore (1.17.35.0)" id="{0b90c986-fda6-ed11-aad1-0022481b5e4f}" />
+        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="20" displayName="BSR CAT" solution="BuildingRegCore (1.17.35.0)" id="{42e1d306-fea6-ed11-aad1-0022481b5e4f}" />
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="20" displayName="BSR CAT" solution="BuildingRegCore (1.17.35.0)" id="{42e1d306-fea6-ed11-aad1-0022481b5e4f}" />
+        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="20" displayName="BSR Data Analysts" solution="BuildingRegCore (1.17.35.0)" id="{b6ced331-fea6-ed11-aad1-0022481b5e4f}" />
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="20" displayName="BSR Data Analysts" solution="BuildingRegCore (1.17.35.0)" id="{b6ced331-fea6-ed11-aad1-0022481b5e4f}" />
+        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="20" displayName="BSR Admin" solution="BuildingRegCore (1.17.35.0)" id="{c835c6d5-fda6-ed11-aad1-0022481b5e4f}" />
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="20" displayName="BSR Admin" solution="BuildingRegCore (1.17.35.0)" id="{c835c6d5-fda6-ed11-aad1-0022481b5e4f}" />
+        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Active Account Types" displayName="Active Account Types" parentSchemaName="bsr_accounttype" parentDisplayName="Account Type" solution="BuildingRegCore (1.17.35.0)" id="{9b1dcbde-129b-45ae-b646-327b766bf38c}" />
+        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="Active Contact Types" displayName="Active Contact Types" parentSchemaName="bsr_contacttype" parentDisplayName="Contact Type" solution="BuildingRegCore (1.17.35.0)" id="{3ffa3cce-cffd-4ae4-bcf5-c99639ce456b}" />
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Active Customer Assets" displayName="Active Customer Assets" parentSchemaName="msdyn_customerasset" parentDisplayName="Customer Asset" solution="msdyn_AssetCommon (1.0.26.9)" id="{6ecb03a4-acda-44ae-83e3-c60ba8338dbb}">
+          <package>msdynce_ServiceAnchor (9.0.23072.1019)</package>
+        </Required>
+        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Active Payments" displayName="Active Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.35.0)" id="{4c31b814-df2d-4dd7-8a0e-47290446ac32}" />
@@ -422,6 +498,12 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Gov UK Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="Customer Asset associated view with alerts" displayName="Customer Asset associated view with alerts" parentSchemaName="msdyn_customerasset" parentDisplayName="Customer Asset" solution="msdyn_ConnectedCustomerService (9.0.20115.1027)" id="{38cc036f-fbfe-e911-a81c-000d3ac2c6cb}">
+          <package>msdynce_ServiceAnchor (9.0.23072.1019)</package>
+        </Required>
+        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="Inactive Refund Reasons" displayName="Inactive Refund Reasons" parentSchemaName="bsr_refundreason" parentDisplayName="Refund Reason" solution="BuildingRegCore (1.17.35.0)" id="{fbc1df2d-cbdb-42b1-9420-d4e67a6e2aa5}" />
         <Dependent type="60" displayName="Information" parentDisplayName="Gov UK Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
@@ -430,12 +512,24 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Gov UK Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="60" displayName="account contact card" parentDisplayName="Contact" solution="msdynce_AppCommon (9.0.4.0066)" id="{29de27bc-a257-4f29-99cf-bab4a84e688f}">
+          <package>msdynce_AppCommonAnchor (9.0.23072.10001)</package>
+        </Required>
+        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="61" schemaName="bsr_Payment" displayName="bsr_Payment" solution="BuildingRegCore (1.17.35.0)" />
         <Dependent type="1" schemaName="bsr_payment" displayName="Gov UK Payment" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="61" schemaName="msdyn_/ConnectedCustomerService/Account/AccountForm.js" displayName="msdyn_/ConnectedCustomerService/Account/AccountForm.js" solution="msdyn_ConnectedCustomerService (9.0.20115.1027)">
+          <package>msdynce_ServiceAnchor (9.0.23072.1019)</package>
+        </Required>
+        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="61" schemaName="msdyn_talkingpointsloader.js" displayName="msdyn_talkingpointsloader.js" solution="msdynce_Talkingpoints (9.0.1.701894)">
-          <package>msdynce_SalesInsightsAnchor (9.0.23064.10012)</package>
+          <package>msdynce_SalesInsightsAnchor (9.0.23072.10010)</package>
         </Required>
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
