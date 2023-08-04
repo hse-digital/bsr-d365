@@ -98,11 +98,59 @@
                     <Sequence DisplayName="SetVisibilityStep2: Hide Cert number">
                       <mcwc:SetVisibility ControlId="bsr_assessmentcertnumber" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingprofessionapplication" IsVisible="False" />
                     </Sequence>
+                    <Sequence DisplayName="SetAttributeValueStep7: Clear Assessment Cert No">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep7_1" />
+                      </Sequence.Variables>
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;bsr_buildingprofessionapplication&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mxswa:SetEntityProperty Attribute="bsr_assessmentcertnumber" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="bsr_buildingprofessionapplication" Value="[SetAttributeValueStep7_1]">
+                        <mxswa:SetEntityProperty.TargetType>
+                          <InArgument x:TypeArguments="s:Type">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:String" />
+                          </InArgument>
+                        </mxswa:SetEntityProperty.TargetType>
+                      </mxswa:SetEntityProperty>
+                      <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep7" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="bsr_buildingprofessionapplication" />
+                      <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
+                    </Sequence>
                     <Sequence DisplayName="SetVisibilityStep4: Hide Assessment Date">
                       <mcwc:SetVisibility ControlId="bsr_assessmentdate" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingprofessionapplication" IsVisible="False" />
                     </Sequence>
+                    <Sequence DisplayName="SetAttributeValueStep8: Clear Assessment Date">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep8_1" />
+                      </Sequence.Variables>
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;bsr_buildingprofessionapplication&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mxswa:SetEntityProperty Attribute="bsr_assessmentdate" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="bsr_buildingprofessionapplication" Value="[SetAttributeValueStep8_1]">
+                        <mxswa:SetEntityProperty.TargetType>
+                          <InArgument x:TypeArguments="s:Type">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="s:DateTime" />
+                          </InArgument>
+                        </mxswa:SetEntityProperty.TargetType>
+                      </mxswa:SetEntityProperty>
+                      <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep8" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="bsr_buildingprofessionapplication" />
+                      <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
+                    </Sequence>
                     <Sequence DisplayName="SetVisibilityStep6: Hide Assessment organisation">
                       <mcwc:SetVisibility ControlId="bsr_assessmentorganisationid" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingprofessionapplication" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetAttributeValueStep9: Clear Assessment Org">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep9_1" />
+                      </Sequence.Variables>
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;bsr_buildingprofessionapplication&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mxswa:SetEntityProperty Attribute="bsr_assessmentorganisationid" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="bsr_buildingprofessionapplication" Value="[SetAttributeValueStep9_1]">
+                        <mxswa:SetEntityProperty.TargetType>
+                          <InArgument x:TypeArguments="s:Type">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />
+                          </InArgument>
+                        </mxswa:SetEntityProperty.TargetType>
+                      </mxswa:SetEntityProperty>
+                      <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep9" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="bsr_buildingprofessionapplication" />
+                      <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>

@@ -123,7 +123,7 @@
                     <Sequence DisplayName="SetFieldRequiredLevelStep11: Required Date of Decision">
                       <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;bsr_buildingprofessionapplication&quot;)]" />
                       <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
-                      <mcwc:SetFieldRequiredLevel ControlId="bsr_decisiondate" ControlType="standard" DisplayName="SetFieldRequiredLevelStep11" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingprofessionapplication" RequiredLevel="Required" />
+                      <mcwc:SetFieldRequiredLevel ControlId="bsr_decisiondate" ControlType="standard" DisplayName="SetFieldRequiredLevelStep11" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingprofessionapplication" RequiredLevel="None" />
                     </Sequence>
                     <Sequence DisplayName="SetVisibilityStep2: Show Date of Registration Commencement">
                       <mcwc:SetVisibility ControlId="bsr_registrationcommencementdate" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingprofessionapplication" IsVisible="True" />
@@ -131,7 +131,7 @@
                     <Sequence DisplayName="SetFieldRequiredLevelStep9: Required Date of Registration Required">
                       <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;bsr_buildingprofessionapplication&quot;)]" />
                       <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
-                      <mcwc:SetFieldRequiredLevel ControlId="bsr_registrationcommencementdate" ControlType="standard" DisplayName="SetFieldRequiredLevelStep9" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingprofessionapplication" RequiredLevel="Required" />
+                      <mcwc:SetFieldRequiredLevel ControlId="bsr_registrationcommencementdate" ControlType="standard" DisplayName="SetFieldRequiredLevelStep9" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingprofessionapplication" RequiredLevel="None" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
@@ -217,7 +217,7 @@
                     <Sequence DisplayName="SetFieldRequiredLevelStep12: Required Date of Decision">
                       <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;bsr_buildingprofessionapplication&quot;)]" />
                       <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
-                      <mcwc:SetFieldRequiredLevel ControlId="bsr_decisiondate" ControlType="standard" DisplayName="SetFieldRequiredLevelStep12" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingprofessionapplication" RequiredLevel="Required" />
+                      <mcwc:SetFieldRequiredLevel ControlId="bsr_decisiondate" ControlType="standard" DisplayName="SetFieldRequiredLevelStep12" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingprofessionapplication" RequiredLevel="None" />
                     </Sequence>
                     <Sequence DisplayName="SetVisibilityStep6: Hide Date of Registration Commencement">
                       <mcwc:SetVisibility ControlId="bsr_registrationcommencementdate" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingprofessionapplication" IsVisible="False" />
@@ -226,6 +226,22 @@
                       <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;bsr_buildingprofessionapplication&quot;)]" />
                       <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
                       <mcwc:SetFieldRequiredLevel ControlId="bsr_registrationcommencementdate" ControlType="standard" DisplayName="SetFieldRequiredLevelStep10" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingprofessionapplication" RequiredLevel="None" />
+                    </Sequence>
+                    <Sequence DisplayName="SetAttributeValueStep14: Clear date of Registration">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep14_1" />
+                      </Sequence.Variables>
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;bsr_buildingprofessionapplication&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mxswa:SetEntityProperty Attribute="bsr_registrationcommencementdate" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="bsr_buildingprofessionapplication" Value="[SetAttributeValueStep14_1]">
+                        <mxswa:SetEntityProperty.TargetType>
+                          <InArgument x:TypeArguments="s:Type">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="s:DateTime" />
+                          </InArgument>
+                        </mxswa:SetEntityProperty.TargetType>
+                      </mxswa:SetEntityProperty>
+                      <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep14" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="bsr_buildingprofessionapplication" />
+                      <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
@@ -261,13 +277,45 @@
                       <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
                       <mcwc:SetFieldRequiredLevel ControlId="bsr_decisiondate" ControlType="standard" DisplayName="SetFieldRequiredLevelStep13" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingprofessionapplication" RequiredLevel="None" />
                     </Sequence>
+                    <Sequence DisplayName="SetAttributeValueStep16: Clear date of decision">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep16_1" />
+                      </Sequence.Variables>
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;bsr_buildingprofessionapplication&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mxswa:SetEntityProperty Attribute="bsr_decisiondate" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="bsr_buildingprofessionapplication" Value="[SetAttributeValueStep16_1]">
+                        <mxswa:SetEntityProperty.TargetType>
+                          <InArgument x:TypeArguments="s:Type">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="s:DateTime" />
+                          </InArgument>
+                        </mxswa:SetEntityProperty.TargetType>
+                      </mxswa:SetEntityProperty>
+                      <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep16" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="bsr_buildingprofessionapplication" />
+                      <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
+                    </Sequence>
                     <Sequence DisplayName="SetVisibilityStep8: Hide Date of Registration Commencement">
                       <mcwc:SetVisibility ControlId="bsr_registrationcommencementdate" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingprofessionapplication" IsVisible="False" />
                     </Sequence>
-                    <Sequence DisplayName="SetFieldRequiredLevelStep11: Optional Date of Registration Required">
+                    <Sequence DisplayName="SetFieldRequiredLevelStep11137: Optional Date of Registration Required">
                       <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;bsr_buildingprofessionapplication&quot;)]" />
                       <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
-                      <mcwc:SetFieldRequiredLevel ControlId="bsr_registrationcommencementdate" ControlType="standard" DisplayName="SetFieldRequiredLevelStep11" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingprofessionapplication" RequiredLevel="None" />
+                      <mcwc:SetFieldRequiredLevel ControlId="bsr_registrationcommencementdate" ControlType="standard" DisplayName="SetFieldRequiredLevelStep11137" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingprofessionapplication" RequiredLevel="None" />
+                    </Sequence>
+                    <Sequence DisplayName="SetAttributeValueStep15: Clear date of Registration">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep15_1" />
+                      </Sequence.Variables>
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;bsr_buildingprofessionapplication&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mxswa:SetEntityProperty Attribute="bsr_registrationcommencementdate" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="bsr_buildingprofessionapplication" Value="[SetAttributeValueStep15_1]">
+                        <mxswa:SetEntityProperty.TargetType>
+                          <InArgument x:TypeArguments="s:Type">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="s:DateTime" />
+                          </InArgument>
+                        </mxswa:SetEntityProperty.TargetType>
+                      </mxswa:SetEntityProperty>
+                      <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep15" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="bsr_buildingprofessionapplication" />
+                      <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
