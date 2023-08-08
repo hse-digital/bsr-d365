@@ -5,7 +5,7 @@
     <IntroducedVersion>1.0</IntroducedVersion>
     <FormPresentation>1</FormPresentation>
     <FormActivationState>1</FormActivationState>
-    <form>
+    <form headerdensity="HighWithControls">
       <tabs>
         <tab verticallayout="true" id="{3fef6baf-80a5-42b1-bb7e-98085b50d2f9}" IsUserDefined="1">
           <labels>
@@ -14,9 +14,9 @@
           <columns>
             <column width="100%">
               <sections>
-                <section showlabel="false" showbar="false" IsUserDefined="0" id="{ec65443f-c9b9-460e-a0f3-8f8c6d9754f7}">
+                <section showlabel="true" showbar="false" IsUserDefined="0" id="{ec65443f-c9b9-460e-a0f3-8f8c6d9754f7}" columns="11" name="InvestigationSummary">
                   <labels>
-                    <label description="General" languagecode="1033" />
+                    <label description="Investigation Summary" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
@@ -26,13 +26,129 @@
                         </labels>
                         <control id="bsr_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="bsr_name" />
                       </cell>
+                      <cell locklevel="0" id="{232d8afd-c96e-47e6-a8a0-e47496d79656}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
                     </row>
                     <row>
-                      <cell id="{676727dd-939d-4f77-bd0c-7b1ea2966ba8}">
+                      <cell locklevel="0" id="{97b5020a-1bd4-40c9-9a1f-465adf155310}">
                         <labels>
-                          <label description="Owner" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
-                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                      <cell id="{f5c6a087-cc0f-4750-9940-4f6a74f6a6ab}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Reason for decision not to investigate" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_reasonfordecisionnottoinvestigate" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_reasonfordecisionnottoinvestigate" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{58af927f-e16e-41b5-b770-8e7e9942a268}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Started On" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_openedon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_openedon" disabled="false" />
+                      </cell>
+                      <cell id="{77d92444-aa96-4684-a27a-a8d365e9a9ab}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Reason for Investigation" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_reasonforinvestiation" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_reasonforinvestiation" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a97b13a4-054f-4d06-af58-1e555c6af5c8}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Closed On" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_closedon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_closedon" disabled="false" />
+                      </cell>
+                      <cell locklevel="0" id="{b96eff27-4363-4862-9743-e92a04a14293}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2fd9d878-9fee-407d-92cd-ce88cbb4aaa7}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Investigation Outcome" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_investigationoutcome" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_investigationoutcome" disabled="false" />
+                      </cell>
+                      <cell id="{7c05be4a-b51f-4129-a498-89f992cecf7f}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Time spent (State)" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_timespent_state" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_timespent_state" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{5847df1c-35ca-4acc-b299-c7aa8056be0e}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Last Correspondence On" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_lastcorrespondenceon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_lastcorrespondenceon" disabled="false" />
+                      </cell>
+                      <cell id="{00549d0a-8dde-4d74-958b-d32a463ea507}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Time spent (Last Updated On)" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_timespent_date" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_timespent_date" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{6e9fd7ff-8cfe-420a-9b60-d5cbb3fe776b}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{a381e86b-6520-4dc6-91d2-9ad5ecbf0a4d}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Total time spent" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_timespent" classid="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}" datafieldname="bsr_timespent" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="null_section_3" id="13326d97-cf88-4f19-b1e8-1826e063f348" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Reviews" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" locklevel="0" id="{cb92a85e-cd7e-4a3c-b385-ee3f6571bbe2}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2092d333-6839-4d5d-bca8-f9e22936d875}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Last Review On" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_lastreviewon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_lastreviewon" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{51f0c210-105a-456d-831a-bd4f4d466004}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Next Review On" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_nextreviewon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_nextreviewon" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{694e6e87-09a7-4205-b330-01f554359244}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Review Notes" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_reviewnotes" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_reviewnotes" disabled="false" />
                       </cell>
                     </row>
                   </rows>
@@ -41,7 +157,119 @@
             </column>
           </columns>
         </tab>
+        <tab name="tab_2" id="d5575e88-f309-4661-a926-7345facf7c04" IsUserDefined="0" locklevel="0" showlabel="true">
+          <labels>
+            <label description="Key Decision Log" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_2_section_1" id="902c84de-5165-4dde-982b-495aae5089bd" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Key Decision Log" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" locklevel="0" id="{4573fad6-6e79-4dd8-a8a1-0cc69e14dee0}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{542d47b4-f471-4fa0-9c7f-cd185f6f2ff2}" rowspan="4" colspan="1" auto="false" showlabel="true">
+                        <labels>
+                          <label description="Key Decisions Log" languagecode="1033" />
+                        </labels>
+                        <control indicationOfSubgrid="true" id="Subgrid_new_1" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                          <parameters>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>true</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <ChartGridMode>All</ChartGridMode>
+                            <TargetEntityType>bsr_keydecision</TargetEntityType>
+                            <ViewId>{D1FA6EB8-DA35-EE11-BDF4-6045BDD2CB7B}</ViewId>
+                            <ViewIds>{396464C7-15AE-4429-BCAE-3488DC490785},{D1FA6EB8-DA35-EE11-BDF4-6045BDD2CB7B}</ViewIds>
+                            <RelationshipName>bsr_Investigation_bsr_investigation_bsr_k</RelationshipName>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
       </tabs>
+      <header id="{a7496be1-e381-4d84-95b1-cc57b10fbc65}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{9d517f3a-3dd6-4b8e-a8cb-e81227972d73}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{d0c0ec0d-44ab-4c0a-9139-5f7202acb8f3}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{90e1a18d-e8d7-4bd8-bbc5-92a2a06e9962}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{7a48bbdc-16a2-4301-8d6c-c5e767d94862}" locklevel="0" colspan="1" rowspan="1">
+              <labels>
+                <label description="Priority" languagecode="1033" />
+              </labels>
+              <control id="header_bsr_prioritycode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_prioritycode" disabled="false" />
+            </cell>
+            <cell id="{312d2711-48d3-458a-8c9a-35fab686c101}" locklevel="0" colspan="1" rowspan="1">
+              <labels>
+                <label description="Status Reason" languagecode="1033" />
+              </labels>
+              <control id="header_statuscode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="statuscode" disabled="false" />
+            </cell>
+            <cell id="{0df69f7c-4173-4494-bee8-f00938f510e5}" locklevel="0" colspan="1" rowspan="1">
+              <labels>
+                <label description="Owner" languagecode="1033" />
+              </labels>
+              <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" disabled="false" />
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{1a08449e-66f8-4ca4-9560-5817cd838ca8}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{b5dacd2a-5649-4322-a6ed-a5f69d02778f}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{1e4a6dda-6ea2-41a6-b455-2f22fc77b14a}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{68ac85cb-f113-4dab-a600-690f0baa28ea}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

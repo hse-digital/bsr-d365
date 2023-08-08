@@ -6,42 +6,32 @@
     <isquickfindquery>0</isquickfindquery>
     <isprivate>0</isprivate>
     <isdefault>1</isdefault>
-    <savedqueryid>{6bd61d8c-5f99-4342-a0fd-9afe3e4fe5a9}</savedqueryid>
+    <savedqueryid>{70820248-ec75-4948-937e-442e75eb0ebb}</savedqueryid>
     <layoutxml>
-      <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
-        <row name="result" id="bsr_investigationid">
+      <grid name="bsr_keydecisions" jump="bsr_name" select="1" icon="1" preview="1">
+        <row name="bsr_keydecision" id="bsr_keydecisionid">
           <cell name="bsr_name" width="300" />
-          <cell name="bsr_prioritycode" width="100" />
-          <cell name="bsr_openedon" width="101" />
-          <cell name="bsr_lastreviewon" width="131" />
-          <cell name="bsr_nextreviewon" width="135" />
-          <cell name="bsr_timespent" width="131" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
     </layoutxml>
-    <querytype>0</querytype>
+    <querytype>2</querytype>
     <fetchxml>
       <fetch version="1.0" mapping="logical">
-        <entity name="bsr_investigation">
-          <attribute name="bsr_investigationid" />
+        <entity name="bsr_keydecision">
+          <attribute name="bsr_keydecisionid" />
           <attribute name="bsr_name" />
           <attribute name="createdon" />
           <order attribute="bsr_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
-          <attribute name="bsr_prioritycode" />
-          <attribute name="bsr_openedon" />
-          <attribute name="bsr_timespent" />
-          <attribute name="bsr_lastreviewon" />
-          <attribute name="bsr_nextreviewon" />
         </entity>
       </fetch>
     </fetchxml>
     <IntroducedVersion>1.0</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="Active Investigations" languagecode="1033" />
+      <LocalizedName description="Key Decision Associated View" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>
