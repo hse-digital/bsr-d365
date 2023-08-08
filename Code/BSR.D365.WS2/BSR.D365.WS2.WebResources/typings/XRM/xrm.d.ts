@@ -2803,7 +2803,7 @@ declare namespace Xrm {
      */
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface ExecutionContext<TSource, TArgs> {
-        getForm(): Xrm.PageBase<Xrm.AttributeCollectionBase, Xrm.TabCollectionBase, Xrm.ControlCollectionBase>;
+        getFormContext(): Xrm.PageBase<Xrm.AttributeCollectionBase, Xrm.TabCollectionBase, Xrm.ControlCollectionBase>;
     }
 
     interface SaveOptions {
@@ -3598,7 +3598,7 @@ declare namespace Xrm {
         footerSection: FooterSection;
         /**
          * Provides objects and methods to interact with the business process flow control on a form.
-         * More information: Form.ui.process
+         * More information: formContext.ui.process
          */
         process: UiProcessModule;
 
