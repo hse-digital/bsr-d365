@@ -35,41 +35,6 @@
       </EntityRelationshipRole>
     </EntityRelationshipRoles>
   </EntityRelationship>
-  <EntityRelationship Name="bsr_bsr_bsrdocument_contactid_contact">
-    <EntityRelationshipType>OneToMany</EntityRelationshipType>
-    <IsCustomizable>1</IsCustomizable>
-    <IntroducedVersion>1.17.42.0</IntroducedVersion>
-    <IsHierarchical>0</IsHierarchical>
-    <ReferencingEntityName>bsr_bsrdocument</ReferencingEntityName>
-    <ReferencedEntityName>Contact</ReferencedEntityName>
-    <CascadeAssign>NoCascade</CascadeAssign>
-    <CascadeDelete>RemoveLink</CascadeDelete>
-    <CascadeArchive>RemoveLink</CascadeArchive>
-    <CascadeReparent>NoCascade</CascadeReparent>
-    <CascadeShare>NoCascade</CascadeShare>
-    <CascadeUnshare>NoCascade</CascadeUnshare>
-    <CascadeRollupView>NoCascade</CascadeRollupView>
-    <IsValidForAdvancedFind>1</IsValidForAdvancedFind>
-    <ReferencingAttributeName>bsr_contactid</ReferencingAttributeName>
-    <RelationshipDescription>
-      <Descriptions>
-        <Description description="The contact who provided this document" languagecode="1033" />
-      </Descriptions>
-    </RelationshipDescription>
-    <EntityRelationshipRoles>
-      <EntityRelationshipRole>
-        <NavPaneDisplayOption>UseCollectionName</NavPaneDisplayOption>
-        <NavPaneArea>Details</NavPaneArea>
-        <NavPaneOrder>10000</NavPaneOrder>
-        <NavigationPropertyName>bsr_contactid_bsr_bsrdocument</NavigationPropertyName>
-        <RelationshipRoleType>1</RelationshipRoleType>
-      </EntityRelationshipRole>
-      <EntityRelationshipRole>
-        <NavigationPropertyName>bsr_bsr_bsrdocument_contactid_contact</NavigationPropertyName>
-        <RelationshipRoleType>0</RelationshipRoleType>
-      </EntityRelationshipRole>
-    </EntityRelationshipRoles>
-  </EntityRelationship>
   <EntityRelationship Name="bsr_bsr_building_paporgleadcontactid_contact">
     <EntityRelationshipType>OneToMany</EntityRelationshipType>
     <IsCustomizable>1</IsCustomizable>
@@ -355,26 +320,5 @@
         <RelationshipRoleType>0</RelationshipRoleType>
       </EntityRelationshipRole>
     </EntityRelationshipRoles>
-  </EntityRelationship>
-  <EntityRelationship Name="contact_bsr_bsrdocuments">
-    <EntityRelationshipType>OneToMany</EntityRelationshipType>
-    <IsCustomizable>1</IsCustomizable>
-    <IntroducedVersion>1.17.43.0</IntroducedVersion>
-    <IsHierarchical>0</IsHierarchical>
-    <ReferencingEntityName>bsr_bsrdocument</ReferencingEntityName>
-    <ReferencedEntityName>Contact</ReferencedEntityName>
-    <CascadeAssign>Cascade</CascadeAssign>
-    <CascadeDelete>Cascade</CascadeDelete>
-    <CascadeArchive>NoCascade</CascadeArchive>
-    <CascadeReparent>Cascade</CascadeReparent>
-    <CascadeShare>Cascade</CascadeShare>
-    <CascadeUnshare>Cascade</CascadeUnshare>
-    <CascadeRollupView>NoCascade</CascadeRollupView>
-    <ReferencingAttributeName>RegardingObjectId</ReferencingAttributeName>
-    <RelationshipDescription>
-      <Descriptions>
-        <Description description="Unique identifier of the object with which the document is associated." languagecode="1033" />
-      </Descriptions>
-    </RelationshipDescription>
   </EntityRelationship>
 </EntityRelationships>
