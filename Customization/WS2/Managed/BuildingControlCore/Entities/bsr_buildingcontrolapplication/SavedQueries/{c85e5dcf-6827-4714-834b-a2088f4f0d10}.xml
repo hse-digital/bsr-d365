@@ -10,13 +10,15 @@
     <layoutxml>
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_buildingcontrolapplicationid">
-          <cell name="bsr_name" width="175" />
-          <cell name="bsr_applicationid" width="167" />
+          <cell name="bsr_name" width="170" />
+          <cell name="bsr_applicationid" width="140" />
           <cell name="bsr_numberofstages" width="142" />
           <cell name="bsr_hrbtypecode" width="101" />
-          <cell name="bsr_applicantid" width="100" />
-          <cell name="ownerid" width="100" />
-          <cell name="createdon" width="125" />
+          <cell name="bsr_applicantid" width="150" />
+          <cell name="ownerid" width="150" />
+          <cell name="createdon" width="140" />
+          <cell name="bsr_caseofficer" width="111" />
+          <cell name="bsr_applicationname" width="144" />
         </row>
       </grid>
     </layoutxml>
@@ -25,17 +27,18 @@
       <fetch version="1.0" mapping="logical">
         <entity name="bsr_buildingcontrolapplication">
           <attribute name="bsr_buildingcontrolapplicationid" />
-          <attribute name="bsr_name" />
-          <attribute name="createdon" />
-          <order attribute="bsr_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
-          <attribute name="bsr_applicantid" />
+          <attribute name="bsr_caseofficer" />
+          <attribute name="bsr_applicationname" />
+          <attribute name="bsr_name" />
           <attribute name="bsr_applicationid" />
-          <attribute name="bsr_hrbtypecode" />
           <attribute name="bsr_numberofstages" />
+          <attribute name="bsr_hrbtypecode" />
+          <attribute name="bsr_applicantid" />
           <attribute name="ownerid" />
+          <attribute name="createdon" />
         </entity>
       </fetch>
     </fetchxml>

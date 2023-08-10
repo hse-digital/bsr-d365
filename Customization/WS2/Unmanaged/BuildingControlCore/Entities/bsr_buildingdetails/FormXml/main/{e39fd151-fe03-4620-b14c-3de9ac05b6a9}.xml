@@ -5,34 +5,34 @@
     <IntroducedVersion>1.0</IntroducedVersion>
     <FormPresentation>1</FormPresentation>
     <FormActivationState>1</FormActivationState>
-    <form headerdensity="HighWithControls">
+    <form headerdensity="HighWithControls" shownavigationbar="true">
       <tabs>
-        <tab verticallayout="true" id="{364b0a2d-ef0a-4c15-9b98-830d152cb85c}" IsUserDefined="1">
+        <tab verticallayout="true" id="{364b0a2d-ef0a-4c15-9b98-830d152cb85c}" IsUserDefined="1" name="tab1" locklevel="0" expanded="true" showlabel="true">
           <labels>
-            <label description="General" languagecode="1033" />
+            <label description="Building" languagecode="1033" />
           </labels>
           <columns>
-            <column width="100%">
+            <column width="50%">
               <sections>
-                <section showlabel="false" showbar="false" IsUserDefined="0" id="{7829ed9e-19f1-4b8c-963a-53b9a9e4d099}">
+                <section showlabel="true" showbar="false" IsUserDefined="0" id="{7829ed9e-19f1-4b8c-963a-53b9a9e4d099}" name="tab1_section1">
                   <labels>
-                    <label description="General" languagecode="1033" />
+                    <label description="General Information" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
                       <cell id="{cd5e3376-ad90-46ba-a723-0380572ff093}">
                         <labels>
-                          <label description="Name" languagecode="1033" />
+                          <label description="Building Name" languagecode="1033" />
                         </labels>
                         <control id="bsr_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="bsr_name" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{dc81b74c-fe5d-4184-bc1f-58412c0d9174}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{28d5c40c-1862-42d0-92c2-b223e5610ab3}" colspan="1" rowspan="1">
                         <labels>
-                          <label description="Building" languagecode="1033" />
+                          <label description="Regulatory Lead" languagecode="1033" />
                         </labels>
-                        <control id="bsr_buildingid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_buildingid" disabled="false" />
+                        <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
                       </cell>
                     </row>
                     <row>
@@ -44,53 +44,45 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{5220c2c6-7f13-4406-93ef-f9c70385f78d}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{54281aa0-90ea-426b-9bfd-ea1e36720439}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="Building Client Name" languagecode="1033" />
+                          <label description="Build Type" languagecode="1033" />
                         </labels>
-                        <control id="bsr_buildingclientname" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_buildingclientname" disabled="false" />
+                        <control id="bsr_buildingcategory" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_buildingcategory" disabled="false" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{8c3e9d97-4f27-4313-970a-f26e851870e7}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{53c15565-3284-4793-870a-cac0a9b9646b}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="Building Principal contractor" languagecode="1033" />
+                          <label description="Existing Use Type of proposed work" languagecode="1033" />
                         </labels>
-                        <control id="bsr_buildingprincipalcontractor" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_buildingprincipalcontractor" disabled="false" />
+                        <control id="bsr_existtypeworkproposal" classid="{4AA28AB7-9C13-4F57-A73D-AD894D048B5F}" datafieldname="bsr_existtypeworkproposal" disabled="false" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{d79bcbf0-f0d6-485e-b7ec-cd4933fe8347}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{fab2a51d-c4f9-4f53-b6c1-1fe299538a4f}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="Building Principal Designer" languagecode="1033" />
+                          <label description="Existing Use Category" languagecode="1033" />
                         </labels>
-                        <control id="bsr_buildingprincipaldesigner" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_buildingprincipaldesigner" disabled="false" />
+                        <control id="bsr_existingusecategory" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_existingusecategory" disabled="false" />
                       </cell>
                     </row>
                   </rows>
                 </section>
-                <section name="null_section_3" id="5fa66966-c9f8-4ddf-99e0-20b78be3cbae" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                <section name="tab1_section_3" id="2e6a7b08-ddb5-4e00-8650-5cf0e15664eb" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
-                    <label description="Site Address" languagecode="1033" />
+                    <label description="Address / Location" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell showlabel="false" locklevel="0" id="{4132170b-d782-4723-b2a0-68f7c98b8922}">
+                      <cell showlabel="false" locklevel="0" id="{eebe125d-9cfe-4372-8caf-844ebcb74380}">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
                       </cell>
                     </row>
                     <row>
-                      <cell id="{ac83d0b8-8487-45e8-a7fd-098f1af82921}" locklevel="0" colspan="1" rowspan="1">
-                        <labels>
-                          <label description="Does the building have an address?" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_buildinghaveaddress" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="bsr_buildinghaveaddress" disabled="false" uniqueid="{b63a2f03-5c04-4f13-a09a-e1d856ac7e20}" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{4bbca1ea-faa7-4876-a08e-edf4b97a74bd}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{548de73f-40c9-4874-a369-6c778d0b0d62}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="Address 1: Street 1 " languagecode="1033" />
                         </labels>
@@ -98,7 +90,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{ac62efdb-5c0c-4fa0-b56f-b6de88dfd13a}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{08e05ba9-b008-49bf-985f-fc4fb89952d5}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="Address 1: Street 2" languagecode="1033" />
                         </labels>
@@ -106,7 +98,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{7d02fc31-5720-4ca4-8dbc-892db16fcaad}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{5e37ff90-a855-4756-9908-6a520e5629cf}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="Address 1: City" languagecode="1033" />
                         </labels>
@@ -114,7 +106,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{098f7de7-1e62-42cd-8523-8d4fa6fadd1c}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{21ecf4b3-0780-4a5a-ac33-57037a336959}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="Address 1: Postal Code" languagecode="1033" />
                         </labels>
@@ -122,7 +114,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{ed0a826e-8903-4232-a33b-30ae5348a95e}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{3766ee44-d965-4212-915c-2ad381677d18}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="Easting" languagecode="1033" />
                         </labels>
@@ -130,11 +122,852 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{ef377597-53c9-4385-b71d-65e8ed39f588}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{eb316dd2-6e4e-4799-9728-7f505de74d11}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="Northing" languagecode="1033" />
                         </labels>
                         <control id="bsr_buildingnorthing" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_buildingnorthing" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="tab1_section_4" id="dd3fd761-8a44-4c38-a037-74b87b08cbe5" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Planning Gateway One" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" locklevel="0" id="{92bf72f1-4106-4e44-b574-58e4b7372ef0}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f2ee1b69-3f1b-43c6-9f7e-820be4315054}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Planning Reference Number" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_planningreferencenumber" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_planningreferencenumber" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0ef53660-752e-4b8f-89cc-4e2e237d68f7}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="PGO Reference Number" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_pgoreferencenumber" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_pgoreferencenumber" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{477d09ca-ef68-437e-bd06-b1936e5a827d}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="PGO" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_pgo" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_pgo" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="tab1_section_5" id="d0d85700-28d7-4980-9887-eee32ed15323" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Building Registration Number" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" locklevel="0" id="{06fdf8e0-af8a-400b-81fb-39e6e316193b}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2d697410-4afa-4d39-95b7-584d09133332}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Building Registration Number" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_buildingregistrationnumber" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_buildingregistrationnumber" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="tab1_section_6" id="25979d41-1ad9-40f4-9bb5-27d1c75a4c05" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Non-HRB" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" locklevel="0" id="{614d5ef5-7dec-48f0-84f3-e6bb34aa74d1}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{de2a2458-340b-4269-87f2-8cf90e44f7ae}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Non-HRB" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_nonhrb" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="bsr_nonhrb" disabled="false" uniqueid="{468842b0-64af-4c35-ad8b-08fd73a9f6b8}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="tab1_section_7" id="e5ef71a4-51e7-4fbb-99e0-90bdc40c5ee6" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Site Shared Services" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" locklevel="0" id="{c7c0dff7-34b2-4ea0-a049-b25d73b5294b}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{29af6572-4a4b-45a0-8509-c988435366f3}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Site Shared Services" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_sitesharedservices" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_sitesharedservices" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{60e87900-5da8-4222-8479-1abbfe2577ae}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Site Shared Services Details" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_sitesharedservicesdetails" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_sitesharedservicesdetails" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{372f647d-e861-446c-8aea-c7d1d350d06e}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Site Shared Services URL" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_sitesharedservicesurl" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_sitesharedservicesurl" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{848ff893-4a75-4d79-bc9e-d4c959b0ee7a}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Site Location Plan" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_sitelocationplan" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_sitelocationplan" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="tab1_section_8" id="cbf7879a-6d06-4f48-997c-df919e323e14" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Partial Completion" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" locklevel="0" id="{40ab98f6-84dc-4bc5-9dc5-749971588dcb}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{95dfdd5f-1cc8-4224-b35f-5e884c36b4f2}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Partial Completion" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_partialcompletion" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="bsr_partialcompletion" disabled="false" uniqueid="{1767ec10-3ca1-470e-8440-9cef75a62fc1}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{dcda9d54-6c87-43ef-bf51-bc0df3610d71}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Partial Completion Strategy" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_partialcompletionstrategy" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_partialcompletionstrategy" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="tab1_section_9" id="7a925b76-6ffa-40c5-b032-91cd6df8ac70" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Drainage" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" locklevel="0" id="{eb7ba545-2e8c-43d5-9ec4-2568c6a18d15}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{5c32b842-faa3-4b12-8b39-a1a2d4b9909f}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Are you constructing a new drain or sewer?" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_newdrainorsewer" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="bsr_newdrainorsewer" disabled="false" uniqueid="{6e8bc707-6948-4374-843e-1cbc5880b2a4}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e74dd4d6-a141-45e5-8a4b-b47804b6eae4}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Proposal to build over/within 3m of centreline" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_buildoverwithin3mofcentrelineflow" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="bsr_buildoverwithin3mofcentrelineflow" disabled="false" uniqueid="{52f4cb6c-e9fd-44a4-9002-86b8bfd2c243}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b8a1c2e0-4242-41f9-b6b3-b1d1e7493fb8}" locklevel="0" colspan="1" rowspan="3">
+                        <labels>
+                          <label description="Tell us about your drainage precautions" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_tellusaboutyourdrainageprecautions" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_tellusaboutyourdrainageprecautions" disabled="false" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+                <section name="tab1_section_10" id="faa158f3-3cf9-413f-9835-78766e7f4e72" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Local Enactment Compliance" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" locklevel="0" id="{976a4048-0e74-4c17-8d8d-cac7a828d0cc}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{28fc52cb-aa10-4f62-a8aa-e8afad9cc92d}" locklevel="0" colspan="1" rowspan="3">
+                        <labels>
+                          <label description="Local Enactment Compliance" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_localenactmentcompliance" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_localenactmentcompliance" disabled="false" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="50%">
+              <sections>
+                <section name="_section_557" id="2063115e-c798-46cf-8eb8-b1efbc6c9e7d" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Build Proposed Works" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" locklevel="0" id="{7e102048-db6c-4f48-a01c-cb228e139c9d}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e7e5104d-20f4-4052-a7e0-5cda17c385c2}" locklevel="0" colspan="1" rowspan="3">
+                        <labels>
+                          <label description="Description of Works" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_workdescription" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_workdescription" disabled="false" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row>
+                      <cell id="{58054ee4-adea-405b-8a87-a042077cd831}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Number of Floors" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_numberstoreys" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_numberstoreys" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{49f91c64-8642-4090-b901-068d7de06199}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Height (M)" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_height" classid="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}" datafieldname="bsr_height" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c83591a3-5f4e-4679-a043-04d76ee8477a}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Number of Residential Units" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_numberresidentialunits" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_numberresidentialunits" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{8b2ec20d-68bc-4daf-b034-5caec73f3760}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Number of Non-Residential Units" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_numbernonresidentialunits" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_numbernonresidentialunits" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{88290dca-85da-4d4c-90e6-c598cf61e6fe}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Primary Use" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_primaryuse" classid="{4AA28AB7-9C13-4F57-A73D-AD894D048B5F}" datafieldname="bsr_primaryuse" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{fa0ce35d-a7f2-4c3e-bc3e-f285a49f7a3a}" locklevel="0" colspan="1" rowspan="3">
+                        <labels>
+                          <label description="Use of Each Floor" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_storeyuse" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_storeyuse" disabled="false" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row>
+                      <cell id="{a5131c9a-805d-4153-a142-6fd558375f50}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Planned Build Time (Months) " languagecode="1033" />
+                        </labels>
+                        <control id="bsr_plannedbuildtime" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_plannedbuildtime" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="tab1_section_12" id="ce25acb2-f23f-46a3-adf9-a322f292727a" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Build Prescribed Documents" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" locklevel="0" id="{2bc166c3-88d6-4595-850b-3612c6f17e94}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c0bb2101-6e0f-4563-b24d-9c87b31c5bb1}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Planning Statement" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_planningstatement" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_planningstatement" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6968bda2-b3d7-4f7b-8450-c487b511cbd4}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Fire and Emergency Files" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_fireemergencyfiles" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_fireemergencyfiles" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c4d259af-2ae5-4eaf-bc0d-eb99e98f6a80}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Construction Control Plan" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_constructioncontrolplan" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_constructioncontrolplan" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0e7e63ea-2f3f-4413-8c79-11b8051a45fe}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="MOR Plan" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_morplan" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_morplan" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6ac5a833-2e16-43a3-984f-1d2b4dfef05e}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Building Regulations Compliance Statement" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_buildingregcompliance" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_buildingregcompliance" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{42a8c5dd-6430-426f-b73b-9a11a846291f}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Competence Declaration" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_competencedeclaration" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_competencedeclaration" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{02f59647-93ab-4d20-8de8-33d080e35b02}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Client Signed Statement" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_clientsignedstatement" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_clientsignedstatement" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e8fcff7e-5e2b-49d5-8932-385f728de17e}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Drawings and Plans" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_drawingsandplans" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_drawingsandplans" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="tab1_section_13" id="e1003f13-a828-4513-8a15-82ea9515ceb9" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Change of Use Proposed Works" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" locklevel="0" id="{eb341b9e-027d-42f4-9a71-d3ba21d7d25a}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{1c78858d-631f-444c-b00a-db41c30f3459}" locklevel="0" colspan="1" rowspan="3">
+                        <labels>
+                          <label description="Description of Works" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_changeworksdescription" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_changeworksdescription" disabled="false" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row>
+                      <cell id="{1a2e76f8-3703-40aa-a27c-c367d4dcd3d6}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Number of Floors" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_changenumberstoreys" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_changenumberstoreys" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{5dbbc205-e601-4ffb-8cd8-8c7c9bbb2cdd}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Height (M)" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_changeheight" classid="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}" datafieldname="bsr_changeheight" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{76740b3b-c810-4501-a857-883444f51624}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Number of Residential Units" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_changenumberofresidentialunits" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_changenumberofresidentialunits" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{71cad073-7d68-4723-8f1a-1ff5771d5dcb}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Number of Non-Residential Units" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_changenonresidentialunits" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_changenonresidentialunits" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ac49954a-641d-4a4a-844d-75edcd91f6f3}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Primary Use" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_changeprimaryuse" classid="{4AA28AB7-9C13-4F57-A73D-AD894D048B5F}" datafieldname="bsr_changeprimaryuse" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4fe4f56c-4c90-498b-b2c8-2060882e288b}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Use of Each Floor" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_changeuseofeachstory" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_changeuseofeachstory" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{8fbbbda6-2b0a-42a0-9441-83f46684ed0d}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Planned Build Time (Months)" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_changeplannedbuildtime" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_changeplannedbuildtime" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="tab1_section_14" id="ed1add38-e71f-4ad4-8a76-f1fef374c7b2" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Change of Use Prescribed Documents" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" locklevel="0" id="{ec2887c3-ee6c-49ca-8591-09a4eece49dd}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{fc84e6ed-5c01-45cd-bb40-7e4b2c7c7ff2}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Planning Statement" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_changeplanningstatement" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_changeplanningstatement" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{bfa8f6fe-6cc9-4e39-8262-bc0cd115c257}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Fire and Emergency Files" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_changefireemergencyfiles" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_changefireemergencyfiles" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{187e3c37-1000-404b-818c-62f9b28cb79c}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Construction Control Plan" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_changeconstructioncontrolplan" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_changeconstructioncontrolplan" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{16439f99-674f-40ea-9cb7-a81c3aa5dea4}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Change Control Plan" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_changecontrolplan" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_changecontrolplan" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f47bdb56-d8f6-455a-bcae-dd923c8e779c}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="MOR Plan" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_changemorplan" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_changemorplan" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{9ef25a3f-0f95-4b1d-bb8b-737acbc4653c}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Building Regulations Compliance Statement" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_changebuildingregcompliance" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_changebuildingregcompliance" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2125d826-08c9-41a0-a731-23ac5490472d}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Competence Declaration" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_changecompetencedeclaration" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_changecompetencedeclaration" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0a12593e-9578-40b8-8a0d-303fd7699a32}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Client Signed Statement" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_changeclientsignedstatement" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_changeclientsignedstatement" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{dfaf4909-f89e-49c8-bd92-7eb5322a3d9d}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Drawings and Plans" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_changedrawingsandplans" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_changedrawingsandplans" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="tab1_section_15" id="49d7b967-ba5a-4f98-8a70-17f88cb19bbb" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Existing Building Current Details" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{5df47dd2-2a3f-4954-86fc-9c2170eb0c9a}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Number of Floors" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_currentnumberstoreys" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_currentnumberstoreys" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{054f9001-d077-4147-8df8-1f306c02bfb9}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Height (M)" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_currentheight" classid="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}" datafieldname="bsr_currentheight" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{addc78f9-95dd-4c85-8943-dbd1c91e3754}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Number of Residential Units" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_currentnumberofresidentialunits" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_currentnumberofresidentialunits" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3d959349-02e6-4ce2-9435-0ef905443c26}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Number of Non-Residential Units" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_currentnonresidentialunits" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_currentnonresidentialunits" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{89a815ed-ac2e-4379-a328-9e629ca909c1}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Primary Use" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_currentprimaryuse" classid="{4AA28AB7-9C13-4F57-A73D-AD894D048B5F}" datafieldname="bsr_currentprimaryuse" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f1d1b17c-bdc8-498f-8c68-f89d1de4646b}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Use of Each Floor" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_currentstoreyuse" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_currentstoreyuse" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="tab1_section_16" id="605dce2b-6f06-4d0f-a33d-37b5429e5f9a" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Existing Building Proposed Works" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" locklevel="0" id="{1d5ddc84-db93-4ae6-a852-d060c98cb5d2}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c6137240-328b-4ec8-a51b-491211569567}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Description of Works" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_currentworksdescriptionproposed" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_currentworksdescriptionproposed" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c63df4df-1cdf-4b6a-b34f-8f1d42a505a8}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Number of Floors" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_currentnumberstoreysproposed" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_currentnumberstoreysproposed" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{958dcc83-5b92-48ea-9008-910516bd2fb4}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Height (M)" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_currentheightproposed" classid="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}" datafieldname="bsr_currentheightproposed" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e9bd35a2-e7da-4300-9d02-9de2ac41d149}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Number of Residential Units" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_currentnumberofresidentialunitsproposed" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_currentnumberofresidentialunitsproposed" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d74f5b0d-7fe5-462b-8707-fa901f45566d}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Number of Non-Residential Units" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_currentnonresidentialunitsproposed" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_currentnonresidentialunitsproposed" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{9b4d490e-8b79-45fd-8efc-1401e7917223}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Primary Use" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_proposedprimaryuse" classid="{4AA28AB7-9C13-4F57-A73D-AD894D048B5F}" datafieldname="bsr_proposedprimaryuse" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7a102175-75dc-416d-be38-67b764054629}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Use of Each Floor" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_currentuseofeachstoryproposed" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_currentuseofeachstoryproposed" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2fd24916-b1c4-4e63-b56e-6f07dcced0e0}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Planned Build Time (Months)" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_currentplannedbuildtimeproposed" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_currentplannedbuildtimeproposed" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="tab1_section_17" id="51773ca4-b74c-4744-ad59-a4670b9d6c64" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Existing Building Prescribed Documents - Cat A" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" locklevel="0" id="{22151dbd-fe58-4b9a-93e7-1da5289f7009}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b381013e-8897-485d-9b31-bf27666fc0d5}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Planning Statement" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_planningstatementcata" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_planningstatementcata" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{55a5cadc-0907-40f9-87e0-56083bbe528c}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Fire and Emergency Files" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_fireemergencyfilescata" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_fireemergencyfilescata" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2a242e8b-f6f1-41da-9aea-a71b3e3f28d0}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Construction Control Plan" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_constructioncontrolplancata" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_constructioncontrolplancata" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{5e705dba-04d3-455e-88a0-bb3f67f7c827}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="MOR Plan" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_morplancata" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_morplancata" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4357ac52-e793-4baf-80a3-d856d7d48e86}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Building Regulations Compliance Statement" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_buildingregcompliancecata" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_buildingregcompliancecata" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b6666f44-9395-4aae-a0ca-c41e252799d3}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Competence Declaration" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_competencedeclarationcata" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_competencedeclarationcata" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{dc45e91d-ce3e-4c8a-b80f-310c67f5db64}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Client Signed Statement" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_clientsignedstatementcata" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_clientsignedstatementcata" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2f6e26fa-ba42-4450-b67d-1da5ab23cf15}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Drawings and Plans" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_drawingsandplanscata" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_drawingsandplanscata" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="tab1_section_18" id="4e1c7d17-a3e3-4373-8ef7-7a5f9d99c42d" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Existing Building Prescribed Documents - Cat B" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" locklevel="0" id="{7639b504-53ad-402d-9f1d-fe8e9bb92a2f}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{20a15fc5-6325-4a7f-a6a9-c35938077ef3}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Planning Statement" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_planningstatementcatb" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_planningstatementcatb" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f681c042-0f51-4795-84ad-fefc52cd79a8}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Fire and Emergency Files" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_fireemergencyfilescatb" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_fireemergencyfilescatb" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d81861b3-19a5-4c66-9ba0-212c4dedbc94}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Construction Control Plan" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_constructioncontrolplancatb" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_constructioncontrolplancatb" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{dc406e0c-89c3-4ac3-9d21-217164a415a6}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="MOR Plan" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_morplancatb" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_morplancatb" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{96716ccc-4167-4e7a-ba54-806d4d19ea6e}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Building Regulations Compliance Statement" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_buildingregcompliancecatb" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_buildingregcompliancecatb" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{1cef4f9d-9750-4a6d-9cdc-94a3cd49ab12}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Competence Declaration" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_competencedeclarationcatb" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_competencedeclarationcatb" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3cdceef8-4e46-4735-9ee9-0aaeb3c415b3}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Client Signed Statement" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_clientsignedstatementcatb" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_clientsignedstatementcatb" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{24fe1d9d-c09f-4978-bad5-05470105bfc6}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Drawings and Plans" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_drawingsandplanscatb" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_drawingsandplanscatb" disabled="false" />
                       </cell>
                     </row>
                   </rows>
@@ -162,12 +995,6 @@
                 <label description="" languagecode="1033" />
               </labels>
             </cell>
-            <cell id="{28d5c40c-1862-42d0-92c2-b223e5610ab3}" colspan="1" rowspan="1">
-              <labels>
-                <label description="Owner" languagecode="1033" />
-              </labels>
-              <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
-            </cell>
           </row>
         </rows>
       </header>
@@ -192,33 +1019,144 @@
           </row>
         </rows>
       </footer>
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
       <controlDescriptions>
-        <controlDescription forControl="{b63a2f03-5c04-4f13-a09a-e1d856ac7e20}">
+        <controlDescription forControl="{1767ec10-3ca1-470e-8440-9cef75a62fc1}">
+          <customControl id="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}">
+            <parameters>
+              <datafieldname>bsr_partialcompletion</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.OptionSet.OptionSetControl">
+            <parameters>
+              <value type="OptionSet">bsr_partialcompletion</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.OptionSet.OptionSetControl">
+            <parameters>
+              <value type="OptionSet">bsr_partialcompletion</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.OptionSet.OptionSetControl">
+            <parameters>
+              <value type="OptionSet">bsr_partialcompletion</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{468842b0-64af-4c35-ad8b-08fd73a9f6b8}">
           <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
             <parameters>
-              <datafieldname>bsr_buildinghaveaddress</datafieldname>
+              <datafieldname>bsr_nonhrb</datafieldname>
             </parameters>
           </customControl>
           <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
             <parameters>
-              <value type="TwoOptions">bsr_buildinghaveaddress</value>
+              <value type="TwoOptions">bsr_nonhrb</value>
             </parameters>
           </customControl>
           <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
             <parameters>
-              <value type="TwoOptions">bsr_buildinghaveaddress</value>
+              <value type="TwoOptions">bsr_nonhrb</value>
             </parameters>
           </customControl>
           <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
             <parameters>
-              <value type="TwoOptions">bsr_buildinghaveaddress</value>
+              <value type="TwoOptions">bsr_nonhrb</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{6e8bc707-6948-4374-843e-1cbc5880b2a4}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>bsr_newdrainorsewer</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">bsr_newdrainorsewer</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">bsr_newdrainorsewer</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">bsr_newdrainorsewer</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{52f4cb6c-e9fd-44a4-9002-86b8bfd2c243}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>bsr_buildoverwithin3mofcentrelineflow</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">bsr_buildoverwithin3mofcentrelineflow</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">bsr_buildoverwithin3mofcentrelineflow</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">bsr_buildoverwithin3mofcentrelineflow</value>
             </parameters>
           </customControl>
         </controlDescription>
       </controlDescriptions>
+      <Navigation>
+        <NavBar />
+        <NavBarAreas>
+          <NavBarArea Id="Info">
+            <Titles>
+              <Title LCID="1033" Text="Common" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Sales">
+            <Titles>
+              <Title LCID="1033" Text="Sales" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Service">
+            <Titles>
+              <Title LCID="1033" Text="Service" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Marketing">
+            <Titles>
+              <Title LCID="1033" Text="Marketing" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="ProcessCenter">
+            <Titles>
+              <Title LCID="1033" Text="Process Sessions" />
+            </Titles>
+          </NavBarArea>
+        </NavBarAreas>
+      </Navigation>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+      <formLibraries>
+        <Library name="bsr_/buildingcontrol/tables/bsr_buildingdetails/script/bsr_buildingdetails.js" libraryUniqueId="{375ef221-b10f-40b7-a9cf-54450adf64f8}" />
+      </formLibraries>
+      <events>
+        <event name="onload" application="false" active="false">
+          <Handlers>
+            <Handler functionName="BuildingDetails.ShowHidePrimaryUseFields" libraryName="bsr_/buildingcontrol/tables/bsr_buildingdetails/script/bsr_buildingdetails.js" handlerUniqueId="{810581d0-70ec-4fd3-a1ad-a84824f92211}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onsave" application="false" active="false">
+          <Handlers>
+            <Handler functionName="BuildingDetails.ShowHidePrimaryUseFields" libraryName="bsr_/buildingcontrol/tables/bsr_buildingdetails/script/bsr_buildingdetails.js" handlerUniqueId="{08cd61ab-caca-4714-8c1e-4aa444f1d56b}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
