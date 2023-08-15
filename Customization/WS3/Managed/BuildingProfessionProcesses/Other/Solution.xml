@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23073.158" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23074.180" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>BuildingProfessionProcesses</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Profession Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.12.0</Version>
+    <Version>1.0.13.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -177,15 +177,15 @@
         <Dependent type="29" displayName="Update BPA status to &quot;Ready&quot; when reconciliation status is &quot;Successful&quot;" id="{f42d8747-0a1f-ee11-9967-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_country" displayName="Country" solution="BuildingRegCore (1.17.35.0)" />
+        <Required type="1" schemaName="bsr_country" displayName="Country" solution="BuildingRegCore (1.17.41.1)" />
         <Dependent type="29" displayName="Auto poulate Name field for BI Registration Country" id="{2b12db6d-ad24-ee11-9965-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_country" displayName="Country" solution="BuildingRegCore (1.17.35.0)" />
+        <Required type="1" schemaName="bsr_country" displayName="Country" solution="BuildingRegCore (1.17.41.1)" />
         <Dependent type="29" displayName="Populate Address 2 Country Field Post Contact" id="{4661f63d-9536-ee11-bdf4-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_payment" displayName="Gov UK Payment" solution="BuildingRegCore (1.17.35.0)" />
+        <Required type="1" schemaName="bsr_payment" displayName="Gov UK Payment" solution="BuildingRegCore (1.17.41.1)" />
         <Dependent type="29" displayName="Update BPA status to &quot;Ready&quot; when reconciliation status is &quot;Successful&quot;" id="{f42d8747-0a1f-ee11-9967-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
@@ -237,6 +237,10 @@
         <Dependent type="29" displayName="Default BPA Date of Decision and Date of Registration" id="{b267ad7a-8b21-ee11-9966-0022481b59de}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_regulatorydecisionstatus" displayName="Regulatory Decision Status" parentSchemaName="bsr_buildingprofessionapplication" parentDisplayName="Building Profession Application" solution="Active" />
+        <Dependent type="29" displayName="Default Date of Commencement to 06.04.24 if earlie" id="{ba0777e5-2126-ee11-9965-0022481b59de}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Application Status" parentSchemaName="bsr_buildingprofessionapplication" parentDisplayName="Building Profession Application" solution="Active" />
         <Dependent type="29" displayName="Auto populate BPA Hold Review Date" id="{a4537a39-3a2a-ee11-bdf4-0022481b56d1}" />
       </MissingDependency>
@@ -245,7 +249,7 @@
         <Dependent type="29" displayName="Default BPA Date of Decision and Date of Registration" id="{b267ad7a-8b21-ee11-9966-0022481b59de}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="BuildingRegCore (1.17.35.0)" id.schemaname="bsr_noreplyqueueid" />
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="BuildingRegCore (1.17.41.1)" id.schemaname="bsr_noreplyqueueid" />
         <Dependent type="29" displayName="Send Building Profession Application Return Code" id="{0de98ff2-a515-ee11-9cbe-0022481b5210}" />
       </MissingDependency>
     </MissingDependencies>
