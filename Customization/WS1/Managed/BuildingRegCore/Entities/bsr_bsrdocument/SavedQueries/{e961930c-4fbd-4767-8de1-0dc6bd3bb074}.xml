@@ -11,6 +11,9 @@
       <grid name="resultset" jump="subject" select="1" icon="1" preview="1">
         <row name="result" id="activityid">
           <cell name="subject" width="300" />
+          <cell name="bsr_documentlocationcode" width="152" />
+          <cell name="bsr_bsrdocumentorigincode" width="100" />
+          <cell name="bsr_contactid" width="111" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -26,6 +29,9 @@
           <filter type="and">
             <condition attribute="statecode" operator="not-null" />
           </filter>
+          <attribute name="bsr_bsrdocumentorigincode" />
+          <attribute name="bsr_documentlocationcode" />
+          <attribute name="bsr_contactid" />
         </entity>
       </fetch>
     </fetchxml>

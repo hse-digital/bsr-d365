@@ -11,7 +11,8 @@
       <grid name="bsr_bsrdocuments" jump="subject" select="1" icon="1" preview="0">
         <row name="bsr_bsrdocument" id="activityid">
           <cell name="subject" width="300" />
-          <cell name="createdon" width="125" />
+          <cell name="bsr_contactid" width="111" />
+          <cell name="bsr_bsrdocumentorigincode" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -21,13 +22,14 @@
         <entity name="bsr_bsrdocument">
           <attribute name="activityid" />
           <attribute name="subject" />
-          <attribute name="createdon" />
           <filter type="and">
             <condition attribute="statecode" operator="in">
               <value>0</value>
               <value>3</value>
             </condition>
           </filter>
+          <attribute name="bsr_contactid" />
+          <attribute name="bsr_bsrdocumentorigincode" />
         </entity>
       </fetch>
     </fetchxml>
