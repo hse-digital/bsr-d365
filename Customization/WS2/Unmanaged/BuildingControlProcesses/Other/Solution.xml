@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Control Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.3.0</Version>
+    <Version>1.0.4.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -80,17 +80,32 @@
       </Addresses>
     </Publisher>
     <RootComponents>
+      <RootComponent type="29" id="{173a80a5-053d-ee11-bdf4-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{26bd59d9-2c22-ee11-9966-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{2da81556-423c-ee11-bdf4-6045bdc208e3}" behavior="0" />
       <RootComponent type="29" id="{2f3184e0-b83a-ee11-bdf4-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="29" id="{3514c78f-8200-ee11-8f6d-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{3afbc31a-c036-ee11-bdf4-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="29" id="{94088361-433c-ee11-bdf4-6045bdd0e4cf}" behavior="0" />
+      <RootComponent type="29" id="{9c114d37-213d-ee11-bdf4-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{ad4f016b-4d3c-ee11-bdf4-6045bdf1ea4d}" behavior="0" />
       <RootComponent type="29" id="{bb83c958-443c-ee11-bdf4-6045bdd0e4cf}" behavior="0" />
+      <RootComponent type="29" id="{ca7fdd69-d73d-ee11-bdf4-6045bdd0ef54}" behavior="0" />
       <RootComponent type="29" id="{cb363430-c936-ee11-bdf4-6045bdf1e965}" behavior="0" />
     </RootComponents>
     <MissingDependencies>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="BuildingRegCore (1.17.49.3)" />
+        <Dependent type="29" displayName="Set BCA BSR Document Regarding" id="{173a80a5-053d-ee11-bdf4-6045bdf1e965}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="BuildingRegCore (1.17.49.3)" />
+        <Dependent type="29" displayName="Create BCA BSR Document For Uploaded Files" id="{9c114d37-213d-ee11-bdf4-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="BuildingRegCore (1.17.49.3)" />
+        <Dependent type="29" displayName="Delete BCA BSR Document On File Deletion" id="{ca7fdd69-d73d-ee11-bdf4-6045bdd0ef54}" />
+      </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingcontrolapplication" displayName="Building Control Application" solution="Active" />
         <Dependent type="29" displayName="Create Building Control Application Document Location" id="{26bd59d9-2c22-ee11-9966-6045bdf1e965}" />
@@ -170,6 +185,22 @@
       <MissingDependency>
         <Required type="2" schemaName="ownerid" displayName="Regulatory Lead" parentSchemaName="bsr_buildingdetails" parentDisplayName="Building Details" solution="Active" />
         <Dependent type="29" displayName="Set Building Control Life cycle On Update of Building Details" id="{2f3184e0-b83a-ee11-bdf4-6045bdd0e4cf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointbcafolderid" solution="Active" id.schemaname="bsr_sharepointbcafolderid" />
+        <Dependent type="29" displayName="Create BCA BSR Document For Uploaded Files" id="{9c114d37-213d-ee11-bdf4-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointbcafolderid" solution="Active" id.schemaname="bsr_sharepointbcafolderid" />
+        <Dependent type="29" displayName="Delete BCA BSR Document On File Deletion" id="{ca7fdd69-d73d-ee11-bdf4-6045bdd0ef54}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointsiteurl" solution="BuildingRegCore (1.17.49.3)" id.schemaname="bsr_sharepointsiteurl" />
+        <Dependent type="29" displayName="Create BCA BSR Document For Uploaded Files" id="{9c114d37-213d-ee11-bdf4-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointsiteurl" solution="BuildingRegCore (1.17.49.3)" id.schemaname="bsr_sharepointsiteurl" />
+        <Dependent type="29" displayName="Delete BCA BSR Document On File Deletion" id="{ca7fdd69-d73d-ee11-bdf4-6045bdd0ef54}" />
       </MissingDependency>
     </MissingDependencies>
   </SolutionManifest>
