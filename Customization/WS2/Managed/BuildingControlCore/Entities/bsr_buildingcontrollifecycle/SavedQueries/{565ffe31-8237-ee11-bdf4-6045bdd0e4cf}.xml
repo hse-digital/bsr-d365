@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{565ffe31-8237-ee11-bdf4-6045bdd0e4cf}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
+        <row name="result" id="bsr_buildingcontrollifecycleid">
+          <cell name="bsr_buildingname" width="126" />
+          <cell name="bsr_currentphase" width="119" />
+          <cell name="createdon" width="105" />
+          <cell name="bsr_reglead" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
+        <entity name="bsr_buildingcontrollifecycle">
+          <attribute name="bsr_buildingcontrollifecycleid" />
+          <filter type="and">
+            <condition attribute="bsr_status" operator="eq" value="760810000" />
+            <condition attribute="bsr_reglead" operator="eq-userid" />
+          </filter>
+          <attribute name="bsr_buildingname" />
+          <attribute name="bsr_currentphase" />
+          <attribute name="createdon" />
+          <attribute name="bsr_reglead" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.9.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="My Active Building Control Lifecycle" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

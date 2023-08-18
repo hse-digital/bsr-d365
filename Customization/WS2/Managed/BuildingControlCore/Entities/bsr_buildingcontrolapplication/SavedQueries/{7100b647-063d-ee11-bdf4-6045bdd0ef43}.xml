@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{7100b647-063d-ee11-bdf4-6045bdd0ef43}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
+        <row name="result" id="bsr_buildingcontrolapplicationid">
+          <cell name="bsr_bcaareferencenumber" width="189" />
+          <cell name="bsr_submissiondate" width="136" />
+          <cell name="statecode" width="100" />
+          <cell name="bsr_regleadsupport" width="182" />
+          <cell name="bsr_caseofficer" width="111" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
+        <entity name="bsr_buildingcontrolapplication">
+          <attribute name="bsr_buildingcontrolapplicationid" />
+          <attribute name="bsr_bcaareferencenumber" />
+          <attribute name="bsr_submissiondate" />
+          <attribute name="statecode" />
+          <attribute name="bsr_regleadsupport" />
+          <attribute name="bsr_caseofficer" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+            <condition attribute="ownerid" operator="eq-userid" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.10.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="My BCA Applications" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
