@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Profession Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.13.0</Version>
+    <Version>1.0.14.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -80,7 +80,9 @@
       </Addresses>
     </Publisher>
     <RootComponents>
+      <RootComponent type="29" id="{000276b7-de3d-ee11-bdf4-0022481b5210}" behavior="0" />
       <RootComponent type="29" id="{0de98ff2-a515-ee11-9cbe-0022481b5210}" behavior="0" />
+      <RootComponent type="29" id="{12bd3c12-063d-ee11-bdf4-0022481b56d1}" behavior="0" />
       <RootComponent type="29" id="{152cb1e4-0d32-ee11-bdf3-0022481b5210}" behavior="0" />
       <RootComponent type="29" id="{242b55d0-5130-ee11-bdf3-0022481b5210}" behavior="0" />
       <RootComponent type="29" id="{2b12db6d-ad24-ee11-9965-0022481b56d1}" behavior="0" />
@@ -94,6 +96,7 @@
       <RootComponent type="29" id="{ba0777e5-2126-ee11-9965-0022481b59de}" behavior="0" />
       <RootComponent type="29" id="{eb2ebefd-2d0c-ee11-8f6e-0022481b5210}" behavior="0" />
       <RootComponent type="29" id="{f42d8747-0a1f-ee11-9967-0022481b56d1}" behavior="0" />
+      <RootComponent type="29" id="{fffe199d-d93d-ee11-bdf4-0022481b5210}" behavior="0" />
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
@@ -131,6 +134,18 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_biregcountry" displayName="BI Registration Country" solution="Active" />
         <Dependent type="29" displayName="Auto poulate Name field for BI Registration Country" id="{2b12db6d-ad24-ee11-9965-0022481b56d1}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="BuildingRegCore (1.17.49.3)" />
+        <Dependent type="29" displayName="Delete BPA BSR Document On File Deletion" id="{000276b7-de3d-ee11-bdf4-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="BuildingRegCore (1.17.49.3)" />
+        <Dependent type="29" displayName="Set BPA BSR Document Regarding" id="{12bd3c12-063d-ee11-bdf4-0022481b56d1}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="BuildingRegCore (1.17.49.3)" />
+        <Dependent type="29" displayName="Create BPA BSR Document For Uploaded Files" id="{fffe199d-d93d-ee11-bdf4-0022481b5210}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingprofessionapplication" displayName="Building Profession Application" solution="Active" />
@@ -177,15 +192,15 @@
         <Dependent type="29" displayName="Update BPA status to &quot;Ready&quot; when reconciliation status is &quot;Successful&quot;" id="{f42d8747-0a1f-ee11-9967-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_country" displayName="Country" solution="BuildingRegCore (1.17.41.1)" />
+        <Required type="1" schemaName="bsr_country" displayName="Country" solution="BuildingRegCore (1.17.49.3)" />
         <Dependent type="29" displayName="Auto poulate Name field for BI Registration Country" id="{2b12db6d-ad24-ee11-9965-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_country" displayName="Country" solution="BuildingRegCore (1.17.41.1)" />
+        <Required type="1" schemaName="bsr_country" displayName="Country" solution="BuildingRegCore (1.17.49.3)" />
         <Dependent type="29" displayName="Populate Address 2 Country Field Post Contact" id="{4661f63d-9536-ee11-bdf4-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_payment" displayName="Gov UK Payment" solution="BuildingRegCore (1.17.41.1)" />
+        <Required type="1" schemaName="bsr_payment" displayName="Gov UK Payment" solution="BuildingRegCore (1.17.49.3)" />
         <Dependent type="29" displayName="Update BPA status to &quot;Ready&quot; when reconciliation status is &quot;Successful&quot;" id="{f42d8747-0a1f-ee11-9967-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
@@ -249,8 +264,24 @@
         <Dependent type="29" displayName="Default BPA Date of Decision and Date of Registration" id="{b267ad7a-8b21-ee11-9966-0022481b59de}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="BuildingRegCore (1.17.41.1)" id.schemaname="bsr_noreplyqueueid" />
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="BuildingRegCore (1.17.49.3)" id.schemaname="bsr_noreplyqueueid" />
         <Dependent type="29" displayName="Send Building Profession Application Return Code" id="{0de98ff2-a515-ee11-9cbe-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointbpafolderid" solution="Active" id.schemaname="bsr_sharepointbpafolderid" />
+        <Dependent type="29" displayName="Delete BPA BSR Document On File Deletion" id="{000276b7-de3d-ee11-bdf4-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointbpafolderid" solution="Active" id.schemaname="bsr_sharepointbpafolderid" />
+        <Dependent type="29" displayName="Create BPA BSR Document For Uploaded Files" id="{fffe199d-d93d-ee11-bdf4-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointsiteurl" solution="BuildingRegCore (1.17.49.3)" id.schemaname="bsr_sharepointsiteurl" />
+        <Dependent type="29" displayName="Delete BPA BSR Document On File Deletion" id="{000276b7-de3d-ee11-bdf4-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointsiteurl" solution="BuildingRegCore (1.17.49.3)" id.schemaname="bsr_sharepointsiteurl" />
+        <Dependent type="29" displayName="Create BPA BSR Document For Uploaded Files" id="{fffe199d-d93d-ee11-bdf4-0022481b5210}" />
       </MissingDependency>
     </MissingDependencies>
   </SolutionManifest>
