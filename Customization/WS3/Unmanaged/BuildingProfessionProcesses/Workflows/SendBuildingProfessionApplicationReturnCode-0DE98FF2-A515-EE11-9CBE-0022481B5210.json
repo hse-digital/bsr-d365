@@ -154,7 +154,7 @@
                 },
                 "Compose": {
                   "runAfter": {
-                    "Html_to_text": [
+                    "Compose_2": [
                       "Succeeded"
                     ]
                   },
@@ -225,7 +225,7 @@
                     }
                   },
                   "runAfter": {
-                    "Compose_2": [
+                    "Compose": [
                       "Succeeded"
                     ]
                   },
@@ -236,7 +236,7 @@
                 },
                 "Compose_2": {
                   "runAfter": {
-                    "Compose": [
+                    "Html_to_text": [
                       "Succeeded"
                     ]
                   },
@@ -244,7 +244,7 @@
                     "operationMetadataId": "cce09bae-fa00-4dd5-90e8-ee35b5cf6238"
                   },
                   "type": "Compose",
-                  "inputs": "\\bsr_buildingprofessionapplication\\@{triggerOutputs()?['body/bsr_buildingprofessionapplicationid']}"
+                  "inputs": "@body('Html_to_text')"
                 }
               },
               "runAfter": {

@@ -37,37 +37,19 @@
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
             },
             "parameters": {
-              "subscriptionRequest/message": 1,
+              "subscriptionRequest/message": 4,
               "subscriptionRequest/entityname": "bsr_biindependentassessment",
-              "subscriptionRequest/scope": 4
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "bsr_buildingprofessionapplication"
             },
             "authentication": "@parameters('$authentication')"
           }
         }
       },
       "actions": {
-        "Get_a_BPA_row_by_ID": {
-          "runAfter": {},
-          "metadata": {
-            "operationMetadataId": "c99f2550-c407-4fdb-aaac-7d1a15a418b9"
-          },
-          "type": "OpenApiConnection",
-          "inputs": {
-            "host": {
-              "connectionName": "shared_commondataserviceforapps",
-              "operationId": "GetItem",
-              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-            },
-            "parameters": {
-              "entityName": "bsr_buildingprofessionapplications",
-              "recordId": "@triggerOutputs()?['body/_bsr_buildingprofessionapplication_value']"
-            },
-            "authentication": "@parameters('$authentication')"
-          }
-        },
         "Update_a_row": {
           "runAfter": {
-            "Get_a_BPA_row_by_ID": [
+            "Condition": [
               "Succeeded"
             ]
           },
@@ -84,10 +66,47 @@
             "parameters": {
               "entityName": "bsr_biindependentassessments",
               "recordId": "@triggerOutputs()?['body/bsr_biindependentassessmentid']",
-              "item/bsr_name": "Independent assessment for @{outputs('Get_a_BPA_row_by_ID')?['body/bsr_buildingproappid']}"
+              "item/bsr_name": "Independent Assessment @{if(\r\n    equals(\r\n        coalesce(outputs('Get_a_BPA_row_by_ID')?['body/bsr_buildingproappid'], 'NULL'), \r\n        'NULL'\r\n    ), \r\n    '', \r\n    concat('for ', outputs('Get_a_BPA_row_by_ID')?['body/bsr_buildingproappid'])\r\n)}"
             },
             "authentication": "@parameters('$authentication')"
           }
+        },
+        "Condition": {
+          "actions": {},
+          "runAfter": {},
+          "else": {
+            "actions": {
+              "Get_a_BPA_row_by_ID": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "c99f2550-c407-4fdb-aaac-7d1a15a418b9"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps",
+                    "operationId": "GetItem",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "bsr_buildingprofessionapplications",
+                    "recordId": "@triggerOutputs()?['body/_bsr_buildingprofessionapplication_value']"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/_bsr_buildingprofessionapplication_value']",
+              null
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "0c4f0c98-fdcf-4a93-8567-27996f5c2744"
+          },
+          "type": "If"
         }
       }
     },

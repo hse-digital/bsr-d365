@@ -46,28 +46,9 @@
         }
       },
       "actions": {
-        "Get_a_Building_Inspector_Contact_row_by_ID": {
-          "runAfter": {},
-          "metadata": {
-            "operationMetadataId": "42b1adf6-c247-4fbf-8865-407b2a52698a"
-          },
-          "type": "OpenApiConnection",
-          "inputs": {
-            "host": {
-              "connectionName": "shared_commondataserviceforapps",
-              "operationId": "GetItem",
-              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-            },
-            "parameters": {
-              "entityName": "contacts",
-              "recordId": "@triggerOutputs()?['body/_bsr_buildinginspectorid_value']"
-            },
-            "authentication": "@parameters('$authentication')"
-          }
-        },
         "Update_The_BI_Professional_Membership_Row": {
           "runAfter": {
-            "Get_a_Professional_Body_Account_row_by_ID": [
+            "Condition": [
               "Succeeded"
             ]
           },
@@ -84,37 +65,184 @@
             "parameters": {
               "entityName": "bsr_biprofessionalmemberships",
               "recordId": "@triggerOutputs()?['body/bsr_biprofessionalmembershipid']",
-              "item/bsr_name": "@{outputs('Get_a_Building_Inspector_Contact_row_by_ID')?['body/fullname']} Membership - @{outputs('Get_a_Professional_Body_Account_row_by_ID')?['body/name']}"
+              "item/bsr_name": "@{variables('varBIContact')} Membership - @{variables('varProfessionalBody')}"
             },
             "authentication": "@parameters('$authentication')"
           }
         },
-        "Get_a_Professional_Body_Account_row_by_ID": {
+        "Get_a_BI_Contact": {
+          "actions": {
+            "Set_varBIContact_blank": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "d618b40a-3dc4-421a-b811-2f51d8903a59"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "varBIContact",
+                "value": " "
+              }
+            }
+          },
           "runAfter": {
-            "Get_a_Building_Inspector_Contact_row_by_ID": [
+            "Initialize_varProfessionalBody": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Get_a_Building_Inspector_Contact_row_by_ID": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "42b1adf6-c247-4fbf-8865-407b2a52698a"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps",
+                    "operationId": "GetItem",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "contacts",
+                    "recordId": "@triggerOutputs()?['body/_bsr_buildinginspectorid_value']"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              },
+              "Set_varBIContact_Full_Name": {
+                "runAfter": {
+                  "Get_a_Building_Inspector_Contact_row_by_ID": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "c025aedb-910f-45eb-ae99-b458ff465fdb"
+                },
+                "type": "SetVariable",
+                "inputs": {
+                  "name": "varBIContact",
+                  "value": " @{outputs('Get_a_Building_Inspector_Contact_row_by_ID')?['body/fullname']}"
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/_bsr_buildinginspectorid_value']",
+              null
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "321dcab2-c2be-45e4-b4f2-4da78b74089c"
+          },
+          "type": "If"
+        },
+        "Initialize_varBIContact": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "0954dfb3-f878-4f56-a676-a9ae58ffd5da"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varBIContact",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Condition": {
+          "actions": {
+            "Set_varProfessionalBody_to_Blank": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "8a5bfe7e-12de-4521-8da8-cd67e8abdf4d"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "varProfessionalBody",
+                "value": " "
+              }
+            }
+          },
+          "runAfter": {
+            "Get_a_BI_Contact": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Get_a_Professional_Body_Account_row_by_ID": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "42b1adf6-c247-4fbf-8865-407b2a52698a"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps",
+                    "operationId": "GetItem",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "accounts",
+                    "recordId": "@triggerOutputs()?['body/_bsr_professionalbodyid_value']"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              },
+              "Set_varProfessionalBody_to_Account_Name": {
+                "runAfter": {
+                  "Get_a_Professional_Body_Account_row_by_ID": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "c01e57df-f24e-40d2-9365-33eaf37e1a26"
+                },
+                "type": "SetVariable",
+                "inputs": {
+                  "name": "varProfessionalBody",
+                  "value": "@outputs('Get_a_Professional_Body_Account_row_by_ID')?['body/name']"
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/_bsr_professionalbodyid_value']",
+              null
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "22596afc-993f-4848-9c4c-435d53ebb450"
+          },
+          "type": "If"
+        },
+        "Initialize_varProfessionalBody": {
+          "runAfter": {
+            "Initialize_varBIContact": [
               "Succeeded"
             ]
           },
           "metadata": {
-            "operationMetadataId": "42b1adf6-c247-4fbf-8865-407b2a52698a"
+            "operationMetadataId": "9f3c8eb9-e00b-4bd9-902d-683a885b3a68"
           },
-          "type": "OpenApiConnection",
+          "type": "InitializeVariable",
           "inputs": {
-            "host": {
-              "connectionName": "shared_commondataserviceforapps",
-              "operationId": "GetItem",
-              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-            },
-            "parameters": {
-              "entityName": "accounts",
-              "recordId": "@triggerOutputs()?['body/_bsr_professionalbodyid_value']"
-            },
-            "authentication": "@parameters('$authentication')"
+            "variables": [
+              {
+                "name": "varProfessionalBody",
+                "type": "string"
+              }
+            ]
           }
         }
       }
     },
-    "templateName": null
+    "templateName": ""
   },
   "schemaVersion": "1.0.0.0"
 }

@@ -47,28 +47,9 @@
         }
       },
       "actions": {
-        "Get_a_Building_Profession_Application_row_by_ID": {
-          "runAfter": {},
-          "metadata": {
-            "operationMetadataId": "bb55c880-8a9f-4b9c-82e9-b9bbb2d7524a"
-          },
-          "type": "OpenApiConnection",
-          "inputs": {
-            "host": {
-              "connectionName": "shared_commondataserviceforapps",
-              "operationId": "GetItem",
-              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-            },
-            "parameters": {
-              "entityName": "bsr_buildingprofessionapplications",
-              "recordId": "@triggerOutputs()?['body/_bsr_biapplicationid_value']"
-            },
-            "authentication": "@parameters('$authentication')"
-          }
-        },
         "Get_a_Country_row_by_ID": {
           "runAfter": {
-            "Get_a_Building_Profession_Application_row_by_ID": [
+            "Condition": [
               "Succeeded"
             ]
           },
@@ -108,9 +89,92 @@
             "parameters": {
               "entityName": "bsr_biregcountries",
               "recordId": "@triggerOutputs()?['body/bsr_biregcountryid']",
-              "item/bsr_name": "@{outputs('Get_a_Building_Profession_Application_row_by_ID')?['body/bsr_name']}: @{outputs('Get_a_Country_row_by_ID')?['body/bsr_name']}"
+              "item/bsr_name": "@{variables('varBPA')} - @{outputs('Get_a_Country_row_by_ID')?['body/bsr_name']}"
             },
             "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Condition": {
+          "actions": {
+            "Set_varBPA_Blank": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "b9a02714-b57f-4559-bf06-ccb115313abe"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "varBPA",
+                "value": " "
+              }
+            }
+          },
+          "runAfter": {
+            "Initialize_varBPA": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Get_a_Building_Profession_Application_row_by_ID": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "bb55c880-8a9f-4b9c-82e9-b9bbb2d7524a"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps",
+                    "operationId": "GetItem",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "bsr_buildingprofessionapplications",
+                    "recordId": "@triggerOutputs()?['body/_bsr_biapplicationid_value']"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              },
+              "Set_varBPA_to_BPA": {
+                "runAfter": {
+                  "Get_a_Building_Profession_Application_row_by_ID": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "cc4755af-6780-4bd7-8288-6522d997ee73"
+                },
+                "type": "SetVariable",
+                "inputs": {
+                  "name": "varBPA",
+                  "value": " @{outputs('Get_a_Building_Profession_Application_row_by_ID')?['body/bsr_name']}"
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/_bsr_biapplicationid_value']",
+              null
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "896a6fbe-af03-48e8-88e7-c42069f0442c"
+          },
+          "type": "If"
+        },
+        "Initialize_varBPA": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "157d75be-5f8c-423e-8502-a978cdcae3f9"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varBPA",
+                "type": "string"
+              }
+            ]
           }
         }
       }
