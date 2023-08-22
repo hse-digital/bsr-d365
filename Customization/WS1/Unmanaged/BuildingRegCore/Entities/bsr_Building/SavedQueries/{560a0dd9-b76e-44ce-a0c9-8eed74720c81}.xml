@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{560a0dd9-b76e-44ce-a0c9-8eed74720c81}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
+        <row name="result" id="bsr_buildingid">
+          <cell name="bsr_name" width="300" />
+          <cell name="a_866875c18d51434ba0b9d88d2bfdb85e.bsr_applicationid" width="298" />
+          <cell name="bsr_numberofsectionsassociatedtoabuilding" width="285" />
+          <cell name="a_866875c18d51434ba0b9d88d2bfdb85e.bsr_paptype" width="224" />
+          <cell name="a_866875c18d51434ba0b9d88d2bfdb85e.bsr_registreeid" width="227" />
+          <cell name="a_866875c18d51434ba0b9d88d2bfdb85e.bsr_applicationstage" width="325" />
+          <cell name="a_866875c18d51434ba0b9d88d2bfdb85e.statuscode" width="276" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="bsr_building">
+          <attribute name="bsr_buildingid" />
+          <attribute name="bsr_name" />
+          <attribute name="createdon" />
+          <order attribute="bsr_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="1" />
+          </filter>
+          <link-entity alias="a_866875c18d51434ba0b9d88d2bfdb85e" name="bsr_buildingapplication" to="bsr_buildingapplication_buildingid" from="bsr_buildingapplicationid" link-type="outer" visible="false">
+            <attribute name="bsr_applicationid" />
+            <attribute name="bsr_paptype" />
+            <attribute name="bsr_registreeid" />
+            <attribute name="bsr_applicationstage" />
+            <attribute name="statuscode" />
+          </link-entity>
+          <attribute name="bsr_numberofsectionsassociatedtoabuilding" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Inactive Buildings" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

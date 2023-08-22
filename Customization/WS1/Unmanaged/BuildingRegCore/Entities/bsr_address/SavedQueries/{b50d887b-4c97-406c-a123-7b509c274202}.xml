@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>1</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{b50d887b-4c97-406c-a123-7b509c274202}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
+        <row name="result" id="bsr_addressid">
+          <cell name="bsr_name" width="300" />
+          <cell name="bsr_addresstypecode" width="118" />
+          <cell name="bsr_manualaddress" width="133" />
+          <cell name="bsr_line1" width="126" />
+          <cell name="bsr_line2" width="126" />
+          <cell name="bsr_line3" width="126" />
+          <cell name="bsr_city" width="100" />
+          <cell name="bsr_county" width="100" />
+          <cell name="bsr_country" width="100" />
+          <cell name="bsr_postcode" width="100" />
+          <cell name="bsr_uprn" width="100" />
+          <cell name="bsr_usrn" width="100" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>4</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="bsr_address">
+          <attribute name="bsr_addressid" />
+          <attribute name="bsr_name" />
+          <attribute name="createdon" />
+          <order attribute="bsr_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <filter type="or" isquickfindfields="1">
+            <condition attribute="bsr_name" operator="like" value="{0}" />
+            <condition attribute="bsr_line1" operator="like" value="{0}" />
+            <condition attribute="bsr_postcode" operator="like" value="{0}" />
+          </filter>
+          <attribute name="bsr_line1" />
+          <attribute name="bsr_line2" />
+          <attribute name="bsr_line3" />
+          <attribute name="bsr_addresstypecode" />
+          <attribute name="bsr_city" />
+          <attribute name="bsr_country" />
+          <attribute name="bsr_county" />
+          <attribute name="bsr_postcode" />
+          <attribute name="bsr_uprn" />
+          <attribute name="bsr_usrn" />
+          <attribute name="bsr_manualaddress" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.6.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Quick Find Active Addresses" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

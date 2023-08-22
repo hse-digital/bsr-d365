@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{05bc6ead-27b8-ed11-b597-0022481b5e4f}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
+        <row name="result" id="bsr_paymentid">
+          <cell name="bsr_name" width="300" />
+          <cell name="bsr_paymenttypecode" width="121" />
+          <cell name="bsr_lastfourdigitsofcardnumber" width="100" />
+          <cell name="bsr_timeanddateoftransaction" width="100" />
+          <cell name="bsr_transactionid" width="100" />
+          <cell name="bsr_buildingapplicationid" width="100" />
+          <cell name="bsr_cardexpirydate" width="100" />
+          <cell name="bsr_billingaddress" width="100" />
+          <cell name="bsr_cardbrandegvisa" width="100" />
+          <cell name="bsr_cardtypecreditdebit" width="100" />
+          <cell name="bsr_amountpaid" width="100" />
+          <cell name="bsr_govukpaystatus" width="100" />
+          <cell name="bsr_paymentreconciliationstatus" width="100" />
+          <cell name="bsr_refundreason" width="100" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical" distinct="true">
+        <entity name="bsr_payment">
+          <attribute name="bsr_name" />
+          <attribute name="createdon" />
+          <order attribute="bsr_name" descending="false" />
+          <attribute name="bsr_timeanddateoftransaction" />
+          <attribute name="bsr_transactionid" />
+          <attribute name="bsr_cardexpirydate" />
+          <attribute name="bsr_billingaddress" />
+          <attribute name="bsr_cardbrandegvisa" />
+          <attribute name="bsr_cardtypecreditdebit" />
+          <attribute name="bsr_amountpaid" />
+          <attribute name="bsr_govukpaystatus" />
+          <attribute name="bsr_paymentreconciliationstatus" />
+          <filter type="and">
+            <condition attribute="bsr_paymentreconciliationstatus" operator="eq" value="760810002" />
+          </filter>
+          <attribute name="bsr_paymentid" />
+          <attribute name="bsr_refundreason" />
+          <attribute name="bsr_lastfourdigitsofcardnumber" />
+          <attribute name="bsr_buildingapplicationid" />
+          <attribute name="bsr_paymenttypecode" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.4.1.1</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Failed Payments" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
