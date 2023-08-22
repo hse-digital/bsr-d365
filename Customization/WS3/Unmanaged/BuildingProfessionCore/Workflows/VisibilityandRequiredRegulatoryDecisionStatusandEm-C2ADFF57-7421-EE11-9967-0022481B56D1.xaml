@@ -63,13 +63,13 @@
                     <Sequence DisplayName="SetVisibilityStep1: Show Regulatory Decision Status">
                       <mcwc:SetVisibility ControlId="bsr_regulatorydecisionstatus" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingprofessionapplication" IsVisible="True" />
                     </Sequence>
-                    <Sequence DisplayName="SetFieldRequiredLevelStep3: Mandatory Regulatory Decision Status">
-                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;bsr_buildingprofessionapplication&quot;)]" />
-                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
-                      <mcwc:SetFieldRequiredLevel ControlId="bsr_regulatorydecisionstatus" ControlType="standard" DisplayName="SetFieldRequiredLevelStep3" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingprofessionapplication" RequiredLevel="None" />
-                    </Sequence>
                     <Sequence DisplayName="SetVisibilityStep5: Show Send Regulatory Decision email">
                       <mcwc:SetVisibility ControlId="bsr_issendregulatorydecisionemail" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingprofessionapplication" IsVisible="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep8: New Action">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;bsr_buildingprofessionapplication&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="bsr_regulatorydecisionstatus" ControlType="standard" DisplayName="SetFieldRequiredLevelStep8" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingprofessionapplication" RequiredLevel="Required" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>

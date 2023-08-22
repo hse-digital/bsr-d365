@@ -10,12 +10,11 @@
     <layoutxml>
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_biprofessionalmembershipid">
-          <cell name="bsr_biapplicationid" width="124" />
-          <cell name="bsr_buildinginspectorid" width="145" />
-          <cell name="bsr_currentmembershiplevelortype" width="239" />
-          <cell name="bsr_membershipnumber" width="161" />
-          <cell name="bsr_professionalbodyid" width="144" />
-          <cell name="createdon" width="125" />
+          <cell name="bsr_biapplicationid" width="179" />
+          <cell name="bsr_buildinginspectorid" width="161" />
+          <cell name="bsr_professionalbodyid" width="278" />
+          <cell name="bsr_membershipnumber" width="181" />
+          <cell name="bsr_currentmembershiplevelortype" width="252" />
         </row>
       </grid>
     </layoutxml>
@@ -24,7 +23,6 @@
       <fetch version="1.0" mapping="logical">
         <entity name="bsr_biprofessionalmembership">
           <attribute name="bsr_biprofessionalmembershipid" />
-          <attribute name="createdon" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
@@ -33,7 +31,6 @@
           <attribute name="bsr_currentmembershiplevelortype" />
           <attribute name="bsr_membershipnumber" />
           <attribute name="bsr_professionalbodyid" />
-          <order attribute="createdon" descending="true" />
         </entity>
       </fetch>
     </fetchxml>

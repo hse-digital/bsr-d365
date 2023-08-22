@@ -10,21 +10,21 @@
     <layoutxml>
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_biindependentassessmentid">
-          <cell name="bsr_name" width="300" />
-          <cell name="bsr_schemename" width="122" />
-          <cell name="bsr_assessmentorganisation" width="174" />
-          <cell name="bsr_dateofassessment" width="151" />
-          <cell name="bsr_certificatestatus" width="135" />
-          <cell name="bsr_certificatestatuschangedate" width="205" />
-          <cell name="bsr_certificatestatusreason" width="175" />
-          <cell name="bsr_certificatecode" width="130" />
+          <cell name="bsr_name" width="276" />
+          <cell name="bsr_schemename" width="176" />
           <cell name="bsr_firstname" width="100" />
-          <cell name="bsr_surname" width="100" />
-          <cell name="bsr_candidatehomeaddress" width="177" />
+          <cell name="bsr_surname" width="108" />
+          <cell name="bsr_assessmentorganisation" width="204" />
+          <cell name="bsr_certificatecode" width="156" />
+          <cell name="bsr_dateofassessment" width="189" />
+          <cell name="bsr_certificatestatus" width="135" />
+          <cell name="bsr_certificatestatuschangedate" width="300" />
+          <cell name="bsr_certificatestatusreason" width="175" />
+          <cell name="bsr_bicoflasscertifiedmultipleselection" width="196" />
+          <cell name="bsr_candidatehomeaddress" width="231" />
           <cell name="bsr_candidatenino" width="136" />
-          <cell name="bsr_bicofclasscertified" width="166" />
           <cell name="bsr_confirmationofcanidvalidation" width="266" />
-          <cell name="createdon" width="125" />
+          <cell name="createdon" width="151" />
         </row>
       </grid>
     </layoutxml>
@@ -34,8 +34,6 @@
         <entity name="bsr_biindependentassessment">
           <attribute name="bsr_biindependentassessmentid" />
           <attribute name="bsr_name" />
-          <attribute name="createdon" />
-          <order attribute="bsr_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
@@ -43,15 +41,17 @@
           <attribute name="bsr_assessmentorganisation" />
           <attribute name="bsr_dateofassessment" />
           <attribute name="bsr_certificatestatus" />
-          <attribute name="bsr_certificatestatuschangedate" />
-          <attribute name="bsr_certificatestatusreason" />
           <attribute name="bsr_certificatecode" />
           <attribute name="bsr_firstname" />
           <attribute name="bsr_surname" />
           <attribute name="bsr_candidatehomeaddress" />
           <attribute name="bsr_candidatenino" />
-          <attribute name="bsr_bicofclasscertified" />
           <attribute name="bsr_confirmationofcanidvalidation" />
+          <attribute name="bsr_bicoflasscertifiedmultipleselection" />
+          <attribute name="createdon" />
+          <order attribute="createdon" descending="true" />
+          <attribute name="bsr_certificatestatuschangedate" />
+          <attribute name="bsr_certificatestatusreason" />
         </entity>
       </fetch>
     </fetchxml>

@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Profession Core" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.23.0</Version>
+    <Version>1.0.24.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -96,9 +96,12 @@
       <RootComponent type="1" schemaName="bsr_refundreason" behavior="2" />
       <RootComponent type="1" schemaName="contact" behavior="1" />
       <RootComponent type="20" id="{a8901ac0-0c27-ee11-9965-0022481b5210}" behavior="0" />
+      <RootComponent type="29" id="{016494ab-603c-ee11-bdf4-0022481b59de}" behavior="0" />
+      <RootComponent type="29" id="{12248024-623c-ee11-bdf4-0022481b59de}" behavior="0" />
       <RootComponent type="29" id="{13416a02-361f-ee11-9967-0022481b5210}" behavior="0" />
       <RootComponent type="29" id="{2ec68613-d62a-ee11-bdf4-0022481b56d1}" behavior="0" />
       <RootComponent type="29" id="{389a1038-9119-ee11-8f6d-0022481b5210}" behavior="0" />
+      <RootComponent type="29" id="{4a1c43e5-393c-ee11-bdf4-0022481b5c8e}" behavior="0" />
       <RootComponent type="29" id="{5713c5e1-1722-ee11-9967-0022481b56d1}" behavior="0" />
       <RootComponent type="29" id="{5ad7b704-222a-ee11-9965-0022481b59de}" behavior="0" />
       <RootComponent type="29" id="{c2adff57-7421-ee11-9967-0022481b56d1}" behavior="0" />
@@ -180,10 +183,6 @@
         <Dependent type="60" displayName="BI Contact" parentDisplayName="Contact" id="{f8f3ffcd-b90a-ee11-8f6e-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="10" schemaName="bsr_contacttype_contact" displayName="bsr_contacttype_contact" parentSchemaName="bsr_contacttype" parentDisplayName="Contact Type" solution="BuildingRegCore (1.17.49.3)" />
-        <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="10" schemaName="bsr_country_account_Address1CountryCode" displayName="bsr_country_account_Address1CountryCode" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.49.3)" />
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
@@ -219,7 +218,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_address1countrycode" displayName="Address1 Country Code" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.49.3)" />
-        <Dependent type="26" schemaName="Building Inspectors" displayName="Building Inspectors" parentSchemaName="contact" parentDisplayName="Contact" id="{f8b74c82-d806-ee11-8f6e-0022481b56d1}" />
+        <Dependent type="26" schemaName="Registered Building Inspectors" displayName="Registered Building Inspectors" parentSchemaName="contact" parentDisplayName="Contact" id="{f8b74c82-d806-ee11-8f6e-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_address1countrycode" displayName="Address1 Country Code" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.49.3)" />
@@ -335,7 +334,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_jobrole" displayName="Job Role" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.49.3)" />
-        <Dependent type="26" schemaName="Building Inspectors" displayName="Building Inspectors" parentSchemaName="contact" parentDisplayName="Contact" id="{f8b74c82-d806-ee11-8f6e-0022481b56d1}" />
+        <Dependent type="26" schemaName="Registered Building Inspectors" displayName="Registered Building Inspectors" parentSchemaName="contact" parentDisplayName="Contact" id="{f8b74c82-d806-ee11-8f6e-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_jobrole" displayName="Job Role" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.49.3)" />
@@ -588,6 +587,10 @@
           <package>msdynce_SalesInsightsAnchor (9.0.23074.10006)</package>
         </Required>
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2307.5014)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Building Profession Application" id="{9f4238b9-53a5-4868-88ef-317b5b3d19e2}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="9" schemaName="bsr_manualaddress" displayName="Manual Address" solution="BuildingRegCore (1.17.49.3)" />

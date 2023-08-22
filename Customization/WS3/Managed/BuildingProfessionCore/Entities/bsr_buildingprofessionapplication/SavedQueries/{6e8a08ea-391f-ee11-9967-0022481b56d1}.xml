@@ -27,18 +27,19 @@
           <attribute name="statuscode" />
           <attribute name="bsr_buildingprofessiontypecode" />
           <attribute name="bsr_buildingproappid" />
+          <attribute name="createdon" />
+          <order attribute="createdon" descending="true" />
           <filter type="and">
             <condition attribute="statuscode" operator="eq" value="760810007" />
             <condition attribute="bsr_buildingprofessiontypecode" operator="eq" value="760810000" />
+            <condition attribute="statecode" operator="eq" value="0" />
           </filter>
-          <attribute name="createdon" />
-          <order attribute="createdon" descending="true" />
         </entity>
       </fetch>
     </fetchxml>
     <IntroducedVersion>1.0.4.0</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="BI Applications - Terminated" languagecode="1033" />
+      <LocalizedName description="Building Inspector Applications - Terminated" languagecode="1033" />
     </LocalizedNames>
     <Descriptions>
       <Description description="View for the BSR app of Terminated BPAs" languagecode="1033" />

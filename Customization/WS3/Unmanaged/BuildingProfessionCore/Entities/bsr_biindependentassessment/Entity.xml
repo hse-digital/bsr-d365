@@ -57,8 +57,8 @@
           <Type>picklist</Type>
           <Name>bsr_bicofclasscertified</Name>
           <LogicalName>bsr_bicofclasscertified</LogicalName>
-          <RequiredLevel>required</RequiredLevel>
-          <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+          <RequiredLevel>none</RequiredLevel>
+          <DisplayMask>ValidForForm|ValidForGrid</DisplayMask>
           <ImeMode>auto</ImeMode>
           <ValidForUpdateApi>1</ValidForUpdateApi>
           <ValidForReadApi>1</ValidForReadApi>
@@ -86,10 +86,48 @@
           <AppDefaultValue>-1</AppDefaultValue>
           <OptionSetName>bsr_bicofclasscertified</OptionSetName>
           <displaynames>
-            <displayname description="BICOF Class certified" languagecode="1033" />
+            <displayname description="BICOF Class certified[DEPRECATED]" languagecode="1033" />
           </displaynames>
           <Descriptions>
             <Description description="The class certificated on the BICOF" languagecode="1033" />
+          </Descriptions>
+        </attribute>
+        <attribute PhysicalName="bsr_bicoflasscertifiedmultipleselection">
+          <Type>multiselectpicklist</Type>
+          <Name>bsr_bicoflasscertifiedmultipleselection</Name>
+          <LogicalName>bsr_bicoflasscertifiedmultipleselection</LogicalName>
+          <RequiredLevel>required</RequiredLevel>
+          <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+          <ImeMode>auto</ImeMode>
+          <ValidForUpdateApi>1</ValidForUpdateApi>
+          <ValidForReadApi>1</ValidForReadApi>
+          <ValidForCreateApi>1</ValidForCreateApi>
+          <IsCustomField>1</IsCustomField>
+          <IsAuditEnabled>1</IsAuditEnabled>
+          <IsSecured>0</IsSecured>
+          <IntroducedVersion>1.0.0.0</IntroducedVersion>
+          <IsCustomizable>1</IsCustomizable>
+          <IsRenameable>1</IsRenameable>
+          <CanModifySearchSettings>1</CanModifySearchSettings>
+          <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+          <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+          <SourceType>0</SourceType>
+          <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+          <IsSortableEnabled>0</IsSortableEnabled>
+          <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+          <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+          <IsDataSourceSecret>0</IsDataSourceSecret>
+          <AutoNumberFormat></AutoNumberFormat>
+          <IsSearchable>0</IsSearchable>
+          <IsFilterable>0</IsFilterable>
+          <IsRetrievable>0</IsRetrievable>
+          <IsLocalizable>0</IsLocalizable>
+          <OptionSetName>bsr_bicofclasscertified</OptionSetName>
+          <displaynames>
+            <displayname description="BICOF Class Certified" languagecode="1033" />
+          </displaynames>
+          <Descriptions>
+            <Description description="" languagecode="1033" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="bsr_biindependentassessmentId">
@@ -282,10 +320,10 @@
           <MaxLength>100</MaxLength>
           <Length>200</Length>
           <displaynames>
-            <displayname description="Certificate code" languagecode="1033" />
+            <displayname description="Certificate number" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="The unique certification code of the IA" languagecode="1033" />
+            <Description description="The unique certification number of the IA" languagecode="1033" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="bsr_certificatestatus">
@@ -361,10 +399,10 @@
           <CanChangeDateTimeBehavior>1</CanChangeDateTimeBehavior>
           <Behavior>1</Behavior>
           <displaynames>
-            <displayname description="Certificate status change date" languagecode="1033" />
+            <displayname description="Certificate status change date (if applicable)" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="The certificate status change date" languagecode="1033" />
+            <Description description="The certificate status change date (if applicable)" languagecode="1033" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="bsr_certificatestatusreason">
@@ -404,7 +442,7 @@
             <displayname description="Certificate status reason" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="The certificate status reason for change" languagecode="1033" />
+            <Description description="The certificate status reason for change (if application status suspended or cancelled)" languagecode="1033" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="bsr_confirmationofcanidvalidation">
@@ -542,7 +580,7 @@
           <CanChangeDateTimeBehavior>1</CanChangeDateTimeBehavior>
           <Behavior>1</Behavior>
           <displaynames>
-            <displayname description="Date of assessment " languagecode="1033" />
+            <displayname description="Date of assessment certificate" languagecode="1033" />
           </displaynames>
           <Descriptions>
             <Description description="Date the Assessment was taken" languagecode="1033" />

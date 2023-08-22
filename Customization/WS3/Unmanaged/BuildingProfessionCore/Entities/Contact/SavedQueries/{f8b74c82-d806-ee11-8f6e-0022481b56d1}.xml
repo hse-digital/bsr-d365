@@ -32,9 +32,6 @@
           <attribute name="fullname" />
           <attribute name="contactid" />
           <attribute name="bsr_jobrole" />
-          <filter type="and">
-            <condition attribute="bsr_jobrole" operator="eq" value="{c77d5afd-e006-ee11-8f6e-0022481b5210}" uiname="Building Inspector" uitype="bsr_jobrole" />
-          </filter>
           <attribute name="bsr_nationalinsuranceno" />
           <attribute name="emailaddress1" />
           <attribute name="telephone1" />
@@ -45,12 +42,25 @@
           <attribute name="address1_postalcode" />
           <attribute name="bsr_address1countrycode" />
           <attribute name="bsr_buildingprofessionapplicationid" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <link-entity name="bsr_buildingprofessionapplication" alias="aa" link-type="inner" from="bsr_applicantid" to="contactid">
+            <filter type="and">
+              <condition attribute="bsr_buildingprofessiontypecode" operator="eq" value="760810000" />
+              <condition attribute="statuscode" operator="eq" value="760810005" />
+              <condition attribute="bsr_regulatorydecisionstatus" operator="in">
+                <value>760810000</value>
+                <value>760810002</value>
+              </condition>
+            </filter>
+          </link-entity>
         </entity>
       </fetch>
     </fetchxml>
     <IntroducedVersion>1.0.1.0</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="Building Inspectors" languagecode="1033" />
+      <LocalizedName description="Registered Building Inspectors" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>
