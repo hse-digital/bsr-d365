@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Profession Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.15.0</Version>
+    <Version>1.0.16.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -96,6 +96,7 @@
       <RootComponent type="29" id="{b267ad7a-8b21-ee11-9966-0022481b59de}" behavior="0" />
       <RootComponent type="29" id="{ba0777e5-2126-ee11-9965-0022481b59de}" behavior="0" />
       <RootComponent type="29" id="{eb2ebefd-2d0c-ee11-8f6e-0022481b5210}" behavior="0" />
+      <RootComponent type="29" id="{f07e24bb-a341-ee11-bdf3-0022481b5210}" behavior="0" />
       <RootComponent type="29" id="{f42d8747-0a1f-ee11-9967-0022481b56d1}" behavior="0" />
       <RootComponent type="29" id="{fffe199d-d93d-ee11-bdf4-0022481b5210}" behavior="0" />
     </RootComponents>
@@ -178,7 +179,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingprofessionapplication" displayName="Building Profession Application" solution="Active" />
-        <Dependent type="29" displayName="Auto populate BPA Hold Review Date" id="{a4537a39-3a2a-ee11-bdf4-0022481b56d1}" />
+        <Dependent type="29" displayName="Auto populate BPA Hold Review Date[DEPRECATED]" id="{a4537a39-3a2a-ee11-bdf4-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingprofessionapplication" displayName="Building Profession Application" solution="Active" />
@@ -191,6 +192,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingprofessionapplication" displayName="Building Profession Application" solution="Active" />
         <Dependent type="29" displayName="Auto Populate Name for 'Building Profession Application' table" id="{eb2ebefd-2d0c-ee11-8f6e-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingprofessionapplication" displayName="Building Profession Application" solution="Active" />
+        <Dependent type="29" displayName="Auto populate BPA Hold Review Date" id="{f07e24bb-a341-ee11-bdf3-0022481b5210}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingprofessionapplication" displayName="Building Profession Application" solution="Active" />
@@ -241,6 +246,10 @@
         <Dependent type="29" displayName="Default Date of Commencement to 06.04.24 if earlie" id="{ba0777e5-2126-ee11-9965-0022481b59de}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_buildingprofessionapplicationid" displayName="Building Profession Application" parentSchemaName="bsr_buildingprofessionapplication" parentDisplayName="Building Profession Application" solution="Active" />
+        <Dependent type="29" displayName="Auto populate BPA Hold Review Date" id="{f07e24bb-a341-ee11-bdf3-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_countryid" displayName="Country" parentSchemaName="bsr_biregcountry" parentDisplayName="BI Registration Country" solution="Active" />
         <Dependent type="29" displayName="Auto poulate Name field for BI Registration Country" id="{2b12db6d-ad24-ee11-9965-0022481b56d1}" />
       </MissingDependency>
@@ -249,12 +258,20 @@
         <Dependent type="29" displayName="Default BPA Date of Decision and Date of Registration" id="{b267ad7a-8b21-ee11-9966-0022481b59de}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_holdreviewdate" displayName="Hold Review Date" parentSchemaName="bsr_buildingprofessionapplication" parentDisplayName="Building Profession Application" solution="Active" />
+        <Dependent type="29" displayName="Auto populate BPA Hold Review Date" id="{f07e24bb-a341-ee11-bdf3-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_buildingprofessionapplication" parentDisplayName="Building Profession Application" solution="Active" />
         <Dependent type="29" displayName="Default BPA Date of Decision and Date of Registration" id="{b267ad7a-8b21-ee11-9966-0022481b59de}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_buildingprofessionapplication" parentDisplayName="Building Profession Application" solution="Active" />
         <Dependent type="29" displayName="Default Date of Commencement to 06.04.24 if earlie" id="{ba0777e5-2126-ee11-9965-0022481b59de}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_buildingprofessionapplication" parentDisplayName="Building Profession Application" solution="Active" />
+        <Dependent type="29" displayName="Auto populate BPA Hold Review Date" id="{f07e24bb-a341-ee11-bdf3-0022481b5210}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_registrationcommencementdate" displayName="Date of Registration Commencement" parentSchemaName="bsr_buildingprofessionapplication" parentDisplayName="Building Profession Application" solution="Active" />
@@ -274,11 +291,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Application Status" parentSchemaName="bsr_buildingprofessionapplication" parentDisplayName="Building Profession Application" solution="Active" />
-        <Dependent type="29" displayName="Auto populate BPA Hold Review Date" id="{a4537a39-3a2a-ee11-bdf4-0022481b56d1}" />
+        <Dependent type="29" displayName="Auto populate BPA Hold Review Date[DEPRECATED]" id="{a4537a39-3a2a-ee11-bdf4-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Application Status" parentSchemaName="bsr_buildingprofessionapplication" parentDisplayName="Building Profession Application" solution="Active" />
         <Dependent type="29" displayName="Default BPA Date of Decision and Date of Registration" id="{b267ad7a-8b21-ee11-9966-0022481b59de}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Application Status" parentSchemaName="bsr_buildingprofessionapplication" parentDisplayName="Building Profession Application" solution="Active" />
+        <Dependent type="29" displayName="Auto populate BPA Hold Review Date" id="{f07e24bb-a341-ee11-bdf3-0022481b5210}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="BuildingRegCore (1.17.49.3)" id.schemaname="bsr_noreplyqueueid" />
