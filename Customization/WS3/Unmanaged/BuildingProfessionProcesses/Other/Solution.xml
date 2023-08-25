@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Profession Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.16.0</Version>
+    <Version>1.0.17.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -95,6 +95,7 @@
       <RootComponent type="29" id="{a4537a39-3a2a-ee11-bdf4-0022481b56d1}" behavior="0" />
       <RootComponent type="29" id="{b267ad7a-8b21-ee11-9966-0022481b59de}" behavior="0" />
       <RootComponent type="29" id="{ba0777e5-2126-ee11-9965-0022481b59de}" behavior="0" />
+      <RootComponent type="29" id="{bd52e87e-7342-ee11-bdf3-0022481b5210}" behavior="0" />
       <RootComponent type="29" id="{eb2ebefd-2d0c-ee11-8f6e-0022481b5210}" behavior="0" />
       <RootComponent type="29" id="{f07e24bb-a341-ee11-bdf3-0022481b5210}" behavior="0" />
       <RootComponent type="29" id="{f42d8747-0a1f-ee11-9967-0022481b56d1}" behavior="0" />
@@ -191,6 +192,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingprofessionapplication" displayName="Building Profession Application" solution="Active" />
+        <Dependent type="29" displayName="BI Application Approved - Registered BI Contact Update" id="{bd52e87e-7342-ee11-bdf3-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingprofessionapplication" displayName="Building Profession Application" solution="Active" />
         <Dependent type="29" displayName="Auto Populate Name for 'Building Profession Application' table" id="{eb2ebefd-2d0c-ee11-8f6e-0022481b5210}" />
       </MissingDependency>
       <MissingDependency>
@@ -200,6 +205,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingprofessionapplication" displayName="Building Profession Application" solution="Active" />
         <Dependent type="29" displayName="Update BPA status to &quot;Ready&quot; when reconciliation status is &quot;Successful&quot;" id="{f42d8747-0a1f-ee11-9967-0022481b56d1}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_contacttype" displayName="Contact Type" solution="BuildingRegCore (1.17.49.3)" />
+        <Dependent type="29" displayName="BI Application Approved - Registered BI Contact Update" id="{bd52e87e-7342-ee11-bdf3-0022481b5210}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_country" displayName="Country" solution="BuildingRegCore (1.17.49.3)" />
@@ -288,6 +297,10 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_regulatorydecisionstatus" displayName="Regulatory Decision Status" parentSchemaName="bsr_buildingprofessionapplication" parentDisplayName="Building Profession Application" solution="Active" />
         <Dependent type="29" displayName="Default Date of Commencement to 06.04.24 if earlie" id="{ba0777e5-2126-ee11-9965-0022481b59de}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_regulatorydecisionstatus" displayName="Regulatory Decision Status" parentSchemaName="bsr_buildingprofessionapplication" parentDisplayName="Building Profession Application" solution="Active" />
+        <Dependent type="29" displayName="BI Application Approved - Registered BI Contact Update" id="{bd52e87e-7342-ee11-bdf3-0022481b5210}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Application Status" parentSchemaName="bsr_buildingprofessionapplication" parentDisplayName="Building Profession Application" solution="Active" />
