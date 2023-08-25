@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{68e922fb-dd41-4ebd-9334-3e13356fe05a}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
+        <row name="result" id="bsr_evidenceid">
+          <cell name="bsr_name" width="300" />
+          <cell name="bsr_datetimeofdiscovery" width="176" />
+          <cell name="bsr_evidencetype" width="124" />
+          <cell name="bsr_sharepointurl" width="133" />
+          <cell name="bsr_storageaddressfield1" width="175" />
+          <cell name="bsr_case" width="100" />
+          <cell name="bsr_disclosable" width="106" />
+          <cell name="bsr_sensitive" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="bsr_evidence">
+          <attribute name="bsr_evidenceid" />
+          <attribute name="bsr_name" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="bsr_datetimeofdiscovery" />
+          <attribute name="bsr_evidencetype" />
+          <attribute name="bsr_sharepointurl" />
+          <attribute name="bsr_storageaddressfield1" />
+          <attribute name="bsr_case" />
+          <attribute name="bsr_disclosable" />
+          <attribute name="bsr_sensitive" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Evidences" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

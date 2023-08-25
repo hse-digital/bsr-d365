@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{837f346f-2245-4a8e-8dde-07f3c2d89dbf}</savedqueryid>
+    <layoutxml>
+      <grid name="bsr_relevantparties" jump="bsr_name" select="1" icon="1" preview="1">
+        <row name="bsr_relevantparty" id="bsr_relevantpartyid">
+          <cell name="bsr_name" width="234" />
+          <cell name="bsr_relevantaccountcontact" width="232" />
+          <cell name="bsr_case" width="161" />
+          <cell name="bsr_notes" width="300" />
+          <cell name="createdon" width="125" />
+          <cell name="createdby" width="104" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>2</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="bsr_relevantparty">
+          <attribute name="bsr_relevantpartyid" />
+          <attribute name="bsr_name" />
+          <attribute name="createdon" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="bsr_relevantaccountcontact" />
+          <attribute name="createdby" />
+          <attribute name="bsr_case" />
+          <attribute name="bsr_notes" />
+          <order attribute="createdon" descending="false" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Relevant Party Associated View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

@@ -14,6 +14,28 @@
           <columns>
             <column width="100%">
               <sections>
+                <section name="null_section_3" id="0b9c9466-92b3-4beb-94d6-efd31a05e4ae" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Investigation" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" locklevel="0" id="{07a30916-0706-4159-ad80-1a94e58af364}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{232177ba-7ea8-4ba6-85c9-4034e29fa6bb}" locklevel="0" colspan="1" rowspan="1" showlabel="true">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_investigation" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_investigation" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
                 <section showlabel="false" showbar="false" IsUserDefined="0" id="{54e713fe-6612-42cb-8c2b-55c64145849a}">
                   <labels>
                     <label description="General" languagecode="1033" />
@@ -28,13 +50,17 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{81c8faef-58de-4d42-bb5b-5780164aa87e}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{81c8faef-58de-4d42-bb5b-5780164aa87e}" locklevel="0" colspan="1" rowspan="5">
                         <labels>
                           <label description="Description" languagecode="1033" />
                         </labels>
                         <control id="bsr_description" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_description" disabled="false" />
                       </cell>
                     </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
                     <row>
                       <cell id="{b99cdcd9-d09c-4ea2-b2bc-3f10b945d18a}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
@@ -51,14 +77,44 @@
                         <control id="bsr_decisionmadeby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_decisionmadeby" disabled="false" />
                       </cell>
                     </row>
+                  </rows>
+                </section>
+                <section name="null_section_4" id="2c0e9508-ed2c-4686-90b9-8fa50e3ae880" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
                     <row>
-                      <cell id="{46ff3f3d-c3aa-4813-8457-c209cb1ee016}" visible="false">
+                      <cell showlabel="false" locklevel="0" id="{9794cda4-fd7e-403b-bff6-24cfe86c5882}">
                         <labels>
-                          <label description="Owner" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
-                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
                       </cell>
                     </row>
+                    <row>
+                      <cell locklevel="0" id="{0aede478-bd88-4be8-b964-34df18426e44}" rowspan="4" colspan="1" auto="false">
+                        <labels>
+                          <label description="Related Evidence" languagecode="1033" />
+                        </labels>
+                        <control indicationOfSubgrid="true" id="Subgrid_new_1" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                          <parameters>
+                            <RecordsPerPage>5</RecordsPerPage>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <ChartGridMode>All</ChartGridMode>
+                            <TargetEntityType>bsr_evidence</TargetEntityType>
+                            <ViewId>{68E922FB-DD41-4EBD-9334-3E13356FE05A}</ViewId>
+                            <ViewIds>{68E922FB-DD41-4EBD-9334-3E13356FE05A}</ViewIds>
+                            <RelationshipName>bsr_keydecision_bsr_Evidence</RelationshipName>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
                   </rows>
                 </section>
               </sections>
@@ -83,6 +139,12 @@
               <labels>
                 <label description="" languagecode="1033" />
               </labels>
+            </cell>
+            <cell id="{46ff3f3d-c3aa-4813-8457-c209cb1ee016}" visible="true" colspan="1" rowspan="1">
+              <labels>
+                <label description="Owner" languagecode="1033" />
+              </labels>
+              <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
             </cell>
           </row>
         </rows>
