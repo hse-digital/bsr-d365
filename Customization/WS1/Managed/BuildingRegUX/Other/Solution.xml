@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Reg UX" languagecode="1033" />
     </Descriptions>
-    <Version>1.11.13.0</Version>
+    <Version>1.11.14.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -80,7 +80,6 @@
       </Addresses>
     </Publisher>
     <RootComponents>
-      <RootComponent type="1" schemaName="bsr_buildingapplication" behavior="2" />
       <RootComponent type="300" schemaName="bsr_bsrdefaultcommandlibrary_a4cc5" behavior="0" />
       <RootComponent type="62" schemaName="bsr_BSR" behavior="0" />
       <RootComponent type="80" schemaName="bsr_BSR" behavior="0" />
@@ -184,7 +183,19 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
-        <Dependent type="1" schemaName="bsr_buildingapplication" displayName="Building Application" />
+        <Dependent type="300" schemaName="bsr_bsrdefaultcommandlibrary_a4cc5" displayName="BSR_DefaultCommandLibrary" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
+        <Dependent type="62" schemaName="bsr_BSR" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
+        <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
+        <Dependent type="appaction" displayName="bsr__NewCommand!c352c609c19b4eaca634d5817790fccf!bsr_BSR!bsr_buildingapplication!0" id.uniquename="bsr__NewCommand!c352c609c19b4eaca634d5817790fccf!bsr_BSR!bsr_buildingapplication!0" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingtype" displayName="Building Type" solution="Active" />
@@ -753,10 +764,6 @@
       <MissingDependency>
         <Required type="60" displayName="Building" parentDisplayName="Building" solution="Active" id="{b9a7bf50-618a-4696-905d-f26545271ed0}" />
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="61" schemaName="bsr_buildingapplications" displayName="bsr_buildingapplications" solution="Active" />
-        <Dependent type="1" schemaName="bsr_buildingapplication" displayName="Building Application" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_/Images/AppModule_Default_Icon.png" displayName="msdyn_/Images/AppModule_Default_Icon.png" solution="AppModuleWebResources (2.5)" />
