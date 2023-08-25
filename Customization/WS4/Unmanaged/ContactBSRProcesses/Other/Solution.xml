@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Contact BSR Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.8.0</Version>
+    <Version>1.0.9.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -84,6 +84,7 @@
       <RootComponent type="29" id="{0ffbcde4-61c1-4355-aa89-aa1d7b2b8792}" behavior="0" />
       <RootComponent type="29" id="{19d3b6ba-063d-ee11-bdf4-6045bdd2cb7b}" behavior="0" />
       <RootComponent type="29" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" behavior="0" />
+      <RootComponent type="29" id="{2bc836b7-dd3d-ee11-bdf4-6045bdcf35fe}" behavior="0" />
       <RootComponent type="29" id="{31469dfc-d141-ee11-bdf3-6045bdd2cb7b}" behavior="0" />
       <RootComponent type="29" id="{895c7f8f-9f2f-ee11-bdf3-6045bdd2c8fd}" behavior="0" />
       <RootComponent type="29" id="{97ee9355-eb26-ee11-9965-6045bdd2cb7b}" behavior="0" />
@@ -97,6 +98,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="BuildingRegCore (1.17.49.3)" />
         <Dependent type="29" displayName="Set Case BSR Document Regarding" id="{19d3b6ba-063d-ee11-bdf4-6045bdd2cb7b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="BuildingRegCore (1.17.49.3)" />
+        <Dependent type="29" displayName="Create Case BSR Document For Uploaded Files" id="{2bc836b7-dd3d-ee11-bdf4-6045bdcf35fe}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_enforcement" displayName="Enforcement Action" solution="Active" />
@@ -487,6 +492,14 @@
           <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
         </Required>
         <Dependent type="60" displayName="PhoneToCaseProcess" parentDisplayName="Phone To Case Process" id="{9774341b-bb15-44b8-b7fa-2ad3aadefa62}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointcasefolderid" solution="Active" id.schemaname="bsr_sharepointcasefolderid" />
+        <Dependent type="29" displayName="Create Case BSR Document For Uploaded Files" id="{2bc836b7-dd3d-ee11-bdf4-6045bdcf35fe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointsiteurl" solution="BuildingRegCore (1.17.49.3)" id.schemaname="bsr_sharepointsiteurl" />
+        <Dependent type="29" displayName="Create Case BSR Document For Uploaded Files" id="{2bc836b7-dd3d-ee11-bdf4-6045bdcf35fe}" />
       </MissingDependency>
     </MissingDependencies>
   </SolutionManifest>
