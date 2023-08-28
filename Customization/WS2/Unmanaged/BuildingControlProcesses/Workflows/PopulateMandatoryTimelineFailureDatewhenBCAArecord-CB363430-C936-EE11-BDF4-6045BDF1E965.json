@@ -1,10 +1,10 @@
 {
   "properties": {
     "connectionReferences": {
-      "shared_commondataserviceforapps_1": {
+      "shared_commondataserviceforapps": {
         "runtimeSource": "embedded",
         "connection": {
-          "connectionReferenceLogicalName": "bsr_sharedcommondataserviceforapps_af4da"
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS2"
         },
         "api": {
           "name": "shared_commondataserviceforapps"
@@ -32,7 +32,7 @@
           "type": "OpenApiConnectionWebhook",
           "inputs": {
             "host": {
-              "connectionName": "shared_commondataserviceforapps_1",
+              "connectionName": "shared_commondataserviceforapps",
               "operationId": "SubscribeWebhookTrigger",
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
             },
@@ -48,14 +48,18 @@
       },
       "actions": {
         "Get_BCAA_record_from_list": {
-          "runAfter": {},
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
           "metadata": {
             "operationMetadataId": "3257a5ba-72e2-42f2-9dd8-795ea8df2405"
           },
           "type": "OpenApiConnection",
           "inputs": {
             "host": {
-              "connectionName": "shared_commondataserviceforapps_1",
+              "connectionName": "shared_commondataserviceforapps",
               "operationId": "ListRecords",
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
             },
@@ -77,14 +81,14 @@
               "type": "OpenApiConnection",
               "inputs": {
                 "host": {
-                  "connectionName": "shared_commondataserviceforapps_1",
+                  "connectionName": "shared_commondataserviceforapps",
                   "operationId": "UpdateRecord",
                   "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
                 },
                 "parameters": {
                   "entityName": "bsr_buildingcontrollifecycles",
                   "recordId": "@items('Apply_to_each')?['bsr_buildingcontrollifecycleid']",
-                  "item/bsr_mandatorytimelinefailuredate": "@addDays(utcNow(), 84, 'MM/dd/yyyy')"
+                  "item/bsr_mandatorytimelinefailuredate": "@addDays(variables('Submission Date'), 84, 'MM/dd/yyyy')"
                 },
                 "authentication": "@parameters('$authentication')"
               }
@@ -99,6 +103,22 @@
             "operationMetadataId": "af16697b-0347-43b1-96c7-0ceea40c1dbb"
           },
           "type": "Foreach"
+        },
+        "Initialize_variable": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "f410cd91-7a61-4ee3-8f6f-ece37cd4e24e"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Submission Date",
+                "type": "string",
+                "value": "@{addDays(triggerBody()['bsr_submissiondate'], 0)}"
+              }
+            ]
+          }
         }
       }
     },
