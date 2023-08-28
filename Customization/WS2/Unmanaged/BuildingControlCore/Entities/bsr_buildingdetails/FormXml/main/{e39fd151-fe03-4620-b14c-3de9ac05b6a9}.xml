@@ -62,7 +62,7 @@
                     <row>
                       <cell id="{54281aa0-90ea-426b-9bfd-ea1e36720439}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="Build Type" languagecode="1033" />
+                          <label description=" Building Category" languagecode="1033" />
                         </labels>
                         <control id="bsr_buildingcategory" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_buildingcategory" disabled="false" />
                       </cell>
@@ -1016,6 +1016,73 @@
             </column>
           </columns>
         </tab>
+        <tab name="tab_mdt" id="337b3a7c-557e-4cdb-8e14-40362337e235" IsUserDefined="0" locklevel="0" showlabel="true">
+          <labels>
+            <label description="MDT Management " languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="50%">
+              <sections>
+                <section name="tab_projectbriefs" id="6098abef-1860-420c-b3ab-40265440b239" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Project Briefs" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" locklevel="0" id="{741a9182-44ee-4f22-8596-5dcd8875332a}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{180c3439-2b93-4dc2-a435-38e84ee9c332}" rowspan="4" colspan="1" auto="false" showlabel="true">
+                        <labels>
+                          <label description="Project Briefs" languagecode="1033" />
+                        </labels>
+                        <control indicationOfSubgrid="true" id="Subgrid_projectbriefs" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                          <parameters>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <ChartGridMode>All</ChartGridMode>
+                            <TargetEntityType>bsr_projectbriefs</TargetEntityType>
+                            <ViewId>{03EA51F4-8C42-EE11-BDF3-6045BDD2C0C0}</ViewId>
+                            <ViewIds>{ADD74424-4EF1-4108-A280-6B9240EDAA62},{03EA51F4-8C42-EE11-BDF3-6045BDD2C0C0}</ViewIds>
+                            <RelationshipName></RelationshipName>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="50%">
+              <sections>
+                <section name="tab_2_section_2" id="9ad4da81-b8b8-4220-b98d-0fd71a6ff0a4" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" locklevel="0" id="{015f3fa7-a684-4916-9d3c-5e7696d88663}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
       </tabs>
       <header id="{4addf521-3bc3-42ac-97a6-b4e7c1e49975}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
         <rows>
@@ -1186,14 +1253,16 @@
         <Library name="bsr_/buildingcontrol/tables/bsr_buildingdetails/script/bsr_buildingdetails.js" libraryUniqueId="{375ef221-b10f-40b7-a9cf-54450adf64f8}" />
       </formLibraries>
       <events>
-        <event name="onload" application="false" active="false">
-          <Handlers>
-            <Handler functionName="BuildingDetails.ShowHidePrimaryUseFields" libraryName="bsr_/buildingcontrol/tables/bsr_buildingdetails/script/bsr_buildingdetails.js" handlerUniqueId="{810581d0-70ec-4fd3-a1ad-a84824f92211}" enabled="true" parameters="" passExecutionContext="true" />
-          </Handlers>
-        </event>
         <event name="onsave" application="false" active="false">
           <Handlers>
-            <Handler functionName="BuildingDetails.ShowHidePrimaryUseFields" libraryName="bsr_/buildingcontrol/tables/bsr_buildingdetails/script/bsr_buildingdetails.js" handlerUniqueId="{08cd61ab-caca-4714-8c1e-4aa444f1d56b}" enabled="true" parameters="" passExecutionContext="true" />
+            <Handler functionName="BuildingDetails.ShowHideExistingHRBFields" libraryName="bsr_/buildingcontrol/tables/bsr_buildingdetails/script/bsr_buildingdetails.js" handlerUniqueId="{c0eba604-fa1a-47d5-93cd-9666484b5e8d}" enabled="true" parameters="" passExecutionContext="true" />
+            <Handler functionName="BuildingDetails.SetExistingUseCategory" libraryName="bsr_/buildingcontrol/tables/bsr_buildingdetails/script/bsr_buildingdetails.js" handlerUniqueId="{309aa50d-b900-4018-b9d3-51a65388b5bc}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onload" application="false" active="false">
+          <Handlers>
+            <Handler functionName="BuildingDetails.ShowHideExistingHRBFields" libraryName="bsr_/buildingcontrol/tables/bsr_buildingdetails/script/bsr_buildingdetails.js" handlerUniqueId="{810581d0-70ec-4fd3-a1ad-a84824f92211}" enabled="true" parameters="" passExecutionContext="true" />
+            <Handler functionName="BuildingDetails.SetExistingUseCategory" libraryName="bsr_/buildingcontrol/tables/bsr_buildingdetails/script/bsr_buildingdetails.js" handlerUniqueId="{c0ba579c-567f-4a4f-9ac9-540b1cbc8b41}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
       </events>

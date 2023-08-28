@@ -20,7 +20,7 @@
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
         <entity name="bsr_buildingcontrolapplication">
           <attribute name="bsr_buildingcontrolapplicationid" />
           <attribute name="bsr_bcaareferencenumber" />
@@ -28,6 +28,9 @@
           <attribute name="statecode" />
           <attribute name="ownerid" />
           <attribute name="bsr_caseofficer" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
         </entity>
       </fetch>
     </fetchxml>

@@ -1,47 +1,44 @@
 "use strict";
-
 var BuildingDetails;
-
 (function (BuildingDetails) {
-  function ShowHidePrimaryUseFields(executionContext) {
-    var formContext = executionContext.getFormContext();
-
-    console.log("formContext: ", formContext);
-
-    if (
-      formContext.getAttribute("bsr_buildingcategory") !== null ||
-      formContext.getAttribute("bsr_buildingcategory") !== undefined
-    ) {
-      var buildType = formContext
-        .getAttribute("bsr_buildingcategory")
-        .getValue();
-
-      console.log("buildType: ", buildType);
-
-      if (buildType === 760810000) {
-        console.log("buildType: New Build");
-
-        formContext.getControl("bsr_primaryuse").setVisible(true);
-        formContext.getControl("bsr_changeprimaryuse").setVisible(false);
-        formContext.getControl("bsr_currentprimaryuse").setVisible(false);
-        formContext.getControl("bsr_proposedprimaryuse").setVisible(false);
-      } else if (buildType === 760810001) {
-        console.log("buildType: Change of use");
-
-        formContext.getControl("bsr_primaryuse").setVisible(false);
-        formContext.getControl("bsr_changeprimaryuse").setVisible(true);
-        formContext.getControl("bsr_currentprimaryuse").setVisible(false);
-        formContext.getControl("bsr_proposedprimaryuse").setVisible(false);
-      } else if (buildType === 760810002) {
-        console.log("buildType: Existing building");
-
-        formContext.getControl("bsr_primaryuse").setVisible(false);
-        formContext.getControl("bsr_changeprimaryuse").setVisible(false);
-        formContext.getControl("bsr_currentprimaryuse").setVisible(true);
-        formContext.getControl("bsr_proposedprimaryuse").setVisible(true);
-      }
+    var Form;
+    function ShowHideExistingHRBFields(executionContext) {
+        Form = executionContext.getFormContext();
+        if (Form.getAttribute("bsr_buildingcategory").getValue() !== null &&
+            Form.getAttribute("bsr_buildingcategory").getValue() !== undefined) {
+            var buildType = Form.getAttribute("bsr_buildingcategory").getValue();
+            if (buildType === 760810000) {
+                console.log("buildCategory: New Build");
+                Form.getControl("bsr_existtypeworkproposal").setVisible(false);
+                Form.getControl("bsr_existingusecategory").setVisible(false);
+            }
+            else if (buildType === 760810001) {
+                console.log("buildCategory: Existing HRB");
+                Form.getControl("bsr_existtypeworkproposal").setVisible(true);
+                Form.getControl("bsr_existingusecategory").setVisible(true);
+            }
+            else if (buildType === 760810002) {
+                console.log("buildCategory: Convert Building to HRB");
+                Form.getControl("bsr_existtypeworkproposal").setVisible(false);
+                Form.getControl("bsr_existingusecategory").setVisible(false);
+            }
+        }
     }
-  }
-
-  BuildingDetails.ShowHidePrimaryUseFields = ShowHidePrimaryUseFields;
+    BuildingDetails.ShowHideExistingHRBFields = ShowHideExistingHRBFields;
+    function SetExistingUseCategory(executionContext) {
+        Form = executionContext.getFormContext();
+        if (Form.getAttribute("bsr_existtypeworkproposal").getValue() != null &&
+            Form.getAttribute("bsr_existtypeworkproposal").getValue() !== undefined) {
+            var existingTypeWorkProposal = Form.getAttribute("bsr_existtypeworkproposal").getValue();
+            console.log("existingTypeWorkProsal value: ", existingTypeWorkProposal);
+            if (existingTypeWorkProposal.indexOf(760810008) !== -1 && existingTypeWorkProposal.length === 1) {
+                Form.getAttribute("bsr_existingusecategory").setValue(760810001);
+            }
+            else {
+                Form.getAttribute("bsr_existingusecategory").setValue(760810000);
+            }
+        }
+    }
+    BuildingDetails.SetExistingUseCategory = SetExistingUseCategory;
 })(BuildingDetails || (BuildingDetails = {}));
+//# sourceMappingURL=bsr_buildingdetails.js.map

@@ -11,17 +11,22 @@
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_buildingdetailsid">
           <cell name="bsr_name" width="126" />
+          <cell name="bsr_buildingdetailsreference" width="193" />
           <cell name="statecode" width="100" />
         </row>
       </grid>
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
         <entity name="bsr_buildingdetails">
           <attribute name="bsr_buildingdetailsid" />
           <attribute name="statecode" />
           <attribute name="bsr_name" />
+          <attribute name="bsr_buildingdetailsreference" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
         </entity>
       </fetch>
     </fetchxml>

@@ -11,6 +11,8 @@
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_buildingdetailsid">
           <cell name="bsr_name" width="200" />
+          <cell name="bsr_buildingdetailsreference" width="193" />
+          <cell name="bsr_bcapplicationid" width="205" />
           <cell name="bsr_bdrcaseofficer" width="111" />
         </row>
       </grid>
@@ -26,12 +28,14 @@
             <condition attribute="statecode" operator="eq" value="0" />
             <condition attribute="ownerid" operator="eq-userid" />
           </filter>
+          <attribute name="bsr_buildingdetailsreference" />
+          <attribute name="bsr_bcapplicationid" />
         </entity>
       </fetch>
     </fetchxml>
     <IntroducedVersion>1.0.10.0</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="My Building Details" languagecode="1033" />
+      <LocalizedName description="My Building Details (Reg Lead)" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>
