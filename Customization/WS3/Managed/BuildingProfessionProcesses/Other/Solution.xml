@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23075.172" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23081.162" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>BuildingProfessionProcesses</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Profession Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.18.0</Version>
+    <Version>1.0.19.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -86,10 +86,12 @@
       <RootComponent type="29" id="{152cb1e4-0d32-ee11-bdf3-0022481b5210}" behavior="0" />
       <RootComponent type="29" id="{242b55d0-5130-ee11-bdf3-0022481b5210}" behavior="0" />
       <RootComponent type="29" id="{2b12db6d-ad24-ee11-9965-0022481b56d1}" behavior="0" />
+      <RootComponent type="29" id="{3c8e6388-0627-ee11-9965-0022481b5210}" behavior="0" />
       <RootComponent type="29" id="{4661f63d-9536-ee11-bdf4-0022481b56d1}" behavior="0" />
       <RootComponent type="29" id="{4cfb681d-f31f-ee11-9967-0022481b56d1}" behavior="0" />
       <RootComponent type="29" id="{59404db4-9524-ee11-9965-0022481b56d1}" behavior="0" />
       <RootComponent type="29" id="{6fc3c612-902c-ee11-bdf4-0022481b56d1}" behavior="0" />
+      <RootComponent type="29" id="{817a3841-cf40-ee11-bdf3-0022481b56d1}" behavior="0" />
       <RootComponent type="29" id="{8421f89c-b027-ee11-9965-0022481b56d1}" behavior="0" />
       <RootComponent type="29" id="{895b6bde-5b25-ee11-9965-0022481b5210}" behavior="0" />
       <RootComponent type="29" id="{a4537a39-3a2a-ee11-bdf4-0022481b56d1}" behavior="0" />
@@ -112,6 +114,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_biclass" displayName="BI Class" solution="Active" />
+        <Dependent type="29" displayName="Send email to alert applicant regulatory decision has been made" id="{3c8e6388-0627-ee11-9965-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_biclass" displayName="BI Class" solution="Active" />
         <Dependent type="29" displayName="Auto populate Name field for BI Registration Class" id="{895b6bde-5b25-ee11-9965-0022481b5210}" />
       </MissingDependency>
       <MissingDependency>
@@ -129,6 +135,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_biregactivity" displayName="BI Registration Activity" solution="Active" />
         <Dependent type="29" displayName="Auto populate Name field for BI Registration Activity " id="{59404db4-9524-ee11-9965-0022481b56d1}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_biregclass" displayName="BI Registration Class" solution="Active" />
+        <Dependent type="29" displayName="Send email to alert applicant regulatory decision has been made" id="{3c8e6388-0627-ee11-9965-0022481b5210}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_biregclass" displayName="BI Registration Class" solution="Active" />
@@ -164,11 +174,19 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingprofessionapplication" displayName="Building Profession Application" solution="Active" />
+        <Dependent type="29" displayName="Send email to alert applicant regulatory decision has been made" id="{3c8e6388-0627-ee11-9965-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingprofessionapplication" displayName="Building Profession Application" solution="Active" />
         <Dependent type="29" displayName="On Failed Reconciliation Payment Update BPA to Terminated" id="{4cfb681d-f31f-ee11-9967-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingprofessionapplication" displayName="Building Profession Application" solution="Active" />
         <Dependent type="29" displayName="Auto populate Name field for BI Registration Activity " id="{59404db4-9524-ee11-9965-0022481b56d1}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingprofessionapplication" displayName="Building Profession Application" solution="Active" />
+        <Dependent type="29" displayName="Send BPA Submission Confirmation Email" id="{817a3841-cf40-ee11-bdf3-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingprofessionapplication" displayName="Building Profession Application" solution="Active" />
@@ -271,6 +289,10 @@
         <Dependent type="29" displayName="Auto populate BPA Hold Review Date" id="{f07e24bb-a341-ee11-bdf3-0022481b5210}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_issendregulatorydecisionemail" displayName="Send regulatory decision email" parentSchemaName="bsr_buildingprofessionapplication" parentDisplayName="Building Profession Application" solution="Active" />
+        <Dependent type="29" displayName="Send email to alert applicant regulatory decision has been made" id="{3c8e6388-0627-ee11-9965-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_buildingprofessionapplication" parentDisplayName="Building Profession Application" solution="Active" />
         <Dependent type="29" displayName="Default BPA Date of Decision and Date of Registration" id="{b267ad7a-8b21-ee11-9966-0022481b59de}" />
       </MissingDependency>
@@ -304,6 +326,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Application Status" parentSchemaName="bsr_buildingprofessionapplication" parentDisplayName="Building Profession Application" solution="Active" />
+        <Dependent type="29" displayName="Send BPA Submission Confirmation Email" id="{817a3841-cf40-ee11-bdf3-0022481b56d1}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Application Status" parentSchemaName="bsr_buildingprofessionapplication" parentDisplayName="Building Profession Application" solution="Active" />
         <Dependent type="29" displayName="Auto populate BPA Hold Review Date[DEPRECATED]" id="{a4537a39-3a2a-ee11-bdf4-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
@@ -317,6 +343,14 @@
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="BuildingRegCore (1.17.49.3)" id.schemaname="bsr_noreplyqueueid" />
         <Dependent type="29" displayName="Send Building Profession Application Return Code" id="{0de98ff2-a515-ee11-9cbe-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="BuildingRegCore (1.17.49.3)" id.schemaname="bsr_noreplyqueueid" />
+        <Dependent type="29" displayName="Send email to alert applicant regulatory decision has been made" id="{3c8e6388-0627-ee11-9965-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="BuildingRegCore (1.17.49.3)" id.schemaname="bsr_noreplyqueueid" />
+        <Dependent type="29" displayName="Send BPA Submission Confirmation Email" id="{817a3841-cf40-ee11-bdf3-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointbpafolderid" solution="Active" id.schemaname="bsr_sharepointbpafolderid" />
