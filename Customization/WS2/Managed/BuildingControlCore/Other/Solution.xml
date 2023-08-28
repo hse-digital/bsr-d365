@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23081.162" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23075.172" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>BuildingControlCore</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Control Core" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.13.0</Version>
+    <Version>1.0.12.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -88,13 +88,18 @@
       <RootComponent type="1" schemaName="bsr_jobrole" behavior="2" />
       <RootComponent type="1" schemaName="bsr_mdtmember" behavior="0" />
       <RootComponent type="1" schemaName="bsr_mdtproject" behavior="0" />
+      <RootComponent type="1" schemaName="bsr_site" behavior="0" />
       <RootComponent type="1" schemaName="contact" behavior="1" />
+      <RootComponent type="1" schemaName="processsession" behavior="2" />
+      <RootComponent type="1" schemaName="syncerror" behavior="2" />
+      <RootComponent type="1" schemaName="systemuser" behavior="1" />
       <RootComponent type="1" schemaName="task" behavior="1" />
       <RootComponent type="20" id="{2771850d-6700-ee11-8f6d-6045bdf1e965}" behavior="0" />
       <RootComponent type="20" id="{49ea6622-741b-ee11-8f6d-6045bdf1e965}" behavior="0" />
       <RootComponent type="20" id="{6cc7a6f1-6600-ee11-8f6d-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="20" id="{f8d7b35d-1932-ee11-bdf3-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{16a040a4-1f31-ee11-bdf3-6045bdc208e3}" behavior="0" />
+      <RootComponent type="29" id="{24027734-8a3b-ee11-bdf4-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="29" id="{5fe59749-ff40-ee11-bdf3-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{6c26aacb-8d30-ee11-bdf3-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{6f004b7e-3931-ee11-bdf3-6045bdd2c0c0}" behavior="0" />
@@ -105,7 +110,13 @@
       <RootComponent type="36" id="{a5a6ad6f-5f42-ee11-bdf3-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="61" schemaName="bsr_/buildingcontrol/tables/bsr_buildingcontrolapplication/img/bsr_buildingcontrolapplication.svg" behavior="0" />
       <RootComponent type="61" schemaName="bsr_/buildingcontrol/tables/bsr_buildingdetails/script/bsr_buildingdetails.js" behavior="0" />
+      <RootComponent type="61" schemaName="bsr_addresses" behavior="0" />
+      <RootComponent type="61" schemaName="bsr_building" behavior="0" />
+      <RootComponent type="61" schemaName="bsr_buildingcompletioncertificates" behavior="0" />
       <RootComponent type="61" schemaName="bsr_mdtproject.svg" behavior="0" />
+      <RootComponent type="70" id="{03b28b8b-4c3c-ee11-bdf4-6045bdd0e4cf}" behavior="0" />
+      <RootComponent type="70" id="{cb781775-4e3c-ee11-bdf4-6045bdd2c0c0}" behavior="0" />
+      <RootComponent type="70" id="{f7b36328-513c-ee11-bdf4-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="9" schemaName="bsr_buildingcategory" behavior="0" />
       <RootComponent type="9" schemaName="bsr_buildingcategorychoice" behavior="0" />
       <RootComponent type="9" schemaName="bsr_buildtypechoice" behavior="0" />
@@ -166,13 +177,13 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23072.1019)</package>
         </Required>
         <Dependent type="1" schemaName="bsr_building" displayName="Building" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="msdyn_customerasset" displayName="Customer Asset" solution="msdyn_AssetCommon (1.0.26.9)">
-          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23072.1019)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
@@ -218,7 +229,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="msdyn_account_msdyn_customerasset_Account" displayName="msdyn_account_msdyn_customerasset_Account" parentSchemaName="account" parentDisplayName="Account" solution="msdyn_AssetCommon (1.0.26.9)">
-          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23072.1019)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
@@ -418,7 +429,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Active Customer Assets" displayName="Active Customer Assets" parentSchemaName="msdyn_customerasset" parentDisplayName="Customer Asset" solution="msdyn_AssetCommon (1.0.26.9)" id="{6ecb03a4-acda-44ae-83e3-c60ba8338dbb}">
-          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23072.1019)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
@@ -430,7 +441,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Customer Asset associated view with alerts" displayName="Customer Asset associated view with alerts" parentSchemaName="msdyn_customerasset" parentDisplayName="Customer Asset" solution="msdyn_ConnectedCustomerService (9.0.20115.1027)" id="{38cc036f-fbfe-e911-a81c-000d3ac2c6cb}">
-          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23072.1019)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
@@ -459,6 +470,10 @@
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="61" schemaName="bsr_addresses" displayName="bsr_addresses" solution="BuildingRegCore (1.17.55.0)" />
+        <Dependent type="61" schemaName="bsr_addresses" displayName="bsr_addresses" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="61" schemaName="bsr_building" displayName="bsr_building" solution="BuildingRegCore (1.17.55.0)" />
         <Dependent type="1" schemaName="bsr_building" displayName="Building" />
       </MissingDependency>
@@ -467,8 +482,16 @@
         <Dependent type="1" schemaName="bsr_buildingdetails" displayName="Building Details" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="61" schemaName="bsr_building" displayName="bsr_building" solution="BuildingRegCore (1.17.55.0)" />
+        <Dependent type="61" schemaName="bsr_building" displayName="bsr_building" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="61" schemaName="bsr_buildingcompletioncertificates" displayName="bsr_buildingcompletioncertificates" solution="BuildingRegCore (1.17.55.0)" />
         <Dependent type="1" schemaName="bsr_buildingcontrollifecycle" displayName="Building Control Lifecycle" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="bsr_buildingcompletioncertificates" displayName="bsr_buildingcompletioncertificates" solution="BuildingRegCore (1.17.55.0)" />
+        <Dependent type="61" schemaName="bsr_buildingcompletioncertificates" displayName="bsr_buildingcompletioncertificates" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="bsr_jobrole" displayName="bsr_jobrole" solution="BuildingRegCore (1.17.55.0)" />
@@ -476,34 +499,34 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_/ConnectedCustomerService/Account/AccountForm.js" displayName="msdyn_/ConnectedCustomerService/Account/AccountForm.js" solution="msdyn_ConnectedCustomerService (9.0.20115.1027)">
-          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23072.1019)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="61" schemaName="msdyn_talkingpointsloader.js" displayName="msdyn_talkingpointsloader.js" solution="msdynce_Talkingpoints (9.1.0.59)">
-          <package>msdynce_SalesInsightsAnchor (9.0.23081.10010)</package>
+        <Required type="61" schemaName="msdyn_talkingpointsloader.js" displayName="msdyn_talkingpointsloader.js" solution="msdynce_Talkingpoints (9.0.1.701894)">
+          <package>msdynce_SalesInsightsAnchor (9.0.23074.10006)</package>
         </Required>
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2308.1014)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2307.5014)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Building Control Lifecycle" id="{0df30caa-f043-4e13-ab5f-524da6f9b13d}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2308.1014)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2307.5014)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Building Details" id="{e39fd151-fe03-4620-b14c-3de9ac05b6a9}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2308.1014)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2307.5014)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Building Control Application" id="{e775f7c6-149b-429d-bd84-417d949d6bae}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.Grid.GridControl" displayName="MscrmControls.Grid.GridControl" solution="BaseCustomControlsCore (9.0.2308.1014)" />
+        <Required type="66" schemaName="MscrmControls.Grid.GridControl" displayName="MscrmControls.Grid.GridControl" solution="BaseCustomControlsCore (9.0.2307.5014)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Building Control Lifecycle" id="{0df30caa-f043-4e13-ab5f-524da6f9b13d}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.OptionSet.OptionSetControl" displayName="MscrmControls.OptionSet.OptionSetControl" solution="CustomControlsCore (9.2.23081.00162)" />
+        <Required type="66" schemaName="MscrmControls.OptionSet.OptionSetControl" displayName="MscrmControls.OptionSet.OptionSetControl" solution="CustomControlsCore (9.2.23075.00172)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Building Details" id="{e39fd151-fe03-4620-b14c-3de9ac05b6a9}" />
       </MissingDependency>
     </MissingDependencies>

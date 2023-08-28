@@ -1,0 +1,150 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS2"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "MDT Azure ADB2C Invitation Lifetime Secs (bsr_MDTAzureADB2CInvitationLifetimeSecs)": {
+          "defaultValue": 259200,
+          "type": "Int",
+          "metadata": {
+            "schemaName": "bsr_MDTAzureADB2CInvitationLifetimeSecs"
+          }
+        }
+      },
+      "triggers": {
+        "Recurrence": {
+          "recurrence": {
+            "frequency": "Hour",
+            "interval": 1,
+            "startTime": "2023-08-17T09:00:00Z"
+          },
+          "metadata": {
+            "operationMetadataId": "67bbc08c-a73e-4013-ba15-13fc2e6c8c8c"
+          },
+          "type": "Recurrence"
+        }
+      },
+      "actions": {
+        "List_rows": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "44ff3a08-6166-4043-8b04-113705f678c4"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "contacts",
+              "$filter": "(bsr_mdtportalaccountstatuscode eq 760810002)"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('List_rows')?['body/value']",
+          "actions": {
+            "Add_to_time": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "7d4a647d-3850-4419-8245-3865539c5da8"
+              },
+              "type": "Expression",
+              "kind": "AddToTime",
+              "inputs": {
+                "baseTime": "@items('Apply_to_each')?['bsr_invitedtomdtportalon']",
+                "interval": "@parameters('MDT Azure ADB2C Invitation Lifetime Secs (bsr_MDTAzureADB2CInvitationLifetimeSecs)')",
+                "timeUnit": "Second"
+              }
+            },
+            "Condition": {
+              "actions": {
+                "Update_a_row": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "09d2ccf0-8522-475b-9050-b4cb3308a91c"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "contacts",
+                      "recordId": "@items('Apply_to_each')?['contactid']",
+                      "item/bsr_mdtportalaccountstatuscode": 760810005
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "Compose": [
+                  "Succeeded"
+                ]
+              },
+              "expression": {
+                "greater": [
+                  "@outputs('Compose')",
+                  "@body('Add_to_time')"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "14a12753-36dd-4e07-8f2b-5b4deb2ffb9a"
+              },
+              "type": "If"
+            },
+            "Compose": {
+              "runAfter": {
+                "Add_to_time": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "04483ec7-06e2-4104-b6a6-d9370273c00b"
+              },
+              "type": "Compose",
+              "inputs": "@utcNow()"
+            }
+          },
+          "runAfter": {
+            "List_rows": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "02c2a074-07c2-4741-94d1-445c403e03fd"
+          },
+          "type": "Foreach"
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

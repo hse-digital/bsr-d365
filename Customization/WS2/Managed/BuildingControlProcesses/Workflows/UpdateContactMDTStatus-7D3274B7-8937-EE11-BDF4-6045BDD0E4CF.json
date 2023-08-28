@@ -1,0 +1,169 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS2"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "MDT Azure Application Tenant ID (bsr_mdtazureapplicationtenantid)": {
+          "defaultValue": "89a14cfd-4e48-47c3-b297-6f9645c8f07d",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_mdtazureapplicationtenantid"
+          }
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "a3d344f7-70e9-45f3-8d69-964830fe5b30"
+          },
+          "type": "Request",
+          "kind": "Http",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "objectId": {
+                  "type": "string"
+                },
+                "contactId": {
+                  "type": "string"
+                },
+                "identityProvider": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "objectId",
+                "contactId"
+              ]
+            },
+            "triggerAuthenticationType": "All"
+          }
+        }
+      },
+      "actions": {
+        "Compose": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "d04721ed-5d4e-41b7-bc92-0c02b6cd01cc"
+          },
+          "type": "Compose",
+          "inputs": "@triggerBody()['objectId']"
+        },
+        "List_rows": {
+          "runAfter": {
+            "Compose": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "0f40dbaa-d5f6-4715-bbe3-3c1633242844"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_externalidentities",
+              "$filter": "_bsr_contactid_value eq @{triggerBody()['contactId']} and bsr_name eq @{triggerBody()['objectId']}"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Condition": {
+          "actions": {},
+          "runAfter": {
+            "List_rows": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Add_a_new_row": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "75c4b318-3025-41ba-85a0-80505af2921a"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps",
+                    "operationId": "CreateRecord",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "bsr_externalidentities",
+                    "item/bsr_contactid@odata.bind": "/contacts/@{triggerBody()['contactId']}",
+                    "item/bsr_name": "@triggerBody()['objectId']",
+                    "item/bsr_identityprovider": "@parameters('MDT Azure Application Tenant ID (bsr_mdtazureapplicationtenantid)')"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              },
+              "Update_a_row": {
+                "runAfter": {
+                  "Add_a_new_row": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "ff4f3f95-4f88-4fdc-b684-08c012fabaaf"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps",
+                    "operationId": "UpdateRecord",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "contacts",
+                    "recordId": "@triggerBody()['contactId']",
+                    "item/bsr_mdtportalaccountstatuscode": 760810000
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              }
+            }
+          },
+          "expression": {
+            "greater": [
+              "@length(outputs('List_rows')?['body/value'])",
+              0
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "46a945bd-9ea9-43d7-be93-3e6f19fccb63"
+          },
+          "type": "If"
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

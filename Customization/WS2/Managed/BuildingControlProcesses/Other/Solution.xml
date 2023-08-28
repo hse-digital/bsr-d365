@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23075.172" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23081.162" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>BuildingControlProcesses</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Control Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.5.0</Version>
+    <Version>1.0.6.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -80,12 +80,15 @@
       </Addresses>
     </Publisher>
     <RootComponents>
+      <RootComponent type="29" id="{036ae4e8-9e37-ee11-bdf4-6045bdf1ea4d}" behavior="0" />
       <RootComponent type="29" id="{173a80a5-053d-ee11-bdf4-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{26bd59d9-2c22-ee11-9966-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{2da81556-423c-ee11-bdf4-6045bdc208e3}" behavior="0" />
       <RootComponent type="29" id="{2f3184e0-b83a-ee11-bdf4-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="29" id="{3514c78f-8200-ee11-8f6d-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{3afbc31a-c036-ee11-bdf4-6045bdd0e4cf}" behavior="0" />
+      <RootComponent type="29" id="{60a8cba0-fd3c-ee11-bdf4-6045bdf1ea4d}" behavior="0" />
+      <RootComponent type="29" id="{7d3274b7-8937-ee11-bdf4-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="29" id="{7fae9b6c-6342-ee11-bdf3-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{94088361-433c-ee11-bdf4-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="29" id="{9c114d37-213d-ee11-bdf4-6045bdd2c0c0}" behavior="0" />
@@ -93,6 +96,7 @@
       <RootComponent type="29" id="{bb83c958-443c-ee11-bdf4-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="29" id="{ca7fdd69-d73d-ee11-bdf4-6045bdd0ef54}" behavior="0" />
       <RootComponent type="29" id="{cb363430-c936-ee11-bdf4-6045bdf1e965}" behavior="0" />
+      <RootComponent type="29" id="{f6af5bc5-093d-ee11-bdf4-6045bdc208e3}" behavior="0" />
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
@@ -152,6 +156,14 @@
         <Dependent type="29" displayName="Set Building Control Life cycle On Update of Building Details" id="{2f3184e0-b83a-ee11-bdf4-6045bdd0e4cf}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="bsr_externalidentity" displayName="BSR External Identity" solution="BuildingRegCore (1.17.55.0)" />
+        <Dependent type="29" displayName="Update Contact MDT Status" id="{7d3274b7-8937-ee11-bdf4-6045bdd0e4cf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_externalidentity" displayName="BSR External Identity" solution="BuildingRegCore (1.17.55.0)" />
+        <Dependent type="29" displayName="Enable/Disable Contact MDT Account" id="{f6af5bc5-093d-ee11-bdf4-6045bdc208e3}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_approvaldecisionissueddate" displayName="Approval Decision Issued Date" parentSchemaName="bsr_buildingcontrollifecycle" parentDisplayName="Building Control Lifecycle" solution="Active" />
         <Dependent type="29" displayName="Set Assessment Success Criteria Met to 'Yes' when Decision Date is Populated" id="{3afbc31a-c036-ee11-bdf4-6045bdd0e4cf}" />
       </MissingDependency>
@@ -164,12 +176,24 @@
         <Dependent type="29" displayName="Set Building Control Life cycle On Update of Building Details" id="{2f3184e0-b83a-ee11-bdf4-6045bdd0e4cf}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_disablemdtaccount" displayName="Disable MDT Account" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent type="29" displayName="Enable/Disable Contact MDT Account" id="{f6af5bc5-093d-ee11-bdf4-6045bdc208e3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_enablemdtaccount" displayName="Enable MDT Account" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent type="29" displayName="Enable/Disable Contact MDT Account" id="{f6af5bc5-093d-ee11-bdf4-6045bdc208e3}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_fireconsulteereceiveddate" displayName="Received Date" parentSchemaName="bsr_buildingcontrollifecycle" parentDisplayName="Building Control Lifecycle" solution="Active" />
         <Dependent type="29" displayName="Set Statutory Fire Request Timer Success to 'Yes' when Fire Consultee Recieve Date is modified" id="{2da81556-423c-ee11-bdf4-6045bdc208e3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_fireconsulteerequestdate" displayName="Request Date " parentSchemaName="bsr_buildingcontrollifecycle" parentDisplayName="Building Control Lifecycle" solution="Active" />
         <Dependent type="29" displayName="Populate Statutory Fire consultation Request Failure Date when Fire Request Date is modified" id="{bb83c958-443c-ee11-bdf4-6045bdd0e4cf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_invitetomdtportal" displayName="Invite to MDT Portal" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent type="29" displayName="Invite Contact for MDT Portal" id="{036ae4e8-9e37-ee11-bdf4-6045bdf1ea4d}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_rejectiondecisionissueddate" displayName="Rejection Decision Issued Date " parentSchemaName="bsr_buildingcontrollifecycle" parentDisplayName="Building Control Lifecycle" solution="Active" />
@@ -190,6 +214,38 @@
       <MissingDependency>
         <Required type="2" schemaName="ownerid" displayName="Regulatory Lead" parentSchemaName="bsr_buildingdetails" parentDisplayName="Building Details" solution="Active" />
         <Dependent type="29" displayName="Set Building Control Life cycle On Update of Building Details" id="{2f3184e0-b83a-ee11-bdf4-6045bdd0e4cf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_bsrcommonapiaccesskeyws2" solution="Active" id.schemaname="bsr_bsrcommonapiaccesskeyws2" />
+        <Dependent type="29" displayName="Invite Contact for MDT Portal" id="{036ae4e8-9e37-ee11-bdf4-6045bdf1ea4d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_bsrcommonapiurlws2" solution="Active" id.schemaname="bsr_bsrcommonapiurlws2" />
+        <Dependent type="29" displayName="Invite Contact for MDT Portal" id="{036ae4e8-9e37-ee11-bdf4-6045bdf1ea4d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_MDTAzureADB2CInvitationLifetimeSecs" solution="Active" id.schemaname="bsr_MDTAzureADB2CInvitationLifetimeSecs" />
+        <Dependent type="29" displayName="Validate MDT Contact Invitation Status" id="{60a8cba0-fd3c-ee11-bdf4-6045bdf1ea4d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_mdtazureadb2cinvitesecret" solution="Active" id.schemaname="bsr_mdtazureadb2cinvitesecret" />
+        <Dependent type="29" displayName="Invite Contact for MDT Portal" id="{036ae4e8-9e37-ee11-bdf4-6045bdf1ea4d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_mdtazureadb2cinviteurl" solution="Active" id.schemaname="bsr_mdtazureadb2cinviteurl" />
+        <Dependent type="29" displayName="Invite Contact for MDT Portal" id="{036ae4e8-9e37-ee11-bdf4-6045bdf1ea4d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_mdtazureapplicationtenantid" solution="Active" id.schemaname="bsr_mdtazureapplicationtenantid" />
+        <Dependent type="29" displayName="Update Contact MDT Status" id="{7d3274b7-8937-ee11-bdf4-6045bdd0e4cf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_mdtazureapplicationtenantid" solution="Active" id.schemaname="bsr_mdtazureapplicationtenantid" />
+        <Dependent type="29" displayName="Enable/Disable Contact MDT Account" id="{f6af5bc5-093d-ee11-bdf4-6045bdc208e3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_mdtwebsiteurl" solution="Active" id.schemaname="bsr_mdtwebsiteurl" />
+        <Dependent type="29" displayName="Invite Contact for MDT Portal" id="{036ae4e8-9e37-ee11-bdf4-6045bdf1ea4d}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointbcafolderid" solution="Active" id.schemaname="bsr_sharepointbcafolderid" />
