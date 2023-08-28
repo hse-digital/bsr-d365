@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23075.172" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23081.162" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>BuildingControlUX</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Control UX" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.7.0</Version>
+    <Version>1.0.8.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -80,6 +80,7 @@
       </Addresses>
     </Publisher>
     <RootComponents>
+      <RootComponent type="300" schemaName="bsr_bsrdefaultcommandlibrary_a4cc5" behavior="0" />
       <RootComponent type="62" schemaName="bsr_BSR" behavior="0" />
       <RootComponent type="80" schemaName="bsr_BSR" behavior="0" />
     </RootComponents>
@@ -179,6 +180,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_building" displayName="Building" solution="BuildingRegCore (1.17.55.0)" />
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="BuildingRegCore (1.17.55.0)" />
+        <Dependent type="300" schemaName="bsr_bsrdefaultcommandlibrary_a4cc5" displayName="BSR_DefaultCommandLibrary" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="BuildingRegCore (1.17.55.0)" />
@@ -446,25 +451,25 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="entitlement" displayName="Entitlement" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23072.1019)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="entitlementtemplate" displayName="Entitlement Template" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23072.1019)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="equipment" displayName="Facility/Equipment" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23072.1019)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23072.1019)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
@@ -498,7 +503,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="msdyn_customerasset" displayName="Customer Asset" solution="msdyn_AssetCommon (1.0.26.9)">
-          <package>msdynce_ServiceAnchor (9.0.23072.1019)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
@@ -522,43 +527,43 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="msdyn_iotalert" displayName="IoT Alert" solution="IoTConnector (1.8.9.7)">
-          <package>msdynce_ServiceAnchor (9.0.23072.1019)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="msdyn_iotdevicecategory" displayName="IoT Device Category" solution="IoTConnector (1.8.9.7)">
-          <package>msdynce_ServiceAnchor (9.0.23072.1019)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="msdyn_iotdevicecommanddefinition" displayName="IoT Device Command Definition" solution="IoTConnector (1.8.9.7)">
-          <package>msdynce_ServiceAnchor (9.0.23072.1019)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="msdyn_iotpropertydefinition" displayName="IoT Property Definition" solution="IoTConnector (1.8.9.7)">
-          <package>msdynce_ServiceAnchor (9.0.23072.1019)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="msdyn_iotsettings" displayName="IoT Settings" solution="IoTConnector (1.8.9.7)">
-          <package>msdynce_ServiceAnchor (9.0.23072.1019)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_kmfederatedsearchconfig" displayName="Search provider" solution="msdynce_KnowledgeManagementOnlineFeatures (9.0.23071.5024)">
-          <package>msdynce_KnowledgeManagementAnchor (9.0.23071.5024)</package>
+        <Required type="1" schemaName="msdyn_kmfederatedsearchconfig" displayName="Search provider" solution="msdynce_KnowledgeManagementOnlineFeatures (9.0.23081.5017)">
+          <package>msdynce_KnowledgeManagementAnchor (9.0.23081.5017)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_knowledgearticletemplate" displayName="Knowledge Article Template" solution="msdynce_KnowledgeManagementFeatures (9.0.23071.5024)">
-          <package>msdynce_KnowledgeManagementAnchor (9.0.23071.5024)</package>
+        <Required type="1" schemaName="msdyn_knowledgearticletemplate" displayName="Knowledge Article Template" solution="msdynce_KnowledgeManagementFeatures (9.0.23081.5017)">
+          <package>msdynce_KnowledgeManagementAnchor (9.0.23081.5017)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
@@ -579,8 +584,8 @@
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_productivityagentscript" displayName="Agent script" solution="msdyn_Agentscripts (9.2.23074.1005)">
-          <package>AgentProductivityToolsAnchor (9.2.23074.1005)</package>
+        <Required type="1" schemaName="msdyn_productivityagentscript" displayName="Agent script" solution="msdyn_Agentscripts (9.2.23081.1018)">
+          <package>AgentProductivityToolsAnchor (9.2.23081.1018)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
@@ -614,13 +619,13 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="service" displayName="Service" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23072.1019)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="serviceappointment" displayName="Service Activity" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23072.1019)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
@@ -759,6 +764,10 @@
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="300" schemaName="bsr_bsrdefaultcommandlibrary_a4cc5" displayName="BSR_DefaultCommandLibrary" solution="BuildingRegUX (1.11.10.0)" />
+        <Dependent type="300" schemaName="bsr_bsrdefaultcommandlibrary_a4cc5" displayName="BSR_DefaultCommandLibrary" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="60" displayName="Structure" parentDisplayName="Structure" solution="BuildingRegCore (1.17.55.0)" id="{58e353f6-2098-ed11-aad1-0022481b5e4f}" />
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
@@ -780,7 +789,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="Tier 1 Dashboard" solution="msdynce_Service (9.0.5.56)" id="{d201a642-6283-4f1d-81b7-da4b1685e698}">
-          <package>msdynce_ServiceAnchor (9.0.23072.1019)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
