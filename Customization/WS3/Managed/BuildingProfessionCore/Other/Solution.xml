@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Profession Core" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.29.0</Version>
+    <Version>1.0.30.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -113,6 +113,7 @@
       <RootComponent type="36" id="{b86cdf8b-d115-ee11-9cbe-0022481b59de}" behavior="0" />
       <RootComponent type="36" id="{d73a7726-2543-ee11-bdf3-0022481b56d1}" behavior="0" />
       <RootComponent type="36" id="{f8a57011-bd41-ee11-bdf3-0022481b59de}" behavior="0" />
+      <RootComponent type="60" id="{aa40f6f7-1fd2-ed11-a7c6-6045bd0d6904}" behavior="0" />
       <RootComponent type="61" schemaName="bsr_/buildingprofession/tables/bsr_biactivity/img/bsr_biactivity.svg" behavior="0" />
       <RootComponent type="61" schemaName="bsr_/buildingprofession/tables/bsr_bibuildingcategory/img/bsr_bibuildingcategory.svg" behavior="0" />
       <RootComponent type="61" schemaName="bsr_/buildingprofession/tables/bsr_biemploymentdetail/img/bsr_biemploymentdetail.svg" behavior="0" />
@@ -134,6 +135,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_accounttype" displayName="Account Type" solution="BuildingRegCore (1.17.57.0)" />
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="BuildingRegCore (1.17.57.0)" />
+        <Dependent type="60" displayName="BSR Ops Management Overview" id="{aa40f6f7-1fd2-ed11-a7c6-6045bd0d6904}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_contacttype" displayName="Contact Type" solution="BuildingRegCore (1.17.57.0)" />
@@ -484,6 +489,10 @@
         <Dependent type="10" schemaName="bsr_biprofessionalmembership_year" displayName="bsr_biprofessionalmembership_year" parentSchemaName="bsr_year" parentDisplayName="Year" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="createdon" displayName="Created On" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="BuildingRegCore (1.17.57.0)" />
+        <Dependent type="60" displayName="BSR Ops Management Overview" id="{aa40f6f7-1fd2-ed11-a7c6-6045bd0d6904}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="originatingleadid" displayName="Originating Lead" parentSchemaName="account" parentDisplayName="Account" solution="msdynce_LeadManagement (9.0.4.0066)">
           <package>msdynce_LeadManagementAnchor (9.0.23081.10004)</package>
         </Required>
@@ -538,6 +547,10 @@
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="Active Building Applications" displayName="Active Building Applications" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="BuildingRegCore (1.17.57.0)" id="{b0587ee2-c201-4b42-a952-7b471bced0d1}" />
+        <Dependent type="60" displayName="BSR Ops Management Overview" id="{aa40f6f7-1fd2-ed11-a7c6-6045bd0d6904}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="Active Contact Types" displayName="Active Contact Types" parentSchemaName="bsr_contacttype" parentDisplayName="Contact Type" solution="BuildingRegCore (1.17.57.0)" id="{3ffa3cce-cffd-4ae4-bcf5-c99639ce456b}" />
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
@@ -568,6 +581,22 @@
       <MissingDependency>
         <Required type="26" schemaName="Refund Reason Lookup View" displayName="Refund Reason Lookup View" parentSchemaName="bsr_refundreason" parentDisplayName="Refund Reason" solution="BuildingRegCore (1.17.57.0)" id="{09570d30-ff02-4c72-b2e5-eb5cedb62d6b}" />
         <Dependent type="60" displayName="Information" parentDisplayName="Gov UK Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="59" schemaName="Building Applications (Created On by Month)" displayName="Building Applications (Created On by Month)" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="BuildingRegCore (1.17.57.0)" id="{ad12a46a-2ec3-ed11-b597-6045bd0d4376}" />
+        <Dependent type="60" displayName="BSR Ops Management Overview" id="{aa40f6f7-1fd2-ed11-a7c6-6045bd0d6904}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="59" schemaName="Building Applications (Submitted On by Month)" displayName="Building Applications (Submitted On by Month)" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="BuildingRegCore (1.17.57.0)" id="{7f4c8a8a-2ec3-ed11-b597-6045bd0d4376}" />
+        <Dependent type="60" displayName="BSR Ops Management Overview" id="{aa40f6f7-1fd2-ed11-a7c6-6045bd0d6904}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="59" schemaName="Created On by Application Status" displayName="Created On by Application Status" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="BuildingRegCore (1.17.57.0)" id="{7e1e2bd2-27c3-ed11-b597-6045bd0d4376}" />
+        <Dependent type="60" displayName="BSR Ops Management Overview" id="{aa40f6f7-1fd2-ed11-a7c6-6045bd0d6904}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="59" schemaName="Created On by Building Application Stage" displayName="Created On by Building Application Stage" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="BuildingRegCore (1.17.57.0)" id="{8394c504-28c3-ed11-b597-6045bd0d4376}" />
+        <Dependent type="60" displayName="BSR Ops Management Overview" id="{aa40f6f7-1fd2-ed11-a7c6-6045bd0d6904}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="account contact card" parentDisplayName="Contact" solution="msdynce_AppCommon (9.0.4.0066)" id="{29de27bc-a257-4f29-99cf-bab4a84e688f}">
