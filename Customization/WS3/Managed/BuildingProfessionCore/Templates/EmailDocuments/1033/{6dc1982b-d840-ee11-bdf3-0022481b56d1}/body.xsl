@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" ?><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"><xsl:output method="text" indent="no"/><xsl:template match="/data"><![CDATA[<div><span style="font-family:Arial,Helvetica,sans-serif;"><img style="height:78px;width:1157px;"></span></div>
 <div>&#160;</div>
 <div><strong><span style="font-size:20pt;" class=keyboardFocusClass><span style="font-family:Arial,Helvetica,sans-serif;">Application received %applicationId%#</span></span></strong></div>
-<div class=keyboardFocusClass><span style="font-family:Arial,Helvetica,sans-serif;">We have received your application to register as building inspector with the Building Safety Regulator (BSR).</span></div>
 <div>&#160;</div>
 <div>&#160;</div>
 <div><span style="font-family:Arial,Helvetica,sans-serif;">Your application reference number is&#160;<strong><span class="ab ac ae af ag ah ai aj ak b c d e f g h i j k l m n o p q r s t u ui-provider v w x xo y z" dir=ltr>%applicationId%.</span></strong></span></div>
