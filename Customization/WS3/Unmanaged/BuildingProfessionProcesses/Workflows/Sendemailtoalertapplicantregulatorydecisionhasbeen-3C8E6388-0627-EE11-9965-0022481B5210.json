@@ -1,15 +1,6 @@
 {
   "properties": {
     "connectionReferences": {
-      "shared_commondataserviceforapps_2": {
-        "runtimeSource": "embedded",
-        "connection": {
-          "connectionReferenceLogicalName": "bsr_sharedcommondataserviceforapps_1f74f"
-        },
-        "api": {
-          "name": "shared_commondataserviceforapps"
-        }
-      },
       "shared_commondataserviceforapps_1": {
         "runtimeSource": "embedded",
         "connection": {
@@ -32,6 +23,15 @@
         "runtimeSource": "embedded",
         "connection": {
           "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS3"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_commondataserviceforapps_2": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_sharedcommondataserviceforapps_1f74f"
         },
         "api": {
           "name": "shared_commondataserviceforapps"
@@ -110,7 +110,7 @@
                   "type": "OpenApiConnection",
                   "inputs": {
                     "host": {
-                      "connectionName": "shared_commondataserviceforapps_2",
+                      "connectionName": "shared_commondataserviceforapps_1",
                       "operationId": "GetItem",
                       "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
                     },
@@ -304,7 +304,7 @@
                 }
               },
               "runAfter": {
-                "Set_varRegistrationCommencementDate": [
+                "Condition_Class_list_is_empty": [
                   "Succeeded"
                 ]
               },
@@ -517,6 +517,37 @@
                 "name": "varRegistrationCommencmentDate",
                 "value": "@{formatDateTime(triggerOutputs()?['body/bsr_registrationcommencementdate'], 'dd/MM/yyyy')}"
               }
+            },
+            "Condition_Class_list_is_empty": {
+              "actions": {
+                "Terminate_3": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "1eccca2d-e05f-474a-876b-826d01f55c40"
+                  },
+                  "type": "Terminate",
+                  "inputs": {
+                    "runStatus": "Succeeded"
+                  }
+                }
+              },
+              "runAfter": {
+                "Set_varRegistrationCommencementDate": [
+                  "Succeeded"
+                ]
+              },
+              "expression": {
+                "not": {
+                  "contains": [
+                    "@variables('varClasses')",
+                    "Class"
+                  ]
+                }
+              },
+              "metadata": {
+                "operationMetadataId": "fefa9831-84d1-4140-b765-900f998a9fcb"
+              },
+              "type": "If"
             }
           },
           "runAfter": {
@@ -719,7 +750,7 @@
               }
             },
             "Apply_to_each_Class_Loop": {
-              "foreach": "@outputs('List_rows_BI_Reg_Classes')?['body/value']",
+              "foreach": "@outputs('List_rows_BI_Reg_Classes_2')?['body/value']",
               "actions": {
                 "Append_to_string_variable_Class_List_2": {
                   "runAfter": {
@@ -802,7 +833,7 @@
                 }
               },
               "runAfter": {
-                "Template_BPA_Rejeceted": [
+                "List_rows_BI_Reg_Classes_2": [
                   "Succeeded"
                 ]
               },
@@ -823,6 +854,29 @@
               "type": "Terminate",
               "inputs": {
                 "runStatus": "Succeeded"
+              }
+            },
+            "List_rows_BI_Reg_Classes_2": {
+              "runAfter": {
+                "Template_BPA_Rejeceted": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "61ba9b8b-4409-409e-9cb8-b5a96c4fbfde"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "bsr_biregclasses",
+                  "$filter": "_bsr_biapplicationid_value eq '@{triggerOutputs()?['body/bsr_buildingprofessionapplicationid']}'"
+                },
+                "authentication": "@parameters('$authentication')"
               }
             }
           },
@@ -890,7 +944,7 @@
                   "type": "OpenApiConnection",
                   "inputs": {
                     "host": {
-                      "connectionName": "shared_commondataserviceforapps_2",
+                      "connectionName": "shared_commondataserviceforapps_1",
                       "operationId": "GetItem",
                       "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
                     },
@@ -1010,7 +1064,7 @@
                 }
               },
               "runAfter": {
-                "Apply_to_each_Class_Loop_2": [
+                "Condition_Class_list_is_empty_2": [
                   "Succeeded"
                 ]
               },
@@ -1144,6 +1198,37 @@
                 "name": "varRegistrationCommencmentDate",
                 "value": "@{formatDateTime(triggerOutputs()?['body/bsr_registrationcommencementdate'], 'dd/MM/yyyy')}"
               }
+            },
+            "Condition_Class_list_is_empty_2": {
+              "actions": {
+                "Terminate_4": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "1eccca2d-e05f-474a-876b-826d01f55c40"
+                  },
+                  "type": "Terminate",
+                  "inputs": {
+                    "runStatus": "Succeeded"
+                  }
+                }
+              },
+              "runAfter": {
+                "Apply_to_each_Class_Loop_2": [
+                  "Succeeded"
+                ]
+              },
+              "expression": {
+                "not": {
+                  "contains": [
+                    "@variables('varClasses')",
+                    "Class"
+                  ]
+                }
+              },
+              "metadata": {
+                "operationMetadataId": "fefa9831-84d1-4140-b765-900f998a9fcb"
+              },
+              "type": "If"
             }
           },
           "runAfter": {
@@ -1289,7 +1374,7 @@
           "type": "OpenApiConnection",
           "inputs": {
             "host": {
-              "connectionName": "shared_commondataserviceforapps_2",
+              "connectionName": "shared_commondataserviceforapps_1",
               "operationId": "ListRecords",
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
             },
