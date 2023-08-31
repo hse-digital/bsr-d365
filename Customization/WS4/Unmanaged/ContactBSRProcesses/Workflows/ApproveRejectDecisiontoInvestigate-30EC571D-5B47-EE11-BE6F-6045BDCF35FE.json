@@ -1,0 +1,139 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS4"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS4"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "6efde6a8-cbd4-4096-ae64-ba42bd574bde"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "bsr_investigation",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "bsr_decisiontoinvestigatestatus",
+              "subscriptionRequest/filterexpression": "bsr_decisiontoinvestigatestatus eq 760810002 or bsr_decisiontoinvestigatestatus eq 760810003",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Update_a_row:_Investigation": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "7cfec03b-5c37-49bb-9b57-42843acd2200"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_investigations",
+              "recordId": "@triggerOutputs()?['body/bsr_investigationid']",
+              "item/bsr_DecisiontoInvestigateMadeBy@odata.bind": "/systemusers(@{triggerOutputs()?['body/_modifiedby_value']})",
+              "item/bsr_decisiontoinvestigatemadeon": "@utcNow()"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Add_a_new_row:_Notification": {
+          "runAfter": {
+            "Get_a_row_by_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "52458169-0e7f-41ff-8a44-16e5b01d9396"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "appnotifications",
+              "item/title": "Decision to Investigate - @{triggerOutputs()?['body/_bsr_decisiontoinvestigatestatus_label']}",
+              "item/body": "@{outputs('Get_a_row_by_ID')?['body/fullname']} has @{toLower(triggerOutputs()?['body/_bsr_decisiontoinvestigatestatus_label'])} the investigation",
+              "item/data": "{\n\t\"actions\":[\n\t\t{\n\t\t\t\"title\": \"View Investigation\",\n\t\t\t\"data\": {\n\t\t\t\t\"url\": \"?pagetype=entityrecord&etn=bsr_investigation&id=@{triggerOutputs()?['body/bsr_investigationid']}\"\n\t\t\t}\n\t\t}\n\t]\n}",
+              "item/icontype": 100000000,
+              "item/ownerid@odata.bind": "/systemusers(@{triggerOutputs()?['body/_ownerid_value']})",
+              "item/toasttype": 200000000
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_a_row_by_ID": {
+          "runAfter": {
+            "Update_a_row:_Investigation": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "83662143-9044-40a2-a199-de4879c015ea"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "systemusers",
+              "recordId": "@triggerOutputs()?['body/_modifiedby_value']",
+              "$select": "fullname"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

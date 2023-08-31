@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23075.172" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23081.170" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>ContactBSRProcesses</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Contact BSR Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.9.0</Version>
+    <Version>1.0.10.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -85,22 +85,32 @@
       <RootComponent type="29" id="{19d3b6ba-063d-ee11-bdf4-6045bdd2cb7b}" behavior="0" />
       <RootComponent type="29" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" behavior="0" />
       <RootComponent type="29" id="{2bc836b7-dd3d-ee11-bdf4-6045bdcf35fe}" behavior="0" />
+      <RootComponent type="29" id="{30ec571d-5b47-ee11-be6f-6045bdcf35fe}" behavior="0" />
       <RootComponent type="29" id="{31469dfc-d141-ee11-bdf3-6045bdd2cb7b}" behavior="0" />
+      <RootComponent type="29" id="{381bb83f-6f43-ee11-bdf3-6045bdd0ef4d}" behavior="0" />
       <RootComponent type="29" id="{895c7f8f-9f2f-ee11-bdf3-6045bdd2c8fd}" behavior="0" />
       <RootComponent type="29" id="{97ee9355-eb26-ee11-9965-6045bdd2cb7b}" behavior="0" />
       <RootComponent type="29" id="{e6b75386-a82c-ee11-9965-6045bdd2c7c5}" behavior="0" />
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
+        <Required type="1" schemaName="appnotification" displayName="Notification" solution="AppNotifications (10.0.0.14)" />
+        <Dependent type="29" displayName="Approve/Reject Decision to Investigate" id="{30ec571d-5b47-ee11-be6f-6045bdcf35fe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="appnotification" displayName="Notification" solution="AppNotifications (10.0.0.14)" />
+        <Dependent type="29" displayName="Request Decision to Investigate" id="{381bb83f-6f43-ee11-bdf3-6045bdd0ef4d}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="bsr_appeal" displayName="Appeal" solution="Active" />
         <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="BuildingRegCore (1.17.49.3)" />
+        <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="BuildingRegCore (1.17.57.0)" />
         <Dependent type="29" displayName="Set Case BSR Document Regarding" id="{19d3b6ba-063d-ee11-bdf4-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="BuildingRegCore (1.17.49.3)" />
+        <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="BuildingRegCore (1.17.57.0)" />
         <Dependent type="29" displayName="Create Case BSR Document For Uploaded Files" id="{2bc836b7-dd3d-ee11-bdf4-6045bdcf35fe}" />
       </MissingDependency>
       <MissingDependency>
@@ -112,56 +122,64 @@
         <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="bsr_investigation" displayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="Approve/Reject Decision to Investigate" id="{30ec571d-5b47-ee11-be6f-6045bdcf35fe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_investigation" displayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="Request Decision to Investigate" id="{381bb83f-6f43-ee11-bdf3-6045bdd0ef4d}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="29" displayName="BSR Customer Services" id="{0ffbcde4-61c1-4355-aa89-aa1d7b2b8792}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="29" displayName="Case - Parent/Child Case Mapping" id="{31469dfc-d141-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="29" displayName="Set Email Sender to BSR Customer Services" id="{895c7f8f-9f2f-ee11-bdf3-6045bdd2c8fd}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="29" displayName="Create Case Document Location" id="{97ee9355-eb26-ee11-9965-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="29" displayName="On Change - Active Stage - Update Case Status" id="{e6b75386-a82c-ee11-9965-6045bdd2c7c5}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="phonetocaseprocess" displayName="Phone To Case Process" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="1" schemaName="phonetocaseprocess" displayName="Phone To Case Process" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="activestageid" displayName="Active Stage" parentSchemaName="phonetocaseprocess" parentDisplayName="Phone To Case Process" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="26" schemaName="PhoneToCaseProcess Copilot View" displayName="PhoneToCaseProcess Copilot View" parentSchemaName="phonetocaseprocess" parentDisplayName="Phone To Case Process" id="{bfe97d73-439a-aeca-bcc8-974189d0d851}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="activestageid" displayName="Active Stage" parentSchemaName="phonetocaseprocess" parentDisplayName="Phone To Case Process" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="29" displayName="On Change - Active Stage - Update Case Status" id="{e6b75386-a82c-ee11-9965-6045bdd2c7c5}" />
       </MissingDependency>
@@ -174,7 +192,7 @@
         <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_block_incidentid" displayName="Block" parentSchemaName="incident" parentDisplayName="Case" solution="BuildingRegCore (1.17.49.3)" />
+        <Required type="2" schemaName="bsr_block_incidentid" displayName="Block" parentSchemaName="incident" parentDisplayName="Case" solution="BuildingRegCore (1.17.57.0)" />
         <Dependent type="29" displayName="Case - Parent/Child Case Mapping" id="{31469dfc-d141-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
@@ -200,6 +218,14 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_caseoutcome" displayName="Case Outcome" parentSchemaName="incident" parentDisplayName="Case" solution="Active" />
         <Dependent type="60" displayName="PhoneToCaseProcess" parentDisplayName="Phone To Case Process" id="{9774341b-bb15-44b8-b7fa-2ad3aadefa62}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_decisiontoinvestigatestatus" displayName="Decision Status" parentSchemaName="bsr_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="Approve/Reject Decision to Investigate" id="{30ec571d-5b47-ee11-be6f-6045bdcf35fe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_decisiontoinvestigatestatus" displayName="Decision Status" parentSchemaName="bsr_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="Request Decision to Investigate" id="{381bb83f-6f43-ee11-bdf3-6045bdd0ef4d}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_enforcementaction" displayName="Enforcement Action" parentSchemaName="incident" parentDisplayName="Case" solution="Active" />
@@ -258,7 +284,7 @@
         <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_enforcement" parentDisplayName="Enforcement Action" solution="Active" />
+        <Required type="2" schemaName="bsr_name" displayName="ID" parentSchemaName="bsr_enforcement" parentDisplayName="Enforcement Action" solution="Active" />
         <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
@@ -315,181 +341,181 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="businessprocessflowinstanceid" displayName="Phone To Case Process Instance Id" parentSchemaName="phonetocaseprocess" parentDisplayName="Phone To Case Process" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="26" schemaName="PhoneToCaseProcess Copilot View" displayName="PhoneToCaseProcess Copilot View" parentSchemaName="phonetocaseprocess" parentDisplayName="Phone To Case Process" id="{bfe97d73-439a-aeca-bcc8-974189d0d851}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="businessprocessflowinstanceid" displayName="Phone To Case Process Instance Id" parentSchemaName="phonetocaseprocess" parentDisplayName="Phone To Case Process" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="29" displayName="On Change - Active Stage - Update Case Status" id="{e6b75386-a82c-ee11-9965-6045bdd2c7c5}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="casetypecode" displayName="Case Type" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="29" displayName="BSR Customer Services" id="{0ffbcde4-61c1-4355-aa89-aa1d7b2b8792}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="casetypecode" displayName="Case Type" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="casetypecode" displayName="Case Type" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="60" displayName="PhoneToCaseProcess" parentDisplayName="Phone To Case Process" id="{9774341b-bb15-44b8-b7fa-2ad3aadefa62}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="createdon" displayName="Created On" parentSchemaName="phonetocaseprocess" parentDisplayName="Phone To Case Process" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="26" schemaName="PhoneToCaseProcess Copilot View" displayName="PhoneToCaseProcess Copilot View" parentSchemaName="phonetocaseprocess" parentDisplayName="Phone To Case Process" id="{bfe97d73-439a-aeca-bcc8-974189d0d851}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="customerid" displayName="Customer" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="29" displayName="Case - Parent/Child Case Mapping" id="{31469dfc-d141-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="customerid" displayName="Customer" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="60" displayName="PhoneToCaseProcess" parentDisplayName="Phone To Case Process" id="{9774341b-bb15-44b8-b7fa-2ad3aadefa62}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="incidentid" displayName="Case" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="29" displayName="BSR Customer Services" id="{0ffbcde4-61c1-4355-aa89-aa1d7b2b8792}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="incidentid" displayName="Case" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="incidentid" displayName="Case" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="29" displayName="Case - Parent/Child Case Mapping" id="{31469dfc-d141-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="incidentid" displayName="Case" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="29" displayName="Set Email Sender to BSR Customer Services" id="{895c7f8f-9f2f-ee11-bdf3-6045bdd2c8fd}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="incidentid" displayName="Case" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="29" displayName="On Change - Active Stage - Update Case Status" id="{e6b75386-a82c-ee11-9965-6045bdd2c7c5}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="incidentid" displayName="Incident" parentSchemaName="phonetocaseprocess" parentDisplayName="Phone To Case Process" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="2" schemaName="incidentid" displayName="Incident" parentSchemaName="phonetocaseprocess" parentDisplayName="Phone To Case Process" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="incidentstagecode" displayName="Case Stage" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="29" displayName="On Change - Active Stage - Update Case Status" id="{e6b75386-a82c-ee11-9965-6045bdd2c7c5}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="name" displayName="Process Name" parentSchemaName="phonetocaseprocess" parentDisplayName="Phone To Case Process" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="26" schemaName="PhoneToCaseProcess Copilot View" displayName="PhoneToCaseProcess Copilot View" parentSchemaName="phonetocaseprocess" parentDisplayName="Phone To Case Process" id="{bfe97d73-439a-aeca-bcc8-974189d0d851}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="name" displayName="Process Name" parentSchemaName="phonetocaseprocess" parentDisplayName="Phone To Case Process" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="29" displayName="On Change - Active Stage - Update Case Status" id="{e6b75386-a82c-ee11-9965-6045bdd2c7c5}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="parentcaseid" displayName="Parent Case" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="29" displayName="Case - Parent/Child Case Mapping" id="{31469dfc-d141-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="primarycontactid" displayName="Contact" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="29" displayName="Case - Parent/Child Case Mapping" id="{31469dfc-d141-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="primarycontactid" displayName="Contact" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="60" displayName="PhoneToCaseProcess" parentDisplayName="Phone To Case Process" id="{9774341b-bb15-44b8-b7fa-2ad3aadefa62}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="processid" displayName="Process" parentSchemaName="phonetocaseprocess" parentDisplayName="Phone To Case Process" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="26" schemaName="PhoneToCaseProcess Copilot View" displayName="PhoneToCaseProcess Copilot View" parentSchemaName="phonetocaseprocess" parentDisplayName="Phone To Case Process" id="{bfe97d73-439a-aeca-bcc8-974189d0d851}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statecode" displayName="Status" parentSchemaName="phonetocaseprocess" parentDisplayName="Phone To Case Process" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="26" schemaName="PhoneToCaseProcess Copilot View" displayName="PhoneToCaseProcess Copilot View" parentSchemaName="phonetocaseprocess" parentDisplayName="Phone To Case Process" id="{bfe97d73-439a-aeca-bcc8-974189d0d851}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="phonetocaseprocess" parentDisplayName="Phone To Case Process" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="26" schemaName="PhoneToCaseProcess Copilot View" displayName="PhoneToCaseProcess Copilot View" parentSchemaName="phonetocaseprocess" parentDisplayName="Phone To Case Process" id="{bfe97d73-439a-aeca-bcc8-974189d0d851}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="title" displayName="Case Title" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="29" displayName="BSR Customer Services" id="{0ffbcde4-61c1-4355-aa89-aa1d7b2b8792}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="title" displayName="Case Title" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="title" displayName="Case Title" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="29" displayName="Case - Parent/Child Case Mapping" id="{31469dfc-d141-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="title" displayName="Case Title" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="29" displayName="Set Email Sender to BSR Customer Services" id="{895c7f8f-9f2f-ee11-bdf3-6045bdd2c8fd}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="title" displayName="Case Title" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="29" displayName="On Change - Active Stage - Update Case Status" id="{e6b75386-a82c-ee11-9965-6045bdd2c7c5}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="29" displayName="BSR Customer Services" solution="msdynce_Service (9.0.5.56)" id="{0ffbcde4-61c1-4355-aa89-aa1d7b2b8792}">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="29" displayName="BSR Customer Services" id="{0ffbcde4-61c1-4355-aa89-aa1d7b2b8792}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="PhoneToCaseProcess" parentDisplayName="Phone To Case Process" solution="msdynce_Service (9.0.5.56)" id="{9774341b-bb15-44b8-b7fa-2ad3aadefa62}">
-          <package>msdynce_ServiceAnchor (9.0.23074.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="60" displayName="PhoneToCaseProcess" parentDisplayName="Phone To Case Process" id="{9774341b-bb15-44b8-b7fa-2ad3aadefa62}" />
       </MissingDependency>
@@ -498,7 +524,7 @@
         <Dependent type="29" displayName="Create Case BSR Document For Uploaded Files" id="{2bc836b7-dd3d-ee11-bdf4-6045bdcf35fe}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointsiteurl" solution="BuildingRegCore (1.17.49.3)" id.schemaname="bsr_sharepointsiteurl" />
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointsiteurl" solution="BuildingRegCore (1.17.57.0)" id.schemaname="bsr_sharepointsiteurl" />
         <Dependent type="29" displayName="Create Case BSR Document For Uploaded Files" id="{2bc836b7-dd3d-ee11-bdf4-6045bdcf35fe}" />
       </MissingDependency>
     </MissingDependencies>
