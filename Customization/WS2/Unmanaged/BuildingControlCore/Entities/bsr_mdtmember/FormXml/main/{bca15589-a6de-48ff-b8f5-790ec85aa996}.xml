@@ -5,7 +5,7 @@
     <IntroducedVersion>1.0</IntroducedVersion>
     <FormPresentation>1</FormPresentation>
     <FormActivationState>1</FormActivationState>
-    <form>
+    <form headerdensity="HighWithControls">
       <tabs>
         <tab verticallayout="true" id="{ce4ffbfa-50a0-4105-9a62-e7ced663fd05}" IsUserDefined="1">
           <labels>
@@ -20,7 +20,7 @@
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{41e01217-a4cf-4d9c-bdf4-34214f8f6275}">
+                      <cell id="{41e01217-a4cf-4d9c-bdf4-34214f8f6275}" visible="false">
                         <labels>
                           <label description="Name" languagecode="1033" />
                         </labels>
@@ -28,11 +28,35 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{678b7399-c205-4bae-9675-61e000c0ae7f}">
+                      <cell id="{e123ca27-b3dc-4475-8311-45218cd0c8aa}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="Owner" languagecode="1033" />
+                          <label description="MDT Project" languagecode="1033" />
                         </labels>
-                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                        <control id="bsr_mdtproject" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_mdtproject" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2213c29c-1f32-4b8e-966e-159240b3fdc3}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Contact" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_contact" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_contact" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0267387d-98c7-48b2-80e9-a61349be9b48}" locklevel="0" colspan="1" rowspan="1" visible="false">
+                        <labels>
+                          <label description="Role" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_jobrole" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_jobrole" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{8fc61f02-e85b-403d-8b6d-b0af130d4ff1}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Rate" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_rate" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="bsr_rate" disabled="false" />
                       </cell>
                     </row>
                   </rows>
@@ -42,6 +66,57 @@
           </columns>
         </tab>
       </tabs>
+      <header id="{6e2938cb-aecf-4b56-9467-ab9143b85f9c}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{2debeb98-749f-4f0f-bd72-a81cb6db9b72}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{eb61a57a-626e-488c-9369-514a1291d22a}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{ac60fde3-5acb-4675-b5b1-32502135f9bb}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{678b7399-c205-4bae-9675-61e000c0ae7f}" colspan="1" rowspan="1">
+              <labels>
+                <label description="Owner" languagecode="1033" />
+              </labels>
+              <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{93e22d45-6185-4730-809e-bdbde350ca99}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{dc72c6be-06ac-4e2e-aabc-a5a8bce52425}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{7cd6dca1-1ce6-476d-915f-f29cc9929cc5}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{debd1e91-81d8-485f-bb54-e49c29f5e3f2}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

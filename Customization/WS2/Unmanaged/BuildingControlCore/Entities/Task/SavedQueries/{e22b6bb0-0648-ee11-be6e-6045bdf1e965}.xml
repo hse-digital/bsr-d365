@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{e22b6bb0-0648-ee11-be6e-6045bdf1e965}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="subject" select="1" preview="1" icon="1">
+        <row name="result" id="activityid">
+          <cell name="subject" width="250" />
+          <cell name="bsr_mdtmemberid" width="167" />
+          <cell name="scheduledend" width="100" />
+          <cell name="bsr_mdtwebsitestatus" width="153" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="task">
+          <attribute name="subject" />
+          <order attribute="subject" descending="false" />
+          <attribute name="activityid" />
+          <filter type="and">
+            <condition attribute="statecode" operator="not-null" />
+          </filter>
+          <attribute name="bsr_mdtwebsitestatus" />
+          <attribute name="bsr_mdtmemberid" />
+          <attribute name="scheduledend" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.19.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="MDT Project Tasks" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

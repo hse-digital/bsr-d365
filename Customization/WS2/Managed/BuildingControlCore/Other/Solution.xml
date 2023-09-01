@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Control Core" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.18.0</Version>
+    <Version>1.0.19.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -81,6 +81,7 @@
     </Publisher>
     <RootComponents>
       <RootComponent type="1" schemaName="account" behavior="2" />
+      <RootComponent type="1" schemaName="bsr_bsrdocument" behavior="0" />
       <RootComponent type="1" schemaName="bsr_building" behavior="0" />
       <RootComponent type="1" schemaName="bsr_buildingcontrolapplication" behavior="0" />
       <RootComponent type="1" schemaName="bsr_buildingcontrollifecycle" behavior="0" />
@@ -89,6 +90,7 @@
       <RootComponent type="1" schemaName="bsr_mdtmember" behavior="0" />
       <RootComponent type="1" schemaName="bsr_mdtproject" behavior="0" />
       <RootComponent type="1" schemaName="bsr_projectbriefs" behavior="0" />
+      <RootComponent type="1" schemaName="bsr_projecttaskdocument" behavior="0" />
       <RootComponent type="1" schemaName="contact" behavior="1" />
       <RootComponent type="1" schemaName="task" behavior="1" />
       <RootComponent type="20" id="{2771850d-6700-ee11-8f6d-6045bdf1e965}" behavior="0" />
@@ -108,6 +110,7 @@
       <RootComponent type="60" id="{e2f64325-2940-ee11-bdf3-6045bdc208e3}" behavior="0" />
       <RootComponent type="61" schemaName="bsr_/buildingcontrol/tables/bsr_buildingcontrolapplication/img/bsr_buildingcontrolapplication.svg" behavior="0" />
       <RootComponent type="61" schemaName="bsr_/buildingcontrol/tables/bsr_buildingdetails/script/bsr_buildingdetails.js" behavior="0" />
+      <RootComponent type="61" schemaName="bsr_mdtmember" behavior="0" />
       <RootComponent type="61" schemaName="bsr_mdtproject.svg" behavior="0" />
       <RootComponent type="9" schemaName="bsr_buildingcategory" behavior="0" />
       <RootComponent type="9" schemaName="bsr_buildingcategorychoice" behavior="0" />
@@ -121,6 +124,7 @@
       <RootComponent type="9" schemaName="bsr_phase" behavior="0" />
       <RootComponent type="9" schemaName="bsr_portalaccountstatus" behavior="0" />
       <RootComponent type="9" schemaName="bsr_primaryusechoice" behavior="0" />
+      <RootComponent type="9" schemaName="bsr_projectstatus" behavior="0" />
       <RootComponent type="9" schemaName="bsr_requestfollowup" behavior="0" />
       <RootComponent type="9" schemaName="bsr_responsibleactorsschemechoice" behavior="0" />
       <RootComponent type="9" schemaName="bsr_role" behavior="0" />
@@ -140,6 +144,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_block" displayName="Structure" solution="BuildingRegCore (1.17.57.0)" />
         <Dependent type="1" schemaName="bsr_building" displayName="Building" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="BuildingRegCore (1.17.57.0)" />
+        <Dependent type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_building" displayName="Building" solution="BuildingRegCore (1.17.57.0)" />
@@ -272,36 +280,12 @@
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_assignedon" displayName="Assigned On" parentSchemaName="task" parentDisplayName="Task" solution="BuildingRegCore (1.17.57.0)" />
-        <Dependent type="60" displayName="Task" parentDisplayName="Task" id="{16654191-19ad-48ca-9e46-c4b4fbdad76f}" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="2" schemaName="bsr_buildingapplicationid" displayName="Building Application" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="BuildingRegCore (1.17.57.0)" />
         <Dependent type="10" schemaName="bsr_buildingapplication_building" displayName="bsr_buildingapplication_building" parentSchemaName="bsr_building" parentDisplayName="Building" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_buildingtypeid" displayName="Building Type" parentSchemaName="bsr_buildingtype" parentDisplayName="Building Type" solution="BuildingRegCore (1.17.57.0)" />
         <Dependent type="10" schemaName="bsr_bsr_building_BuildingTypeID_bsr_buildingt" displayName="bsr_bsr_building_BuildingTypeID_bsr_buildingt" parentSchemaName="bsr_building" parentDisplayName="Building" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_dateexception" displayName="Date Exception" parentSchemaName="task" parentDisplayName="Task" solution="BuildingRegCore (1.17.57.0)" />
-        <Dependent type="29" displayName="Show/Hide Fields based on MDT Task is Yes" id="{add194c3-1940-ee11-bdf3-6045bdc208e3}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_dateexception" displayName="Date Exception" parentSchemaName="task" parentDisplayName="Task" solution="BuildingRegCore (1.17.57.0)" />
-        <Dependent type="60" displayName="Task" parentDisplayName="Task" id="{16654191-19ad-48ca-9e46-c4b4fbdad76f}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_dutyholderid" displayName="Dutyholder" parentSchemaName="task" parentDisplayName="Task" solution="BuildingRegCore (1.17.57.0)" />
-        <Dependent type="29" displayName="Show/Hide Fields based on MDT Task is Yes" id="{add194c3-1940-ee11-bdf3-6045bdc208e3}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_dutyholderid" displayName="Dutyholder" parentSchemaName="task" parentDisplayName="Task" solution="BuildingRegCore (1.17.57.0)" />
-        <Dependent type="60" displayName="Task" parentDisplayName="Task" id="{16654191-19ad-48ca-9e46-c4b4fbdad76f}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_iscostrecoverable" displayName="Cost Recoverable" parentSchemaName="task" parentDisplayName="Task" solution="BuildingRegCore (1.17.57.0)" />
-        <Dependent type="60" displayName="Task" parentDisplayName="Task" id="{16654191-19ad-48ca-9e46-c4b4fbdad76f}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_jobrole" displayName="Job Role" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.57.0)" />
@@ -336,54 +320,16 @@
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_outcome" displayName="Outcome" parentSchemaName="task" parentDisplayName="Task" solution="BuildingRegCore (1.17.57.0)" />
-        <Dependent type="29" displayName="Show/Hide Fields based on MDT Task is Yes" id="{add194c3-1940-ee11-bdf3-6045bdc208e3}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_outcome" displayName="Outcome" parentSchemaName="task" parentDisplayName="Task" solution="BuildingRegCore (1.17.57.0)" />
-        <Dependent type="60" displayName="Task" parentDisplayName="Task" id="{16654191-19ad-48ca-9e46-c4b4fbdad76f}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_paymentdue" displayName="Payment Due" parentSchemaName="task" parentDisplayName="Task" solution="BuildingRegCore (1.17.57.0)" />
-        <Dependent type="60" displayName="Task" parentDisplayName="Task" id="{16654191-19ad-48ca-9e46-c4b4fbdad76f}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_plannedstart" displayName="Planned Start" parentSchemaName="task" parentDisplayName="Task" solution="BuildingRegCore (1.17.57.0)" />
-        <Dependent type="60" displayName="Task" parentDisplayName="Task" id="{16654191-19ad-48ca-9e46-c4b4fbdad76f}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_rate" displayName="Rate" parentSchemaName="task" parentDisplayName="Task" solution="BuildingRegCore (1.17.57.0)" />
-        <Dependent type="60" displayName="Task" parentDisplayName="Task" id="{16654191-19ad-48ca-9e46-c4b4fbdad76f}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_taskcode" displayName="Task ID" parentSchemaName="task" parentDisplayName="Task" solution="BuildingRegCore (1.17.57.0)" />
-        <Dependent type="60" displayName="Task" parentDisplayName="Task" id="{16654191-19ad-48ca-9e46-c4b4fbdad76f}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_tasktypeid" displayName="Task Type" parentSchemaName="task" parentDisplayName="Task" solution="BuildingRegCore (1.17.57.0)" />
-        <Dependent type="60" displayName="Task" parentDisplayName="Task" id="{16654191-19ad-48ca-9e46-c4b4fbdad76f}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_timespenthours" displayName="Time Spent (Hrs)" parentSchemaName="task" parentDisplayName="Task" solution="BuildingRegCore (1.17.57.0)" />
-        <Dependent type="60" displayName="Task" parentDisplayName="Task" id="{16654191-19ad-48ca-9e46-c4b4fbdad76f}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_timespentminutes" displayName="Time Spent (Mins)" parentSchemaName="task" parentDisplayName="Task" solution="BuildingRegCore (1.17.57.0)" />
-        <Dependent type="60" displayName="Task" parentDisplayName="Task" id="{16654191-19ad-48ca-9e46-c4b4fbdad76f}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_totaldurationminutes" displayName="Total Duration (Mins)" parentSchemaName="task" parentDisplayName="Task" solution="BuildingRegCore (1.17.57.0)" />
-        <Dependent type="60" displayName="Task" parentDisplayName="Task" id="{16654191-19ad-48ca-9e46-c4b4fbdad76f}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_totaltimehours" displayName="Total Duration (Hrs)" parentSchemaName="task" parentDisplayName="Task" solution="BuildingRegCore (1.17.57.0)" />
-        <Dependent type="60" displayName="Task" parentDisplayName="Task" id="{16654191-19ad-48ca-9e46-c4b4fbdad76f}" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="2" schemaName="originatingleadid" displayName="Originating Lead" parentSchemaName="account" parentDisplayName="Account" solution="msdynce_LeadManagement (9.0.4.0066)">
           <package>msdynce_LeadManagementAnchor (9.0.23074.10001)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="serviceid" displayName="Service" parentSchemaName="task" parentDisplayName="Task" solution="msdynce_Service (9.0.5.56)">
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+        </Required>
+        <Dependent type="2" schemaName="serviceid" displayName="Service" parentSchemaName="task" parentDisplayName="Task" />
       </MissingDependency>
       <MissingDependency>
         <Required type="20" displayName="BSR Ops Team" solution="BuildingRegCore (1.17.57.0)" id="{0b90c986-fda6-ed11-aad1-0022481b5e4f}" />
@@ -433,7 +379,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="All Contacts" displayName="All Contacts" parentSchemaName="contact" parentDisplayName="Contact" solution="msdynce_AppCommon (9.0.4.0066)" id="{0d5d377b-5e7c-47b5-bab1-a5cb8b4ac105}">
-          <package>msdynce_AppCommonAnchor (9.0.23074.10001)</package>
+          <package>msdynce_AppCommonAnchor (9.0.23081.10001)</package>
         </Required>
         <Dependent type="26" schemaName="All Contacts" displayName="All Contacts" parentSchemaName="contact" parentDisplayName="Contact" id="{0d5d377b-5e7c-47b5-bab1-a5cb8b4ac105}" />
       </MissingDependency>
@@ -465,7 +411,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="59" schemaName="Tasks by Month Due" displayName="Tasks by Month Due" parentSchemaName="task" parentDisplayName="Task" solution="msdynce_AppCommon (9.0.4.0066)" id="{9e6a8b06-6d14-46e6-bbf5-95c388c6eb7a}">
-          <package>msdynce_AppCommonAnchor (9.0.23074.10001)</package>
+          <package>msdynce_AppCommonAnchor (9.0.23081.10001)</package>
         </Required>
         <Dependent type="60" displayName="Information" parentDisplayName="MDT Project" id="{71f35e77-ae19-488b-8d7e-944dc30e3979}" />
       </MissingDependency>
@@ -475,7 +421,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="account contact card" parentDisplayName="Contact" solution="msdynce_AppCommon (9.0.4.0066)" id="{29de27bc-a257-4f29-99cf-bab4a84e688f}">
-          <package>msdynce_AppCommonAnchor (9.0.23074.10001)</package>
+          <package>msdynce_AppCommonAnchor (9.0.23081.10001)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>

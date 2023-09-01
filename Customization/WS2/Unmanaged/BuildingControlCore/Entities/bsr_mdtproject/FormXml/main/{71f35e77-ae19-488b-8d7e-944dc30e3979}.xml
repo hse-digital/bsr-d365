@@ -12,11 +12,11 @@
             <label description="General" languagecode="1033" />
           </labels>
           <columns>
-            <column width="100%">
+            <column width="50%">
               <sections>
-                <section showlabel="false" showbar="false" IsUserDefined="0" id="{9401e43b-79b2-4ef6-8a08-efeb532d1591}">
+                <section name="{117c5943-6562-4eed-87bb-9384cf3231bd}_section_2" showlabel="true" showbar="false" locklevel="0" id="{4951c3e0-7e49-da18-3076-8886182c3155}" IsUserDefined="0" layout="varwidth" columns="11" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
-                    <label description="General" languagecode="1033" />
+                    <label description="MDT Project Information" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
@@ -26,6 +26,11 @@
                         </labels>
                         <control id="bsr_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="bsr_name" />
                       </cell>
+                      <cell id="{b63f111e-8d33-4eea-83f3-3992ca13b2fc}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
                     </row>
                     <row>
                       <cell id="{7142819d-1b61-4996-9819-c560c4f2b757}" locklevel="0" colspan="1" rowspan="1">
@@ -34,13 +39,30 @@
                         </labels>
                         <control id="bsr_buidlingdetailsid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_buidlingdetailsid" disabled="false" />
                       </cell>
+                      <cell id="{4d93567b-98cb-449d-2c08-4b324b0d58ca}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
                     </row>
                     <row>
                       <cell id="{51aceb83-382f-4d87-a475-394db985ddbd}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="Building Control Application" languagecode="1033" />
                         </labels>
-                        <control id="bsr_buidlingcontrolapplicationid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_buidlingcontrolapplicationid" disabled="false" />
+                        <control id="bsr_buidlingcontrolapplicationid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_buidlingcontrolapplicationid" disabled="false">
+                          <parameters>
+                            <DependentAttributeName>bsr_mdtproject.bsr_buidlingdetailsid</DependentAttributeName>
+                            <DependentAttributeType>bsr_buildingdetails</DependentAttributeType>
+                            <FilterRelationshipName>bsr_buildingdetails_bcapplicationid</FilterRelationshipName>
+                            <DisableMru>true</DisableMru>
+                          </parameters>
+                        </control>
+                      </cell>
+                      <cell id="{c8bb7d1d-40e0-cd73-838c-15861052a947}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
                       </cell>
                     </row>
                     <row>
@@ -50,11 +72,23 @@
                         </labels>
                         <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
                       </cell>
+                      <cell id="{6ab3c191-274e-c71c-909e-e2005d718e4c}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
                     </row>
+                  </rows>
+                </section>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{9401e43b-79b2-4ef6-8a08-efeb532d1591}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
                     <row>
                       <cell locklevel="0" id="{6370c30c-0d04-4b18-9eaf-3d1aed0d9ccb}" rowspan="4" colspan="1" auto="false">
                         <labels>
-                          <label description="Tasks" languagecode="1033" />
+                          <label description="MDT Tasks" languagecode="1033" />
                         </labels>
                         <control indicationOfSubgrid="true" id="Subgrid_new_1" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
                           <parameters>
@@ -65,8 +99,8 @@
                             <EnableChartPicker>true</EnableChartPicker>
                             <ChartGridMode>All</ChartGridMode>
                             <TargetEntityType>task</TargetEntityType>
-                            <ViewId>{2B5F5A5D-2D23-4FE7-AA58-E77995368AE7}</ViewId>
-                            <ViewIds>{6CF285AA-EB20-4277-925A-3E9735411FF0},{2B5F5A5D-2D23-4FE7-AA58-E77995368AE7}</ViewIds>
+                            <ViewId>{E22B6BB0-0648-EE11-BE6E-6045BDF1E965}</ViewId>
+                            <ViewIds>{6CF285AA-EB20-4277-925A-3E9735411FF0},{2B5F5A5D-2D23-4FE7-AA58-E77995368AE7},{E22B6BB0-0648-EE11-BE6E-6045BDF1E965}</ViewIds>
                             <RelationshipName>bsr_mdtproject_Tasks</RelationshipName>
                             <VisualizationId>{9E6A8B06-6D14-46E6-BBF5-95C388C6EB7A}</VisualizationId>
                           </parameters>
@@ -104,6 +138,46 @@
                 </section>
               </sections>
             </column>
+            <column width="50%">
+              <sections>
+                <section name="_section_843" id="99427038-bbaa-418e-8bca-6b5ad02466cd" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" locklevel="0" id="{f9ffae8e-5fa6-4f3d-a34c-89870fcd7244}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{773615b4-a9f0-4f97-bd7a-65202b3a46fe}" rowspan="15" colspan="1">
+                        <labels>
+                          <label description="Note Text" languagecode="1033" />
+                        </labels>
+                        <control id="notescontrol" classid="{06375649-C143-495E-A496-C962E5B4488E}" disabled="false" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
           </columns>
         </tab>
       </tabs>
@@ -124,6 +198,12 @@
               <labels>
                 <label description="" languagecode="1033" />
               </labels>
+            </cell>
+            <cell id="{4a3ca395-3c08-449b-b124-38060805507e}" locklevel="0" colspan="1" rowspan="1">
+              <labels>
+                <label description="Project Status" languagecode="1033" />
+              </labels>
+              <control id="header_bsr_projectstatus" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_projectstatus" disabled="false" />
             </cell>
           </row>
         </rows>
@@ -149,6 +229,36 @@
           </row>
         </rows>
       </footer>
+      <Navigation>
+        <NavBar />
+        <NavBarAreas>
+          <NavBarArea Id="Info">
+            <Titles>
+              <Title LCID="1033" Text="Common" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Sales">
+            <Titles>
+              <Title LCID="1033" Text="Sales" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Service">
+            <Titles>
+              <Title LCID="1033" Text="Service" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Marketing">
+            <Titles>
+              <Title LCID="1033" Text="Marketing" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="ProcessCenter">
+            <Titles>
+              <Title LCID="1033" Text="Process Sessions" />
+            </Titles>
+          </NavBarArea>
+        </NavBarAreas>
+      </Navigation>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>

@@ -10,10 +10,10 @@
     <layoutxml>
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_buildingcontrolapplicationid">
-          <cell name="bsr_name" width="100" />
           <cell name="ownerid" width="134" />
           <cell name="bsr_caseofficer" width="111" />
           <cell name="bsr_applicationname" width="144" />
+          <cell name="bsr_submissiondate" width="136" />
         </row>
       </grid>
     </layoutxml>
@@ -24,12 +24,12 @@
           <attribute name="bsr_buildingcontrolapplicationid" />
           <attribute name="bsr_caseofficer" />
           <attribute name="bsr_applicationname" />
-          <attribute name="bsr_name" />
           <attribute name="ownerid" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
             <condition attribute="ownerid" operator="eq-userid" />
           </filter>
+          <attribute name="bsr_submissiondate" />
         </entity>
       </fetch>
     </fetchxml>
