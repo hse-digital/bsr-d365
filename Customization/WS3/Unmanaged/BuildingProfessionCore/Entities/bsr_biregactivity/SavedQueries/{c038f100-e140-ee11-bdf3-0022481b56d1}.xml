@@ -10,8 +10,10 @@
     <layoutxml>
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_biregactivityid">
+          <cell name="bsr_biapplicationid" width="128" />
           <cell name="bsr_biactivityid" width="104" />
           <cell name="bsr_bibuildingcategoryid" width="162" />
+          <cell name="a_f54a96e3b0204260897ec589354dc156.bsr_description" width="240" />
           <cell name="statuscode" width="119" />
         </row>
       </grid>
@@ -28,6 +30,10 @@
             <condition attribute="statecode" operator="eq" value="0" />
             <condition attribute="statuscode" operator="eq" value="760810002" />
           </filter>
+          <link-entity alias="a_f54a96e3b0204260897ec589354dc156" name="bsr_bibuildingcategory" to="bsr_bibuildingcategoryid" from="bsr_bibuildingcategoryid" link-type="outer" visible="false">
+            <attribute name="bsr_description" />
+          </link-entity>
+          <attribute name="bsr_biapplicationid" />
         </entity>
       </fetch>
     </fetchxml>

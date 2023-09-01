@@ -12,6 +12,7 @@
         <row name="result" id="bsr_biregactivityid">
           <cell name="bsr_biactivityid" width="104" />
           <cell name="bsr_bibuildingcategoryid" width="162" />
+          <cell name="a_c3aae38446934cbcad69b5134541c962.bsr_description" width="240" />
           <cell name="statuscode" width="119" />
         </row>
       </grid>
@@ -27,6 +28,9 @@
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <link-entity alias="a_c3aae38446934cbcad69b5134541c962" name="bsr_bibuildingcategory" to="bsr_bibuildingcategoryid" from="bsr_bibuildingcategoryid" link-type="outer" visible="false">
+            <attribute name="bsr_description" />
+          </link-entity>
         </entity>
       </fetch>
     </fetchxml>
