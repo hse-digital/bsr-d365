@@ -24,14 +24,14 @@
           "type": "SecureObject"
         },
         "MDT Azure ADB2C Invite URL (bsr_mdtazureadb2cinviteurl)": {
-          "defaultValue": "https://b2cinvite.azurewebsites.net/api/invite",
+          "defaultValue": "https://ambitious-sea-096d77803.3.azurestaticapps.net/api/Invite",
           "type": "String",
           "metadata": {
             "schemaName": "bsr_mdtazureadb2cinviteurl"
           }
         },
         "MDT Azure ADB2C Invite Secret (bsr_mdtazureadb2cinvitesecret)": {
-          "defaultValue": "1CKyknGlrIicQdMiP54FygLJIMBOkGW_WUxlCuilM1CgAzFubfA3Tw==",
+          "defaultValue": "_tBM59sccdd7qMNTpHKvcaojns7Z-SQRdKXgXoT7XIOSAzFuhaFcJQ==",
           "type": "String",
           "metadata": {
             "schemaName": "bsr_mdtazureadb2cinvitesecret"
@@ -52,7 +52,7 @@
           }
         },
         "MDT Website URL (bsr_mdtwebsiteurl)": {
-          "defaultValue": "www.mdt.gov.uk",
+          "defaultValue": "https://ambitious-sea-096d77803.3.azurestaticapps.net/",
           "type": "String",
           "metadata": {
             "schemaName": "bsr_mdtwebsiteurl"
@@ -96,13 +96,11 @@
                   "inputs": {
                     "method": "GET",
                     "uri": "@parameters('MDT Azure ADB2C Invite URL (bsr_mdtazureadb2cinviteurl)')",
-                    "headers": {
-                      "x-functions-key": "@parameters('MDT Azure ADB2C Invite Secret (bsr_mdtazureadb2cinvitesecret)')"
-                    },
                     "queries": {
                       "email": "@triggerOutputs()?['body/emailaddress1']",
                       "displayName": "@triggerOutputs()?['body/fullname']",
-                      "contactId": "@triggerOutputs()?['body/contactid']"
+                      "contactId": "@triggerOutputs()?['body/contactid']",
+                      "code": "@parameters('MDT Azure ADB2C Invite Secret (bsr_mdtazureadb2cinvitesecret)')"
                     }
                   }
                 },
@@ -195,6 +193,7 @@
                     "parameters": {
                       "entityName": "contacts",
                       "recordId": "@triggerOutputs()?['body/contactid']",
+                      "item/bsr_invitetomdtportal": false,
                       "item/bsr_mdtportalaccountstatuscode": 760810004
                     },
                     "authentication": "@parameters('$authentication')"
