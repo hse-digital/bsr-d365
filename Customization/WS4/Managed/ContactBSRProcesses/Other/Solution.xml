@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23081.170" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23082.176" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>ContactBSRProcesses</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Contact BSR Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.10.0</Version>
+    <Version>1.0.11.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -82,6 +82,7 @@
     <RootComponents>
       <RootComponent type="1" schemaName="phonetocaseprocess" behavior="0" />
       <RootComponent type="29" id="{0ffbcde4-61c1-4355-aa89-aa1d7b2b8792}" behavior="0" />
+      <RootComponent type="29" id="{19aaca71-df3d-ee11-bdf4-6045bdd2cb7b}" behavior="0" />
       <RootComponent type="29" id="{19d3b6ba-063d-ee11-bdf4-6045bdd2cb7b}" behavior="0" />
       <RootComponent type="29" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" behavior="0" />
       <RootComponent type="29" id="{2bc836b7-dd3d-ee11-bdf4-6045bdcf35fe}" behavior="0" />
@@ -104,6 +105,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_appeal" displayName="Appeal" solution="Active" />
         <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="BuildingRegCore (1.17.57.0)" />
+        <Dependent type="29" displayName="Delete Case BSR Document On File Deletion" id="{19aaca71-df3d-ee11-bdf4-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="BuildingRegCore (1.17.57.0)" />
