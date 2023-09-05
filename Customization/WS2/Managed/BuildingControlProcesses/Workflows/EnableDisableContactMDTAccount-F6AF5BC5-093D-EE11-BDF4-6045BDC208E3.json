@@ -29,6 +29,20 @@
           "metadata": {
             "schemaName": "bsr_mdtazureapplicationtenantid"
           }
+        },
+        "MDT Azure Application Secret (bsr_mdtazureappsecret)": {
+          "defaultValue": "qnU8Q~ENTYWBi7gu5Wsdl0en5vai4MJSfmeQhbkt",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_mdtazureappsecret"
+          }
+        },
+        "MDT Azure Application Client ID (bsr_mdtazureappclientid)": {
+          "defaultValue": "41cd1480-f34c-4c5f-b45e-e77ddd7174ed",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_mdtazureappclientid"
+          }
         }
       },
       "triggers": {
@@ -114,21 +128,6 @@
             },
             "Scope": {
               "actions": {
-                "HTTP": {
-                  "runAfter": {},
-                  "metadata": {
-                    "operationMetadataId": "a205f38a-4fc8-4990-a38c-70c84e94c213"
-                  },
-                  "type": "Http",
-                  "inputs": {
-                    "method": "POST",
-                    "uri": "https://login.microsoftonline.com/@{parameters('MDT Azure Application Tenant ID (bsr_mdtazureapplicationtenantid)')}/oauth2/v2.0/token",
-                    "headers": {
-                      "Content-Type": "application/x-www-form-urlencoded"
-                    },
-                    "body": "@concat('grant_type=',encodeUriComponent('client_credentials'),'&client_id=',encodeUriComponent('41cd1480-f34c-4c5f-b45e-e77ddd7174ed'),'&client_secret=',encodeUriComponent('qnU8Q~ENTYWBi7gu5Wsdl0en5vai4MJSfmeQhbkt'),'&scope=',encodeUriComponent('https://graph.microsoft.com/.default'))"
-                  }
-                },
                 "Parse_JSON": {
                   "runAfter": {
                     "HTTP": [
@@ -246,6 +245,33 @@
                     "operationMetadataId": "627c77c3-4046-41ba-9c0f-b8afad52daf5"
                   },
                   "type": "If"
+                },
+                "Compose": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "dc4f17c6-d10d-4f2e-86aa-bac69277a354"
+                  },
+                  "type": "Compose",
+                  "inputs": "@concat('grant_type=',encodeUriComponent('client_credentials'),'&client_id=',encodeUriComponent(parameters('MDT Azure Application Client ID (bsr_mdtazureappclientid)')),'&client_secret=',encodeUriComponent(parameters('MDT Azure Application Secret (bsr_mdtazureappsecret)')),'&scope=',encodeUriComponent('https://graph.microsoft.com/.default'))"
+                },
+                "HTTP": {
+                  "runAfter": {
+                    "Compose": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "a205f38a-4fc8-4990-a38c-70c84e94c213"
+                  },
+                  "type": "Http",
+                  "inputs": {
+                    "method": "POST",
+                    "uri": "https://login.microsoftonline.com/@{parameters('MDT Azure Application Tenant ID (bsr_mdtazureapplicationtenantid)')}/oauth2/v2.0/token",
+                    "headers": {
+                      "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    "body": "@outputs('Compose')"
+                  }
                 }
               },
               "runAfter": {
@@ -255,6 +281,40 @@
               },
               "metadata": {
                 "operationMetadataId": "057000d5-9ea5-457f-b46e-19eb65eaee5e"
+              },
+              "type": "Scope"
+            },
+            "Scope_2": {
+              "actions": {
+                "Update_a_row_3": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "d493cd4d-9cbe-4334-959d-05c85fa7fb9d"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "contacts",
+                      "recordId": "@outputs('Update_a_row')?['body/contactid']",
+                      "item/bsr_disablemdtaccount": false,
+                      "item/bsr_enablemdtaccount": false
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "Scope": [
+                  "Failed"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "4cba0f50-5f12-4079-9241-46bfad4abd1f"
               },
               "type": "Scope"
             }
