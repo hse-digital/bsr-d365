@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23081.170" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23082.176" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>ContactBSRCore</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Contact BSR Core" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.16.0</Version>
+    <Version>1.0.17.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -218,6 +218,12 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_structurematerial" displayName="Structure Material" solution="BuildingRegCore (1.17.57.0)" />
         <Dependent type="60" displayName="Structure" parentDisplayName="Structure" id="{58e353f6-2098-ed11-aad1-0022481b5e4f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="contract" displayName="Contract" solution="msdynce_Service (9.0.5.56)">
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+        </Required>
+        <Dependent type="60" displayName="BSR Case Management - Timeline" parentDisplayName="Case" id="{21143df2-234b-ee11-be6f-6045bdd2c8fd}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="contract" displayName="Contract" solution="msdynce_Service (9.0.5.56)">
@@ -869,6 +875,12 @@
         <Required type="2" schemaName="contractdetailid" displayName="Contract Line" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
           <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
+        <Dependent type="60" displayName="BSR Case Management - Timeline" parentDisplayName="Case" id="{21143df2-234b-ee11-be6f-6045bdd2c8fd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="contractdetailid" displayName="Contract Line" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+        </Required>
         <Dependent type="60" displayName="BSR Case Management - Evidence" parentDisplayName="Case" id="{744be890-0942-ee11-bdf3-6045bdd2c8fd}" />
       </MissingDependency>
       <MissingDependency>
@@ -893,6 +905,12 @@
         <Required type="2" schemaName="contractid" displayName="Contract" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
           <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
+        <Dependent type="60" displayName="BSR Case Management - Timeline" parentDisplayName="Case" id="{21143df2-234b-ee11-be6f-6045bdd2c8fd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="contractid" displayName="Contract" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+        </Required>
         <Dependent type="60" displayName="BSR Case Management - Evidence" parentDisplayName="Case" id="{744be890-0942-ee11-bdf3-6045bdd2c8fd}" />
       </MissingDependency>
       <MissingDependency>
@@ -912,6 +930,12 @@
           <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="contractservicelevelcode" displayName="Service Level" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+        </Required>
+        <Dependent type="60" displayName="BSR Case Management - Timeline" parentDisplayName="Case" id="{21143df2-234b-ee11-be6f-6045bdd2c8fd}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="contractservicelevelcode" displayName="Service Level" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
@@ -1289,6 +1313,12 @@
         <Required type="2" schemaName="kbarticleid" displayName="Knowledge Base Article" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
           <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
+        <Dependent type="60" displayName="BSR Case Management - Timeline" parentDisplayName="Case" id="{21143df2-234b-ee11-be6f-6045bdd2c8fd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="kbarticleid" displayName="Knowledge Base Article" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+        </Required>
         <Dependent type="60" displayName="BSR Case Management - Evidence" parentDisplayName="Case" id="{744be890-0942-ee11-bdf3-6045bdd2c8fd}" />
       </MissingDependency>
       <MissingDependency>
@@ -1316,56 +1346,56 @@
         <Dependent type="60" displayName="Case Card" parentDisplayName="Case" id="{e8f97346-4f58-47de-964f-cbd64a52011b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="msdyn_contentstore" displayName="File storage content reference" parentSchemaName="knowledgearticle" parentDisplayName="Knowledge Article" solution="msdynce_KnowledgeManagementPatch (9.0.23081.5017)">
-          <package>msdynce_KnowledgeManagementAnchor (9.0.23081.5017)</package>
+        <Required type="2" schemaName="msdyn_contentstore" displayName="File storage content reference" parentSchemaName="knowledgearticle" parentDisplayName="Knowledge Article" solution="msdynce_KnowledgeManagementPatch (9.0.23081.5019)">
+          <package>msdynce_KnowledgeManagementAnchor (9.0.23081.5019)</package>
         </Required>
         <Dependent type="2" schemaName="msdyn_contentstore" displayName="File storage content reference" parentSchemaName="knowledgearticle" parentDisplayName="Knowledge Article" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="msdyn_contentstore" displayName="File storage content reference" parentSchemaName="knowledgearticle" parentDisplayName="Knowledge Article" solution="msdynce_KnowledgeManagementPatch (9.0.23081.5017)">
-          <package>msdynce_KnowledgeManagementAnchor (9.0.23081.5017)</package>
+        <Required type="2" schemaName="msdyn_contentstore" displayName="File storage content reference" parentSchemaName="knowledgearticle" parentDisplayName="Knowledge Article" solution="msdynce_KnowledgeManagementPatch (9.0.23081.5019)">
+          <package>msdynce_KnowledgeManagementAnchor (9.0.23081.5019)</package>
         </Required>
         <Dependent type="26" schemaName="Quick Find Active Knowledge Articles" displayName="Quick Find Active Knowledge Articles" parentSchemaName="knowledgearticle" parentDisplayName="Knowledge Article" id="{2d48cd9a-9289-4373-b615-3bd5cdacfa8a}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="msdyn_ingestedarticleurl" displayName="Ingested Article URL" parentSchemaName="knowledgearticle" parentDisplayName="Knowledge Article" solution="msdynce_KnowledgeManagementPatch (9.0.23081.5017)">
-          <package>msdynce_KnowledgeManagementAnchor (9.0.23081.5017)</package>
+        <Required type="2" schemaName="msdyn_ingestedarticleurl" displayName="Ingested Article URL" parentSchemaName="knowledgearticle" parentDisplayName="Knowledge Article" solution="msdynce_KnowledgeManagementPatch (9.0.23081.5019)">
+          <package>msdynce_KnowledgeManagementAnchor (9.0.23081.5019)</package>
         </Required>
         <Dependent type="2" schemaName="msdyn_ingestedarticleurl" displayName="Ingested Article URL" parentSchemaName="knowledgearticle" parentDisplayName="Knowledge Article" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="msdyn_ingestedarticleurl" displayName="Ingested Article URL" parentSchemaName="knowledgearticle" parentDisplayName="Knowledge Article" solution="msdynce_KnowledgeManagementPatch (9.0.23081.5017)">
-          <package>msdynce_KnowledgeManagementAnchor (9.0.23081.5017)</package>
+        <Required type="2" schemaName="msdyn_ingestedarticleurl" displayName="Ingested Article URL" parentSchemaName="knowledgearticle" parentDisplayName="Knowledge Article" solution="msdynce_KnowledgeManagementPatch (9.0.23081.5019)">
+          <package>msdynce_KnowledgeManagementAnchor (9.0.23081.5019)</package>
         </Required>
         <Dependent type="26" schemaName="Quick Find Active Knowledge Articles" displayName="Quick Find Active Knowledge Articles" parentSchemaName="knowledgearticle" parentDisplayName="Knowledge Article" id="{2d48cd9a-9289-4373-b615-3bd5cdacfa8a}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="msdyn_integratedsearchproviderid" displayName="Integrated Search Dataprovider Id " parentSchemaName="knowledgearticle" parentDisplayName="Knowledge Article" solution="msdynce_KnowledgeManagementOnlineFeatures (9.0.23081.5017)">
-          <package>msdynce_KnowledgeManagementAnchor (9.0.23081.5017)</package>
+        <Required type="2" schemaName="msdyn_integratedsearchproviderid" displayName="Integrated Search Dataprovider Id " parentSchemaName="knowledgearticle" parentDisplayName="Knowledge Article" solution="msdynce_KnowledgeManagementOnlineFeatures (9.0.23081.5019)">
+          <package>msdynce_KnowledgeManagementAnchor (9.0.23081.5019)</package>
         </Required>
         <Dependent type="2" schemaName="msdyn_integratedsearchproviderid" displayName="Integrated Search Dataprovider Id " parentSchemaName="knowledgearticle" parentDisplayName="Knowledge Article" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="msdyn_integratedsearchproviderid" displayName="Integrated Search Dataprovider Id " parentSchemaName="knowledgearticle" parentDisplayName="Knowledge Article" solution="msdynce_KnowledgeManagementOnlineFeatures (9.0.23081.5017)">
-          <package>msdynce_KnowledgeManagementAnchor (9.0.23081.5017)</package>
+        <Required type="2" schemaName="msdyn_integratedsearchproviderid" displayName="Integrated Search Dataprovider Id " parentSchemaName="knowledgearticle" parentDisplayName="Knowledge Article" solution="msdynce_KnowledgeManagementOnlineFeatures (9.0.23081.5019)">
+          <package>msdynce_KnowledgeManagementAnchor (9.0.23081.5019)</package>
         </Required>
         <Dependent type="26" schemaName="Quick Find Active Knowledge Articles" displayName="Quick Find Active Knowledge Articles" parentSchemaName="knowledgearticle" parentDisplayName="Knowledge Article" id="{2d48cd9a-9289-4373-b615-3bd5cdacfa8a}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="msdyn_isingestedarticle" displayName="Is Ingested Article" parentSchemaName="knowledgearticle" parentDisplayName="Knowledge Article" solution="msdynce_KnowledgeManagementPatch (9.0.23081.5017)">
-          <package>msdynce_KnowledgeManagementAnchor (9.0.23081.5017)</package>
+        <Required type="2" schemaName="msdyn_isingestedarticle" displayName="Is Ingested Article" parentSchemaName="knowledgearticle" parentDisplayName="Knowledge Article" solution="msdynce_KnowledgeManagementPatch (9.0.23081.5019)">
+          <package>msdynce_KnowledgeManagementAnchor (9.0.23081.5019)</package>
         </Required>
         <Dependent type="2" schemaName="msdyn_isingestedarticle" displayName="Is Ingested Article" parentSchemaName="knowledgearticle" parentDisplayName="Knowledge Article" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="msdyn_isingestedarticle" displayName="Is Ingested Article" parentSchemaName="knowledgearticle" parentDisplayName="Knowledge Article" solution="msdynce_KnowledgeManagementPatch (9.0.23081.5017)">
-          <package>msdynce_KnowledgeManagementAnchor (9.0.23081.5017)</package>
+        <Required type="2" schemaName="msdyn_isingestedarticle" displayName="Is Ingested Article" parentSchemaName="knowledgearticle" parentDisplayName="Knowledge Article" solution="msdynce_KnowledgeManagementPatch (9.0.23081.5019)">
+          <package>msdynce_KnowledgeManagementAnchor (9.0.23081.5019)</package>
         </Required>
         <Dependent type="26" schemaName="Quick Find Active Knowledge Articles" displayName="Quick Find Active Knowledge Articles" parentSchemaName="knowledgearticle" parentDisplayName="Knowledge Article" id="{2d48cd9a-9289-4373-b615-3bd5cdacfa8a}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="originatingleadid" displayName="Originating Lead" parentSchemaName="account" parentDisplayName="Account" solution="msdynce_LeadManagement (9.0.4.0066)">
-          <package>msdynce_LeadManagementAnchor (9.0.23074.10001)</package>
+          <package>msdynce_LeadManagementAnchor (9.0.23081.10004)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
@@ -1465,6 +1495,12 @@
         <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
           <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
+        <Dependent type="60" displayName="BSR Case Management - Timeline" parentDisplayName="Case" id="{21143df2-234b-ee11-be6f-6045bdd2c8fd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+        </Required>
         <Dependent type="60" displayName="BSR Case Management - Evidence" parentDisplayName="Case" id="{744be890-0942-ee11-bdf3-6045bdd2c8fd}" />
       </MissingDependency>
       <MissingDependency>
@@ -1513,6 +1549,12 @@
         <Required type="2" schemaName="primarycontactid" displayName="Contact" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
           <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
+        <Dependent type="60" displayName="BSR Case Management - Timeline" parentDisplayName="Case" id="{21143df2-234b-ee11-be6f-6045bdd2c8fd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="primarycontactid" displayName="Contact" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+        </Required>
         <Dependent type="60" displayName="BSR Case Management - Evidence" parentDisplayName="Case" id="{744be890-0942-ee11-bdf3-6045bdd2c8fd}" />
       </MissingDependency>
       <MissingDependency>
@@ -1532,6 +1574,12 @@
           <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
         <Dependent type="2" schemaName="prioritycode" displayName="Priority" parentSchemaName="incident" parentDisplayName="Case" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="productserialnumber" displayName="Serial Number" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+        </Required>
+        <Dependent type="60" displayName="BSR Case Management - Timeline" parentDisplayName="Case" id="{21143df2-234b-ee11-be6f-6045bdd2c8fd}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="productserialnumber" displayName="Serial Number" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
@@ -1753,6 +1801,12 @@
         <Required type="26" schemaName="Active Contracts" displayName="Active Contracts" parentSchemaName="contract" parentDisplayName="Contract" solution="msdynce_Service (9.0.5.56)" id="{646de3ee-ebfb-4d19-8a44-4a619505e188}">
           <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
+        <Dependent type="60" displayName="BSR Case Management - Timeline" parentDisplayName="Case" id="{21143df2-234b-ee11-be6f-6045bdd2c8fd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Active Contracts" displayName="Active Contracts" parentSchemaName="contract" parentDisplayName="Contract" solution="msdynce_Service (9.0.5.56)" id="{646de3ee-ebfb-4d19-8a44-4a619505e188}">
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+        </Required>
         <Dependent type="60" displayName="BSR Case Management - Evidence" parentDisplayName="Case" id="{744be890-0942-ee11-bdf3-6045bdd2c8fd}" />
       </MissingDependency>
       <MissingDependency>
@@ -1902,6 +1956,12 @@
       <MissingDependency>
         <Required type="26" schemaName="Connected Structures Where Building connection is structural" displayName="Connected Structures Where Building connection is structural" parentSchemaName="bsr_connectedblock" parentDisplayName="Connected Structure" solution="BuildingRegCore (1.17.57.0)" id="{295d9dce-e1fb-ed11-8f6d-002248c725da}" />
         <Dependent type="60" displayName="Building" parentDisplayName="Building" id="{b9a7bf50-618a-4696-905d-f26545271ed0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Contract Line With Allotments" displayName="Contract Line With Allotments" parentSchemaName="contractdetail" parentDisplayName="Contract Line" solution="msdynce_Service (9.0.5.56)" id="{8fa2705c-7e4c-4c0e-b611-4593b35a4c9e}">
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+        </Required>
+        <Dependent type="60" displayName="BSR Case Management - Timeline" parentDisplayName="Case" id="{21143df2-234b-ee11-be6f-6045bdd2c8fd}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Contract Line With Allotments" displayName="Contract Line With Allotments" parentSchemaName="contractdetail" parentDisplayName="Contract Line" solution="msdynce_Service (9.0.5.56)" id="{8fa2705c-7e4c-4c0e-b611-4593b35a4c9e}">
@@ -2101,6 +2161,12 @@
         <Required type="61" schemaName="msdyn_CopilotCaseSummaryLibrary.js" displayName="msdyn_CopilotCaseSummaryLibrary.js" solution="msdyn_CSIntelligence (9.0.23081.1009)">
           <package>msdyn_ServiceExtendedAnchor (9.0.23081.1010)</package>
         </Required>
+        <Dependent type="60" displayName="BSR Case Management - Timeline" parentDisplayName="Case" id="{21143df2-234b-ee11-be6f-6045bdd2c8fd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="msdyn_CopilotCaseSummaryLibrary.js" displayName="msdyn_CopilotCaseSummaryLibrary.js" solution="msdyn_CSIntelligence (9.0.23081.1009)">
+          <package>msdyn_ServiceExtendedAnchor (9.0.23081.1010)</package>
+        </Required>
         <Dependent type="60" displayName="BSR Case Management - Evidence" parentDisplayName="Case" id="{744be890-0942-ee11-bdf3-6045bdd2c8fd}" />
       </MissingDependency>
       <MissingDependency>
@@ -2131,7 +2197,13 @@
         <Required type="61" schemaName="Service/Incident/Incident_main_system_library.js" displayName="Service/Incident/Incident_main_system_library.js" solution="msdynce_Service (9.0.5.56)">
           <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
-        <Dependent type="60" displayName="BSR Case Management - Evidence" parentDisplayName="Case" id="{744be890-0942-ee11-bdf3-6045bdd2c8fd}" />
+        <Dependent type="60" displayName="BSR Case Management - Case Relationships" parentDisplayName="Case" id="{059ad2cc-0642-ee11-bdf3-6045bdd2cb7b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="Service/Incident/Incident_main_system_library.js" displayName="Service/Incident/Incident_main_system_library.js" solution="msdynce_Service (9.0.5.56)">
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+        </Required>
+        <Dependent type="60" displayName="BSR Case Management - Timeline" parentDisplayName="Case" id="{21143df2-234b-ee11-be6f-6045bdd2c8fd}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="Service/Incident/Incident_main_system_library.js" displayName="Service/Incident/Incident_main_system_library.js" solution="msdynce_Service (9.0.5.56)">
@@ -2161,7 +2233,13 @@
         <Required type="61" schemaName="Service/Incident/Ribbon/Incident_ribbon_library.js" displayName="Service/Incident/Ribbon/Incident_ribbon_library.js" solution="msdynce_Service (9.0.5.56)">
           <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
         </Required>
-        <Dependent type="60" displayName="BSR Case Management - Evidence" parentDisplayName="Case" id="{744be890-0942-ee11-bdf3-6045bdd2c8fd}" />
+        <Dependent type="60" displayName="BSR Case Management - Timeline" parentDisplayName="Case" id="{21143df2-234b-ee11-be6f-6045bdd2c8fd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="Service/Incident/Ribbon/Incident_ribbon_library.js" displayName="Service/Incident/Ribbon/Incident_ribbon_library.js" solution="msdynce_Service (9.0.5.56)">
+          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+        </Required>
+        <Dependent type="60" displayName="BSR Case Management - Case Summary" parentDisplayName="Case" id="{8adf04ff-0542-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="Service/Incident/Ribbon/Incident_ribbon_library.js" displayName="Service/Incident/Ribbon/Incident_ribbon_library.js" solution="msdynce_Service (9.0.5.56)">
@@ -2176,7 +2254,7 @@
         <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" displayName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" solution="msdyn_UCICalendar (1.0.0.2982)" />
+        <Required type="66" schemaName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" displayName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" solution="msdyn_UCICalendar (1.0.0.2983)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Investigation" id="{5e47ee58-f899-44e6-af4c-f6e76b844f95}" />
       </MissingDependency>
       <MissingDependency>
@@ -2186,31 +2264,35 @@
         <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2308.1015)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2308.2016)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Investigation" id="{5e47ee58-f899-44e6-af4c-f6e76b844f95}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2308.1015)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2308.2016)" />
         <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.ModelForm.ModelFormControl" displayName="MscrmControls.ModelForm.ModelFormControl" solution="BaseCustomControlsCore (9.0.2308.1015)" />
+        <Required type="66" schemaName="MscrmControls.ModelForm.ModelFormControl" displayName="MscrmControls.ModelForm.ModelFormControl" solution="BaseCustomControlsCore (9.0.2308.2016)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Enforcement Action" id="{037a0893-6ad5-436a-ba75-00ab0878ad5f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.ModelForm.ModelFormControl" displayName="MscrmControls.ModelForm.ModelFormControl" solution="BaseCustomControlsCore (9.0.2308.2016)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Investigation" id="{5e47ee58-f899-44e6-af4c-f6e76b844f95}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.OptionSet.OptionSetControl" displayName="MscrmControls.OptionSet.OptionSetControl" solution="CustomControlsCore (9.2.23081.00170)" />
+        <Required type="66" schemaName="MscrmControls.OptionSet.OptionSetControl" displayName="MscrmControls.OptionSet.OptionSetControl" solution="CustomControlsCore (9.2.23082.00176)" />
         <Dependent type="60" displayName="BSR Case Management - Case Relationships" parentDisplayName="Case" id="{059ad2cc-0642-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.OptionSet.OptionSetControl" displayName="MscrmControls.OptionSet.OptionSetControl" solution="CustomControlsCore (9.2.23081.00170)" />
+        <Required type="66" schemaName="MscrmControls.OptionSet.OptionSetControl" displayName="MscrmControls.OptionSet.OptionSetControl" solution="CustomControlsCore (9.2.23082.00176)" />
         <Dependent type="60" displayName="BSR Case Management - Case Summary" parentDisplayName="Case" id="{8adf04ff-0542-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.OptionSet.OptionSetControl" displayName="MscrmControls.OptionSet.OptionSetControl" solution="CustomControlsCore (9.2.23081.00170)" />
+        <Required type="66" schemaName="MscrmControls.OptionSet.OptionSetControl" displayName="MscrmControls.OptionSet.OptionSetControl" solution="CustomControlsCore (9.2.23082.00176)" />
         <Dependent type="60" displayName="BSR Case Management - Relevant Parties" parentDisplayName="Case" id="{b051c2ca-0742-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.OptionSet.OptionSetControl" displayName="MscrmControls.OptionSet.OptionSetControl" solution="CustomControlsCore (9.2.23081.00170)" />
+        <Required type="66" schemaName="MscrmControls.OptionSet.OptionSetControl" displayName="MscrmControls.OptionSet.OptionSetControl" solution="CustomControlsCore (9.2.23082.00176)" />
         <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
       <MissingDependency>
