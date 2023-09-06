@@ -1,0 +1,41 @@
+// Function to validate received date against request date
+function dateCheck() {
+    var startDateField = Xrm.Page.getAttribute("bsr_fireconsulteerequestdate");
+    var endDateField = Xrm.Page.getAttribute("bsr_fireconsulteereceiveddate");
+
+    if (startDateField != null && endDateField != null) {
+        var startDate = startDateField.getValue();
+        var endDate = endDateField.getValue();
+
+        if (startDate != null && endDate != null && endDate < startDate) {
+            // End date is before the start date, show an error notification
+            endDateField.controls.forEach(function (control) {
+                control.setNotification("Received date cannot be before request date.", "endDateValidation");
+            });
+        } else {
+            // Remove the error notification
+            endDateField.controls.forEach(function (control) {
+                control.clearNotification("endDateValidation");
+            });
+        }
+    }
+}
+
+// Trigger the validation when the received date changes
+Xrm.Page.getAttribute("bsr_fireconsulteereceiveddate").addOnChange(validateEndDate);
+
+// Clear the notification when the request date changes
+Xrm.Page.getAttribute("bsr_fireconsulteerequestdate").addOnChange(function () {
+    var endDateField = Xrm.Page.getAttribute("bsr_fireconsulteereceiveddate");
+    endDateField.controls.forEach(function (control) {
+        control.clearNotification("endDateValidation");
+    });
+});
+
+// Clear the notification when a key is pressed in the date field
+Xrm.Page.getControl("bsr_fireconsulteereceiveddate").addOnKeyPress(function () {
+    var endDateField = Xrm.Page.getAttribute("bsr_fireconsulteereceiveddate");
+    endDateField.controls.forEach(function (control) {
+        control.clearNotification("endDateValidation");
+    });
+});

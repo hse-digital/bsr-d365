@@ -4,6 +4,10 @@ var BuildingDetails;
     var Form;
     function ShowHideExistingHRBFields(executionContext) {
         Form = executionContext.getFormContext();
+        if (Form.getAttribute("bsr_hrbworkid").getValue() == null &&
+            Form.getAttribute("bsr_existingbuildingworkid").getValue() == null) {
+            Form.getControl("bsr_currentprimaryuse").setVisible(false);
+        }
         if (Form.getAttribute("bsr_hrbworkid").getValue() !== null) {
             var hrbWork = Form.getAttribute("bsr_hrbworkid").getValue()[0].id;
             console.log("HRB Work Id: ", hrbWork);
@@ -29,21 +33,6 @@ var BuildingDetails;
                 Form.getControl("bsr_hrbworkid").setVisible(false);
             }
         }
-        function SetExistingUseCategory(executionContext) {
-            Form = executionContext.getFormContext();
-            if (Form.getAttribute("bsr_existtypeworkproposal").getValue() != null &&
-                Form.getAttribute("bsr_existtypeworkproposal").getValue() !== undefined) {
-                var existingTypeWorkProposal = Form.getAttribute("bsr_existtypeworkproposal").getValue();
-                console.log("existingTypeWorkProsal value: ", existingTypeWorkProposal);
-                if (existingTypeWorkProposal.indexOf(760810008) !== -1 && existingTypeWorkProposal.length === 1) {
-                    Form.getAttribute("bsr_existingusecategory").setValue(760810001);
-                }
-                else {
-                    Form.getAttribute("bsr_existingusecategory").setValue(760810000);
-                }
-            }
-        }
-        BuildingDetails.SetExistingUseCategory = SetExistingUseCategory;
     }
     BuildingDetails.ShowHideExistingHRBFields = ShowHideExistingHRBFields;
 })(BuildingDetails || (BuildingDetails = {}));
