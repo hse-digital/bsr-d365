@@ -14,18 +14,32 @@
                 <section name="TASK" showlabel="false" showbar="false" id="{EBB3C46D-5E9B-4EBB-A9E4-B8C25D364BB3}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" celllabelposition="Left" ordinalvalue="0">
                   <rows>
                     <row>
-                      <cell id="{5FD2BE87-C1CF-41A6-9AD9-4D273733422E}" showlabel="true" locklevel="0" colspan="1" labelid="{f670bd68-6ea9-4665-b504-834f4c254a07}" ordinalvalue="10001" solutionaction="Modified">
+                      <cell id="{5FD2BE87-C1CF-41A6-9AD9-4D273733422E}" showlabel="true" locklevel="0" colspan="1" labelid="{f670bd68-6ea9-4665-b504-834f4c254a07}" ordinalvalue="10002" solutionaction="Modified">
                         <labels>
                           <label description="Subject" languagecode="1033" solutionaction="Added" />
                         </labels>
                       </cell>
                     </row>
                     <row>
-                      <cell id="{e7009466-97e9-46d0-bcf4-afd6d162e8be}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10000" solutionaction="Added">
+                      <cell id="{193ec769-b599-4221-8f78-998b0b5c565f}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10000" solutionaction="Added">
+                        <labels>
+                          <label description="Task Category" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_taskcategoryid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_taskcategoryid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e7009466-97e9-46d0-bcf4-afd6d162e8be}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10001" solutionaction="Added">
                         <labels>
                           <label description="Task Type" languagecode="1033" />
                         </labels>
-                        <control id="bsr_tasktypeid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_tasktypeid" disabled="false" />
+                        <control id="bsr_tasktypeid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_tasktypeid" disabled="false">
+                          <parameters>
+                            <DependentAttributeName>task.bsr_taskcategoryid</DependentAttributeName>
+                            <DependentAttributeType>bsr_taskcategory</DependentAttributeType>
+                            <FilterRelationshipName>bsr_tasktype_taskcategoryid_bsr_taskcateg</FilterRelationshipName>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
                   </rows>
