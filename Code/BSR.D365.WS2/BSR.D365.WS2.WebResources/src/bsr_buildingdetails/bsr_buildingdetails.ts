@@ -1,35 +1,43 @@
 ﻿namespace BuildingDetails {
-    var Form: Form.bsr_buildingdetails.Main.Information
+    var Form: Form.bsr_buildingdetails.Main.Information;
 
-    export function ShowHidePrimaryUseFields(executionContext: Xrm.ExecutionContext<any, any>) {
+    export function ShowHideExistingHRBFields(executionContext: Xrm.ExecutionContext<any, any>) {
 
-        Form = <Form.bsr_buildingdetails.Main.Information>executionContext.getForm();
+
+        Form = <Form.bsr_buildingdetails.Main.Information>executionContext.getFormContext();
+
+        if (Form.getAttribute("bsr_hrbworkid").getValue() == null &&
+            Form.getAttribute("bsr_existingbuildingworkid").getValue() == null) {
+            Form.getControl("bsr_currentprimaryuse").setVisible(false);
+        }
 
         if (
-            Form.getAttribute("bsr_buildingcategory") !== null ||
-            Form.getAttribute("bsr_buildingcategory") !== undefined
+            Form.getAttribute("bsr_hrbworkid").getValue() !== null
         ) {
-            var buildType = Form.getAttribute("bsr_buildingcategory").getValue();
-
-            if (buildType === 760810000) {
-                console.log("buildType: New Build");
-                Form.getControl("bsr_primaryuse").setVisible(true);
-                Form.getControl("bsr_changeprimaryuse").setVisible(false);
+            var hrbWork = Form.getAttribute("bsr_hrbworkid").getValue()[0].id;
+            console.log("HRB Work Id: ", hrbWork);
+            if (hrbWork === '{6FA7A0F4-4047-EE11-BE6E-6045BDF1E965}') {
+                console.log("HRB Work: New Build");
+                Form.getControl("bsr_existtypeworkproposal").setVisible(false);
+                Form.getControl("bsr_existingbuildingworkid").setVisible(false);
                 Form.getControl("bsr_currentprimaryuse").setVisible(false);
-                Form.getControl("bsr_proposedprimaryuse").setVisible(false);
-            } else if (buildType === 760810001) {
-                console.log("buildType: Change of use");
-                Form.getControl("bsr_primaryuse").setVisible(false);
-                Form.getControl("bsr_changeprimaryuse").setVisible(true);
-                Form.getControl("bsr_currentprimaryuse").setVisible(false);
-                Form.getControl("bsr_proposedprimaryuse").setVisible(false);
-            } else if (buildType === 760810002) {
-                console.log("buildType: Existing building");
-                Form.getControl("bsr_primaryuse").setVisible(false);
-                Form.getControl("bsr_changeprimaryuse").setVisible(false);
+            } else if (hrbWork === '{57871F02-4147-EE11-BE6E-6045BDF1E965}') {
+                console.log('HRB Work: Convert Non-HRB to HRB');
+                Form.getControl("bsr_existtypeworkproposal").setVisible(false);
+                Form.getControl("bsr_existingbuildingworkid").setVisible(false);
                 Form.getControl("bsr_currentprimaryuse").setVisible(true);
-                Form.getControl("bsr_proposedprimaryuse").setVisible(true);
             }
         }
+
+        if (Form.getAttribute("bsr_existingbuildingworkid").getValue() !== null
+        ) {
+            var existingbuildingwork = Form.getAttribute("bsr_existingbuildingworkid").getValue()[0].id;
+            console.log("Existing building work: ", existingbuildingwork);
+            if (existingbuildingwork === '{C19E1C08-4147-EE11-BE6E-6045BDF1E965}' || (existingbuildingwork === '{089F1C08-4147-EE11-BE6E-6045BDF1E965}')) {
+                Form.getControl("bsr_existtypeworkproposal").setVisible(true);
+                Form.getControl("bsr_existingbuildingworkid").setVisible(true);
+                Form.getControl("bsr_hrbworkid").setVisible(false);
+            }
     }
+
 }
