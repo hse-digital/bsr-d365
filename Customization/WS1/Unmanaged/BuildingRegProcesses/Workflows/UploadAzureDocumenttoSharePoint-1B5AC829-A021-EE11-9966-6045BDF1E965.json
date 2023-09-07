@@ -90,7 +90,7 @@
                 }
               },
               "required": [
-                "docBase64",
+                "azureBlobFilePath",
                 "fileName",
                 "targetRecordId",
                 "targetTable"
@@ -331,7 +331,7 @@
                   "item/description": "@triggerBody()?['fileDescription']",
                   "item/bsr_documentlocationcode": 760810000,
                   "item/bsr_bsrdocumentorigincode": 760810000,
-                  "item/bsr_contactid_bsr_bsrdocument@odata.bind": "@if(equals(variables('SetProviderContact'),true),null,concat('/contacts/',triggerBody()?['providerContactId']))",
+                  "item/bsr_contactid_bsr_bsrdocument@odata.bind": "@if(equals(variables('SetProviderContact'),true),concat('/contacts/',triggerBody()?['providerContactId']),null)",
                   "item/bsr_sharepointfileid": "@outputs('Create_file')?['body/ItemId']",
                   "item/bsr_targetrecordid": "@triggerBody()['targetRecordId']",
                   "item/bsr_targettable": "@triggerBody()['targetTable']"
@@ -353,8 +353,8 @@
               "inputs": {
                 "statusCode": 200,
                 "body": {
-                  "sharePointFileId": "@outputs('Create_file')?['body/Id']",
-                  "bsr_documentid": "@{outputs('Add_a_new_row')?['body/activitytypecode']}"
+                  "sharePointFileId": "@outputs('Create_file')?['body/ItemId']",
+                  "bsr_documentid": "@{outputs('Add_a_new_row')?['body/activityid']}"
                 },
                 "schema": {
                   "type": "object",
@@ -397,7 +397,7 @@
           },
           "runAfter": {
             "Scope": [
-              "Succeeded"
+              "Failed"
             ]
           },
           "metadata": {

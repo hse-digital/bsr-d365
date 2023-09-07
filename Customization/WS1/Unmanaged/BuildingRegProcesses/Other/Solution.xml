@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23075.172" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23082.176" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>BuildingRegProcesses</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Reg Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.12.21.0</Version>
+    <Version>1.12.22.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -85,6 +85,7 @@
       <RootComponent type="29" id="{0f0464dc-a1bd-ed11-83fe-000d3a86e5b0}" behavior="0" />
       <RootComponent type="29" id="{1b5ac829-a021-ee11-9966-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{1cfbd44f-cd09-ee11-8f6e-002248c727e7}" behavior="0" />
+      <RootComponent type="29" id="{2c334355-7e4d-ee11-be6f-002248c72859}" behavior="0" />
       <RootComponent type="29" id="{2d228b8c-06c1-ed11-83fd-6045bd0d435c}" behavior="0" />
       <RootComponent type="29" id="{3254c77b-d906-ee11-8f6e-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{38dd974b-89f8-ed11-8f6d-002248c725da}" behavior="0" />
@@ -93,6 +94,7 @@
       <RootComponent type="29" id="{4d6e1a16-d806-ee11-8f6e-002248c727e7}" behavior="0" />
       <RootComponent type="29" id="{4e9f01c2-58a9-ed11-aad1-0022481b5e4f}" behavior="0" />
       <RootComponent type="29" id="{53791bc6-edbc-ed11-83fe-000d3a86ecac}" behavior="0" />
+      <RootComponent type="29" id="{64521b66-6527-47d1-b4aa-b2795f4e694a}" behavior="0" />
       <RootComponent type="29" id="{7f165d07-03a7-ed11-aad1-0022481b5e4f}" behavior="0" />
       <RootComponent type="29" id="{7faddab7-17fa-ed11-8f6d-002248c727e7}" behavior="0" />
       <RootComponent type="29" id="{82b1a383-ea20-ee11-9966-002248c72859}" behavior="0" />
@@ -111,6 +113,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_accountableperson" displayName="Accountable Person" solution="Active" />
         <Dependent type="29" displayName="Populate the Name field of Accountable Person" id="{cdf3d0a3-43c7-ed11-b596-6045bd0b9760}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_accounttype" displayName="Account Type" solution="Active" />
+        <Dependent type="29" displayName="Data fix - Associate Accounts with Account Type" id="{2c334355-7e4d-ee11-be6f-002248c72859}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_applicationstatustimestamp" displayName="Application Status Timestamp" solution="Active" />
@@ -333,6 +339,14 @@
         <Dependent type="29" displayName="Auto Populate Name field for 'Structure Material' table" id="{38dd974b-89f8-ed11-8f6d-002248c725da}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="bsr_tasktype" displayName="Task Type" solution="Active" />
+        <Dependent type="29" displayName="Set Task if it has Task type" id="{64521b66-6527-47d1-b4aa-b2795f4e694a}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="bsr_task_tasktypeid_tasktype" displayName="bsr_task_tasktypeid_tasktype" parentSchemaName="bsr_tasktype" parentDisplayName="Task Type" solution="Active" />
+        <Dependent type="29" displayName="Set Task if it has Task type" id="{64521b66-6527-47d1-b4aa-b2795f4e694a}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_address1countrycode" displayName="Address1 Country Code" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
         <Dependent type="29" displayName="Populate Country Field Post Account" id="{4e9f01c2-58a9-ed11-aad1-0022481b5e4f}" />
       </MissingDependency>
@@ -369,6 +383,10 @@
         <Dependent type="29" displayName="Set Applicant Email Recipient" id="{ae2c04a4-d614-ee11-9cbe-002248c725da}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_tasktype" parentDisplayName="Task Type" solution="Active" />
+        <Dependent type="29" displayName="Set Task if it has Task type" id="{64521b66-6527-47d1-b4aa-b2795f4e694a}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_paymentreconciliationstatus" displayName="Payment Reconciliation Status" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="Active" />
         <Dependent type="29" displayName="Send submission confirmation email after invoice payment success" id="{82b1a383-ea20-ee11-9966-002248c72859}" />
       </MissingDependency>
@@ -383,6 +401,18 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_registreeid" displayName="Applicant" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
         <Dependent type="29" displayName="Set Applicant Email Recipient" id="{ae2c04a4-d614-ee11-9cbe-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_tasktypeid" displayName="Task Type" parentSchemaName="bsr_tasktype" parentDisplayName="Task Type" solution="Active" />
+        <Dependent type="29" displayName="Set Task if it has Task type" id="{64521b66-6527-47d1-b4aa-b2795f4e694a}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_tasktypeid" displayName="Task Type" parentSchemaName="task" parentDisplayName="Task" solution="Active" />
+        <Dependent type="29" displayName="Set Task if it has Task type" id="{64521b66-6527-47d1-b4aa-b2795f4e694a}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_templatedescription" displayName="Template Description" parentSchemaName="bsr_tasktype" parentDisplayName="Task Type" solution="Active" />
+        <Dependent type="29" displayName="Set Task if it has Task type" id="{64521b66-6527-47d1-b4aa-b2795f4e694a}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Application Status" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
@@ -407,6 +437,10 @@
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Application Status" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
         <Dependent type="29" displayName="Send Email notifications for Rejected Building Application" id="{db26296d-5837-ee11-bdf4-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_azuredocblobstorageaccount" solution="Active" id.schemaname="bsr_azuredocblobstorageaccount" />
+        <Dependent type="29" displayName="Upload Azure Document to SharePoint" id="{1b5ac829-a021-ee11-9966-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="Active" id.schemaname="bsr_noreplyqueueid" />
