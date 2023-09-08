@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Control Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.12.0</Version>
+    <Version>1.0.13.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -80,6 +80,7 @@
       </Addresses>
     </Publisher>
     <RootComponents>
+      <RootComponent type="29" id="{00d6fbbc-a94d-ee11-be6f-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{036ae4e8-9e37-ee11-bdf4-6045bdf1ea4d}" behavior="0" />
       <RootComponent type="29" id="{173a80a5-053d-ee11-bdf4-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{26bd59d9-2c22-ee11-9966-6045bdf1e965}" behavior="0" />
@@ -89,6 +90,8 @@
       <RootComponent type="29" id="{3514c78f-8200-ee11-8f6d-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{3afbc31a-c036-ee11-bdf4-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="29" id="{60a8cba0-fd3c-ee11-bdf4-6045bdf1ea4d}" behavior="0" />
+      <RootComponent type="29" id="{62dd4b63-884d-ee11-be6f-6045bdf1e965}" behavior="0" />
+      <RootComponent type="29" id="{73afdfb9-714d-ee11-be6f-6045bdc208e3}" behavior="0" />
       <RootComponent type="29" id="{7d3274b7-8937-ee11-bdf4-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="29" id="{7fae9b6c-6342-ee11-bdf3-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{94088361-433c-ee11-bdf4-6045bdd0e4cf}" behavior="0" />
@@ -103,15 +106,15 @@
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="29" displayName="Set BCA BSR Document Regarding" id="{173a80a5-053d-ee11-bdf4-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="29" displayName="Create BCA BSR Document For Uploaded Files" id="{9c114d37-213d-ee11-bdf4-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="29" displayName="Delete BCA BSR Document On File Deletion" id="{ca7fdd69-d73d-ee11-bdf4-6045bdd0ef54}" />
       </MissingDependency>
       <MissingDependency>
@@ -163,16 +166,36 @@
         <Dependent type="29" displayName="Set Building Control Life cycle On Update of Building Details" id="{2f3184e0-b83a-ee11-bdf4-6045bdd0e4cf}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_externalidentity" displayName="BSR External Identity" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="1" schemaName="bsr_buildingdetails" displayName="Building Details" solution="Active" />
+        <Dependent type="29" displayName="Set Existing Building Work field based off Existing Use Type of Propsed work selection " id="{73afdfb9-714d-ee11-be6f-6045bdc208e3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_externalidentity" displayName="BSR External Identity" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="29" displayName="Update Contact MDT Status" id="{7d3274b7-8937-ee11-bdf4-6045bdd0e4cf}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_externalidentity" displayName="BSR External Identity" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="1" schemaName="bsr_externalidentity" displayName="BSR External Identity" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="29" displayName="Enable/Disable Contact MDT Account" id="{f6af5bc5-093d-ee11-bdf4-6045bdc208e3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_inspection" displayName="Inspection Schedule" solution="Active" />
+        <Dependent type="29" displayName="Map BCAA &amp; Building Details from MDT Project to Inspection Schedule" id="{00d6fbbc-a94d-ee11-be6f-6045bdf1e965}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_issue" displayName="Issue" solution="Active" />
+        <Dependent type="29" displayName="Map BCAA from MDT Project to Issue" id="{62dd4b63-884d-ee11-be6f-6045bdf1e965}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_mdtproject" displayName="MDT Project" solution="Active" />
+        <Dependent type="29" displayName="Map BCAA &amp; Building Details from MDT Project to Inspection Schedule" id="{00d6fbbc-a94d-ee11-be6f-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_mdtproject" displayName="MDT Project" solution="Active" />
         <Dependent type="29" displayName="Set &quot;MDT Task&quot; to yes if regarding is MDT Project" id="{2841065e-dae1-416b-8e1b-8a1fb5804916}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_mdtproject" displayName="MDT Project" solution="Active" />
+        <Dependent type="29" displayName="Map BCAA from MDT Project to Issue" id="{62dd4b63-884d-ee11-be6f-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_mdtproject" displayName="MDT Project" solution="Active" />
@@ -205,6 +228,10 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_enablemdtaccount" displayName="Enable MDT Account" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
         <Dependent type="29" displayName="Enable/Disable Contact MDT Account" id="{f6af5bc5-093d-ee11-bdf4-6045bdc208e3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_existtypeworkproposal" displayName="Existing Use Type of proposed work" parentSchemaName="bsr_buildingdetails" parentDisplayName="Building Details" solution="Active" />
+        <Dependent type="29" displayName="Set Existing Building Work field based off Existing Use Type of Propsed work selection " id="{73afdfb9-714d-ee11-be6f-6045bdc208e3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_fireconsulteereceiveddate" displayName="Received Date" parentSchemaName="bsr_buildingcontrollifecycle" parentDisplayName="Building Control Lifecycle" solution="Active" />
@@ -271,8 +298,16 @@
         <Dependent type="29" displayName="Invite Contact for MDT Portal" id="{036ae4e8-9e37-ee11-bdf4-6045bdf1ea4d}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_bsrcommonapiaccesskeyws2" solution="Active" id.schemaname="bsr_bsrcommonapiaccesskeyws2" />
+        <Dependent type="29" displayName="Enable/Disable Contact MDT Account" id="{f6af5bc5-093d-ee11-bdf4-6045bdc208e3}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_bsrcommonapiurlws2" solution="Active" id.schemaname="bsr_bsrcommonapiurlws2" />
         <Dependent type="29" displayName="Invite Contact for MDT Portal" id="{036ae4e8-9e37-ee11-bdf4-6045bdf1ea4d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_bsrcommonapiurlws2" solution="Active" id.schemaname="bsr_bsrcommonapiurlws2" />
+        <Dependent type="29" displayName="Enable/Disable Contact MDT Account" id="{f6af5bc5-093d-ee11-bdf4-6045bdc208e3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_MDTAzureADB2CInvitationLifetimeSecs" solution="Active" id.schemaname="bsr_MDTAzureADB2CInvitationLifetimeSecs" />
@@ -303,8 +338,24 @@
         <Dependent type="29" displayName="Enable/Disable Contact MDT Account" id="{f6af5bc5-093d-ee11-bdf4-6045bdc208e3}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_mdtgovuknotifyaccdisabledtemplateid" solution="Active" id.schemaname="bsr_mdtgovuknotifyaccdisabledtemplateid" />
+        <Dependent type="29" displayName="Enable/Disable Contact MDT Account" id="{f6af5bc5-093d-ee11-bdf4-6045bdc208e3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_mdtgovuknotifyaccenabledtemplateid" solution="Active" id.schemaname="bsr_mdtgovuknotifyaccenabledtemplateid" />
+        <Dependent type="29" displayName="Enable/Disable Contact MDT Account" id="{f6af5bc5-093d-ee11-bdf4-6045bdc208e3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_mdtgovuknotifyregistrationtemplateid" solution="Active" id.schemaname="bsr_mdtgovuknotifyregistrationtemplateid" />
+        <Dependent type="29" displayName="Invite Contact for MDT Portal" id="{036ae4e8-9e37-ee11-bdf4-6045bdf1ea4d}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_mdtwebsiteurl" solution="Active" id.schemaname="bsr_mdtwebsiteurl" />
         <Dependent type="29" displayName="Invite Contact for MDT Portal" id="{036ae4e8-9e37-ee11-bdf4-6045bdf1ea4d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_mdtwebsiteurl" solution="Active" id.schemaname="bsr_mdtwebsiteurl" />
+        <Dependent type="29" displayName="Enable/Disable Contact MDT Account" id="{f6af5bc5-093d-ee11-bdf4-6045bdc208e3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointbcafolderid" solution="Active" id.schemaname="bsr_sharepointbcafolderid" />
@@ -315,11 +366,11 @@
         <Dependent type="29" displayName="Delete BCA BSR Document On File Deletion" id="{ca7fdd69-d73d-ee11-bdf4-6045bdd0ef54}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointsiteurl" solution="BuildingRegCore (1.17.57.0)" id.schemaname="bsr_sharepointsiteurl" />
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointsiteurl" solution="BuildingRegCore (1.17.59.0)" id.schemaname="bsr_sharepointsiteurl" />
         <Dependent type="29" displayName="Create BCA BSR Document For Uploaded Files" id="{9c114d37-213d-ee11-bdf4-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointsiteurl" solution="BuildingRegCore (1.17.57.0)" id.schemaname="bsr_sharepointsiteurl" />
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointsiteurl" solution="BuildingRegCore (1.17.59.0)" id.schemaname="bsr_sharepointsiteurl" />
         <Dependent type="29" displayName="Delete BCA BSR Document On File Deletion" id="{ca7fdd69-d73d-ee11-bdf4-6045bdd0ef54}" />
       </MissingDependency>
     </MissingDependencies>

@@ -43,6 +43,41 @@
           "metadata": {
             "schemaName": "bsr_mdtazureappclientid"
           }
+        },
+        "MDT Website URL (bsr_mdtwebsiteurl)": {
+          "defaultValue": "https://ambitious-sea-096d77803.3.azurestaticapps.net/",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_mdtwebsiteurl"
+          }
+        },
+        " MDT GovUk Notify Account Enabled Template ID (bsr_mdtgovuknotifyaccenabledtemplateid)": {
+          "defaultValue": "8b156bac-0f98-448b-ae7b-0c22660bcceb",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_mdtgovuknotifyaccenabledtemplateid"
+          }
+        },
+        "BSR Common API Access Key WS2 (bsr_bsrcommonapiaccesskeyws2)": {
+          "defaultValue": "GjGvQxDNUQIchYUjdyBGldEfnRIzIIOgR4MVhtYmo1JIAzFuqBfmmw==",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_bsrcommonapiaccesskeyws2"
+          }
+        },
+        "BSR Common API URL WS2 (bsr_bsrcommonapiurlws2)": {
+          "defaultValue": "https://s118-dev-bsr-acs-common-fa.azurewebsites.net/api",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_bsrcommonapiurlws2"
+          }
+        },
+        " MDT GovUk Notify Account Disabled Template ID (bsr_mdtgovuknotifyaccdisabledtemplateid)": {
+          "defaultValue": "09869f1e-a864-4da6-addb-091decbd6a6a",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_mdtgovuknotifyaccdisabledtemplateid"
+          }
         }
       },
       "triggers": {
@@ -203,6 +238,44 @@
                         },
                         "authentication": "@parameters('$authentication')"
                       }
+                    },
+                    "HTTP_5": {
+                      "runAfter": {
+                        "Compose_3": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "2ea7c642-c6a4-4397-8e1b-78132d9074a6"
+                      },
+                      "type": "Http",
+                      "inputs": {
+                        "method": "POST",
+                        "uri": "@{parameters('BSR Common API URL WS2 (bsr_bsrcommonapiurlws2)')}/SendNotificationEmail",
+                        "headers": {
+                          "x-functions-key": "@parameters('BSR Common API Access Key WS2 (bsr_bsrcommonapiaccesskeyws2)')"
+                        },
+                        "body": "@outputs('Compose_3')"
+                      }
+                    },
+                    "Compose_3": {
+                      "runAfter": {
+                        "Update_a_row": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "6ad4ae8c-fc38-4eea-b23d-0df7e14c71bb"
+                      },
+                      "type": "Compose",
+                      "inputs": {
+                        "email_address": "@{triggerOutputs()?['body/emailaddress1']}",
+                        "template_id": "@{variables('GovUk Notify Template ID')}",
+                        "personalisation": {
+                          "firstName": "@{triggerOutputs()?['body/firstname']}",
+                          "websiteUrl": "@{parameters('MDT Website URL (bsr_mdtwebsiteurl)')}"
+                        }
+                      }
                     }
                   },
                   "runAfter": {
@@ -231,6 +304,43 @@
                             "item/bsr_mdtportalaccountstatuscode": 760810003
                           },
                           "authentication": "@parameters('$authentication')"
+                        }
+                      },
+                      "HTTP_3": {
+                        "runAfter": {
+                          "Compose_2": [
+                            "Succeeded"
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "98aab095-b14a-4fe0-a1b7-5c0a7c2cfeb6"
+                        },
+                        "type": "Http",
+                        "inputs": {
+                          "method": "POST",
+                          "uri": "@{parameters('BSR Common API URL WS2 (bsr_bsrcommonapiurlws2)')}/SendNotificationEmail",
+                          "headers": {
+                            "x-functions-key": "@parameters('BSR Common API Access Key WS2 (bsr_bsrcommonapiaccesskeyws2)')"
+                          },
+                          "body": "@outputs('Compose_2')"
+                        }
+                      },
+                      "Compose_2": {
+                        "runAfter": {
+                          "Update_a_row_2": [
+                            "Succeeded"
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "23f8ef48-c110-43af-be3c-5bad7b0e1005"
+                        },
+                        "type": "Compose",
+                        "inputs": {
+                          "email_address": "@{triggerOutputs()?['body/emailaddress1']}",
+                          "template_id": "@{variables('GovUk Notify Template ID')}",
+                          "personalisation": {
+                            "firstName": "@{triggerOutputs()?['body/firstname']}"
+                          }
                         }
                       }
                     }
@@ -357,10 +467,25 @@
                 "name": "AccountEnabled",
                 "value": "@false"
               }
+            },
+            "Set_variable_4": {
+              "runAfter": {
+                "Set_variable_2": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "f60b3086-cdca-4b34-b6ea-0924528c385a"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "GovUk Notify Template ID",
+                "value": "@parameters(' MDT GovUk Notify Account Disabled Template ID (bsr_mdtgovuknotifyaccdisabledtemplateid)')"
+              }
             }
           },
           "runAfter": {
-            "Initialize_variable_2": [
+            "Initialize_variable_3": [
               "Succeeded"
             ]
           },
@@ -377,6 +502,21 @@
                     "inputs": {
                       "name": "AccountEnabled",
                       "value": "@true"
+                    }
+                  },
+                  "Set_variable_5": {
+                    "runAfter": {
+                      "Set_variable_3": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "c396ad90-e60a-4c49-bee1-cb42250f5cf1"
+                    },
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "GovUk Notify Template ID",
+                      "value": "@parameters(' MDT GovUk Notify Account Enabled Template ID (bsr_mdtgovuknotifyaccenabledtemplateid)')"
                     }
                   }
                 },
@@ -404,6 +544,25 @@
             "operationMetadataId": "efe96706-247b-4a92-915c-3ce73c24cbd1"
           },
           "type": "If"
+        },
+        "Initialize_variable_3": {
+          "runAfter": {
+            "Initialize_variable_2": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2a74b96e-b578-46a6-a325-3525b83f01fd"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "GovUk Notify Template ID",
+                "type": "string"
+              }
+            ]
+          }
         }
       },
       "outputs": {}

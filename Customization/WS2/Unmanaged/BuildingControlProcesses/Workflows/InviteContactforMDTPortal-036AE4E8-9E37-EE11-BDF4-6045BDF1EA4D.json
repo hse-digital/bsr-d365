@@ -57,6 +57,13 @@
           "metadata": {
             "schemaName": "bsr_mdtwebsiteurl"
           }
+        },
+        " MDT GovUk Notify Registration Template ID (bsr_mdtgovuknotifyregistrationtemplateid)": {
+          "defaultValue": "1da875d0-f9ea-49dd-ab2a-6f73b2917308",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_mdtgovuknotifyregistrationtemplateid"
+          }
         }
       },
       "triggers": {
@@ -116,7 +123,7 @@
                   "type": "Compose",
                   "inputs": {
                     "email_address": "@{triggerOutputs()?['body/emailaddress1']}",
-                    "template_id": "1da875d0-f9ea-49dd-ab2a-6f73b2917308",
+                    "template_id": "@{parameters(' MDT GovUk Notify Registration Template ID (bsr_mdtgovuknotifyregistrationtemplateid)')}",
                     "personalisation": {
                       "firstName": "@{triggerOutputs()?['body/firstname']}",
                       "redeemUrl": "@{body('HTTP')}",

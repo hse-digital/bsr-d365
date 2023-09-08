@@ -1,0 +1,131 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS2"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "bf030e03-0f01-4dc3-a89f-e98a19878888"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "bsr_buildingdetails",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "bsr_existtypeworkproposal"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Condition": {
+          "actions": {
+            "If_Existing_Use_Type_of_Propsed_Work_=_'Work_Which_does_not_fall_within_Cat_A'_2": {
+              "actions": {
+                "Set_Existing_Building_Work_field_to_Cat_B_2": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "a633b53e-ae04-44ae-be53-c907efbdaae6"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "bsr_buildingdetailses",
+                      "recordId": "@triggerOutputs()?['body/bsr_buildingdetailsid']",
+                      "item/bsr_existingbuildingworkid@odata.bind": "bsr_bcworkcategories(089f1c08-4147-ee11-be6e-6045bdf1e965)"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {},
+              "else": {
+                "actions": {
+                  "Set_Existing_Building_Work_field_to_Cat_A_2": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "b98628ee-6965-4d91-8733-474c6154609c"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "UpdateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "bsr_buildingdetailses",
+                        "recordId": "@triggerOutputs()?['body/bsr_buildingdetailsid']",
+                        "item/bsr_existingbuildingworkid@odata.bind": "bsr_bcworkcategories(c19e1c08-4147-ee11-be6e-6045bdf1e965)"
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  }
+                }
+              },
+              "expression": {
+                "equals": [
+                  "@triggerOutputs()?['body/bsr_existtypeworkproposal']",
+                  "@string(760810008)"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "d6667f64-4805-4e19-b37f-50bafe21b687"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {},
+          "expression": {
+            "not": {
+              "equals": [
+                "@triggerOutputs()?['body/bsr_existtypeworkproposal']",
+                "@null"
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "c2efb4e0-790a-4753-ae0e-e45b5c5e3f44"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}
