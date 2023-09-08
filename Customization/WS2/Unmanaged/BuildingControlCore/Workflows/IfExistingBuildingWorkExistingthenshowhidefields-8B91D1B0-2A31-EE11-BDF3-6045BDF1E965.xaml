@@ -26,8 +26,6 @@
           <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep2_6" />
           <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep2_7" />
           <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep2_8" />
-          <Variable x:TypeArguments="x:Boolean" Default="False" Name="True" />
-          <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep3_1" />
         </sco:Collection>
         <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
           <mxswa:GetEntityProperty Attribute="bsr_existingbuildingworkid" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingdetails" Value="[ConditionBranchStep2_2]">
@@ -140,7 +138,7 @@
                     <Sequence DisplayName="SetVisibilityStep11: Show Use of Each Storey (Current)">
                       <mcwc:SetVisibility ControlId="bsr_currentstoreyuse" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingdetails" IsVisible="True" />
                     </Sequence>
-                    <Sequence DisplayName="SetVisibilityStep11: New Action">
+                    <Sequence DisplayName="SetVisibilityStep1152: New Action">
                       <mcwc:SetVisibility ControlId="bsr_ischangeofuse" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingdetails" IsVisible="True" />
                     </Sequence>
                   </sco:Collection>
@@ -148,50 +146,6 @@
               </mxswa:ActivityReference>
               <x:Null x:Key="Else" />
               <x:String x:Key="Description">If Existing Building Work = Cat A / Cat B</x:String>
-            </mxswa:ActivityReference.Properties>
-          </mxswa:ActivityReference>
-          <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateExpression, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateExpression">
-            <mxswa:ActivityReference.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">CreateCrmType</InArgument>
-              <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { Microsoft.Xrm.Sdk.Workflow.WorkflowPropertyType.Boolean, "True" }]</InArgument>
-              <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
-                <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:Boolean" />
-              </InArgument>
-              <OutArgument x:TypeArguments="x:Object" x:Key="Result">[ConditionBranchStep3_1]</OutArgument>
-            </mxswa:ActivityReference.Arguments>
-          </mxswa:ActivityReference>
-          <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.ConditionBranch, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="ConditionBranchStep3">
-            <mxswa:ActivityReference.Arguments>
-              <InArgument x:TypeArguments="x:Boolean" x:Key="Condition">[True]</InArgument>
-            </mxswa:ActivityReference.Arguments>
-            <mxswa:ActivityReference.Properties>
-              <mxswa:ActivityReference x:Key="Then" AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.Composite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="ConditionBranchStep3">
-                <mxswa:ActivityReference.Properties>
-                  <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
-                  <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
-                    <Sequence DisplayName="SetVisibilityStep2: Hide Number of Storeys (Current)">
-                      <mcwc:SetVisibility ControlId="bsr_currentnumberstoreys" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingdetails" IsVisible="False" />
-                    </Sequence>
-                    <Sequence DisplayName="SetVisibilityStep4: Hide Height (Current)">
-                      <mcwc:SetVisibility ControlId="bsr_currentheight" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingdetails" IsVisible="False" />
-                    </Sequence>
-                    <Sequence DisplayName="SetVisibilityStep6: Hide No. Res Units (Current)">
-                      <mcwc:SetVisibility ControlId="bsr_currentnumberofresidentialunits" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingdetails" IsVisible="False" />
-                    </Sequence>
-                    <Sequence DisplayName="SetVisibilityStep8: Hide No. Non-Res Units (Current)">
-                      <mcwc:SetVisibility ControlId="bsr_currentnonresidentialunits" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingdetails" IsVisible="False" />
-                    </Sequence>
-                    <Sequence DisplayName="SetVisibilityStep12: Hide Use of Each Storey (Current)">
-                      <mcwc:SetVisibility ControlId="bsr_currentstoreyuse" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingdetails" IsVisible="False" />
-                    </Sequence>
-                    <Sequence DisplayName="SetVisibilityStep12: New Action">
-                      <mcwc:SetVisibility ControlId="bsr_ischangeofuse" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingdetails" IsVisible="False" />
-                    </Sequence>
-                  </sco:Collection>
-                </mxswa:ActivityReference.Properties>
-              </mxswa:ActivityReference>
-              <x:Null x:Key="Else" />
-              <x:String x:Key="Description"></x:String>
             </mxswa:ActivityReference.Properties>
           </mxswa:ActivityReference>
         </sco:Collection>

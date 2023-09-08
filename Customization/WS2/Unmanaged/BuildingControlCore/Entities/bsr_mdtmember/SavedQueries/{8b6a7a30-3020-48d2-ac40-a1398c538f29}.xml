@@ -10,7 +10,8 @@
     <layoutxml>
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_mdtmemberid">
-          <cell name="bsr_name" width="300" />
+          <cell name="bsr_name" width="150" />
+          <cell name="bsr_contact" width="125" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -20,12 +21,12 @@
       <fetch version="1.0" mapping="logical">
         <entity name="bsr_mdtmember">
           <attribute name="bsr_mdtmemberid" />
-          <attribute name="bsr_name" />
           <attribute name="createdon" />
-          <order attribute="bsr_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <attribute name="bsr_contact" />
+          <attribute name="bsr_name" />
         </entity>
       </fetch>
     </fetchxml>

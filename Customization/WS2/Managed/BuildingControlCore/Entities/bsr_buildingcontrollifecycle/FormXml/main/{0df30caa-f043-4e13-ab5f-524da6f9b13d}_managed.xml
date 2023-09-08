@@ -1514,20 +1514,53 @@
                           </parameters>
                         </control>
                       </cell>
-                      <cell locklevel="0" id="{a4313ae0-0892-4df1-964c-ced22aa3e108}">
+                      <cell locklevel="0" id="{a4313ae0-0892-4df1-964c-ced22aa3e108}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
                       </cell>
-                      <cell locklevel="0" id="{a1f5ca7d-8ded-48fe-b776-2dcb52e66005}">
+                      <cell locklevel="0" id="{a1f5ca7d-8ded-48fe-b776-2dcb52e66005}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
                       </cell>
                     </row>
-                    <row />
-                    <row />
-                    <row />
+                    <row>
+                      <cell id="{dfc06a99-bf2c-4dd2-a5b8-385eef2e37f3}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{b958ab7f-fe01-4616-87e3-8cfee3b00c93}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b1c629e6-f19c-4f2f-9fa0-b9e63d1ede4c}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{8c924b41-ba66-49a2-a1df-2d2177ed6889}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0c2b9933-cc0a-4247-8c8d-45d7a3ab7199}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{ff1879e3-c3c7-4219-b1dc-8ee06dd2262d}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
                   </rows>
                 </section>
               </sections>
@@ -1612,7 +1645,7 @@
                             <TargetEntityType>bsr_buildmeetings</TargetEntityType>
                             <ViewId>{FD3C93F2-924C-EE11-BE6F-6045BDD2C0C0}</ViewId>
                             <ViewIds>{B02DEC0F-94D3-4C24-B924-059A52244D61},{FD3C93F2-924C-EE11-BE6F-6045BDD2C0C0}</ViewIds>
-                            <RelationshipName></RelationshipName>
+                            <RelationshipName />
                           </parameters>
                         </control>
                       </cell>
@@ -1982,7 +2015,7 @@
         </controlDescription>
       </controlDescriptions>
       <Navigation>
-        <NavBar />
+        <NavBar></NavBar>
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -2011,35 +2044,6 @@
           </NavBarArea>
         </NavBarAreas>
       </Navigation>
-      <formLibraries>
-        <Library name="bsr_receiveddatecheck" libraryUniqueId="{a08e5ca5-e101-3447-8247-44e84e90d012}" />
-        <Library name="bsr_seweragedatecheck" libraryUniqueId="{13091356-772e-0cbc-be4c-951c033a3378}" />
-        <Library name="bsr_enddatecheck" libraryUniqueId="{7b0ad94a-bec8-e3cc-3712-0caba8827b26}" />
-      </formLibraries>
-      <events>
-        <event name="onload" application="false" active="false">
-          <Handlers>
-            <Handler functionName="dateCheck" libraryName="bsr_receiveddatecheck" handlerUniqueId="{52612e70-c3ce-a92b-8e3c-48748e022c35}" enabled="true" parameters="" passExecutionContext="true" />
-            <Handler functionName="dateCheckSewerage" libraryName="bsr_seweragedatecheck" handlerUniqueId="{18a54458-ba2e-3157-2e53-a55365c2d88e}" enabled="true" parameters="" passExecutionContext="true" />
-            <Handler functionName="checkKeyDates" libraryName="bsr_enddatecheck" handlerUniqueId="{1a500485-5406-2db1-1d78-e8e412ee5ad9}" enabled="true" parameters="" passExecutionContext="true" />
-          </Handlers>
-        </event>
-        <event name="onchange" application="false" active="false" attribute="bsr_fireconsulteereceiveddate">
-          <Handlers>
-            <Handler functionName="dateCheck" libraryName="bsr_receiveddatecheck" handlerUniqueId="{c9be5c0a-c176-9b0a-8aa0-31b10aea916a}" enabled="true" parameters="" passExecutionContext="true" />
-          </Handlers>
-        </event>
-        <event name="onchange" application="false" active="false" attribute="bsr_sewerageconsultationreceiveddate">
-          <Handlers>
-            <Handler functionName="dateCheckSewerage" libraryName="bsr_seweragedatecheck" handlerUniqueId="{5c9d9925-b68e-6146-43c2-828497d8e8d3}" enabled="true" parameters="" passExecutionContext="true" />
-          </Handlers>
-        </event>
-        <event name="onchange" application="false" active="false" attribute="bsr_buildenddate">
-          <Handlers>
-            <Handler functionName="checkKeyDates" libraryName="bsr_enddatecheck" handlerUniqueId="{007bcec3-e1c5-81dd-ad8c-13a559005c93}" enabled="true" parameters="" passExecutionContext="true" />
-          </Handlers>
-        </event>
-      </events>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>

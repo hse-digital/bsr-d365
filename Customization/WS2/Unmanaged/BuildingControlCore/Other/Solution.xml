@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Control Core" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.23.0</Version>
+    <Version>1.0.24.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -88,7 +88,11 @@
       <RootComponent type="1" schemaName="bsr_buildingcontrollifecycle" behavior="0" />
       <RootComponent type="1" schemaName="bsr_buildingdetails" behavior="0" />
       <RootComponent type="1" schemaName="bsr_buildmeetings" behavior="0" />
+      <RootComponent type="1" schemaName="bsr_documenttypes" behavior="0" />
       <RootComponent type="1" schemaName="bsr_informationtracker" behavior="0" />
+      <RootComponent type="1" schemaName="bsr_inspection" behavior="0" />
+      <RootComponent type="1" schemaName="bsr_inspectiondocument" behavior="0" />
+      <RootComponent type="1" schemaName="bsr_issue" behavior="0" />
       <RootComponent type="1" schemaName="bsr_jobrole" behavior="2" />
       <RootComponent type="1" schemaName="bsr_mdtmember" behavior="0" />
       <RootComponent type="1" schemaName="bsr_mdtproject" behavior="0" />
@@ -125,8 +129,11 @@
       <RootComponent type="61" schemaName="bsr_/buildingcontrol/tables/bsr_buildingdetails/script/bsr_buildingdetails.js" behavior="0" />
       <RootComponent type="61" schemaName="bsr_bcworkcategory.svg" behavior="0" />
       <RootComponent type="61" schemaName="bsr_buildmeetings.svg" behavior="0" />
+      <RootComponent type="61" schemaName="bsr_documenttypes.svg" behavior="0" />
       <RootComponent type="61" schemaName="bsr_enddatecheck" behavior="0" />
       <RootComponent type="61" schemaName="bsr_informationtracker.svg" behavior="0" />
+      <RootComponent type="61" schemaName="bsr_inspection.svg" behavior="0" />
+      <RootComponent type="61" schemaName="bsr_issue.svg" behavior="0" />
       <RootComponent type="61" schemaName="bsr_mdtmember" behavior="0" />
       <RootComponent type="61" schemaName="bsr_mdtproject.svg" behavior="0" />
       <RootComponent type="61" schemaName="bsr_otherregulatorreferral" behavior="0" />
@@ -142,66 +149,73 @@
       <RootComponent type="9" schemaName="bsr_existingusecategorychoice" behavior="0" />
       <RootComponent type="9" schemaName="bsr_existingusetypeofproposedworkchoic" behavior="0" />
       <RootComponent type="9" schemaName="bsr_hrbtypechoice" behavior="0" />
+      <RootComponent type="9" schemaName="bsr_mdtwebsitestatus" behavior="0" />
       <RootComponent type="9" schemaName="bsr_partialcompletionchoice" behavior="0" />
       <RootComponent type="9" schemaName="bsr_phase" behavior="0" />
+      <RootComponent type="9" schemaName="bsr_plannedunplannedchoice" behavior="0" />
       <RootComponent type="9" schemaName="bsr_portalaccountstatus" behavior="0" />
       <RootComponent type="9" schemaName="bsr_primaryusechoice" behavior="0" />
       <RootComponent type="9" schemaName="bsr_projectstatus" behavior="0" />
       <RootComponent type="9" schemaName="bsr_requestfollowup" behavior="0" />
       <RootComponent type="9" schemaName="bsr_responsibleactorsschemechoice" behavior="0" />
       <RootComponent type="9" schemaName="bsr_role" behavior="0" />
+      <RootComponent type="9" schemaName="bsr_service" behavior="0" />
       <RootComponent type="9" schemaName="bsr_sitesharedserviceschoice" behavior="0" />
       <RootComponent type="9" schemaName="bsr_status" behavior="0" />
       <RootComponent type="9" schemaName="bsr_statusofthebuildingdetailsrecord" behavior="0" />
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_accountableperson" displayName="Accountable Person" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="1" schemaName="bsr_accountableperson" displayName="Accountable Person" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="1" schemaName="bsr_building" displayName="Building" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_accounttype" displayName="Account Type" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="1" schemaName="bsr_accounttype" displayName="Account Type" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_block" displayName="Structure" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="1" schemaName="bsr_block" displayName="Structure" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="1" schemaName="bsr_building" displayName="Building" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_building" displayName="Building" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="1" schemaName="bsr_building" displayName="Building" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="1" schemaName="bsr_building" displayName="Building" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="1" schemaName="bsr_building" displayName="Building" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="10" schemaName="bsr_buildingapplication_building" displayName="bsr_buildingapplication_building" parentSchemaName="bsr_building" parentDisplayName="Building" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_buildingtype" displayName="Building Type" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="1" schemaName="bsr_buildingtype" displayName="Building Type" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="10" schemaName="bsr_bsr_building_BuildingTypeID_bsr_buildingt" displayName="bsr_bsr_building_BuildingTypeID_bsr_buildingt" parentSchemaName="bsr_building" parentDisplayName="Building" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_connectedblock" displayName="Connected Structure" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="1" schemaName="bsr_connectedblock" displayName="Connected Structure" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="1" schemaName="bsr_building" displayName="Building" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_contacttype" displayName="Contact Type" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="1" schemaName="bsr_contacttype" displayName="Contact Type" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_jobrole" displayName="Job Role" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="1" schemaName="bsr_jobrole" displayName="Job Role" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="1" schemaName="bsr_jobrole" displayName="Job Role" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_payment" displayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="1" schemaName="bsr_payment" displayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="1" schemaName="bsr_payment" displayName="Payment" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_taskcategory" displayName="Task Category" solution="BuildingRegCore (1.17.59.0)" />
+        <Dependent type="60" displayName="Task" parentDisplayName="Task" id="{16654191-19ad-48ca-9e46-c4b4fbdad76f}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
@@ -216,51 +230,59 @@
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="10" schemaName="bsr_Account_bsr_accounttype_bsr_accounttype" displayName="bsr_Account_bsr_accounttype_bsr_accounttype" parentSchemaName="bsr_accounttype" parentDisplayName="Account Type" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="10" schemaName="bsr_Account_bsr_accounttype_bsr_accounttype" displayName="bsr_Account_bsr_accounttype_bsr_accounttype" parentSchemaName="bsr_accounttype" parentDisplayName="Account Type" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="10" schemaName="bsr_accounttype_account" displayName="bsr_accounttype_account" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="10" schemaName="bsr_accounttype_account" displayName="bsr_accounttype_account" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="10" schemaName="bsr_accounttype_account" displayName="bsr_accounttype_account" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="10" schemaName="bsr_accounttype_account" displayName="bsr_accounttype_account" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="Organisation Name quick view form" parentDisplayName="Account" id="{f5a3925a-b62f-ee11-bdf3-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="10" schemaName="bsr_bsr_payment_buildingapplicationid_bsr_bui" displayName="bsr_bsr_payment_buildingapplicationid_bsr_bui" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="10" schemaName="bsr_bsr_payment_buildingapplicationid_bsr_bui" displayName="bsr_bsr_payment_buildingapplicationid_bsr_bui" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="10" schemaName="bsr_contact_JobRole" displayName="bsr_contact_JobRole" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="10" schemaName="bsr_contact_JobRole" displayName="bsr_contact_JobRole" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="10" schemaName="bsr_contacttype_contact" displayName="bsr_contacttype_contact" parentSchemaName="bsr_contacttype" parentDisplayName="Contact Type" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="10" schemaName="bsr_contacttype_contact" displayName="bsr_contacttype_contact" parentSchemaName="bsr_contacttype" parentDisplayName="Contact Type" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="10" schemaName="bsr_country_account_Address1CountryCode" displayName="bsr_country_account_Address1CountryCode" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="10" schemaName="bsr_country_account_Address1CountryCode" displayName="bsr_country_account_Address1CountryCode" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="10" schemaName="bsr_country_contact_Address1CountryCode" displayName="bsr_country_contact_Address1CountryCode" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="10" schemaName="bsr_country_contact_Address1CountryCode" displayName="bsr_country_contact_Address1CountryCode" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="10" schemaName="bsr_payment_invoicedcontactid_contact" displayName="bsr_payment_invoicedcontactid_contact" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="10" schemaName="bsr_payment_invoicedcontactid_contact" displayName="bsr_payment_invoicedcontactid_contact" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="10" schemaName="bsr_payment_RefundReason" displayName="bsr_payment_RefundReason" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="10" schemaName="bsr_payment_RefundReason" displayName="bsr_payment_RefundReason" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="10" schemaName="bsr_task_dutyholderid_contact" displayName="bsr_task_dutyholderid_contact" parentSchemaName="task" parentDisplayName="Task" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="10" schemaName="bsr_task_dutyholderid_contact" displayName="bsr_task_dutyholderid_contact" parentSchemaName="task" parentDisplayName="Task" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="Task" parentDisplayName="Task" id="{16654191-19ad-48ca-9e46-c4b4fbdad76f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="10" schemaName="bsr_task_tasktypeid_tasktype" displayName="bsr_task_tasktypeid_tasktype" parentSchemaName="task" parentDisplayName="Task" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="10" schemaName="bsr_task_taskcategoryid_taskcategory" displayName="bsr_task_taskcategoryid_taskcategory" parentSchemaName="bsr_taskcategory" parentDisplayName="Task Category" solution="BuildingRegCore (1.17.59.0)" />
+        <Dependent type="60" displayName="Task" parentDisplayName="Task" id="{16654191-19ad-48ca-9e46-c4b4fbdad76f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="bsr_task_tasktypeid_tasktype" displayName="bsr_task_tasktypeid_tasktype" parentSchemaName="task" parentDisplayName="Task" solution="BuildingRegCore (1.17.59.0)" />
+        <Dependent type="60" displayName="Task" parentDisplayName="Task" id="{16654191-19ad-48ca-9e46-c4b4fbdad76f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="bsr_tasktype_taskcategoryid_bsr_taskcateg" displayName="bsr_tasktype_taskcategoryid_bsr_taskcateg" parentSchemaName="bsr_taskcategory" parentDisplayName="Task Category" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="Task" parentDisplayName="Task" id="{16654191-19ad-48ca-9e46-c4b4fbdad76f}" />
       </MissingDependency>
       <MissingDependency>
@@ -270,263 +292,267 @@
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_accounttype_accountid" displayName="Account Type" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_accounttype_accountid" displayName="Account Type" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_accounttype_accountid" displayName="Account Type" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_accounttype_accountid" displayName="Account Type" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="Organisation Name quick view form" parentDisplayName="Account" id="{f5a3925a-b62f-ee11-bdf3-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_address1countrycode" displayName="Address1 Country Code" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_address1countrycode" displayName="Address1 Country Code" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_address1countrycode" displayName="Address1 Country Code" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_address1countrycode" displayName="Address1 Country Code" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_address1lacode" displayName="Address 1: Local Custodian Code" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_address1lacode" displayName="Address 1: Local Custodian Code" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_address1lacode" displayName="Address 1: Local Custodian Code" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_address1lacode" displayName="Address 1: Local Custodian Code" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_address1ladescription" displayName="Address 1: Local Custodian Description" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_address1ladescription" displayName="Address 1: Local Custodian Description" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_address1ladescription" displayName="Address 1: Local Custodian Description" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_address1ladescription" displayName="Address 1: Local Custodian Description" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_address1uprn" displayName="Address 1: UPRN" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_address1uprn" displayName="Address 1: UPRN" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_address1uprn" displayName="Address 1: UPRN" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_address1uprn" displayName="Address 1: UPRN" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_address1usrn" displayName="Address 1 : USRN" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_address1usrn" displayName="Address 1 : USRN" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_address1usrn" displayName="Address 1: USRN" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_address1usrn" displayName="Address 1: USRN" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_amountpaid" displayName="Amount" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_amountpaid" displayName="Amount" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="26" schemaName="Active Payments (Building Control)" displayName="Active Payments (Building Control)" parentSchemaName="bsr_payment" parentDisplayName="Payment" id="{20dff1cd-704b-ee11-be6f-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_amountpaid" displayName="Amount" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_amountpaid" displayName="Amount" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_billingaddress" displayName="Billing address" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_billingaddress" displayName="Billing address" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="26" schemaName="Active Payments (Building Control)" displayName="Active Payments (Building Control)" parentSchemaName="bsr_payment" parentDisplayName="Payment" id="{20dff1cd-704b-ee11-be6f-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_billingaddress" displayName="Billing address" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_billingaddress" displayName="Billing address" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_buildingapplicationid" displayName="Building Application" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_buildingapplicationid" displayName="Building Application" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="10" schemaName="bsr_buildingapplication_building" displayName="bsr_buildingapplication_building" parentSchemaName="bsr_building" parentDisplayName="Building" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_buildingapplicationid" displayName="Building Application" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_buildingapplicationid" displayName="Building Application" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="29" displayName="If Building Control Application contains data, hide Building Application field" id="{354e1c47-6c4b-ee11-be6f-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_buildingapplicationid" displayName="Building Application" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_buildingapplicationid" displayName="Building Application" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="29" displayName="If Building Application contains data, hide Building Control Application" id="{d6e8597d-6c4b-ee11-be6f-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_buildingapplicationid" displayName="Building Application" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_buildingapplicationid" displayName="Building Application" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_buildingtypeid" displayName="Building Type" parentSchemaName="bsr_buildingtype" parentDisplayName="Building Type" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_buildingtypeid" displayName="Building Type" parentSchemaName="bsr_buildingtype" parentDisplayName="Building Type" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="10" schemaName="bsr_bsr_building_BuildingTypeID_bsr_buildingt" displayName="bsr_bsr_building_BuildingTypeID_bsr_buildingt" parentSchemaName="bsr_building" parentDisplayName="Building" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_cardbrandegvisa" displayName="Card brand (e.g. Visa)" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_cardbrandegvisa" displayName="Card brand (e.g. Visa)" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="26" schemaName="Active Payments (Building Control)" displayName="Active Payments (Building Control)" parentSchemaName="bsr_payment" parentDisplayName="Payment" id="{20dff1cd-704b-ee11-be6f-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_cardbrandegvisa" displayName="Card brand (e.g. Visa)" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_cardbrandegvisa" displayName="Card brand (e.g. Visa)" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_cardexpirydate" displayName="Card expiry date" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_cardexpirydate" displayName="Card expiry date" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="26" schemaName="Active Payments (Building Control)" displayName="Active Payments (Building Control)" parentSchemaName="bsr_payment" parentDisplayName="Payment" id="{20dff1cd-704b-ee11-be6f-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_cardexpirydate" displayName="Card expiry date" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_cardexpirydate" displayName="Card expiry date" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_cardtypecreditdebit" displayName="Card type (credit/debit)" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_cardtypecreditdebit" displayName="Card type (credit/debit)" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="26" schemaName="Active Payments (Building Control)" displayName="Active Payments (Building Control)" parentSchemaName="bsr_payment" parentDisplayName="Payment" id="{20dff1cd-704b-ee11-be6f-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_cardtypecreditdebit" displayName="Card type (credit/debit)" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_cardtypecreditdebit" displayName="Card type (credit/debit)" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_emailaddress" displayName="Email address the invoice was sent to" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_emailaddress" displayName="Email address the invoice was sent to" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_govukpaymentid" displayName="Gov UK Payment ID" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_govukpaymentid" displayName="Gov UK Payment ID" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_govukpaystatus" displayName="Payment Status" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_govukpaystatus" displayName="Payment Status" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="26" schemaName="Active Payments (Building Control)" displayName="Active Payments (Building Control)" parentSchemaName="bsr_payment" parentDisplayName="Payment" id="{20dff1cd-704b-ee11-be6f-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_govukpaystatus" displayName="Payment Status" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_govukpaystatus" displayName="Payment Status" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_invoicecreationdate" displayName="Invoice creation date" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_invoicecreationdate" displayName="Invoice creation date" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_invoicedcontactid" displayName="Invoiced contact" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_invoicedcontactid" displayName="Invoiced contact" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_invoicenumber" displayName="Invoice number" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_invoicenumber" displayName="Invoice number" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_jobrole" displayName="Job Role" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_jobrole" displayName="Job Role" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_jobroleid" displayName="Job Role" parentSchemaName="bsr_jobrole" parentDisplayName="Job Role" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_jobroleid" displayName="Job Role" parentSchemaName="bsr_jobrole" parentDisplayName="Job Role" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="10" schemaName="bsr_mdtmember_jobrole" displayName="bsr_mdtmember_jobrole" parentSchemaName="bsr_jobrole" parentDisplayName="Job Role" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_lastfourdigitsofcardnumber" displayName="Last four digits of card number" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_lastfourdigitsofcardnumber" displayName="Last four digits of card number" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="26" schemaName="Active Payments (Building Control)" displayName="Active Payments (Building Control)" parentSchemaName="bsr_payment" parentDisplayName="Payment" id="{20dff1cd-704b-ee11-be6f-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_lastfourdigitsofcardnumber" displayName="Last four digits of card number" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_lastfourdigitsofcardnumber" displayName="Last four digits of card number" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_manualaddress" displayName="Manual Address" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_manualaddress" displayName="Manual Address" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_manualaddress" displayName="Manual Address" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_manualaddress" displayName="Manual Address" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="10" schemaName="bsr_buildingapplication_building" displayName="bsr_buildingapplication_building" parentSchemaName="bsr_building" parentDisplayName="Building" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_buildingtype" parentDisplayName="Building Type" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_buildingtype" parentDisplayName="Building Type" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="10" schemaName="bsr_bsr_building_BuildingTypeID_bsr_buildingt" displayName="bsr_bsr_building_BuildingTypeID_bsr_buildingt" parentSchemaName="bsr_building" parentDisplayName="Building" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_jobrole" parentDisplayName="Job Role" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_jobrole" parentDisplayName="Job Role" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="10" schemaName="bsr_mdtmember_jobrole" displayName="bsr_mdtmember_jobrole" parentSchemaName="bsr_jobrole" parentDisplayName="Job Role" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="26" schemaName="Active Payments (Building Control)" displayName="Active Payments (Building Control)" parentSchemaName="bsr_payment" parentDisplayName="Payment" id="{20dff1cd-704b-ee11-be6f-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="29" displayName="If Building Control Application contains data, hide Building Application field" id="{354e1c47-6c4b-ee11-be6f-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="29" displayName="If Building Application contains data, hide Building Control Application" id="{d6e8597d-6c4b-ee11-be6f-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_otherorganisationtype" displayName="Other Account Type" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_otherorganisationtype" displayName="Other Account Type" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_otherrefundreason" displayName="Other Refund Reason" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_otherrefundreason" displayName="Other Refund Reason" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_paymentid" displayName="Payment" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_paymentid" displayName="Payment" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="26" schemaName="Active Payments (Building Control)" displayName="Active Payments (Building Control)" parentSchemaName="bsr_payment" parentDisplayName="Payment" id="{20dff1cd-704b-ee11-be6f-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_paymentid" displayName="Payment" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_paymentid" displayName="Payment" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="29" displayName="If Building Control Application contains data, hide Building Application field" id="{354e1c47-6c4b-ee11-be6f-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_paymentid" displayName="Payment" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_paymentid" displayName="Payment" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="29" displayName="If Building Application contains data, hide Building Control Application" id="{d6e8597d-6c4b-ee11-be6f-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_paymentreconciliationstatus" displayName="Payment Reconciliation Status" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_paymentreconciliationstatus" displayName="Payment Reconciliation Status" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="26" schemaName="Active Payments (Building Control)" displayName="Active Payments (Building Control)" parentSchemaName="bsr_payment" parentDisplayName="Payment" id="{20dff1cd-704b-ee11-be6f-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_paymentreconciliationstatus" displayName="Payment Reconciliation Status" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_paymentreconciliationstatus" displayName="Payment Reconciliation Status" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_paymenttypecode" displayName="Payment Type" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_paymenttypecode" displayName="Payment Type" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="26" schemaName="Active Payments (Building Control)" displayName="Active Payments (Building Control)" parentSchemaName="bsr_payment" parentDisplayName="Payment" id="{20dff1cd-704b-ee11-be6f-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_paymenttypecode" displayName="Payment Type" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_paymenttypecode" displayName="Payment Type" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_purchaseordernumberifsupplied" displayName="Purchase order number (if supplied)" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_purchaseordernumberifsupplied" displayName="Purchase order number (if supplied)" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_refundreason" displayName="Refund Reason" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_refundreason" displayName="Refund Reason" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="26" schemaName="Active Payments (Building Control)" displayName="Active Payments (Building Control)" parentSchemaName="bsr_payment" parentDisplayName="Payment" id="{20dff1cd-704b-ee11-be6f-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_refundreason" displayName="Refund Reason" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_refundreason" displayName="Refund Reason" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_service" displayName="Service" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_service" displayName="Service" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_timeanddateoftransaction" displayName="Time and date of transaction" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_taskcategoryid" displayName="Task Category" parentSchemaName="task" parentDisplayName="Task" solution="BuildingRegCore (1.17.59.0)" />
+        <Dependent type="60" displayName="Task" parentDisplayName="Task" id="{16654191-19ad-48ca-9e46-c4b4fbdad76f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_timeanddateoftransaction" displayName="Time and date of transaction" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="26" schemaName="Active Payments (Building Control)" displayName="Active Payments (Building Control)" parentSchemaName="bsr_payment" parentDisplayName="Payment" id="{20dff1cd-704b-ee11-be6f-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_timeanddateoftransaction" displayName="Time and date of transaction" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_timeanddateoftransaction" displayName="Time and date of transaction" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_transactionid" displayName="Reference Number" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_transactionid" displayName="Reference Number" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="26" schemaName="Active Payments (Building Control)" displayName="Active Payments (Building Control)" parentSchemaName="bsr_payment" parentDisplayName="Payment" id="{20dff1cd-704b-ee11-be6f-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_transactionid" displayName="Reference Number" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="bsr_transactionid" displayName="Reference Number" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="createdon" displayName="Created On" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="2" schemaName="createdon" displayName="Created On" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="26" schemaName="Active Payments (Building Control)" displayName="Active Payments (Building Control)" parentSchemaName="bsr_payment" parentDisplayName="Payment" id="{20dff1cd-704b-ee11-be6f-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
@@ -550,43 +576,43 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="20" displayName="BSR Ops Team" solution="BuildingRegCore (1.17.57.0)" id="{0b90c986-fda6-ed11-aad1-0022481b5e4f}" />
+        <Required type="20" displayName="BSR Ops Team" solution="BuildingRegCore (1.17.59.0)" id="{0b90c986-fda6-ed11-aad1-0022481b5e4f}" />
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="20" displayName="BSR Ops Team" solution="BuildingRegCore (1.17.57.0)" id="{0b90c986-fda6-ed11-aad1-0022481b5e4f}" />
+        <Required type="20" displayName="BSR Ops Team" solution="BuildingRegCore (1.17.59.0)" id="{0b90c986-fda6-ed11-aad1-0022481b5e4f}" />
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="20" displayName="BSR CAT" solution="BuildingRegCore (1.17.57.0)" id="{42e1d306-fea6-ed11-aad1-0022481b5e4f}" />
+        <Required type="20" displayName="BSR CAT" solution="BuildingRegCore (1.17.59.0)" id="{42e1d306-fea6-ed11-aad1-0022481b5e4f}" />
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="20" displayName="BSR CAT" solution="BuildingRegCore (1.17.57.0)" id="{42e1d306-fea6-ed11-aad1-0022481b5e4f}" />
+        <Required type="20" displayName="BSR CAT" solution="BuildingRegCore (1.17.59.0)" id="{42e1d306-fea6-ed11-aad1-0022481b5e4f}" />
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="20" displayName="BSR Data Analysts" solution="BuildingRegCore (1.17.57.0)" id="{b6ced331-fea6-ed11-aad1-0022481b5e4f}" />
+        <Required type="20" displayName="BSR Data Analysts" solution="BuildingRegCore (1.17.59.0)" id="{b6ced331-fea6-ed11-aad1-0022481b5e4f}" />
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="20" displayName="BSR Data Analysts" solution="BuildingRegCore (1.17.57.0)" id="{b6ced331-fea6-ed11-aad1-0022481b5e4f}" />
+        <Required type="20" displayName="BSR Data Analysts" solution="BuildingRegCore (1.17.59.0)" id="{b6ced331-fea6-ed11-aad1-0022481b5e4f}" />
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="20" displayName="BSR Admin" solution="BuildingRegCore (1.17.57.0)" id="{c835c6d5-fda6-ed11-aad1-0022481b5e4f}" />
+        <Required type="20" displayName="BSR Admin" solution="BuildingRegCore (1.17.59.0)" id="{c835c6d5-fda6-ed11-aad1-0022481b5e4f}" />
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="20" displayName="BSR Admin" solution="BuildingRegCore (1.17.57.0)" id="{c835c6d5-fda6-ed11-aad1-0022481b5e4f}" />
+        <Required type="20" displayName="BSR Admin" solution="BuildingRegCore (1.17.59.0)" id="{c835c6d5-fda6-ed11-aad1-0022481b5e4f}" />
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="26" schemaName="Active Account Types" displayName="Active Account Types" parentSchemaName="bsr_accounttype" parentDisplayName="Account Type" solution="BuildingRegCore (1.17.57.0)" id="{9b1dcbde-129b-45ae-b646-327b766bf38c}" />
+        <Required type="26" schemaName="Active Account Types" displayName="Active Account Types" parentSchemaName="bsr_accounttype" parentDisplayName="Account Type" solution="BuildingRegCore (1.17.59.0)" id="{9b1dcbde-129b-45ae-b646-327b766bf38c}" />
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="26" schemaName="Active Contact Types" displayName="Active Contact Types" parentSchemaName="bsr_contacttype" parentDisplayName="Contact Type" solution="BuildingRegCore (1.17.57.0)" id="{3ffa3cce-cffd-4ae4-bcf5-c99639ce456b}" />
+        <Required type="26" schemaName="Active Contact Types" displayName="Active Contact Types" parentSchemaName="bsr_contacttype" parentDisplayName="Contact Type" solution="BuildingRegCore (1.17.59.0)" id="{3ffa3cce-cffd-4ae4-bcf5-c99639ce456b}" />
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
@@ -596,11 +622,11 @@
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="26" schemaName="Active gov.uk payments" displayName="Active gov.uk payments" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" id="{4c31b814-df2d-4dd7-8a0e-47290446ac32}" />
+        <Required type="26" schemaName="Active gov.uk payments" displayName="Active gov.uk payments" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" id="{4c31b814-df2d-4dd7-8a0e-47290446ac32}" />
         <Dependent type="60" displayName="Information" parentDisplayName="Building Control Application" id="{e775f7c6-149b-429d-bd84-417d949d6bae}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="26" schemaName="Active Payments" displayName="Active Payments" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.57.0)" id="{97665a7f-6f22-ee11-9966-002248c725da}" />
+        <Required type="26" schemaName="Active Payments" displayName="Active Payments" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.59.0)" id="{97665a7f-6f22-ee11-9966-002248c725da}" />
         <Dependent type="60" displayName="Information" parentDisplayName="Building Control Application" id="{e775f7c6-149b-429d-bd84-417d949d6bae}" />
       </MissingDependency>
       <MissingDependency>
@@ -616,23 +642,23 @@
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="29" displayName="New business rule" solution="BuildingRegCore (1.17.57.0)" id="{d05d0779-13b8-ed11-b597-0022481b5e4f}" />
+        <Required type="29" displayName="New business rule" solution="BuildingRegCore (1.17.59.0)" id="{d05d0779-13b8-ed11-b597-0022481b5e4f}" />
         <Dependent type="29" displayName="New business rule" id="{d05d0779-13b8-ed11-b597-0022481b5e4f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="29" displayName="KBI Status Update" solution="BuildingRegCore (1.17.57.0)" id="{ec8f3329-9303-ee11-8f6e-002248c727e7}" />
+        <Required type="29" displayName="KBI Status Update" solution="BuildingRegCore (1.17.59.0)" id="{ec8f3329-9303-ee11-8f6e-002248c727e7}" />
         <Dependent type="29" displayName="KBI Status Update" id="{ec8f3329-9303-ee11-8f6e-002248c727e7}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="300" schemaName="bsr_bsrdefaultcommandlibrary_a4cc5" displayName="BSR_DefaultCommandLibrary" solution="BuildingRegUX (1.11.14.0)" />
+        <Required type="300" schemaName="bsr_bsrdefaultcommandlibrary_a4cc5" displayName="BSR_DefaultCommandLibrary" solution="BuildingRegUX (1.11.15.0)" />
         <Dependent type="appaction" displayName="bsr__DisableMDTAccount!2811616741e5461e90b739fbc9029697!bsr_BSR!contact!0" id.uniquename="bsr__DisableMDTAccount!2811616741e5461e90b739fbc9029697!bsr_BSR!contact!0" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="300" schemaName="bsr_bsrdefaultcommandlibrary_a4cc5" displayName="BSR_DefaultCommandLibrary" solution="BuildingRegUX (1.11.14.0)" />
+        <Required type="300" schemaName="bsr_bsrdefaultcommandlibrary_a4cc5" displayName="BSR_DefaultCommandLibrary" solution="BuildingRegUX (1.11.15.0)" />
         <Dependent type="appaction" displayName="bsr__EnableMDTAccount!cb44e1b58cfa46d09b39f93f51e69c34!bsr_BSR!contact!0" id.uniquename="bsr__EnableMDTAccount!cb44e1b58cfa46d09b39f93f51e69c34!bsr_BSR!contact!0" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="300" schemaName="bsr_bsrdefaultcommandlibrary_a4cc5" displayName="BSR_DefaultCommandLibrary" solution="BuildingRegUX (1.11.14.0)" />
+        <Required type="300" schemaName="bsr_bsrdefaultcommandlibrary_a4cc5" displayName="BSR_DefaultCommandLibrary" solution="BuildingRegUX (1.11.15.0)" />
         <Dependent type="appaction" displayName="bsr__InviteMDTUser!fe27a75de0bb45e0b5c5d7c37c176386!bsr_BSR!contact!0" id.uniquename="bsr__InviteMDTUser!fe27a75de0bb45e0b5c5d7c37c176386!bsr_BSR!contact!0" />
       </MissingDependency>
       <MissingDependency>
@@ -652,27 +678,27 @@
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="60" displayName="BSR Contact details quick view form" parentDisplayName="Contact" solution="BuildingRegCore (1.17.57.0)" id="{61f19af2-96b7-ed11-b597-0022481b5e4f}" />
+        <Required type="60" displayName="BSR Contact details quick view form" parentDisplayName="Contact" solution="BuildingRegCore (1.17.59.0)" id="{61f19af2-96b7-ed11-b597-0022481b5e4f}" />
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="61" schemaName="bsr_building" displayName="bsr_building" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="61" schemaName="bsr_building" displayName="bsr_building" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="1" schemaName="bsr_building" displayName="Building" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="61" schemaName="bsr_building" displayName="bsr_building" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="61" schemaName="bsr_building" displayName="bsr_building" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="1" schemaName="bsr_buildingdetails" displayName="Building Details" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="61" schemaName="bsr_buildingcompletioncertificates" displayName="bsr_buildingcompletioncertificates" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="61" schemaName="bsr_buildingcompletioncertificates" displayName="bsr_buildingcompletioncertificates" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="1" schemaName="bsr_buildingcontrollifecycle" displayName="Building Control Lifecycle" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="61" schemaName="bsr_jobrole" displayName="bsr_jobrole" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="61" schemaName="bsr_jobrole" displayName="bsr_jobrole" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="1" schemaName="bsr_jobrole" displayName="Job Role" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="61" schemaName="bsr_Payment" displayName="bsr_Payment" solution="BuildingRegCore (1.17.57.0)" />
+        <Required type="61" schemaName="bsr_Payment" displayName="bsr_Payment" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="1" schemaName="bsr_payment" displayName="Payment" />
       </MissingDependency>
       <MissingDependency>
@@ -708,15 +734,15 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Building Details" id="{e39fd151-fe03-4620-b14c-3de9ac05b6a9}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="80" schemaName="bsr_BSR" displayName="BSR" solution="BuildingRegUX (1.11.14.0)" />
+        <Required type="80" schemaName="bsr_BSR" displayName="BSR" solution="BuildingRegUX (1.11.15.0)" />
         <Dependent type="appaction" displayName="bsr__DisableMDTAccount!2811616741e5461e90b739fbc9029697!bsr_BSR!contact!0" id.uniquename="bsr__DisableMDTAccount!2811616741e5461e90b739fbc9029697!bsr_BSR!contact!0" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="80" schemaName="bsr_BSR" displayName="BSR" solution="BuildingRegUX (1.11.14.0)" />
+        <Required type="80" schemaName="bsr_BSR" displayName="BSR" solution="BuildingRegUX (1.11.15.0)" />
         <Dependent type="appaction" displayName="bsr__EnableMDTAccount!cb44e1b58cfa46d09b39f93f51e69c34!bsr_BSR!contact!0" id.uniquename="bsr__EnableMDTAccount!cb44e1b58cfa46d09b39f93f51e69c34!bsr_BSR!contact!0" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="80" schemaName="bsr_BSR" displayName="BSR" solution="BuildingRegUX (1.11.14.0)" />
+        <Required type="80" schemaName="bsr_BSR" displayName="BSR" solution="BuildingRegUX (1.11.15.0)" />
         <Dependent type="appaction" displayName="bsr__InviteMDTUser!fe27a75de0bb45e0b5c5d7c37c176386!bsr_BSR!contact!0" id.uniquename="bsr__InviteMDTUser!fe27a75de0bb45e0b5c5d7c37c176386!bsr_BSR!contact!0" />
       </MissingDependency>
     </MissingDependencies>
