@@ -443,6 +443,37 @@
             </column>
             <column width="50%">
               <sections>
+                <section name="statusdetails" id="f2e6ea1a-98b3-48e2-bdc3-5e4178362c6d" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Status Details" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{5c1d996b-4407-42f8-8d5e-ed5cf61bd7c0}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Completion reason" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_builddetailscompletionreason" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_builddetailscompletionreason" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a0038a67-ad8b-43b4-944b-5cf334c9a131}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Cancellation Reason" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_builddetailscancellationreason" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_builddetailscancellationreason" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7f82d8bf-8dfb-46d9-8179-076dcab4583a}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Invalid Reason" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_builddetailsinvalidreason" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_builddetailsinvalidreason" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
                 <section name="_section_557" id="2063115e-c798-46cf-8eb8-b1efbc6c9e7d" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
                     <label description="Proposed Works" languagecode="1033" />
@@ -737,6 +768,55 @@
             </column>
           </columns>
         </tab>
+        <tab name="tab_3" id="093cfe70-40a8-4a24-af27-626145baeb89" IsUserDefined="0" locklevel="0" showlabel="true">
+          <labels>
+            <label description="Information Request Tracker" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_3_section_1" id="a79873ab-fb19-4b44-a40e-f9b0c2bb90a6" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" locklevel="0" id="{691aa906-3ff7-4644-b507-3f82eabafb4e}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{12978e97-7c6b-45ce-95d1-bf7e26b86966}" rowspan="4" colspan="1" auto="false">
+                        <labels>
+                          <label description="Information Request Tracker" languagecode="1033" />
+                        </labels>
+                        <control indicationOfSubgrid="true" id="Subgrid_new_1" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                          <parameters>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <ChartGridMode>All</ChartGridMode>
+                            <TargetEntityType>bsr_informationtracker</TargetEntityType>
+                            <ViewId>{81AF81EC-8B4C-EE11-BE6F-6045BDD0E4CF}</ViewId>
+                            <ViewIds>{E7AC58F6-7D75-4C86-98A4-95BC6D26874C},{81AF81EC-8B4C-EE11-BE6F-6045BDD0E4CF}</ViewIds>
+                            <RelationshipName>bsr_bsr_informationtracker_relatedbuildingdet</RelationshipName>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
       </tabs>
       <header id="{4addf521-3bc3-42ac-97a6-b4e7c1e49975}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
         <rows>
@@ -756,7 +836,7 @@
                 <label description="" languagecode="1033" />
               </labels>
             </cell>
-            <cell id="{c0782ca0-63fe-4c0e-949f-f0fffaf520fe}" locklevel="0" colspan="1" rowspan="1">
+            <cell id="{97bdeb50-25f4-428e-aae5-4f82925bae2d}" locklevel="0" colspan="1" rowspan="1">
               <labels>
                 <label description="Status" languagecode="1033" />
               </labels>
