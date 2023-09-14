@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23082.176" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23083.172" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>BuildingRegProcesses</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Reg Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.12.22.0</Version>
+    <Version>1.12.23.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -81,6 +81,7 @@
     </Publisher>
     <RootComponents>
       <RootComponent type="29" id="{041ef549-a2b7-ed11-b597-0022481b568f}" behavior="0" />
+      <RootComponent type="29" id="{0426ebcf-1252-ee11-be6f-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{06333f46-6f25-ee11-9965-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{0f0464dc-a1bd-ed11-83fe-000d3a86e5b0}" behavior="0" />
       <RootComponent type="29" id="{1b5ac829-a021-ee11-9966-6045bdf1e965}" behavior="0" />
@@ -98,6 +99,7 @@
       <RootComponent type="29" id="{7f165d07-03a7-ed11-aad1-0022481b5e4f}" behavior="0" />
       <RootComponent type="29" id="{7faddab7-17fa-ed11-8f6d-002248c727e7}" behavior="0" />
       <RootComponent type="29" id="{82b1a383-ea20-ee11-9966-002248c72859}" behavior="0" />
+      <RootComponent type="29" id="{938f80db-d852-ee11-be6f-002248c727e7}" behavior="0" />
       <RootComponent type="29" id="{9c334b9e-f2bc-ed11-83fe-000d3a86ecac}" behavior="0" />
       <RootComponent type="29" id="{a29c510f-d406-ee11-8f6e-002248c727e7}" behavior="0" />
       <RootComponent type="29" id="{ae2c04a4-d614-ee11-9cbe-002248c725da}" behavior="0" />
@@ -108,6 +110,7 @@
       <RootComponent type="29" id="{ddb5e613-64a9-ed11-aad1-0022481b5e4f}" behavior="0" />
       <RootComponent type="29" id="{edadf639-95d4-ed11-a7c6-6045bd0d6610}" behavior="0" />
       <RootComponent type="29" id="{ef9daff4-3f1b-ee11-8f6d-002248c727e7}" behavior="0" />
+      <RootComponent type="29" id="{f872e448-4552-ee11-be6f-002248c725da}" behavior="0" />
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
@@ -180,6 +183,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
+        <Dependent type="29" displayName="Send Email after declaration and submitted in Change request" id="{0426ebcf-1252-ee11-be6f-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
         <Dependent type="29" displayName="Send  email notification to applicant when Building Application Stage is invoice raised" id="{06333f46-6f25-ee11-9965-002248c725da}" />
       </MissingDependency>
       <MissingDependency>
@@ -207,8 +214,16 @@
         <Dependent type="29" displayName="Send Email notifications for Rejected Building Application" id="{db26296d-5837-ee11-bdf4-002248c725da}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
+        <Dependent type="29" displayName="Send Email when Primary or Secondary user has been added to the Building Application" id="{f872e448-4552-ee11-be6f-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
         <Dependent type="29" displayName="Set the Building Application Name field to ApplicationId and Building Name " id="{041ef549-a2b7-ed11-b597-0022481b568f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
+        <Dependent type="29" displayName="Send Email after declaration and submitted in Change request" id="{0426ebcf-1252-ee11-be6f-002248c725da}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
@@ -240,6 +255,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
+        <Dependent type="29" displayName="Set Change Request Name" id="{938f80db-d852-ee11-be6f-002248c727e7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
         <Dependent type="29" displayName="Set the Building Application status on Payment update of Payment Reconciliation status" id="{9c334b9e-f2bc-ed11-83fe-000d3a86ecac}" />
       </MissingDependency>
       <MissingDependency>
@@ -261,6 +280,26 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
         <Dependent type="29" displayName="Set the Building Application status and Application Stage on Payment update of Payment Reconciliati" id="{ef9daff4-3f1b-ee11-8f6d-002248c727e7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
+        <Dependent type="29" displayName="Send Email when Primary or Secondary user has been added to the Building Application" id="{f872e448-4552-ee11-be6f-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_changecategory" displayName="Change Category" solution="Active" />
+        <Dependent type="29" displayName="Set Change Request Name" id="{938f80db-d852-ee11-be6f-002248c727e7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_changerequest" displayName="Change Request" solution="Active" />
+        <Dependent type="29" displayName="Send Email after declaration and submitted in Change request" id="{0426ebcf-1252-ee11-be6f-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_changerequest" displayName="Change Request" solution="Active" />
+        <Dependent type="29" displayName="Set Change Request Name" id="{938f80db-d852-ee11-be6f-002248c727e7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_changerequest" displayName="Change Request" solution="Active" />
+        <Dependent type="29" displayName="Send Email when Primary or Secondary user has been added to the Building Application" id="{f872e448-4552-ee11-be6f-002248c725da}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_connectedblock" displayName="Connected Structure" solution="Active" />
@@ -379,6 +418,18 @@
         <Dependent type="29" displayName="Set Applicant Email Recipient" id="{ae2c04a4-d614-ee11-9cbe-002248c725da}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_buildingapplicationid" displayName="Building application" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="Active" />
+        <Dependent type="29" displayName="Set Change Request Name" id="{938f80db-d852-ee11-be6f-002248c727e7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_changecategoryid" displayName="Change Category" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="Active" />
+        <Dependent type="29" displayName="Set Change Request Name" id="{938f80db-d852-ee11-be6f-002248c727e7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_declaration" displayName="Declaration" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="Active" />
+        <Dependent type="29" displayName="Send Email after declaration and submitted in Change request" id="{0426ebcf-1252-ee11-be6f-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
         <Dependent type="29" displayName="Set Applicant Email Recipient" id="{ae2c04a4-d614-ee11-9cbe-002248c725da}" />
       </MissingDependency>
@@ -399,8 +450,16 @@
         <Dependent type="29" displayName="Set the Building Application status and Application Stage on Payment update of Payment Reconciliati" id="{ef9daff4-3f1b-ee11-8f6d-002248c727e7}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_registreeid" displayName="Applicant" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
+        <Required type="2" schemaName="bsr_registreeid" displayName="Primary applicant" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
         <Dependent type="29" displayName="Set Applicant Email Recipient" id="{ae2c04a4-d614-ee11-9cbe-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_registreeid" displayName="Primary applicant" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
+        <Dependent type="29" displayName="Send Email when Primary or Secondary user has been added to the Building Application" id="{f872e448-4552-ee11-be6f-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_secondaryapplicantid" displayName="Secondary applicant" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
+        <Dependent type="29" displayName="Send Email when Primary or Secondary user has been added to the Building Application" id="{f872e448-4552-ee11-be6f-002248c725da}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_tasktypeid" displayName="Task Type" parentSchemaName="bsr_tasktype" parentDisplayName="Task Type" solution="Active" />
@@ -444,6 +503,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="Active" id.schemaname="bsr_noreplyqueueid" />
+        <Dependent type="29" displayName="Send Email after declaration and submitted in Change request" id="{0426ebcf-1252-ee11-be6f-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="Active" id.schemaname="bsr_noreplyqueueid" />
         <Dependent type="29" displayName="Send  email notification to applicant when Building Application Stage is invoice raised" id="{06333f46-6f25-ee11-9965-002248c725da}" />
       </MissingDependency>
       <MissingDependency>
@@ -465,6 +528,10 @@
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="Active" id.schemaname="bsr_noreplyqueueid" />
         <Dependent type="29" displayName="Send Email notifications for Rejected Building Application" id="{db26296d-5837-ee11-bdf4-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="Active" id.schemaname="bsr_noreplyqueueid" />
+        <Dependent type="29" displayName="Send Email when Primary or Secondary user has been added to the Building Application" id="{f872e448-4552-ee11-be6f-002248c725da}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointsiteurl" solution="Active" id.schemaname="bsr_sharepointsiteurl" />
