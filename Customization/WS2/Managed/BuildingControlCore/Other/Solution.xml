@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Control Core" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.28.0</Version>
+    <Version>1.0.29.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -84,7 +84,6 @@
       <RootComponent type="1" schemaName="bsr_assessmentmeeting" behavior="0" />
       <RootComponent type="1" schemaName="bsr_bcworkcategory" behavior="0" />
       <RootComponent type="1" schemaName="bsr_bpflifecyclephases" behavior="0" />
-      <RootComponent type="1" schemaName="bsr_bsrdocument" behavior="0" />
       <RootComponent type="1" schemaName="bsr_building" behavior="0" />
       <RootComponent type="1" schemaName="bsr_buildingcontrolapplication" behavior="0" />
       <RootComponent type="1" schemaName="bsr_buildingcontrollifecycle" behavior="0" />
@@ -206,7 +205,11 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="BuildingRegCore (1.17.59.0)" />
-        <Dependent type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" />
+        <Dependent type="10" schemaName="bsr_bsr_projecttaskdocument_bsrdocumentid_bsr" displayName="bsr_bsr_projecttaskdocument_bsrdocumentid_bsr" parentSchemaName="bsr_bsrdocument" parentDisplayName="BSR Document" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="BuildingRegCore (1.17.59.0)" />
+        <Dependent type="10" schemaName="bsr_inspectiondocument_bsrdocumentid" displayName="bsr_inspectiondocument_bsrdocumentid" parentSchemaName="bsr_bsrdocument" parentDisplayName="BSR Document" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_building" displayName="Building" solution="BuildingRegCore (1.17.59.0)" />
@@ -317,6 +320,14 @@
           <package>msdynce_ServiceAnchor (9.0.23083.1024)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="activityid" displayName="Activity" parentSchemaName="bsr_bsrdocument" parentDisplayName="BSR Document" solution="Active" />
+        <Dependent type="10" schemaName="bsr_bsr_projecttaskdocument_bsrdocumentid_bsr" displayName="bsr_bsr_projecttaskdocument_bsrdocumentid_bsr" parentSchemaName="bsr_bsrdocument" parentDisplayName="BSR Document" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="activityid" displayName="Activity" parentSchemaName="bsr_bsrdocument" parentDisplayName="BSR Document" solution="Active" />
+        <Dependent type="10" schemaName="bsr_inspectiondocument_bsrdocumentid" displayName="bsr_inspectiondocument_bsrdocumentid" parentSchemaName="bsr_bsrdocument" parentDisplayName="BSR Document" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_accounttype_accountid" displayName="Account Type" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.59.0)" />
@@ -597,6 +608,14 @@
           <package>msdynce_ServiceAnchor (9.0.23083.1024)</package>
         </Required>
         <Dependent type="2" schemaName="serviceid" displayName="Service" parentSchemaName="task" parentDisplayName="Task" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="subject" displayName="Document Name" parentSchemaName="bsr_bsrdocument" parentDisplayName="BSR Document" solution="BuildingRegCore (1.17.59.0)" />
+        <Dependent type="10" schemaName="bsr_bsr_projecttaskdocument_bsrdocumentid_bsr" displayName="bsr_bsr_projecttaskdocument_bsrdocumentid_bsr" parentSchemaName="bsr_bsrdocument" parentDisplayName="BSR Document" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="subject" displayName="Document Name" parentSchemaName="bsr_bsrdocument" parentDisplayName="BSR Document" solution="BuildingRegCore (1.17.59.0)" />
+        <Dependent type="10" schemaName="bsr_inspectiondocument_bsrdocumentid" displayName="bsr_inspectiondocument_bsrdocumentid" parentSchemaName="bsr_bsrdocument" parentDisplayName="BSR Document" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="transactioncurrencyid" displayName="Currency" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="Active" />
