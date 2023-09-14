@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23082.176" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23083.172" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>BuildingControlUX</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Control UX" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.16.0</Version>
+    <Version>1.0.17.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -119,6 +119,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_applicationstatustimestamp" displayName="Application Status Timestamp" solution="BuildingRegCore (1.17.59.0)" />
+        <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_assessmentmeeting" displayName="Assessment Meeting" solution="Active" />
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
@@ -234,6 +238,10 @@
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="bsr_buildmeetings" displayName="Build Meetings" solution="Active" />
+        <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="bsr_completioncertificate" displayName="Completion Certificate" solution="BuildingRegCore (1.17.59.0)" />
         <Dependent type="62" schemaName="bsr_BSR" />
       </MissingDependency>
@@ -314,19 +322,27 @@
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_inspection" displayName="Inspection Schedule" solution="Active" />
-        <Dependent type="62" schemaName="bsr_BSR" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="1" schemaName="bsr_inspection" displayName="Inspection Schedule" solution="Active" />
+        <Required type="1" schemaName="bsr_informationtracker" displayName="Information Tracker" solution="Active" />
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_issue" displayName="Issue" solution="Active" />
+        <Required type="1" schemaName="bsr_inspection" displayName="MDT Inspection Schedule" solution="Active" />
         <Dependent type="62" schemaName="bsr_BSR" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_issue" displayName="Issue" solution="Active" />
+        <Required type="1" schemaName="bsr_inspection" displayName="MDT Inspection Schedule" solution="Active" />
+        <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_inspectiondocument" displayName="MDT Inspection Document" solution="Active" />
+        <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_issue" displayName="MDT Project Issue" solution="Active" />
+        <Dependent type="62" schemaName="bsr_BSR" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_issue" displayName="MDT Project Issue" solution="Active" />
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
@@ -383,6 +399,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_payment" displayName="Payment" solution="BuildingRegCore (1.17.59.0)" />
+        <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_projecttaskdocument" displayName="MDT Task Document" solution="Active" />
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
@@ -427,6 +447,14 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_sectioncompletionyearrange" displayName="Structure Completion Year Range" solution="BuildingRegCore (1.17.59.0)" />
+        <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_stagedapplication" displayName="Staged Application" solution="Active" />
+        <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_stagedapplicationsdurations" displayName="Staged Application Durations" solution="Active" />
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
@@ -491,49 +519,49 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="campaign" displayName="Campaign" solution="msdynce_Marketing (9.0.4.37)">
-          <package>msdynce_MarketingAnchor (9.0.23081.10001)</package>
+          <package>msdynce_MarketingAnchor (9.0.23083.10001)</package>
         </Required>
         <Dependent type="62" schemaName="bsr_BSR" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="campaign" displayName="Campaign" solution="msdynce_Marketing (9.0.4.37)">
-          <package>msdynce_MarketingAnchor (9.0.23081.10001)</package>
+          <package>msdynce_MarketingAnchor (9.0.23083.10001)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="entitlement" displayName="Entitlement" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23083.1024)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="entitlementtemplate" displayName="Entitlement Template" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23083.1024)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="equipment" displayName="Facility/Equipment" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23083.1024)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23083.1024)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="list" displayName="Marketing List" solution="msdynce_Marketing (9.0.4.37)">
-          <package>msdynce_MarketingAnchor (9.0.23081.10001)</package>
+          <package>msdynce_MarketingAnchor (9.0.23083.10001)</package>
         </Required>
         <Dependent type="62" schemaName="bsr_BSR" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="list" displayName="Marketing List" solution="msdynce_Marketing (9.0.4.37)">
-          <package>msdynce_MarketingAnchor (9.0.23081.10001)</package>
+          <package>msdynce_MarketingAnchor (9.0.23083.10001)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
@@ -555,55 +583,55 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="msdyn_customerasset" displayName="Customer Asset" solution="msdyn_AssetCommon (1.0.26.9)">
-          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23083.1024)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_dataanalyticsreport_csrmanager" displayName="Customer Service historical analytics" solution="msdyn_AnalyticsForCS (1.2.23198.1)">
-          <package>msdyn_ServiceExtendedAnchor (9.0.23074.1015)</package>
+        <Required type="1" schemaName="msdyn_dataanalyticsreport_csrmanager" displayName="Customer Service historical analytics" solution="msdyn_AnalyticsForCS (1.2.23214.2)">
+          <package>msdyn_ServiceExtendedAnchor (9.0.23083.1016)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_dataanalyticsreport_ksinsights" displayName="Knowledge analytics" solution="msdyn_AnalyticsForCS (1.2.23198.1)">
-          <package>msdyn_ServiceExtendedAnchor (9.0.23074.1015)</package>
+        <Required type="1" schemaName="msdyn_dataanalyticsreport_ksinsights" displayName="Knowledge analytics" solution="msdyn_AnalyticsForCS (1.2.23214.2)">
+          <package>msdyn_ServiceExtendedAnchor (9.0.23083.1016)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_datainsightsandanalyticsfeature" displayName="Insights" solution="msdyn_DataInsightsAndAnalytics (1.2.23198.1)">
-          <package>msdyn_ServiceExtendedAnchor (9.0.23074.1015)</package>
+        <Required type="1" schemaName="msdyn_datainsightsandanalyticsfeature" displayName="Insights" solution="msdyn_DataInsightsAndAnalytics (1.2.23214.2)">
+          <package>msdyn_ServiceExtendedAnchor (9.0.23083.1016)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_iotalert" displayName="IoT Alert" solution="IoTConnector (1.8.9.7)">
-          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+        <Required type="1" schemaName="msdyn_iotalert" displayName="IoT Alert" solution="IoTConnector (1.8.40.0)">
+          <package>msdynce_ServiceAnchor (9.0.23083.1024)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_iotdevicecategory" displayName="IoT Device Category" solution="IoTConnector (1.8.9.7)">
-          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+        <Required type="1" schemaName="msdyn_iotdevicecategory" displayName="IoT Device Category" solution="IoTConnector (1.8.40.0)">
+          <package>msdynce_ServiceAnchor (9.0.23083.1024)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_iotdevicecommanddefinition" displayName="IoT Device Command Definition" solution="IoTConnector (1.8.9.7)">
-          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+        <Required type="1" schemaName="msdyn_iotdevicecommanddefinition" displayName="IoT Device Command Definition" solution="IoTConnector (1.8.40.0)">
+          <package>msdynce_ServiceAnchor (9.0.23083.1024)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_iotpropertydefinition" displayName="IoT Property Definition" solution="IoTConnector (1.8.9.7)">
-          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+        <Required type="1" schemaName="msdyn_iotpropertydefinition" displayName="IoT Property Definition" solution="IoTConnector (1.8.40.0)">
+          <package>msdynce_ServiceAnchor (9.0.23083.1024)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_iotsettings" displayName="IoT Settings" solution="IoTConnector (1.8.9.7)">
-          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+        <Required type="1" schemaName="msdyn_iotsettings" displayName="IoT Settings" solution="IoTConnector (1.8.40.0)">
+          <package>msdynce_ServiceAnchor (9.0.23083.1024)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
@@ -620,8 +648,8 @@
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_msteamssettingsv2" displayName="msdyn_msteamssettingsv2" solution="msdynce_OfficeProductivity (9.0.23081.10001)">
-          <package>msdynce_OfficeProductivityAnchor (9.0.23081.10001)</package>
+        <Required type="1" schemaName="msdyn_msteamssettingsv2" displayName="msdyn_msteamssettingsv2" solution="msdynce_OfficeProductivity (9.0.23083.10002)">
+          <package>msdynce_OfficeProductivityAnchor (9.0.23083.10002)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
@@ -648,20 +676,20 @@
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_slakpi" displayName="SLA KPI" solution="msdynce_ServiceLevelAgreementExtension (9.0.23074.1010)">
-          <package>msdynce_ServiceLevelAgreementAnchor (9.0.23074.1010)</package>
+        <Required type="1" schemaName="msdyn_slakpi" displayName="SLA KPI" solution="msdynce_ServiceLevelAgreementExtension (9.0.23083.1007)">
+          <package>msdynce_ServiceLevelAgreementAnchor (9.0.23083.1007)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_swarm" displayName="Swarm" solution="msdyn_Swarming (9.0.23074.1015)">
-          <package>msdyn_ServiceExtendedAnchor (9.0.23074.1015)</package>
+        <Required type="1" schemaName="msdyn_swarm" displayName="Swarm" solution="msdyn_Swarming (9.0.23083.1016)">
+          <package>msdyn_ServiceExtendedAnchor (9.0.23083.1016)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_swarmtemplate" displayName="Swarm template" solution="msdyn_Swarming (9.0.23074.1015)">
-          <package>msdyn_ServiceExtendedAnchor (9.0.23074.1015)</package>
+        <Required type="1" schemaName="msdyn_swarmtemplate" displayName="Swarm template" solution="msdyn_Swarming (9.0.23083.1016)">
+          <package>msdyn_ServiceExtendedAnchor (9.0.23083.1016)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
@@ -671,13 +699,13 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="service" displayName="Service" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23083.1024)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="serviceappointment" displayName="Service Activity" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.23081.1016)</package>
+          <package>msdynce_ServiceAnchor (9.0.23083.1024)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
@@ -731,13 +759,13 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="All Accounts" displayName="All Accounts" parentSchemaName="account" parentDisplayName="Account" solution="msdynce_AppCommon (9.0.4.0066)" id="{65ffaf9a-e8c5-432d-860b-32f841b00d87}">
-          <package>msdynce_AppCommonAnchor (9.0.23081.10001)</package>
+          <package>msdynce_AppCommonAnchor (9.0.23083.10004)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="All Contacts" displayName="All Contacts" parentSchemaName="contact" parentDisplayName="Contact" solution="msdynce_AppCommon (9.0.4.0066)" id="{0d5d377b-5e7c-47b5-bab1-a5cb8b4ac105}">
-          <package>msdynce_AppCommonAnchor (9.0.23081.10001)</package>
+          <package>msdynce_AppCommonAnchor (9.0.23083.10004)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
