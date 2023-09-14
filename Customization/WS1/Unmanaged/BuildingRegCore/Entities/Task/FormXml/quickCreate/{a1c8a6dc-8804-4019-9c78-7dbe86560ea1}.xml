@@ -39,7 +39,13 @@
                         <labels>
                           <label description="Task Type" languagecode="1033" />
                         </labels>
-                        <control id="bsr_tasktypeid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_tasktypeid" disabled="false" />
+                        <control id="bsr_tasktypeid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_tasktypeid" disabled="false">
+                          <parameters>
+                            <DependentAttributeName>task.bsr_taskcategoryid</DependentAttributeName>
+                            <DependentAttributeType>bsr_taskcategory</DependentAttributeType>
+                            <FilterRelationshipName>bsr_tasktype_taskcategoryid_bsr_taskcateg</FilterRelationshipName>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
                     <row>

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{f97bd1ed-34db-4deb-aff8-17646d3c0cc4}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
+        <row name="result" id="bsr_changerequestid">
+          <cell name="bsr_name" width="300" />
+          <cell name="bsr_buildingapplicationid" width="155" />
+          <cell name="bsr_changecategoryid" width="138" />
+          <cell name="bsr_declaration" width="106" />
+          <cell name="bsr_reviewrequired" width="133" />
+          <cell name="bsr_submittedbyid" width="116" />
+          <cell name="statuscode" width="119" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="bsr_changerequest">
+          <attribute name="bsr_changerequestid" />
+          <attribute name="bsr_name" />
+          <attribute name="createdon" />
+          <order attribute="bsr_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="1" />
+          </filter>
+          <attribute name="bsr_buildingapplicationid" />
+          <attribute name="bsr_changecategoryid" />
+          <attribute name="bsr_declaration" />
+          <attribute name="bsr_reviewrequired" />
+          <attribute name="bsr_submittedbyid" />
+          <attribute name="statuscode" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Inactive Change Requests" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
