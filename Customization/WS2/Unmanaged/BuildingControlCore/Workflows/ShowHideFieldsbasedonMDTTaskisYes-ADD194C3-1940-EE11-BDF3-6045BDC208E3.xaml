@@ -66,7 +66,7 @@
                     <Sequence DisplayName="SetVisibilityStep5: New Action">
                       <mcwc:SetVisibility ControlId="bsr_mdtmemberid" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="task" IsVisible="True" />
                     </Sequence>
-                    <Sequence DisplayName="SetVisibilityStep5: New Action">
+                    <Sequence DisplayName="SetVisibilityStep5811: New Action">
                       <mcwc:SetVisibility ControlId="bsr_dutyholderid" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="task" IsVisible="False" />
                     </Sequence>
                     <Sequence DisplayName="SetVisibilityStep7: New Action">
@@ -74,6 +74,53 @@
                     </Sequence>
                     <Sequence DisplayName="SetVisibilityStep9: New Action">
                       <mcwc:SetVisibility ControlId="bsr_dateexception" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="task" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep11: New Action">
+                      <mcwc:SetVisibility ControlId="bsr_rate" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="task" IsVisible="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep12: New Action">
+                      <mcwc:SetVisibility ControlId="bsr_paymentdue" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="task" IsVisible="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDefaultValueStep15: New Action">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:Object" Name="SetDefaultValueStep15_1" />
+                      </Sequence.Variables>
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;task&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateExpression, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateExpression">
+                        <mxswa:ActivityReference.Arguments>
+                          <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">CreateCrmType</InArgument>
+                          <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { Microsoft.Xrm.Sdk.Workflow.WorkflowPropertyType.Boolean, "1" }]</InArgument>
+                          <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:Boolean" />
+                          </InArgument>
+                          <OutArgument x:TypeArguments="x:Object" x:Key="Result">[SetDefaultValueStep15_1]</OutArgument>
+                        </mxswa:ActivityReference.Arguments>
+                      </mxswa:ActivityReference>
+                      <mxswa:SetEntityProperty Attribute="bsr_iscostrecoverable" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="task" Value="[SetDefaultValueStep15_1]">
+                        <mxswa:SetEntityProperty.TargetType>
+                          <InArgument x:TypeArguments="s:Type">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:Boolean" />
+                          </InArgument>
+                        </mxswa:SetEntityProperty.TargetType>
+                      </mxswa:SetEntityProperty>
+                      <mcwc:SetDefaultValue DisplayName="SetDefaultValueStep15" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="task" />
+                      <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep16: New Action">
+                      <mcwc:SetVisibility ControlId="bsr_istimevalidated" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="task" IsVisible="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep17: New Action">
+                      <mcwc:SetVisibility ControlId="bsr_issenttofinanceprocurement" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="task" IsVisible="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep18: New Action">
+                      <mcwc:SetVisibility ControlId="bsr_ispaidbydutyholder" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="task" IsVisible="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep19: New Action">
+                      <mcwc:SetVisibility ControlId="bsr_ispaidbybsr" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="task" IsVisible="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep24: New Action">
+                      <mcwc:SetVisibility ControlId="bsr_mdtproject" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="task" IsVisible="True" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
@@ -107,7 +154,7 @@
                     <Sequence DisplayName="SetVisibilityStep6: New Action">
                       <mcwc:SetVisibility ControlId="bsr_mdtmemberid" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="task" IsVisible="False" />
                     </Sequence>
-                    <Sequence DisplayName="SetVisibilityStep6: New Action">
+                    <Sequence DisplayName="SetVisibilityStep6868: New Action">
                       <mcwc:SetVisibility ControlId="bsr_dutyholderid" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="task" IsVisible="True" />
                     </Sequence>
                     <Sequence DisplayName="SetVisibilityStep8: New Action">
@@ -115,6 +162,27 @@
                     </Sequence>
                     <Sequence DisplayName="SetVisibilityStep10: New Action">
                       <mcwc:SetVisibility ControlId="bsr_dateexception" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="task" IsVisible="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep13: New Action">
+                      <mcwc:SetVisibility ControlId="bsr_rate" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="task" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep14: New Action">
+                      <mcwc:SetVisibility ControlId="bsr_paymentdue" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="task" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep20: New Action">
+                      <mcwc:SetVisibility ControlId="bsr_istimevalidated" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="task" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep21: New Action">
+                      <mcwc:SetVisibility ControlId="bsr_issenttofinanceprocurement" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="task" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep22: New Action">
+                      <mcwc:SetVisibility ControlId="bsr_ispaidbydutyholder" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="task" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep23: New Action">
+                      <mcwc:SetVisibility ControlId="bsr_ispaidbybsr" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="task" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep25: New Action">
+                      <mcwc:SetVisibility ControlId="bsr_mdtproject" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="task" IsVisible="False" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
