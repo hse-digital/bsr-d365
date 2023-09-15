@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23082.176" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23083.172" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>ContactBSRCore</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Contact BSR Core" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.26.0</Version>
+    <Version>1.0.27.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -101,6 +101,7 @@
       <RootComponent type="20" id="{2d550630-902c-ee11-9965-6045bdd2c8fd}" behavior="0" />
       <RootComponent type="20" id="{72226344-8f4d-ee11-be6f-6045bdd0ef4d}" behavior="0" />
       <RootComponent type="20" id="{c63de8b9-974d-ee11-be6f-6045bdd0ef4d}" behavior="0" />
+      <RootComponent type="29" id="{068c6331-af53-ee11-be6f-6045bdd2cb7b}" behavior="0" />
       <RootComponent type="29" id="{388bf0d3-c22b-ee11-9965-6045bdd2cb7b}" behavior="0" />
       <RootComponent type="29" id="{88feb564-8429-ee11-9965-6045bdd2cb7b}" behavior="0" />
       <RootComponent type="29" id="{a0d6341a-1248-ee11-be6f-6045bdd0ef4d}" behavior="0" />
@@ -494,20 +495,20 @@
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_dataanalyticsreport_csrmanager" displayName="Customer Service historical analytics" solution="msdyn_AnalyticsForCS (1.2.23198.1)">
-          <package>msdyn_ServiceExtendedAnchor (9.0.23081.1010)</package>
+        <Required type="1" schemaName="msdyn_dataanalyticsreport_csrmanager" displayName="Customer Service historical analytics" solution="msdyn_AnalyticsForCS (1.2.23214.2)">
+          <package>msdyn_ServiceExtendedAnchor (9.0.23083.1016)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_dataanalyticsreport_ksinsights" displayName="Knowledge analytics" solution="msdyn_AnalyticsForCS (1.2.23198.1)">
-          <package>msdyn_ServiceExtendedAnchor (9.0.23081.1010)</package>
+        <Required type="1" schemaName="msdyn_dataanalyticsreport_ksinsights" displayName="Knowledge analytics" solution="msdyn_AnalyticsForCS (1.2.23214.2)">
+          <package>msdyn_ServiceExtendedAnchor (9.0.23083.1016)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_datainsightsandanalyticsfeature" displayName="Insights" solution="msdyn_DataInsightsAndAnalytics (1.2.23198.1)">
-          <package>msdyn_ServiceExtendedAnchor (9.0.23081.1010)</package>
+        <Required type="1" schemaName="msdyn_datainsightsandanalyticsfeature" displayName="Insights" solution="msdyn_DataInsightsAndAnalytics (1.2.23214.2)">
+          <package>msdyn_ServiceExtendedAnchor (9.0.23083.1016)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
@@ -588,14 +589,14 @@
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_swarm" displayName="Swarm" solution="msdyn_Swarming (9.0.23081.1010)">
-          <package>msdyn_ServiceExtendedAnchor (9.0.23081.1010)</package>
+        <Required type="1" schemaName="msdyn_swarm" displayName="Swarm" solution="msdyn_Swarming (9.0.23083.1016)">
+          <package>msdyn_ServiceExtendedAnchor (9.0.23083.1016)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_swarmtemplate" displayName="Swarm template" solution="msdyn_Swarming (9.0.23081.1010)">
-          <package>msdyn_ServiceExtendedAnchor (9.0.23081.1010)</package>
+        <Required type="1" schemaName="msdyn_swarmtemplate" displayName="Swarm template" solution="msdyn_Swarming (9.0.23083.1016)">
+          <package>msdyn_ServiceExtendedAnchor (9.0.23083.1016)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
@@ -1964,6 +1965,18 @@
         <Dependent type="26" schemaName="Closed Cases" displayName="Closed Cases" parentSchemaName="incident" parentDisplayName="Case" id="{00000000-0000-0000-00aa-000010001034}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="parentcaseid" displayName="Parent Case" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
+          <package>msdynce_ServiceAnchor (9.0.23083.1024)</package>
+        </Required>
+        <Dependent type="60" displayName="BSR Case Management - Case Summary" parentDisplayName="Case" id="{8adf04ff-0542-ee11-bdf3-6045bdd2cb7b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="parentcaseid" displayName="Parent Case" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
+          <package>msdynce_ServiceAnchor (9.0.23083.1024)</package>
+        </Required>
+        <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="primarycontactid" displayName="Contact" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
           <package>msdynce_ServiceAnchor (9.0.23083.1024)</package>
         </Required>
@@ -2470,8 +2483,8 @@
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="26" schemaName="Case introduction message view" displayName="Case introduction message view" parentSchemaName="incident" parentDisplayName="Case" solution="msdyn_TeamsConfigForCS (9.0.23081.1010)" id="{5cb909c6-20f0-eb11-bad5-00224876a6de}">
-          <package>msdyn_ServiceExtendedAnchor (9.0.23081.1010)</package>
+        <Required type="26" schemaName="Case introduction message view" displayName="Case introduction message view" parentSchemaName="incident" parentDisplayName="Case" solution="msdyn_TeamsConfigForCS (9.0.23083.1016)" id="{5cb909c6-20f0-eb11-bad5-00224876a6de}">
+          <package>msdyn_ServiceExtendedAnchor (9.0.23083.1016)</package>
         </Required>
         <Dependent type="60" displayName="Information" parentDisplayName="Evidence" id="{b2e69d18-6349-4e9a-8e81-d2b8dfb7cf22}" />
       </MissingDependency>
@@ -2650,14 +2663,14 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Evidence" id="{b2e69d18-6349-4e9a-8e81-d2b8dfb7cf22}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="26" schemaName="My Cases" displayName="My Cases" parentSchemaName="incident" parentDisplayName="Case" solution="msdyn_InboxSolution (1.0.23075.1011)" id="{d3650786-67e3-eb11-bacc-000d3a9bc650}">
-          <package>msdyn_ServiceExtendedAnchor (9.0.23081.1010)</package>
+        <Required type="26" schemaName="My Cases" displayName="My Cases" parentSchemaName="incident" parentDisplayName="Case" solution="msdyn_InboxSolution (1.0.23083.1011)" id="{d3650786-67e3-eb11-bacc-000d3a9bc650}">
+          <package>msdyn_ServiceExtendedAnchor (9.0.23083.1016)</package>
         </Required>
         <Dependent type="60" displayName="Information" parentDisplayName="Evidence" id="{b2e69d18-6349-4e9a-8e81-d2b8dfb7cf22}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="26" schemaName="My Cases" displayName="My Cases" parentSchemaName="incident" parentDisplayName="Case" solution="msdyn_InboxSolution (1.0.23075.1011)" id="{d3650786-67e3-eb11-bacc-000d3a9bc650}">
-          <package>msdyn_ServiceExtendedAnchor (9.0.23081.1010)</package>
+        <Required type="26" schemaName="My Cases" displayName="My Cases" parentSchemaName="incident" parentDisplayName="Case" solution="msdyn_InboxSolution (1.0.23083.1011)" id="{d3650786-67e3-eb11-bacc-000d3a9bc650}">
+          <package>msdyn_ServiceExtendedAnchor (9.0.23083.1016)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
@@ -2810,6 +2823,12 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Investigation" id="{5e47ee58-f899-44e6-af4c-f6e76b844f95}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="59" schemaName="Tasks by Month Due" displayName="Tasks by Month Due" parentSchemaName="task" parentDisplayName="Task" solution="msdynce_AppCommon (9.0.4.0066)" id="{9e6a8b06-6d14-46e6-bbf5-95c388c6eb7a}">
+          <package>msdynce_AppCommonAnchor (9.0.23083.10004)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="Appeal" id="{9d5f8ce8-3b20-4e0d-a63b-e7563482428c}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="60" displayName="account contact card" parentDisplayName="Contact" solution="msdynce_AppCommon (9.0.4.0066)" id="{29de27bc-a257-4f29-99cf-bab4a84e688f}">
           <package>msdynce_AppCommonAnchor (9.0.23083.10004)</package>
         </Required>
@@ -2863,43 +2882,43 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_CopilotCaseSummaryLibrary.js" displayName="msdyn_CopilotCaseSummaryLibrary.js" solution="msdyn_CSIntelligence (9.0.23081.1009)">
-          <package>msdyn_ServiceExtendedAnchor (9.0.23081.1010)</package>
+          <package>msdyn_ServiceExtendedAnchor (9.0.23083.1016)</package>
         </Required>
         <Dependent type="60" displayName="BSR Case Management - Case Relationships" parentDisplayName="Case" id="{059ad2cc-0642-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_CopilotCaseSummaryLibrary.js" displayName="msdyn_CopilotCaseSummaryLibrary.js" solution="msdyn_CSIntelligence (9.0.23081.1009)">
-          <package>msdyn_ServiceExtendedAnchor (9.0.23081.1010)</package>
+          <package>msdyn_ServiceExtendedAnchor (9.0.23083.1016)</package>
         </Required>
         <Dependent type="60" displayName="BSR Case Management - Timeline" parentDisplayName="Case" id="{21143df2-234b-ee11-be6f-6045bdd2c8fd}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_CopilotCaseSummaryLibrary.js" displayName="msdyn_CopilotCaseSummaryLibrary.js" solution="msdyn_CSIntelligence (9.0.23081.1009)">
-          <package>msdyn_ServiceExtendedAnchor (9.0.23081.1010)</package>
+          <package>msdyn_ServiceExtendedAnchor (9.0.23083.1016)</package>
         </Required>
         <Dependent type="60" displayName="BSR Case Management - Evidence" parentDisplayName="Case" id="{744be890-0942-ee11-bdf3-6045bdd2c8fd}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_CopilotCaseSummaryLibrary.js" displayName="msdyn_CopilotCaseSummaryLibrary.js" solution="msdyn_CSIntelligence (9.0.23081.1009)">
-          <package>msdyn_ServiceExtendedAnchor (9.0.23081.1010)</package>
+          <package>msdyn_ServiceExtendedAnchor (9.0.23083.1016)</package>
         </Required>
         <Dependent type="60" displayName="BSR Case Management - Case Outcome" parentDisplayName="Case" id="{8611b39a-fc4a-ee11-be6f-6045bdd0ef4d}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_CopilotCaseSummaryLibrary.js" displayName="msdyn_CopilotCaseSummaryLibrary.js" solution="msdyn_CSIntelligence (9.0.23081.1009)">
-          <package>msdyn_ServiceExtendedAnchor (9.0.23081.1010)</package>
+          <package>msdyn_ServiceExtendedAnchor (9.0.23083.1016)</package>
         </Required>
         <Dependent type="60" displayName="BSR Case Management - Case Summary" parentDisplayName="Case" id="{8adf04ff-0542-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_CopilotCaseSummaryLibrary.js" displayName="msdyn_CopilotCaseSummaryLibrary.js" solution="msdyn_CSIntelligence (9.0.23081.1009)">
-          <package>msdyn_ServiceExtendedAnchor (9.0.23081.1010)</package>
+          <package>msdyn_ServiceExtendedAnchor (9.0.23083.1016)</package>
         </Required>
         <Dependent type="60" displayName="BSR Case Management - Relevant Parties" parentDisplayName="Case" id="{b051c2ca-0742-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_CopilotCaseSummaryLibrary.js" displayName="msdyn_CopilotCaseSummaryLibrary.js" solution="msdyn_CSIntelligence (9.0.23081.1009)">
-          <package>msdyn_ServiceExtendedAnchor (9.0.23081.1010)</package>
+          <package>msdyn_ServiceExtendedAnchor (9.0.23083.1016)</package>
         </Required>
         <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
@@ -2986,7 +3005,7 @@
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" displayName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" solution="msdyn_UCICalendar (1.0.0.2983)" />
+        <Required type="66" schemaName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" displayName="MscrmControls.ActivityCalendarControl.ActivityCalendarControl" solution="msdyn_UCICalendar (1.0.0.2992)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Investigation" id="{5e47ee58-f899-44e6-af4c-f6e76b844f95}" />
       </MissingDependency>
       <MissingDependency>
@@ -2996,31 +3015,35 @@
         <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2308.2016)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2308.3014)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Investigation" id="{5e47ee58-f899-44e6-af4c-f6e76b844f95}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2308.2016)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2308.3014)" />
         <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.ModelForm.ModelFormControl" displayName="MscrmControls.ModelForm.ModelFormControl" solution="BaseCustomControlsCore (9.0.2308.2016)" />
+        <Required type="66" schemaName="MscrmControls.ModelForm.ModelFormControl" displayName="MscrmControls.ModelForm.ModelFormControl" solution="BaseCustomControlsCore (9.0.2308.3014)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Enforcement Action" id="{037a0893-6ad5-436a-ba75-00ab0878ad5f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.ModelForm.ModelFormControl" displayName="MscrmControls.ModelForm.ModelFormControl" solution="BaseCustomControlsCore (9.0.2308.2016)" />
+        <Required type="66" schemaName="MscrmControls.ModelForm.ModelFormControl" displayName="MscrmControls.ModelForm.ModelFormControl" solution="BaseCustomControlsCore (9.0.2308.3014)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Investigation" id="{5e47ee58-f899-44e6-af4c-f6e76b844f95}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.OptionSet.OptionSetControl" displayName="MscrmControls.OptionSet.OptionSetControl" solution="CustomControlsCore (9.2.23082.00176)" />
+        <Required type="66" schemaName="MscrmControls.ModelForm.ModelFormControl" displayName="MscrmControls.ModelForm.ModelFormControl" solution="BaseCustomControlsCore (9.0.2308.3014)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Appeal" id="{9d5f8ce8-3b20-4e0d-a63b-e7563482428c}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.OptionSet.OptionSetControl" displayName="MscrmControls.OptionSet.OptionSetControl" solution="CustomControlsCore (9.2.23083.00172)" />
         <Dependent type="60" displayName="BSR Case Management - Case Relationships" parentDisplayName="Case" id="{059ad2cc-0642-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.OptionSet.OptionSetControl" displayName="MscrmControls.OptionSet.OptionSetControl" solution="CustomControlsCore (9.2.23082.00176)" />
+        <Required type="66" schemaName="MscrmControls.OptionSet.OptionSetControl" displayName="MscrmControls.OptionSet.OptionSetControl" solution="CustomControlsCore (9.2.23083.00172)" />
         <Dependent type="60" displayName="BSR Case Management - Relevant Parties" parentDisplayName="Case" id="{b051c2ca-0742-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.OptionSet.OptionSetControl" displayName="MscrmControls.OptionSet.OptionSetControl" solution="CustomControlsCore (9.2.23082.00176)" />
+        <Required type="66" schemaName="MscrmControls.OptionSet.OptionSetControl" displayName="MscrmControls.OptionSet.OptionSetControl" solution="CustomControlsCore (9.2.23083.00172)" />
         <Dependent type="60" displayName="BSR" parentDisplayName="Case" id="{c400b671-dc10-ee11-8f6e-6045bdd2c7e3}" />
       </MissingDependency>
       <MissingDependency>
