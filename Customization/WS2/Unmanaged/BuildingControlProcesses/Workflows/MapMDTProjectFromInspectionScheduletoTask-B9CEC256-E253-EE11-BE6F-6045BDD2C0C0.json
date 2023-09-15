@@ -1,0 +1,112 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS2"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "ba4b9148-4ed5-4e35-8fa2-5e6b3ff3efdb"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 1,
+              "subscriptionRequest/entityname": "task",
+              "subscriptionRequest/scope": 4
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Condition": {
+          "actions": {
+            "Get_a_row_by_ID": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "1b22bfc2-7b58-4059-b242-27d0df759451"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "bsr_inspections",
+                  "recordId": "@triggerOutputs()?['body/_regardingobjectid_value']",
+                  "$select": "_bsr_mdtproject_value"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Update_a_row": {
+              "runAfter": {
+                "Get_a_row_by_ID": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "2e1aaee3-c525-4e12-9e9b-561d761faa39"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "tasks",
+                  "recordId": "@triggerOutputs()?['body/activityid']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {},
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/_regardingobjectid_value@Microsoft.Dynamics.CRM.lookuplogicalname']",
+              "bsr_inspection"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "68e2c4b9-d586-49f7-9bce-0879e446780b"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}
