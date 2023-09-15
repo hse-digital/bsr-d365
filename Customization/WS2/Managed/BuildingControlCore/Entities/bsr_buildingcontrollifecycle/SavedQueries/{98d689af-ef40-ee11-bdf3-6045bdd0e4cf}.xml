@@ -12,7 +12,7 @@
         <row name="result" id="bsr_buildingcontrollifecycleid">
           <cell name="bsr_bclreference" width="252" />
           <cell name="bsr_buildingdetails" width="133" />
-          <cell name="bsr_status" width="100" />
+          <cell name="bsr_buildingcontrollifecyclestatus" width="230" />
           <cell name="bsr_reglead" width="100" />
         </row>
       </grid>
@@ -23,12 +23,12 @@
         <entity name="bsr_buildingcontrollifecycle">
           <attribute name="bsr_buildingcontrollifecycleid" />
           <attribute name="bsr_bclreference" />
-          <attribute name="bsr_status" />
           <attribute name="bsr_reglead" />
           <filter type="and">
             <condition attribute="bsr_bclrcaseofficer" operator="eq-userid" />
           </filter>
           <attribute name="bsr_buildingdetails" />
+          <attribute name="bsr_buildingcontrollifecyclestatus" />
         </entity>
       </fetch>
     </fetchxml>
