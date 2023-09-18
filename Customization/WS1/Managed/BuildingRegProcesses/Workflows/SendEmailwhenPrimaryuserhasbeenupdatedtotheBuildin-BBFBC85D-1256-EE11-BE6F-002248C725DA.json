@@ -41,7 +41,7 @@
         }
       },
       "triggers": {
-        "When_Change_Request_record_Modified": {
+        "When_Building_Application_record_Modified": {
           "metadata": {
             "operationMetadataId": "0fbaffe6-ed72-42ca-bdcf-2a3556ad569f"
           },
@@ -56,7 +56,7 @@
               "subscriptionRequest/message": 3,
               "subscriptionRequest/entityname": "bsr_buildingapplication",
               "subscriptionRequest/scope": 4,
-              "subscriptionRequest/filteringattributes": "bsr_secondaryapplicantid"
+              "subscriptionRequest/filteringattributes": "bsr_registreeid"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -65,7 +65,7 @@
       "actions": {
         "List_rows": {
           "runAfter": {
-            "Secondary_applicant_Compose": [
+            "Primary_applicant_Compose": [
               "Succeeded"
             ]
           },
@@ -136,7 +136,7 @@
                     "operationMetadataId": "c10a2c7d-e7ec-4602-82c1-f8d9e477fce1"
                   },
                   "type": "Compose",
-                  "inputs": "@replace(replace(replace(variables('EmailBody'),'%secondaryApplicant%',outputs('Get_Secondary_Applicant_by_ID')?['body/fullname']),'%buildingName%',outputs('Get_Building_Name')?['body/bsr_name']),'%applicationId%',triggerOutputs()?['body/bsr_applicationid'])"
+                  "inputs": "@replace(replace(replace(variables('EmailBody'),'%secondaryApplicant%',outputs('Get_Primary_Applicant_by_ID')?['body/fullname']),'%buildingName%',outputs('Get_Building_Name')?['body/bsr_name']),'%applicationId%',triggerOutputs()?['body/bsr_applicationid'])"
                 },
                 "Add_a_new_row": {
                   "runAfter": {
@@ -163,7 +163,7 @@
                         },
                         {
                           "participationtypemask": 2,
-                          "partyid@odata.bind": "contacts(@{triggerOutputs()?['body/_bsr_secondaryapplicantid_value']})"
+                          "partyid@odata.bind": "contacts(@{triggerOutputs()?['body/_bsr_registreeid_value']})"
                         }
                       ],
                       "item/description": "@outputs('Compose')",
@@ -361,41 +361,6 @@
           },
           "type": "Compose",
           "inputs": "@outputs('Get_Primary_Applicant_by_ID')?['body/fullname']"
-        },
-        "Get_Secondary_Applicant_by_ID": {
-          "runAfter": {
-            "Primary_applicant_Compose": [
-              "Succeeded"
-            ]
-          },
-          "metadata": {
-            "operationMetadataId": "17aaf6db-7100-42d3-84ca-f0bcdf0cf7af"
-          },
-          "type": "OpenApiConnection",
-          "inputs": {
-            "host": {
-              "connectionName": "shared_commondataserviceforapps",
-              "operationId": "GetItem",
-              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-            },
-            "parameters": {
-              "entityName": "contacts",
-              "recordId": "@triggerOutputs()?['body/_bsr_secondaryapplicantid_value']"
-            },
-            "authentication": "@parameters('$authentication')"
-          }
-        },
-        "Secondary_applicant_Compose": {
-          "runAfter": {
-            "Get_Secondary_Applicant_by_ID": [
-              "Succeeded"
-            ]
-          },
-          "metadata": {
-            "operationMetadataId": "d5fb71b7-6d88-4650-bbc5-fb94138c1450"
-          },
-          "type": "Compose",
-          "inputs": "@outputs('Get_Secondary_Applicant_by_ID')?['body/fullname']"
         }
       }
     },
