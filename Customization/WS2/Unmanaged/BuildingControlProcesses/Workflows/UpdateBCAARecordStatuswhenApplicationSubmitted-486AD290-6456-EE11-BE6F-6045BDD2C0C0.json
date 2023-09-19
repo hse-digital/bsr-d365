@@ -27,7 +27,7 @@
       "triggers": {
         "When_a_row_is_added,_modified_or_deleted": {
           "metadata": {
-            "operationMetadataId": "4b0c6420-197c-45a1-b6e0-80bb064b941d"
+            "operationMetadataId": "53435fbb-f0b3-4694-8719-1a0473e32265"
           },
           "type": "OpenApiConnectionWebhook",
           "inputs": {
@@ -40,21 +40,41 @@
               "subscriptionRequest/message": 3,
               "subscriptionRequest/entityname": "bsr_buildingcontrolapplication",
               "subscriptionRequest/scope": 4,
-              "subscriptionRequest/filteringattributes": "bsr_submissiondate"
+              "subscriptionRequest/filterexpression": "bsr_submissiondate ne null"
             },
             "authentication": "@parameters('$authentication')"
           }
         }
       },
       "actions": {
-        "Get_BCAA_record_from_list": {
+        "Update_a_row": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "82825d1c-2fb9-4719-b4d4-ef7efef0a19c"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_buildingcontrolapplications",
+              "recordId": "@triggerOutputs()?['body/bsr_buildingcontrolapplicationid']",
+              "item/bsr_buildingcontrolapplicationstatus": 760810001
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "List_rows": {
           "runAfter": {
-            "Initialize_variable": [
+            "Update_a_row": [
               "Succeeded"
             ]
           },
           "metadata": {
-            "operationMetadataId": "3257a5ba-72e2-42f2-9dd8-795ea8df2405"
+            "operationMetadataId": "55d20e58-b9c4-4113-94f1-dec65cfdaae2"
           },
           "type": "OpenApiConnection",
           "inputs": {
@@ -64,19 +84,19 @@
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
             },
             "parameters": {
-              "entityName": "bsr_buildingcontrollifecycles",
-              "$filter": "_bsr_bcaaapplication_value eq @{triggerOutputs()?['body/bsr_buildingcontrolapplicationid']}"
+              "entityName": "bsr_buildingdetailses",
+              "$filter": "_bsr_bcapplicationid_value eq @{outputs('Update_a_row')?['body/bsr_buildingcontrolapplicationid']}"
             },
             "authentication": "@parameters('$authentication')"
           }
         },
         "Apply_to_each": {
-          "foreach": "@outputs('Get_BCAA_record_from_list')?['body/value']",
+          "foreach": "@outputs('List_rows')?['body/value']",
           "actions": {
-            "Update_a_row": {
+            "Update_a_row_2": {
               "runAfter": {},
               "metadata": {
-                "operationMetadataId": "4015039d-e6cc-4551-ae63-c46847488f9b"
+                "operationMetadataId": "e3ff9659-4de1-4313-88f2-1872da221005"
               },
               "type": "OpenApiConnection",
               "inputs": {
@@ -86,39 +106,23 @@
                   "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
                 },
                 "parameters": {
-                  "entityName": "bsr_buildingcontrollifecycles",
-                  "recordId": "@items('Apply_to_each')?['bsr_buildingcontrollifecycleid']",
-                  "item/bsr_mandatorytimelinefailuredate": "@addDays(variables('Submission Date'), 84, 'MM/dd/yyyy')"
+                  "entityName": "bsr_buildingdetailses",
+                  "recordId": "@items('Apply_to_each')?['bsr_buildingdetailsid']",
+                  "item/bsr_buildingdetailsstatus": 760810001
                 },
                 "authentication": "@parameters('$authentication')"
               }
             }
           },
           "runAfter": {
-            "Get_BCAA_record_from_list": [
+            "List_rows": [
               "Succeeded"
             ]
           },
           "metadata": {
-            "operationMetadataId": "af16697b-0347-43b1-96c7-0ceea40c1dbb"
+            "operationMetadataId": "964597fd-1cf1-49db-a9f7-62bacade309a"
           },
           "type": "Foreach"
-        },
-        "Initialize_variable": {
-          "runAfter": {},
-          "metadata": {
-            "operationMetadataId": "f410cd91-7a61-4ee3-8f6f-ece37cd4e24e"
-          },
-          "type": "InitializeVariable",
-          "inputs": {
-            "variables": [
-              {
-                "name": "Submission Date",
-                "type": "string",
-                "value": "@{addDays(triggerBody()['bsr_submissiondate'], 0)}"
-              }
-            ]
-          }
         }
       }
     },
