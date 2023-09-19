@@ -28,11 +28,12 @@
           <attribute name="statuscode" />
           <attribute name="ownerid" />
           <attribute name="createdon" />
+          <order attribute="createdon" descending="true" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
             <condition attribute="ownerid" operator="eq-userid" />
+            <condition attribute="bsr_buildingprofessiontypecode" operator="eq" value="760810000" />
           </filter>
-          <order attribute="createdon" descending="true" />
         </entity>
       </fetch>
     </fetchxml>
