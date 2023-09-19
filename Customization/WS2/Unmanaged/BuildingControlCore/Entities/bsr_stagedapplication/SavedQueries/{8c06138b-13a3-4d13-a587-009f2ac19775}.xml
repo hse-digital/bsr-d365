@@ -12,11 +12,9 @@
         <row name="result" id="bsr_stagedapplicationid">
           <cell name="bsr_name" width="300" />
           <cell name="bsr_referencecode" width="200" />
-          <cell name="bsr_relatedbuildingcontrolapp" width="261" />
           <cell name="bsr_stagedregleadowner" width="100" />
           <cell name="bsr_stagedappstatus" width="100" />
           <cell name="bsr_stagedappsubmissiondate" width="133" />
-          <cell name="createdon" width="125" />
         </row>
       </grid>
     </layoutxml>
@@ -26,13 +24,11 @@
         <entity name="bsr_stagedapplication">
           <attribute name="bsr_stagedapplicationid" />
           <attribute name="bsr_name" />
-          <attribute name="createdon" />
           <order attribute="bsr_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
           <attribute name="bsr_referencecode" />
-          <attribute name="bsr_relatedbuildingcontrolapp" />
           <attribute name="bsr_stagedregleadowner" />
           <attribute name="bsr_stagedappstatus" />
           <attribute name="bsr_stagedappsubmissiondate" />
