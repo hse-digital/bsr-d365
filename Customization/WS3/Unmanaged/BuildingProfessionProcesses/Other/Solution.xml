@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Profession Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.26.0</Version>
+    <Version>1.0.27.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -100,6 +100,7 @@
       <RootComponent type="29" id="{b267ad7a-8b21-ee11-9966-0022481b59de}" behavior="0" />
       <RootComponent type="29" id="{ba0777e5-2126-ee11-9965-0022481b59de}" behavior="0" />
       <RootComponent type="29" id="{bd52e87e-7342-ee11-bdf3-0022481b5210}" behavior="0" />
+      <RootComponent type="29" id="{e6cc9dae-fc56-ee11-be6f-0022481b5210}" behavior="0" />
       <RootComponent type="29" id="{eb2ebefd-2d0c-ee11-8f6e-0022481b5210}" behavior="0" />
       <RootComponent type="29" id="{f07e24bb-a341-ee11-bdf3-0022481b5210}" behavior="0" />
       <RootComponent type="29" id="{f42d8747-0a1f-ee11-9967-0022481b56d1}" behavior="0" />
@@ -161,6 +162,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="BuildingRegCore (1.17.61.0)" />
         <Dependent type="29" displayName="Set BPA BSR Document Regarding" id="{12bd3c12-063d-ee11-bdf4-0022481b56d1}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="BuildingRegCore (1.17.61.0)" />
+        <Dependent type="29" displayName="Update BPA BSR Document Name on SP Update" id="{e6cc9dae-fc56-ee11-be6f-0022481b5210}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="BuildingRegCore (1.17.61.0)" />
@@ -400,11 +405,19 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointbpafolderid" solution="Active" id.schemaname="bsr_sharepointbpafolderid" />
+        <Dependent type="29" displayName="Update BPA BSR Document Name on SP Update" id="{e6cc9dae-fc56-ee11-be6f-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointbpafolderid" solution="Active" id.schemaname="bsr_sharepointbpafolderid" />
         <Dependent type="29" displayName="Create BPA BSR Document For Uploaded Files" id="{fffe199d-d93d-ee11-bdf4-0022481b5210}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointsiteurl" solution="BuildingRegCore (1.17.61.0)" id.schemaname="bsr_sharepointsiteurl" />
         <Dependent type="29" displayName="Delete BPA BSR Document On File Deletion" id="{000276b7-de3d-ee11-bdf4-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointsiteurl" solution="BuildingRegCore (1.17.61.0)" id.schemaname="bsr_sharepointsiteurl" />
+        <Dependent type="29" displayName="Update BPA BSR Document Name on SP Update" id="{e6cc9dae-fc56-ee11-be6f-0022481b5210}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointsiteurl" solution="BuildingRegCore (1.17.61.0)" id.schemaname="bsr_sharepointsiteurl" />
