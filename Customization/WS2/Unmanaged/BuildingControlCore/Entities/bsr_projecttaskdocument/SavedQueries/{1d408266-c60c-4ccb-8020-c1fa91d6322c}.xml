@@ -11,6 +11,8 @@
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_projecttaskdocumentid">
           <cell name="bsr_name" width="300" />
+          <cell name="bsr_bsrdocumentid" width="129" />
+          <cell name="bsr_typecode" width="100" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -26,12 +28,14 @@
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <attribute name="bsr_bsrdocumentid" />
+          <attribute name="bsr_typecode" />
         </entity>
       </fetch>
     </fetchxml>
     <IntroducedVersion>1.0</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="Active Project Task Documents" languagecode="1033" />
+      <LocalizedName description="Active MDT Task Documents" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>

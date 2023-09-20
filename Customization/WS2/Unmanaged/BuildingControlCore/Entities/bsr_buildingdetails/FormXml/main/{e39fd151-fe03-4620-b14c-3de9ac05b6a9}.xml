@@ -395,23 +395,23 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{e888f0f4-2277-420e-a9b2-7899bb837d6b}" locklevel="0" colspan="1" rowspan="1">
-                        <labels>
-                          <label description="Drainage precautions " languagecode="1033" />
-                        </labels>
-                        <control id="bsr_drainageprecautions" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="bsr_drainageprecautions" disabled="true" uniqueid="{fe673a09-a160-4130-b5ef-804bc353a237}" />
-                      </cell>
-                    </row>
-                    <row>
                       <cell id="{b8a1c2e0-4242-41f9-b6b3-b1d1e7493fb8}" locklevel="0" colspan="1" rowspan="3">
                         <labels>
-                          <label description="Tell us about your drainage precautions" languagecode="1033" />
+                          <label description="Drainage Precaution Details" languagecode="1033" />
                         </labels>
                         <control id="bsr_tellusaboutyourdrainageprecautions" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_tellusaboutyourdrainageprecautions" disabled="true" />
                       </cell>
                     </row>
                     <row />
                     <row />
+                    <row>
+                      <cell id="{b1823878-66fa-420d-b44e-baf28979afa9}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Drainage precautions Document" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_tellusaboutyourdrainageprecautionsdoc" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_tellusaboutyourdrainageprecautionsdoc" disabled="true" />
+                      </cell>
+                    </row>
                   </rows>
                 </section>
                 <section name="tab1_section_10" id="faa158f3-3cf9-413f-9835-78766e7f4e72" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
@@ -680,13 +680,51 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{e8fcff7e-5e2b-49d5-8932-385f728de17e}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{af5174ea-84f0-4c10-9456-52d81e1d7c62}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Fire Safety Compliance Document " languagecode="1033" />
+                        </labels>
+                        <control id="bsr_firecompliancedoc" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_firecompliancedoc" disabled="true" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="tab1_section_16" id="5203b525-d330-4147-8ec7-4f94a64e21c6" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Drawings and Plans" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" locklevel="0" id="{7e3074c1-3236-4cc1-bf7e-956e2fbb1016}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{20dbca11-f929-4a3d-90c2-03b568d1af50}" rowspan="4" colspan="1" auto="false" showlabel="true">
                         <labels>
                           <label description="Drawings and Plans" languagecode="1033" />
                         </labels>
-                        <control id="bsr_drawingsandplans" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_drawingsandplans" disabled="true" />
+                        <control indicationOfSubgrid="true" id="Subgrid_new_2" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                          <parameters>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <ChartGridMode>All</ChartGridMode>
+                            <TargetEntityType>bsr_drawingsandplans</TargetEntityType>
+                            <ViewId>{F80EF756-4057-EE11-BE6F-6045BDC208E3}</ViewId>
+                            <ViewIds>{A99E1FC6-B4B1-4B00-8BEA-C6288E104A8F},{F80EF756-4057-EE11-BE6F-6045BDC208E3}</ViewIds>
+                            <RelationshipName>bsr_drawingsandplans_buildingdetails</RelationshipName>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
+                    <row />
+                    <row />
+                    <row />
                   </rows>
                 </section>
               </sections>
@@ -698,7 +736,7 @@
             <label description="MDT Management " languagecode="1033" />
           </labels>
           <columns>
-            <column width="50%">
+            <column width="100%">
               <sections>
                 <section name="tab_projectbriefs" id="6098abef-1860-420c-b3ab-40265440b239" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
@@ -738,22 +776,42 @@
                     <row />
                   </rows>
                 </section>
-              </sections>
-            </column>
-            <column width="50%">
-              <sections>
-                <section name="tab_2_section_2" id="9ad4da81-b8b8-4220-b98d-0fd71a6ff0a4" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                <section name="tab_mdt_section_3" id="4d86f093-b959-4367-b9a4-bdc05676fbf5" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
-                    <label description="New Section" languagecode="1033" />
+                    <label description="All MDT Projects" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell showlabel="false" locklevel="0" id="{015f3fa7-a684-4916-9d3c-5e7696d88663}">
+                      <cell showlabel="false" locklevel="0" id="{ea25150b-ffab-44cc-b6d3-dc493d24af23}">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
                       </cell>
                     </row>
+                    <row>
+                      <cell locklevel="0" id="{108b5b4c-8841-49b8-b1cb-ea275d31aaaf}" rowspan="4" colspan="1" auto="false">
+                        <labels>
+                          <label description="MDT Projects" languagecode="1033" />
+                        </labels>
+                        <control indicationOfSubgrid="true" id="Subgrid_new_3" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                          <parameters>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <ChartGridMode>All</ChartGridMode>
+                            <TargetEntityType>bsr_mdtproject</TargetEntityType>
+                            <ViewId>{8B273CBF-8C57-EE11-BE6F-6045BDF1E965}</ViewId>
+                            <ViewIds>{5083CE46-03A5-4DF9-A14A-14D565AFA45E},{8B273CBF-8C57-EE11-BE6F-6045BDF1E965}</ViewIds>
+                            <RelationshipName>bsr_mdtproject_buidlingdetailsid</RelationshipName>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
                   </rows>
                 </section>
               </sections>
@@ -966,28 +1024,6 @@
           <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
             <parameters>
               <value type="TwoOptions">bsr_ischangeofuse</value>
-            </parameters>
-          </customControl>
-        </controlDescription>
-        <controlDescription forControl="{fe673a09-a160-4130-b5ef-804bc353a237}">
-          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
-            <parameters>
-              <datafieldname>bsr_drainageprecautions</datafieldname>
-            </parameters>
-          </customControl>
-          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
-            <parameters>
-              <value type="TwoOptions">bsr_drainageprecautions</value>
-            </parameters>
-          </customControl>
-          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
-            <parameters>
-              <value type="TwoOptions">bsr_drainageprecautions</value>
-            </parameters>
-          </customControl>
-          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
-            <parameters>
-              <value type="TwoOptions">bsr_drainageprecautions</value>
             </parameters>
           </customControl>
         </controlDescription>

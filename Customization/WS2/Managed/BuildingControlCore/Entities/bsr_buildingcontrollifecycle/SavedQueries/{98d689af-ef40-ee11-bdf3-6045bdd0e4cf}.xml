@@ -10,9 +10,9 @@
     <layoutxml>
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_buildingcontrollifecycleid">
-          <cell name="bsr_bclreference" width="252" />
-          <cell name="bsr_buildingdetails" width="133" />
-          <cell name="bsr_buildingcontrollifecyclestatus" width="230" />
+          <cell name="bsr_buildingname" width="126" />
+          <cell name="bsr_lifecyclephase" width="130" />
+          <cell name="createdon" width="105" />
           <cell name="bsr_reglead" width="100" />
         </row>
       </grid>
@@ -22,13 +22,14 @@
       <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
         <entity name="bsr_buildingcontrollifecycle">
           <attribute name="bsr_buildingcontrollifecycleid" />
-          <attribute name="bsr_bclreference" />
           <attribute name="bsr_reglead" />
+          <attribute name="bsr_buildingname" />
+          <attribute name="createdon" />
           <filter type="and">
             <condition attribute="bsr_bclrcaseofficer" operator="eq-userid" />
+            <condition attribute="statecode" operator="eq" value="0" />
           </filter>
-          <attribute name="bsr_buildingdetails" />
-          <attribute name="bsr_buildingcontrollifecyclestatus" />
+          <attribute name="bsr_lifecyclephase" />
         </entity>
       </fetch>
     </fetchxml>
