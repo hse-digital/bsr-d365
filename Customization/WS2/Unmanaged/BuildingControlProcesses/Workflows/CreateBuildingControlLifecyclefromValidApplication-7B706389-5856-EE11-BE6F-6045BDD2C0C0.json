@@ -89,6 +89,7 @@
                       "item/bsr_buildingdetails@odata.bind": "bsr_buildingdetailses(@{items('Apply_to_each')?['bsr_buildingdetailsid']})",
                       "item/bsr_name": "@{items('Apply_to_each')?['bsr_name']} - Lifecycle Record",
                       "item/bsr_reglead@odata.bind": "bsr_buildingdetailses(@{items('Apply_to_each')?['_ownerid_value']})",
+                      "item/bsr_buildingname": "@items('Apply_to_each')?['bsr_name']",
                       "item/bsr_mandatorytimelinefailuredate": "@addDays(utcNow(), 84)"
                     },
                     "authentication": "@parameters('$authentication')"
