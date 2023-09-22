@@ -5,7 +5,7 @@
     <IntroducedVersion>1.0</IntroducedVersion>
     <FormPresentation>1</FormPresentation>
     <FormActivationState>1</FormActivationState>
-    <form>
+    <form headerdensity="HighWithControls">
       <tabs>
         <tab verticallayout="true" id="{6165b00d-95ab-452d-93ec-3bd3b2b5d7fe}" IsUserDefined="1">
           <labels>
@@ -14,7 +14,7 @@
           <columns>
             <column width="100%">
               <sections>
-                <section showlabel="false" showbar="false" IsUserDefined="0" id="{2f47be81-2b84-4b0f-98a6-b31d97b3090c}">
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{2f47be81-2b84-4b0f-98a6-b31d97b3090c}" columns="1" name="null_section_2">
                   <labels>
                     <label description="General" languagecode="1033" />
                   </labels>
@@ -28,11 +28,78 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{d50757dc-04a3-4554-bb34-f8641d4b0f78}">
+                      <cell id="{762240cd-6bba-433e-b1e6-18c18716d4ad}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="Owner" languagecode="1033" />
+                          <label description="Related Building Control Lifecycle Record" languagecode="1033" />
                         </labels>
-                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                        <control id="bsr_buildingcontrollifecycleid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_buildingcontrollifecycleid" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f552289f-9270-423a-8dfc-bd96b6daa25b}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Type" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_type" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_type" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{9099d8dc-47bf-44b9-aad7-fba4dfc80ad1}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Submitted Date" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_submitteddate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_submitteddate" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{11f9a1a6-d0ff-4e54-8f56-db4d77589f5e}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Declaration" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_declaration" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="bsr_declaration" disabled="true" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="null_section_3" id="b8aaf7de-234e-45fa-a09c-02cbefe5d6ab" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{83f7d912-4aa9-42c6-bb63-313b16967958}" locklevel="0" colspan="1" rowspan="1" showlabel="true" visible="false">
+                        <labels>
+                          <label description="Planned Build Start Date" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_plannedstartdate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_plannedstartdate" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0ab064b2-568e-4e6c-a26c-051b56b43b4b}" locklevel="0" colspan="1" rowspan="1" visible="false">
+                        <labels>
+                          <label description="Actual Build Start Date" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_actualstartdate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_actualstartdate" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0d8b3198-d77c-49a4-a5c9-bf963c04d223}" locklevel="0" colspan="1" rowspan="5" visible="false">
+                        <labels>
+                          <label description="Inspection Milestone" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_milestone" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_milestone" disabled="true" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row>
+                      <cell id="{f1153c45-9977-4d7f-9d15-6bcac8fe7d3d}" locklevel="0" colspan="1" rowspan="1" showlabel="true" availableforphone="true" visible="false">
+                        <labels>
+                          <label description="Build End Date" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_enddate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_enddate" disabled="false" />
                       </cell>
                     </row>
                   </rows>
@@ -42,6 +109,57 @@
           </columns>
         </tab>
       </tabs>
+      <header id="{2420bec1-a9c7-4fd9-a9e9-90ee7abb81a4}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{fdb0e334-b520-4c5e-882b-b03782bc853b}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{25882ba5-89eb-4c46-aad2-3393178eb2ac}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{0529e859-3c72-4c83-abda-054ff7f0e30e}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{d50757dc-04a3-4554-bb34-f8641d4b0f78}" colspan="1" rowspan="1">
+              <labels>
+                <label description="Owner" languagecode="1033" />
+              </labels>
+              <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{079b67b8-8d8b-48f7-b247-2a5f96e41605}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{58d27fe4-fa73-4815-8c37-05311b0944c9}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{9b2f1d5b-38be-40e4-8561-1900cabc5674}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{09aacf18-ddb2-489a-be8e-7626d085ab76}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

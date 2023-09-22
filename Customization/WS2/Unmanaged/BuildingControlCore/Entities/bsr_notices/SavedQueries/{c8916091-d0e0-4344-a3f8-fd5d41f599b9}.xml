@@ -11,6 +11,7 @@
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_noticesid">
           <cell name="bsr_name" width="300" />
+          <cell name="bsr_buildingcontrollifecycleid" width="282" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -28,7 +29,9 @@
           </filter>
           <filter type="or" isquickfindfields="1">
             <condition attribute="bsr_name" operator="like" value="{0}" />
+            <condition attribute="bsr_buildingcontrollifecycleid" operator="like" value="{0}" />
           </filter>
+          <attribute name="bsr_buildingcontrollifecycleid" />
         </entity>
       </fetch>
     </fetchxml>

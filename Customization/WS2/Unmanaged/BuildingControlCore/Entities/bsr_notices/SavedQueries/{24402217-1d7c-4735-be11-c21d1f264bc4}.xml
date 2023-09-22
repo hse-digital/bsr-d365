@@ -10,8 +10,13 @@
     <layoutxml>
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_noticesid">
-          <cell name="bsr_name" width="300" />
-          <cell name="createdon" width="125" />
+          <cell name="bsr_type" width="131" />
+          <cell name="bsr_plannedstartdate" width="198" />
+          <cell name="bsr_actualstartdate" width="205" />
+          <cell name="bsr_submitteddate" width="128" />
+          <cell name="bsr_enddate" width="155" />
+          <cell name="bsr_milestone" width="158" />
+          <cell name="bsr_declaration" width="106" />
         </row>
       </grid>
     </layoutxml>
@@ -20,12 +25,16 @@
       <fetch version="1.0" mapping="logical">
         <entity name="bsr_notices">
           <attribute name="bsr_noticesid" />
-          <attribute name="bsr_name" />
-          <attribute name="createdon" />
-          <order attribute="bsr_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <attribute name="bsr_type" />
+          <attribute name="bsr_plannedstartdate" />
+          <attribute name="bsr_actualstartdate" />
+          <attribute name="bsr_submitteddate" />
+          <attribute name="bsr_enddate" />
+          <attribute name="bsr_milestone" />
+          <attribute name="bsr_declaration" />
         </entity>
       </fetch>
     </fetchxml>

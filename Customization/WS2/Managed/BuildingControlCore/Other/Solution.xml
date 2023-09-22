@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Control Core" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.36.0</Version>
+    <Version>1.0.37.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -156,6 +156,7 @@
       <RootComponent type="29" id="{e7702874-3652-ee11-be6f-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{ea5d3efd-1a31-ee11-bdf3-6045bdc208e3}" behavior="0" />
       <RootComponent type="29" id="{eed7668f-5656-ee11-be6f-6045bdd2c0c0}" behavior="0" />
+      <RootComponent type="29" id="{f0f4f71c-2f59-ee11-be6f-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{f5800d60-654b-ee11-be6f-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="29" id="{fed50592-6d58-ee11-be6f-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="36" id="{494cbb7e-bb48-ee11-be6e-6045bdf1e965}" behavior="0" />
@@ -214,6 +215,7 @@
       <RootComponent type="9" schemaName="bsr_lifecyclephase" behavior="0" />
       <RootComponent type="9" schemaName="bsr_mdtdocumenttype" behavior="0" />
       <RootComponent type="9" schemaName="bsr_mdtwebsitestatus" behavior="0" />
+      <RootComponent type="9" schemaName="bsr_noticetype" behavior="0" />
       <RootComponent type="9" schemaName="bsr_outstandingissueschecked" behavior="0" />
       <RootComponent type="9" schemaName="bsr_partialcompletionchoice" behavior="0" />
       <RootComponent type="9" schemaName="bsr_phase" behavior="0" />
@@ -786,15 +788,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="300" schemaName="bsr_bsrdefaultcommandlibrary_a4cc5" displayName="BSR_DefaultCommandLibrary" solution="BuildingRegUX (1.11.16.0)" />
-        <Dependent type="appaction" displayName="bsr__DisableMDTAccount!2811616741e5461e90b739fbc9029697!bsr_BSR!contact!0" id.uniquename="bsr__DisableMDTAccount!2811616741e5461e90b739fbc9029697!bsr_BSR!contact!0" />
+        <Dependent type="appaction" displayName="bsr__DisableMDTAccount!2804b188212d4b4b9c40907b627d960a!bsr_BSR!contact!0" id.uniquename="bsr__DisableMDTAccount!2804b188212d4b4b9c40907b627d960a!bsr_BSR!contact!0" />
       </MissingDependency>
       <MissingDependency>
         <Required type="300" schemaName="bsr_bsrdefaultcommandlibrary_a4cc5" displayName="BSR_DefaultCommandLibrary" solution="BuildingRegUX (1.11.16.0)" />
-        <Dependent type="appaction" displayName="bsr__EnableMDTAccount!cb44e1b58cfa46d09b39f93f51e69c34!bsr_BSR!contact!0" id.uniquename="bsr__EnableMDTAccount!cb44e1b58cfa46d09b39f93f51e69c34!bsr_BSR!contact!0" />
+        <Dependent type="appaction" displayName="bsr__EnableMDTAccount!290051211d0e4044afc1a0c2930fb726!bsr_BSR!contact!0" id.uniquename="bsr__EnableMDTAccount!290051211d0e4044afc1a0c2930fb726!bsr_BSR!contact!0" />
       </MissingDependency>
       <MissingDependency>
         <Required type="300" schemaName="bsr_bsrdefaultcommandlibrary_a4cc5" displayName="BSR_DefaultCommandLibrary" solution="BuildingRegUX (1.11.16.0)" />
-        <Dependent type="appaction" displayName="bsr__InviteMDTUser!fe27a75de0bb45e0b5c5d7c37c176386!bsr_BSR!contact!0" id.uniquename="bsr__InviteMDTUser!fe27a75de0bb45e0b5c5d7c37c176386!bsr_BSR!contact!0" />
+        <Dependent type="appaction" displayName="bsr__MDTInvite!bb1268a98e284dd48e28437f7f655929!bsr_BSR!contact!0" id.uniquename="bsr__MDTInvite!bb1268a98e284dd48e28437f7f655929!bsr_BSR!contact!0" />
       </MissingDependency>
       <MissingDependency>
         <Required type="59" schemaName="Tasks by Month Due" displayName="Tasks by Month Due" parentSchemaName="task" parentDisplayName="Task" solution="msdynce_AppCommon (9.0.4.0066)" id="{9e6a8b06-6d14-46e6-bbf5-95c388c6eb7a}">
@@ -872,15 +874,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="80" schemaName="bsr_BSR" displayName="BSR" solution="BuildingRegUX (1.11.16.0)" />
-        <Dependent type="appaction" displayName="bsr__DisableMDTAccount!2811616741e5461e90b739fbc9029697!bsr_BSR!contact!0" id.uniquename="bsr__DisableMDTAccount!2811616741e5461e90b739fbc9029697!bsr_BSR!contact!0" />
+        <Dependent type="appaction" displayName="bsr__DisableMDTAccount!2804b188212d4b4b9c40907b627d960a!bsr_BSR!contact!0" id.uniquename="bsr__DisableMDTAccount!2804b188212d4b4b9c40907b627d960a!bsr_BSR!contact!0" />
       </MissingDependency>
       <MissingDependency>
         <Required type="80" schemaName="bsr_BSR" displayName="BSR" solution="BuildingRegUX (1.11.16.0)" />
-        <Dependent type="appaction" displayName="bsr__EnableMDTAccount!cb44e1b58cfa46d09b39f93f51e69c34!bsr_BSR!contact!0" id.uniquename="bsr__EnableMDTAccount!cb44e1b58cfa46d09b39f93f51e69c34!bsr_BSR!contact!0" />
+        <Dependent type="appaction" displayName="bsr__EnableMDTAccount!290051211d0e4044afc1a0c2930fb726!bsr_BSR!contact!0" id.uniquename="bsr__EnableMDTAccount!290051211d0e4044afc1a0c2930fb726!bsr_BSR!contact!0" />
       </MissingDependency>
       <MissingDependency>
         <Required type="80" schemaName="bsr_BSR" displayName="BSR" solution="BuildingRegUX (1.11.16.0)" />
-        <Dependent type="appaction" displayName="bsr__InviteMDTUser!fe27a75de0bb45e0b5c5d7c37c176386!bsr_BSR!contact!0" id.uniquename="bsr__InviteMDTUser!fe27a75de0bb45e0b5c5d7c37c176386!bsr_BSR!contact!0" />
+        <Dependent type="appaction" displayName="bsr__MDTInvite!bb1268a98e284dd48e28437f7f655929!bsr_BSR!contact!0" id.uniquename="bsr__MDTInvite!bb1268a98e284dd48e28437f7f655929!bsr_BSR!contact!0" />
       </MissingDependency>
       <MissingDependency>
         <Required type="9" schemaName="bsr_bsrservicecode" displayName="BSR Service" solution="BuildingRegCore (1.17.61.0)" />
