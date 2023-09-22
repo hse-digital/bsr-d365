@@ -12,7 +12,7 @@
         <row name="result" id="bsr_buildingcontrolapplicationid">
           <cell name="bsr_bcaareferencenumber" width="189" />
           <cell name="bsr_submissiondate" width="136" />
-          <cell name="statecode" width="100" />
+          <cell name="bsr_buildingcontrolapplicationstatus" width="243" />
           <cell name="ownerid" width="134" />
           <cell name="bsr_caseofficer" width="111" />
         </row>
@@ -25,11 +25,15 @@
           <attribute name="bsr_buildingcontrolapplicationid" />
           <attribute name="bsr_bcaareferencenumber" />
           <attribute name="bsr_submissiondate" />
-          <attribute name="statecode" />
           <attribute name="ownerid" />
           <attribute name="bsr_caseofficer" />
+          <attribute name="bsr_buildingcontrolapplicationstatus" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
+            <filter type="and">
+              <condition attribute="bsr_buildingcontrolapplicationstatus" operator="ne" value="760810001" />
+              <condition attribute="bsr_buildingcontrolapplicationstatus" operator="ne" value="760810002" />
+            </filter>
           </filter>
         </entity>
       </fetch>
