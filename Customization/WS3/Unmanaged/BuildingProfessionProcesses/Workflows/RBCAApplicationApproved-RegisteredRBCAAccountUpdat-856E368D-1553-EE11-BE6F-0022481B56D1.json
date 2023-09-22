@@ -50,7 +50,7 @@
               "subscriptionRequest/entityname": "bsr_buildingprofessionapplication",
               "subscriptionRequest/scope": 4,
               "subscriptionRequest/filteringattributes": "bsr_regulatorydecisionstatus",
-              "subscriptionRequest/filterexpression": "(bsr_regulatorydecisionstatus eq 760810000) or (bsr_regulatorydecisionstatus eq 760810002) or (bsr_regulatorydecisionstatus eq 760810001)\n"
+              "subscriptionRequest/filterexpression": "((bsr_regulatorydecisionstatus eq 760810000) or (bsr_regulatorydecisionstatus eq 760810002) or (bsr_regulatorydecisionstatus eq 760810001))\n"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -265,17 +265,29 @@
               "type": "If"
             }
           },
-          "runAfter": {},
+          "runAfter": {
+            "Compose_This_is_just_to_see_the_value_that_is_compared_below": [
+              "Succeeded"
+            ]
+          },
           "expression": {
             "equals": [
-              "@triggerOutputs()?['body/_bsr_rbcaaccountid_value@Microsoft.Dynamics.CRM.lookuplogicalname']",
-              "account"
+              "@triggerOutputs()?['body/bsr_buildingprofessiontypecode']",
+              760810001
             ]
           },
           "metadata": {
             "operationMetadataId": "f78ecc97-cc89-4ad0-a57c-c3ff492439d9"
           },
           "type": "If"
+        },
+        "Compose_This_is_just_to_see_the_value_that_is_compared_below": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "2fb47e37-3c92-4bd9-ae84-ce51a093f4d8"
+          },
+          "type": "Compose",
+          "inputs": "@triggerOutputs()?['body/_bsr_applicantid_value@Microsoft.Dynamics.CRM.lookuplogicalname']"
         }
       }
     },

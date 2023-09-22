@@ -40,7 +40,7 @@
               "subscriptionRequest/message": 4,
               "subscriptionRequest/entityname": "bsr_buildingprofessionapplication",
               "subscriptionRequest/scope": 4,
-              "subscriptionRequest/filteringattributes": "bsr_applicantid"
+              "subscriptionRequest/filteringattributes": "bsr_applicantid, bsr_rbcaaccountid"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -91,99 +91,46 @@
           },
           "else": {
             "actions": {
-              "Check_if_Applicant_is_a_Contact_or_an_Account_2": {
-                "actions": {
-                  "Get_Account_row_by_ID": {
-                    "runAfter": {},
-                    "metadata": {
-                      "operationMetadataId": "e7da7527-807f-4ba9-8821-d6e0e0e531a7"
-                    },
-                    "type": "OpenApiConnection",
-                    "inputs": {
-                      "host": {
-                        "connectionName": "shared_commondataserviceforapps_1",
-                        "operationId": "GetItem",
-                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                      },
-                      "parameters": {
-                        "entityName": "accounts",
-                        "recordId": "@triggerOutputs()?['body/_bsr_applicantid_value']"
-                      },
-                      "authentication": "@parameters('$authentication')"
-                    }
-                  },
-                  "Set_varApplicantName_to_the_Account": {
-                    "runAfter": {
-                      "Get_Account_row_by_ID": [
-                        "Succeeded"
-                      ]
-                    },
-                    "metadata": {
-                      "operationMetadataId": "ef3d54a0-c0be-4a51-8914-6c81942c0f96"
-                    },
-                    "type": "SetVariable",
-                    "inputs": {
-                      "name": "varApplicantName",
-                      "value": "@outputs('Get_Account_row_by_ID')?['body/name']"
-                    }
-                  }
-                },
-                "runAfter": {},
-                "else": {
-                  "actions": {
-                    "Update_the_Name_field_in_the_Building_Profession_Application_record_2": {
-                      "runAfter": {},
-                      "metadata": {
-                        "operationMetadataId": "5715da5c-4318-40ff-ab43-ec1c287473f8"
-                      },
-                      "type": "OpenApiConnection",
-                      "inputs": {
-                        "host": {
-                          "connectionName": "shared_commondataserviceforapps_1",
-                          "operationId": "UpdateRecord",
-                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                        },
-                        "parameters": {
-                          "entityName": "bsr_buildingprofessionapplications",
-                          "recordId": "@triggerOutputs()?['body/bsr_buildingprofessionapplicationid']",
-                          "item/bsr_name": "@triggerOutputs()?['body/bsr_buildingproappid']"
-                        },
-                        "authentication": "@parameters('$authentication')"
-                      }
-                    },
-                    "Terminate": {
-                      "runAfter": {
-                        "Update_the_Name_field_in_the_Building_Profession_Application_record_2": [
-                          "Succeeded"
-                        ]
-                      },
-                      "metadata": {
-                        "operationMetadataId": "bcb23bf8-6a68-491b-ae09-992357c6bdbb"
-                      },
-                      "type": "Terminate",
-                      "inputs": {
-                        "runStatus": "Succeeded"
-                      }
-                    }
-                  }
-                },
-                "expression": {
-                  "equals": [
-                    "@triggerOutputs()?['body/_bsr_applicantid_value@Microsoft.Dynamics.CRM.lookuplogicalname']",
-                    "account"
+              "Set_varApplicantName_to_the_Account": {
+                "runAfter": {
+                  "Get_Account_row_by_ID": [
+                    "Succeeded"
                   ]
                 },
                 "metadata": {
-                  "operationMetadataId": "8f193cd1-658b-46c3-aa8a-5b67cbc6a752"
+                  "operationMetadataId": "ef3d54a0-c0be-4a51-8914-6c81942c0f96"
                 },
-                "type": "If"
+                "type": "SetVariable",
+                "inputs": {
+                  "name": "varApplicantName",
+                  "value": "@outputs('Get_Account_row_by_ID')?['body/name']"
+                }
+              },
+              "Get_Account_row_by_ID": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "e7da7527-807f-4ba9-8821-d6e0e0e531a7"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps_1",
+                    "operationId": "GetItem",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "accounts",
+                    "recordId": "@triggerOutputs()?['body/_bsr_rbcaaccountid_value']"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
               }
             }
           },
           "expression": {
             "equals": [
-              "@triggerOutputs()?['body/_bsr_applicantid_value@Microsoft.Dynamics.CRM.lookuplogicalname']",
-              "contact"
+              "@triggerOutputs()?['body/bsr_buildingprofessiontypecode']",
+              760810000
             ]
           },
           "metadata": {
