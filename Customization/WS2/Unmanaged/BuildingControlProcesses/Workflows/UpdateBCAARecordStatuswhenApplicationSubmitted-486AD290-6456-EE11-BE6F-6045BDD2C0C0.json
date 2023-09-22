@@ -108,7 +108,8 @@
                 "parameters": {
                   "entityName": "bsr_buildingdetailses",
                   "recordId": "@items('Apply_to_each')?['bsr_buildingdetailsid']",
-                  "item/bsr_buildingdetailsstatus": 760810001
+                  "item/bsr_buildingdetailsstatus": 760810001,
+                  "item/bsr_submissiondate": "@triggerOutputs()?['body/bsr_submissiondate']"
                 },
                 "authentication": "@parameters('$authentication')"
               }

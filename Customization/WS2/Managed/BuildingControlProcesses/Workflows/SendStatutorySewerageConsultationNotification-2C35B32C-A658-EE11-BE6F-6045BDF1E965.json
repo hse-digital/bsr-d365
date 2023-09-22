@@ -1,0 +1,189 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS2"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Runs_every_morning": {
+          "recurrence": {
+            "frequency": "Day",
+            "interval": 1,
+            "startTime": "2023-09-21T08:00:00Z"
+          },
+          "metadata": {
+            "operationMetadataId": "309e6d17-ddfe-4bb0-95e2-be0796815930"
+          },
+          "type": "Recurrence"
+        }
+      },
+      "actions": {
+        "Initialize_Current_Date_variable": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "6e3d493f-a1ce-406e-99aa-c418dad9bc4b"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Current date",
+                "type": "string",
+                "value": "@{utcNow('yyyy-MM-dd')}T00:00:00Z"
+              }
+            ]
+          }
+        },
+        "Lifecycle_records_that_require_a_warning_email_today": {
+          "runAfter": {
+            "Initialize_Current_Date_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "663010e3-5445-4bbe-9825-4fb656d62725"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_buildingcontrollifecycles",
+              "$filter": "bsr_sewerageconsultationrequestdate ne null and bsr_sewerageconsultationreceiveddate eq null and bsr_statsewerconsultfailuredate eq @{variables('Current date')}"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Queue": {
+          "runAfter": {
+            "Lifecycle_records_that_require_a_warning_email_today": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "af698e00-349f-48d3-939a-c5b56c2260df"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "queues",
+              "recordId": "35b883f4-7d16-ee11-9cbe-6045bdd2c0c0"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Email_Template": {
+          "runAfter": {
+            "Queue": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "7771c902-b7e9-4cd0-873b-9f62b2cf6745"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "templates",
+              "$filter": "templateid eq '91181612-a458-ee11-be6f-6045bdf1e965'",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('Email_Template')?['body/value']",
+          "actions": {
+            "Apply_to_each_2": {
+              "foreach": "@outputs('Lifecycle_records_that_require_a_warning_email_today')?['body/value']",
+              "actions": {
+                "Send_the_warning_email_to_Case_Officer": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "76798f1b-7566-4dcb-9e19-a95b4e6c1dad"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "PerformUnboundAction",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "actionName": "SendEmailFromTemplate",
+                      "item/TemplateId": "@items('Apply_to_each')?['templateid']",
+                      "item/Regarding": "\\bsr_buildingcontrollifecycles\\@{items('Apply_to_each_2')?['bsr_buildingcontrollifecycleid']}",
+                      "item/Target": {
+                        "email_activity_parties": [
+                          {
+                            "participationtypemask": 1,
+                            "partyid@odata.bind": "/queues(@{outputs('Queue')?['body/queueid']})"
+                          },
+                          {
+                            "participationtypemask": 2,
+                            "partyid@odata.bind": "/systemusers(@{items('Apply_to_each_2')?['_bsr_bclrcaseofficer_value']})"
+                          }
+                        ],
+                        "@@odata.type": "Microsoft.Dynamics.CRM.email"
+                      }
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "7218b595-a3da-43b4-97d7-80e3d1a89875"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "Email_Template": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e14ce647-c8a0-4b91-b780-7b124f94e93a"
+          },
+          "type": "Foreach"
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

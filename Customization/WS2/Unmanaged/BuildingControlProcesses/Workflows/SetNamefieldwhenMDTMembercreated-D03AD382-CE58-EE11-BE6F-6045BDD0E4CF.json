@@ -27,7 +27,7 @@
       "triggers": {
         "When_a_row_is_added,_modified_or_deleted": {
           "metadata": {
-            "operationMetadataId": "e6383e92-dbf7-433c-9749-faf8c4ce2c5d"
+            "operationMetadataId": "c73bb631-c1ae-4f41-aebb-5ee3441482b8"
           },
           "type": "OpenApiConnectionWebhook",
           "inputs": {
@@ -37,24 +37,24 @@
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
             },
             "parameters": {
-              "subscriptionRequest/message": 3,
-              "subscriptionRequest/entityname": "bsr_buildingcontrollifecycle",
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "bsr_mdtmember",
               "subscriptionRequest/scope": 4,
-              "subscriptionRequest/filteringattributes": "bsr_sewerageconsultationrequestdate"
+              "subscriptionRequest/filteringattributes": "bsr_contact,bsr_jobrole"
             },
             "authentication": "@parameters('$authentication')"
           }
         }
       },
       "actions": {
-        "Set_Failure_Date_field": {
+        "Update_a_row": {
           "runAfter": {
-            "Clear_Failure_Date_field_(otherwise_keeps_adding_21_every_time_it's_changed)": [
+            "Compose": [
               "Succeeded"
             ]
           },
           "metadata": {
-            "operationMetadataId": "bb1425af-ef56-421a-9688-fd2ae5ab3a01"
+            "operationMetadataId": "2cad0a6a-a87a-42e2-8082-7c2f4ba720b9"
           },
           "type": "OpenApiConnection",
           "inputs": {
@@ -64,52 +64,55 @@
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
             },
             "parameters": {
-              "entityName": "bsr_buildingcontrollifecycles",
-              "recordId": "@triggerOutputs()?['body/bsr_buildingcontrollifecycleid']",
-              "item/bsr_statsewerconsultfailuredate": "@addDays(variables('sewerageReqDate'), 21, 'MM/dd/yyyy')"
+              "entityName": "bsr_mdtmembers",
+              "recordId": "@triggerOutputs()?['body/bsr_mdtmemberid']",
+              "item/bsr_name": "@{outputs('Contact_Name')} - @{outputs('Compose')}"
             },
             "authentication": "@parameters('$authentication')"
           }
         },
-        "Initialize_variable": {
+        "Get_a_row_by_ID": {
           "runAfter": {},
           "metadata": {
-            "operationMetadataId": "623b728b-bf29-409e-8daf-96588f2ffde6"
-          },
-          "type": "InitializeVariable",
-          "inputs": {
-            "variables": [
-              {
-                "name": "sewerageReqDate",
-                "type": "string",
-                "value": "@{addDays(triggerBody()['bsr_sewerageconsultationrequestdate'], 0)}"
-              }
-            ]
-          }
-        },
-        "Clear_Failure_Date_field_(otherwise_keeps_adding_21_every_time_it's_changed)": {
-          "runAfter": {
-            "Initialize_variable": [
-              "Succeeded"
-            ]
-          },
-          "metadata": {
-            "operationMetadataId": "c1f5b852-daf0-4142-b9ea-0ccf005495f0"
+            "operationMetadataId": "c40ab40b-a399-413d-9092-55cae0f6ef85"
           },
           "type": "OpenApiConnection",
           "inputs": {
             "host": {
               "connectionName": "shared_commondataserviceforapps",
-              "operationId": "UpdateRecord",
+              "operationId": "GetItem",
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
             },
             "parameters": {
-              "entityName": "bsr_buildingcontrollifecycles",
-              "recordId": "@triggerOutputs()?['body/bsr_buildingcontrollifecycleid']",
-              "item/bsr_statsewerconsultfailuredate": "@null"
+              "entityName": "bsr_mdtmembers",
+              "recordId": "@triggerOutputs()?['body/bsr_mdtmemberid']"
             },
             "authentication": "@parameters('$authentication')"
           }
+        },
+        "Contact_Name": {
+          "runAfter": {
+            "Get_a_row_by_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e5c19808-cfb8-4903-8207-ce0f0960b635"
+          },
+          "type": "Compose",
+          "inputs": "@outputs('Get_a_row_by_ID')?['body/_bsr_contact_value@OData.Community.Display.V1.FormattedValue']"
+        },
+        "Compose": {
+          "runAfter": {
+            "Contact_Name": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "5e6674c9-3a91-4069-8ae4-f93790d34b87"
+          },
+          "type": "Compose",
+          "inputs": "@outputs('Get_a_row_by_ID')?['body/_bsr_jobrole_value@OData.Community.Display.V1.FormattedValue']"
         }
       }
     },

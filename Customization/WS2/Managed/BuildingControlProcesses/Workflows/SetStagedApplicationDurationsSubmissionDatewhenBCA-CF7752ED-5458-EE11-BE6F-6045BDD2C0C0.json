@@ -1,7 +1,7 @@
 {
   "properties": {
     "connectionReferences": {
-      "shared_commondataserviceforapps_1": {
+      "shared_commondataserviceforapps": {
         "runtimeSource": "embedded",
         "connection": {
           "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS2"
@@ -25,14 +25,14 @@
         }
       },
       "triggers": {
-        "When_Building_Control_Application_row_is_added,_modified": {
+        "When_a_row_is_added,_modified_or_deleted": {
           "metadata": {
-            "operationMetadataId": "abe587e8-4084-44c0-95f8-c64797dbb51b"
+            "operationMetadataId": "eaf71d78-20bf-4a8b-8af5-0f914c76fadd"
           },
           "type": "OpenApiConnectionWebhook",
           "inputs": {
             "host": {
-              "connectionName": "shared_commondataserviceforapps_1",
+              "connectionName": "shared_commondataserviceforapps",
               "operationId": "SubscribeWebhookTrigger",
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
             },
@@ -40,82 +40,65 @@
               "subscriptionRequest/message": 3,
               "subscriptionRequest/entityname": "bsr_buildingcontrolapplication",
               "subscriptionRequest/scope": 4,
-              "subscriptionRequest/filteringattributes": "bsr_stagedapplication,bsr_numberofstages",
-              "subscriptionRequest/filterexpression": "bsr_stagedapplication eq true"
+              "subscriptionRequest/filterexpression": "bsr_submissiondate ne null"
             },
             "authentication": "@parameters('$authentication')"
           }
         }
       },
       "actions": {
-        "Initialize_variable": {
+        "List_rows": {
           "runAfter": {},
           "metadata": {
-            "operationMetadataId": "9cfd766d-4e88-4673-8a05-48d37066bd94"
+            "operationMetadataId": "61391a5d-477c-421a-8f63-f622a89c76d0"
           },
-          "type": "InitializeVariable",
+          "type": "OpenApiConnection",
           "inputs": {
-            "variables": [
-              {
-                "name": "numberOfStages",
-                "type": "integer",
-                "value": 1
-              }
-            ]
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_stagedapplicationsdurationses",
+              "$filter": "_bsr_buildingcontrolapplicationid_value\teq @{triggerOutputs()?['body/bsr_buildingcontrolapplicationid']}"
+            },
+            "authentication": "@parameters('$authentication')"
           }
         },
-        "Do_until": {
+        "Apply_to_each": {
+          "foreach": "@outputs('List_rows')?['body/value']",
           "actions": {
-            "Add_a_new_row": {
+            "Update_a_row": {
               "runAfter": {},
               "metadata": {
-                "operationMetadataId": "de38ce7d-1d84-4ec0-8a4b-d639a3296556"
+                "operationMetadataId": "ff9c0f37-8604-420b-b209-7044c7dc07f7"
               },
               "type": "OpenApiConnection",
               "inputs": {
                 "host": {
-                  "connectionName": "shared_commondataserviceforapps_1",
-                  "operationId": "CreateRecord",
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
                   "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
                 },
                 "parameters": {
-                  "entityName": "bsr_buildingcontrolapplications",
-                  "item/bsr_bcaareferencenumber": "@triggerOutputs()?['body/bsr_bcaareferencenumber']",
-                  "item/bsr_name": "@triggerOutputs()?['body/bsr_name']"
+                  "entityName": "bsr_stagedapplicationsdurationses",
+                  "recordId": "@items('Apply_to_each')?['bsr_stagedapplicationsdurationsid']",
+                  "item/bsr_submissiondate": "@triggerOutputs()?['body/bsr_submissiondate']"
                 },
                 "authentication": "@parameters('$authentication')"
-              }
-            },
-            "Increment_variable": {
-              "runAfter": {
-                "Add_a_new_row": [
-                  "Succeeded"
-                ]
-              },
-              "metadata": {
-                "operationMetadataId": "ea009f94-97a1-4756-8d8f-a604466d51fe"
-              },
-              "type": "IncrementVariable",
-              "inputs": {
-                "name": "numberOfStages",
-                "value": 1
               }
             }
           },
           "runAfter": {
-            "Initialize_variable": [
+            "List_rows": [
               "Succeeded"
             ]
           },
-          "expression": "@equals(variables('numberOfStages'), triggerOutputs()?['body/bsr_numberofstages'])",
-          "limit": {
-            "count": 60,
-            "timeout": "PT1H"
-          },
           "metadata": {
-            "operationMetadataId": "283fd68e-1835-4b46-81a9-af474284bb15"
+            "operationMetadataId": "7a0086cf-d8bc-433c-a787-a57321c82fd6"
           },
-          "type": "Until"
+          "type": "Foreach"
         }
       }
     },

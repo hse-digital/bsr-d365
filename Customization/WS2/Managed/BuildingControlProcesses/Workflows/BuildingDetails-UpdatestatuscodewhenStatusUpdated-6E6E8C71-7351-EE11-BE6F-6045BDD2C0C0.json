@@ -25,9 +25,9 @@
         }
       },
       "triggers": {
-        "When_Sewerage_Request_Date_is_modified": {
+        "When_a_Building_Details_row_is_added,_modified_or_deleted": {
           "metadata": {
-            "operationMetadataId": "9a2a60e1-7f10-4e6c-8761-c8874a9b0ef2"
+            "operationMetadataId": "00123c65-88ef-464f-bb91-7fc3be56a33a"
           },
           "type": "OpenApiConnectionWebhook",
           "inputs": {
@@ -38,19 +38,20 @@
             },
             "parameters": {
               "subscriptionRequest/message": 3,
-              "subscriptionRequest/entityname": "bsr_buildingcontrollifecycle",
+              "subscriptionRequest/entityname": "bsr_buildingdetails",
               "subscriptionRequest/scope": 4,
-              "subscriptionRequest/filteringattributes": "bsr_sewerageconsultationreceiveddate"
+              "subscriptionRequest/filteringattributes": "bsr_buildingdetailsstatus",
+              "subscriptionRequest/filterexpression": "bsr_buildingdetailsstatus eq 760810007 or bsr_buildingdetailsstatus eq 760810006"
             },
             "authentication": "@parameters('$authentication')"
           }
         }
       },
       "actions": {
-        "Update_Statutory_Sewerage_Request_Timer_Success_to_'Yes'": {
+        "Update_a_row_Set_Status_to_Inactive": {
           "runAfter": {},
           "metadata": {
-            "operationMetadataId": "e645af43-6b61-4f38-9b5b-e648c07b4f0d"
+            "operationMetadataId": "4f6a598a-632b-4d85-9046-97cef6171490"
           },
           "type": "OpenApiConnection",
           "inputs": {
@@ -60,16 +61,17 @@
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
             },
             "parameters": {
-              "entityName": "bsr_buildingcontrollifecycles",
-              "recordId": "@triggerOutputs()?['body/bsr_buildingcontrollifecycleid']",
-              "item/bsr_statsewerconsultsuccess": true
+              "entityName": "bsr_buildingdetailses",
+              "recordId": "@triggerOutputs()?['body/bsr_buildingdetailsid']",
+              "item/statecode": 1,
+              "item/statuscode": 2
             },
             "authentication": "@parameters('$authentication')"
           }
         }
       }
     },
-    "templateName": ""
+    "templateName": null
   },
   "schemaVersion": "1.0.0.0"
 }

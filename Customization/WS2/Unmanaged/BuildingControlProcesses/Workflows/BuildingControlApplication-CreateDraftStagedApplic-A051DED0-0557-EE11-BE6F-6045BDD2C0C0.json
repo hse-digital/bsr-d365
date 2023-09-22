@@ -1,0 +1,149 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS2"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "a225d513-e855-4e29-b4dd-9452bee9a999"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "bsr_buildingcontrolapplication",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "bsr_numberofstages,bsr_stagedapplication,bsr_name",
+              "subscriptionRequest/filterexpression": "(bsr_stagedapplication eq true)"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "List_rows": {
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "779fa98b-2c1a-4cf7-96d7-98f10c9a0ce7"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_stagedapplications",
+              "$select": "bsr_stagedapplicationid",
+              "$filter": "_bsr_relatedbuildingcontrolapp_value eq @{triggerOutputs()?['body/bsr_buildingcontrolapplicationid']}"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Initialize_variable": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "5da88063-3fce-4fa6-a6e8-17c138992abe"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "StagesCreated",
+                "type": "integer",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "Do_until": {
+          "actions": {
+            "Add_a_new_row": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "f677158f-851f-4a0a-b975-cc1cd155b166"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "bsr_stagedapplications",
+                  "item/bsr_relatedbuildingcontrolapp@odata.bind": "/bsr_buildingcontrolapplications(@{triggerOutputs()?['body/bsr_buildingcontrolapplicationid']})",
+                  "item/bsr_name": "@{triggerOutputs()?['body/bsr_name']} - Staged Application @{add(variables('StagesCreated'), 1)}",
+                  "item/bsr_stagedappstatus": 760810000
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Increment_variable": {
+              "runAfter": {
+                "Add_a_new_row": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "a7e34062-4b43-48d1-be58-291cd6fdd134"
+              },
+              "type": "IncrementVariable",
+              "inputs": {
+                "name": "StagesCreated",
+                "value": 1
+              }
+            }
+          },
+          "runAfter": {
+            "List_rows": [
+              "Succeeded"
+            ]
+          },
+          "expression": "@equals(variables('StagesCreated'), triggerOutputs()?['body/bsr_numberofstages'])",
+          "limit": {
+            "timeout": "PT1H"
+          },
+          "metadata": {
+            "operationMetadataId": "35d47088-27e5-4e62-a708-3c63c8bb443b"
+          },
+          "type": "Until"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

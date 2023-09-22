@@ -47,9 +47,9 @@
         }
       },
       "actions": {
-        "Update_a_row": {
+        "Set_the_failure_date_field": {
           "runAfter": {
-            "Initialize_variable": [
+            "Clear_the_Failure_date_field_(in_case_it's_already_been_modified)": [
               "Succeeded"
             ]
           },
@@ -85,6 +85,30 @@
                 "value": "@{addDays(triggerBody()['bsr_fireconsulteerequestdate'], 0)}"
               }
             ]
+          }
+        },
+        "Clear_the_Failure_date_field_(in_case_it's_already_been_modified)": {
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3cce2397-1938-4e78-9661-ba259eff5e43"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_buildingcontrollifecycles",
+              "recordId": "@triggerOutputs()?['body/bsr_buildingcontrollifecycleid']",
+              "item/bsr_statfireconsultfailuredate": "@null"
+            },
+            "authentication": "@parameters('$authentication')"
           }
         }
       }

@@ -25,9 +25,9 @@
         }
       },
       "triggers": {
-        "When_Sewerage_Request_Date_is_modified": {
+        "When_a_row_is_added,_modified_or_deleted": {
           "metadata": {
-            "operationMetadataId": "9a2a60e1-7f10-4e6c-8761-c8874a9b0ef2"
+            "operationMetadataId": "d8ac9dc9-7519-41ba-b783-c554f20d6fc3"
           },
           "type": "OpenApiConnectionWebhook",
           "inputs": {
@@ -40,17 +40,17 @@
               "subscriptionRequest/message": 3,
               "subscriptionRequest/entityname": "bsr_buildingcontrollifecycle",
               "subscriptionRequest/scope": 4,
-              "subscriptionRequest/filteringattributes": "bsr_sewerageconsultationreceiveddate"
+              "subscriptionRequest/filteringattributes": "bsr_rejectiondecisionissueddate,bsr_approvalrequirementsdecisionissueddate,bsr_approvaldecisionissueddate"
             },
             "authentication": "@parameters('$authentication')"
           }
         }
       },
       "actions": {
-        "Update_Statutory_Sewerage_Request_Timer_Success_to_'Yes'": {
+        "Update_a_row": {
           "runAfter": {},
           "metadata": {
-            "operationMetadataId": "e645af43-6b61-4f38-9b5b-e648c07b4f0d"
+            "operationMetadataId": "c53263bc-9f7a-4496-ae7a-944d1d926e0f"
           },
           "type": "OpenApiConnection",
           "inputs": {
@@ -62,7 +62,7 @@
             "parameters": {
               "entityName": "bsr_buildingcontrollifecycles",
               "recordId": "@triggerOutputs()?['body/bsr_buildingcontrollifecycleid']",
-              "item/bsr_statsewerconsultsuccess": true
+              "item/bsr_assesssuccesscriteria": true
             },
             "authentication": "@parameters('$authentication')"
           }

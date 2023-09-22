@@ -25,9 +25,9 @@
         }
       },
       "triggers": {
-        "When_Sewerage_Request_Date_is_modified": {
+        "When_a_row_is_BCA_row_is_modified_Status_Complete_or_Cancelled": {
           "metadata": {
-            "operationMetadataId": "9a2a60e1-7f10-4e6c-8761-c8874a9b0ef2"
+            "operationMetadataId": "e4dd2874-01cb-4b1e-bd15-c8eddcb0075b"
           },
           "type": "OpenApiConnectionWebhook",
           "inputs": {
@@ -38,19 +38,32 @@
             },
             "parameters": {
               "subscriptionRequest/message": 3,
-              "subscriptionRequest/entityname": "bsr_buildingcontrollifecycle",
+              "subscriptionRequest/entityname": "bsr_buildingcontrolapplication",
               "subscriptionRequest/scope": 4,
-              "subscriptionRequest/filteringattributes": "bsr_sewerageconsultationreceiveddate"
+              "subscriptionRequest/filteringattributes": "bsr_buildingcontrolapplicationstatus",
+              "subscriptionRequest/filterexpression": "bsr_buildingcontrolapplicationstatus eq 760810006 or bsr_buildingcontrolapplicationstatus eq 760810007"
             },
             "authentication": "@parameters('$authentication')"
           }
         }
       },
       "actions": {
-        "Update_Statutory_Sewerage_Request_Timer_Success_to_'Yes'": {
+        "Compose": {
+          "runAfter": {
+            "Update_BCA_row_to_Incative": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "d0f28551-1b95-4d90-a08d-63dab3023f84"
+          },
+          "type": "Compose",
+          "inputs": "abc"
+        },
+        "Update_BCA_row_to_Incative": {
           "runAfter": {},
           "metadata": {
-            "operationMetadataId": "e645af43-6b61-4f38-9b5b-e648c07b4f0d"
+            "operationMetadataId": "248bc4e3-33b8-4fe2-b189-b1e69484dae4"
           },
           "type": "OpenApiConnection",
           "inputs": {
@@ -60,16 +73,17 @@
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
             },
             "parameters": {
-              "entityName": "bsr_buildingcontrollifecycles",
-              "recordId": "@triggerOutputs()?['body/bsr_buildingcontrollifecycleid']",
-              "item/bsr_statsewerconsultsuccess": true
+              "entityName": "bsr_buildingcontrolapplications",
+              "recordId": "@triggerOutputs()?['body/bsr_buildingcontrolapplicationid']",
+              "item/statecode": 1,
+              "item/statuscode": 2
             },
             "authentication": "@parameters('$authentication')"
           }
         }
       }
     },
-    "templateName": ""
+    "templateName": null
   },
   "schemaVersion": "1.0.0.0"
 }

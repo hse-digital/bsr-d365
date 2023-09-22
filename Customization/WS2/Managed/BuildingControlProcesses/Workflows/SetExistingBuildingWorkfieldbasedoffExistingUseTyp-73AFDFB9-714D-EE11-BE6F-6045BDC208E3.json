@@ -98,9 +98,19 @@
                 }
               },
               "expression": {
-                "equals": [
-                  "@triggerOutputs()?['body/bsr_existtypeworkproposal']",
-                  "@string(760810008)"
+                "and": [
+                  {
+                    "equals": [
+                      "@triggerOutputs()?['body/bsr_existtypeworkproposal']",
+                      "@string(760810008)"
+                    ]
+                  },
+                  {
+                    "equals": [
+                      "@length(string(triggerOutputs()?['body/bsr_existtypeworkproposal']))",
+                      9
+                    ]
+                  }
                 ]
               },
               "metadata": {
