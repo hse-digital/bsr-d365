@@ -22,10 +22,17 @@
         "$authentication": {
           "defaultValue": {},
           "type": "SecureObject"
+        },
+        "NoReply Queue ID (bsr_noreplyqueueid)": {
+          "defaultValue": "35b883f4-7d16-ee11-9cbe-6045bdd2c0c0",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_noreplyqueueid"
+          }
         }
       },
       "triggers": {
-        "When_a_row_is_added,_modified_or_deleted": {
+        "When_BCAA_record_submitted": {
           "metadata": {
             "operationMetadataId": "53435fbb-f0b3-4694-8719-1a0473e32265"
           },
@@ -40,6 +47,7 @@
               "subscriptionRequest/message": 3,
               "subscriptionRequest/entityname": "bsr_buildingcontrolapplication",
               "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "bsr_submissiondate",
               "subscriptionRequest/filterexpression": "bsr_submissiondate ne null"
             },
             "authentication": "@parameters('$authentication')"
@@ -47,7 +55,7 @@
         }
       },
       "actions": {
-        "Update_a_row": {
+        "Update_BCAA_status_to_Submitted": {
           "runAfter": {},
           "metadata": {
             "operationMetadataId": "82825d1c-2fb9-4719-b4d4-ef7efef0a19c"
@@ -67,9 +75,9 @@
             "authentication": "@parameters('$authentication')"
           }
         },
-        "List_rows": {
+        "Get_all_related_Building_Details": {
           "runAfter": {
-            "Update_a_row": [
+            "Send_confirmation_email_to_applicant": [
               "Succeeded"
             ]
           },
@@ -85,13 +93,13 @@
             },
             "parameters": {
               "entityName": "bsr_buildingdetailses",
-              "$filter": "_bsr_bcapplicationid_value eq @{outputs('Update_a_row')?['body/bsr_buildingcontrolapplicationid']}"
+              "$filter": "_bsr_bcapplicationid_value eq @{outputs('Update_BCAA_status_to_Submitted')?['body/bsr_buildingcontrolapplicationid']}"
             },
             "authentication": "@parameters('$authentication')"
           }
         },
-        "Apply_to_each": {
-          "foreach": "@outputs('List_rows')?['body/value']",
+        "Update_Status_in_each_Building_Details_record_to_Submitted": {
+          "foreach": "@outputs('Get_all_related_Building_Details')?['body/value']",
           "actions": {
             "Update_a_row_2": {
               "runAfter": {},
@@ -107,7 +115,7 @@
                 },
                 "parameters": {
                   "entityName": "bsr_buildingdetailses",
-                  "recordId": "@items('Apply_to_each')?['bsr_buildingdetailsid']",
+                  "recordId": "@items('Update_Status_in_each_Building_Details_record_to_Submitted')?['bsr_buildingdetailsid']",
                   "item/bsr_buildingdetailsstatus": 760810001,
                   "item/bsr_submissiondate": "@triggerOutputs()?['body/bsr_submissiondate']"
                 },
@@ -116,7 +124,7 @@
             }
           },
           "runAfter": {
-            "List_rows": [
+            "Get_all_related_Building_Details": [
               "Succeeded"
             ]
           },
@@ -124,6 +132,87 @@
             "operationMetadataId": "964597fd-1cf1-49db-a9f7-62bacade309a"
           },
           "type": "Foreach"
+        },
+        "Initialise_TemplateID": {
+          "runAfter": {
+            "Update_BCAA_status_to_Submitted": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "36e9263c-df7b-49c8-91d5-9a95dcbc871f"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "TemplateId",
+                "type": "string",
+                "value": "e010fc7e-9e57-ee11-be6f-6045bdd2c0c0"
+              }
+            ]
+          }
+        },
+        "GetNoReplyQueue": {
+          "runAfter": {
+            "Initialise_TemplateID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "dad4944d-2f7e-4f43-b2e1-420298aa827e"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "queues",
+              "recordId": "@parameters('NoReply Queue ID (bsr_noreplyqueueid)')",
+              "$select": "queueid"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Send_confirmation_email_to_applicant": {
+          "runAfter": {
+            "GetNoReplyQueue": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e6732b65-a80b-4024-b264-9141b7b682c0"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "PerformUnboundAction",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "actionName": "SendEmailFromTemplate",
+              "item/TemplateId": "@variables('TemplateId')",
+              "item/Regarding": "/bsr_buildingcontrolapplications(@{triggerOutputs()?['body/bsr_buildingcontrolapplicationid']})",
+              "item/Target": {
+                "email_activity_parties": [
+                  {
+                    "partyid_queue@odata.bind": "/queues(@{outputs('GetNoReplyQueue')?['body/queueid']})",
+                    "participationtypemask": 1
+                  },
+                  {
+                    "partyid_contact@odata.bind": "/contacts(@{triggerOutputs()?['body/_bsr_applicantid_value']})",
+                    "participationtypemask": 2
+                  }
+                ],
+                "@@odata.type": "Microsoft.Dynamics.CRM.email"
+              }
+            },
+            "authentication": "@parameters('$authentication')"
+          }
         }
       }
     },

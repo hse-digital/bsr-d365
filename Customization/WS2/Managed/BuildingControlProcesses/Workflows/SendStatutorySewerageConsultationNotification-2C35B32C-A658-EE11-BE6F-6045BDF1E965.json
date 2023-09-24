@@ -22,6 +22,13 @@
         "$authentication": {
           "defaultValue": {},
           "type": "SecureObject"
+        },
+        "NoReply Queue ID (bsr_noreplyqueueid)": {
+          "defaultValue": "35b883f4-7d16-ee11-9cbe-6045bdd2c0c0",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_noreplyqueueid"
+          }
         }
       },
       "triggers": {
@@ -95,7 +102,7 @@
             },
             "parameters": {
               "entityName": "queues",
-              "recordId": "35b883f4-7d16-ee11-9cbe-6045bdd2c0c0"
+              "recordId": "@parameters('NoReply Queue ID (bsr_noreplyqueueid)')"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -183,7 +190,7 @@
         }
       }
     },
-    "templateName": null
+    "templateName": ""
   },
   "schemaVersion": "1.0.0.0"
 }
