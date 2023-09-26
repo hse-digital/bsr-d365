@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Control Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.21.0</Version>
+    <Version>1.0.22.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -99,8 +99,10 @@
       <RootComponent type="29" id="{5e1b83b3-fc40-ee11-bdf3-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{60a8cba0-fd3c-ee11-bdf4-6045bdf1ea4d}" behavior="0" />
       <RootComponent type="29" id="{62dd4b63-884d-ee11-be6f-6045bdf1e965}" behavior="0" />
+      <RootComponent type="29" id="{6c14f0c5-fe59-ee11-be6f-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{6e6e8c71-7351-ee11-be6f-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{73afdfb9-714d-ee11-be6f-6045bdc208e3}" behavior="0" />
+      <RootComponent type="29" id="{7b510ef5-855b-ee11-8def-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{7b706389-5856-ee11-be6f-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{7d3274b7-8937-ee11-bdf4-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="29" id="{7fae9b6c-6342-ee11-bdf3-6045bdf1e965}" behavior="0" />
@@ -162,7 +164,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingcontrolapplication" displayName="Building Control Application" solution="Active" />
-        <Dependent type="29" displayName="Set Principal Contractor When Change of Principal Contractor Date Change" id="{32ba05d6-bb45-ee11-be6e-6045bdd2c0c0}" />
+        <Dependent type="29" displayName="BCAA - When Change of Principal Contractor Date modified then reset yes/no fields " id="{32ba05d6-bb45-ee11-be6e-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingcontrolapplication" displayName="Building Control Application" solution="Active" />
@@ -202,11 +204,11 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingcontrolapplication" displayName="Building Control Application" solution="Active" />
-        <Dependent type="29" displayName="Set Client Details  When Date of Client Change" id="{eee8de22-9b45-ee11-be6e-6045bdf1e965}" />
+        <Dependent type="29" displayName="BCAA - When Date of Client Change modified then reset yes/no fields " id="{eee8de22-9b45-ee11-be6e-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingcontrolapplication" displayName="Building Control Application" solution="Active" />
-        <Dependent type="29" displayName="Set Principal Designer When Change of Principal Designer Date Change" id="{ffa6df51-b645-ee11-be6e-6045bdd2c0c0}" />
+        <Dependent type="29" displayName="BCAA - When Change of Principal Designer Date modified then reset yes/no fields" id="{ffa6df51-b645-ee11-be6e-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingcontrollifecycle" displayName="Building Control Lifecycle" solution="Active" />
@@ -274,11 +276,19 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingdetails" displayName="Building Details" solution="Active" />
+        <Dependent type="29" displayName="Information Request - On Create auto-populate fields" id="{6c14f0c5-fe59-ee11-be6f-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingdetails" displayName="Building Details" solution="Active" />
         <Dependent type="29" displayName="Building Details - Update statuscode when Status Updated" id="{6e6e8c71-7351-ee11-be6f-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingdetails" displayName="Building Details" solution="Active" />
         <Dependent type="29" displayName="Set Existing Building Work field based off Existing Use Type of Propsed work selection " id="{73afdfb9-714d-ee11-be6f-6045bdc208e3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingdetails" displayName="Building Details" solution="Active" />
+        <Dependent type="29" displayName="Building Details - Update related Information Request" id="{7b510ef5-855b-ee11-8def-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingdetails" displayName="Building Details" solution="Active" />
@@ -295,6 +305,14 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_externalidentity" displayName="BSR External Identity" solution="BuildingRegCore (1.17.61.0)" />
         <Dependent type="29" displayName="Enable/Disable Contact MDT Account" id="{f6af5bc5-093d-ee11-bdf4-6045bdc208e3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_informationtracker" displayName="Information Tracker" solution="Active" />
+        <Dependent type="29" displayName="Information Request - On Create auto-populate fields" id="{6c14f0c5-fe59-ee11-be6f-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_informationtracker" displayName="Information Tracker" solution="Active" />
+        <Dependent type="29" displayName="Building Details - Update related Information Request" id="{7b510ef5-855b-ee11-8def-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_inspection" displayName="MDT Inspection Schedule" solution="Active" />
@@ -397,6 +415,10 @@
         <Dependent type="29" displayName="Set Building Control Life cycle On Update of Building Details" id="{2f3184e0-b83a-ee11-bdf4-6045bdd0e4cf}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_bdrcaseofficer" displayName="Case Officer" parentSchemaName="bsr_buildingdetails" parentDisplayName="Building Details" solution="Active" />
+        <Dependent type="29" displayName="Building Details - Update related Information Request" id="{7b510ef5-855b-ee11-8def-6045bdf1e965}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_bsrdocumentid" displayName="BSR Document" parentSchemaName="bsr_inspectiondocument" parentDisplayName="MDT Inspection Document" solution="Active" />
         <Dependent type="29" displayName="Set the Building Control Application as the Inspection related Building Control Application value" id="{80b70c01-bfbc-4059-a8ff-c59f5ce5ff17}" />
       </MissingDependency>
@@ -421,6 +443,10 @@
         <Dependent type="29" displayName="Building Control Application - Update statuscode when the Status is updated Complete or Cancelled" id="{bb509aa7-7d51-ee11-be6e-6045bdf1ea4d}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_buildingcontrolapplicationstatus" displayName="Building Control Application Status" parentSchemaName="bsr_buildingcontrolapplication" parentDisplayName="Building Control Application" solution="Active" />
+        <Dependent type="29" displayName="Set Staged Application Durations Submission Date when BCAA Record Submitted" id="{cf7752ed-5458-ee11-be6f-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_buildingcontrollifecyclestatus" displayName="Building Control Lifecycle Status" parentSchemaName="bsr_buildingcontrollifecycle" parentDisplayName="Building Control Lifecycle" solution="Active" />
         <Dependent type="29" displayName="Building Control Lifecycle - Update Statuscode when Status Updated" id="{f6b47dc3-7651-ee11-be6f-6045bdd2c0c0}" />
       </MissingDependency>
@@ -430,7 +456,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_clientchangedate" displayName="Date of Client Change" parentSchemaName="bsr_buildingcontrolapplication" parentDisplayName="Building Control Application" solution="Active" />
-        <Dependent type="29" displayName="Set Client Details  When Date of Client Change" id="{eee8de22-9b45-ee11-be6e-6045bdf1e965}" />
+        <Dependent type="29" displayName="BCAA - When Date of Client Change modified then reset yes/no fields " id="{eee8de22-9b45-ee11-be6e-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_contact" displayName="Contact" parentSchemaName="bsr_mdtmember" parentDisplayName="MDT Member" solution="Active" />
@@ -455,6 +481,10 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_fireconsulteerequestdate" displayName="Request Date " parentSchemaName="bsr_buildingcontrollifecycle" parentDisplayName="Building Control Lifecycle" solution="Active" />
         <Dependent type="29" displayName="Populate Statutory Fire consultation Request Failure Date when Fire Request Date is modified" id="{bb83c958-443c-ee11-bdf4-6045bdd0e4cf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_hrbworkid" displayName="HRB Work" parentSchemaName="bsr_buildingdetails" parentDisplayName="Building Details" solution="Active" />
+        <Dependent type="29" displayName="Building Details - Update related Information Request" id="{7b510ef5-855b-ee11-8def-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_inspectioncode" displayName="Inspection ID" parentSchemaName="bsr_inspection" parentDisplayName="MDT Inspection Schedule" solution="Active" />
@@ -550,11 +580,11 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_princcontractchangedate" displayName="Change of Principal Contractor Date" parentSchemaName="bsr_buildingcontrolapplication" parentDisplayName="Building Control Application" solution="Active" />
-        <Dependent type="29" displayName="Set Principal Contractor When Change of Principal Contractor Date Change" id="{32ba05d6-bb45-ee11-be6e-6045bdd2c0c0}" />
+        <Dependent type="29" displayName="BCAA - When Change of Principal Contractor Date modified then reset yes/no fields " id="{32ba05d6-bb45-ee11-be6e-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_princdesignchangedate" displayName="Change of Principal Designer Date" parentSchemaName="bsr_buildingcontrolapplication" parentDisplayName="Building Control Application" solution="Active" />
-        <Dependent type="29" displayName="Set Principal Designer When Change of Principal Designer Date Change" id="{ffa6df51-b645-ee11-be6e-6045bdd2c0c0}" />
+        <Dependent type="29" displayName="BCAA - When Change of Principal Designer Date modified then reset yes/no fields" id="{ffa6df51-b645-ee11-be6e-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_rejectiondecisionissueddate" displayName="Rejection Decision Issued Date " parentSchemaName="bsr_buildingcontrollifecycle" parentDisplayName="Building Control Lifecycle" solution="Active" />
@@ -599,6 +629,10 @@
       <MissingDependency>
         <Required type="2" schemaName="ownerid" displayName="Regulatory Lead" parentSchemaName="bsr_buildingdetails" parentDisplayName="Building Details" solution="Active" />
         <Dependent type="29" displayName="Set Building Control Life cycle On Update of Building Details" id="{2f3184e0-b83a-ee11-bdf4-6045bdd0e4cf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ownerid" displayName="Regulatory Lead" parentSchemaName="bsr_buildingdetails" parentDisplayName="Building Details" solution="Active" />
+        <Dependent type="29" displayName="Building Details - Update related Information Request" id="{7b510ef5-855b-ee11-8def-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="subject" displayName="Document Name" parentSchemaName="bsr_bsrdocument" parentDisplayName="BSR Document" solution="BuildingRegCore (1.17.61.0)" />

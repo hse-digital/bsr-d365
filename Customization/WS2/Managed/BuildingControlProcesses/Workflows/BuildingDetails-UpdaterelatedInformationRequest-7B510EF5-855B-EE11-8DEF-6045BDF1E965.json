@@ -1,7 +1,7 @@
 {
   "properties": {
     "connectionReferences": {
-      "shared_commondataserviceforapps": {
+      "shared_commondataserviceforapps_1": {
         "runtimeSource": "embedded",
         "connection": {
           "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS2"
@@ -27,21 +27,20 @@
       "triggers": {
         "When_a_row_is_added,_modified_or_deleted": {
           "metadata": {
-            "operationMetadataId": "eaf71d78-20bf-4a8b-8af5-0f914c76fadd"
+            "operationMetadataId": "4992f5b1-1b24-4de6-aee2-5065c04888f5"
           },
           "type": "OpenApiConnectionWebhook",
           "inputs": {
             "host": {
-              "connectionName": "shared_commondataserviceforapps",
+              "connectionName": "shared_commondataserviceforapps_1",
               "operationId": "SubscribeWebhookTrigger",
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
             },
             "parameters": {
               "subscriptionRequest/message": 3,
-              "subscriptionRequest/entityname": "bsr_buildingcontrolapplication",
+              "subscriptionRequest/entityname": "bsr_buildingdetails",
               "subscriptionRequest/scope": 4,
-              "subscriptionRequest/filteringattributes": "bsr_buildingcontrolapplicationstatus",
-              "subscriptionRequest/filterexpression": "bsr_buildingcontrolapplicationstatus eq 760810001"
+              "subscriptionRequest/filteringattributes": "bsr_hrbworkid,ownerid,bsr_bdrcaseofficer"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -51,41 +50,43 @@
         "List_rows": {
           "runAfter": {},
           "metadata": {
-            "operationMetadataId": "61391a5d-477c-421a-8f63-f622a89c76d0"
+            "operationMetadataId": "9dc46fd6-81eb-4cba-a450-edf7b067eeb6"
           },
           "type": "OpenApiConnection",
           "inputs": {
             "host": {
-              "connectionName": "shared_commondataserviceforapps",
+              "connectionName": "shared_commondataserviceforapps_1",
               "operationId": "ListRecords",
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
             },
             "parameters": {
-              "entityName": "bsr_stagedapplicationsdurationses",
-              "$filter": "_bsr_buildingcontrolapplicationid_value\teq @{triggerOutputs()?['body/bsr_buildingcontrolapplicationid']}"
+              "entityName": "bsr_informationtrackers",
+              "$filter": "_bsr_bcaapplicationid_value eq @{triggerOutputs()?['body/_bsr_bcapplicationid_value']}"
             },
             "authentication": "@parameters('$authentication')"
           }
         },
-        "Apply_to_each": {
+        "Apply_to_each_2": {
           "foreach": "@outputs('List_rows')?['body/value']",
           "actions": {
             "Update_a_row": {
               "runAfter": {},
               "metadata": {
-                "operationMetadataId": "ff9c0f37-8604-420b-b209-7044c7dc07f7"
+                "operationMetadataId": "995ca167-14b2-49de-bdfb-5e2124c614d8"
               },
               "type": "OpenApiConnection",
               "inputs": {
                 "host": {
-                  "connectionName": "shared_commondataserviceforapps",
+                  "connectionName": "shared_commondataserviceforapps_1",
                   "operationId": "UpdateRecord",
                   "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
                 },
                 "parameters": {
-                  "entityName": "bsr_stagedapplicationsdurationses",
-                  "recordId": "@items('Apply_to_each')?['bsr_stagedapplicationsdurationsid']",
-                  "item/bsr_submissiondate": "@triggerOutputs()?['body/bsr_submissiondate']"
+                  "entityName": "bsr_informationtrackers",
+                  "recordId": "@items('Apply_to_each_2')?['bsr_informationtrackerid']",
+                  "item/bsr_caseofficerid@odata.bind": "bsr_informationtrackers(@{triggerOutputs()?['body/_bsr_bdrcaseofficer_value']})",
+                  "item/bsr_bcworkcategoryid@odata.bind": "bsr_informationtrackers(@{triggerOutputs()?['body/_bsr_hrbworkid_value']})",
+                  "item/bsr_regulatoryleadid@odata.bind": "bsr_informationtrackers(@{triggerOutputs()?['body/_ownerid_value']})"
                 },
                 "authentication": "@parameters('$authentication')"
               }
@@ -97,7 +98,7 @@
             ]
           },
           "metadata": {
-            "operationMetadataId": "7a0086cf-d8bc-433c-a787-a57321c82fd6"
+            "operationMetadataId": "7a57133d-30d0-4aff-853a-14d2c2c95613"
           },
           "type": "Foreach"
         }

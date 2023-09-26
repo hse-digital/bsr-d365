@@ -27,7 +27,7 @@
       "triggers": {
         "When_Building_Control_Application_row_is_modified": {
           "metadata": {
-            "operationMetadataId": "19b09e6f-371d-4573-8544-9ffc6de942c0"
+            "operationMetadataId": "6abe0a0a-05fe-40f0-95b9-91c653c0df6a"
           },
           "type": "OpenApiConnectionWebhook",
           "inputs": {
@@ -37,10 +37,11 @@
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
             },
             "parameters": {
-              "subscriptionRequest/message": 3,
+              "subscriptionRequest/message": 4,
               "subscriptionRequest/entityname": "bsr_buildingcontrolapplication",
               "subscriptionRequest/scope": 4,
-              "subscriptionRequest/filteringattributes": "bsr_clientchangedate"
+              "subscriptionRequest/filteringattributes": "bsr_princdesignchangedate",
+              "subscriptionRequest/filterexpression": "bsr_princdesignchangedate ne null"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -50,7 +51,7 @@
         "Update_a_row": {
           "runAfter": {},
           "metadata": {
-            "operationMetadataId": "32235ca5-5469-4038-b617-6cee9fe38eca"
+            "operationMetadataId": "f8558d1f-f300-4895-85e0-596947853833"
           },
           "type": "OpenApiConnection",
           "inputs": {
@@ -61,7 +62,9 @@
             },
             "parameters": {
               "entityName": "bsr_buildingcontrolapplications",
-              "recordId": "@triggerOutputs()?['body/bsr_buildingcontrolapplicationid']"
+              "recordId": "@triggerOutputs()?['body/bsr_buildingcontrolapplicationid']",
+              "item/bsr_isprincipaldesignercontactvalidated": false,
+              "item/bsr_isprincipaldesignerorgvalidated": false
             },
             "authentication": "@parameters('$authentication')"
           }
