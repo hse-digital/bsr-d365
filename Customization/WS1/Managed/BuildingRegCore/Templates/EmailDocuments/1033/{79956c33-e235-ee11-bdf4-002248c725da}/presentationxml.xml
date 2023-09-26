@@ -28,7 +28,7 @@ https://www.gov.uk/government/collections/residential-property-first-tier-tribun
 <div><br>
 <span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">When the First-tier Tribunal has made a decision, you need to tell us about that decision.</span></span></span></div>
 <div><br>
-<span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">To tell us the tribunal’s decision or what you have agreed, contact us at&nbsp;</span></span></span><a href="https://www.gov.uk/guidance/contact-the-building-safety-regulator" style="color:#0563c1; text-decoration:underline"><span style="font-family:Arial,Helvetica,sans-serif">https://www.gov.uk/guidance/contact-the-building-safety-regulato</span>r</a></div>
+<span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">To tell us the tribunal’s decision or what you have agreed, contact us at&nbsp;<a href="https://www.hse.gov.uk/contact/tell-us-about-a-health-and-safety-issue.htm" style="color:#0563c1; text-decoration:underline">https://www.hse.gov.uk/contact/tell-us-about-a-health-and-safety-issue.htm</a>&nbsp;</span></span></span></div>
 <div><br>
 <span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">You can also apply to withdraw one of the applications. Find out more about withdrawing an application at
 <a href="https://www.gov.uk/guidance/applying-to-register-a-high-rise-residential-building#withdraw-an-application" style="color:#0563c1; text-decoration:underline">
