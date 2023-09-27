@@ -16,7 +16,7 @@
 <div><span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">Contact us by
 <strong>[date you want a reply]</strong> to tell us which application is the correct one.</span></span></span></div>
 <div><br>
-<span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">To tell us what you have decided, contact us at&nbsp;<a href="https://www.hse.gov.uk/contact/tell-us-about-a-health-and-safety-issue.htm" style="color:#0563c1; text-decoration:underline">https://www.hse.gov.uk/contact/tell-us-about-a-health-and-safety-issue.htm</a></span></span></span></div>
+<span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">To tell us what you have decided, contact us at&nbsp;</span></span></span><span style="font-family:Arial,Helvetica,sans-serif"><a href="https://www.gov.uk/guidance/contact-the-building-safety-regulator" style="color:#0563c1; text-decoration:underline">https://www.gov.uk/guidance/contact-the-building-safety-regulator</a></span></div>
 <div><br>
 <span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">We will then be able to make a decision about your application.</span></span></span></div>
 <div><br>
