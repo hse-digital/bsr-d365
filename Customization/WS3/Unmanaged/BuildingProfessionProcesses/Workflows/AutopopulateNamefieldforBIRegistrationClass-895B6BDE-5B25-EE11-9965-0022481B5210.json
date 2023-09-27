@@ -40,7 +40,7 @@
               "subscriptionRequest/message": 4,
               "subscriptionRequest/entityname": "bsr_biregclass",
               "subscriptionRequest/scope": 4,
-              "subscriptionRequest/filteringattributes": "bsr_biclassid, bsr_biapplicationid"
+              "subscriptionRequest/filteringattributes": "bsr_biclassid, bsr_biapplicationid, bsr_buildinginspectorid"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -157,7 +157,7 @@
                 "type": "SetVariable",
                 "inputs": {
                   "name": "varBPA",
-                  "value": " @{outputs('Get_a_Building_Profession_Application_row_by_ID')?['body/bsr_name']}"
+                  "value": "@outputs('Get_a_Building_Profession_Application_row_by_ID')?['body/bsr_name']"
                 }
               }
             }
@@ -225,7 +225,7 @@
                 "type": "SetVariable",
                 "inputs": {
                   "name": "varClass",
-                  "value": " @{outputs('Get_a_BI_Class_row_by_ID')?['body/bsr_name']}"
+                  "value": "@outputs('Get_a_BI_Class_row_by_ID')?['body/bsr_name']"
                 }
               }
             }

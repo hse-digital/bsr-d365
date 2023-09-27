@@ -37,9 +37,10 @@
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
             },
             "parameters": {
-              "subscriptionRequest/message": 1,
+              "subscriptionRequest/message": 4,
               "subscriptionRequest/entityname": "bsr_biprofessionalmembership",
-              "subscriptionRequest/scope": 4
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "bsr_professionalbodyid, bsr_buildinginspectorid, bsr_biapplicationid"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -65,7 +66,7 @@
             "parameters": {
               "entityName": "bsr_biprofessionalmemberships",
               "recordId": "@triggerOutputs()?['body/bsr_biprofessionalmembershipid']",
-              "item/bsr_name": "@{variables('varBIContact')} Membership - @{variables('varProfessionalBody')}"
+              "item/bsr_name": "@{variables('varBIContact')}: Membership: @{variables('varProfessionalBody')}"
             },
             "authentication": "@parameters('$authentication')"
           }

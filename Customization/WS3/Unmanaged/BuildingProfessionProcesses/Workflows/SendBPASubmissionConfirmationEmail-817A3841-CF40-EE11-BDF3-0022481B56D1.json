@@ -239,6 +239,31 @@
                 },
                 "authentication": "@parameters('$authentication')"
               }
+            },
+            "Perform_a_bound_action": {
+              "runAfter": {
+                "Add_a_new_row": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "1d313f3a-aeff-4734-bc44-580ccd8e78fe"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "PerformBoundAction",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "emails",
+                  "actionName": "Microsoft.Dynamics.CRM.SendEmail",
+                  "recordId": "@outputs('Add_a_new_row')?['body/activityid']",
+                  "item/IssueSend": true
+                },
+                "authentication": "@parameters('$authentication')"
+              }
             }
           },
           "runAfter": {

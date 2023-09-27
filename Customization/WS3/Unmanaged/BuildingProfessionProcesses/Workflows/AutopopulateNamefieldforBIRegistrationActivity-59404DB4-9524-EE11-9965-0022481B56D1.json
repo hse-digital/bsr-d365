@@ -40,7 +40,7 @@
               "subscriptionRequest/message": 4,
               "subscriptionRequest/entityname": "bsr_biregactivity",
               "subscriptionRequest/scope": 4,
-              "subscriptionRequest/filteringattributes": "bsr_biapplicationid,\tbsr_biactivityid, bsr_bibuildingcategoryid"
+              "subscriptionRequest/filteringattributes": "bsr_biapplicationid,\tbsr_biactivityid, bsr_bibuildingcategoryid, bsr_buildinginspectorid"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -108,7 +108,7 @@
             "parameters": {
               "entityName": "bsr_biregactivities",
               "recordId": "@triggerOutputs()?['body/bsr_biregactivityid']",
-              "item/bsr_name": "@{outputs('Get_a_BPA_row_by_ID')?['body/bsr_name']}: @{outputs('Get_a_BI_Activity_row_by_ID')?['body/bsr_name']} - @{outputs('Get_a_BI_Building_Category_row_by_ID')?['body/bsr_name']}"
+              "item/bsr_name": "@{outputs('Get_a_BPA_row_by_ID')?['body/bsr_name']}: @{outputs('Get_a_BI_Activity_row_by_ID')?['body/bsr_name']}: @{outputs('Get_a_BI_Building_Category_row_by_ID')?['body/bsr_name']}"
             },
             "authentication": "@parameters('$authentication')"
           }

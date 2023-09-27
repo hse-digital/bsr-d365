@@ -40,7 +40,7 @@
               "subscriptionRequest/message": 4,
               "subscriptionRequest/entityname": "bsr_biregcountry",
               "subscriptionRequest/scope": 4,
-              "subscriptionRequest/filteringattributes": "bsr_countryid, bsr_biapplicationid"
+              "subscriptionRequest/filteringattributes": "bsr_countryid, bsr_biapplicationid,bsr_buildinginspectorid"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -89,7 +89,7 @@
             "parameters": {
               "entityName": "bsr_biregcountries",
               "recordId": "@triggerOutputs()?['body/bsr_biregcountryid']",
-              "item/bsr_name": "@{variables('varBPA')} - @{outputs('Get_a_Country_row_by_ID')?['body/bsr_name']}"
+              "item/bsr_name": "@{variables('varBPA')}: @{outputs('Get_a_Country_row_by_ID')?['body/bsr_name']}"
             },
             "authentication": "@parameters('$authentication')"
           }
