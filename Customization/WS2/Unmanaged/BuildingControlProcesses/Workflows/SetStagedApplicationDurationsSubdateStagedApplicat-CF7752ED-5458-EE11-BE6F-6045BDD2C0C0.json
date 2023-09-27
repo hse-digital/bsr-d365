@@ -25,7 +25,7 @@
         }
       },
       "triggers": {
-        "When_a_row_is_added,_modified_or_deleted": {
+        "When_a_BCAA_record_is_submitted_and_Staged_Application_=_Yes": {
           "metadata": {
             "operationMetadataId": "eaf71d78-20bf-4a8b-8af5-0f914c76fadd"
           },
@@ -41,14 +41,14 @@
               "subscriptionRequest/entityname": "bsr_buildingcontrolapplication",
               "subscriptionRequest/scope": 4,
               "subscriptionRequest/filteringattributes": "bsr_buildingcontrolapplicationstatus",
-              "subscriptionRequest/filterexpression": "bsr_buildingcontrolapplicationstatus eq 760810001"
+              "subscriptionRequest/filterexpression": "bsr_buildingcontrolapplicationstatus eq 760810001 and bsr_stagedapplication eq true"
             },
             "authentication": "@parameters('$authentication')"
           }
         }
       },
       "actions": {
-        "List_rows": {
+        "List_related_Staged_Application_Duration_records": {
           "runAfter": {},
           "metadata": {
             "operationMetadataId": "61391a5d-477c-421a-8f63-f622a89c76d0"
@@ -67,8 +67,8 @@
             "authentication": "@parameters('$authentication')"
           }
         },
-        "Apply_to_each": {
-          "foreach": "@outputs('List_rows')?['body/value']",
+        "Update_Submission_Date_for_all_related_Staged_Application_Duration_records": {
+          "foreach": "@outputs('List_related_Staged_Application_Duration_records')?['body/value']",
           "actions": {
             "Update_a_row": {
               "runAfter": {},
@@ -84,7 +84,7 @@
                 },
                 "parameters": {
                   "entityName": "bsr_stagedapplicationsdurationses",
-                  "recordId": "@items('Apply_to_each')?['bsr_stagedapplicationsdurationsid']",
+                  "recordId": "@items('Update_Submission_Date_for_all_related_Staged_Application_Duration_records')?['bsr_stagedapplicationsdurationsid']",
                   "item/bsr_submissiondate": "@triggerOutputs()?['body/bsr_submissiondate']"
                 },
                 "authentication": "@parameters('$authentication')"
@@ -92,12 +92,69 @@
             }
           },
           "runAfter": {
-            "List_rows": [
+            "List_related_Staged_Application_Duration_records": [
               "Succeeded"
             ]
           },
           "metadata": {
             "operationMetadataId": "7a0086cf-d8bc-433c-a787-a57321c82fd6"
+          },
+          "type": "Foreach"
+        },
+        "List_related_Staged_Application_records": {
+          "runAfter": {
+            "Update_Submission_Date_for_all_related_Staged_Application_Duration_records": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9333a450-b186-44de-a2fd-82f2d9c53e96"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_stagedapplications",
+              "$filter": "_bsr_relatedbuildingcontrolapp_value eq @{triggerOutputs()?['body/bsr_buildingcontrolapplicationid']}"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Update_Status_for_all_related_Staged_Application_records": {
+          "foreach": "@outputs('List_related_Staged_Application_records')?['body/value']",
+          "actions": {
+            "Update_a_row_2": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "c64427ac-9559-4d57-bde0-58cd6147cdc8"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "bsr_stagedapplications",
+                  "recordId": "@items('Update_Status_for_all_related_Staged_Application_records')?['bsr_stagedapplicationid']",
+                  "item/bsr_stagedappstatus": 760810001
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "List_related_Staged_Application_records": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b81fa120-25da-4154-af66-e676046fa8c0"
           },
           "type": "Foreach"
         }
