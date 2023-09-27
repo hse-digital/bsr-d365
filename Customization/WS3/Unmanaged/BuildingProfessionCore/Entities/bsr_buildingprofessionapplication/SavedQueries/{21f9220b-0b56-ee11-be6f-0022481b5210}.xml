@@ -11,9 +11,9 @@
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_buildingprofessionapplicationid">
           <cell name="bsr_buildingproappid" width="167" />
-          <cell name="bsr_applicantid" width="100" />
-          <cell name="statuscode" width="144" />
-          <cell name="ownerid" width="100" />
+          <cell name="bsr_rbcaaccountid" width="170" />
+          <cell name="statuscode" width="196" />
+          <cell name="ownerid" width="141" />
           <cell name="createdon" width="105" />
         </row>
       </grid>
@@ -24,7 +24,6 @@
         <entity name="bsr_buildingprofessionapplication">
           <attribute name="bsr_buildingprofessionapplicationid" />
           <attribute name="bsr_buildingproappid" />
-          <attribute name="bsr_applicantid" />
           <attribute name="statuscode" />
           <attribute name="ownerid" />
           <attribute name="createdon" />
@@ -34,6 +33,7 @@
             <condition attribute="ownerid" operator="eq-userid" />
             <condition attribute="bsr_buildingprofessiontypecode" operator="eq" value="760810001" />
           </filter>
+          <attribute name="bsr_rbcaaccountid" />
         </entity>
       </fetch>
     </fetchxml>

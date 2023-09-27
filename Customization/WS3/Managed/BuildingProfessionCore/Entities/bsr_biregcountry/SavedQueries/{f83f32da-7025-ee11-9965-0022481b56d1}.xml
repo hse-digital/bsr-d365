@@ -17,14 +17,14 @@
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" mapping="logical">
+      <fetch version="1.0" mapping="logical" distinct="true">
         <entity name="bsr_biregcountry">
           <attribute name="bsr_biregcountryid" />
+          <attribute name="bsr_countryid" />
+          <attribute name="bsr_biapplicationid" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
-          <attribute name="bsr_countryid" />
-          <attribute name="bsr_biapplicationid" />
         </entity>
       </fetch>
     </fetchxml>
