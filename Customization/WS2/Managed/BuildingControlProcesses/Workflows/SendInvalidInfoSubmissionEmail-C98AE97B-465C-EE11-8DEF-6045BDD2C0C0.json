@@ -79,7 +79,7 @@
             "parameters": {
               "entityName": "bsr_informationtrackers",
               "recordId": "@triggerOutputs()?['body/bsr_informationtrackerid']",
-              "$select": "_bsr_bcaapplicationid_value,bsr_bcaareferencenumber,bsr_buildingname,_bsr_caseofficerid_value,bsr_inforeqcasenote,bsr_inforeqid,bsr_inforeqrelatedto,bsr_inforeqtargetdate,bsr_informationtrackerid,_bsr_recipientid_value,_bsr_regulatoryleadid_value,bsr_invalidnotes"
+              "$select": "_bsr_bcaapplicationid_value,bsr_bcaareferencenumber,bsr_buildingname,_bsr_caseofficerid_value,bsr_inforeqcasenote,bsr_inforeqid,bsr_inforeqrelatedto,bsr_inforeqtargetdate,bsr_informationtrackerid,_bsr_recipientid_value,_bsr_regulatoryleadid_value,bsr_invalidnotes,bsr_buildingdetailsname"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -159,7 +159,7 @@
                 "operationMetadataId": "b4bd80ac-f103-4ed3-84e9-5802c7b99306"
               },
               "type": "Compose",
-              "inputs": "@replace(\r\n    replace(\r\n        replace(\r\n            replace(\r\n                replace(\r\n                    replace(\r\n                        outputs('GetEmailTemplate')?['body/safehtml'],\r\n                        '%%bsr_recipient%%',\r\n                        string(outputs('Get_a_row_by_ID')?['body/_bsr_recipientid_value@OData.Community.Display.V1.FormattedValue'])\r\n                    ),\r\n                    '%%bsr_bcaareferencenumber%%',\r\n                    string(outputs('Get_a_row_by_ID')?['body/bsr_bcaareferencenumber'])\r\n                ),\r\n                '%%bsr_buildingname%%',\r\n                string(outputs('Get_a_row_by_ID')?['body/bsr_buildingname'])\r\n            ),\r\n            '%%bsr_inforeqcasenote%%',\r\n            string(outputs('Get_a_row_by_ID')?['body/bsr_inforeqcasenote'])\r\n        ),\r\n        '%%bsr_invalidnotes%%',\r\n        string(outputs('Get_a_row_by_ID')?['body/bsr_invalidnotes'])\r\n    ),\r\n    '%%bsr_regulatoryleadid%%',\r\n    string(outputs('Get_a_row_by_ID')?['body/_bsr_regulatoryleadid_value@OData.Community.Display.V1.FormattedValue'])\r\n)"
+              "inputs": "@replace(\r\n    replace(\r\n        replace(\r\n            replace(\r\n                replace(\r\n                    replace(\r\n                        outputs('GetEmailTemplate')?['body/safehtml'],\r\n                        '%%bsr_recipient%%',\r\n                        string(outputs('Get_a_row_by_ID')?['body/_bsr_recipientid_value@OData.Community.Display.V1.FormattedValue'])\r\n                    ),\r\n                    '%%bsr_bcaareferencenumber%%',\r\n                    string(outputs('Get_a_row_by_ID')?['body/bsr_bcaareferencenumber'])\r\n                ),\r\n                '%%bsr_buildingdetailsname%%',\r\n                string(outputs('Get_a_row_by_ID')?['body/bsr_buildingdetailsname'])\r\n            ),\r\n            '%%bsr_inforeqcasenote%%',\r\n            string(outputs('Get_a_row_by_ID')?['body/bsr_inforeqcasenote'])\r\n        ),\r\n        '%%bsr_invalidnotes%%',\r\n        string(outputs('Get_a_row_by_ID')?['body/bsr_invalidnotes'])\r\n    ),\r\n    '%%bsr_regulatoryleadid%%',\r\n    string(outputs('Get_a_row_by_ID')?['body/_bsr_regulatoryleadid_value@OData.Community.Display.V1.FormattedValue'])\r\n)"
             },
             "Html_to_text": {
               "runAfter": {
