@@ -5,7 +5,7 @@
 <div style="list-style-position:inside">&nbsp;</div>
 <div style="list-style-position:inside"><span style="font-size:12pt"><span style="font-family:Arial,Helvetica,sans-serif">The building control application reference is <span style="line-height:107%">%%bsr_bcaareferencenumber%%</span>.</span></span></div>
 <div style="list-style-position:inside">&nbsp;</div>
-<div style="list-style-position:inside"><span style="font-size:12pt"><span style="font-family:Arial,Helvetica,sans-serif">The building name is <span style="line-height:107%">%%bsr_buildingname%%</span>.</span></span></div>
+<div style="list-style-position:inside"><span style="font-size:12pt"><span style="font-family:Arial,Helvetica,sans-serif">The building name is <span style="line-height:107%">%%bsr_buildingdetailsname%%</span>.</span></span></div>
 <div style="list-style-position:inside">&nbsp;</div>
 <div style="list-style-position:inside">&nbsp;</div>
 <div style="list-style-position:inside"><span style="font-size:12pt"><span style="font-family:Arial,Helvetica,sans-serif">We recently contacted you to request the following information:</span></span></div>

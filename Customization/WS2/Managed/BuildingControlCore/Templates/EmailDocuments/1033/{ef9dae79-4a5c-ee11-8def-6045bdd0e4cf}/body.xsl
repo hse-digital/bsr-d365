@@ -5,7 +5,7 @@
 <div>&nbsp;</div>
 <div><span style="font-size:12pt"><span style="font-family:Arial,Helvetica,sans-serif"><span style="line-height:107%">The building control application reference is %%bsr_bcaareferencenumber%%.</span></span></span></div>
 <div>&nbsp;</div>
-<div><span style="font-size:12pt"><span style="font-family:Arial,Helvetica,sans-serif"><span style="line-height:107%">The building name is %%bsr_buildingname%%.</span></span></span></div>
+<div><span style="font-size:12pt"><span class="keyboardFocusClass" style="font-family:Arial,Helvetica,sans-serif"><span style="line-height:107%">The building name is&nbsp;</span></span><span style="font-family:Arial,Helvetica,sans-serif">%%bsr_buildingdetailsname%%&nbsp;</span></span><span style="font-family:Arial,Helvetica,sans-serif; font-size:12pt">.</span></div>
 <div>&nbsp;</div>
 <div><span style="font-size:12pt"><span style="font-family:Arial,Helvetica,sans-serif"><span style="line-height:107%">Thank you for submitting the requested information. It has now been reviewed and has been declared to a valid information submission.&nbsp;</span></span></span></div>
 <div>&nbsp;</div>
