@@ -30,11 +30,11 @@
           <attribute name="bsr_inforeqactualdate" />
           <attribute name="statuscode" />
           <attribute name="bsr_caseofficerid" />
-          <filter type="and">
-            <condition attribute="statuscode" operator="eq" value="760810003" />
-            <condition attribute="bsr_caseofficerid" operator="eq-userid" />
-          </filter>
           <order attribute="bsr_inforeqactualdate" descending="true" />
+          <filter type="and">
+            <condition attribute="ownerid" operator="eq-userid" />
+            <condition attribute="statuscode" operator="eq" value="760810003" />
+          </filter>
         </entity>
       </fetch>
     </fetchxml>
