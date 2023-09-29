@@ -25,7 +25,7 @@
         }
       },
       "triggers": {
-        "When_a_row_is_added,_modified_or_deleted": {
+        "When_Staged_Application_=_True_and_Number_of_Stages_is_greater_than_1": {
           "metadata": {
             "operationMetadataId": "a225d513-e855-4e29-b4dd-9452bee9a999"
           },
@@ -40,8 +40,8 @@
               "subscriptionRequest/message": 4,
               "subscriptionRequest/entityname": "bsr_buildingcontrolapplication",
               "subscriptionRequest/scope": 4,
-              "subscriptionRequest/filteringattributes": "bsr_numberofstages,bsr_stagedapplication,bsr_name",
-              "subscriptionRequest/filterexpression": "(bsr_stagedapplication eq true)"
+              "subscriptionRequest/filteringattributes": "bsr_numberofstages,bsr_stagedapplication",
+              "subscriptionRequest/filterexpression": "bsr_stagedapplication eq true and bsr_numberofstages gt 1"
             },
             "authentication": "@parameters('$authentication')"
           }
