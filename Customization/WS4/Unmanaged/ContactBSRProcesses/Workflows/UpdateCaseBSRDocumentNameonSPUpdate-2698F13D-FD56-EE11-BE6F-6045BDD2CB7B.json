@@ -117,7 +117,8 @@
                 },
                 "parameters": {
                   "entityName": "bsr_bsrdocuments",
-                  "recordId": "@items('Apply_to_each')?['activityid']"
+                  "recordId": "@items('Apply_to_each')?['activityid']",
+                  "item/subject": "@triggerOutputs()?['body/{FilenameWithExtension}']"
                 },
                 "authentication": "@parameters('$authentication')"
               }
