@@ -16,29 +16,28 @@
           <cell name="bsr_membershipnumber" width="181" />
           <cell name="bsr_currentmembershiplevelortype" width="252" />
           <cell name="bsr_yearid" width="100" />
+          <cell name="statuscode" width="119" />
         </row>
       </grid>
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" mapping="logical">
+      <fetch version="1.0" mapping="logical" distinct="true">
         <entity name="bsr_biprofessionalmembership">
           <attribute name="bsr_biprofessionalmembershipid" />
-          <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
-          </filter>
           <attribute name="bsr_biapplicationid" />
           <attribute name="bsr_buildinginspectorid" />
           <attribute name="bsr_currentmembershiplevelortype" />
           <attribute name="bsr_membershipnumber" />
           <attribute name="bsr_professionalbodyid" />
           <attribute name="bsr_yearid" />
+          <attribute name="statuscode" />
         </entity>
       </fetch>
     </fetchxml>
     <IntroducedVersion>1.0</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="Active BI Professional Memberships" languagecode="1033" />
+      <LocalizedName description="BI Professional Memberships" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>

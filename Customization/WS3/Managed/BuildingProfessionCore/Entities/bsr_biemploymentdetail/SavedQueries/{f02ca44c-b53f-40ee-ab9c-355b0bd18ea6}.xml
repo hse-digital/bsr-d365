@@ -14,21 +14,20 @@
           <cell name="bsr_buildinginspectorid" width="159" />
           <cell name="bsr_employmenttypeid" width="214" />
           <cell name="bsr_iscurrent" width="100" />
+          <cell name="statuscode" width="119" />
         </row>
       </grid>
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" mapping="logical">
+      <fetch version="1.0" mapping="logical" distinct="true">
         <entity name="bsr_biemploymentdetail">
           <attribute name="bsr_biemploymentdetailid" />
-          <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
-          </filter>
           <attribute name="bsr_buildinginspectorid" />
           <attribute name="bsr_biapplicationid" />
           <attribute name="bsr_employmenttypeid" />
           <attribute name="bsr_iscurrent" />
+          <attribute name="statuscode" />
         </entity>
       </fetch>
     </fetchxml>
