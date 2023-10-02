@@ -40,7 +40,7 @@
               "subscriptionRequest/message": 4,
               "subscriptionRequest/entityname": "bsr_buildingcontrolapplication",
               "subscriptionRequest/scope": 4,
-              "subscriptionRequest/filteringattributes": "bsr_numberofstages,bsr_stagedapplication",
+              "subscriptionRequest/filteringattributes": "bsr_numberofstages",
               "subscriptionRequest/filterexpression": "bsr_stagedapplication eq true and bsr_numberofstages gt 1"
             },
             "authentication": "@parameters('$authentication')"
@@ -48,9 +48,9 @@
         }
       },
       "actions": {
-        "List_rows": {
+        "Get_all_related_staged_applications": {
           "runAfter": {
-            "Initialize_variable": [
+            "StagesCreated": [
               "Succeeded"
             ]
           },
@@ -72,7 +72,7 @@
             "authentication": "@parameters('$authentication')"
           }
         },
-        "Initialize_variable": {
+        "StagesCreated": {
           "runAfter": {},
           "metadata": {
             "operationMetadataId": "5da88063-3fce-4fa6-a6e8-17c138992abe"
@@ -105,8 +105,8 @@
                 "parameters": {
                   "entityName": "bsr_stagedapplications",
                   "item/bsr_relatedbuildingcontrolapp@odata.bind": "/bsr_buildingcontrolapplications(@{triggerOutputs()?['body/bsr_buildingcontrolapplicationid']})",
-                  "item/bsr_name": "@{triggerOutputs()?['body/bsr_name']} - Staged Application @{add(variables('StagesCreated'), 1)}",
-                  "item/bsr_stagedappstatus": 760810000
+                  "item/bsr_stagedappstatus": 760810000,
+                  "item/bsr_name": "@{triggerOutputs()?['body/bsr_name']} - Staged Application @{add(variables('StagesCreated'), 1)}"
                 },
                 "authentication": "@parameters('$authentication')"
               }
@@ -128,7 +128,7 @@
             }
           },
           "runAfter": {
-            "List_rows": [
+            "Delete_all_related_staged_app_records_(in_case_user_is_re-entering_data)": [
               "Succeeded"
             ]
           },
@@ -140,6 +140,39 @@
             "operationMetadataId": "35d47088-27e5-4e62-a708-3c63c8bb443b"
           },
           "type": "Until"
+        },
+        "Delete_all_related_staged_app_records_(in_case_user_is_re-entering_data)": {
+          "foreach": "@outputs('Get_all_related_staged_applications')?['body/value']",
+          "actions": {
+            "Delete_a_row": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "3a2c047d-c790-46f5-b1a8-8c434f40b274"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "DeleteRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "bsr_stagedapplications",
+                  "recordId": "@items('Delete_all_related_staged_app_records_(in_case_user_is_re-entering_data)')?['bsr_stagedapplicationid']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Get_all_related_staged_applications": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2c7c7ead-82a6-4dcf-8409-ae564a42d6c2"
+          },
+          "type": "Foreach"
         }
       }
     },

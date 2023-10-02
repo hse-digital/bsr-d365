@@ -85,11 +85,6 @@
               "entityName": "bsr_informationtrackers",
               "recordId": "@triggerOutputs()?['body/bsr_informationtrackerid']",
               "item/bsr_name": "@{triggerOutputs()?['body/bsr_inforeqid']} Information Request for @{outputs('Get_BCAA_Name')}",
-              "item/bsr_bcaapplicationid@odata.bind": "bsr_informationtrackers(@{outputs('Get_a_row_by_ID')?['body/_bsr_bcapplicationid_value']})",
-              "item/bsr_relatedbuildingdetails@odata.bind": "bsr_informationtrackers(@{outputs('Get_a_row_by_ID')?['body/bsr_buildingdetailsid']})",
-              "item/bsr_caseofficerid@odata.bind": "bsr_informationtrackers(@{outputs('Get_a_row_by_ID')?['body/_bsr_bdrcaseofficer_value']})",
-              "item/bsr_bcworkcategoryid@odata.bind": "bsr_informationtrackers(@{outputs('Get_a_row_by_ID')?['body/_bsr_hrbworkid_value']})",
-              "item/bsr_regulatoryleadid@odata.bind": "bsr_informationtrackers(@{outputs('Get_a_row_by_ID')?['body/_ownerid_value']})",
               "item/bsr_buildingdetailsname": "@outputs('Get_a_row_by_ID')?['body/bsr_name']"
             },
             "authentication": "@parameters('$authentication')"
