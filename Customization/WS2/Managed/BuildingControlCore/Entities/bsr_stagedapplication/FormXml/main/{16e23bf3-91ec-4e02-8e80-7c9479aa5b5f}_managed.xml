@@ -7,16 +7,16 @@
     <FormActivationState>1</FormActivationState>
     <form headerdensity="HighWithControls">
       <tabs>
-        <tab verticallayout="true" id="{d3733560-f52a-4718-860f-e6bb247fbc4d}" IsUserDefined="1">
+        <tab verticallayout="true" id="{d3733560-f52a-4718-860f-e6bb247fbc4d}" IsUserDefined="1" name="generaltab">
           <labels>
             <label description="General" languagecode="1033" />
           </labels>
           <columns>
-            <column width="100%">
+            <column width="50%">
               <sections>
-                <section showlabel="false" showbar="false" IsUserDefined="0" id="{1081a1e5-1c2f-494c-b054-ebeef61e1a5a}" locklevel="1">
+                <section showlabel="true" showbar="false" IsUserDefined="0" id="{1081a1e5-1c2f-494c-b054-ebeef61e1a5a}" locklevel="1" name="tabone">
                   <labels>
-                    <label description="General" languagecode="1033" />
+                    <label description="Info" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
@@ -24,7 +24,7 @@
                         <labels>
                           <label description="Name" languagecode="1033" />
                         </labels>
-                        <control id="bsr_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="bsr_name" />
+                        <control id="bsr_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="bsr_name" disabled="true" />
                       </cell>
                     </row>
                     <row>
@@ -44,19 +44,19 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{048dd4f0-2947-46bc-a52c-3b24453bff64}" locklevel="0" colspan="1" rowspan="1">
-                        <labels>
-                          <label description="Reg lead" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_stagedregleadowner" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_stagedregleadowner" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
                       <cell id="{bd31989d-7197-4f80-81bf-cb9813e6869c}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="Submission date" languagecode="1033" />
                         </labels>
                         <control id="bsr_stagedappsubmissiondate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_stagedappsubmissiondate" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{048dd4f0-2947-46bc-a52c-3b24453bff64}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Reg lead" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_stagedregleadowner" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_stagedregleadowner" disabled="false" />
                       </cell>
                     </row>
                     <row>
@@ -68,11 +68,143 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{84111048-2a34-4692-a61e-55bfab287b40}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{84111048-2a34-4692-a61e-55bfab287b40}" locklevel="0" colspan="1" rowspan="1" visible="false">
                         <labels>
                           <label description="Status" languagecode="1033" />
                         </labels>
                         <control id="statecode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="statecode" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="_section_186" id="8dca02e3-ac79-4212-abfc-50d29abe3487" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Application Details" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell id="{36590ce8-f959-4d94-bb0f-d6ff9f24bcfb}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_subsequentstagestatement" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_subsequentstagestatement" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c8a3cc46-ff77-40ef-a3cc-32d5a0f02a30}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_isapptheclient" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="bsr_isapptheclient" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d54cfb88-f9ae-43e7-a733-756172a9d915}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_declaration" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="bsr_declaration" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d15ea21d-90bf-4f72-ae88-3a7a2607c810}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_paymentmade" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="bsr_paymentmade" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="50%">
+              <sections>
+                <section name="generaltab_section_4" id="8c6ea2a7-1202-4487-9c60-42bf252991c2" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Documents" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell id="{a871bd3a-68f3-4883-8b5e-585b660c8069}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Subsequent stage statement" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_subsequentstagestatementurl" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_subsequentstagestatementurl" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2e17b06b-fa95-48fa-ba28-4800944c539c}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_sitelocationplan" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_sitelocationplan" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6cf48f44-ebeb-4a59-b43c-7ccfa90f8519}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_competencedeclaration" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_competencedeclaration" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{cc29bd55-4be1-4c29-8c37-591cc27e618f}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_constructioncontrolplan" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_constructioncontrolplan" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{cb0194ac-68ab-4723-b1b4-083c443b7015}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_changecontrolplan" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_changecontrolplan" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{5422a9fc-ae74-48f6-954f-e052851dd74b}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_morplan" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_morplan" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{28db0407-4ab0-47e1-9585-7b327d4b67c2}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_buildingregcompliancestatement" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_buildingregcompliancestatement" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{1aa41041-81c4-4171-a810-9a78be51927b}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_fireandemergencyfile" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_fireandemergencyfile" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2f16bbc2-1af7-4ef3-aada-3cc34d3f7203}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_drawingsandplans" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_drawingsandplans" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{9f2bb54c-f209-4960-852b-a9ca717f6e53}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_clientauthorisation" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_clientauthorisation" disabled="false" />
                       </cell>
                     </row>
                   </rows>

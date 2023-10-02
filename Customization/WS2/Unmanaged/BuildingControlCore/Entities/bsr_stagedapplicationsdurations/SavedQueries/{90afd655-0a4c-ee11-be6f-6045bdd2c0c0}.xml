@@ -19,13 +19,16 @@
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
         <entity name="bsr_stagedapplicationsdurations">
           <attribute name="bsr_stagedapplicationsdurationsid" />
           <attribute name="bsr_stageplannedstartdate" />
           <attribute name="bsr_stageplannedenddate" />
           <attribute name="bsr_nameofstage" />
           <attribute name="bsr_buildingcontrolapplicationid" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
         </entity>
       </fetch>
     </fetchxml>
