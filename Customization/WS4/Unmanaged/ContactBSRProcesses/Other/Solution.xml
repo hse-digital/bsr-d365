@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Contact BSR Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.16.0</Version>
+    <Version>1.0.17.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -146,6 +146,10 @@
         <Dependent type="29" displayName="Request Decision to Investigate" id="{381bb83f-6f43-ee11-bdf3-6045bdd0ef4d}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="bsr_section25review" displayName="Section 25 Review" solution="Active" />
+        <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
           <package>msdynce_ServiceAnchor (9.0.23091.1017)</package>
         </Required>
@@ -225,6 +229,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_case" displayName="Case" parentSchemaName="bsr_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_case" displayName="Case" parentSchemaName="bsr_section25review" parentDisplayName="Section 25 Review" solution="Active" />
         <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
@@ -308,6 +316,10 @@
         <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_section25review" parentDisplayName="Section 25 Review" solution="Active" />
+        <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_outcomedetails" displayName="Outcome Details" parentSchemaName="incident" parentDisplayName="Case" solution="Active" />
         <Dependent type="29" displayName="BSR Customer Services" id="{0ffbcde4-61c1-4355-aa89-aa1d7b2b8792}" />
       </MissingDependency>
@@ -330,6 +342,10 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_resolutioncompletedon" displayName="Resolution Completed On" parentSchemaName="incident" parentDisplayName="Case" solution="Active" />
         <Dependent type="60" displayName="PhoneToCaseProcess" parentDisplayName="Phone To Case Process" id="{9774341b-bb15-44b8-b7fa-2ad3aadefa62}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_section25reviewid" displayName="Section 25 Review" parentSchemaName="bsr_section25review" parentDisplayName="Section 25 Review" solution="Active" />
+        <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_triagecompletedby" displayName="Triage Completed By" parentSchemaName="incident" parentDisplayName="Case" solution="Active" />
@@ -462,6 +478,10 @@
           <package>msdynce_ServiceAnchor (9.0.23091.1017)</package>
         </Required>
         <Dependent type="60" displayName="PhoneToCaseProcess" parentDisplayName="Phone To Case Process" id="{9774341b-bb15-44b8-b7fa-2ad3aadefa62}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="bsr_section25review" parentDisplayName="Section 25 Review" solution="Active" />
+        <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="title" displayName="Case Title" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
