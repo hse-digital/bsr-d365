@@ -10,8 +10,9 @@
     <layoutxml>
       <grid name="bsr_projecttaskdocuments" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="bsr_projecttaskdocument" id="bsr_projecttaskdocumentid">
-          <cell name="bsr_name" width="300" />
-          <cell name="createdon" width="125" />
+          <cell name="a_ce1c33fae88540b488e6376e3cd1a09c.bsr_mdtproject" width="154" />
+          <cell name="bsr_taskid" width="100" />
+          <cell name="bsr_bsrdocumentid" width="129" />
         </row>
       </grid>
     </layoutxml>
@@ -20,12 +21,14 @@
       <fetch version="1.0" mapping="logical">
         <entity name="bsr_projecttaskdocument">
           <attribute name="bsr_projecttaskdocumentid" />
-          <attribute name="bsr_name" />
-          <attribute name="createdon" />
-          <order attribute="bsr_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <attribute name="bsr_taskid" />
+          <link-entity alias="a_ce1c33fae88540b488e6376e3cd1a09c" name="task" to="bsr_taskid" from="activityid" link-type="outer" visible="false">
+            <attribute name="bsr_mdtproject" />
+          </link-entity>
+          <attribute name="bsr_bsrdocumentid" />
         </entity>
       </fetch>
     </fetchxml>
