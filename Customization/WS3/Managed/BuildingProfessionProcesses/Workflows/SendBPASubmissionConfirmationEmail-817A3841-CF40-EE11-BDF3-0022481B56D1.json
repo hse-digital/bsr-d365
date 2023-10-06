@@ -65,7 +65,11 @@
       },
       "actions": {
         "Initialize_variable_EmailBody": {
-          "runAfter": {},
+          "runAfter": {
+            "Condition_Terminate_if_it's_not_a_RBI_application_type": [
+              "Succeeded"
+            ]
+          },
           "metadata": {
             "operationMetadataId": "0b2d6e57-978e-4786-b069-eb796c861025"
           },
@@ -275,6 +279,34 @@
             "operationMetadataId": "358c4057-fd68-4f0f-92c9-48e0547dd88c"
           },
           "type": "Foreach"
+        },
+        "Condition_Terminate_if_it's_not_a_RBI_application_type": {
+          "actions": {},
+          "runAfter": {},
+          "else": {
+            "actions": {
+              "Terminate": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "e31d3cb9-5748-4d4b-90f4-f621b35c2d73"
+                },
+                "type": "Terminate",
+                "inputs": {
+                  "runStatus": "Succeeded"
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/bsr_buildingprofessiontypecode']",
+              760810000
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2f379352-3291-4b72-a0ab-3965e1025d96"
+          },
+          "type": "If"
         }
       }
     },
