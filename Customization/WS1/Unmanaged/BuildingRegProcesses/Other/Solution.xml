@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23092.196" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23093.220" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>BuildingRegProcesses</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Reg Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.12.28.0</Version>
+    <Version>1.12.29.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -83,6 +83,7 @@
       <RootComponent type="29" id="{041ef549-a2b7-ed11-b597-0022481b568f}" behavior="0" />
       <RootComponent type="29" id="{0426ebcf-1252-ee11-be6f-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{06333f46-6f25-ee11-9965-002248c725da}" behavior="0" />
+      <RootComponent type="29" id="{08a7257e-2b64-ee11-8def-6045bd0c14e5}" behavior="0" />
       <RootComponent type="29" id="{0f0464dc-a1bd-ed11-83fe-000d3a86e5b0}" behavior="0" />
       <RootComponent type="29" id="{1b5ac829-a021-ee11-9966-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{1cfbd44f-cd09-ee11-8f6e-002248c727e7}" behavior="0" />
@@ -109,6 +110,7 @@
       <RootComponent type="29" id="{db26296d-5837-ee11-bdf4-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{db4bcb3e-cb09-ee11-8f6e-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{ddb5e613-64a9-ed11-aad1-0022481b5e4f}" behavior="0" />
+      <RootComponent type="29" id="{ed126c2c-bf62-ee11-8def-6045bd0c14e5}" behavior="0" />
       <RootComponent type="29" id="{edadf639-95d4-ed11-a7c6-6045bd0d6610}" behavior="0" />
       <RootComponent type="29" id="{ef9daff4-3f1b-ee11-8f6d-002248c727e7}" behavior="0" />
       <RootComponent type="29" id="{f872e448-4552-ee11-be6f-002248c725da}" behavior="0" />
@@ -129,6 +131,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_applicationstatustimestamp" displayName="Application Status Timestamp" solution="Active" />
         <Dependent type="29" displayName="Trigger Flow to check if the Building Application has any active status timestamp records" id="{53791bc6-edbc-ed11-83fe-000d3a86ecac}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_block" displayName="Structure" solution="Active" />
+        <Dependent type="29" displayName="Automated flow to Set UPRN/USRN  Using PostCode" id="{08a7257e-2b64-ee11-8def-6045bd0c14e5}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_block" displayName="Structure" solution="Active" />
@@ -157,6 +163,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_block" displayName="Structure" solution="Active" />
         <Dependent type="29" displayName="Auto Populate Name field for 'Structure Building Works' table" id="{db4bcb3e-cb09-ee11-8f6e-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_block" displayName="Structure" solution="Active" />
+        <Dependent type="29" displayName="Set UPRN/USRN for existing records based on AddressFromPostCode" id="{ed126c2c-bf62-ee11-8def-6045bd0c14e5}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_blockarea" displayName="Structure Area" solution="Active" />

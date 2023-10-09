@@ -1,0 +1,1330 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUser"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "2f982159-e2d8-43b0-92ff-ff0fac6ae3af"
+          },
+          "type": "Request",
+          "kind": "PowerAppV2",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "title": "Postcode",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                }
+              },
+              "required": [
+                "text"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "HTTP": {
+          "runAfter": {
+            "Initialize_variable_7": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "39ea3a23-e51b-4434-8b9b-9ca3dc97cf65"
+          },
+          "type": "Http",
+          "inputs": {
+            "method": "GET",
+            "uri": "https://api.os.uk/search/places/v1/postcode",
+            "queries": {
+              "postcode": "@triggerBody()['text']",
+              "dataset": "LPI",
+              "key": "fPaSsYzfdvNhUwwV8r36LexwkqMsk15A",
+              "fq": "CLASSIFICATION_CODE:P CLASSIFICATION_CODE:PP",
+              "maxresults": "1"
+            }
+          }
+        },
+        "Parse_JSON": {
+          "runAfter": {
+            "HTTP": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "1109c616-c330-420c-8bdf-48b5aef3116e"
+          },
+          "type": "ParseJson",
+          "inputs": {
+            "content": "@body('HTTP')",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "header": {
+                  "type": "object",
+                  "properties": {
+                    "uri": {
+                      "type": "string"
+                    },
+                    "query": {
+                      "type": "string"
+                    },
+                    "offset": {
+                      "type": "integer"
+                    },
+                    "totalresults": {
+                      "type": "integer"
+                    },
+                    "format": {
+                      "type": "string"
+                    },
+                    "dataset": {
+                      "type": "string"
+                    },
+                    "lr": {
+                      "type": "string"
+                    },
+                    "maxresults": {
+                      "type": "integer"
+                    },
+                    "epoch": {
+                      "type": "string"
+                    },
+                    "lastupdate": {
+                      "type": "string"
+                    },
+                    "filter": {
+                      "type": "string"
+                    },
+                    "output_srs": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "LPI": {
+                        "type": "object",
+                        "properties": {
+                          "UPRN": {
+                            "type": "string"
+                          },
+                          "ADDRESS": {
+                            "type": "string"
+                          },
+                          "USRN": {
+                            "type": "string"
+                          },
+                          "LPI_KEY": {
+                            "type": "string"
+                          },
+                          "PAO_START_NUMBER": {
+                            "type": "string"
+                          },
+                          "PAO_TEXT": {
+                            "type": "string"
+                          },
+                          "STREET_DESCRIPTION": {
+                            "type": "string"
+                          },
+                          "LOCALITY_NAME": {
+                            "type": "string"
+                          },
+                          "TOWN_NAME": {
+                            "type": "string"
+                          },
+                          "ADMINISTRATIVE_AREA": {
+                            "type": "string"
+                          },
+                          "POSTCODE_LOCATOR": {
+                            "type": "string"
+                          },
+                          "RPC": {
+                            "type": "string"
+                          },
+                          "X_COORDINATE": {
+                            "type": "number"
+                          },
+                          "Y_COORDINATE": {
+                            "type": "number"
+                          },
+                          "STATUS": {
+                            "type": "string"
+                          },
+                          "LOGICAL_STATUS_CODE": {
+                            "type": "string"
+                          },
+                          "CLASSIFICATION_CODE": {
+                            "type": "string"
+                          },
+                          "CLASSIFICATION_CODE_DESCRIPTION": {
+                            "type": "string"
+                          },
+                          "LOCAL_CUSTODIAN_CODE": {
+                            "type": "integer"
+                          },
+                          "LOCAL_CUSTODIAN_CODE_DESCRIPTION": {
+                            "type": "string"
+                          },
+                          "COUNTRY_CODE": {
+                            "type": "string"
+                          },
+                          "COUNTRY_CODE_DESCRIPTION": {
+                            "type": "string"
+                          },
+                          "POSTAL_ADDRESS_CODE": {
+                            "type": "string"
+                          },
+                          "POSTAL_ADDRESS_CODE_DESCRIPTION": {
+                            "type": "string"
+                          },
+                          "BLPU_STATE_CODE": {
+                            "type": "string"
+                          },
+                          "BLPU_STATE_CODE_DESCRIPTION": {
+                            "type": "string"
+                          },
+                          "TOPOGRAPHY_LAYER_TOID": {
+                            "type": "string"
+                          },
+                          "LAST_UPDATE_DATE": {
+                            "type": "string"
+                          },
+                          "ENTRY_DATE": {
+                            "type": "string"
+                          },
+                          "BLPU_STATE_DATE": {
+                            "type": "string"
+                          },
+                          "LPI_LOGICAL_STATUS_CODE": {
+                            "type": "string"
+                          },
+                          "LPI_LOGICAL_STATUS_CODE_DESCRIPTION": {
+                            "type": "string"
+                          },
+                          "LANGUAGE": {
+                            "type": "string"
+                          },
+                          "MATCH": {
+                            "type": "integer"
+                          },
+                          "MATCH_DESCRIPTION": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "required": [
+                      "LPI"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Switch": {
+          "runAfter": {
+            "Parse_JSON": [
+              "Succeeded"
+            ]
+          },
+          "cases": {
+            "Case": {
+              "case": 0,
+              "actions": {
+                "HTTP_2": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "93f67f6d-267e-4227-a301-3797904b68de"
+                  },
+                  "type": "Http",
+                  "inputs": {
+                    "method": "GET",
+                    "uri": "https://api.os.uk/search/places/v1/postcode",
+                    "queries": {
+                      "postcode": "@triggerBody()['text']",
+                      "dataset": "LPI",
+                      "key": "fPaSsYzfdvNhUwwV8r36LexwkqMsk15A",
+                      "maxresults": "1",
+                      "offset": "5"
+                    }
+                  }
+                },
+                "Parse_JSON_2": {
+                  "runAfter": {
+                    "HTTP_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "ef1704ac-3f4e-4579-892b-bdbfa75bf56b"
+                  },
+                  "type": "ParseJson",
+                  "inputs": {
+                    "content": "@body('HTTP_2')",
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "header": {
+                          "type": "object",
+                          "properties": {
+                            "uri": {
+                              "type": "string"
+                            },
+                            "query": {
+                              "type": "string"
+                            },
+                            "offset": {
+                              "type": "integer"
+                            },
+                            "totalresults": {
+                              "type": "integer"
+                            },
+                            "format": {
+                              "type": "string"
+                            },
+                            "dataset": {
+                              "type": "string"
+                            },
+                            "lr": {
+                              "type": "string"
+                            },
+                            "maxresults": {
+                              "type": "integer"
+                            },
+                            "epoch": {
+                              "type": "string"
+                            },
+                            "lastupdate": {
+                              "type": "string"
+                            },
+                            "filter": {
+                              "type": "string"
+                            },
+                            "output_srs": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "LPI": {
+                                "type": "object",
+                                "properties": {
+                                  "UPRN": {
+                                    "type": "string"
+                                  },
+                                  "ADDRESS": {
+                                    "type": "string"
+                                  },
+                                  "USRN": {
+                                    "type": "string"
+                                  },
+                                  "LPI_KEY": {
+                                    "type": "string"
+                                  },
+                                  "PAO_START_NUMBER": {
+                                    "type": "string"
+                                  },
+                                  "PAO_TEXT": {
+                                    "type": "string"
+                                  },
+                                  "STREET_DESCRIPTION": {
+                                    "type": "string"
+                                  },
+                                  "LOCALITY_NAME": {
+                                    "type": "string"
+                                  },
+                                  "TOWN_NAME": {
+                                    "type": "string"
+                                  },
+                                  "ADMINISTRATIVE_AREA": {
+                                    "type": "string"
+                                  },
+                                  "POSTCODE_LOCATOR": {
+                                    "type": "string"
+                                  },
+                                  "RPC": {
+                                    "type": "string"
+                                  },
+                                  "X_COORDINATE": {
+                                    "type": "number"
+                                  },
+                                  "Y_COORDINATE": {
+                                    "type": "number"
+                                  },
+                                  "STATUS": {
+                                    "type": "string"
+                                  },
+                                  "LOGICAL_STATUS_CODE": {
+                                    "type": "string"
+                                  },
+                                  "CLASSIFICATION_CODE": {
+                                    "type": "string"
+                                  },
+                                  "CLASSIFICATION_CODE_DESCRIPTION": {
+                                    "type": "string"
+                                  },
+                                  "LOCAL_CUSTODIAN_CODE": {
+                                    "type": "integer"
+                                  },
+                                  "LOCAL_CUSTODIAN_CODE_DESCRIPTION": {
+                                    "type": "string"
+                                  },
+                                  "COUNTRY_CODE": {
+                                    "type": "string"
+                                  },
+                                  "COUNTRY_CODE_DESCRIPTION": {
+                                    "type": "string"
+                                  },
+                                  "POSTAL_ADDRESS_CODE": {
+                                    "type": "string"
+                                  },
+                                  "POSTAL_ADDRESS_CODE_DESCRIPTION": {
+                                    "type": "string"
+                                  },
+                                  "BLPU_STATE_CODE": {
+                                    "type": "string"
+                                  },
+                                  "BLPU_STATE_CODE_DESCRIPTION": {
+                                    "type": "string"
+                                  },
+                                  "TOPOGRAPHY_LAYER_TOID": {
+                                    "type": "string"
+                                  },
+                                  "PARENT_UPRN": {
+                                    "type": "string"
+                                  },
+                                  "LAST_UPDATE_DATE": {
+                                    "type": "string"
+                                  },
+                                  "ENTRY_DATE": {
+                                    "type": "string"
+                                  },
+                                  "BLPU_STATE_DATE": {
+                                    "type": "string"
+                                  },
+                                  "LPI_LOGICAL_STATUS_CODE": {
+                                    "type": "string"
+                                  },
+                                  "LPI_LOGICAL_STATUS_CODE_DESCRIPTION": {
+                                    "type": "string"
+                                  },
+                                  "LANGUAGE": {
+                                    "type": "string"
+                                  },
+                                  "MATCH": {
+                                    "type": "integer"
+                                  },
+                                  "MATCH_DESCRIPTION": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            },
+                            "required": [
+                              "LPI"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "Apply_to_each_2": {
+                  "foreach": "@body('Parse_JSON_2')?['results']",
+                  "actions": {
+                    "HTTP_3": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "b00cd50c-6498-46e8-88ae-c49cf72f92b3"
+                      },
+                      "type": "Http",
+                      "inputs": {
+                        "method": "GET",
+                        "uri": "https://api.os.uk/search/places/v1/uprn",
+                        "queries": {
+                          "uprn": "@items('Apply_to_each_2')?['LPI']?['PARENT_UPRN']",
+                          "key": "fPaSsYzfdvNhUwwV8r36LexwkqMsk15A",
+                          "dataset": "LPI"
+                        }
+                      }
+                    },
+                    "Parse_JSON_3": {
+                      "runAfter": {
+                        "HTTP_3": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "da4d1a78-c58f-4ee6-8329-f7f7d8b659ab"
+                      },
+                      "type": "ParseJson",
+                      "inputs": {
+                        "content": "@body('HTTP_3')",
+                        "schema": {
+                          "type": "object",
+                          "properties": {
+                            "header": {
+                              "type": "object",
+                              "properties": {
+                                "uri": {
+                                  "type": "string"
+                                },
+                                "query": {
+                                  "type": "string"
+                                },
+                                "offset": {
+                                  "type": "integer"
+                                },
+                                "totalresults": {
+                                  "type": "integer"
+                                },
+                                "format": {
+                                  "type": "string"
+                                },
+                                "dataset": {
+                                  "type": "string"
+                                },
+                                "lr": {
+                                  "type": "string"
+                                },
+                                "maxresults": {
+                                  "type": "integer"
+                                },
+                                "epoch": {
+                                  "type": "string"
+                                },
+                                "lastupdate": {
+                                  "type": "string"
+                                },
+                                "filter": {
+                                  "type": "string"
+                                },
+                                "output_srs": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "results": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "LPI": {
+                                    "type": "object",
+                                    "properties": {
+                                      "UPRN": {
+                                        "type": "string"
+                                      },
+                                      "ADDRESS": {
+                                        "type": "string"
+                                      },
+                                      "USRN": {
+                                        "type": "string"
+                                      },
+                                      "LPI_KEY": {
+                                        "type": "string"
+                                      },
+                                      "PAO_START_NUMBER": {
+                                        "type": "string"
+                                      },
+                                      "PAO_TEXT": {
+                                        "type": "string"
+                                      },
+                                      "STREET_DESCRIPTION": {
+                                        "type": "string"
+                                      },
+                                      "LOCALITY_NAME": {
+                                        "type": "string"
+                                      },
+                                      "TOWN_NAME": {
+                                        "type": "string"
+                                      },
+                                      "ADMINISTRATIVE_AREA": {
+                                        "type": "string"
+                                      },
+                                      "POSTCODE_LOCATOR": {
+                                        "type": "string"
+                                      },
+                                      "RPC": {
+                                        "type": "string"
+                                      },
+                                      "X_COORDINATE": {
+                                        "type": "number"
+                                      },
+                                      "Y_COORDINATE": {
+                                        "type": "number"
+                                      },
+                                      "STATUS": {
+                                        "type": "string"
+                                      },
+                                      "LOGICAL_STATUS_CODE": {
+                                        "type": "string"
+                                      },
+                                      "CLASSIFICATION_CODE": {
+                                        "type": "string"
+                                      },
+                                      "CLASSIFICATION_CODE_DESCRIPTION": {
+                                        "type": "string"
+                                      },
+                                      "LOCAL_CUSTODIAN_CODE": {
+                                        "type": "integer"
+                                      },
+                                      "LOCAL_CUSTODIAN_CODE_DESCRIPTION": {
+                                        "type": "string"
+                                      },
+                                      "COUNTRY_CODE": {
+                                        "type": "string"
+                                      },
+                                      "COUNTRY_CODE_DESCRIPTION": {
+                                        "type": "string"
+                                      },
+                                      "POSTAL_ADDRESS_CODE": {
+                                        "type": "string"
+                                      },
+                                      "POSTAL_ADDRESS_CODE_DESCRIPTION": {
+                                        "type": "string"
+                                      },
+                                      "BLPU_STATE_CODE": {
+                                        "type": "string"
+                                      },
+                                      "BLPU_STATE_CODE_DESCRIPTION": {
+                                        "type": "string"
+                                      },
+                                      "TOPOGRAPHY_LAYER_TOID": {
+                                        "type": "string"
+                                      },
+                                      "PARENT_UPRN": {
+                                        "type": "string"
+                                      },
+                                      "LAST_UPDATE_DATE": {
+                                        "type": "string"
+                                      },
+                                      "ENTRY_DATE": {
+                                        "type": "string"
+                                      },
+                                      "BLPU_STATE_DATE": {
+                                        "type": "string"
+                                      },
+                                      "LPI_LOGICAL_STATUS_CODE": {
+                                        "type": "string"
+                                      },
+                                      "LPI_LOGICAL_STATUS_CODE_DESCRIPTION": {
+                                        "type": "string"
+                                      },
+                                      "LANGUAGE": {
+                                        "type": "string"
+                                      },
+                                      "MATCH": {
+                                        "type": "integer"
+                                      },
+                                      "MATCH_DESCRIPTION": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "LPI"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "Apply_to_each_3": {
+                      "foreach": "@body('Parse_JSON_3')?['results']",
+                      "actions": {
+                        "Set_variable_8": {
+                          "runAfter": {},
+                          "metadata": {
+                            "operationMetadataId": "62c3757e-1236-4fd4-a932-65ff0d18bbad"
+                          },
+                          "type": "SetVariable",
+                          "inputs": {
+                            "name": "Address1",
+                            "value": "@{items('Apply_to_each_3')?['LPI']?['PAO_TEXT']} @{items('Apply_to_each_3')?['LPI']?['PAO_START_NUMBER']} @{items('Apply_to_each_3')?['LPI']?['STREET_DESCRIPTION']}"
+                          }
+                        },
+                        "Set_variable_9": {
+                          "runAfter": {
+                            "Set_variable_8": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "a5e1558b-1c3c-4b7c-8594-8e1c4d6360a7"
+                          },
+                          "type": "SetVariable",
+                          "inputs": {
+                            "name": "Address2",
+                            "value": "@items('Apply_to_each_3')?['LPI']?['LOCALITY_NAME']"
+                          }
+                        },
+                        "Set_variable_10": {
+                          "runAfter": {
+                            "Set_variable_9": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "650174d7-481e-47d4-8a58-2f220f537eb6"
+                          },
+                          "type": "SetVariable",
+                          "inputs": {
+                            "name": "City",
+                            "value": "@items('Apply_to_each_3')?['LPI']?['TOWN_NAME']"
+                          }
+                        },
+                        "Set_variable_11": {
+                          "runAfter": {
+                            "Set_variable_10": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "9cad7267-0fda-4e9e-9fa5-a655e135e45e"
+                          },
+                          "type": "SetVariable",
+                          "inputs": {
+                            "name": "County",
+                            "value": "@items('Apply_to_each_3')?['LPI']?['ADMINISTRATIVE_AREA']"
+                          }
+                        },
+                        "Set_variable_12": {
+                          "runAfter": {
+                            "Set_variable_11": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "544e6d4e-ae1d-498b-b6af-89ebc0748ec9"
+                          },
+                          "type": "SetVariable",
+                          "inputs": {
+                            "name": "PostCode",
+                            "value": "@items('Apply_to_each_3')?['LPI']?['POSTCODE_LOCATOR']"
+                          }
+                        },
+                        "Set_variable_13": {
+                          "runAfter": {
+                            "Set_variable_12": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "4079d576-d128-4d89-9dd6-3802a98cf38b"
+                          },
+                          "type": "SetVariable",
+                          "inputs": {
+                            "name": "UPRN",
+                            "value": "@items('Apply_to_each_3')?['LPI']?['UPRN']"
+                          }
+                        },
+                        "Set_variable_14": {
+                          "runAfter": {
+                            "Set_variable_13": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "101a5338-42b3-47c5-bc2f-a179032ce5cd"
+                          },
+                          "type": "SetVariable",
+                          "inputs": {
+                            "name": "USRN",
+                            "value": "@items('Apply_to_each_3')?['LPI']?['USRN']"
+                          }
+                        }
+                      },
+                      "runAfter": {
+                        "Parse_JSON_3": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "998f4184-c71e-403f-b1c3-d3c38c38a3b2"
+                      },
+                      "type": "Foreach"
+                    }
+                  },
+                  "runAfter": {
+                    "Parse_JSON_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "1b11ce50-7d13-49ae-bd3d-64ce8a68892d"
+                  },
+                  "type": "Foreach",
+                  "runtimeConfiguration": {
+                    "concurrency": {
+                      "repetitions": 1
+                    }
+                  }
+                },
+                "Respond_to_a_PowerApp_or_flow_2": {
+                  "runAfter": {
+                    "Apply_to_each_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "5d873bad-6f11-4556-b01f-987524713b02"
+                  },
+                  "type": "Response",
+                  "kind": "PowerApp",
+                  "inputs": {
+                    "statusCode": 200,
+                    "body": {
+                      "address1": "@variables('Address1')",
+                      "address2": "@variables('Address2')",
+                      "city": "@variables('City')",
+                      "county": "@variables('County')",
+                      "postcode": "@variables('PostCode')",
+                      "uprn": "@variables('UPRN')",
+                      "usrn": "@variables('USRN')"
+                    },
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "address1": {
+                          "title": "Address1",
+                          "x-ms-dynamically-added": true,
+                          "type": "string"
+                        },
+                        "address2": {
+                          "title": "Address2",
+                          "x-ms-dynamically-added": true,
+                          "type": "string"
+                        },
+                        "city": {
+                          "title": "City",
+                          "x-ms-dynamically-added": true,
+                          "type": "string"
+                        },
+                        "county": {
+                          "title": "County",
+                          "x-ms-dynamically-added": true,
+                          "type": "string"
+                        },
+                        "postcode": {
+                          "title": "PostCode",
+                          "x-ms-dynamically-added": true,
+                          "type": "string"
+                        },
+                        "uprn": {
+                          "title": "UPRN",
+                          "x-ms-dynamically-added": true,
+                          "type": "string"
+                        },
+                        "usrn": {
+                          "title": "USRN",
+                          "x-ms-dynamically-added": true,
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "Respond_to_a_PowerApp_or_flow_3": {
+                  "runAfter": {
+                    "Apply_to_each_2": [
+                      "Failed"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "b3941bc7-f337-4e15-b894-78ce9a0b4f97"
+                  },
+                  "type": "Response",
+                  "kind": "PowerApp",
+                  "inputs": {
+                    "statusCode": 200,
+                    "body": {
+                      "address1": "No matching building address found",
+                      "address2": "N/A",
+                      "city": "N/A",
+                      "county": "N/A",
+                      "postcode": "N/A",
+                      "uprn": "N/A",
+                      "usrn": "N/A"
+                    },
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "address1": {
+                          "title": "Address1",
+                          "x-ms-dynamically-added": true,
+                          "type": "string"
+                        },
+                        "address2": {
+                          "title": "Address2",
+                          "x-ms-dynamically-added": true,
+                          "type": "string"
+                        },
+                        "city": {
+                          "title": "City",
+                          "x-ms-dynamically-added": true,
+                          "type": "string"
+                        },
+                        "county": {
+                          "title": "County",
+                          "x-ms-dynamically-added": true,
+                          "type": "string"
+                        },
+                        "postcode": {
+                          "title": "PostCode",
+                          "x-ms-dynamically-added": true,
+                          "type": "string"
+                        },
+                        "uprn": {
+                          "title": "UPRN",
+                          "x-ms-dynamically-added": true,
+                          "type": "string"
+                        },
+                        "usrn": {
+                          "title": "USRN",
+                          "x-ms-dynamically-added": true,
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "Terminate": {
+                  "runAfter": {
+                    "Respond_to_a_PowerApp_or_flow_3": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "2dcaf6aa-7709-4443-81b1-4297e0dc8154"
+                  },
+                  "type": "Terminate",
+                  "inputs": {
+                    "runStatus": "Succeeded"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "actions": {
+              "Apply_to_each": {
+                "foreach": "@body('Parse_JSON')?['results']",
+                "actions": {
+                  "Set_variable": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "cbd7bf10-810e-4da0-8dd4-43f1331d059c"
+                    },
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "Address1",
+                      "value": "@{items('Apply_to_each')?['LPI']?['PAO_TEXT']} @{items('Apply_to_each')?['LPI']?['PAO_START_NUMBER']} @{items('Apply_to_each')?['LPI']?['STREET_DESCRIPTION']}"
+                    }
+                  },
+                  "Set_variable_2": {
+                    "runAfter": {
+                      "Set_variable": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "a5177ac0-6d93-4854-a164-1d2d029e0881"
+                    },
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "Address2",
+                      "value": "@items('Apply_to_each')?['LPI']?['LOCALITY_NAME']"
+                    }
+                  },
+                  "Set_variable_3": {
+                    "runAfter": {
+                      "Set_variable_2": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "47c361e9-469a-4862-9c07-f22c7b3b92c7"
+                    },
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "City",
+                      "value": "@items('Apply_to_each')?['LPI']?['TOWN_NAME']"
+                    }
+                  },
+                  "Set_variable_4": {
+                    "runAfter": {
+                      "Set_variable_3": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "6f571068-e09c-47fb-b28f-54044253f723"
+                    },
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "County",
+                      "value": "@items('Apply_to_each')?['LPI']?['ADMINISTRATIVE_AREA']"
+                    }
+                  },
+                  "Set_variable_5": {
+                    "runAfter": {
+                      "Set_variable_4": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "930e6693-027f-4903-924a-ff3091e615a9"
+                    },
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "PostCode",
+                      "value": "@items('Apply_to_each')?['LPI']?['POSTCODE_LOCATOR']"
+                    }
+                  },
+                  "Set_variable_6": {
+                    "runAfter": {
+                      "Set_variable_5": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "47bf305a-fc2b-408e-9976-53b92bbbebbb"
+                    },
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "UPRN",
+                      "value": "@items('Apply_to_each')?['LPI']?['UPRN']"
+                    }
+                  },
+                  "Set_variable_7": {
+                    "runAfter": {
+                      "Set_variable_6": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "a3eb71a1-befe-4fba-a159-6dc810db30ee"
+                    },
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "USRN",
+                      "value": "@items('Apply_to_each')?['LPI']?['USRN']"
+                    }
+                  }
+                },
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "439bba31-1b7f-4453-8910-41f29d5ef9e6"
+                },
+                "type": "Foreach",
+                "runtimeConfiguration": {
+                  "concurrency": {
+                    "repetitions": 1
+                  }
+                }
+              },
+              "Respond_to_a_PowerApp_or_flow": {
+                "runAfter": {
+                  "Apply_to_each": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "cd3b3d41-af6d-461a-9270-ff12b0e9c36b"
+                },
+                "type": "Response",
+                "kind": "PowerApp",
+                "inputs": {
+                  "statusCode": 200,
+                  "body": {
+                    "address1": "@variables('Address1')",
+                    "address2": "@variables('Address2')",
+                    "city": "@variables('City')",
+                    "county": "@variables('County')",
+                    "postcode": "@variables('PostCode')",
+                    "uprn": "@variables('UPRN')",
+                    "usrn": "@variables('USRN')"
+                  },
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "address1": {
+                        "title": "Address1",
+                        "x-ms-dynamically-added": true,
+                        "type": "string"
+                      },
+                      "address2": {
+                        "title": "Address2",
+                        "x-ms-dynamically-added": true,
+                        "type": "string"
+                      },
+                      "city": {
+                        "title": "City",
+                        "x-ms-dynamically-added": true,
+                        "type": "string"
+                      },
+                      "county": {
+                        "title": "County",
+                        "x-ms-dynamically-added": true,
+                        "type": "string"
+                      },
+                      "postcode": {
+                        "title": "PostCode",
+                        "x-ms-dynamically-added": true,
+                        "type": "string"
+                      },
+                      "uprn": {
+                        "title": "UPRN",
+                        "x-ms-dynamically-added": true,
+                        "type": "string"
+                      },
+                      "usrn": {
+                        "title": "USRN",
+                        "x-ms-dynamically-added": true,
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "List_rows_from_Structure_Based_on_Post_Code_Match": {
+                "runAfter": {
+                  "Respond_to_a_PowerApp_or_flow": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "5192d8f7-ff68-4331-b6b6-7434a2255673"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps",
+                    "operationId": "ListRecords",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "bsr_blocks",
+                    "fetchXml": "<fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\">\n  <entity name=\"bsr_block\">\n    <attribute name=\"bsr_blockid\" />\n    <attribute name=\"bsr_name\" />\n    <attribute name=\"createdon\" />\n    <attribute name=\"bsr_usrn\" />\n    <attribute name=\"bsr_uprn\" />\n    <attribute name=\"bsr_postcode\" />\n    <order attribute=\"bsr_name\" descending=\"false\" />\n    <filter type=\"and\">\n      <condition attribute=\"bsr_postcode\" operator=\"eq\" value=\"@{triggerBody()['text']}\" />\n    </filter>\n  </entity>\n</fetch>"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              },
+              "Apply_to_each_4": {
+                "foreach": "@outputs('List_rows_from_Structure_Based_on_Post_Code_Match')?['body/value']",
+                "actions": {
+                  "Update_rows_in_existing_Structure_table": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "961f81ec-632c-490e-bab2-f04e7cb4553b"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "UpdateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "bsr_blocks",
+                        "recordId": "@items('Apply_to_each_4')?['bsr_blockid']",
+                        "item/bsr_uprn": "@variables('UPRN')",
+                        "item/bsr_usrn": "@variables('USRN')"
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  }
+                },
+                "runAfter": {
+                  "List_rows_from_Structure_Based_on_Post_Code_Match": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "493366bc-a67d-4869-9e35-bd69457b142a"
+                },
+                "type": "Foreach"
+              }
+            }
+          },
+          "expression": "@body('Parse_JSON')?['header']?['totalresults']",
+          "metadata": {
+            "operationMetadataId": "c18c6604-949b-45ab-b789-7f066f727baf"
+          },
+          "type": "Switch"
+        },
+        "Initialize_variable": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "1839854a-15dd-4784-b356-736bef0aad64"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Address1",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_2": {
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "46ef77db-bb50-4e59-b2e4-8f8b286ca5f3"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Address2",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_3": {
+          "runAfter": {
+            "Initialize_variable_2": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "16ca3a40-f613-4fe0-b64f-59f80ba670ef"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "City",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_4": {
+          "runAfter": {
+            "Initialize_variable_3": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f61cb67b-3c1b-48ca-8294-7f7cfb748320"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "County",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_5": {
+          "runAfter": {
+            "Initialize_variable_4": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "7b69bf24-79a2-4cae-a507-cfedeb26046c"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "PostCode",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_6": {
+          "runAfter": {
+            "Initialize_variable_5": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3daae3a4-1ddb-4771-b417-3c56cd38ac21"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "UPRN",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_7": {
+          "runAfter": {
+            "Initialize_variable_6": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "baebd1a7-9ab4-441d-93ad-a7557f2d6de1"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "USRN",
+                "type": "string"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}
