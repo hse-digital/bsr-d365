@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{6c2ffeaa-73b9-4946-b472-4824f0ac1b4c}</savedqueryid>
+    <layoutxml>
+      <grid name="bsr_noticetypeses" jump="bsr_name" select="1" icon="1" preview="0">
+        <row name="bsr_noticetypes" id="bsr_noticetypesid">
+          <cell name="bsr_name" width="300" />
+          <cell name="bsr_displayorder" width="120" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>64</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical" count="50">
+        <entity name="bsr_noticetypes">
+          <attribute name="bsr_noticetypesid" />
+          <attribute name="bsr_name" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="bsr_displayorder" />
+          <order attribute="bsr_displayorder" descending="false" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Notice Types Lookup View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

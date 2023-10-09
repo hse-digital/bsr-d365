@@ -3,6 +3,15 @@
   <Name LocalizedName="Case" OriginalName="Case">Incident</Name>
   <EntityInfo>
     <entity Name="Incident">
+      <LocalizedNames>
+        <LocalizedName description="Case" languagecode="1033" />
+      </LocalizedNames>
+      <LocalizedCollectionNames>
+        <LocalizedCollectionName description="Cases" languagecode="1033" />
+      </LocalizedCollectionNames>
+      <Descriptions>
+        <Description description="Service request case associated with a contract." languagecode="1033" />
+      </Descriptions>
       <attributes>
         <attribute PhysicalName="bsr_2ormoreresidencesinbuilding">
           <Type>picklist</Type>
@@ -82,7 +91,7 @@
             <Description description="" languagecode="1033" />
           </Descriptions>
         </attribute>
-        <attribute PhysicalName="bsr_block_incidentId" unmodified="1">
+        <attribute PhysicalName="bsr_block_incidentId">
           <Type>lookup</Type>
           <Name>bsr_block_incidentid</Name>
           <LogicalName>bsr_block_incidentid</LogicalName>
@@ -108,10 +117,10 @@
           <LookupStyle>single</LookupStyle>
           <LookupTypes />
           <displaynames>
-            <displayname description="Block" languagecode="1033" />
+            <displayname description="Structure" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Unique identifier for Block associated with Case." languagecode="1033" />
+            <Description description="Unique identifier for Structure associated with Case." languagecode="1033" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="bsr_building">
@@ -142,7 +151,7 @@
           <AutoNumberFormat></AutoNumberFormat>
           <IsSearchable>1</IsSearchable>
           <IsFilterable>0</IsFilterable>
-          <IsRetrievable>0</IsRetrievable>
+          <IsRetrievable>1</IsRetrievable>
           <IsLocalizable>0</IsLocalizable>
           <LookupStyle>single</LookupStyle>
           <LookupTypes />
@@ -233,38 +242,6 @@
             <Description description="Online form - About the building -  Address Line 2" languagecode="1033" />
           </Descriptions>
         </attribute>
-        <attribute PhysicalName="bsr_buildingapplication_incidentId" unmodified="1">
-          <Type>lookup</Type>
-          <Name>bsr_buildingapplication_incidentid</Name>
-          <LogicalName>bsr_buildingapplication_incidentid</LogicalName>
-          <RequiredLevel>none</RequiredLevel>
-          <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
-          <ImeMode>auto</ImeMode>
-          <ValidForUpdateApi>1</ValidForUpdateApi>
-          <ValidForReadApi>1</ValidForReadApi>
-          <ValidForCreateApi>1</ValidForCreateApi>
-          <IsCustomField>1</IsCustomField>
-          <IsAuditEnabled>0</IsAuditEnabled>
-          <IsSecured>0</IsSecured>
-          <IntroducedVersion>1.0.6.0</IntroducedVersion>
-          <SourceType>0</SourceType>
-          <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-          <IsSortableEnabled>0</IsSortableEnabled>
-          <IsDataSourceSecret>0</IsDataSourceSecret>
-          <AutoNumberFormat></AutoNumberFormat>
-          <IsSearchable>0</IsSearchable>
-          <IsFilterable>0</IsFilterable>
-          <IsRetrievable>0</IsRetrievable>
-          <IsLocalizable>0</IsLocalizable>
-          <LookupStyle>single</LookupStyle>
-          <LookupTypes />
-          <displaynames>
-            <displayname description="buildingapplication_incident" languagecode="1033" />
-          </displaynames>
-          <Descriptions>
-            <Description description="Unique identifier for Building Application associated with Case." languagecode="1033" />
-          </Descriptions>
-        </attribute>
         <attribute PhysicalName="bsr_buildingcounty">
           <Type>nvarchar</Type>
           <Name>bsr_buildingcounty</Name>
@@ -345,12 +322,12 @@
             <Description description="Online form - About the building - Building height (m)" languagecode="1033" />
           </Descriptions>
         </attribute>
-        <attribute PhysicalName="bsr_BuildingId" unmodified="1">
+        <attribute PhysicalName="bsr_BuildingId">
           <Type>lookup</Type>
           <Name>bsr_buildingid</Name>
           <LogicalName>bsr_buildingid</LogicalName>
           <RequiredLevel>none</RequiredLevel>
-          <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+          <DisplayMask>ValidForForm|ValidForGrid</DisplayMask>
           <ImeMode>auto</ImeMode>
           <ValidForUpdateApi>1</ValidForUpdateApi>
           <ValidForReadApi>1</ValidForReadApi>
@@ -371,7 +348,7 @@
           <LookupStyle>single</LookupStyle>
           <LookupTypes />
           <displaynames>
-            <displayname description="Building" languagecode="1033" />
+            <displayname description="(Delete) Building" languagecode="1033" />
           </displaynames>
           <Descriptions>
             <Description description="Unique identifier for Building associated with Case." languagecode="1033" />
@@ -422,7 +399,7 @@
           <Name>bsr_buildingregion</Name>
           <LogicalName>bsr_buildingregion</LogicalName>
           <RequiredLevel>none</RequiredLevel>
-          <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+          <DisplayMask>ValidForForm|ValidForGrid</DisplayMask>
           <ImeMode>auto</ImeMode>
           <ValidForUpdateApi>1</ValidForUpdateApi>
           <ValidForReadApi>1</ValidForReadApi>
@@ -450,7 +427,7 @@
           <AppDefaultValue>-1</AppDefaultValue>
           <OptionSetName>bsr_buildingregion</OptionSetName>
           <displaynames>
-            <displayname description="Building Region" languagecode="1033" />
+            <displayname description="(Delete) Building Region " languagecode="1033" />
           </displaynames>
           <Descriptions>
             <Description description="Online form - About the building - In which part of the UK is the building?" languagecode="1033" />
@@ -706,10 +683,10 @@
           <IsRetrievable>0</IsRetrievable>
           <IsLocalizable>0</IsLocalizable>
           <displaynames>
-            <displayname description="Complaint About" languagecode="1033" />
+            <displayname description="Complaint About (Person or Org)" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="" languagecode="1033" />
+            <Description description="Account or Contact that this complaint is about. Manually populated by user." languagecode="1033" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="bsr_complaintabouttopic">
@@ -1105,8 +1082,8 @@
           <IsRetrievable>0</IsRetrievable>
           <IsLocalizable>0</IsLocalizable>
           <Format>text</Format>
-          <MaxLength>100</MaxLength>
-          <Length>200</Length>
+          <MaxLength>1000</MaxLength>
+          <Length>2000</Length>
           <displaynames>
             <displayname description="Who are you? (other)" languagecode="1033" />
           </displaynames>
@@ -1635,7 +1612,7 @@
           <Name>bsr_independentsection</Name>
           <LogicalName>bsr_independentsection</LogicalName>
           <RequiredLevel>none</RequiredLevel>
-          <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+          <DisplayMask>ValidForForm|ValidForGrid</DisplayMask>
           <ImeMode>auto</ImeMode>
           <ValidForUpdateApi>1</ValidForUpdateApi>
           <ValidForReadApi>1</ValidForReadApi>
@@ -1663,7 +1640,7 @@
           <LookupStyle>single</LookupStyle>
           <LookupTypes />
           <displaynames>
-            <displayname description="Independent Section" languagecode="1033" />
+            <displayname description="(Delete) Independent Section" languagecode="1033" />
           </displaynames>
           <Descriptions>
             <Description description="The independent this case is about" languagecode="1033" />
@@ -1934,6 +1911,68 @@
             <Description description="" languagecode="1033" />
           </Descriptions>
         </attribute>
+        <attribute PhysicalName="bsr_NewEmailReceived">
+          <Type>bit</Type>
+          <Name>bsr_newemailreceived</Name>
+          <LogicalName>bsr_newemailreceived</LogicalName>
+          <RequiredLevel>none</RequiredLevel>
+          <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+          <ImeMode>auto</ImeMode>
+          <ValidForUpdateApi>1</ValidForUpdateApi>
+          <ValidForReadApi>1</ValidForReadApi>
+          <ValidForCreateApi>1</ValidForCreateApi>
+          <IsCustomField>1</IsCustomField>
+          <IsAuditEnabled>1</IsAuditEnabled>
+          <IsSecured>0</IsSecured>
+          <IntroducedVersion>1.0.32.0</IntroducedVersion>
+          <IsCustomizable>1</IsCustomizable>
+          <IsRenameable>1</IsRenameable>
+          <CanModifySearchSettings>1</CanModifySearchSettings>
+          <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+          <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+          <SourceType>0</SourceType>
+          <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+          <IsSortableEnabled>0</IsSortableEnabled>
+          <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+          <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+          <IsDataSourceSecret>0</IsDataSourceSecret>
+          <AutoNumberFormat></AutoNumberFormat>
+          <IsSearchable>0</IsSearchable>
+          <IsFilterable>0</IsFilterable>
+          <IsRetrievable>0</IsRetrievable>
+          <IsLocalizable>0</IsLocalizable>
+          <AppDefaultValue>0</AppDefaultValue>
+          <optionset Name="bsr_incident_bsr_newemailreceived">
+            <OptionSetType>bit</OptionSetType>
+            <IntroducedVersion>1.0.32.0</IntroducedVersion>
+            <IsCustomizable>1</IsCustomizable>
+            <ExternalTypeName></ExternalTypeName>
+            <displaynames>
+              <displayname description="New Email Received" languagecode="1033" />
+            </displaynames>
+            <Descriptions>
+              <Description description="" languagecode="1033" />
+            </Descriptions>
+            <options>
+              <option value="1" ExternalValue="">
+                <labels>
+                  <label description="Yes" languagecode="1033" />
+                </labels>
+              </option>
+              <option value="0" ExternalValue="">
+                <labels>
+                  <label description="No" languagecode="1033" />
+                </labels>
+              </option>
+            </options>
+          </optionset>
+          <displaynames>
+            <displayname description="New Email Received" languagecode="1033" />
+          </displaynames>
+          <Descriptions>
+            <Description description="" languagecode="1033" />
+          </Descriptions>
+        </attribute>
         <attribute PhysicalName="bsr_numberoffloors">
           <Type>int</Type>
           <Name>bsr_numberoffloors</Name>
@@ -2012,6 +2051,45 @@
           </displaynames>
           <Descriptions>
             <Description description="Online form - About the building - Number of residential units" languagecode="1033" />
+          </Descriptions>
+        </attribute>
+        <attribute PhysicalName="bsr_OriginatingCase">
+          <Type>lookup</Type>
+          <Name>bsr_originatingcase</Name>
+          <LogicalName>bsr_originatingcase</LogicalName>
+          <RequiredLevel>none</RequiredLevel>
+          <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+          <ImeMode>auto</ImeMode>
+          <ValidForUpdateApi>1</ValidForUpdateApi>
+          <ValidForReadApi>1</ValidForReadApi>
+          <ValidForCreateApi>1</ValidForCreateApi>
+          <IsCustomField>1</IsCustomField>
+          <IsAuditEnabled>0</IsAuditEnabled>
+          <IsSecured>0</IsSecured>
+          <IntroducedVersion>1.0.0.0</IntroducedVersion>
+          <IsCustomizable>1</IsCustomizable>
+          <IsRenameable>1</IsRenameable>
+          <CanModifySearchSettings>1</CanModifySearchSettings>
+          <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+          <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+          <SourceType>0</SourceType>
+          <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+          <IsSortableEnabled>0</IsSortableEnabled>
+          <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+          <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+          <IsDataSourceSecret>0</IsDataSourceSecret>
+          <AutoNumberFormat></AutoNumberFormat>
+          <IsSearchable>0</IsSearchable>
+          <IsFilterable>0</IsFilterable>
+          <IsRetrievable>0</IsRetrievable>
+          <IsLocalizable>0</IsLocalizable>
+          <LookupStyle>single</LookupStyle>
+          <LookupTypes />
+          <displaynames>
+            <displayname description="Originating Case" languagecode="1033" />
+          </displaynames>
+          <Descriptions>
+            <Description description="" languagecode="1033" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="bsr_outcomedetails">
@@ -2836,6 +2914,38 @@
             <Description description="Select the type of case to identify the incident for use in case routing and analysis." languagecode="1033" />
           </Descriptions>
         </attribute>
+        <attribute PhysicalName="CreatedOn">
+          <Type>datetime</Type>
+          <Name>createdon</Name>
+          <LogicalName>createdon</LogicalName>
+          <RequiredLevel>none</RequiredLevel>
+          <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+          <ImeMode>inactive</ImeMode>
+          <ValidForUpdateApi>0</ValidForUpdateApi>
+          <ValidForReadApi>1</ValidForReadApi>
+          <ValidForCreateApi>0</ValidForCreateApi>
+          <IsCustomField>0</IsCustomField>
+          <IsAuditEnabled>0</IsAuditEnabled>
+          <IsSecured>0</IsSecured>
+          <IntroducedVersion>5.0.0.0</IntroducedVersion>
+          <SourceType>0</SourceType>
+          <IsGlobalFilterEnabled>1</IsGlobalFilterEnabled>
+          <IsSortableEnabled>1</IsSortableEnabled>
+          <IsDataSourceSecret>0</IsDataSourceSecret>
+          <AutoNumberFormat></AutoNumberFormat>
+          <IsSearchable>0</IsSearchable>
+          <IsFilterable>1</IsFilterable>
+          <IsRetrievable>1</IsRetrievable>
+          <IsLocalizable>0</IsLocalizable>
+          <Format>datetime</Format>
+          <Behavior>1</Behavior>
+          <displaynames>
+            <displayname description="Created On" languagecode="1033" />
+          </displaynames>
+          <Descriptions>
+            <Description description="Date and time when the record was created." languagecode="1033" />
+          </Descriptions>
+        </attribute>
         <attribute PhysicalName="CustomerId">
           <Type>customer</Type>
           <Name>customerid</Name>
@@ -2855,9 +2965,9 @@
           <IsSortableEnabled>1</IsSortableEnabled>
           <IsDataSourceSecret>0</IsDataSourceSecret>
           <AutoNumberFormat></AutoNumberFormat>
-          <IsSearchable>0</IsSearchable>
+          <IsSearchable>1</IsSearchable>
           <IsFilterable>0</IsFilterable>
-          <IsRetrievable>0</IsRetrievable>
+          <IsRetrievable>1</IsRetrievable>
           <IsLocalizable>0</IsLocalizable>
           <displaynames>
             <displayname description="Customer" languagecode="1033" />
@@ -2866,36 +2976,44 @@
             <Description description="Select the customer account or contact to provide a quick link to additional customer details, such as account information, activities, and opportunities." languagecode="1033" />
           </Descriptions>
         </attribute>
-        <attribute PhysicalName="Description" unmodified="1">
-          <Type>ntext</Type>
-          <Name>description</Name>
-          <LogicalName>description</LogicalName>
+        <attribute PhysicalName="EntityImage">
+          <Type>image</Type>
+          <Name>entityimage</Name>
+          <LogicalName>entityimage</LogicalName>
           <RequiredLevel>none</RequiredLevel>
-          <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
-          <ImeMode>auto</ImeMode>
+          <DisplayMask>DenormalizedChild|PrimaryImage</DisplayMask>
+          <ImeMode>disabled</ImeMode>
           <ValidForUpdateApi>1</ValidForUpdateApi>
           <ValidForReadApi>1</ValidForReadApi>
           <ValidForCreateApi>1</ValidForCreateApi>
           <IsCustomField>0</IsCustomField>
-          <IsAuditEnabled>1</IsAuditEnabled>
+          <IsAuditEnabled>0</IsAuditEnabled>
+          <IsLogical>1</IsLogical>
           <IsSecured>0</IsSecured>
-          <IntroducedVersion>5.0.0.0</IntroducedVersion>
+          <IntroducedVersion>6.0.0.0</IntroducedVersion>
+          <IsCustomizable>1</IsCustomizable>
+          <IsRenameable>1</IsRenameable>
+          <CanModifySearchSettings>0</CanModifySearchSettings>
+          <CanModifyRequirementLevelSettings>0</CanModifyRequirementLevelSettings>
+          <CanModifyAdditionalSettings>0</CanModifyAdditionalSettings>
           <SourceType>0</SourceType>
           <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
           <IsSortableEnabled>0</IsSortableEnabled>
+          <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+          <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
           <IsDataSourceSecret>0</IsDataSourceSecret>
           <AutoNumberFormat></AutoNumberFormat>
           <IsSearchable>0</IsSearchable>
           <IsFilterable>0</IsFilterable>
           <IsRetrievable>0</IsRetrievable>
           <IsLocalizable>0</IsLocalizable>
-          <Format>textarea</Format>
-          <MaxLength>2000</MaxLength>
+          <Format>jpeg</Format>
+          <MaxLength>9437328</MaxLength>
           <displaynames>
-            <displayname description="Description" languagecode="1033" />
+            <displayname description="Entity Image" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Type additional information to describe the case to assist the service team in reaching a resolution." languagecode="1033" />
+            <Description description="The default image for the entity." languagecode="1033" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="IncidentStageCode">
@@ -2913,8 +3031,8 @@
           <IsSecured>0</IsSecured>
           <IntroducedVersion>5.0.0.0</IntroducedVersion>
           <SourceType>0</SourceType>
-          <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-          <IsSortableEnabled>0</IsSortableEnabled>
+          <IsGlobalFilterEnabled>1</IsGlobalFilterEnabled>
+          <IsSortableEnabled>1</IsSortableEnabled>
           <IsDataSourceSecret>0</IsDataSourceSecret>
           <AutoNumberFormat></AutoNumberFormat>
           <IsSearchable>0</IsSearchable>
@@ -2932,7 +3050,7 @@
               <Description description="Stage of the resolution process for the case." languagecode="1033" />
             </Descriptions>
             <options>
-              <option value="1">
+              <option value="1" ExternalValue="" Color="">
                 <labels>
                   <label description="New" languagecode="1033" />
                 </labels>
@@ -2940,7 +3058,7 @@
                   <Description description="" languagecode="1033" />
                 </Descriptions>
               </option>
-              <option value="760810001">
+              <option value="760810001" ExternalValue="" Color="">
                 <labels>
                   <label description="Triage" languagecode="1033" />
                 </labels>
@@ -2948,7 +3066,7 @@
                   <Description description="" languagecode="1033" />
                 </Descriptions>
               </option>
-              <option value="760810002">
+              <option value="760810002" ExternalValue="" Color="">
                 <labels>
                   <label description="Follow Up" languagecode="1033" />
                 </labels>
@@ -2956,7 +3074,7 @@
                   <Description description="" languagecode="1033" />
                 </Descriptions>
               </option>
-              <option value="760810003">
+              <option value="760810003" ExternalValue="" Color="">
                 <labels>
                   <label description="Resolution" languagecode="1033" />
                 </labels>
@@ -2971,6 +3089,74 @@
           </displaynames>
           <Descriptions>
             <Description description="Select the current stage of the service process for the case to assist service team members when they review or transfer a case." languagecode="1033" />
+          </Descriptions>
+        </attribute>
+        <attribute PhysicalName="nextsla">
+          <Type>nvarchar</Type>
+          <Name>nextsla</Name>
+          <LogicalName>nextsla</LogicalName>
+          <RequiredLevel>none</RequiredLevel>
+          <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+          <ImeMode>auto</ImeMode>
+          <ValidForUpdateApi>1</ValidForUpdateApi>
+          <ValidForReadApi>1</ValidForReadApi>
+          <ValidForCreateApi>1</ValidForCreateApi>
+          <IsCustomField>1</IsCustomField>
+          <IsAuditEnabled>0</IsAuditEnabled>
+          <IsSecured>0</IsSecured>
+          <IntroducedVersion>1.0.0.0</IntroducedVersion>
+          <SourceType>0</SourceType>
+          <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+          <IsSortableEnabled>0</IsSortableEnabled>
+          <IsDataSourceSecret>0</IsDataSourceSecret>
+          <AutoNumberFormat></AutoNumberFormat>
+          <IsSearchable>0</IsSearchable>
+          <IsFilterable>0</IsFilterable>
+          <IsRetrievable>1</IsRetrievable>
+          <IsLocalizable>0</IsLocalizable>
+          <Format>text</Format>
+          <MaxLength>400</MaxLength>
+          <Length>800</Length>
+          <displaynames>
+            <displayname description="Next Sla" languagecode="1033" />
+          </displaynames>
+          <Descriptions>
+            <Description description="Shows the unresolved SLA KPI associated with the Case with the earliest expiry time." languagecode="1033" />
+          </Descriptions>
+        </attribute>
+        <attribute PhysicalName="OwnerId">
+          <Type>owner</Type>
+          <Name>ownerid</Name>
+          <LogicalName>ownerid</LogicalName>
+          <RequiredLevel>systemrequired</RequiredLevel>
+          <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid|RequiredForForm</DisplayMask>
+          <ImeMode>auto</ImeMode>
+          <ValidForUpdateApi>1</ValidForUpdateApi>
+          <ValidForReadApi>1</ValidForReadApi>
+          <ValidForCreateApi>1</ValidForCreateApi>
+          <IsCustomField>0</IsCustomField>
+          <IsAuditEnabled>1</IsAuditEnabled>
+          <IsSecured>0</IsSecured>
+          <IntroducedVersion>5.0.0.0</IntroducedVersion>
+          <SourceType>0</SourceType>
+          <IsGlobalFilterEnabled>1</IsGlobalFilterEnabled>
+          <IsSortableEnabled>1</IsSortableEnabled>
+          <IsDataSourceSecret>0</IsDataSourceSecret>
+          <AutoNumberFormat></AutoNumberFormat>
+          <IsSearchable>0</IsSearchable>
+          <IsFilterable>1</IsFilterable>
+          <IsRetrievable>0</IsRetrievable>
+          <IsLocalizable>0</IsLocalizable>
+          <LookupStyle>single</LookupStyle>
+          <LookupTypes>
+            <LookupType id="00000000-0000-0000-0000-000000000000">8</LookupType>
+            <LookupType id="00000000-0000-0000-0000-000000000000">9</LookupType>
+          </LookupTypes>
+          <displaynames>
+            <displayname description="Owner" languagecode="1033" />
+          </displaynames>
+          <Descriptions>
+            <Description description="Owner Id" languagecode="1033" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="PriorityCode">
@@ -3185,40 +3371,6 @@
             <Description description="Select the case's status." languagecode="1033" />
           </Descriptions>
         </attribute>
-        <attribute PhysicalName="SubjectId" unmodified="1">
-          <Type>lookup</Type>
-          <Name>subjectid</Name>
-          <LogicalName>subjectid</LogicalName>
-          <RequiredLevel>none</RequiredLevel>
-          <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid|RequiredForForm</DisplayMask>
-          <ImeMode>auto</ImeMode>
-          <ValidForUpdateApi>1</ValidForUpdateApi>
-          <ValidForReadApi>1</ValidForReadApi>
-          <ValidForCreateApi>1</ValidForCreateApi>
-          <IsCustomField>0</IsCustomField>
-          <IsAuditEnabled>1</IsAuditEnabled>
-          <IsSecured>0</IsSecured>
-          <IntroducedVersion>5.0.0.0</IntroducedVersion>
-          <SourceType>0</SourceType>
-          <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-          <IsSortableEnabled>0</IsSortableEnabled>
-          <IsDataSourceSecret>0</IsDataSourceSecret>
-          <AutoNumberFormat></AutoNumberFormat>
-          <IsSearchable>0</IsSearchable>
-          <IsFilterable>0</IsFilterable>
-          <IsRetrievable>0</IsRetrievable>
-          <IsLocalizable>0</IsLocalizable>
-          <LookupStyle>subject</LookupStyle>
-          <LookupTypes>
-            <LookupType id="00000000-0000-0000-0000-000000000000">129</LookupType>
-          </LookupTypes>
-          <displaynames>
-            <displayname description="Subject" languagecode="1033" />
-          </displaynames>
-          <Descriptions>
-            <Description description="Choose the subject for the case, such as catalog request or product complaint, so customer service managers can identify frequent requests or problem areas. Administrators can configure subjects under Business Management in the Settings area." languagecode="1033" />
-          </Descriptions>
-        </attribute>
         <attribute PhysicalName="TicketNumber">
           <Type>nvarchar</Type>
           <Name>ticketnumber</Name>
@@ -3256,7 +3408,7 @@
           <Type>nvarchar</Type>
           <Name>title</Name>
           <LogicalName>title</LogicalName>
-          <RequiredLevel>recommended</RequiredLevel>
+          <RequiredLevel>none</RequiredLevel>
           <DisplayMask>ActivityRegardingName|QueueItemTitle|ActivityPointerRegardingName|PrimaryName|ValidForAdvancedFind|ValidForForm|ValidForGrid|RequiredForGrid</DisplayMask>
           <ImeMode>auto</ImeMode>
           <ValidForUpdateApi>1</ValidForUpdateApi>
@@ -3286,6 +3438,60 @@
           </Descriptions>
         </attribute>
       </attributes>
+      <EntitySetName>incidents</EntitySetName>
+      <IsDuplicateCheckSupported>1</IsDuplicateCheckSupported>
+      <IsBusinessProcessEnabled>1</IsBusinessProcessEnabled>
+      <IsRequiredOffline>0</IsRequiredOffline>
+      <IsInteractionCentricEnabled>1</IsInteractionCentricEnabled>
+      <IsCollaboration>1</IsCollaboration>
+      <AutoRouteToOwnerQueue>0</AutoRouteToOwnerQueue>
+      <IsConnectionsEnabled>1</IsConnectionsEnabled>
+      <EntityColor>#7A278F</EntityColor>
+      <IsDocumentManagementEnabled>1</IsDocumentManagementEnabled>
+      <AutoCreateAccessTeams>0</AutoCreateAccessTeams>
+      <IsOneNoteIntegrationEnabled>0</IsOneNoteIntegrationEnabled>
+      <IsKnowledgeManagementEnabled>1</IsKnowledgeManagementEnabled>
+      <IsSLAEnabled>1</IsSLAEnabled>
+      <IsDocumentRecommendationsEnabled>0</IsDocumentRecommendationsEnabled>
+      <IsBPFEntity>0</IsBPFEntity>
+      <OwnershipTypeMask>UserOwned</OwnershipTypeMask>
+      <EntityMask>ActivityPointer</EntityMask>
+      <IsAuditEnabled>1</IsAuditEnabled>
+      <IsRetrieveAuditEnabled>0</IsRetrieveAuditEnabled>
+      <IsRetrieveMultipleAuditEnabled>0</IsRetrieveMultipleAuditEnabled>
+      <IsActivity>0</IsActivity>
+      <ActivityTypeMask></ActivityTypeMask>
+      <IsActivityParty>1</IsActivityParty>
+      <IsReplicated>1</IsReplicated>
+      <IsReplicationUserFiltered>1</IsReplicationUserFiltered>
+      <IsMailMergeEnabled>1</IsMailMergeEnabled>
+      <IsVisibleInMobile>1</IsVisibleInMobile>
+      <IsVisibleInMobileClient>1</IsVisibleInMobileClient>
+      <IsReadOnlyInMobileClient>0</IsReadOnlyInMobileClient>
+      <IsOfflineInMobileClient>1</IsOfflineInMobileClient>
+      <DaysSinceRecordLastModified>10</DaysSinceRecordLastModified>
+      <MobileOfflineFilters>
+				&lt;fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false"&gt;
+				&lt;entity name="incident"&gt;
+				&lt;filter type="and"&gt;
+				&lt;condition attribute="modifiedon" operator="last-x-days" value="10"/&gt;
+				&lt;/filter&gt;
+				&lt;/entity&gt;
+				&lt;/fetch&gt;
+			</MobileOfflineFilters>
+      <IsMapiGridEnabled>1</IsMapiGridEnabled>
+      <IsReadingPaneEnabled>1</IsReadingPaneEnabled>
+      <IsQuickCreateEnabled>0</IsQuickCreateEnabled>
+      <SyncToExternalSearchIndex>1</SyncToExternalSearchIndex>
+      <IntroducedVersion>5.0.0.0</IntroducedVersion>
+      <EnforceStateTransitions>0</EnforceStateTransitions>
+      <EntityHelpUrlEnabled>0</EntityHelpUrlEnabled>
+      <EntityHelpUrl></EntityHelpUrl>
+      <ChangeTrackingEnabled>1</ChangeTrackingEnabled>
+      <IsEnabledForExternalChannels>1</IsEnabledForExternalChannels>
+      <IsSolutionAware>0</IsSolutionAware>
+      <HasRelatedNotes>True</HasRelatedNotes>
+      <HasRelatedActivities>True</HasRelatedActivities>
     </entity>
   </EntityInfo>
   <FormXml />

@@ -12,39 +12,40 @@
             <label description="General" languagecode="1033" />
           </labels>
           <columns>
-            <column width="100%">
+            <column width="50%">
               <sections>
-                <section showlabel="false" showbar="false" IsUserDefined="0" id="{f41e8510-9c4e-4c5a-b363-4afc128d8f93}">
+                <section name="_section_90" id="57907856-f390-4cb3-b494-a182912073c7" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
-                    <label description="General" languagecode="1033" />
+                    <label description="Case Summary" languagecode="1033" />
                   </labels>
                   <rows>
-                    <row>
-                      <cell id="{78956b70-878c-436b-82ab-8cb8b64b869f}">
-                        <labels>
-                          <label description="ID" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="bsr_name" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{4f73ed52-4eac-4da9-8696-7acb745d617b}">
-                        <labels>
-                          <label description="Owner" languagecode="1033" />
-                        </labels>
-                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
-                      </cell>
-                    </row>
+                    <row />
                     <row>
                       <cell id="{e93592b7-59ca-4aeb-97f5-15ebd86e6e3b}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
-                        <control id="bsr_case" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_case" disabled="false" />
+                        <control id="bsr_case" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_case" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{85afab4a-819d-4584-a900-14a6c9bd70e0}" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_case" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="bsr_case" uniqueid="{fcd2533f-ab4d-41c8-a859-f648a80c9a21}">
+                          <parameters>
+                            <DefaultViewId>{9AC51863-58C7-49A0-ADCC-AFD9A4C3EE59}</DefaultViewId>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
                   </rows>
                 </section>
+              </sections>
+            </column>
+            <column width="50%">
+              <sections>
                 <section name="null_section_3" id="f48a2a56-0541-4338-8405-ce4e77c68a5a" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
                     <label description="Appeal Status" languagecode="1033" />
@@ -63,6 +64,21 @@
                           <label description="" languagecode="1033" />
                         </labels>
                         <control id="statuscode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="statuscode" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section showlabel="true" showbar="false" IsUserDefined="0" id="{f41e8510-9c4e-4c5a-b363-4afc128d8f93}">
+                  <labels>
+                    <label description="Appeal Summary" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{78956b70-878c-436b-82ab-8cb8b64b869f}">
+                        <labels>
+                          <label description="ID" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="bsr_name" disabled="true" />
                       </cell>
                     </row>
                   </rows>
@@ -189,9 +205,40 @@
             </column>
           </columns>
         </tab>
+        <tab name="tab_6" id="2ac008be-7524-4576-a167-742dc34a85f2" IsUserDefined="0" locklevel="0" showlabel="true">
+          <labels>
+            <label description="Case Relationships" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_6_section_1" id="61e8ede5-a794-4f79-a8e2-0f9683d27748" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Case Relationships" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell locklevel="0" id="{bdd6b6e4-ebe1-4856-ba05-1a378923f253}" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_case" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="bsr_case" uniqueid="{e8622462-9fa5-4717-a6e3-57a0b5ad95e7}">
+                          <parameters>
+                            <DefaultViewId>{9AC51863-58C7-49A0-ADCC-AFD9A4C3EE59}</DefaultViewId>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
         <tab name="tab_4" id="0e89841f-f0fd-4752-be3a-c024ceb4aa3a" IsUserDefined="0" locklevel="0" showlabel="true">
           <labels>
-            <label description="Outcome" languagecode="1033" />
+            <label description="Admin" languagecode="1033" />
           </labels>
           <columns>
             <column width="50%">
@@ -292,6 +339,12 @@
               <labels>
                 <label description="" languagecode="1033" />
               </labels>
+            </cell>
+            <cell id="{4f73ed52-4eac-4da9-8696-7acb745d617b}" colspan="1" rowspan="1">
+              <labels>
+                <label description="Owner" languagecode="1033" />
+              </labels>
+              <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
             </cell>
           </row>
         </rows>
@@ -460,10 +513,10 @@
               <value>
                 <BindAttribute>bsr_case</BindAttribute>
                 <DefaultViewId>{9AC51863-58C7-49A0-ADCC-AFD9A4C3EE59}</DefaultViewId>
-                <FilterRelationshipName></FilterRelationshipName>
-                <DependentAttributeName></DependentAttributeName>
-                <DependentAttributeType></DependentAttributeType>
-                <AvailableViewIds></AvailableViewIds>
+                <FilterRelationshipName />
+                <DependentAttributeName />
+                <DependentAttributeType />
+                <AvailableViewIds />
                 <AllowFilterOff>false</AllowFilterOff>
                 <DisableQuickFind>false</DisableQuickFind>
                 <DisableViewPicker>false</DisableViewPicker>
@@ -479,10 +532,10 @@
               <value>
                 <BindAttribute>bsr_case</BindAttribute>
                 <DefaultViewId>{9AC51863-58C7-49A0-ADCC-AFD9A4C3EE59}</DefaultViewId>
-                <FilterRelationshipName></FilterRelationshipName>
-                <DependentAttributeName></DependentAttributeName>
-                <DependentAttributeType></DependentAttributeType>
-                <AvailableViewIds></AvailableViewIds>
+                <FilterRelationshipName />
+                <DependentAttributeName />
+                <DependentAttributeType />
+                <AvailableViewIds />
                 <AllowFilterOff>false</AllowFilterOff>
                 <DisableQuickFind>false</DisableQuickFind>
                 <DisableViewPicker>false</DisableViewPicker>
@@ -498,15 +551,143 @@
               <value>
                 <BindAttribute>bsr_case</BindAttribute>
                 <DefaultViewId>{9AC51863-58C7-49A0-ADCC-AFD9A4C3EE59}</DefaultViewId>
-                <FilterRelationshipName></FilterRelationshipName>
-                <DependentAttributeName></DependentAttributeName>
-                <DependentAttributeType></DependentAttributeType>
-                <AvailableViewIds></AvailableViewIds>
+                <FilterRelationshipName />
+                <DependentAttributeName />
+                <DependentAttributeType />
+                <AvailableViewIds />
                 <AllowFilterOff>false</AllowFilterOff>
                 <DisableQuickFind>false</DisableQuickFind>
                 <DisableViewPicker>false</DisableViewPicker>
               </value>
               <QuickForms type="SingleLine.Text" static="true">&lt;QuickForms&gt;&lt;QuickFormIds&gt;&lt;QuickFormId entityname="incident"&gt;744be890-0942-ee11-bdf3-6045bdd2c8fd&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;&lt;/QuickForms&gt;</QuickForms>
+              <SaveMode type="Enum" static="true">0</SaveMode>
+              <EnableHighDensityPageHeader type="Enum" static="true">false</EnableHighDensityPageHeader>
+              <DisplayFormSelector type="Enum" static="true">false</DisplayFormSelector>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{fcd2533f-ab4d-41c8-a859-f648a80c9a21}">
+          <customControl id="{270BD3DB-D9AF-4782-9025-509E298DEC0A}">
+            <parameters>
+              <datafieldname>bsr_case</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.ModelForm.ModelFormControl">
+            <parameters>
+              <value>
+                <BindAttribute>bsr_case</BindAttribute>
+                <DefaultViewId>{9AC51863-58C7-49A0-ADCC-AFD9A4C3EE59}</DefaultViewId>
+                <FilterRelationshipName />
+                <DependentAttributeName />
+                <DependentAttributeType />
+                <AvailableViewIds />
+                <AllowFilterOff>false</AllowFilterOff>
+                <DisableQuickFind>false</DisableQuickFind>
+                <DisableViewPicker>false</DisableViewPicker>
+              </value>
+              <QuickForms type="SingleLine.Text" static="true">&lt;QuickForms&gt;&lt;QuickFormIds&gt;&lt;QuickFormId entityname="incident"&gt;8adf04ff-0542-ee11-bdf3-6045bdd2cb7b&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;&lt;/QuickForms&gt;</QuickForms>
+              <SaveMode type="Enum" static="true">0</SaveMode>
+              <EnableHighDensityPageHeader type="Enum" static="true">false</EnableHighDensityPageHeader>
+              <DisplayFormSelector type="Enum" static="true">false</DisplayFormSelector>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.ModelForm.ModelFormControl">
+            <parameters>
+              <value>
+                <BindAttribute>bsr_case</BindAttribute>
+                <DefaultViewId>{9AC51863-58C7-49A0-ADCC-AFD9A4C3EE59}</DefaultViewId>
+                <FilterRelationshipName />
+                <DependentAttributeName />
+                <DependentAttributeType />
+                <AvailableViewIds />
+                <AllowFilterOff>false</AllowFilterOff>
+                <DisableQuickFind>false</DisableQuickFind>
+                <DisableViewPicker>false</DisableViewPicker>
+              </value>
+              <QuickForms type="SingleLine.Text" static="true">&lt;QuickForms&gt;&lt;QuickFormIds&gt;&lt;QuickFormId entityname="incident"&gt;8adf04ff-0542-ee11-bdf3-6045bdd2cb7b&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;&lt;/QuickForms&gt;</QuickForms>
+              <SaveMode type="Enum" static="true">0</SaveMode>
+              <EnableHighDensityPageHeader type="Enum" static="true">false</EnableHighDensityPageHeader>
+              <DisplayFormSelector type="Enum" static="true">false</DisplayFormSelector>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.ModelForm.ModelFormControl">
+            <parameters>
+              <value>
+                <BindAttribute>bsr_case</BindAttribute>
+                <DefaultViewId>{9AC51863-58C7-49A0-ADCC-AFD9A4C3EE59}</DefaultViewId>
+                <FilterRelationshipName />
+                <DependentAttributeName />
+                <DependentAttributeType />
+                <AvailableViewIds />
+                <AllowFilterOff>false</AllowFilterOff>
+                <DisableQuickFind>false</DisableQuickFind>
+                <DisableViewPicker>false</DisableViewPicker>
+              </value>
+              <QuickForms type="SingleLine.Text" static="true">&lt;QuickForms&gt;&lt;QuickFormIds&gt;&lt;QuickFormId entityname="incident"&gt;8adf04ff-0542-ee11-bdf3-6045bdd2cb7b&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;&lt;/QuickForms&gt;</QuickForms>
+              <SaveMode type="Enum" static="true">0</SaveMode>
+              <EnableHighDensityPageHeader type="Enum" static="true">false</EnableHighDensityPageHeader>
+              <DisplayFormSelector type="Enum" static="true">false</DisplayFormSelector>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{e8622462-9fa5-4717-a6e3-57a0b5ad95e7}">
+          <customControl id="{270BD3DB-D9AF-4782-9025-509E298DEC0A}">
+            <parameters>
+              <datafieldname>bsr_case</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.ModelForm.ModelFormControl">
+            <parameters>
+              <value>
+                <BindAttribute>bsr_case</BindAttribute>
+                <DefaultViewId>{9AC51863-58C7-49A0-ADCC-AFD9A4C3EE59}</DefaultViewId>
+                <FilterRelationshipName />
+                <DependentAttributeName />
+                <DependentAttributeType />
+                <AvailableViewIds />
+                <AllowFilterOff>false</AllowFilterOff>
+                <DisableQuickFind>false</DisableQuickFind>
+                <DisableViewPicker>false</DisableViewPicker>
+              </value>
+              <QuickForms type="SingleLine.Text" static="true">&lt;QuickForms&gt;&lt;QuickFormIds&gt;&lt;QuickFormId entityname="incident"&gt;059ad2cc-0642-ee11-bdf3-6045bdd2cb7b&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;&lt;/QuickForms&gt;</QuickForms>
+              <SaveMode type="Enum" static="true">0</SaveMode>
+              <EnableHighDensityPageHeader type="Enum" static="true">false</EnableHighDensityPageHeader>
+              <DisplayFormSelector type="Enum" static="true">false</DisplayFormSelector>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.ModelForm.ModelFormControl">
+            <parameters>
+              <value>
+                <BindAttribute>bsr_case</BindAttribute>
+                <DefaultViewId>{9AC51863-58C7-49A0-ADCC-AFD9A4C3EE59}</DefaultViewId>
+                <FilterRelationshipName />
+                <DependentAttributeName />
+                <DependentAttributeType />
+                <AvailableViewIds />
+                <AllowFilterOff>false</AllowFilterOff>
+                <DisableQuickFind>false</DisableQuickFind>
+                <DisableViewPicker>false</DisableViewPicker>
+              </value>
+              <QuickForms type="SingleLine.Text" static="true">&lt;QuickForms&gt;&lt;QuickFormIds&gt;&lt;QuickFormId entityname="incident"&gt;059ad2cc-0642-ee11-bdf3-6045bdd2cb7b&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;&lt;/QuickForms&gt;</QuickForms>
+              <SaveMode type="Enum" static="true">0</SaveMode>
+              <EnableHighDensityPageHeader type="Enum" static="true">false</EnableHighDensityPageHeader>
+              <DisplayFormSelector type="Enum" static="true">false</DisplayFormSelector>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.ModelForm.ModelFormControl">
+            <parameters>
+              <value>
+                <BindAttribute>bsr_case</BindAttribute>
+                <DefaultViewId>{9AC51863-58C7-49A0-ADCC-AFD9A4C3EE59}</DefaultViewId>
+                <FilterRelationshipName />
+                <DependentAttributeName />
+                <DependentAttributeType />
+                <AvailableViewIds />
+                <AllowFilterOff>false</AllowFilterOff>
+                <DisableQuickFind>false</DisableQuickFind>
+                <DisableViewPicker>false</DisableViewPicker>
+              </value>
+              <QuickForms type="SingleLine.Text" static="true">&lt;QuickForms&gt;&lt;QuickFormIds&gt;&lt;QuickFormId entityname="incident"&gt;059ad2cc-0642-ee11-bdf3-6045bdd2cb7b&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;&lt;/QuickForms&gt;</QuickForms>
               <SaveMode type="Enum" static="true">0</SaveMode>
               <EnableHighDensityPageHeader type="Enum" static="true">false</EnableHighDensityPageHeader>
               <DisplayFormSelector type="Enum" static="true">false</DisplayFormSelector>

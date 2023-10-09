@@ -10,7 +10,11 @@
     <layoutxml>
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_appealid">
-          <cell name="bsr_name" width="300" />
+          <cell name="bsr_name" width="120" />
+          <cell name="a_28d1c007c7674ed290af2c3ace9054f3.title" width="300" />
+          <cell name="a_28d1c007c7674ed290af2c3ace9054f3.prioritycode" width="123" />
+          <cell name="statuscode" width="119" />
+          <cell name="ownerid" width="100" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -26,6 +30,12 @@
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <link-entity alias="a_28d1c007c7674ed290af2c3ace9054f3" name="incident" to="bsr_case" from="incidentid" link-type="outer" visible="false">
+            <attribute name="title" />
+            <attribute name="prioritycode" />
+          </link-entity>
+          <attribute name="statuscode" />
+          <attribute name="ownerid" />
         </entity>
       </fetch>
     </fetchxml>

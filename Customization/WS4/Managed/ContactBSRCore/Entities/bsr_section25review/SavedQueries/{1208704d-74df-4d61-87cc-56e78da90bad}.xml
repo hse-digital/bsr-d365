@@ -10,7 +10,14 @@
     <layoutxml>
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_section25reviewid">
-          <cell name="bsr_name" width="300" />
+          <cell name="bsr_name" width="136" />
+          <cell name="a_c5c81ced8e0044a9834d270c2f9c6479.title" width="141" />
+          <cell name="bsr_s25categoryid" width="267" />
+          <cell name="bsr_receivedon" width="113" />
+          <cell name="bsr_dueon" width="100" />
+          <cell name="bsr_s25paymentstatus" width="150" />
+          <cell name="ownerid" width="100" />
+          <cell name="statuscode" width="119" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -22,10 +29,19 @@
           <attribute name="bsr_section25reviewid" />
           <attribute name="bsr_name" />
           <attribute name="createdon" />
-          <order attribute="bsr_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <order attribute="bsr_name" descending="true" />
+          <attribute name="ownerid" />
+          <attribute name="statuscode" />
+          <attribute name="bsr_s25categoryid" />
+          <attribute name="bsr_s25paymentstatus" />
+          <attribute name="bsr_receivedon" />
+          <attribute name="bsr_dueon" />
+          <link-entity alias="a_c5c81ced8e0044a9834d270c2f9c6479" name="incident" to="bsr_case" from="incidentid" link-type="outer" visible="false">
+            <attribute name="title" />
+          </link-entity>
         </entity>
       </fetch>
     </fetchxml>

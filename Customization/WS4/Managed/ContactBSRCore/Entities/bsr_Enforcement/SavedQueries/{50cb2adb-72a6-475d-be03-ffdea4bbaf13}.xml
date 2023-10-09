@@ -10,7 +10,14 @@
     <layoutxml>
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_enforcementid">
-          <cell name="bsr_name" width="300" />
+          <cell name="bsr_name" width="122" />
+          <cell name="a_09f10d1ce10542ebafcb6ffba0c260fa.title" width="213" />
+          <cell name="a_09f10d1ce10542ebafcb6ffba0c260fa.prioritycode" width="123" />
+          <cell name="bsr_actiontypeid" width="110" />
+          <cell name="bsr_noticetypeid" width="166" />
+          <cell name="bsr_compliancedate" width="138" />
+          <cell name="statuscode" width="119" />
+          <cell name="ownerid" width="100" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -22,10 +29,19 @@
           <attribute name="bsr_enforcementid" />
           <attribute name="bsr_name" />
           <attribute name="createdon" />
-          <order attribute="bsr_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <link-entity alias="a_09f10d1ce10542ebafcb6ffba0c260fa" name="incident" to="bsr_case" from="incidentid" link-type="outer" visible="false">
+            <attribute name="title" />
+            <attribute name="prioritycode" />
+          </link-entity>
+          <attribute name="statuscode" />
+          <attribute name="ownerid" />
+          <order attribute="bsr_name" descending="true" />
+          <attribute name="bsr_actiontypeid" />
+          <attribute name="bsr_noticetypeid" />
+          <attribute name="bsr_compliancedate" />
         </entity>
       </fetch>
     </fetchxml>

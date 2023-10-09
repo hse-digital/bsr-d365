@@ -9,22 +9,21 @@
       <tabs>
         <tab verticallayout="true" id="{cfdce7e5-a622-4ab0-bbcc-06d55d813adf}" IsUserDefined="1">
           <labels>
-            <label description="General" languagecode="1033" />
+            <label description="Summary" languagecode="1033" />
           </labels>
           <columns>
-            <column width="100%">
+            <column width="50%">
               <sections>
-                <section showlabel="false" showbar="false" IsUserDefined="0" id="{6e5c8ebc-9f4e-4585-92a6-06f42796ca87}">
+                <section name="_section_522" id="5d99851b-75fe-452c-8d63-7b6bf1d57e05" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
-                    <label description="General" languagecode="1033" />
+                    <label description="Case Summary" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{aac9e6b6-e30f-454b-a94a-3a1655d06be4}">
+                      <cell id="{a229adbe-6c22-4cc5-9753-2989f36d1af8}" showlabel="false">
                         <labels>
-                          <label description="Name" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
-                        <control id="bsr_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="bsr_name" />
                       </cell>
                     </row>
                     <row>
@@ -32,19 +31,27 @@
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
-                        <control id="bsr_case" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_case" disabled="false" />
+                        <control id="bsr_case" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_case" disabled="true" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{3e0b4eab-4f30-4153-ab7b-de5f09ea7679}">
+                      <cell locklevel="0" id="{18ba1e08-381a-4b01-b6dd-61adfc4ed101}" colspan="1" rowspan="1">
                         <labels>
-                          <label description="Owner" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
-                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                        <control id="bsr_case" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="bsr_case" uniqueid="{b80b722e-9aa8-46ac-b2e0-c518a0533ac6}">
+                          <parameters>
+                            <DefaultViewId>{9AC51863-58C7-49A0-ADCC-AFD9A4C3EE59}</DefaultViewId>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
                   </rows>
                 </section>
+              </sections>
+            </column>
+            <column width="50%">
+              <sections>
                 <section name="null_section_3" id="c57571b3-37c9-4444-a513-ce382684b28f" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
                     <label description="Section 25 Review Status" languagecode="1033" />
@@ -65,6 +72,216 @@
                         <control id="statuscode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="statuscode" disabled="false" />
                       </cell>
                     </row>
+                  </rows>
+                </section>
+                <section showlabel="true" showbar="false" IsUserDefined="0" id="{6e5c8ebc-9f4e-4585-92a6-06f42796ca87}">
+                  <labels>
+                    <label description="Section 25 Review Summary" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{aac9e6b6-e30f-454b-a94a-3a1655d06be4}">
+                        <labels>
+                          <label description="ID" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="bsr_name" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e8c8f026-63cf-44f1-908f-5c3674f462a3}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_s25categoryid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_s25categoryid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ca05639f-8d00-4a6b-a460-c13cf31585fe}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_receivedon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_receivedon" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{64ac1781-35e2-a1e3-4a18-4bce981e5e30}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_dueon" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="bsr_dueon" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{acd5c300-9b20-cba0-326a-d049cd408785}" showlabel="true" colspan="1" auto="false" rowspan="2">
+                        <labels>
+                          <label description="Timer" languagecode="1033" />
+                        </labels>
+                        <control id="TimeSinceReceived" classid="{9C5CA0A1-AB4D-4781-BE7E-8DFBE867B87E}">
+                          <parameters>
+                            <SuccessConditionName>statuscode</SuccessConditionName>
+                            <SuccessConditionValue>2</SuccessConditionValue>
+                            <FailureTimeField>bsr_dueon</FailureTimeField>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_6" id="0426fb29-6c41-4972-9640-e8a18cdeb1b4" IsUserDefined="0" locklevel="0" showlabel="true">
+          <labels>
+            <label description="Payments" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_6_section_1" id="26297cf8-7e46-4659-8e66-96e5905aa948" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115">
+                  <labels>
+                    <label description="Payment Details" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{e8235f59-18bd-4929-b5e8-ede75646d678}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_s25paymentstatus" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_s25paymentstatus" disabled="false" />
+                      </cell>
+                      <cell id="{aae260c2-9893-40b5-bcdf-e408ad2fe5ce}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_cardpaymentreferencenumber" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_cardpaymentreferencenumber" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d5cab718-bf1d-4d63-b202-62c38f4e5205}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_paymentmethod" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_paymentmethod" disabled="false" />
+                      </cell>
+                      <cell id="{6e6d3ded-60ed-47c8-b895-454827154821}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_nameontheinvoice" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_nameontheinvoice" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{5ea6d27b-c580-4dcc-99fc-ea0fc117105e}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{42497d46-e23b-4f37-acd5-c27a31727a44}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_invoiceemailaddress" classid="{ADA2203E-B4CD-49BE-9DDF-234642B43B52}" datafieldname="bsr_invoiceemailaddress" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{ae96619f-f64f-4528-8f2c-dc09356521b6}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{3ca4a137-f804-48d9-a55f-9515be5ff8c9}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_billingaddressline1" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_billingaddressline1" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{d70eef58-bac1-4ecf-835e-94414b1af793}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{58a1b854-e3c3-4b5f-a10b-776a151935a9}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_billingaddressline2" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_billingaddressline2" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{d694d978-8d9f-44de-ad0c-892be9d4bb56}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{8a01c875-10dd-4f4c-9069-952877899256}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_billingcitytown" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_billingcitytown" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{9ea7e39b-2a2e-4910-b9d0-592b9eb6f3c0}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{b7f50320-7ade-42ad-ad75-8b6699223030}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_billingpostcode" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_billingpostcode" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{5156f2f3-b16c-4c2c-8108-b87aca411695}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{c9adbe48-0f83-404d-9d4b-2684a8370cf8}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_purchaseordernumber" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_purchaseordernumber" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="tab_6_section_3" id="9f89c0e8-a060-4f9f-a286-046f07243169" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Payments" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell locklevel="0" id="{176a286f-f21d-4abe-952b-bc4e162a8f7d}" rowspan="4" colspan="1" auto="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control indicationOfSubgrid="true" id="Subgrid_new_1" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                          <parameters>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <ChartGridMode>All</ChartGridMode>
+                            <TargetEntityType>bsr_payment</TargetEntityType>
+                            <ViewId>{841B5AC9-1866-EE11-9AE7-6045BDD2C8FD}</ViewId>
+                            <ViewIds>{4C31B814-DF2D-4DD7-8A0E-47290446AC32},{841B5AC9-1866-EE11-9AE7-6045BDD2C8FD}</ViewIds>
+                            <RelationshipName>bsr_bsr_payment_Section25Review_bsr_section25</RelationshipName>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
                   </rows>
                 </section>
               </sections>
@@ -120,13 +337,50 @@
                     <label description="Evidence" languagecode="1033" />
                   </labels>
                   <rows>
-                    <row />
+                    <row>
+                      <cell id="{928ed554-813f-4941-8894-20bc2ebced2f}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
                     <row>
                       <cell locklevel="0" id="{4e15088f-ecf5-430e-bb1a-df7472f67a52}" colspan="1" rowspan="1">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
                         <control id="bsr_case" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="bsr_case" uniqueid="{6e2aeda1-6d95-4330-b9c6-7e0b267ab774}">
+                          <parameters>
+                            <DefaultViewId>{9AC51863-58C7-49A0-ADCC-AFD9A4C3EE59}</DefaultViewId>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_7" id="53a95946-0412-4a0a-baae-7a9d2f6d12d0" IsUserDefined="0" locklevel="0" showlabel="true">
+          <labels>
+            <label description="Case Relationships" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_7_section_1" id="79042f17-2faf-4524-8702-8c1863bc602d" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Case Relationships" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell locklevel="0" id="{1c42fbe0-c76c-4a9f-88c6-da414a0d4fb6}" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_case" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="bsr_case" uniqueid="{5db79499-642e-4f02-80ad-12a3245fd9f8}">
                           <parameters>
                             <DefaultViewId>{9AC51863-58C7-49A0-ADCC-AFD9A4C3EE59}</DefaultViewId>
                           </parameters>
@@ -146,6 +400,73 @@
           <columns>
             <column width="50%">
               <sections>
+                <section name="tab_3_section_4" id="5ba6d62c-8560-44de-a6e0-d4a22dba4dca" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Due Date Extension" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell id="{2fb7b7ca-f9e7-431a-92d1-d891b1a5c26d}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Select Approver" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_extensionapprover" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_extensionapprover" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{1d8740a0-e6e3-4c56-9d50-9a3cfd64175e}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Status" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_extensionstatus" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_extensionstatus" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{595ff54c-2e7c-4e46-b4b6-49136af9138f}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Requested By" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_extensionrequestedby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_extensionrequestedby" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{50841575-de95-40e0-9ac7-08ccbb569bdf}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Requested On" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_extensionrequestedon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_extensionrequestedon" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ef867a89-7bb2-4501-8b18-433c1bddf75c}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Decision Made By" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_extensiondecisionmadeby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_extensiondecisionmadeby" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a2262489-14d4-4775-870b-26b1a81246c5}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Decision Made On" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_extensiondecisionmadeon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_extensiondecisionmadeon" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b55cea77-8a5e-4ec5-8ccd-16ded8c5c1a0}" locklevel="0" colspan="1" rowspan="4">
+                        <labels>
+                          <label description="Notes" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_extensionnotes" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_extensionnotes" disabled="false" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
                 <section name="tab_3_section_1" id="b93326fe-f06d-4ea4-a7f2-9009c2fa994e" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
                     <label description="Outcome" languagecode="1033" />
@@ -176,14 +497,6 @@
                             <DefaultViewId>{9AC51863-58C7-49A0-ADCC-AFD9A4C3EE59}</DefaultViewId>
                           </parameters>
                         </control>
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{0b088454-d21a-43a0-b266-e669c780bdde}" locklevel="0" colspan="1" rowspan="1">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_name" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_name" disabled="false" />
                       </cell>
                     </row>
                   </rows>
@@ -251,6 +564,18 @@
                 <label description="" languagecode="1033" />
               </labels>
             </cell>
+            <cell id="{3e0b4eab-4f30-4153-ab7b-de5f09ea7679}" colspan="1" rowspan="1">
+              <labels>
+                <label description="Owner" languagecode="1033" />
+              </labels>
+              <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+            </cell>
+            <cell id="{c3f01a82-79e7-405d-a50a-40a9da46b12f}" locklevel="0" colspan="1" rowspan="1">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+              <control id="header_statuscode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="statuscode" disabled="false" />
+            </cell>
           </row>
         </rows>
       </header>
@@ -275,9 +600,6 @@
           </row>
         </rows>
       </footer>
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
       <controlDescriptions>
         <controlDescription forControl="{e7fcf328-0142-40aa-8ae0-caa354e5d4d7}">
           <customControl id="{270BD3DB-D9AF-4782-9025-509E298DEC0A}">
@@ -471,7 +793,168 @@
             </parameters>
           </customControl>
         </controlDescription>
+        <controlDescription forControl="{b80b722e-9aa8-46ac-b2e0-c518a0533ac6}">
+          <customControl id="{270BD3DB-D9AF-4782-9025-509E298DEC0A}">
+            <parameters>
+              <datafieldname>bsr_case</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.ModelForm.ModelFormControl">
+            <parameters>
+              <value>
+                <BindAttribute>bsr_case</BindAttribute>
+                <DefaultViewId>{9AC51863-58C7-49A0-ADCC-AFD9A4C3EE59}</DefaultViewId>
+                <FilterRelationshipName />
+                <DependentAttributeName />
+                <DependentAttributeType />
+                <AvailableViewIds />
+                <AllowFilterOff>false</AllowFilterOff>
+                <DisableQuickFind>false</DisableQuickFind>
+                <DisableViewPicker>false</DisableViewPicker>
+              </value>
+              <QuickForms type="SingleLine.Text" static="true">&lt;QuickForms&gt;&lt;QuickFormIds&gt;&lt;QuickFormId entityname="incident"&gt;8adf04ff-0542-ee11-bdf3-6045bdd2cb7b&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;&lt;/QuickForms&gt;</QuickForms>
+              <SaveMode type="Enum" static="true">0</SaveMode>
+              <EnableHighDensityPageHeader type="Enum" static="true">false</EnableHighDensityPageHeader>
+              <DisplayFormSelector type="Enum" static="true">false</DisplayFormSelector>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.ModelForm.ModelFormControl">
+            <parameters>
+              <value>
+                <BindAttribute>bsr_case</BindAttribute>
+                <DefaultViewId>{9AC51863-58C7-49A0-ADCC-AFD9A4C3EE59}</DefaultViewId>
+                <FilterRelationshipName />
+                <DependentAttributeName />
+                <DependentAttributeType />
+                <AvailableViewIds />
+                <AllowFilterOff>false</AllowFilterOff>
+                <DisableQuickFind>false</DisableQuickFind>
+                <DisableViewPicker>false</DisableViewPicker>
+              </value>
+              <QuickForms type="SingleLine.Text" static="true">&lt;QuickForms&gt;&lt;QuickFormIds&gt;&lt;QuickFormId entityname="incident"&gt;8adf04ff-0542-ee11-bdf3-6045bdd2cb7b&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;&lt;/QuickForms&gt;</QuickForms>
+              <SaveMode type="Enum" static="true">0</SaveMode>
+              <EnableHighDensityPageHeader type="Enum" static="true">false</EnableHighDensityPageHeader>
+              <DisplayFormSelector type="Enum" static="true">false</DisplayFormSelector>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.ModelForm.ModelFormControl">
+            <parameters>
+              <value>
+                <BindAttribute>bsr_case</BindAttribute>
+                <DefaultViewId>{9AC51863-58C7-49A0-ADCC-AFD9A4C3EE59}</DefaultViewId>
+                <FilterRelationshipName />
+                <DependentAttributeName />
+                <DependentAttributeType />
+                <AvailableViewIds />
+                <AllowFilterOff>false</AllowFilterOff>
+                <DisableQuickFind>false</DisableQuickFind>
+                <DisableViewPicker>false</DisableViewPicker>
+              </value>
+              <QuickForms type="SingleLine.Text" static="true">&lt;QuickForms&gt;&lt;QuickFormIds&gt;&lt;QuickFormId entityname="incident"&gt;8adf04ff-0542-ee11-bdf3-6045bdd2cb7b&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;&lt;/QuickForms&gt;</QuickForms>
+              <SaveMode type="Enum" static="true">0</SaveMode>
+              <EnableHighDensityPageHeader type="Enum" static="true">false</EnableHighDensityPageHeader>
+              <DisplayFormSelector type="Enum" static="true">false</DisplayFormSelector>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{5db79499-642e-4f02-80ad-12a3245fd9f8}">
+          <customControl id="{270BD3DB-D9AF-4782-9025-509E298DEC0A}">
+            <parameters>
+              <datafieldname>bsr_case</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.ModelForm.ModelFormControl">
+            <parameters>
+              <value>
+                <BindAttribute>bsr_case</BindAttribute>
+                <DefaultViewId>{9AC51863-58C7-49A0-ADCC-AFD9A4C3EE59}</DefaultViewId>
+                <FilterRelationshipName />
+                <DependentAttributeName />
+                <DependentAttributeType />
+                <AvailableViewIds />
+                <AllowFilterOff>false</AllowFilterOff>
+                <DisableQuickFind>false</DisableQuickFind>
+                <DisableViewPicker>false</DisableViewPicker>
+              </value>
+              <QuickForms type="SingleLine.Text" static="true">&lt;QuickForms&gt;&lt;QuickFormIds&gt;&lt;QuickFormId entityname="incident"&gt;059ad2cc-0642-ee11-bdf3-6045bdd2cb7b&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;&lt;/QuickForms&gt;</QuickForms>
+              <SaveMode type="Enum" static="true">0</SaveMode>
+              <EnableHighDensityPageHeader type="Enum" static="true">false</EnableHighDensityPageHeader>
+              <DisplayFormSelector type="Enum" static="true">false</DisplayFormSelector>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.ModelForm.ModelFormControl">
+            <parameters>
+              <value>
+                <BindAttribute>bsr_case</BindAttribute>
+                <DefaultViewId>{9AC51863-58C7-49A0-ADCC-AFD9A4C3EE59}</DefaultViewId>
+                <FilterRelationshipName />
+                <DependentAttributeName />
+                <DependentAttributeType />
+                <AvailableViewIds />
+                <AllowFilterOff>false</AllowFilterOff>
+                <DisableQuickFind>false</DisableQuickFind>
+                <DisableViewPicker>false</DisableViewPicker>
+              </value>
+              <QuickForms type="SingleLine.Text" static="true">&lt;QuickForms&gt;&lt;QuickFormIds&gt;&lt;QuickFormId entityname="incident"&gt;059ad2cc-0642-ee11-bdf3-6045bdd2cb7b&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;&lt;/QuickForms&gt;</QuickForms>
+              <SaveMode type="Enum" static="true">0</SaveMode>
+              <EnableHighDensityPageHeader type="Enum" static="true">false</EnableHighDensityPageHeader>
+              <DisplayFormSelector type="Enum" static="true">false</DisplayFormSelector>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.ModelForm.ModelFormControl">
+            <parameters>
+              <value>
+                <BindAttribute>bsr_case</BindAttribute>
+                <DefaultViewId>{9AC51863-58C7-49A0-ADCC-AFD9A4C3EE59}</DefaultViewId>
+                <FilterRelationshipName />
+                <DependentAttributeName />
+                <DependentAttributeType />
+                <AvailableViewIds />
+                <AllowFilterOff>false</AllowFilterOff>
+                <DisableQuickFind>false</DisableQuickFind>
+                <DisableViewPicker>false</DisableViewPicker>
+              </value>
+              <QuickForms type="SingleLine.Text" static="true">&lt;QuickForms&gt;&lt;QuickFormIds&gt;&lt;QuickFormId entityname="incident"&gt;059ad2cc-0642-ee11-bdf3-6045bdd2cb7b&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;&lt;/QuickForms&gt;</QuickForms>
+              <SaveMode type="Enum" static="true">0</SaveMode>
+              <EnableHighDensityPageHeader type="Enum" static="true">false</EnableHighDensityPageHeader>
+              <DisplayFormSelector type="Enum" static="true">false</DisplayFormSelector>
+            </parameters>
+          </customControl>
+        </controlDescription>
       </controlDescriptions>
+      <Navigation>
+        <NavBar />
+        <NavBarAreas>
+          <NavBarArea Id="Info">
+            <Titles>
+              <Title LCID="1033" Text="Common" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Sales">
+            <Titles>
+              <Title LCID="1033" Text="Sales" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Service">
+            <Titles>
+              <Title LCID="1033" Text="Service" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Marketing">
+            <Titles>
+              <Title LCID="1033" Text="Marketing" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="ProcessCenter">
+            <Titles>
+              <Title LCID="1033" Text="Process Sessions" />
+            </Titles>
+          </NavBarArea>
+        </NavBarAreas>
+      </Navigation>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

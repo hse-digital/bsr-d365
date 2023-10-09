@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{86190fe0-5c65-ee11-9ae7-6045bdd2cb7b}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
+        <row name="result" id="bsr_enforcementid">
+          <cell name="bsr_name" width="122" />
+          <cell name="a_09f10d1ce10542ebafcb6ffba0c260fa.title" width="213" />
+          <cell name="bsr_noticeurn" width="111" />
+          <cell name="bsr_noticetypeid" width="166" />
+          <cell name="a_09f10d1ce10542ebafcb6ffba0c260fa.customerid" width="135" />
+          <cell name="bsr_noticeservedon" width="137" />
+          <cell name="bsr_compliancedate" width="138" />
+          <cell name="statuscode" width="119" />
+          <cell name="ownerid" width="100" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="bsr_enforcement">
+          <attribute name="bsr_enforcementid" />
+          <attribute name="bsr_name" />
+          <attribute name="createdon" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="1" />
+          </filter>
+          <link-entity alias="a_09f10d1ce10542ebafcb6ffba0c260fa" name="incident" to="bsr_case" from="incidentid" link-type="outer" visible="false">
+            <attribute name="title" />
+            <attribute name="customerid" />
+          </link-entity>
+          <attribute name="statuscode" />
+          <attribute name="ownerid" />
+          <order attribute="bsr_name" descending="true" />
+          <attribute name="bsr_noticetypeid" />
+          <attribute name="bsr_compliancedate" />
+          <attribute name="bsr_noticeurn" />
+          <attribute name="bsr_noticeservedon" />
+          <filter type="or" isquickfindfields="1">
+            <condition attribute="bsr_name" operator="like" value="{0}" />
+            <condition attribute="bsr_noticeurn" operator="like" value="{0}" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.32.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Inactive Notices" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
