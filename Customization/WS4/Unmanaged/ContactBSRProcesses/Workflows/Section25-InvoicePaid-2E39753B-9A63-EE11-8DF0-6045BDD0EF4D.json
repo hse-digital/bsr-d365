@@ -1,0 +1,182 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS4"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "9083cc32-e395-4e6d-b0b7-b2a6b541a4a1"
+          },
+          "type": "Request",
+          "kind": "Http",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "object": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "account_country": {
+                          "type": "string"
+                        },
+                        "account_name": {
+                          "type": "string"
+                        },
+                        "amount_due": {
+                          "type": "integer"
+                        },
+                        "amount_paid": {
+                          "type": "integer"
+                        },
+                        "amount_remaining": {
+                          "type": "integer"
+                        },
+                        "customer": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "metadata": {
+                          "type": "object",
+                          "properties": {
+                            "paymentId": {
+                              "type": "string"
+                            },
+                            "environment": {
+                              "type": "string"
+                            },
+                            "application": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "paid": {
+                          "type": "boolean"
+                        },
+                        "status": {
+                          "type": "string"
+                        },
+                        "created": {
+                          "type": "integer"
+                        },
+                        "number": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "type": {
+                  "type": "string"
+                }
+              }
+            },
+            "triggerAuthenticationType": "All"
+          }
+        }
+      },
+      "actions": {
+        "Initialize_variable": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "608bca00-6af8-4262-b98c-e24b0749abe0"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "test",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Update_a_row": {
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "a02abc2e-4064-47f3-9ead-387d616e1ef9"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_payments",
+              "recordId": "697a0a6a-2966-ee11-9ae7-6045bdd2cb7b",
+              "item/bsr_paymentreconciliationstatus": 760810000,
+              "item/bsr_govukpaystatus": "@triggerBody()?['data']?['object']?['status']",
+              "item/bsr_timeanddateoftransaction": "@addseconds('1970-1-1', triggerBody()?['data']?['object']?['created'], 'yyyy-MM-ddTHH:mm:ssZ')"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Update_a_row_2": {
+          "runAfter": {
+            "Update_a_row": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "523b113e-ddf6-4629-b511-9382c12d6cd3"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_section25reviews",
+              "recordId": "@outputs('Update_a_row')?['body/_bsr_section25review_value']",
+              "item/bsr_s25paymentstatus": 760810003
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

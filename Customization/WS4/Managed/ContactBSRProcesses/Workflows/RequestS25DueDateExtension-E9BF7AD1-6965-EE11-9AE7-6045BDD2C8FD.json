@@ -1,0 +1,134 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS4"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "1469a111-f97c-453a-960f-8d308c5575c1"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "bsr_section25review",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "bsr_extensionstatus",
+              "subscriptionRequest/filterexpression": "bsr_extensionstatus eq 760810000",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Add_a_new_row:_Task": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "dcb06f87-2bb4-4944-8b53-1c72c2fdee9e"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "tasks",
+              "item/subject": "S25 Due Date Extension",
+              "item/description": "Please review S25 Due Date Extension",
+              "item/ownerid_task@odata.bind": "/systemusers(@{triggerOutputs()?['body/_bsr_extensionapprover_value']})",
+              "item/regardingobjectid_bsr_investigation_task@odata.bind": "/bsr_section25reviews(@{triggerOutputs()?['body/bsr_section25reviewid']})",
+              "item/regardingobjectid_bsr_section25review_task@odata.bind": "/bsr_section25reviews(@{triggerOutputs()?['body/bsr_section25reviewid']})"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Add_a_new_row:_Notification": {
+          "runAfter": {
+            "Add_a_new_row:_Task": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "52458169-0e7f-41ff-8a44-16e5b01d9396"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "appnotifications",
+              "item/title": "S25 Due Date Extension",
+              "item/body": "Please review S25 Due Date Extension",
+              "item/data": "{\n\t\"actions\":[\n\t\t{\n\t\t\t\"title\": \"View Section 25 Review\",\n\t\t\t\"data\": {\n\t\t\t\t\"url\": \"?pagetype=entityrecord&etn=bsr_section25review&id=@{triggerOutputs()?['body/bsr_section25reviewid']}\"\n\t\t\t}\n\t\t}\n\t]\n}",
+              "item/icontype": 100000000,
+              "item/ownerid@odata.bind": "/systemusers(@{triggerOutputs()?['body/_bsr_extensionapprover_value']})",
+              "item/toasttype": 200000000
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Update_a_row": {
+          "runAfter": {
+            "Add_a_new_row:_Notification": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "7cfec03b-5c37-49bb-9b57-42843acd2200"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_section25reviews",
+              "recordId": "@triggerOutputs()?['body/bsr_section25reviewid']",
+              "item/bsr_ExtensionRequestedBy@odata.bind": "/systemusers(@{triggerOutputs()?['body/_modifiedby_value']})",
+              "item/bsr_extensionrequestedon": "@utcNow()",
+              "item/bsr_extensionstatus": 760810001
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

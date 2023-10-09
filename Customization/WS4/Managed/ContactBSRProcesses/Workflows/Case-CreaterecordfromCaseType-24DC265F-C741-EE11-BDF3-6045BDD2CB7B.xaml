@@ -105,7 +105,7 @@
                     <Sequence DisplayName="StopWorkflowStep3: End workflow">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="x:Object" Name="StopWorkflowStep3_1" />
-                        <Variable x:TypeArguments="x:String" Default="6d991439-b3ee-4bf3-a106-6f0476d29430" Name="stepLabelLabelId" />
+                        <Variable x:TypeArguments="x:String" Default="398be973-4a90-4f0b-ace4-848310047db8" Name="stepLabelLabelId" />
                         <Variable x:TypeArguments="x:String" Name="stepLabelDescription">
                           <Variable.Default>
                             <Literal x:TypeArguments="x:String" Value="" />
@@ -290,6 +290,8 @@
                       <Sequence.Variables>
                         <Variable x:TypeArguments="x:Object" Name="CreateStep11_1" />
                         <Variable x:TypeArguments="x:Object" Name="CreateStep11_2" />
+                        <Variable x:TypeArguments="x:Object" Name="CreateStep11_3" />
+                        <Variable x:TypeArguments="x:Object" Name="CreateStep11_4" />
                       </Sequence.Variables>
                       <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;CreateStep11_localParameter#Temp&quot;)]" Value="[New Entity(&quot;bsr_enforcement&quot;)]" />
                       <mxswa:GetEntityProperty Attribute="incidentid" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="incident" Value="[CreateStep11_2]">
@@ -316,7 +318,50 @@
                           </InArgument>
                         </mxswa:SetEntityProperty.TargetType>
                       </mxswa:SetEntityProperty>
+                      <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateExpression, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateExpression">
+                        <mxswa:ActivityReference.Arguments>
+                          <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">CreateCrmType</InArgument>
+                          <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { Microsoft.Xrm.Sdk.Workflow.WorkflowPropertyType.Guid, "c34858c3-1f63-ee11-8df0-6045bdd2cb7b", "Key" }]</InArgument>
+                          <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />
+                          </InArgument>
+                          <OutArgument x:TypeArguments="x:Object" x:Key="Result">[CreateStep11_4]</OutArgument>
+                        </mxswa:ActivityReference.Arguments>
+                      </mxswa:ActivityReference>
+                      <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateExpression, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateExpression">
+                        <mxswa:ActivityReference.Arguments>
+                          <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">CreateCrmType</InArgument>
+                          <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { Microsoft.Xrm.Sdk.Workflow.WorkflowPropertyType.EntityReference, "bsr_enforcementactiontype", "Notice", CreateStep11_4, "Lookup" }]</InArgument>
+                          <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />
+                          </InArgument>
+                          <OutArgument x:TypeArguments="x:Object" x:Key="Result">[CreateStep11_3]</OutArgument>
+                        </mxswa:ActivityReference.Arguments>
+                      </mxswa:ActivityReference>
+                      <mxswa:SetEntityProperty Attribute="bsr_actiontypeid" Entity="[CreatedEntities(&quot;CreateStep11_localParameter#Temp&quot;)]" EntityName="bsr_enforcement" Value="[CreateStep11_3]">
+                        <mxswa:SetEntityProperty.TargetType>
+                          <InArgument x:TypeArguments="s:Type">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />
+                          </InArgument>
+                        </mxswa:SetEntityProperty.TargetType>
+                      </mxswa:SetEntityProperty>
                       <mxswa:CreateEntity EntityId="{x:Null}" DisplayName="CreateStep11" Entity="[CreatedEntities(&quot;CreateStep11_localParameter#Temp&quot;)]" EntityName="bsr_enforcement" />
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;CreateStep11_localParameter&quot;)]" Value="[CreatedEntities(&quot;CreateStep11_localParameter#Temp&quot;)]" />
+                    </Sequence>
+                    <Sequence DisplayName="UpdateStep15">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:Object" Name="UpdateStep15_1" />
+                      </Sequence.Variables>
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;CreateStep11_localParameter#Temp&quot;)]" Value="[New Entity(&quot;bsr_enforcement&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;CreateStep11_localParameter#Temp&quot;).Id]" Value="[CreatedEntities(&quot;CreateStep11_localParameter&quot;).Id]" />
+                      <mxswa:SetEntityProperty Attribute="bsr_actiontypeid" Entity="[CreatedEntities(&quot;CreateStep11_localParameter#Temp&quot;)]" EntityName="bsr_enforcement" Value="[UpdateStep15_1]">
+                        <mxswa:SetEntityProperty.TargetType>
+                          <InArgument x:TypeArguments="s:Type">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />
+                          </InArgument>
+                        </mxswa:SetEntityProperty.TargetType>
+                      </mxswa:SetEntityProperty>
+                      <mxswa:UpdateEntity DisplayName="UpdateStep15" Entity="[CreatedEntities(&quot;CreateStep11_localParameter#Temp&quot;)]" EntityName="bsr_enforcement" />
                       <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;CreateStep11_localParameter&quot;)]" Value="[CreatedEntities(&quot;CreateStep11_localParameter#Temp&quot;)]" />
                     </Sequence>
                   </sco:Collection>
@@ -508,6 +553,8 @@
         <Variable x:TypeArguments="x:Object" Name="UpdateStep10_4" />
         <Variable x:TypeArguments="x:Object" Name="UpdateStep10_5" />
         <Variable x:TypeArguments="x:Object" Name="UpdateStep10_6" />
+        <Variable x:TypeArguments="x:Object" Name="UpdateStep10_7" />
+        <Variable x:TypeArguments="x:Object" Name="UpdateStep10_8" />
       </Sequence.Variables>
       <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;incident&quot;)]" />
       <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
@@ -577,6 +624,30 @@
         </mxswa:ActivityReference.Arguments>
       </mxswa:ActivityReference>
       <mxswa:SetEntityProperty Attribute="bsr_investigationid" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="incident" Value="[UpdateStep10_5]">
+        <mxswa:SetEntityProperty.TargetType>
+          <InArgument x:TypeArguments="s:Type">
+            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />
+          </InArgument>
+        </mxswa:SetEntityProperty.TargetType>
+      </mxswa:SetEntityProperty>
+      <mxswa:GetEntityProperty Attribute="bsr_section25reviewid" Entity="[CreatedEntities(&quot;CreateStep14_localParameter&quot;)]" EntityName="bsr_section25review" Value="[UpdateStep10_8]">
+        <mxswa:GetEntityProperty.TargetType>
+          <InArgument x:TypeArguments="s:Type">
+            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />
+          </InArgument>
+        </mxswa:GetEntityProperty.TargetType>
+      </mxswa:GetEntityProperty>
+      <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateExpression, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateExpression">
+        <mxswa:ActivityReference.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">SelectFirstNonNull</InArgument>
+          <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { UpdateStep10_8 }]</InArgument>
+          <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
+            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />
+          </InArgument>
+          <OutArgument x:TypeArguments="x:Object" x:Key="Result">[UpdateStep10_7]</OutArgument>
+        </mxswa:ActivityReference.Arguments>
+      </mxswa:ActivityReference>
+      <mxswa:SetEntityProperty Attribute="bsr_section25review" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="incident" Value="[UpdateStep10_7]">
         <mxswa:SetEntityProperty.TargetType>
           <InArgument x:TypeArguments="s:Type">
             <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />

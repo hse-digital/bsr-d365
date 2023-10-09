@@ -1,0 +1,238 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS4"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "BSR Common API URL WS4 (bsr_BSRCommonAPIURLWS4)": {
+          "defaultValue": "https://s118-dev-bsr-acs-common-fa.azurewebsites.net",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_BSRCommonAPIURLWS4"
+          }
+        },
+        "BSR Common API Access Key WS4 (bsr_BSRCommonAPIAccessKeyWS4)": {
+          "defaultValue": "GjGvQxDNUQIchYUjdyBGldEfnRIzIIOgR4MVhtYmo1JIAzFuqBfmmw==",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_BSRCommonAPIAccessKeyWS4"
+          }
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "14156f10-90d8-49b1-8671-09de22ad2f15"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "bsr_section25review",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "bsr_s25paymentstatus",
+              "subscriptionRequest/filterexpression": "bsr_s25paymentstatus eq 760810000 and bsr_paymentmethod eq 760810000 and bsr_cardpaymentreferencenumber ne null"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "HTTP": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "c7ddd973-1485-4ffd-9f00-1b69d18acf99"
+          },
+          "type": "Http",
+          "inputs": {
+            "method": "GET",
+            "uri": "@{parameters('BSR Common API URL WS4 (bsr_BSRCommonAPIURLWS4)')}/api/GetPaymentStatusByReference/@{replace(triggerOutputs()?['body/bsr_cardpaymentreferencenumber'],' ','')}?code=@{parameters('BSR Common API Access Key WS4 (bsr_BSRCommonAPIAccessKeyWS4)')}"
+          }
+        },
+        "Parse_JSON": {
+          "runAfter": {
+            "HTTP": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "12055764-5d52-481d-be0d-908ab997f7f8"
+          },
+          "type": "ParseJson",
+          "inputs": {
+            "content": "@decodeBase64(body('HTTP')['$content'])",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "CreatedDate": {
+                  "type": "string"
+                },
+                "Status": {
+                  "type": "string"
+                },
+                "Finished": {
+                  "type": "boolean"
+                },
+                "PaymentLink": {},
+                "Amount": {
+                  "type": "integer"
+                },
+                "Email": {
+                  "type": "string"
+                },
+                "Reference": {
+                  "type": "string"
+                },
+                "Description": {
+                  "type": "string"
+                },
+                "ReturnURL": {
+                  "type": "string"
+                },
+                "PaymentId": {
+                  "type": "string"
+                },
+                "PaymentProvider": {
+                  "type": "string"
+                },
+                "ProviderId": {
+                  "type": "string"
+                },
+                "LastFourDigitsCardNumber": {
+                  "type": "string"
+                },
+                "FirstDigitsCardNumber": {
+                  "type": "string"
+                },
+                "CardExpiryDate": {
+                  "type": "string"
+                },
+                "CardBrand": {
+                  "type": "string"
+                },
+                "CardType": {
+                  "type": "string"
+                },
+                "AddressLineOne": {
+                  "type": "string"
+                },
+                "AddressLineTwo": {
+                  "type": "string"
+                },
+                "City": {
+                  "type": "string"
+                },
+                "Country": {
+                  "type": "string"
+                },
+                "Postcode": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "Add_a_new_row": {
+          "runAfter": {
+            "Compose_billing_address": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "8f8b89ea-ebe7-4637-9204-cd49a7d24408"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_payments",
+              "item/bsr_amountpaid": "@body('Parse_JSON')?['Amount']",
+              "item/bsr_billingaddress": "@replace(outputs('Compose_billing_address'), ', ,', ', ')",
+              "item/bsr_cardbrandegvisa": "@body('Parse_JSON')?['CardBrand']",
+              "item/bsr_cardexpirydate": "@body('Parse_JSON')?['CardExpiryDate']",
+              "item/bsr_cardtypecreditdebit": "@if(equals(body('Parse_JSON')?['CardType'],'credit'),760810000,760810001)",
+              "item/bsr_emailaddress": "@body('Parse_JSON')?['Email']",
+              "item/bsr_govukpaymentid": "@body('Parse_JSON')?['PaymentId']",
+              "item/bsr_lastfourdigitsofcardnumber": "@body('Parse_JSON')?['LastFourDigitsCardNumber']",
+              "item/bsr_name": "@body('Parse_JSON')?['PaymentId']",
+              "item/bsr_paymentreconciliationstatus": 760810000,
+              "item/bsr_govukpaystatus": "@body('Parse_JSON')?['Status']",
+              "item/bsr_paymenttypecode": 760810000,
+              "item/bsr_transactionid": "@body('Parse_JSON')?['Reference']",
+              "item/bsr_Section25Review@odata.bind": "\\bsr_section25reviews(@{triggerOutputs()?['body/bsr_section25reviewid']})",
+              "item/bsr_service": "Section 25 Review",
+              "item/bsr_timeanddateoftransaction": "@body('Parse_JSON')?['CreatedDate']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Update_a_row": {
+          "runAfter": {
+            "Add_a_new_row": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "76d0b2a6-09a6-477a-8fa4-a8c2c3aac239"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_section25reviews",
+              "recordId": "@triggerOutputs()?['body/bsr_section25reviewid']",
+              "item/bsr_s25paymentstatus": 760810003
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Compose_billing_address": {
+          "runAfter": {
+            "Parse_JSON": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ead1076b-ca91-4200-9014-f477ffa0225b"
+          },
+          "type": "Compose",
+          "inputs": "@{body('Parse_JSON')?['AddressLineOne']}, @{body('Parse_JSON')?['AddressLineTwo']}, @{body('Parse_JSON')?['City']}, @{body('Parse_JSON')?['Postcode']}"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

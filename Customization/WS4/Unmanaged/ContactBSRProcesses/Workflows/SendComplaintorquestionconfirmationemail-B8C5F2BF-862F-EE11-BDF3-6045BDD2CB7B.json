@@ -22,6 +22,34 @@
         "$authentication": {
           "defaultValue": {},
           "type": "SecureObject"
+        },
+        "Question to BSR received Email Template ID (bsr_QuestiontoBSRreceivedEmailTemplateID)": {
+          "defaultValue": "b17b62db-af2b-ee11-9965-6045bdd2cb7b",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_QuestiontoBSRreceivedEmailTemplateID"
+          }
+        },
+        "Complaint to BSR received Email Template ID (bsr_ComplainttoBSRreceivedEmailTemplateID)": {
+          "defaultValue": "4fa2d875-ae2b-ee11-9965-6045bdd2cb7b",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_ComplainttoBSRreceivedEmailTemplateID"
+          }
+        },
+        "Customer Services Mailbox Queue ID (bsr_CustomerServicesMailboxQueueID)": {
+          "defaultValue": "6a1e73da-572c-ee11-9965-6045bdd2cb7b",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_CustomerServicesMailboxQueueID"
+          }
+        },
+        "Customer Services Team ID (bsr_CustomerServicesTeamID)": {
+          "defaultValue": "7e313b63-a058-ee11-be6f-6045bdd0ef4d",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_CustomerServicesTeamID"
+          }
         }
       },
       "triggers": {
@@ -68,7 +96,7 @@
                     },
                     "parameters": {
                       "entityName": "templates",
-                      "recordId": "b17b62db-af2b-ee11-9965-6045bdd2cb7b"
+                      "recordId": "@parameters('Question to BSR received Email Template ID (bsr_QuestiontoBSRreceivedEmailTemplateID)')"
                     },
                     "authentication": "@parameters('$authentication')"
                   }
@@ -91,7 +119,7 @@
                     },
                     "parameters": {
                       "actionName": "msdyn_SendEmailFromTemplate",
-                      "item/From": "/queues(6a1e73da-572c-ee11-9965-6045bdd2cb7b)",
+                      "item/From": "/queues(@{parameters('Customer Services Mailbox Queue ID (bsr_CustomerServicesMailboxQueueID)')})",
                       "item/To": [
                         "/contacts(@{triggerOutputs()?['body/_customerid_value']})"
                       ],
@@ -121,7 +149,7 @@
                     "parameters": {
                       "entityName": "incidents",
                       "recordId": "@triggerOutputs()?['body/incidentid']",
-                      "item/ownerid@odata.bind": "/teams(648e76d4-f740-ee11-bdf3-6045bdd0ef4d)"
+                      "item/ownerid@odata.bind": "/teams(@{parameters('Customer Services Team ID (bsr_CustomerServicesTeamID)')})"
                     },
                     "authentication": "@parameters('$authentication')"
                   },
@@ -146,7 +174,7 @@
                     },
                     "parameters": {
                       "entityName": "templates",
-                      "recordId": "4fa2d875-ae2b-ee11-9965-6045bdd2cb7b"
+                      "recordId": "@parameters('Complaint to BSR received Email Template ID (bsr_ComplainttoBSRreceivedEmailTemplateID)')"
                     },
                     "authentication": "@parameters('$authentication')"
                   }
@@ -169,7 +197,7 @@
                     },
                     "parameters": {
                       "actionName": "msdyn_SendEmailFromTemplate",
-                      "item/From": "/queues(6a1e73da-572c-ee11-9965-6045bdd2cb7b)",
+                      "item/From": "/queues(@{parameters('Customer Services Mailbox Queue ID (bsr_CustomerServicesMailboxQueueID)')})",
                       "item/To": [
                         "/contacts(@{triggerOutputs()?['body/_customerid_value']})"
                       ],
@@ -199,7 +227,7 @@
                     "parameters": {
                       "entityName": "incidents",
                       "recordId": "@triggerOutputs()?['body/incidentid']",
-                      "item/ownerid@odata.bind": "/teams(648e76d4-f740-ee11-bdf3-6045bdd0ef4d)"
+                      "item/ownerid@odata.bind": "/teams(@{parameters('Customer Services Team ID (bsr_CustomerServicesTeamID)')})"
                     },
                     "authentication": "@parameters('$authentication')"
                   },

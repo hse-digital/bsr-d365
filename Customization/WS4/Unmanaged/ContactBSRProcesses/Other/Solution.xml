@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Contact BSR Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.17.0</Version>
+    <Version>1.0.18.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -85,16 +85,23 @@
       <RootComponent type="29" id="{18273cc0-355d-ee11-8def-6045bdd0ef4d}" behavior="0" />
       <RootComponent type="29" id="{19aaca71-df3d-ee11-bdf4-6045bdd2cb7b}" behavior="0" />
       <RootComponent type="29" id="{19d3b6ba-063d-ee11-bdf4-6045bdd2cb7b}" behavior="0" />
+      <RootComponent type="29" id="{229d21e1-7065-ee11-9ae7-6045bdd2cb7b}" behavior="0" />
       <RootComponent type="29" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" behavior="0" />
       <RootComponent type="29" id="{2698f13d-fd56-ee11-be6f-6045bdd2cb7b}" behavior="0" />
+      <RootComponent type="29" id="{27dd0eff-3966-ee11-9ae7-6045bdd2c8fd}" behavior="0" />
       <RootComponent type="29" id="{2bc836b7-dd3d-ee11-bdf4-6045bdcf35fe}" behavior="0" />
+      <RootComponent type="29" id="{2e39753b-9a63-ee11-8df0-6045bdd0ef4d}" behavior="0" />
       <RootComponent type="29" id="{30ec571d-5b47-ee11-be6f-6045bdcf35fe}" behavior="0" />
       <RootComponent type="29" id="{31469dfc-d141-ee11-bdf3-6045bdd2cb7b}" behavior="0" />
       <RootComponent type="29" id="{381bb83f-6f43-ee11-bdf3-6045bdd0ef4d}" behavior="0" />
+      <RootComponent type="29" id="{3d607dea-6965-ee11-9ae7-6045bdd0ef4d}" behavior="0" />
       <RootComponent type="29" id="{895c7f8f-9f2f-ee11-bdf3-6045bdd2c8fd}" behavior="0" />
       <RootComponent type="29" id="{97ee9355-eb26-ee11-9965-6045bdd2cb7b}" behavior="0" />
+      <RootComponent type="29" id="{9fb0e6b0-7065-ee11-9ae7-6045bdd2c8fd}" behavior="0" />
+      <RootComponent type="29" id="{a0d2e624-5364-ee11-8df0-6045bdd2c8fd}" behavior="0" />
       <RootComponent type="29" id="{b8c5f2bf-862f-ee11-bdf3-6045bdd2cb7b}" behavior="0" />
       <RootComponent type="29" id="{e6b75386-a82c-ee11-9965-6045bdd2c7c5}" behavior="0" />
+      <RootComponent type="29" id="{e9bf7ad1-6965-ee11-9ae7-6045bdd2c8fd}" behavior="0" />
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
@@ -104,6 +111,14 @@
       <MissingDependency>
         <Required type="1" schemaName="appnotification" displayName="Notification" solution="AppNotifications (10.0.0.14)" />
         <Dependent type="29" displayName="Request Decision to Investigate" id="{381bb83f-6f43-ee11-bdf3-6045bdd0ef4d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="appnotification" displayName="Notification" solution="AppNotifications (10.0.0.14)" />
+        <Dependent type="29" displayName="Approve/Reject S25 Due Date Extension" id="{3d607dea-6965-ee11-9ae7-6045bdd0ef4d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="appnotification" displayName="Notification" solution="AppNotifications (10.0.0.14)" />
+        <Dependent type="29" displayName="Request S25 Due Date Extension" id="{e9bf7ad1-6965-ee11-9ae7-6045bdd2c8fd}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_appeal" displayName="Appeal" solution="Active" />
@@ -134,6 +149,10 @@
         <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="bsr_enforcementactiontype" displayName="Enforcement Action Type" solution="Active" />
+        <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="bsr_investigation" displayName="Investigation" solution="Active" />
         <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
@@ -146,8 +165,44 @@
         <Dependent type="29" displayName="Request Decision to Investigate" id="{381bb83f-6f43-ee11-bdf3-6045bdd0ef4d}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="bsr_payment" displayName="Payment" solution="BuildingRegCore (1.17.64.0)" />
+        <Dependent type="29" displayName="Section 25 Review - Create invoice" id="{229d21e1-7065-ee11-9ae7-6045bdd2cb7b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_payment" displayName="Payment" solution="BuildingRegCore (1.17.64.0)" />
+        <Dependent type="29" displayName="Section 25 - Invoice Paid" id="{2e39753b-9a63-ee11-8df0-6045bdd0ef4d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_payment" displayName="Payment" solution="BuildingRegCore (1.17.64.0)" />
+        <Dependent type="29" displayName="Section 25 Review - Retrieve GOV.UK PAY payment details" id="{9fb0e6b0-7065-ee11-9ae7-6045bdd2c8fd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_section25review" displayName="Section 25 Review" solution="Active" />
+        <Dependent type="29" displayName="Section 25 Review - Create invoice" id="{229d21e1-7065-ee11-9ae7-6045bdd2cb7b}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="bsr_section25review" displayName="Section 25 Review" solution="Active" />
         <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_section25review" displayName="Section 25 Review" solution="Active" />
+        <Dependent type="29" displayName="Section 25 - Invoice Paid" id="{2e39753b-9a63-ee11-8df0-6045bdd0ef4d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_section25review" displayName="Section 25 Review" solution="Active" />
+        <Dependent type="29" displayName="Approve/Reject S25 Due Date Extension" id="{3d607dea-6965-ee11-9ae7-6045bdd0ef4d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_section25review" displayName="Section 25 Review" solution="Active" />
+        <Dependent type="29" displayName="Section 25 Review - Retrieve GOV.UK PAY payment details" id="{9fb0e6b0-7065-ee11-9ae7-6045bdd2c8fd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_section25review" displayName="Section 25 Review" solution="Active" />
+        <Dependent type="29" displayName="BSR - Create a task for Section 25" id="{a0d2e624-5364-ee11-8df0-6045bdd2c8fd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_section25review" displayName="Section 25 Review" solution="Active" />
+        <Dependent type="29" displayName="Request S25 Due Date Extension" id="{e9bf7ad1-6965-ee11-9ae7-6045bdd2c8fd}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
@@ -159,7 +214,19 @@
         <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
           <package>msdynce_ServiceAnchor (9.0.23091.1017)</package>
         </Required>
+        <Dependent type="29" displayName="Section 25 Review - Create invoice" id="{229d21e1-7065-ee11-9ae7-6045bdd2cb7b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
+          <package>msdynce_ServiceAnchor (9.0.23091.1017)</package>
+        </Required>
         <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
+          <package>msdynce_ServiceAnchor (9.0.23091.1017)</package>
+        </Required>
+        <Dependent type="29" displayName="Case - New Email Received" id="{27dd0eff-3966-ee11-9ae7-6045bdd2c8fd}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
@@ -204,6 +271,10 @@
         <Dependent type="29" displayName="On Change - Active Stage - Update Case Status" id="{e6b75386-a82c-ee11-9965-6045bdd2c7c5}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_actiontypeid" displayName="Action Type" parentSchemaName="bsr_enforcement" parentDisplayName="Enforcement Action" solution="Active" />
+        <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_appeal" displayName="Appeal" parentSchemaName="incident" parentDisplayName="Case" solution="Active" />
         <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
@@ -212,7 +283,7 @@
         <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_block_incidentid" displayName="Block" parentSchemaName="incident" parentDisplayName="Case" solution="BuildingRegCore (1.17.64.0)" />
+        <Required type="2" schemaName="bsr_block_incidentid" displayName="Structure" parentSchemaName="incident" parentDisplayName="Case" solution="BuildingRegCore (1.17.64.0)" />
         <Dependent type="29" displayName="Case - Parent/Child Case Mapping" id="{31469dfc-d141-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
@@ -256,8 +327,20 @@
         <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_enforcementactiontypeid" displayName="Enforcement Action Type" parentSchemaName="bsr_enforcementactiontype" parentDisplayName="Enforcement Action Type" solution="Active" />
+        <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_enforcementid" displayName="Enforcement Action" parentSchemaName="bsr_enforcement" parentDisplayName="Enforcement Action" solution="Active" />
         <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_extensionstatus" displayName="Extension Status" parentSchemaName="bsr_section25review" parentDisplayName="Section 25 Review" solution="Active" />
+        <Dependent type="29" displayName="Approve/Reject S25 Due Date Extension" id="{3d607dea-6965-ee11-9ae7-6045bdd0ef4d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_extensionstatus" displayName="Extension Status" parentSchemaName="bsr_section25review" parentDisplayName="Section 25 Review" solution="Active" />
+        <Dependent type="29" displayName="Request S25 Due Date Extension" id="{e9bf7ad1-6965-ee11-9ae7-6045bdd2c8fd}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_followupcompletedby" displayName="Follow Up Completed By" parentSchemaName="incident" parentDisplayName="Case" solution="Active" />
@@ -312,11 +395,15 @@
         <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_enforcementactiontype" parentDisplayName="Enforcement Action Type" solution="Active" />
+        <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_name" displayName="ID" parentSchemaName="bsr_investigation" parentDisplayName="Investigation" solution="Active" />
         <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_section25review" parentDisplayName="Section 25 Review" solution="Active" />
+        <Required type="2" schemaName="bsr_name" displayName="ID" parentSchemaName="bsr_section25review" parentDisplayName="Section 25 Review" solution="Active" />
         <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
@@ -342,6 +429,18 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_resolutioncompletedon" displayName="Resolution Completed On" parentSchemaName="incident" parentDisplayName="Case" solution="Active" />
         <Dependent type="60" displayName="PhoneToCaseProcess" parentDisplayName="Phone To Case Process" id="{9774341b-bb15-44b8-b7fa-2ad3aadefa62}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_s25paymentstatus" displayName="S25 Payment Status" parentSchemaName="bsr_section25review" parentDisplayName="Section 25 Review" solution="Active" />
+        <Dependent type="29" displayName="Section 25 Review - Create invoice" id="{229d21e1-7065-ee11-9ae7-6045bdd2cb7b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_s25paymentstatus" displayName="S25 Payment Status" parentSchemaName="bsr_section25review" parentDisplayName="Section 25 Review" solution="Active" />
+        <Dependent type="29" displayName="Section 25 Review - Retrieve GOV.UK PAY payment details" id="{9fb0e6b0-7065-ee11-9ae7-6045bdd2c8fd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_section25review" displayName="Section 25 Review" parentSchemaName="incident" parentDisplayName="Case" solution="Active" />
+        <Dependent type="29" displayName="Case - Create record from Case Type" id="{24dc265f-c741-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_section25reviewid" displayName="Section 25 Review" parentSchemaName="bsr_section25review" parentDisplayName="Section 25 Review" solution="Active" />
@@ -524,6 +623,42 @@
           <package>msdynce_ServiceAnchor (9.0.23091.1017)</package>
         </Required>
         <Dependent type="60" displayName="PhoneToCaseProcess" parentDisplayName="Phone To Case Process" id="{9774341b-bb15-44b8-b7fa-2ad3aadefa62}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_BSRCommonAPIAccessKeyWS4" solution="Active" id.schemaname="bsr_BSRCommonAPIAccessKeyWS4" />
+        <Dependent type="29" displayName="Section 25 Review - Create invoice" id="{229d21e1-7065-ee11-9ae7-6045bdd2cb7b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_BSRCommonAPIAccessKeyWS4" solution="Active" id.schemaname="bsr_BSRCommonAPIAccessKeyWS4" />
+        <Dependent type="29" displayName="Section 25 Review - Retrieve GOV.UK PAY payment details" id="{9fb0e6b0-7065-ee11-9ae7-6045bdd2c8fd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_BSRCommonAPID365EnvironmentWS4" solution="Active" id.schemaname="bsr_BSRCommonAPID365EnvironmentWS4" />
+        <Dependent type="29" displayName="Section 25 Review - Create invoice" id="{229d21e1-7065-ee11-9ae7-6045bdd2cb7b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_BSRCommonAPIURLWS4" solution="Active" id.schemaname="bsr_BSRCommonAPIURLWS4" />
+        <Dependent type="29" displayName="Section 25 Review - Create invoice" id="{229d21e1-7065-ee11-9ae7-6045bdd2cb7b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_BSRCommonAPIURLWS4" solution="Active" id.schemaname="bsr_BSRCommonAPIURLWS4" />
+        <Dependent type="29" displayName="Section 25 Review - Retrieve GOV.UK PAY payment details" id="{9fb0e6b0-7065-ee11-9ae7-6045bdd2c8fd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_ComplainttoBSRreceivedEmailTemplateID" solution="Active" id.schemaname="bsr_ComplainttoBSRreceivedEmailTemplateID" />
+        <Dependent type="29" displayName="Send Complaint or question confirmation email" id="{b8c5f2bf-862f-ee11-bdf3-6045bdd2cb7b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_CustomerServicesMailboxQueueID" solution="Active" id.schemaname="bsr_CustomerServicesMailboxQueueID" />
+        <Dependent type="29" displayName="Send Complaint or question confirmation email" id="{b8c5f2bf-862f-ee11-bdf3-6045bdd2cb7b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_CustomerServicesTeamID" solution="Active" id.schemaname="bsr_CustomerServicesTeamID" />
+        <Dependent type="29" displayName="Send Complaint or question confirmation email" id="{b8c5f2bf-862f-ee11-bdf3-6045bdd2cb7b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_QuestiontoBSRreceivedEmailTemplateID" solution="Active" id.schemaname="bsr_QuestiontoBSRreceivedEmailTemplateID" />
+        <Dependent type="29" displayName="Send Complaint or question confirmation email" id="{b8c5f2bf-862f-ee11-bdf3-6045bdd2cb7b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointcasefolderid" solution="Active" id.schemaname="bsr_sharepointcasefolderid" />
