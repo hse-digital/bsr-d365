@@ -1,15 +1,6 @@
 {
   "properties": {
     "connectionReferences": {
-      "shared_sharepointonline": {
-        "runtimeSource": "embedded",
-        "connection": {
-          "connectionReferenceLogicalName": "bsr_SharePointWS4"
-        },
-        "api": {
-          "name": "shared_sharepointonline"
-        }
-      },
       "shared_commondataserviceforapps": {
         "runtimeSource": "embedded",
         "connection": {
@@ -17,6 +8,15 @@
         },
         "api": {
           "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_sharepointonline": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_SharePointWS4"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
         }
       }
     },
@@ -31,6 +31,20 @@
         "$authentication": {
           "defaultValue": {},
           "type": "SecureObject"
+        },
+        "SharePoint Case Folder ID (bsr_sharepointcasefolderid)": {
+          "defaultValue": "7af10034-cff0-42a6-956f-915cd73f66c5",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_sharepointcasefolderid"
+          }
+        },
+        "SharePoint Site URL (bsr_sharepointsiteurl)": {
+          "defaultValue": "https://hsegov.sharepoint.com/sites/bsr-ws4-dev",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_sharepointsiteurl"
+          }
         }
       },
       "triggers": {
@@ -51,11 +65,16 @@
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
             },
             "parameters": {
-              "dataset": "https://hsegov.sharepoint.com/sites/bsr-ws4-dev",
-              "table": "7af10034-cff0-42a6-956f-915cd73f66c5"
+              "dataset": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
+              "table": "@parameters('SharePoint Case Folder ID (bsr_sharepointcasefolderid)')"
             },
             "authentication": "@parameters('$authentication')"
-          }
+          },
+          "conditions": [
+            {
+              "expression": "@equals(triggerOutputs()?['body/IsFolder'],false)"
+            }
+          ]
         }
       },
       "actions": {
@@ -97,7 +116,9 @@
                   "entityName": "bsr_bsrdocuments",
                   "recordId": "@items('Apply_to_each')?['activityid']",
                   "item/subject": "[Deleted] @{items('Apply_to_each')?['subject']}",
-                  "item/statecode": 2
+                  "item/statecode": 2,
+                  "item/description": "@{items('Apply_to_each')?['description']} [File deleted from SharePoint on @{triggerOutputs()?['body/TimeDeleted']}]",
+                  "item/statuscode": 3
                 },
                 "authentication": "@parameters('$authentication')"
               }
@@ -115,7 +136,7 @@
         }
       }
     },
-    "templateName": null
+    "templateName": ""
   },
   "schemaVersion": "1.0.0.0"
 }
