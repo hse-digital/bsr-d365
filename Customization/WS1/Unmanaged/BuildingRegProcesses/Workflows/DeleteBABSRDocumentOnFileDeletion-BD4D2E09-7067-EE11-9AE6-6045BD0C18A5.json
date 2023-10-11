@@ -72,7 +72,7 @@
           },
           "conditions": [
             {
-              "expression": "@equals(triggerOutputs()?['body/{IsFolder}'],false)"
+              "expression": "@equals(triggerOutputs()?['body/IsFolder'],false)"
             }
           ]
         }
@@ -117,7 +117,7 @@
                   "recordId": "@items('Apply_to_each')?['activityid']",
                   "item/subject": "[Deleted] @{items('Apply_to_each')?['subject']}",
                   "item/statecode": 2,
-                  "item/description": "@{items('Apply_to_each')?['description']} [File deleted from SharePoint on@{triggerOutputs()?['body/TimeDeleted']}]",
+                  "item/description": "@{items('Apply_to_each')?['description']} [File deleted from SharePoint on @{triggerOutputs()?['body/TimeDeleted']}]",
                   "item/statuscode": 3
                 },
                 "authentication": "@parameters('$authentication')"
