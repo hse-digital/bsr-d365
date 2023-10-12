@@ -8,7 +8,7 @@
 <div>&nbsp;</div>
 <div><span style="font-family:Arial,Helvetica,sans-serif">Keep this safe. You can use it to return to your application at any time. &nbsp;</span></div>
 <div>&nbsp;</div>
-<div><span style="font-family:Arial,Helvetica,sans-serif">To return to your building control application, or start a new application, visit&nbsp;<a href="https://www.hse.gov.uk/manage-building-control">www.hse.gov.uk/manage-building-control</a>&nbsp;. &nbsp;</span></div>
+<div><span style="font-family:Arial,Helvetica,sans-serif">To return to your building control application, or start a new application, visit <a href="https://www.gov.uk/guidance/manage-a-building-control-application-for-a-higher-risk-building">https://www.gov.uk/guidance/manage-a-building-control-application-for-a-higher-risk-building</a>. &nbsp;</span></div>
 <div>&nbsp;</div>
 <div><span style="font-family:Arial,Helvetica,sans-serif">From the Health and Safety Executive</span></div>
 <div><span style="font-family:Arial,Helvetica,sans-serif">&nbsp;<br>as the Building Safety Regulator</span></div>
