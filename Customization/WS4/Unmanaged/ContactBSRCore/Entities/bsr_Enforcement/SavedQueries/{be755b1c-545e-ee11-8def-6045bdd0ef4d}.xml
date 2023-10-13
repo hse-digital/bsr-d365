@@ -29,15 +29,18 @@
           <attribute name="bsr_name" />
           <attribute name="bsr_enforcementid" />
           <attribute name="bsr_compliancedate" />
-          <filter type="and">
-            <condition attribute="bsr_compliancedate" operator="next-x-years" value="100" />
-            <condition attribute="statecode" operator="eq" value="0" />
-          </filter>
           <attribute name="createdon" />
           <attribute name="statuscode" />
           <attribute name="ownerid" />
           <attribute name="bsr_actiontypeid" />
           <attribute name="bsr_noticetypeid" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+            <filter type="or">
+              <condition attribute="bsr_compliancedate" operator="next-x-years" value="100" />
+              <condition attribute="bsr_compliancedate" operator="today" />
+            </filter>
+          </filter>
           <link-entity alias="a_09f10d1ce10542ebafcb6ffba0c260fa" name="incident" to="bsr_case" from="incidentid" link-type="outer" visible="false">
             <attribute name="title" />
             <attribute name="prioritycode" />
