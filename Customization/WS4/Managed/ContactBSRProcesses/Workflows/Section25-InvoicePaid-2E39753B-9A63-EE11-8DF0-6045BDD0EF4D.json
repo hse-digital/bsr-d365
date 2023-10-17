@@ -103,32 +103,15 @@
                 }
               }
             },
+            "method": "POST",
+            "relativePath": "api/InvoicePaid",
             "triggerAuthenticationType": "All"
           }
         }
       },
       "actions": {
-        "Initialize_variable": {
-          "runAfter": {},
-          "metadata": {
-            "operationMetadataId": "608bca00-6af8-4262-b98c-e24b0749abe0"
-          },
-          "type": "InitializeVariable",
-          "inputs": {
-            "variables": [
-              {
-                "name": "test",
-                "type": "string"
-              }
-            ]
-          }
-        },
         "Update_a_row": {
-          "runAfter": {
-            "Initialize_variable": [
-              "Succeeded"
-            ]
-          },
+          "runAfter": {},
           "metadata": {
             "operationMetadataId": "a02abc2e-4064-47f3-9ead-387d616e1ef9"
           },
@@ -141,7 +124,7 @@
             },
             "parameters": {
               "entityName": "bsr_payments",
-              "recordId": "697a0a6a-2966-ee11-9ae7-6045bdd2cb7b",
+              "recordId": "@triggerBody()?['data']?['object']?['metadata']?['paymentId']",
               "item/bsr_paymentreconciliationstatus": 760810000,
               "item/bsr_govukpaystatus": "@triggerBody()?['data']?['object']?['status']",
               "item/bsr_timeanddateoftransaction": "@addseconds('1970-1-1', triggerBody()?['data']?['object']?['created'], 'yyyy-MM-ddTHH:mm:ssZ')"

@@ -96,9 +96,9 @@
               "Town": "@{triggerOutputs()?['body/bsr_billingcitytown']}",
               "Postcode": "@{triggerOutputs()?['body/bsr_billingpostcode']}",
               "Application": "Section 25",
-              "Description": "Payment for Section 25 Review",
-              "Title": "Section 25 Review",
-              "OrderNumber": "@{triggerOutputs()?['body/bsr_purchaseordernumber']}",
+              "Description": "Payment to request a review of a decision made by the Building Safety Regulator",
+              "Title": "Request to review a Building Safety Regulator decision",
+              "OrderNumber": "@{if(equals(triggerOutputs()?['body/bsr_purchaseordernumber'],''),'n/a',triggerOutputs()?['body/bsr_purchaseordernumber'])}",
               "Amount": "@outputs('Add_a_new_row')?['body/bsr_amountpaid']",
               "Environment": "@{parameters('BSR Common API D365 Environment WS4 (bsr_BSRCommonAPID365EnvironmentWS4)')}"
             }
@@ -215,10 +215,11 @@
             "parameters": {
               "entityName": "bsr_payments",
               "item/bsr_amountpaid": 288,
-              "item/bsr_billingaddress": "@replace(outputs('Compose_billing_address'), ', ,', ', ')",
+              "item/bsr_billingaddress": "@replace(outputs('Compose_billing_address'), ', , ', ', ')",
               "item/bsr_emailaddress": "@triggerOutputs()?['body/bsr_invoiceemailaddress']",
               "item/bsr_invoicedcontactid@odata.bind": "/contacts(@{outputs('Get_a_row_by_ID')?['body/_customerid_value']})",
               "item/bsr_paymenttypecode": 760810001,
+              "item/bsr_purchaseordernumberifsupplied": "@triggerOutputs()?['body/bsr_purchaseordernumber']",
               "item/bsr_Section25Review@odata.bind": "\\bsr_section25reviews(@{triggerOutputs()?['body/bsr_section25reviewid']})",
               "item/bsr_service": "Section 25 Review"
             },
