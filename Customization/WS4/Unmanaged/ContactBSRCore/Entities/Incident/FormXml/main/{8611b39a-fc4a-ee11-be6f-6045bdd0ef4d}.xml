@@ -21,6 +21,30 @@
                   </labels>
                   <rows>
                     <row>
+                      <cell id="{afb7ad50-7c22-430f-a4c9-e5e1f4bd0250}" locklevel="0" colspan="1" rowspan="1" showlabel="true" visible="false">
+                        <labels>
+                          <label description="Outcome Category" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_outcomecategory" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_outcomecategory" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6e5c510c-0068-4ea7-83e6-05047e51c773}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Case Outcome" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_caseoutcome" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_caseoutcome" disabled="false">
+                          <parameters>
+                            <DependentAttributeName>incident.bsr_outcomecategory</DependentAttributeName>
+                            <DependentAttributeType>bsr_caseoutcomecategory</DependentAttributeType>
+                            <FilterRelationshipName>bsr_bsr_caseoutcome_OutcomeCategory_bsr_caseo</FilterRelationshipName>
+                            <DisableViewPicker>true</DisableViewPicker>
+                            <DisableMru>true</DisableMru>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{0d9d9e77-c057-450b-9b07-312cc2518926}" locklevel="0" colspan="1" rowspan="4" labelid="{dfd7a4d2-8833-4777-a916-39054e7610bc}">
                         <labels>
                           <label description="Outcome Details" languagecode="1033" />

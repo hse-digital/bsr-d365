@@ -25,29 +25,26 @@
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" mapping="logical">
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
         <entity name="bsr_enforcement">
-          <attribute name="bsr_enforcementid" />
           <attribute name="bsr_name" />
           <attribute name="createdon" />
-          <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
-          </filter>
-          <link-entity alias="a_09f10d1ce10542ebafcb6ffba0c260fa" name="incident" to="bsr_case" from="incidentid" link-type="outer" visible="false">
-            <attribute name="title" />
-            <attribute name="customerid" />
-          </link-entity>
           <attribute name="statuscode" />
           <attribute name="ownerid" />
-          <order attribute="bsr_name" descending="true" />
           <attribute name="bsr_noticetypeid" />
           <attribute name="bsr_compliancedate" />
           <attribute name="bsr_noticeurn" />
           <attribute name="bsr_noticeservedon" />
-          <filter type="or" isquickfindfields="1">
-            <condition attribute="bsr_name" operator="like" value="{0}" />
-            <condition attribute="bsr_noticeurn" operator="like" value="{0}" />
+          <order attribute="bsr_name" descending="true" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+            <condition attribute="bsr_actiontypeid" operator="eq" value="{c34858c3-1f63-ee11-8df0-6045bdd2cb7b}" uiname="Notice" uitype="bsr_enforcementactiontype" />
           </filter>
+          <link-entity name="incident" from="incidentid" to="bsr_case" visible="false" link-type="outer" alias="a_09f10d1ce10542ebafcb6ffba0c260fa">
+            <attribute name="title" />
+            <attribute name="customerid" />
+          </link-entity>
+          <attribute name="bsr_enforcementid" />
         </entity>
       </fetch>
     </fetchxml>

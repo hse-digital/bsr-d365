@@ -1690,7 +1690,7 @@
           <Name>bsr_investigationoutcome</Name>
           <LogicalName>bsr_investigationoutcome</LogicalName>
           <RequiredLevel>none</RequiredLevel>
-          <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+          <DisplayMask>ValidForForm|ValidForGrid</DisplayMask>
           <ImeMode>auto</ImeMode>
           <ValidForUpdateApi>1</ValidForUpdateApi>
           <ValidForReadApi>1</ValidForReadApi>
@@ -1763,7 +1763,7 @@
             </options>
           </optionset>
           <displaynames>
-            <displayname description="Investigation Outcome" languagecode="1033" />
+            <displayname description="(Delete) Investigation Outcome" languagecode="1033" />
           </displaynames>
           <Descriptions>
             <Description description="" languagecode="1033" />
@@ -2087,6 +2087,45 @@
           <LookupTypes />
           <displaynames>
             <displayname description="Originating Case" languagecode="1033" />
+          </displaynames>
+          <Descriptions>
+            <Description description="" languagecode="1033" />
+          </Descriptions>
+        </attribute>
+        <attribute PhysicalName="bsr_OutcomeCategory">
+          <Type>lookup</Type>
+          <Name>bsr_outcomecategory</Name>
+          <LogicalName>bsr_outcomecategory</LogicalName>
+          <RequiredLevel>none</RequiredLevel>
+          <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+          <ImeMode>auto</ImeMode>
+          <ValidForUpdateApi>1</ValidForUpdateApi>
+          <ValidForReadApi>1</ValidForReadApi>
+          <ValidForCreateApi>1</ValidForCreateApi>
+          <IsCustomField>1</IsCustomField>
+          <IsAuditEnabled>0</IsAuditEnabled>
+          <IsSecured>0</IsSecured>
+          <IntroducedVersion>1.0.34.0</IntroducedVersion>
+          <IsCustomizable>1</IsCustomizable>
+          <IsRenameable>1</IsRenameable>
+          <CanModifySearchSettings>1</CanModifySearchSettings>
+          <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+          <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+          <SourceType>0</SourceType>
+          <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+          <IsSortableEnabled>0</IsSortableEnabled>
+          <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+          <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+          <IsDataSourceSecret>0</IsDataSourceSecret>
+          <AutoNumberFormat></AutoNumberFormat>
+          <IsSearchable>0</IsSearchable>
+          <IsFilterable>0</IsFilterable>
+          <IsRetrievable>0</IsRetrievable>
+          <IsLocalizable>0</IsLocalizable>
+          <LookupStyle>single</LookupStyle>
+          <LookupTypes />
+          <displaynames>
+            <displayname description="Outcome Category" languagecode="1033" />
           </displaynames>
           <Descriptions>
             <Description description="" languagecode="1033" />
@@ -3307,6 +3346,11 @@
               <Description description="Reason for the status of the case." languagecode="1033" />
             </Descriptions>
             <statuses>
+              <status value="760810001" state="1" TransitionData="" Color="#0000ff">
+                <labels>
+                  <label description="Investigation in progress" languagecode="1033" />
+                </labels>
+              </status>
               <status value="1" state="0" TransitionData="" Color="#E7EFFF">
                 <labels>
                   <label description="New" languagecode="1033" />
@@ -3339,13 +3383,11 @@
               </status>
               <status value="1000" state="1" TransitionData="" Color="#CFE4FA">
                 <labels>
-                  <label description="Pending Investigation" languagecode="1033" />
+                  <label description="Closed" languagecode="1033" />
                 </labels>
-              </status>
-              <status value="760810001" state="1" TransitionData="" Color="#0000ff">
-                <labels>
-                  <label description="Investigation in progress" languagecode="1033" />
-                </labels>
+                <Descriptions>
+                  <Description description="" languagecode="1033" />
+                </Descriptions>
               </status>
               <status value="6" state="2" TransitionData="" Color="#EDEBE9">
                 <labels>
