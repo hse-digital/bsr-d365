@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23092.196" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23094.194" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>ContactBSRUX</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Contact BSR UX" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.19.0</Version>
+    <Version>1.0.20.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -219,6 +219,14 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_caseoutcome" displayName="Case Outcome" solution="Active" />
+        <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_caseoutcomecategory" displayName="Case Outcome Category" solution="Active" />
+        <Dependent type="62" schemaName="bsr_BSR" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_caseoutcomecategory" displayName="Case Outcome Category" solution="Active" />
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
@@ -652,14 +660,14 @@
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_kmfederatedsearchconfig" displayName="Search provider" solution="msdynce_KnowledgeManagementOnlineFeatures (9.0.23091.5019)">
-          <package>msdynce_KnowledgeManagementAnchor (9.0.23091.5019)</package>
+        <Required type="1" schemaName="msdyn_kmfederatedsearchconfig" displayName="Search provider" solution="msdynce_KnowledgeManagementOnlineFeatures (9.0.23091.5020)">
+          <package>msdynce_KnowledgeManagementAnchor (9.0.23091.5020)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_knowledgearticletemplate" displayName="Knowledge Article Template" solution="msdynce_KnowledgeManagementFeatures (9.0.23091.5019)">
-          <package>msdynce_KnowledgeManagementAnchor (9.0.23091.5019)</package>
+        <Required type="1" schemaName="msdyn_knowledgearticletemplate" displayName="Knowledge Article Template" solution="msdynce_KnowledgeManagementFeatures (9.0.23091.5020)">
+          <package>msdynce_KnowledgeManagementAnchor (9.0.23091.5020)</package>
         </Required>
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
@@ -974,6 +982,10 @@
       <MissingDependency>
         <Required type="60" displayName="Building" parentDisplayName="Building" solution="BuildingRegCore (1.17.64.0)" id="{b9a7bf50-618a-4696-905d-f26545271ed0}" />
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="bsr_/bsr/tables/casemanagement/img/referencetables.svg" displayName="bsr_/bsr/tables/casemanagement/img/referencetables.svg" solution="Active" />
+        <Dependent type="62" schemaName="bsr_BSR" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_/Images/AppModule_Default_Icon.png" displayName="msdyn_/Images/AppModule_Default_Icon.png" solution="AppModuleWebResources (2.5)" />
