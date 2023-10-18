@@ -6,7 +6,7 @@
     <isquickfindquery>0</isquickfindquery>
     <isprivate>0</isprivate>
     <isdefault>0</isdefault>
-    <savedqueryid>{8ed77fda-ed1f-ee11-9967-0022481b5210}</savedqueryid>
+    <savedqueryid>{853ec3b7-3d6c-ee11-9ae7-0022481b5210}</savedqueryid>
     <layoutxml>
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_buildingprofessionapplicationid">
@@ -30,18 +30,19 @@
           <attribute name="createdon" />
           <order attribute="createdon" descending="true" />
           <filter type="and">
+            <condition attribute="bsr_buildingprofessiontypecode" operator="eq" value="760810001" />
+            <condition attribute="statuscode" operator="eq" value="760810010" />
             <condition attribute="statecode" operator="eq" value="0" />
-            <condition attribute="ownerid" operator="eq-userid" />
           </filter>
         </entity>
       </fetch>
     </fetchxml>
-    <IntroducedVersion>1.0.4.0</IntroducedVersion>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="My Building Profession Applications" languagecode="1033" />
+      <LocalizedName description="Building Control Approver - Submitted" languagecode="1033" />
     </LocalizedNames>
     <Descriptions>
-      <Description description="BSR view to display users' active &#xA;applications only" languagecode="1033" />
+      <Description description="RBCA applications that are submitted" languagecode="1033" />
     </Descriptions>
   </savedquery>
 </savedqueries>

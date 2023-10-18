@@ -23,15 +23,16 @@
       <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
         <entity name="bsr_buildingprofessionapplication">
           <attribute name="bsr_buildingprofessionapplicationid" />
-          <filter type="and">
-            <condition attribute="statuscode" operator="eq" value="760810012" />
-            <condition attribute="bsr_onholdreason" operator="eq" value="{48c878a2-a057-ee11-be6f-0022481b56d1}" uiname="Hold - Assessment Information Requested" uitype="bsr_onholdreason" />
-          </filter>
           <attribute name="bsr_buildingproappid" />
           <attribute name="bsr_applicantid" />
           <attribute name="statuscode" />
           <attribute name="ownerid" />
           <attribute name="createdon" />
+          <filter type="and">
+            <condition attribute="statuscode" operator="eq" value="760810012" />
+            <condition attribute="bsr_onholdreason" operator="eq" value="{48c878a2-a057-ee11-be6f-0022481b56d1}" uiname="Hold - Assessment Information Requested" uitype="bsr_onholdreason" />
+            <condition attribute="bsr_buildingprofessiontypecode" operator="eq" value="760810000" />
+          </filter>
         </entity>
       </fetch>
     </fetchxml>

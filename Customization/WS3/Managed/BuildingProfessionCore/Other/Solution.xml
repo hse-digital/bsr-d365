@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23093.218" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23094.194" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>BuildingProfessionCore</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Profession Core" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.46.0</Version>
+    <Version>1.0.47.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -147,6 +147,7 @@
       <RootComponent type="61" schemaName="bsr_buildingprofessionapplicationicon" behavior="0" />
       <RootComponent type="9" schemaName="bsr_assessmentstatus" behavior="0" />
       <RootComponent type="9" schemaName="bsr_bicofclasscertified" behavior="0" />
+      <RootComponent type="9" schemaName="bsr_biiacandidatecertifiedcountries" behavior="0" />
       <RootComponent type="9" schemaName="bsr_buildingprofessiontypecode" behavior="0" />
       <RootComponent type="9" schemaName="bsr_certificatestatus" behavior="0" />
       <RootComponent type="9" schemaName="bsr_regulatorydecisionstatus" behavior="0" />
@@ -223,7 +224,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="msdyn_customerasset" displayName="Customer Asset" solution="msdyn_AssetCommon (1.0.26.9)">
-          <package>msdynce_ServiceAnchor (9.0.23091.1017)</package>
+          <package>msdynce_ServiceAnchor (9.0.23093.1020)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
@@ -285,7 +286,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="msdyn_account_msdyn_customerasset_Account" displayName="msdyn_account_msdyn_customerasset_Account" parentSchemaName="account" parentDisplayName="Account" solution="msdyn_AssetCommon (1.0.26.9)">
-          <package>msdynce_ServiceAnchor (9.0.23091.1017)</package>
+          <package>msdynce_ServiceAnchor (9.0.23093.1020)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
@@ -335,7 +336,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_amountpaid" displayName="Amount" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
+        <Dependent type="26" schemaName="Building Inspector Payments" displayName="Building Inspector Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{0663d797-356c-ee11-9ae7-0022481b56d1}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_amountpaid" displayName="Amount" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
         <Dependent type="26" schemaName="Building Profession Application Payments" displayName="Building Profession Application Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{269b9f78-af19-ee11-8f6d-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_amountpaid" displayName="Amount" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
+        <Dependent type="26" schemaName="Building Control Approver Payments" displayName="Building Control Approver Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{9444eac2-356c-ee11-9ae7-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_amountpaid" displayName="Amount" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
@@ -343,7 +352,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_billingaddress" displayName="Billing address" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
+        <Dependent type="26" schemaName="Building Inspector Payments" displayName="Building Inspector Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{0663d797-356c-ee11-9ae7-0022481b56d1}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_billingaddress" displayName="Billing address" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
         <Dependent type="26" schemaName="Building Profession Application Payments" displayName="Building Profession Application Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{269b9f78-af19-ee11-8f6d-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_billingaddress" displayName="Billing address" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
+        <Dependent type="26" schemaName="Building Control Approver Payments" displayName="Building Control Approver Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{9444eac2-356c-ee11-9ae7-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_billingaddress" displayName="Billing address" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
@@ -363,10 +380,6 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_buildingapplicationid" displayName="Building Application" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
-        <Dependent type="26" schemaName="Building Profession Application Payments" displayName="Building Profession Application Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{269b9f78-af19-ee11-8f6d-0022481b5210}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_buildingapplicationid" displayName="Building Application" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
         <Dependent type="29" displayName="Show Building Profession Application or Building Application" id="{389a1038-9119-ee11-8f6d-0022481b5210}" />
       </MissingDependency>
       <MissingDependency>
@@ -375,7 +388,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_cardbrandegvisa" displayName="Card brand (e.g. Visa)" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
+        <Dependent type="26" schemaName="Building Inspector Payments" displayName="Building Inspector Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{0663d797-356c-ee11-9ae7-0022481b56d1}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_cardbrandegvisa" displayName="Card brand (e.g. Visa)" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
         <Dependent type="26" schemaName="Building Profession Application Payments" displayName="Building Profession Application Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{269b9f78-af19-ee11-8f6d-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_cardbrandegvisa" displayName="Card brand (e.g. Visa)" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
+        <Dependent type="26" schemaName="Building Control Approver Payments" displayName="Building Control Approver Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{9444eac2-356c-ee11-9ae7-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_cardbrandegvisa" displayName="Card brand (e.g. Visa)" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
@@ -383,7 +404,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_cardexpirydate" displayName="Card expiry date" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
+        <Dependent type="26" schemaName="Building Inspector Payments" displayName="Building Inspector Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{0663d797-356c-ee11-9ae7-0022481b56d1}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_cardexpirydate" displayName="Card expiry date" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
         <Dependent type="26" schemaName="Building Profession Application Payments" displayName="Building Profession Application Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{269b9f78-af19-ee11-8f6d-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_cardexpirydate" displayName="Card expiry date" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
+        <Dependent type="26" schemaName="Building Control Approver Payments" displayName="Building Control Approver Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{9444eac2-356c-ee11-9ae7-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_cardexpirydate" displayName="Card expiry date" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
@@ -391,7 +420,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_cardtypecreditdebit" displayName="Card type (credit/debit)" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
+        <Dependent type="26" schemaName="Building Inspector Payments" displayName="Building Inspector Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{0663d797-356c-ee11-9ae7-0022481b56d1}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_cardtypecreditdebit" displayName="Card type (credit/debit)" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
         <Dependent type="26" schemaName="Building Profession Application Payments" displayName="Building Profession Application Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{269b9f78-af19-ee11-8f6d-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_cardtypecreditdebit" displayName="Card type (credit/debit)" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
+        <Dependent type="26" schemaName="Building Control Approver Payments" displayName="Building Control Approver Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{9444eac2-356c-ee11-9ae7-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_cardtypecreditdebit" displayName="Card type (credit/debit)" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
@@ -431,6 +468,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_govukpaymentid" displayName="Gov UK Payment ID" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
+        <Dependent type="26" schemaName="Building Inspector Payments" displayName="Building Inspector Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{0663d797-356c-ee11-9ae7-0022481b56d1}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_govukpaymentid" displayName="Gov UK Payment ID" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
         <Dependent type="26" schemaName="Building Profession Application Payments" displayName="Building Profession Application Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{269b9f78-af19-ee11-8f6d-0022481b5210}" />
       </MissingDependency>
       <MissingDependency>
@@ -439,7 +480,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_govukpaystatus" displayName="Payment Status" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
+        <Dependent type="26" schemaName="Building Inspector Payments" displayName="Building Inspector Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{0663d797-356c-ee11-9ae7-0022481b56d1}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_govukpaystatus" displayName="Payment Status" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
         <Dependent type="26" schemaName="Building Profession Application Payments" displayName="Building Profession Application Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{269b9f78-af19-ee11-8f6d-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_govukpaystatus" displayName="Payment Status" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
+        <Dependent type="26" schemaName="Building Control Approver Payments" displayName="Building Control Approver Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{9444eac2-356c-ee11-9ae7-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_govukpaystatus" displayName="Payment Status" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
@@ -471,7 +520,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_lastfourdigitsofcardnumber" displayName="Last four digits of card number" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
+        <Dependent type="26" schemaName="Building Inspector Payments" displayName="Building Inspector Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{0663d797-356c-ee11-9ae7-0022481b56d1}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_lastfourdigitsofcardnumber" displayName="Last four digits of card number" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
         <Dependent type="26" schemaName="Building Profession Application Payments" displayName="Building Profession Application Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{269b9f78-af19-ee11-8f6d-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_lastfourdigitsofcardnumber" displayName="Last four digits of card number" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
+        <Dependent type="26" schemaName="Building Control Approver Payments" displayName="Building Control Approver Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{9444eac2-356c-ee11-9ae7-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_lastfourdigitsofcardnumber" displayName="Last four digits of card number" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
@@ -567,7 +624,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_paymentid" displayName="Payment" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
+        <Dependent type="26" schemaName="Building Inspector Payments" displayName="Building Inspector Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{0663d797-356c-ee11-9ae7-0022481b56d1}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_paymentid" displayName="Payment" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
         <Dependent type="26" schemaName="Building Profession Application Payments" displayName="Building Profession Application Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{269b9f78-af19-ee11-8f6d-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_paymentid" displayName="Payment" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
+        <Dependent type="26" schemaName="Building Control Approver Payments" displayName="Building Control Approver Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{9444eac2-356c-ee11-9ae7-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_paymentid" displayName="Payment" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
@@ -579,7 +644,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_paymentreconciliationstatus" displayName="Payment Reconciliation Status" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
+        <Dependent type="26" schemaName="Building Inspector Payments" displayName="Building Inspector Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{0663d797-356c-ee11-9ae7-0022481b56d1}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_paymentreconciliationstatus" displayName="Payment Reconciliation Status" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
         <Dependent type="26" schemaName="Building Profession Application Payments" displayName="Building Profession Application Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{269b9f78-af19-ee11-8f6d-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_paymentreconciliationstatus" displayName="Payment Reconciliation Status" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
+        <Dependent type="26" schemaName="Building Control Approver Payments" displayName="Building Control Approver Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{9444eac2-356c-ee11-9ae7-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_paymentreconciliationstatus" displayName="Payment Reconciliation Status" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
@@ -595,7 +668,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_refundreason" displayName="Refund Reason" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
+        <Dependent type="26" schemaName="Building Inspector Payments" displayName="Building Inspector Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{0663d797-356c-ee11-9ae7-0022481b56d1}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_refundreason" displayName="Refund Reason" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
         <Dependent type="26" schemaName="Building Profession Application Payments" displayName="Building Profession Application Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{269b9f78-af19-ee11-8f6d-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_refundreason" displayName="Refund Reason" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
+        <Dependent type="26" schemaName="Building Control Approver Payments" displayName="Building Control Approver Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{9444eac2-356c-ee11-9ae7-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_refundreason" displayName="Refund Reason" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
@@ -627,7 +708,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_service" displayName="Service" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
+        <Dependent type="26" schemaName="Building Inspector Payments" displayName="Building Inspector Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{0663d797-356c-ee11-9ae7-0022481b56d1}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_service" displayName="Service" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
         <Dependent type="26" schemaName="Building Profession Application Payments" displayName="Building Profession Application Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{269b9f78-af19-ee11-8f6d-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_service" displayName="Service" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
+        <Dependent type="26" schemaName="Building Control Approver Payments" displayName="Building Control Approver Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{9444eac2-356c-ee11-9ae7-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_service" displayName="Service" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
@@ -639,7 +728,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_timeanddateoftransaction" displayName="Time and date of transaction" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
+        <Dependent type="26" schemaName="Building Inspector Payments" displayName="Building Inspector Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{0663d797-356c-ee11-9ae7-0022481b56d1}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_timeanddateoftransaction" displayName="Time and date of transaction" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
         <Dependent type="26" schemaName="Building Profession Application Payments" displayName="Building Profession Application Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{269b9f78-af19-ee11-8f6d-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_timeanddateoftransaction" displayName="Time and date of transaction" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
+        <Dependent type="26" schemaName="Building Control Approver Payments" displayName="Building Control Approver Payments" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" id="{9444eac2-356c-ee11-9ae7-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_timeanddateoftransaction" displayName="Time and date of transaction" parentSchemaName="bsr_payment" parentDisplayName="Gov UK Payment" solution="BuildingRegCore (1.17.64.0)" />
@@ -729,7 +826,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Active Customer Assets" displayName="Active Customer Assets" parentSchemaName="msdyn_customerasset" parentDisplayName="Customer Asset" solution="msdyn_AssetCommon (1.0.26.9)" id="{6ecb03a4-acda-44ae-83e3-c60ba8338dbb}">
-          <package>msdynce_ServiceAnchor (9.0.23091.1017)</package>
+          <package>msdynce_ServiceAnchor (9.0.23093.1020)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
@@ -743,7 +840,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Customer Asset associated view with alerts" displayName="Customer Asset associated view with alerts" parentSchemaName="msdyn_customerasset" parentDisplayName="Customer Asset" solution="msdyn_ConnectedCustomerService (9.0.20115.1027)" id="{38cc036f-fbfe-e911-a81c-000d3ac2c6cb}">
-          <package>msdynce_ServiceAnchor (9.0.23091.1017)</package>
+          <package>msdynce_ServiceAnchor (9.0.23093.1020)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
@@ -775,22 +872,22 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_/ConnectedCustomerService/Account/AccountForm.js" displayName="msdyn_/ConnectedCustomerService/Account/AccountForm.js" solution="msdyn_ConnectedCustomerService (9.0.20115.1027)">
-          <package>msdynce_ServiceAnchor (9.0.23091.1017)</package>
+          <package>msdynce_ServiceAnchor (9.0.23093.1020)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_talkingpointsloader.js" displayName="msdyn_talkingpointsloader.js" solution="msdynce_Talkingpoints (9.1.0.59)">
-          <package>msdynce_SalesInsightsAnchor (9.0.23093.10007)</package>
+          <package>msdynce_SalesInsightsAnchor (9.0.23093.10008)</package>
         </Required>
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.CheckboxControl" displayName="MscrmControls.FieldControls.CheckboxControl" solution="BaseCustomControlsCore (9.0.2309.3017)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.CheckboxControl" displayName="MscrmControls.FieldControls.CheckboxControl" solution="BaseCustomControlsCore (9.0.2309.4020)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Building Profession Application" id="{9f4238b9-53a5-4868-88ef-317b5b3d19e2}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2309.3017)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2309.4020)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Building Profession Application" id="{9f4238b9-53a5-4868-88ef-317b5b3d19e2}" />
       </MissingDependency>
       <MissingDependency>
