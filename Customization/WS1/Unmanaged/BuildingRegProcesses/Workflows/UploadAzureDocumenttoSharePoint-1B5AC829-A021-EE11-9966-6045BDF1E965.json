@@ -97,7 +97,8 @@
               ],
               "additionalProperties": false
             },
-            "method": "POST"
+            "method": "POST",
+            "triggerAuthenticationType": "All"
           }
         }
       },
@@ -239,7 +240,7 @@
             }
           },
           "runAfter": {
-            "Initialize_variable": [
+            "Initialize_variable_2": [
               "Succeeded"
             ]
           },
@@ -353,7 +354,8 @@
                 "statusCode": 200,
                 "body": {
                   "sharePointFileId": "@outputs('Create_file')?['body/ItemId']",
-                  "bsr_documentid": "@{outputs('Add_a_new_row')?['body/activityid']}"
+                  "bsr_documentid": "@{outputs('Add_a_new_row')?['body/activityid']}",
+                  "sharePointFileLocator": "@{outputs('Create_file')?['body/FileLocator']}"
                 },
                 "schema": {
                   "type": "object",
@@ -403,6 +405,25 @@
             "operationMetadataId": "05e33054-d2f4-4a19-9508-dc925127fb7e"
           },
           "type": "Scope"
+        },
+        "Initialize_variable_2": {
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "1fdf1442-d5b6-4e6f-8bf4-d76a798cf3c2"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "D365 URL",
+                "type": "string"
+              }
+            ]
+          }
         }
       },
       "outputs": {}

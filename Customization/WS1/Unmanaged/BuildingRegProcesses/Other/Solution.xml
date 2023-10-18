@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23093.220" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23094.194" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>BuildingRegProcesses</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Reg Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.12.31.0</Version>
+    <Version>1.12.32.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -84,6 +84,7 @@
       <RootComponent type="29" id="{0426ebcf-1252-ee11-be6f-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{06333f46-6f25-ee11-9965-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{08a7257e-2b64-ee11-8def-6045bd0c14e5}" behavior="0" />
+      <RootComponent type="29" id="{0db0e68b-ca6c-ee11-9ae6-6045bd0c1096}" behavior="0" />
       <RootComponent type="29" id="{0f0464dc-a1bd-ed11-83fe-000d3a86e5b0}" behavior="0" />
       <RootComponent type="29" id="{1b5ac829-a021-ee11-9966-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{1cfbd44f-cd09-ee11-8f6e-002248c727e7}" behavior="0" />
@@ -98,6 +99,7 @@
       <RootComponent type="29" id="{4e9f01c2-58a9-ed11-aad1-0022481b5e4f}" behavior="0" />
       <RootComponent type="29" id="{53791bc6-edbc-ed11-83fe-000d3a86ecac}" behavior="0" />
       <RootComponent type="29" id="{64521b66-6527-47d1-b4aa-b2795f4e694a}" behavior="0" />
+      <RootComponent type="29" id="{65643344-016c-ee11-9ae6-6045bd0c1726}" behavior="0" />
       <RootComponent type="29" id="{7f165d07-03a7-ed11-aad1-0022481b5e4f}" behavior="0" />
       <RootComponent type="29" id="{7faddab7-17fa-ed11-8f6d-002248c727e7}" behavior="0" />
       <RootComponent type="29" id="{82b1a383-ea20-ee11-9966-002248c72859}" behavior="0" />
@@ -222,6 +224,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
+        <Dependent type="29" displayName="Send Email reminders to pay invoice every day" id="{65643344-016c-ee11-9ae6-6045bd0c1726}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
         <Dependent type="29" displayName="Send Email notifications for Registered Building Application" id="{7faddab7-17fa-ed11-8f6d-002248c727e7}" />
       </MissingDependency>
       <MissingDependency>
@@ -278,6 +284,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
+        <Dependent type="29" displayName="Send Email reminders to pay invoice every day" id="{65643344-016c-ee11-9ae6-6045bd0c1726}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
         <Dependent type="29" displayName="Send Email notifications for Registered Building Application" id="{7faddab7-17fa-ed11-8f6d-002248c727e7}" />
       </MissingDependency>
       <MissingDependency>
@@ -323,6 +333,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
         <Dependent type="29" displayName="Send Email when Primary or Secondary user has been added to the Building Application" id="{f872e448-4552-ee11-be6f-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_change" displayName="Change" solution="Active" />
+        <Dependent type="29" displayName="Set Name for Changes table" id="{0db0e68b-ca6c-ee11-9ae6-6045bd0c1096}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_changecategory" displayName="Change Category" solution="Active" />
@@ -379,6 +393,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_payment" displayName="Payment" solution="Active" />
         <Dependent type="29" displayName="Send  email notification to applicant when Building Application Stage is invoice raised" id="{06333f46-6f25-ee11-9965-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_payment" displayName="Payment" solution="Active" />
+        <Dependent type="29" displayName="Send Email reminders to pay invoice every day" id="{65643344-016c-ee11-9ae6-6045bd0c1726}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_payment" displayName="Payment" solution="Active" />
@@ -555,6 +573,10 @@
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="Active" id.schemaname="bsr_noreplyqueueid" />
         <Dependent type="29" displayName="Send Email if  Application Status is Set Submitted - awaiting allocation " id="{2d228b8c-06c1-ed11-83fd-6045bd0d435c}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="Active" id.schemaname="bsr_noreplyqueueid" />
+        <Dependent type="29" displayName="Send Email reminders to pay invoice every day" id="{65643344-016c-ee11-9ae6-6045bd0c1726}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="Active" id.schemaname="bsr_noreplyqueueid" />
