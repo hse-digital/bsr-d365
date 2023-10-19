@@ -317,14 +317,14 @@
                 }
               },
               "runAfter": {
-                "Applicant_Compose": [
+                "Invoice_Reminder_date": [
                   "Succeeded"
                 ]
               },
               "expression": {
                 "equals": [
-                  "@outputs('Get_Payment_row_by_ID')?['body/bsr_invoicereminder35days']",
-                  "@utcNow()"
+                  "@outputs('Invoice_Reminder_date')",
+                  "@formatDateTime(utcNow(),'yyyy-MM-dd')"
                 ]
               },
               "metadata": {
@@ -401,10 +401,22 @@
               },
               "type": "Compose",
               "inputs": "@outputs('Get_Building_row_by_ID')?['body/bsr_name']"
+            },
+            "Invoice_Reminder_date": {
+              "runAfter": {
+                "Applicant_Compose": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "792c3f3c-dbd4-476a-8c58-9e7138e36fe6"
+              },
+              "type": "Compose",
+              "inputs": "@formatDateTime(outputs('Get_Payment_row_by_ID')?['body/bsr_invoicereminder35days'],'yyyy-MM-dd')"
             }
           },
           "runAfter": {
-            "Date_Compose": [
+            "Get_Queue_by_ID": [
               "Succeeded"
             ]
           },
@@ -412,18 +424,6 @@
             "operationMetadataId": "cdab704f-410e-428c-b2c6-c3682b2116d8"
           },
           "type": "Foreach"
-        },
-        "Date_Compose": {
-          "runAfter": {
-            "Get_Queue_by_ID": [
-              "Succeeded"
-            ]
-          },
-          "metadata": {
-            "operationMetadataId": "0da139c9-86c5-44f9-991f-da1025b27d7e"
-          },
-          "type": "Compose",
-          "inputs": "@utcNow()"
         }
       }
     },
