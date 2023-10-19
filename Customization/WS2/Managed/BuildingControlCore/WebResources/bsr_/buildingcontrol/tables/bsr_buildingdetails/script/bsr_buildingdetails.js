@@ -45,5 +45,20 @@ var BuildingDetails;
         }
     }
     BuildingDetails.LockFieldsOnSubmissionDate = LockFieldsOnSubmissionDate;
+    function ShowHidePrescribedDocumentSection(executionContext) {
+        Form = executionContext.getFormContext();
+        var bsr_bcapplicationid = Form.getAttribute("bsr_bcapplicationid").getValue()[0].id;
+        Xrm.WebApi.retrieveRecord("bsr_buildingcontrolapplication", bsr_bcapplicationid, "?$select=bsr_stagedapplication,bsr_issubsequentstagedapp").then(function success(result) {
+            var bsr_stagedapplication = result.bsr_stagedapplication;
+            var bsr_issubsequentstagedapp = result.bsr_issubsequentstagedapp;
+            if (bsr_stagedapplication == true || bsr_issubsequentstagedapp == true) {
+                Form.ui.tabs.get("tab1").sections.get("tab1_section_12").setVisible(false);
+                Form.ui.tabs.get("tab1").sections.get("tab1_section_16").setVisible(false);
+            }
+        }, function (error) {
+            console.log(error.message);
+        });
+    }
+    BuildingDetails.ShowHidePrescribedDocumentSection = ShowHidePrescribedDocumentSection;
 })(BuildingDetails || (BuildingDetails = {}));
 //# sourceMappingURL=bsr_buildingdetails.js.map
