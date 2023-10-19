@@ -45,6 +45,8 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
       interface tab_staged_application extends Xrm.SectionCollectionBase {
         get(name: "section_staged_application"): Xrm.PageSection;
         get(name: "tab_staged_application_section_3"): Xrm.PageSection;
+        get(name: "tab_staged_application_section_4"): Xrm.PageSection;
+        get(name: "tab_staged_application_section_5"): Xrm.PageSection;
         get(name: string): undefined;
         get(): Xrm.PageSection[];
         get(index: number): Xrm.PageSection;
@@ -67,7 +69,9 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
       get(name: "bsr_buildingcontrolapplicationstatus"): Xrm.OptionSetAttribute<bsr_buildingcontrolapplicationstatus>;
       get(name: "bsr_buildingprincipalcontractor"): Xrm.LookupAttribute<"account" | "contact">;
       get(name: "bsr_buildingprincipaldesigner"): Xrm.LookupAttribute<"account" | "contact">;
+      get(name: "bsr_buildingregcompliance"): Xrm.Attribute<string>;
       get(name: "bsr_caseofficer"): Xrm.LookupAttribute<"systemuser">;
+      get(name: "bsr_changecontrolplan"): Xrm.Attribute<string>;
       get(name: "bsr_changeprincipalcontractor"): Xrm.OptionSetAttribute<boolean>;
       get(name: "bsr_changeprincipaldesigner"): Xrm.OptionSetAttribute<boolean>;
       get(name: "bsr_city"): Xrm.Attribute<string>;
@@ -78,9 +82,13 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
       get(name: "bsr_clientinvestenforce"): Xrm.Attribute<string>;
       get(name: "bsr_clientnamedcontact"): Xrm.LookupAttribute<"contact">;
       get(name: "bsr_clientsignedstatement"): Xrm.Attribute<string>;
+      get(name: "bsr_competencedeclaration"): Xrm.Attribute<string>;
+      get(name: "bsr_constructioncontrolplan"): Xrm.Attribute<string>;
       get(name: "bsr_country"): Xrm.Attribute<string>;
       get(name: "bsr_declarationconfirmed"): Xrm.OptionSetAttribute<boolean>;
       get(name: "bsr_easting"): Xrm.NumberAttribute;
+      get(name: "bsr_firecompliancedoc"): Xrm.Attribute<string>;
+      get(name: "bsr_fireemergencyfiles"): Xrm.Attribute<string>;
       get(name: "bsr_firerescue"): Xrm.LookupAttribute<"account">;
       get(name: "bsr_havesiteaddress"): Xrm.OptionSetAttribute<boolean>;
       get(name: "bsr_informationrequest"): Xrm.OptionSetAttribute<boolean>;
@@ -97,11 +105,13 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
       get(name: "bsr_istheapplicanttheclient"): Xrm.OptionSetAttribute<boolean>;
       get(name: "bsr_localauthority"): Xrm.LookupAttribute<"account">;
       get(name: "bsr_mainbcaappid"): Xrm.LookupAttribute<"bsr_buildingcontrolapplication">;
+      get(name: "bsr_morplan"): Xrm.Attribute<string>;
       get(name: "bsr_name"): Xrm.Attribute<string>;
       get(name: "bsr_northing"): Xrm.NumberAttribute;
       get(name: "bsr_numberofbuildings"): Xrm.NumberAttribute;
       get(name: "bsr_numberofstages"): Xrm.NumberAttribute;
       get(name: "bsr_organisationname"): Xrm.LookupAttribute<"account">;
+      get(name: "bsr_partialcompletionstrategy"): Xrm.Attribute<string>;
       get(name: "bsr_postcode"): Xrm.Attribute<string>;
       get(name: "bsr_princcontractchangedate"): Xrm.DateAttribute;
       get(name: "bsr_princcontractcomplaints"): Xrm.Attribute<string>;
@@ -145,6 +155,7 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
     interface Controls extends Xrm.ControlCollectionBase {
       get(name: "Subgrid_new_1"): Xrm.SubGridControl<"bsr_buildingdetails">;
       get(name: "Subgrid_new_2"): Xrm.SubGridControl<"bsr_buildingcontrolapplication">;
+      get(name: "Subgrid_new_3"): Xrm.SubGridControl<"bsr_drawingsandplans">;
       get(name: "bsr_addressline2"): Xrm.StringControl;
       get(name: "bsr_addressline3"): Xrm.StringControl;
       get(name: "bsr_adressline1"): Xrm.StringControl;
@@ -159,7 +170,9 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
       get(name: "bsr_buildingclientname"): Xrm.LookupControl<"account" | "contact">;
       get(name: "bsr_buildingprincipalcontractor"): Xrm.LookupControl<"account" | "contact">;
       get(name: "bsr_buildingprincipaldesigner"): Xrm.LookupControl<"account" | "contact">;
+      get(name: "bsr_buildingregcompliance"): Xrm.StringControl;
       get(name: "bsr_caseofficer"): Xrm.LookupControl<"systemuser">;
+      get(name: "bsr_changecontrolplan"): Xrm.StringControl;
       get(name: "bsr_changeprincipalcontractor"): Xrm.OptionSetControl<boolean>;
       get(name: "bsr_changeprincipaldesigner"): Xrm.OptionSetControl<boolean>;
       get(name: "bsr_city"): Xrm.StringControl;
@@ -170,9 +183,13 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
       get(name: "bsr_clientinvestenforce"): Xrm.StringControl;
       get(name: "bsr_clientnamedcontact"): Xrm.LookupControl<"contact">;
       get(name: "bsr_clientsignedstatement"): Xrm.StringControl;
+      get(name: "bsr_competencedeclaration"): Xrm.StringControl;
+      get(name: "bsr_constructioncontrolplan"): Xrm.StringControl;
       get(name: "bsr_country"): Xrm.StringControl;
       get(name: "bsr_declarationconfirmed"): Xrm.OptionSetControl<boolean>;
       get(name: "bsr_easting"): Xrm.NumberControl;
+      get(name: "bsr_firecompliancedoc"): Xrm.StringControl;
+      get(name: "bsr_fireemergencyfiles"): Xrm.StringControl;
       get(name: "bsr_firerescue"): Xrm.LookupControl<"account">;
       get(name: "bsr_havesiteaddress"): Xrm.OptionSetControl<boolean>;
       get(name: "bsr_informationrequest"): Xrm.OptionSetControl<boolean>;
@@ -189,11 +206,13 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
       get(name: "bsr_istheapplicanttheclient"): Xrm.OptionSetControl<boolean>;
       get(name: "bsr_localauthority"): Xrm.LookupControl<"account">;
       get(name: "bsr_mainbcaappid"): Xrm.LookupControl<"bsr_buildingcontrolapplication">;
+      get(name: "bsr_morplan"): Xrm.StringControl;
       get(name: "bsr_name"): Xrm.StringControl;
       get(name: "bsr_northing"): Xrm.NumberControl;
       get(name: "bsr_numberofbuildings"): Xrm.NumberControl;
       get(name: "bsr_numberofstages"): Xrm.NumberControl;
       get(name: "bsr_organisationname"): Xrm.LookupControl<"account">;
+      get(name: "bsr_partialcompletionstrategy"): Xrm.StringControl;
       get(name: "bsr_postcode"): Xrm.StringControl;
       get(name: "bsr_princcontractchangedate"): Xrm.DateControl;
       get(name: "bsr_princcontractcomplaints"): Xrm.StringControl;
@@ -265,7 +284,9 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
     getAttribute(attributeName: "bsr_buildingcontrolapplicationstatus"): Xrm.OptionSetAttribute<bsr_buildingcontrolapplicationstatus>;
     getAttribute(attributeName: "bsr_buildingprincipalcontractor"): Xrm.LookupAttribute<"account" | "contact">;
     getAttribute(attributeName: "bsr_buildingprincipaldesigner"): Xrm.LookupAttribute<"account" | "contact">;
+    getAttribute(attributeName: "bsr_buildingregcompliance"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_caseofficer"): Xrm.LookupAttribute<"systemuser">;
+    getAttribute(attributeName: "bsr_changecontrolplan"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_changeprincipalcontractor"): Xrm.OptionSetAttribute<boolean>;
     getAttribute(attributeName: "bsr_changeprincipaldesigner"): Xrm.OptionSetAttribute<boolean>;
     getAttribute(attributeName: "bsr_city"): Xrm.Attribute<string>;
@@ -276,9 +297,13 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
     getAttribute(attributeName: "bsr_clientinvestenforce"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_clientnamedcontact"): Xrm.LookupAttribute<"contact">;
     getAttribute(attributeName: "bsr_clientsignedstatement"): Xrm.Attribute<string>;
+    getAttribute(attributeName: "bsr_competencedeclaration"): Xrm.Attribute<string>;
+    getAttribute(attributeName: "bsr_constructioncontrolplan"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_country"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_declarationconfirmed"): Xrm.OptionSetAttribute<boolean>;
     getAttribute(attributeName: "bsr_easting"): Xrm.NumberAttribute;
+    getAttribute(attributeName: "bsr_firecompliancedoc"): Xrm.Attribute<string>;
+    getAttribute(attributeName: "bsr_fireemergencyfiles"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_firerescue"): Xrm.LookupAttribute<"account">;
     getAttribute(attributeName: "bsr_havesiteaddress"): Xrm.OptionSetAttribute<boolean>;
     getAttribute(attributeName: "bsr_informationrequest"): Xrm.OptionSetAttribute<boolean>;
@@ -295,11 +320,13 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
     getAttribute(attributeName: "bsr_istheapplicanttheclient"): Xrm.OptionSetAttribute<boolean>;
     getAttribute(attributeName: "bsr_localauthority"): Xrm.LookupAttribute<"account">;
     getAttribute(attributeName: "bsr_mainbcaappid"): Xrm.LookupAttribute<"bsr_buildingcontrolapplication">;
+    getAttribute(attributeName: "bsr_morplan"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_name"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_northing"): Xrm.NumberAttribute;
     getAttribute(attributeName: "bsr_numberofbuildings"): Xrm.NumberAttribute;
     getAttribute(attributeName: "bsr_numberofstages"): Xrm.NumberAttribute;
     getAttribute(attributeName: "bsr_organisationname"): Xrm.LookupAttribute<"account">;
+    getAttribute(attributeName: "bsr_partialcompletionstrategy"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_postcode"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_princcontractchangedate"): Xrm.DateAttribute;
     getAttribute(attributeName: "bsr_princcontractcomplaints"): Xrm.Attribute<string>;
@@ -339,6 +366,7 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
     getAttribute(delegateFunction: Xrm.Collection.MatchingDelegate<Xrm.Attribute<any>>): Xrm.Attribute<any>[];
     getControl(controlName: "Subgrid_new_1"): Xrm.SubGridControl<"bsr_buildingdetails">;
     getControl(controlName: "Subgrid_new_2"): Xrm.SubGridControl<"bsr_buildingcontrolapplication">;
+    getControl(controlName: "Subgrid_new_3"): Xrm.SubGridControl<"bsr_drawingsandplans">;
     getControl(controlName: "bsr_addressline2"): Xrm.StringControl;
     getControl(controlName: "bsr_addressline3"): Xrm.StringControl;
     getControl(controlName: "bsr_adressline1"): Xrm.StringControl;
@@ -353,7 +381,9 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
     getControl(controlName: "bsr_buildingclientname"): Xrm.LookupControl<"account" | "contact">;
     getControl(controlName: "bsr_buildingprincipalcontractor"): Xrm.LookupControl<"account" | "contact">;
     getControl(controlName: "bsr_buildingprincipaldesigner"): Xrm.LookupControl<"account" | "contact">;
+    getControl(controlName: "bsr_buildingregcompliance"): Xrm.StringControl;
     getControl(controlName: "bsr_caseofficer"): Xrm.LookupControl<"systemuser">;
+    getControl(controlName: "bsr_changecontrolplan"): Xrm.StringControl;
     getControl(controlName: "bsr_changeprincipalcontractor"): Xrm.OptionSetControl<boolean>;
     getControl(controlName: "bsr_changeprincipaldesigner"): Xrm.OptionSetControl<boolean>;
     getControl(controlName: "bsr_city"): Xrm.StringControl;
@@ -364,9 +394,13 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
     getControl(controlName: "bsr_clientinvestenforce"): Xrm.StringControl;
     getControl(controlName: "bsr_clientnamedcontact"): Xrm.LookupControl<"contact">;
     getControl(controlName: "bsr_clientsignedstatement"): Xrm.StringControl;
+    getControl(controlName: "bsr_competencedeclaration"): Xrm.StringControl;
+    getControl(controlName: "bsr_constructioncontrolplan"): Xrm.StringControl;
     getControl(controlName: "bsr_country"): Xrm.StringControl;
     getControl(controlName: "bsr_declarationconfirmed"): Xrm.OptionSetControl<boolean>;
     getControl(controlName: "bsr_easting"): Xrm.NumberControl;
+    getControl(controlName: "bsr_firecompliancedoc"): Xrm.StringControl;
+    getControl(controlName: "bsr_fireemergencyfiles"): Xrm.StringControl;
     getControl(controlName: "bsr_firerescue"): Xrm.LookupControl<"account">;
     getControl(controlName: "bsr_havesiteaddress"): Xrm.OptionSetControl<boolean>;
     getControl(controlName: "bsr_informationrequest"): Xrm.OptionSetControl<boolean>;
@@ -383,11 +417,13 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
     getControl(controlName: "bsr_istheapplicanttheclient"): Xrm.OptionSetControl<boolean>;
     getControl(controlName: "bsr_localauthority"): Xrm.LookupControl<"account">;
     getControl(controlName: "bsr_mainbcaappid"): Xrm.LookupControl<"bsr_buildingcontrolapplication">;
+    getControl(controlName: "bsr_morplan"): Xrm.StringControl;
     getControl(controlName: "bsr_name"): Xrm.StringControl;
     getControl(controlName: "bsr_northing"): Xrm.NumberControl;
     getControl(controlName: "bsr_numberofbuildings"): Xrm.NumberControl;
     getControl(controlName: "bsr_numberofstages"): Xrm.NumberControl;
     getControl(controlName: "bsr_organisationname"): Xrm.LookupControl<"account">;
+    getControl(controlName: "bsr_partialcompletionstrategy"): Xrm.StringControl;
     getControl(controlName: "bsr_postcode"): Xrm.StringControl;
     getControl(controlName: "bsr_princcontractchangedate"): Xrm.DateControl;
     getControl(controlName: "bsr_princcontractcomplaints"): Xrm.StringControl;
