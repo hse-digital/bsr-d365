@@ -738,6 +738,50 @@
             </column>
           </columns>
         </tab>
+        <tab name="tab_staged_application" id="7aba9ca3-71ca-4849-9f33-18c97a28d0a9" IsUserDefined="0" locklevel="0" showlabel="true">
+          <labels>
+            <label description="Staged Application " languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_4_section_1" id="9480d9e1-b572-44e9-86e5-0cdbd88986d1" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell locklevel="0" id="{6860d399-0c31-47d9-bd31-6309e81636a1}" rowspan="4" colspan="1" auto="false">
+                        <labels>
+                          <label description="Staged Applications" languagecode="1033" />
+                        </labels>
+                        <control indicationOfSubgrid="true" id="Subgrid_new_4" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                          <parameters>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <ChartGridMode>All</ChartGridMode>
+                            <TargetEntityType>bsr_buildingcontrolapplication</TargetEntityType>
+                            <ViewId>{25F49172-956D-EE11-9AE7-6045BDD0E4CF}</ViewId>
+                            <ViewIds>{C85E5DCF-6827-4714-834B-A2088F4F0D10},{25F49172-956D-EE11-9AE7-6045BDD0E4CF}</ViewIds>
+                            <RelationshipName>bsr_bsr_bca_bsr_buildingdetails</RelationshipName>
+                            <VisualizationId>{147E9937-4647-EE11-BE6E-6045BDF1E965}</VisualizationId>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
         <tab name="tab_mdt" id="337b3a7c-557e-4cdb-8e14-40362337e235" IsUserDefined="0" locklevel="0" showlabel="true">
           <labels>
             <label description="MDT Management " languagecode="1033" />
@@ -1058,7 +1102,13 @@
         </controlDescription>
       </controlDescriptions>
       <Navigation>
-        <NavBar />
+        <NavBar>
+          <NavBarByRelationshipItem Area="Info" Show="true" RelationshipName="bsr_bsr_bca_bsr_buildingdetails" Id="nav_bsr_bsr_bca_bsr_buildingdetails" Sequence="10000">
+            <Titles>
+              <Title Text="Building Control Applications - Subsequent Stages" LCID="1033" />
+            </Titles>
+          </NavBarByRelationshipItem>
+        </NavBar>
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -1098,14 +1148,14 @@
           <Handlers>
             <Handler functionName="BuildingDetails.ShowHideExistingHRBFields" libraryName="bsr_/buildingcontrol/tables/bsr_buildingdetails/script/bsr_buildingdetails.js" handlerUniqueId="{14b2c447-9956-40cc-a0f5-f49c3d5544a2}" enabled="true" parameters="" passExecutionContext="true" />
             <Handler functionName="BuildingDetails.LockFieldsOnSubmissionDate" libraryName="bsr_/buildingcontrol/tables/bsr_buildingdetails/script/bsr_buildingdetails.js" handlerUniqueId="{1eae4231-ab09-4393-b0a0-299677b2880e}" enabled="true" parameters="" passExecutionContext="true" />
-            <Handler functionName="BuildingDetails.ShowHidePrescribedDocumentSection" libraryName="bsr_/buildingcontrol/tables/bsr_buildingdetails/script/bsr_buildingdetails.js" handlerUniqueId="{9af90fe8-c5b2-46ea-a2c4-96583169d1e0}" enabled="true" parameters="" passExecutionContext="true" />
+            <Handler functionName="BuildingDetails.ShowHideIfStagedApplication" libraryName="bsr_/buildingcontrol/tables/bsr_buildingdetails/script/bsr_buildingdetails.js" handlerUniqueId="{9af90fe8-c5b2-46ea-a2c4-96583169d1e0}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onload" application="false" active="false">
           <Handlers>
             <Handler functionName="BuildingDetails.ShowHideExistingHRBFields" libraryName="bsr_/buildingcontrol/tables/bsr_buildingdetails/script/bsr_buildingdetails.js" handlerUniqueId="{ff9baa75-0aab-4338-8431-9435607a28b9}" enabled="true" parameters="" passExecutionContext="true" />
             <Handler functionName="BuildingDetails.LockFieldsOnSubmissionDate" libraryName="bsr_/buildingcontrol/tables/bsr_buildingdetails/script/bsr_buildingdetails.js" handlerUniqueId="{84d2e2af-8f27-4c6f-a4e3-9b7e1a25779a}" enabled="true" parameters="" passExecutionContext="true" />
-            <Handler functionName="BuildingDetails.ShowHidePrescribedDocumentSection" libraryName="bsr_/buildingcontrol/tables/bsr_buildingdetails/script/bsr_buildingdetails.js" handlerUniqueId="{c3c57fd8-dd39-442d-b54d-e635f4b6b84e}" enabled="true" parameters="" passExecutionContext="true" />
+            <Handler functionName="BuildingDetails.ShowHideIfStagedApplication" libraryName="bsr_/buildingcontrol/tables/bsr_buildingdetails/script/bsr_buildingdetails.js" handlerUniqueId="{c3c57fd8-dd39-442d-b54d-e635f4b6b84e}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
       </events>
