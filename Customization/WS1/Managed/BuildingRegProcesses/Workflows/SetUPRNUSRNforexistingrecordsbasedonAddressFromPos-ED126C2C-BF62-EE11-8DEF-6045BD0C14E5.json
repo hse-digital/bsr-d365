@@ -53,7 +53,7 @@
       "actions": {
         "HTTP": {
           "runAfter": {
-            "Initialize_variable_7": [
+            "Initialize_variable_8": [
               "Succeeded"
             ]
           },
@@ -1050,6 +1050,21 @@
                       "name": "USRN",
                       "value": "@items('Apply_to_each')?['LPI']?['USRN']"
                     }
+                  },
+                  "Set_variable_15": {
+                    "runAfter": {
+                      "Set_variable_7": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "28bed200-b0b2-4321-aee9-67dbd87e4aeb"
+                    },
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "Local Authority Area",
+                      "value": "@items('Apply_to_each')?['LPI']?['ADMINISTRATIVE_AREA']"
+                    }
                   }
                 },
                 "runAfter": {},
@@ -1168,6 +1183,7 @@
                       "parameters": {
                         "entityName": "bsr_blocks",
                         "recordId": "@items('Apply_to_each_4')?['bsr_blockid']",
+                        "item/bsr_localauthorityarea": "@variables('Local Authority Area')",
                         "item/bsr_uprn": "@variables('UPRN')",
                         "item/bsr_usrn": "@variables('USRN')"
                       },
@@ -1317,6 +1333,25 @@
             "variables": [
               {
                 "name": "USRN",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_8": {
+          "runAfter": {
+            "Initialize_variable_7": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "4058cf38-51d8-4b50-bf48-e0107aa90fa1"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Local Authority Area",
                 "type": "string"
               }
             ]
