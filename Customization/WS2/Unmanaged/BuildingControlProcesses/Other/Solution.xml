@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Control Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.32.0</Version>
+    <Version>1.0.33.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -106,9 +106,11 @@
       <RootComponent type="29" id="{7d3274b7-8937-ee11-bdf4-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="29" id="{7fae9b6c-6342-ee11-bdf3-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{80b70c01-bfbc-4059-a8ff-c59f5ce5ff17}" behavior="0" />
+      <RootComponent type="29" id="{8c2d6d27-4d72-ee11-8179-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{94088361-433c-ee11-bdf4-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="29" id="{9752599a-9e41-ee11-bdf3-6045bdc208e3}" behavior="0" />
       <RootComponent type="29" id="{9c114d37-213d-ee11-bdf4-6045bdd2c0c0}" behavior="0" />
+      <RootComponent type="29" id="{9d7b4927-5472-ee11-8179-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{a54f1168-c456-ee11-be6f-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{a5ff0348-465c-ee11-8def-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{a8ddfb56-465c-ee11-8def-6045bdd2c0c0}" behavior="0" />
@@ -179,6 +181,14 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingcontrolapplication" displayName="Building Control Application" solution="Active" />
         <Dependent type="29" displayName="Send BCA Reference Number Email" id="{7fae9b6c-6342-ee11-bdf3-6045bdf1e965}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingcontrolapplication" displayName="Building Control Application" solution="Active" />
+        <Dependent type="29" displayName="Map applicant details to subsequent staged applications on creation" id="{8c2d6d27-4d72-ee11-8179-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingcontrolapplication" displayName="Building Control Application" solution="Active" />
+        <Dependent type="29" displayName="On update of applicant, map to subsequent staged applications" id="{9d7b4927-5472-ee11-8179-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingcontrolapplication" displayName="Building Control Application" solution="Active" />
@@ -338,7 +348,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_inspection" displayName="MDT Inspection Schedule" solution="Active" />
-        <Dependent type="29" displayName="Map MDT Project From Inspection Schedule to Task" id="{b9cec256-e253-ee11-be6f-6045bdd2c0c0}" />
+        <Dependent type="29" displayName="[DEPRECATED] Map MDT Project From Inspection Schedule to Task" id="{b9cec256-e253-ee11-be6f-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_inspection" displayName="MDT Inspection Schedule" solution="Active" />
@@ -407,6 +417,10 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_agreedextensionperiod" displayName="Agreed Extension Period " parentSchemaName="bsr_buildingcontrollifecycle" parentDisplayName="Building Control Lifecycle" solution="Active" />
         <Dependent type="29" displayName="Manage Lifecycle Time Extension" id="{9752599a-9e41-ee11-bdf3-6045bdc208e3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_applicantid" displayName="Applicant Name" parentSchemaName="bsr_buildingcontrolapplication" parentDisplayName="Building Control Application" solution="Active" />
+        <Dependent type="29" displayName="On update of applicant, map to subsequent staged applications" id="{9d7b4927-5472-ee11-8179-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_applicationvalidated" displayName="Application Validated" parentSchemaName="bsr_buildingcontrolapplication" parentDisplayName="Building Control Application" solution="Active" />
@@ -533,6 +547,10 @@
         <Dependent type="29" displayName="Set the Task's Rate field on population of Task 'Assigned To'" id="{57863141-3543-ee11-bdf3-6045bdf1ea4d}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_mdtproject" displayName="MDT Project" parentSchemaName="task" parentDisplayName="Task" solution="Active" />
+        <Dependent type="29" displayName="Set BCA in MDT Task from MDT Inspection Schedule" id="{da51aeb9-426c-ee11-9ae7-6045bdd0e4cf}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_mdtprojectbuildingcontrolapplicationid" displayName="MDT Project Building Control Application" parentSchemaName="task" parentDisplayName="Task" solution="Active" />
         <Dependent type="29" displayName="Set BCA in MDT Task record from MDT Project" id="{b964226d-1548-ee11-be6f-6045bdd2c0c0}" />
       </MissingDependency>
@@ -555,10 +573,6 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_mdttask" displayName="MDT Task" parentSchemaName="task" parentDisplayName="Task" solution="Active" />
         <Dependent type="29" displayName="Set BCA in MDT Task record from MDT Project" id="{b964226d-1548-ee11-be6f-6045bdd2c0c0}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_mdttask" displayName="MDT Task" parentSchemaName="task" parentDisplayName="Task" solution="Active" />
-        <Dependent type="29" displayName="Set BCA in MDT Task from MDT Inspection Schedule" id="{da51aeb9-426c-ee11-9ae7-6045bdd0e4cf}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_name" displayName="Inspection Name" parentSchemaName="bsr_inspection" parentDisplayName="MDT Inspection Schedule" solution="Active" />

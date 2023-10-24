@@ -93,71 +93,71 @@
             }
           },
           "runAfter": {},
+          "else": {
+            "actions": {
+              "If_Regarding_=_MDT_Project_table": {
+                "actions": {
+                  "Get_a_row_by_ID_2": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "3cfc26ff-36ae-401f-8e7b-51cfffd8a835"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps_1",
+                        "operationId": "GetItem",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "bsr_mdtprojects",
+                        "recordId": "@triggerOutputs()?['body/_bsr_mdtproject_value']"
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  },
+                  "Update_a_row_2": {
+                    "runAfter": {
+                      "Get_a_row_by_ID_2": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "6f26b5dc-7d82-4608-8417-0b081ac3ede8"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps_1",
+                        "operationId": "UpdateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "tasks",
+                        "recordId": "@triggerOutputs()?['body/activityid']"
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  }
+                },
+                "runAfter": {},
+                "expression": {
+                  "equals": [
+                    "@triggerOutputs()?['body/_regardingobjectid_type']",
+                    "bsr_mdtprojects"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "2dc63cc7-9847-4f8b-8ec1-099134464803"
+                },
+                "type": "If"
+              }
+            }
+          },
           "expression": {
             "equals": [
               "@triggerOutputs()?['body/_regardingobjectid_type']",
               "bsr_inspections"
-            ]
-          },
-          "metadata": {
-            "operationMetadataId": "2dc63cc7-9847-4f8b-8ec1-099134464803"
-          },
-          "type": "If"
-        },
-        "If_Regarding_=_MDT_Project_table": {
-          "actions": {
-            "Get_a_row_by_ID_2": {
-              "runAfter": {},
-              "metadata": {
-                "operationMetadataId": "3cfc26ff-36ae-401f-8e7b-51cfffd8a835"
-              },
-              "type": "OpenApiConnection",
-              "inputs": {
-                "host": {
-                  "connectionName": "shared_commondataserviceforapps_1",
-                  "operationId": "GetItem",
-                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                },
-                "parameters": {
-                  "entityName": "bsr_mdtprojects",
-                  "recordId": "@triggerOutputs()?['body/_bsr_mdtproject_value']"
-                },
-                "authentication": "@parameters('$authentication')"
-              }
-            },
-            "Update_a_row_2": {
-              "runAfter": {
-                "Get_a_row_by_ID_2": [
-                  "Succeeded"
-                ]
-              },
-              "metadata": {
-                "operationMetadataId": "6f26b5dc-7d82-4608-8417-0b081ac3ede8"
-              },
-              "type": "OpenApiConnection",
-              "inputs": {
-                "host": {
-                  "connectionName": "shared_commondataserviceforapps_1",
-                  "operationId": "UpdateRecord",
-                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                },
-                "parameters": {
-                  "entityName": "tasks",
-                  "recordId": "@triggerOutputs()?['body/activityid']"
-                },
-                "authentication": "@parameters('$authentication')"
-              }
-            }
-          },
-          "runAfter": {
-            "If_Regarding_=_Inspections_table": [
-              "Succeeded"
-            ]
-          },
-          "expression": {
-            "equals": [
-              "@triggerOutputs()?['body/_regardingobjectid_type']",
-              "bsr_mdtprojects"
             ]
           },
           "metadata": {

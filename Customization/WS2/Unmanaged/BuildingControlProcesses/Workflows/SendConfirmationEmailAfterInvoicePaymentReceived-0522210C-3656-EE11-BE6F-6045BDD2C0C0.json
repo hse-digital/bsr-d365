@@ -97,7 +97,7 @@
                 "parameters": {
                   "entityName": "bsr_buildingcontrolapplications",
                   "recordId": "@outputs('GetPayment')?['body/_bsr_buildingcontrolapplication_value']",
-                  "$select": "_bsr_applicantid_value,bsr_applicationname,bsr_bcaareferencenumber,bsr_name,bsr_buildingcontrolapplicationid,bsr_issubsequentstagedapp"
+                  "$select": "_bsr_applicantid_value,bsr_applicationname,bsr_bcaareferencenumber,bsr_name,bsr_buildingcontrolapplicationid,bsr_issubsequentstagedapp,_bsr_mainbcaappid_value"
                 },
                 "authentication": "@parameters('$authentication')"
               }
@@ -169,8 +169,32 @@
               },
               "else": {
                 "actions": {
-                  "Send_Subsequent_Staged_Application_Confirmation_Email": {
+                  "Get_Applicant_details_(as_we_don't_store_dutyholders_on_sub_staged_app)": {
                     "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "54302e83-2de6-42c0-af75-741c95422b0c"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps_1",
+                        "operationId": "GetItem",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "bsr_buildingcontrolapplications",
+                        "recordId": "@outputs('GetBCA')?['body/_bsr_mainbcaappid_value']",
+                        "$select": "_bsr_applicantid_value,bsr_name"
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  },
+                  "Send_Subsequent_Staged_Application_Confirmation_Email": {
+                    "runAfter": {
+                      "Get_Applicant_details_(as_we_don't_store_dutyholders_on_sub_staged_app)": [
+                        "Succeeded"
+                      ]
+                    },
                     "metadata": {
                       "operationMetadataId": "f80a3932-bac7-4f20-b0fd-a99b95fd8b33"
                     },
@@ -192,7 +216,7 @@
                               "participationtypemask": 1
                             },
                             {
-                              "partyid_contact@odata.bind": "/contacts(@{outputs('GetBCA')?['body/_bsr_applicantid_value']})",
+                              "partyid_contact@odata.bind": "/contacts(@{outputs('Get_Applicant_details_(as_we_don''t_store_dutyholders_on_sub_staged_app)')?['body/_bsr_applicantid_value']})",
                               "participationtypemask": 2
                             }
                           ],
