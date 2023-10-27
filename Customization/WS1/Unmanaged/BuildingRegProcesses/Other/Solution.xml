@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Reg Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.12.35.0</Version>
+    <Version>1.12.36.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -94,6 +94,7 @@
       <RootComponent type="29" id="{3254c77b-d906-ee11-8f6e-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{38dd974b-89f8-ed11-8f6d-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{3c542ef0-81c9-ed11-b595-6045bd0d6904}" behavior="0" />
+      <RootComponent type="29" id="{48a0dcb2-a09b-4c23-a1ad-4a0766eb8293}" behavior="0" />
       <RootComponent type="29" id="{49442064-3ff3-ed11-8848-6045bd0d6904}" behavior="0" />
       <RootComponent type="29" id="{4d6e1a16-d806-ee11-8f6e-002248c727e7}" behavior="0" />
       <RootComponent type="29" id="{4e9f01c2-58a9-ed11-aad1-0022481b5e4f}" behavior="0" />
@@ -353,6 +354,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_changerequest" displayName="Change Request" solution="Active" />
+        <Dependent type="29" displayName="Deactivate the record On update of Change Request status reason" id="{48a0dcb2-a09b-4c23-a1ad-4a0766eb8293}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_changerequest" displayName="Change Request" solution="Active" />
         <Dependent type="29" displayName="Set Change Request Name" id="{938f80db-d852-ee11-be6f-002248c727e7}" />
       </MissingDependency>
       <MissingDependency>
@@ -496,12 +501,20 @@
         <Dependent type="29" displayName="Set Change Request Name" id="{938f80db-d852-ee11-be6f-002248c727e7}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_changerequestid" displayName="Change Request" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="Active" />
+        <Dependent type="29" displayName="Deactivate the record On update of Change Request status reason" id="{48a0dcb2-a09b-4c23-a1ad-4a0766eb8293}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_declaration" displayName="Declaration" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="Active" />
         <Dependent type="29" displayName="Send Email after declaration and submitted in Change request" id="{0426ebcf-1252-ee11-be6f-002248c725da}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
         <Dependent type="29" displayName="Set Applicant Email Recipient" id="{ae2c04a4-d614-ee11-9cbe-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="Active" />
+        <Dependent type="29" displayName="Deactivate the record On update of Change Request status reason" id="{48a0dcb2-a09b-4c23-a1ad-4a0766eb8293}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_tasktype" parentDisplayName="Task Type" solution="Active" />
@@ -552,6 +565,10 @@
         <Dependent type="29" displayName="Set Task if it has Task type" id="{64521b66-6527-47d1-b4aa-b2795f4e694a}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="statecode" displayName="Status" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="Active" />
+        <Dependent type="29" displayName="Deactivate the record On update of Change Request status reason" id="{48a0dcb2-a09b-4c23-a1ad-4a0766eb8293}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Application Status" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
         <Dependent type="29" displayName="Create a Quality Assurance record when an Application Status is QA in progress" id="{0f0464dc-a1bd-ed11-83fe-000d3a86e5b0}" />
       </MissingDependency>
@@ -574,6 +591,10 @@
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Application Status" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
         <Dependent type="29" displayName="Send Email notifications for Rejected Building Application" id="{db26296d-5837-ee11-bdf4-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="Active" />
+        <Dependent type="29" displayName="Deactivate the record On update of Change Request status reason" id="{48a0dcb2-a09b-4c23-a1ad-4a0766eb8293}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_azuredocblobstorageaccount" solution="Active" id.schemaname="bsr_azuredocblobstorageaccount" />
