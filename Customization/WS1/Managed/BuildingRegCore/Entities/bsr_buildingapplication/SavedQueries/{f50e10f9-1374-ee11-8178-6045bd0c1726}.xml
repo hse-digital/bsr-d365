@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{f50e10f9-1374-ee11-8178-6045bd0c1726}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
+        <row name="result" id="bsr_buildingapplicationid">
+          <cell name="bsr_name" width="200" />
+          <cell name="bsr_applicationid" width="167" />
+          <cell name="bsr_building" width="100" />
+          <cell name="bsr_paptype" width="100" />
+          <cell name="bsr_papid" width="100" />
+          <cell name="a_bb32b77c9a7f473896c6e8c0786816b4.bsr_manualaddress" width="170" />
+          <cell name="a_54eb325886c349e79c96184c8992976d.bsr_manualaddress" width="170" />
+          <cell name="bsr_numberofmanuallyenteredaddresses" width="259" />
+          <cell name="bsr_registreeid" width="140" />
+          <cell name="statuscode" width="144" />
+          <cell name="ownerid" width="100" />
+          <cell name="createdon" width="105" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
+        <entity name="bsr_buildingapplication">
+          <attribute name="bsr_name" />
+          <attribute name="bsr_buildingapplicationid" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <link-entity name="bsr_payment" alias="ab" link-type="inner" from="bsr_buildingapplicationid" to="bsr_buildingapplicationid">
+            <filter type="and">
+              <condition attribute="bsr_invoicecreationdate" operator="olderthan-x-days" value="42" />
+              <condition attribute="bsr_paymenttypecode" operator="eq" value="760810001" />
+            </filter>
+          </link-entity>
+          <attribute name="bsr_applicationid" />
+          <attribute name="bsr_building" />
+          <attribute name="bsr_paptype" />
+          <attribute name="bsr_papid" />
+          <link-entity alias="a_bb32b77c9a7f473896c6e8c0786816b4" name="account" to="bsr_papid" from="accountid" link-type="outer" visible="false">
+            <attribute name="bsr_manualaddress" />
+          </link-entity>
+          <link-entity alias="a_54eb325886c349e79c96184c8992976d" name="contact" to="bsr_papid" from="contactid" link-type="outer" visible="false">
+            <attribute name="bsr_manualaddress" />
+          </link-entity>
+          <attribute name="bsr_numberofmanuallyenteredaddresses" />
+          <attribute name="bsr_registreeid" />
+          <attribute name="statuscode" />
+          <attribute name="ownerid" />
+          <attribute name="createdon" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.17.74.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Rejected invoice unpaid 42 days" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Rejected invoice unpaid 42 days" languagecode="1033" />
+    </Descriptions>
+  </savedquery>
+</savedqueries>
