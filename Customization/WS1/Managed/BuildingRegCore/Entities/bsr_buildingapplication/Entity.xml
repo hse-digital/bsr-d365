@@ -230,6 +230,45 @@
             <Description description="Unique identifier for entity instances" languagecode="1033" />
           </Descriptions>
         </attribute>
+        <attribute PhysicalName="bsr_cancellationreason">
+          <Type>lookup</Type>
+          <Name>bsr_cancellationreason</Name>
+          <LogicalName>bsr_cancellationreason</LogicalName>
+          <RequiredLevel>none</RequiredLevel>
+          <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+          <ImeMode>auto</ImeMode>
+          <ValidForUpdateApi>1</ValidForUpdateApi>
+          <ValidForReadApi>1</ValidForReadApi>
+          <ValidForCreateApi>1</ValidForCreateApi>
+          <IsCustomField>1</IsCustomField>
+          <IsAuditEnabled>0</IsAuditEnabled>
+          <IsSecured>0</IsSecured>
+          <IntroducedVersion>1.17.75.0</IntroducedVersion>
+          <IsCustomizable>1</IsCustomizable>
+          <IsRenameable>1</IsRenameable>
+          <CanModifySearchSettings>1</CanModifySearchSettings>
+          <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+          <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+          <SourceType>0</SourceType>
+          <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+          <IsSortableEnabled>0</IsSortableEnabled>
+          <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+          <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+          <IsDataSourceSecret>0</IsDataSourceSecret>
+          <AutoNumberFormat></AutoNumberFormat>
+          <IsSearchable>0</IsSearchable>
+          <IsFilterable>0</IsFilterable>
+          <IsRetrievable>0</IsRetrievable>
+          <IsLocalizable>0</IsLocalizable>
+          <LookupStyle>single</LookupStyle>
+          <LookupTypes />
+          <displaynames>
+            <displayname description="Cancellation reason" languagecode="1033" />
+          </displaynames>
+          <Descriptions>
+            <Description description="" languagecode="1033" />
+          </Descriptions>
+        </attribute>
         <attribute PhysicalName="bsr_Decisionreason">
           <Type>ntext</Type>
           <Name>bsr_decisionreason</Name>
@@ -1276,7 +1315,7 @@
           <AppDefaultValue>-1</AppDefaultValue>
           <OptionSetName>bsr_withdrawalreason</OptionSetName>
           <displaynames>
-            <displayname description="Withdrawal Reason" languagecode="1033" />
+            <displayname description="DEPRECATE - Withdrawal reason" languagecode="1033" />
           </displaynames>
           <Descriptions>
             <Description description="" languagecode="1033" />
@@ -1977,7 +2016,7 @@
               </status>
               <status value="760810013" state="0">
                 <labels>
-                  <label description="Withdrawn" languagecode="1033" />
+                  <label description="Withdrawn - DO NOT USE" languagecode="1033" />
                 </labels>
                 <Descriptions>
                   <Description description="" languagecode="1033" />
@@ -1986,6 +2025,14 @@
               <status value="760810014" state="0">
                 <labels>
                   <label description="On Hold" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="" languagecode="1033" />
+                </Descriptions>
+              </status>
+              <status value="760810018" state="1">
+                <labels>
+                  <label description="Canceled" languagecode="1033" />
                 </labels>
                 <Descriptions>
                   <Description description="" languagecode="1033" />
