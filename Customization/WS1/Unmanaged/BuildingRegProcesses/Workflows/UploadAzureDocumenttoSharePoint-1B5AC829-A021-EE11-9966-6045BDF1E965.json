@@ -103,55 +103,6 @@
         }
       },
       "actions": {
-        "List_rows": {
-          "runAfter": {
-            "Initialize_RelativePath": [
-              "Succeeded"
-            ]
-          },
-          "metadata": {
-            "operationMetadataId": "dcee44e0-0cff-49b4-8900-592b87bbd72f"
-          },
-          "type": "OpenApiConnection",
-          "inputs": {
-            "host": {
-              "connectionName": "shared_commondataserviceforapps",
-              "operationId": "ListRecords",
-              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-            },
-            "parameters": {
-              "entityName": "sharepointdocumentlocations",
-              "$filter": "_regardingobjectid_value eq @{triggerBody()?['targetRecordId']}",
-              "$top": 1
-            },
-            "authentication": "@parameters('$authentication')"
-          }
-        },
-        "Apply_to_each_4": {
-          "foreach": "@outputs('List_rows')?['body/value']",
-          "actions": {
-            "Set_variable": {
-              "runAfter": {},
-              "metadata": {
-                "operationMetadataId": "c13d1675-40de-4de5-aa94-ef3e488bc658"
-              },
-              "type": "SetVariable",
-              "inputs": {
-                "name": "TargetRecordFolder",
-                "value": "@items('Apply_to_each_4')?['relativeurl']"
-              }
-            }
-          },
-          "runAfter": {
-            "List_rows": [
-              "Succeeded"
-            ]
-          },
-          "metadata": {
-            "operationMetadataId": "5607955e-2f2d-426e-b3bd-66aa8be70f4d"
-          },
-          "type": "Foreach"
-        },
         "Initialize_RelativePath": {
           "runAfter": {
             "Condition": [
@@ -257,155 +208,6 @@
           },
           "type": "If"
         },
-        "Scope": {
-          "actions": {
-            "Get_blob_content_(V2)": {
-              "runAfter": {},
-              "metadata": {
-                "operationMetadataId": "61170296-8c54-4f49-8315-ae12049e358f"
-              },
-              "type": "OpenApiConnection",
-              "inputs": {
-                "host": {
-                  "connectionName": "shared_azureblob",
-                  "operationId": "GetFileContent_V2",
-                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_azureblob"
-                },
-                "parameters": {
-                  "dataset": "@parameters('Azure Doc Blob Storage Account  (bsr_azuredocblobstorageaccount)')",
-                  "id": "@triggerBody()?['azureBlobFilePath']",
-                  "inferContentType": true
-                },
-                "authentication": "@parameters('$authentication')"
-              }
-            },
-            "Create_file": {
-              "runAfter": {
-                "Get_blob_content_(V2)": [
-                  "Succeeded"
-                ]
-              },
-              "metadata": {
-                "operationMetadataId": "c86758c2-3171-451d-b098-7d8f0a55f84a"
-              },
-              "type": "OpenApiConnection",
-              "inputs": {
-                "host": {
-                  "connectionName": "shared_sharepointonline_1",
-                  "operationId": "CreateFile",
-                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
-                },
-                "parameters": {
-                  "dataset": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
-                  "folderPath": "@if(empty(triggerBody()?['subFolderPath']),concat(triggerBody()?['targetTable'],'/',variables('TargetRecordFolder')),concat(triggerBody()?['targetTable'],'/',variables('TargetRecordFolder'),'/',triggerBody()?['subFolderPath']))",
-                  "name": "@triggerBody()?['fileName']",
-                  "body": "@body('Get_blob_content_(V2)')"
-                },
-                "authentication": "@parameters('$authentication')"
-              },
-              "runtimeConfiguration": {
-                "contentTransfer": {
-                  "transferMode": "Chunked"
-                }
-              }
-            },
-            "Add_a_new_row": {
-              "runAfter": {
-                "Create_file": [
-                  "Succeeded"
-                ]
-              },
-              "metadata": {
-                "operationMetadataId": "889eeee5-60fc-47ae-95d2-4ec62eda146a"
-              },
-              "type": "OpenApiConnection",
-              "inputs": {
-                "host": {
-                  "connectionName": "shared_commondataserviceforapps",
-                  "operationId": "CreateRecord",
-                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                },
-                "parameters": {
-                  "entityName": "bsr_bsrdocuments",
-                  "item/subject": "@triggerBody()['fileName']",
-                  "item/description": "@triggerBody()?['fileDescription']",
-                  "item/bsr_documentlocationcode": 760810000,
-                  "item/bsr_bsrdocumentorigincode": 760810000,
-                  "item/bsr_contactid_bsr_bsrdocument@odata.bind": "@if(equals(variables('SetProviderContact'),true),concat('/contacts/',triggerBody()?['providerContactId']),null)",
-                  "item/bsr_sharepointfileid": "@outputs('Create_file')?['body/ItemId']",
-                  "item/bsr_targetrecordid": "@triggerBody()['targetRecordId']",
-                  "item/bsr_targettable": "@triggerBody()['targetTable']"
-                },
-                "authentication": "@parameters('$authentication')"
-              }
-            },
-            "Response": {
-              "runAfter": {
-                "Add_a_new_row": [
-                  "Succeeded"
-                ]
-              },
-              "metadata": {
-                "operationMetadataId": "3e2f1ea7-3197-49e5-9835-97786136ec60"
-              },
-              "type": "Response",
-              "kind": "Http",
-              "inputs": {
-                "statusCode": 200,
-                "body": {
-                  "sharePointFileId": "@outputs('Create_file')?['body/ItemId']",
-                  "bsr_documentid": "@{outputs('Add_a_new_row')?['body/activityid']}",
-                  "sharePointFileLocator": "@{outputs('Create_file')?['body/FileLocator']}"
-                },
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "sharePointFileId": {
-                      "type": "string"
-                    },
-                    "bsr_documentid": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "runAfter": {
-            "Apply_to_each_4": [
-              "Succeeded"
-            ]
-          },
-          "metadata": {
-            "operationMetadataId": "f0049203-e1f7-4f5f-a0df-e91ac37f9684"
-          },
-          "type": "Scope"
-        },
-        "Scope_2": {
-          "actions": {
-            "Response_2": {
-              "runAfter": {},
-              "metadata": {
-                "operationMetadataId": "66340325-ae10-4d2c-ad53-56c8521f7ac6"
-              },
-              "type": "Response",
-              "kind": "Http",
-              "inputs": {
-                "statusCode": 400,
-                "body": "@outputs('Scope')"
-              }
-            }
-          },
-          "runAfter": {
-            "Scope": [
-              "Failed"
-            ]
-          },
-          "metadata": {
-            "operationMetadataId": "05e33054-d2f4-4a19-9508-dc925127fb7e"
-          },
-          "type": "Scope"
-        },
         "Initialize_variable_2": {
           "runAfter": {
             "Initialize_variable": [
@@ -424,6 +226,235 @@
               }
             ]
           }
+        },
+        "List_rows": {
+          "runAfter": {
+            "Initialize_RelativePath": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "dcee44e0-0cff-49b4-8900-592b87bbd72f"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "sharepointdocumentlocations",
+              "$filter": "_regardingobjectid_value eq @{triggerBody()?['targetRecordId']}",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Condition_3": {
+          "actions": {
+            "Apply_to_each_4": {
+              "foreach": "@outputs('List_rows')?['body/value']",
+              "actions": {
+                "Set_variable": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "c13d1675-40de-4de5-aa94-ef3e488bc658"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "TargetRecordFolder",
+                    "value": "@items('Apply_to_each_4')?['relativeurl']"
+                  }
+                }
+              },
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "5607955e-2f2d-426e-b3bd-66aa8be70f4d"
+              },
+              "type": "Foreach"
+            },
+            "Scope": {
+              "actions": {
+                "Get_blob_content_(V2)": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "61170296-8c54-4f49-8315-ae12049e358f"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_azureblob",
+                      "operationId": "GetFileContent_V2",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_azureblob"
+                    },
+                    "parameters": {
+                      "dataset": "@parameters('Azure Doc Blob Storage Account  (bsr_azuredocblobstorageaccount)')",
+                      "id": "@triggerBody()?['azureBlobFilePath']",
+                      "inferContentType": true
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Create_file": {
+                  "runAfter": {
+                    "Get_blob_content_(V2)": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "c86758c2-3171-451d-b098-7d8f0a55f84a"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_sharepointonline_1",
+                      "operationId": "CreateFile",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                    },
+                    "parameters": {
+                      "dataset": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
+                      "folderPath": "@if(empty(triggerBody()?['subFolderPath']),concat(triggerBody()?['targetTable'],'/',variables('TargetRecordFolder')),concat(triggerBody()?['targetTable'],'/',variables('TargetRecordFolder'),'/',triggerBody()?['subFolderPath']))",
+                      "name": "@triggerBody()?['fileName']",
+                      "body": "@body('Get_blob_content_(V2)')"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  },
+                  "runtimeConfiguration": {
+                    "contentTransfer": {
+                      "transferMode": "Chunked"
+                    }
+                  }
+                },
+                "Add_a_new_row": {
+                  "runAfter": {
+                    "Create_file": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "889eeee5-60fc-47ae-95d2-4ec62eda146a"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "CreateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "bsr_bsrdocuments",
+                      "item/subject": "@triggerBody()['fileName']",
+                      "item/description": "@triggerBody()?['fileDescription']",
+                      "item/bsr_documentlocationcode": 760810000,
+                      "item/bsr_bsrdocumentorigincode": 760810000,
+                      "item/bsr_contactid_bsr_bsrdocument@odata.bind": "@if(equals(variables('SetProviderContact'),true),concat('/contacts/',triggerBody()?['providerContactId']),null)",
+                      "item/bsr_sharepointfileid": "@outputs('Create_file')?['body/ItemId']",
+                      "item/bsr_targetrecordid": "@triggerBody()['targetRecordId']",
+                      "item/bsr_targettable": "@triggerBody()['targetTable']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Response": {
+                  "runAfter": {
+                    "Add_a_new_row": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "3e2f1ea7-3197-49e5-9835-97786136ec60"
+                  },
+                  "type": "Response",
+                  "kind": "Http",
+                  "inputs": {
+                    "statusCode": 200,
+                    "body": {
+                      "sharePointFileId": "@outputs('Create_file')?['body/ItemId']",
+                      "bsr_documentid": "@{outputs('Add_a_new_row')?['body/activityid']}",
+                      "sharePointFileLocator": "@{outputs('Create_file')?['body/FileLocator']}"
+                    },
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "sharePointFileId": {
+                          "type": "string"
+                        },
+                        "bsr_documentid": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "runAfter": {
+                "Apply_to_each_4": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "f0049203-e1f7-4f5f-a0df-e91ac37f9684"
+              },
+              "type": "Scope"
+            },
+            "Scope_2": {
+              "actions": {
+                "Response_2": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "66340325-ae10-4d2c-ad53-56c8521f7ac6"
+                  },
+                  "type": "Response",
+                  "kind": "Http",
+                  "inputs": {
+                    "statusCode": 400,
+                    "body": "@outputs('Scope')"
+                  }
+                }
+              },
+              "runAfter": {
+                "Scope": [
+                  "Failed"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "05e33054-d2f4-4a19-9508-dc925127fb7e"
+              },
+              "type": "Scope"
+            }
+          },
+          "runAfter": {
+            "List_rows": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Response_3": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "66340325-ae10-4d2c-ad53-56c8521f7ac6"
+                },
+                "type": "Response",
+                "kind": "Http",
+                "inputs": {
+                  "statusCode": 400,
+                  "body": "SharePoint Document Location not found. Please retry shortly. "
+                }
+              }
+            }
+          },
+          "expression": {
+            "greater": [
+              "@length(outputs('List_rows')?['body/value'])",
+              0
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "4b519b8d-76c7-49c9-86f9-c54d6844640a"
+          },
+          "type": "If"
         }
       },
       "outputs": {}
