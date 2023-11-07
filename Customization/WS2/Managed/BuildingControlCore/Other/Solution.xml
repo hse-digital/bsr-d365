@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Control Core" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.64.0</Version>
+    <Version>1.0.65.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -178,8 +178,10 @@
       <RootComponent type="29" id="{f5800d60-654b-ee11-be6f-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="29" id="{fed50592-6d58-ee11-be6f-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="36" id="{20c43a40-4b5c-ee11-8def-6045bdd0e4cf}" behavior="0" />
+      <RootComponent type="36" id="{2fea2beb-577d-ee11-8179-6045bdf1e965}" behavior="0" />
       <RootComponent type="36" id="{396a8a20-475c-ee11-8def-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="36" id="{3f48662c-7572-ee11-8179-6045bdf1e965}" behavior="0" />
+      <RootComponent type="36" id="{48900bd4-4d7d-ee11-8179-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="36" id="{494cbb7e-bb48-ee11-be6e-6045bdf1e965}" behavior="0" />
       <RootComponent type="36" id="{4f4d34dc-fd6c-ee11-9ae7-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="36" id="{562afbf1-2756-ee11-be6f-6045bdd2c0c0}" behavior="0" />
@@ -187,7 +189,9 @@
       <RootComponent type="36" id="{89c0eb47-bb48-ee11-be6e-6045bdf1e965}" behavior="0" />
       <RootComponent type="36" id="{91181612-a458-ee11-be6f-6045bdf1e965}" behavior="0" />
       <RootComponent type="36" id="{a5a6ad6f-5f42-ee11-bdf3-6045bdd2c0c0}" behavior="0" />
+      <RootComponent type="36" id="{cb4e6ca0-4e7d-ee11-8179-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="36" id="{d798ad7a-b346-ee11-be6f-6045bdd2c0c0}" behavior="0" />
+      <RootComponent type="36" id="{dd86ae21-487d-ee11-8179-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="36" id="{e010fc7e-9e57-ee11-be6f-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="36" id="{ebbed961-865b-ee11-8def-6045bdf1e965}" behavior="0" />
       <RootComponent type="36" id="{edc0e370-a958-ee11-be6f-6045bdd2c0c0}" behavior="0" />
@@ -312,6 +316,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_change" displayName="Change" solution="BuildingRegCore (1.17.77.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Change Request" id="{e80c0676-2f9a-4c01-966c-0f7fe8f1140e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_changecategory" displayName="Change Category" solution="BuildingRegCore (1.17.77.0)" />
+        <Dependent type="26" schemaName="Active Change Requests (Building Control)" displayName="Active Change Requests (Building Control)" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" id="{3c70a21c-0478-ee11-8179-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_changecategory" displayName="Change Category" solution="BuildingRegCore (1.17.77.0)" />
@@ -589,6 +597,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_changecategoryid" displayName="Change Category" parentSchemaName="bsr_changecategory" parentDisplayName="Change Category" solution="BuildingRegCore (1.17.77.0)" />
+        <Dependent type="26" schemaName="Active Change Requests (Building Control)" displayName="Active Change Requests (Building Control)" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" id="{3c70a21c-0478-ee11-8179-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_changecategoryid" displayName="Change Category" parentSchemaName="bsr_changecategory" parentDisplayName="Change Category" solution="BuildingRegCore (1.17.77.0)" />
         <Dependent type="29" displayName="Show/hide fields for Building Control Change of Dutyholder" id="{36c26b63-fc77-ee11-8179-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
@@ -602,6 +614,10 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_changecategoryid" displayName="Change Category" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.77.0)" />
         <Dependent type="26" schemaName="Active Change of Dutyholder Applications" displayName="Active Change of Dutyholder Applications" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" id="{ba8dd4b9-ff77-ee11-8179-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_changecategoryid" displayName="Change Category" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.77.0)" />
+        <Dependent type="26" schemaName="Change Control Requests Subgrid View" displayName="Change Control Requests Subgrid View" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" id="{bd8427af-957c-ee11-8179-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_changecategoryid" displayName="Change Category" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.77.0)" />
@@ -634,6 +650,10 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_changerequestid" displayName="Change Request" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.77.0)" />
         <Dependent type="26" schemaName="Active Change of Dutyholder Applications" displayName="Active Change of Dutyholder Applications" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" id="{ba8dd4b9-ff77-ee11-8179-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_changerequestid" displayName="Change Request" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.77.0)" />
+        <Dependent type="26" schemaName="Change Control Requests Subgrid View" displayName="Change Control Requests Subgrid View" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" id="{bd8427af-957c-ee11-8179-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_changerequestid" displayName="Change Request" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.77.0)" />
@@ -741,6 +761,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.77.0)" />
+        <Dependent type="26" schemaName="Change Control Requests Subgrid View" displayName="Change Control Requests Subgrid View" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" id="{bd8427af-957c-ee11-8179-6045bdf1e965}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.77.0)" />
         <Dependent type="29" displayName="Show/hide fields for Building Control Change of Dutyholder" id="{36c26b63-fc77-ee11-8179-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
@@ -832,6 +856,10 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_servicecode" displayName="BSR Service" parentSchemaName="bsr_changecategory" parentDisplayName="Change Category" solution="BuildingRegCore (1.17.77.0)" />
+        <Dependent type="26" schemaName="Active Change Requests (Building Control)" displayName="Active Change Requests (Building Control)" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" id="{3c70a21c-0478-ee11-8179-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_submittedbyid" displayName="Submitted by" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.77.0)" />
         <Dependent type="26" schemaName="Active Change Requests (Building Control)" displayName="Active Change Requests (Building Control)" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" id="{3c70a21c-0478-ee11-8179-6045bdd2c0c0}" />
       </MissingDependency>
@@ -881,6 +909,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="createdon" displayName="Created On" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.77.0)" />
+        <Dependent type="26" schemaName="Change Control Requests Subgrid View" displayName="Change Control Requests Subgrid View" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" id="{bd8427af-957c-ee11-8179-6045bdf1e965}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="createdon" displayName="Created On" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.77.0)" />
         <Dependent type="26" schemaName="Change of Dutyholder" displayName="Change of Dutyholder" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" id="{e2809520-fd77-ee11-8179-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
@@ -901,7 +933,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="originatingleadid" displayName="Originating Lead" parentSchemaName="account" parentDisplayName="Account" solution="msdynce_LeadManagement (9.0.4.0066)">
-          <package>msdynce_LeadManagementAnchor (9.0.23093.10001)</package>
+          <package>msdynce_LeadManagementAnchor (9.0.23103.10001)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
@@ -912,6 +944,10 @@
       <MissingDependency>
         <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="Active" />
         <Dependent type="26" schemaName="Active Change of Dutyholder Applications" displayName="Active Change of Dutyholder Applications" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" id="{ba8dd4b9-ff77-ee11-8179-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="Active" />
+        <Dependent type="26" schemaName="Change Control Requests Subgrid View" displayName="Change Control Requests Subgrid View" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" id="{bd8427af-957c-ee11-8179-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="Active" />
@@ -938,6 +974,10 @@
       <MissingDependency>
         <Required type="2" schemaName="statecode" displayName="Status" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.77.0)" />
         <Dependent type="26" schemaName="Active Change of Dutyholder Applications" displayName="Active Change of Dutyholder Applications" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" id="{ba8dd4b9-ff77-ee11-8179-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statecode" displayName="Status" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.77.0)" />
+        <Dependent type="26" schemaName="Change Control Requests Subgrid View" displayName="Change Control Requests Subgrid View" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" id="{bd8427af-957c-ee11-8179-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.77.0)" />
