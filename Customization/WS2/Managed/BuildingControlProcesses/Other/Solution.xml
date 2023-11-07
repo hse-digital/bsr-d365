@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Control Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.35.0</Version>
+    <Version>1.0.36.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -101,6 +101,7 @@
       <RootComponent type="29" id="{57863141-3543-ee11-bdf3-6045bdf1ea4d}" behavior="0" />
       <RootComponent type="29" id="{60a8cba0-fd3c-ee11-bdf4-6045bdf1ea4d}" behavior="0" />
       <RootComponent type="29" id="{62dd4b63-884d-ee11-be6f-6045bdf1e965}" behavior="0" />
+      <RootComponent type="29" id="{6398dce1-467d-ee11-8179-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{6c14f0c5-fe59-ee11-be6f-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{6e6e8c71-7351-ee11-be6f-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{73afdfb9-714d-ee11-be6f-6045bdc208e3}" behavior="0" />
@@ -190,6 +191,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingcontrolapplication" displayName="Building Control Application" solution="Active" />
         <Dependent type="29" displayName="Set Validated to No when Principal Contractor Named Contact Changed" id="{535443ab-8579-ee11-8179-6045bdd0e4cf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingcontrolapplication" displayName="Building Control Application" solution="Active" />
+        <Dependent type="29" displayName="Send Email to Dutyholder over Change of Dutyholder submission" id="{6398dce1-467d-ee11-8179-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingcontrolapplication" displayName="Building Control Application" solution="Active" />
@@ -338,6 +343,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingdetails" displayName="Building Details" solution="Active" />
         <Dependent type="29" displayName="Set Lifecycle lookup on Building Details record when created" id="{a54f1168-c456-ee11-be6f-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_changerequest" displayName="Change Request" solution="BuildingRegCore (1.17.77.0)" />
+        <Dependent type="29" displayName="Send Email to Dutyholder over Change of Dutyholder submission" id="{6398dce1-467d-ee11-8179-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_externalidentity" displayName="BSR External Identity" solution="BuildingRegCore (1.17.77.0)" />
@@ -566,6 +575,10 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_buildingprincipaldesigner" displayName="Building Principal Designer" parentSchemaName="bsr_buildingcontrolapplication" parentDisplayName="Building Control Application" solution="Active" />
         <Dependent type="29" displayName="Set Validated to No when Principal Designer changed" id="{d1ae7983-8879-ee11-8179-6045bdd0e4cf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_changecategoryid" displayName="Change Category" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.77.0)" />
+        <Dependent type="29" displayName="Send Email to Dutyholder over Change of Dutyholder submission" id="{6398dce1-467d-ee11-8179-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_changeprincipalcontractor" displayName="Change of Principal Contractor" parentSchemaName="bsr_buildingcontrolapplication" parentDisplayName="Building Control Application" solution="Active" />
@@ -844,6 +857,10 @@
         <Dependent type="29" displayName="Set Validation Date for Building Control Application" id="{21cbcfb6-f140-ee11-bdf3-6045bdc208e3}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="createdon" displayName="Created On" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.77.0)" />
+        <Dependent type="29" displayName="Send Email to Dutyholder over Change of Dutyholder submission" id="{6398dce1-467d-ee11-8179-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="ownerid" displayName="Regulatory Lead" parentSchemaName="bsr_buildingdetails" parentDisplayName="Building Details" solution="Active" />
         <Dependent type="29" displayName="Set Building Control Life cycle On Update of Building Details" id="{2f3184e0-b83a-ee11-bdf4-6045bdd0e4cf}" />
       </MissingDependency>
@@ -962,6 +979,10 @@
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="BuildingRegCore (1.17.77.0)" id.schemaname="bsr_noreplyqueueid" />
         <Dependent type="29" displayName="BCAA - When record submitted, update status on BCA &amp; Building Details, and send applicant email" id="{486ad290-6456-ee11-be6f-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="BuildingRegCore (1.17.77.0)" id.schemaname="bsr_noreplyqueueid" />
+        <Dependent type="29" displayName="Send Email to Dutyholder over Change of Dutyholder submission" id="{6398dce1-467d-ee11-8179-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="BuildingRegCore (1.17.77.0)" id.schemaname="bsr_noreplyqueueid" />
