@@ -1,0 +1,290 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS3"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_BI_Employment_detail_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "40b8dc2e-df01-497c-a3cc-19a1ab7cb601"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "bsr_biemploymentdetail",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "bsr_buildinginspectorid, bsr_biemployerid"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Update_the_BI_Employment_Detail_Name_field": {
+          "runAfter": {
+            "Condition_2": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "93510485-b747-48e8-8bfa-b16148c14cb3"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_biemploymentdetails",
+              "recordId": "@triggerOutputs()?['body/bsr_biemploymentdetailid']",
+              "item/bsr_name": "Application: @{variables('varContact')}: Employment: @{variables('varEmployer')}"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Condition": {
+          "actions": {
+            "Set_varContact_to_Blank": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "82b87f70-b4f4-4bd6-bccd-e0a5c2a332dc"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "varContact",
+                "value": " "
+              }
+            }
+          },
+          "runAfter": {
+            "Initialize_varEmployer": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Get_a_Contact_row_by_ID": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "dded13be-a27d-4d1f-ae85-e239b8871a09"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps_1",
+                    "operationId": "GetItem",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "contacts",
+                    "recordId": "@triggerOutputs()?['body/_bsr_buildinginspectorid_value']"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              },
+              "Set_varContact_to_Full_Name": {
+                "runAfter": {
+                  "Get_a_Contact_row_by_ID": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "388e8f5e-684d-4c13-949a-5d01c43c401f"
+                },
+                "type": "SetVariable",
+                "inputs": {
+                  "name": "varContact",
+                  "value": "@outputs('Get_a_Contact_row_by_ID')?['body/fullname']"
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/_bsr_buildinginspectorid_value']",
+              null
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "d0c4f3af-6585-4967-be5b-5fa478bd7de0"
+          },
+          "type": "If"
+        },
+        "Initialize_varContact": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "862c0677-2f8f-4c17-855c-c1e5120eb8b5"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varContact",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_varEmployer": {
+          "runAfter": {
+            "Initialize_varContact": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "8190ac05-6e28-4003-8ff2-ccc904aa9ecc"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varEmployer",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Condition_2": {
+          "actions": {},
+          "runAfter": {
+            "Condition": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Condition_3": {
+                "actions": {
+                  "Get_a_contacts_row_by_ID": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "43fdd66d-4f64-4421-a82e-46cbb6da28be"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps_1",
+                        "operationId": "GetItem",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "contacts",
+                        "recordId": "@triggerOutputs()?['body/_bsr_biemployerid_value']"
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  },
+                  "Set_varEmployer_to_Contact": {
+                    "runAfter": {
+                      "Get_a_contacts_row_by_ID": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "38727b04-4467-46a8-8c4d-0c4f14733550"
+                    },
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "varEmployer",
+                      "value": "@outputs('Get_a_contacts_row_by_ID')?['body/fullname']"
+                    }
+                  }
+                },
+                "runAfter": {},
+                "else": {
+                  "actions": {
+                    "Get_a_Account_row_by_ID": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "67b72150-80e9-455c-b632-dafcafe128eb"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps_1",
+                          "operationId": "GetItem",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "accounts",
+                          "recordId": "@triggerOutputs()?['body/_bsr_biemployerid_value']"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Set_varEmployer_to_Account": {
+                      "runAfter": {
+                        "Get_a_Account_row_by_ID": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "952d3f74-3fdf-4b57-a444-1db9a2e652a9"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "varEmployer",
+                        "value": "@outputs('Get_a_Account_row_by_ID')?['body/name']"
+                      }
+                    }
+                  }
+                },
+                "expression": {
+                  "equals": [
+                    "@triggerOutputs()?['body/_bsr_biemployerid_value@Microsoft.Dynamics.CRM.lookuplogicalname']",
+                    "contact"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "1451811c-b429-4eb1-9e30-116d9c0dd31f"
+                },
+                "type": "If"
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/_bsr_biemployerid_value']",
+              null
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "93d7cdaf-8671-4d47-81d1-4a2631455d24"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

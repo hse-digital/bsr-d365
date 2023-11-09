@@ -63,11 +63,6 @@
                     <Sequence DisplayName="SetVisibilityStep1: New Action">
                       <mcwc:SetVisibility ControlId="bsr_onholdreminderdate" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingapplication" IsVisible="True" />
                     </Sequence>
-                    <Sequence DisplayName="SetFieldRequiredLevelStep7: New Action">
-                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;bsr_buildingapplication&quot;)]" />
-                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
-                      <mcwc:SetFieldRequiredLevel ControlId="bsr_onholdreminderdate" ControlType="standard" DisplayName="SetFieldRequiredLevelStep7" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingapplication" RequiredLevel="Required" />
-                    </Sequence>
                     <Sequence DisplayName="SetVisibilityStep3: New Action">
                       <mcwc:SetVisibility ControlId="bsr_onholdreasonid" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingapplication" IsVisible="True" />
                     </Sequence>
@@ -104,11 +99,6 @@
                   <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
                     <Sequence DisplayName="SetVisibilityStep2: New Action">
                       <mcwc:SetVisibility ControlId="bsr_onholdreminderdate" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingapplication" IsVisible="False" />
-                    </Sequence>
-                    <Sequence DisplayName="SetFieldRequiredLevelStep8: New Action">
-                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;bsr_buildingapplication&quot;)]" />
-                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
-                      <mcwc:SetFieldRequiredLevel ControlId="bsr_onholdreminderdate" ControlType="standard" DisplayName="SetFieldRequiredLevelStep8" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingapplication" RequiredLevel="None" />
                     </Sequence>
                     <Sequence DisplayName="SetVisibilityStep5: New Action">
                       <mcwc:SetVisibility ControlId="bsr_onholdreasonid" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingapplication" IsVisible="False" />

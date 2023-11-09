@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{e7a687c9-b675-4f76-8651-fc058f4ebd40}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
+        <row name="result" id="bsr_biindependentassessmentid">
+          <cell name="bsr_name" width="276" />
+          <cell name="bsr_schemename" width="176" />
+          <cell name="bsr_firstname" width="100" />
+          <cell name="bsr_surname" width="108" />
+          <cell name="bsr_assessmentorganisation" width="204" />
+          <cell name="bsr_certificatecode" width="156" />
+          <cell name="bsr_dateofassessment" width="189" />
+          <cell name="bsr_certificatestatus" width="135" />
+          <cell name="bsr_certificatestatuschangedate" width="300" />
+          <cell name="bsr_certificatestatusreason" width="175" />
+          <cell name="bsr_bicoflasscertifiedmultipleselection" width="196" />
+          <cell name="bsr_candidatehomeaddress" width="231" />
+          <cell name="bsr_candidatenino" width="136" />
+          <cell name="bsr_confirmationofcanidvalidation" width="266" />
+          <cell name="createdon" width="151" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="bsr_biindependentassessment">
+          <attribute name="bsr_biindependentassessmentid" />
+          <attribute name="bsr_name" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="bsr_schemename" />
+          <attribute name="bsr_assessmentorganisation" />
+          <attribute name="bsr_dateofassessment" />
+          <attribute name="bsr_certificatestatus" />
+          <attribute name="bsr_certificatecode" />
+          <attribute name="bsr_firstname" />
+          <attribute name="bsr_surname" />
+          <attribute name="bsr_candidatehomeaddress" />
+          <attribute name="bsr_candidatenino" />
+          <attribute name="bsr_confirmationofcanidvalidation" />
+          <attribute name="bsr_bicoflasscertifiedmultipleselection" />
+          <attribute name="createdon" />
+          <order attribute="createdon" descending="true" />
+          <attribute name="bsr_certificatestatuschangedate" />
+          <attribute name="bsr_certificatestatusreason" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active BI Independent Assessments" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

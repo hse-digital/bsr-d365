@@ -10,20 +10,7 @@
     <layoutxml>
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_blockid">
-          <cell name="a_b25933e0e2cc40dd9677930fe337bd18.bsr_applicationid" width="298" />
-          <cell name="a_b25933e0e2cc40dd9677930fe337bd18.statuscode" width="276" />
-          <cell name="a_b25933e0e2cc40dd9677930fe337bd18.bsr_applicationstage" width="325" />
-          <cell name="a_b25933e0e2cc40dd9677930fe337bd18.bsr_registreeid" width="227" />
-          <cell name="a_b25933e0e2cc40dd9677930fe337bd18.bsr_papid" width="196" />
-          <cell name="bsr_buildingid" width="100" />
           <cell name="bsr_name" width="300" />
-          <cell name="bsr_manualaddress" width="174" />
-          <cell name="bsr_addressline1" width="126" />
-          <cell name="bsr_addressline2" width="126" />
-          <cell name="bsr_city" width="100" />
-          <cell name="bsr_county" width="100" />
-          <cell name="bsr_postcode" width="100" />
-          <cell name="bsr_country" width="100" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -46,24 +33,7 @@
             <condition attribute="bsr_nooffloorsabovegroundlevel" operator="eq" value="{1}" />
             <condition attribute="bsr_numberofresidentialunits" operator="eq" value="{1}" />
             <condition attribute="ownerid" operator="like" value="{0}" />
-            <condition attribute="bsr_addressline1" operator="like" value="{0}" />
-            <condition attribute="bsr_postcode" operator="like" value="{0}" />
           </filter>
-          <attribute name="bsr_addressline1" />
-          <attribute name="bsr_buildingid" />
-          <attribute name="bsr_addressline2" />
-          <attribute name="bsr_county" />
-          <attribute name="bsr_postcode" />
-          <attribute name="bsr_country" />
-          <attribute name="bsr_city" />
-          <link-entity alias="a_b25933e0e2cc40dd9677930fe337bd18" name="bsr_buildingapplication" to="bsr_buildingapplicationid" from="bsr_buildingapplicationid" link-type="outer" visible="false">
-            <attribute name="bsr_applicationid" />
-            <attribute name="bsr_registreeid" />
-            <attribute name="bsr_papid" />
-            <attribute name="statuscode" />
-            <attribute name="bsr_applicationstage" />
-          </link-entity>
-          <attribute name="bsr_manualaddress" />
         </entity>
       </fetch>
     </fetchxml>

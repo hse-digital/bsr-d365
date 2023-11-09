@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{f83f32da-7025-ee11-9965-0022481b56d1}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
+        <row name="result" id="bsr_biregcountryid">
+          <cell name="bsr_biapplicationid" width="124" />
+          <cell name="bsr_countryid" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical" distinct="true">
+        <entity name="bsr_biregcountry">
+          <attribute name="bsr_biregcountryid" />
+          <attribute name="bsr_countryid" />
+          <attribute name="bsr_biapplicationid" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="BPA Form Subgrid View" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="This view is used as a subgrid on the Building Profession Application form" languagecode="1033" />
+    </Descriptions>
+  </savedquery>
+</savedqueries>

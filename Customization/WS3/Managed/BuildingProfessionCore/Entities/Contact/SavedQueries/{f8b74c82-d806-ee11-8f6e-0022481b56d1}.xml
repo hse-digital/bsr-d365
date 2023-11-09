@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{f8b74c82-d806-ee11-8f6e-0022481b56d1}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="fullname" select="1" icon="1" preview="1">
+        <row name="result" id="contactid">
+          <cell name="fullname" width="200" />
+          <cell name="bsr_jobrole" width="100" />
+          <cell name="bsr_nationalinsuranceno" width="196" />
+          <cell name="emailaddress1" width="100" />
+          <cell name="telephone1" width="129" />
+          <cell name="birthdate" width="100" />
+          <cell name="bsr_buildingprofessionapplicationid" width="215" />
+          <cell name="address1_line1" width="147" />
+          <cell name="address1_line2" width="147" />
+          <cell name="address1_city" width="128" />
+          <cell name="address1_postalcode" width="196" />
+          <cell name="bsr_address1countrycode" width="176" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
+        <entity name="contact">
+          <attribute name="fullname" />
+          <attribute name="contactid" />
+          <attribute name="bsr_jobrole" />
+          <attribute name="bsr_nationalinsuranceno" />
+          <attribute name="emailaddress1" />
+          <attribute name="telephone1" />
+          <attribute name="birthdate" />
+          <attribute name="address1_line1" />
+          <attribute name="address1_line2" />
+          <attribute name="address1_city" />
+          <attribute name="address1_postalcode" />
+          <attribute name="bsr_address1countrycode" />
+          <attribute name="bsr_buildingprofessionapplicationid" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <link-entity name="bsr_buildingprofessionapplication" alias="aa" link-type="inner" from="bsr_applicantid" to="contactid">
+            <filter type="and">
+              <condition attribute="bsr_buildingprofessiontypecode" operator="eq" value="760810000" />
+              <condition attribute="statuscode" operator="eq" value="760810005" />
+              <condition attribute="bsr_regulatorydecisionstatus" operator="in">
+                <value>760810000</value>
+                <value>760810002</value>
+              </condition>
+            </filter>
+          </link-entity>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Registered Building Inspectors" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

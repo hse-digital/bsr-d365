@@ -47,77 +47,60 @@
         }
       },
       "actions": {
-        "Condition": {
-          "actions": {
-            "Get_a_row_by_ID": {
-              "runAfter": {},
-              "metadata": {
-                "operationMetadataId": "26e33b7b-3817-4c57-a1a0-0cfbed8ff962"
-              },
-              "type": "OpenApiConnection",
-              "inputs": {
-                "host": {
-                  "connectionName": "shared_commondataserviceforapps_1",
-                  "operationId": "GetItem",
-                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                },
-                "parameters": {
-                  "entityName": "bsr_countries",
-                  "recordId": "@triggerOutputs()?['body/_bsr_address1countrycode_value']"
-                },
-                "authentication": "@parameters('$authentication')"
-              }
-            },
-            "Compose": {
-              "runAfter": {
-                "Get_a_row_by_ID": [
-                  "Succeeded"
-                ]
-              },
-              "metadata": {
-                "operationMetadataId": "5d718c4a-63d8-4c67-9b3b-658639e64878"
-              },
-              "type": "Compose",
-              "inputs": "@outputs('Get_a_row_by_ID')?['body/bsr_name']"
-            },
-            "Update_a_row": {
-              "runAfter": {
-                "Compose": [
-                  "Succeeded"
-                ]
-              },
-              "metadata": {
-                "operationMetadataId": "7eebffde-6862-4821-8e5d-6fd59f54af4b"
-              },
-              "type": "OpenApiConnection",
-              "inputs": {
-                "host": {
-                  "connectionName": "shared_commondataserviceforapps_1",
-                  "operationId": "UpdateRecord",
-                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                },
-                "parameters": {
-                  "entityName": "accounts",
-                  "recordId": "@triggerOutputs()?['body/accountid']",
-                  "item/address1_country": "@outputs('Get_a_row_by_ID')?['body/bsr_name']"
-                },
-                "authentication": "@parameters('$authentication')"
-              }
-            }
-          },
+        "Get_a_row_by_ID": {
           "runAfter": {},
-          "expression": {
-            "not": {
-              "equals": [
-                "@triggerOutputs()?['body/_bsr_address1countrycode_value']",
-                "@null"
-              ]
-            }
+          "metadata": {
+            "operationMetadataId": "26e33b7b-3817-4c57-a1a0-0cfbed8ff962"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_countries",
+              "recordId": "@triggerOutputs()?['body/_bsr_address1countrycode_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Compose": {
+          "runAfter": {
+            "Get_a_row_by_ID": [
+              "Succeeded"
+            ]
           },
           "metadata": {
-            "operationMetadataId": "6ceae7a1-b61e-4ee9-a3d0-d607186b684f"
+            "operationMetadataId": "5d718c4a-63d8-4c67-9b3b-658639e64878"
           },
-          "type": "If"
+          "type": "Compose",
+          "inputs": "@outputs('Get_a_row_by_ID')?['body/bsr_name']"
+        },
+        "Update_a_row": {
+          "runAfter": {
+            "Compose": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "7eebffde-6862-4821-8e5d-6fd59f54af4b"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "accounts",
+              "recordId": "@triggerOutputs()?['body/accountid']",
+              "item/address1_country": "@outputs('Get_a_row_by_ID')?['body/bsr_name']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
         }
       }
     },

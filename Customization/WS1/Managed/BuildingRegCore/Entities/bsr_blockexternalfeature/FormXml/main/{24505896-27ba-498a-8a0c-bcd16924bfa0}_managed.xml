@@ -5,7 +5,7 @@
     <IntroducedVersion>1.0.6.0</IntroducedVersion>
     <FormPresentation>1</FormPresentation>
     <FormActivationState>1</FormActivationState>
-    <form headerdensity="HighWithControls">
+    <form>
       <tabs>
         <tab verticallayout="true" id="{b21a4411-d592-4e07-8cdd-543666df1b32}" IsUserDefined="1">
           <labels>
@@ -20,7 +20,7 @@
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{24771032-7278-4a90-85ee-f1b2cf9d54bc}" showlabel="false" visible="false">
+                      <cell id="{24771032-7278-4a90-85ee-f1b2cf9d54bc}">
                         <labels>
                           <label description="Name" languagecode="1033" />
                         </labels>
@@ -30,7 +30,7 @@
                     <row>
                       <cell id="{33c10e5d-49ad-357e-c0aa-20e1bdc513d4}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Structure" languagecode="1033" />
+                          <label description="Block" languagecode="1033" />
                         </labels>
                         <control id="bsr_blockid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_blockid" disabled="false" />
                       </cell>
@@ -38,17 +38,9 @@
                     <row>
                       <cell id="{cb063940-e571-6b90-5652-3302b597b59d}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="External Feature" languagecode="1033" />
+                          <label description="External Feature Type" languagecode="1033" />
                         </labels>
                         <control id="bsr_externalfeaturetypeid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_externalfeaturetypeid" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{bb5fbb1f-8b1a-4636-8546-75675654e8c3}" locklevel="0" colspan="1" rowspan="1">
-                        <labels>
-                          <label description="Material" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_materialid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_materialid" disabled="false" />
                       </cell>
                     </row>
                     <row>
@@ -65,9 +57,59 @@
             </column>
           </columns>
         </tab>
+        <tab name="tab_2" id="{20d834a2-0298-aa04-b2e2-914b6187877e}" IsUserDefined="0" locklevel="0" showlabel="true" expanded="true">
+          <labels>
+            <label description="Block Structures" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_2_section_1" showlabel="false" showbar="false" locklevel="0" id="{5563c002-2237-08ad-74be-b13822d0ba02}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{10897536-7600-001d-0eca-130a700b90c2}" showlabel="false" colspan="1" auto="false" rowspan="6">
+                        <labels>
+                          <label description="Block Structures" languagecode="1033" />
+                        </labels>
+                        <control id="Block_Structures" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <ViewId>{414C1BFE-E413-44E9-9988-A571A30412CC}</ViewId>
+                            <IsUserView>false</IsUserView>
+                            <RelationshipName>bsr_blockexternalfeature_blockstructu</RelationshipName>
+                            <TargetEntityType>bsr_blockstructure</TargetEntityType>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <ViewIds>{414C1BFE-E413-44E9-9988-A571A30412CC}</ViewIds>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>All</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                            <RelationshipRoleOrdinal>1</RelationshipRoleOrdinal>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
       </tabs>
       <Navigation>
-        <NavBar />
+        <NavBar></NavBar>
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -97,51 +139,6 @@
         </NavBarAreas>
       </Navigation>
       <controlDescriptions />
-      <header id="{6bbca9c2-f368-474a-9e80-7e34f1a8c944}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
-        <rows>
-          <row>
-            <cell id="{710ff722-cb36-43b6-847c-c914e3d34db7}" showlabel="false">
-              <labels>
-                <label description="" languagecode="1033" />
-              </labels>
-            </cell>
-            <cell id="{3b5c3cca-2211-48c9-8e28-49d44756a891}" showlabel="false">
-              <labels>
-                <label description="" languagecode="1033" />
-              </labels>
-            </cell>
-            <cell id="{d9210951-2a5b-4dc0-9d21-650f4c8c05dc}" showlabel="false">
-              <labels>
-                <label description="" languagecode="1033" />
-              </labels>
-            </cell>
-          </row>
-        </rows>
-      </header>
-      <footer id="{e9812d99-1892-4833-9976-601feecd7491}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
-        <rows>
-          <row>
-            <cell id="{e9ca9288-848d-4281-bdcf-8c32559dda4c}" showlabel="false">
-              <labels>
-                <label description="" languagecode="1033" />
-              </labels>
-            </cell>
-            <cell id="{7d83e031-8b17-4394-bf04-e10a8084cd6e}" showlabel="false">
-              <labels>
-                <label description="" languagecode="1033" />
-              </labels>
-            </cell>
-            <cell id="{f664423e-1583-44c6-abcb-873843b726b6}" showlabel="false">
-              <labels>
-                <label description="" languagecode="1033" />
-              </labels>
-            </cell>
-          </row>
-        </rows>
-      </footer>
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

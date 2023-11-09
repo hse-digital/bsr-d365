@@ -11,7 +11,6 @@
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_paymentid">
           <cell name="bsr_name" width="300" />
-          <cell name="bsr_paymenttypecode" width="121" />
           <cell name="bsr_lastfourdigitsofcardnumber" width="100" />
           <cell name="bsr_timeanddateoftransaction" width="100" />
           <cell name="bsr_transactionid" width="100" />
@@ -30,11 +29,14 @@
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" mapping="logical" distinct="true">
+      <fetch version="1.0" mapping="logical">
         <entity name="bsr_payment">
           <attribute name="bsr_name" />
           <attribute name="createdon" />
           <order attribute="bsr_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
           <attribute name="bsr_timeanddateoftransaction" />
           <attribute name="bsr_transactionid" />
           <attribute name="bsr_cardexpirydate" />
@@ -48,17 +50,12 @@
           <attribute name="bsr_refundreason" />
           <attribute name="bsr_buildingapplicationid" />
           <attribute name="bsr_lastfourdigitsofcardnumber" />
-          <attribute name="bsr_paymenttypecode" />
-          <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
-            <condition attribute="bsr_paymenttypecode" operator="eq" value="760810000" />
-          </filter>
         </entity>
       </fetch>
     </fetchxml>
     <IntroducedVersion>1.0</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="Active gov.uk payments" languagecode="1033" />
+      <LocalizedName description="Active Payments" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>

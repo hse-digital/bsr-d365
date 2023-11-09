@@ -1,0 +1,316 @@
+interface bsr_buildingprofessionapplication_Base extends WebEntity {
+  bsr_assessmentcertnumber?: string | null;
+  bsr_assessmentdate?: Date | null;
+  bsr_assessmentstatus?: bsr_assessmentstatus | null;
+  bsr_buildingproappid?: string | null;
+  bsr_buildingprofessionapplicationid?: string | null;
+  bsr_buildingprofessiontypecode?: bsr_buildingprofessiontypecode | null;
+  bsr_cicairregnumber?: string | null;
+  bsr_countofrbis?: string | null;
+  bsr_countpreregrbis?: string | null;
+  bsr_decisioncondition?: string | null;
+  bsr_decisiondate?: Date | null;
+  bsr_decisionreason?: string | null;
+  bsr_declarationdate?: Date | null;
+  bsr_escalationstatus?: boolean | null;
+  bsr_hasindependentassessment?: boolean | null;
+  bsr_holdreviewdate?: Date | null;
+  bsr_isantimoneylaundering?: boolean | null;
+  bsr_isbusinessservicesoffered?: boolean | null;
+  bsr_isbusregisteredasapprovedins?: boolean | null;
+  bsr_iscomplaints?: boolean | null;
+  bsr_isconfirmationofcurrentownersdirectors?: boolean | null;
+  bsr_isconflictofinterest?: boolean | null;
+  bsr_iscontractormanagement?: boolean | null;
+  bsr_isdataprotection?: boolean | null;
+  bsr_isenforcementorprosecution?: boolean | null;
+  bsr_isequalitydivertyinclusion?: boolean | null;
+  bsr_isformalorgstructure?: boolean | null;
+  bsr_ishascriminalconvictions?: boolean | null;
+  bsr_ishealthsafetywellbeing?: boolean | null;
+  bsr_isinternalaudit?: boolean | null;
+  bsr_isongoinghighriskbuildingprojects?: boolean | null;
+  bsr_isoperatingproceduresprovided?: boolean | null;
+  bsr_isrbisnamesprovided?: boolean | null;
+  bsr_isrecommendedforrejection?: boolean | null;
+  bsr_isrecruitmentandstaffdev?: boolean | null;
+  bsr_isrelevantchangessincereg?: boolean | null;
+  bsr_issendregulatorydecisionemail?: boolean | null;
+  bsr_isstaffconduct?: boolean | null;
+  bsr_issubjecttoinvestigations?: boolean | null;
+  bsr_isunregrbisnamesprovided?: boolean | null;
+  bsr_iswhistleblowing?: boolean | null;
+  bsr_name?: string | null;
+  bsr_primarycontactposition?: string | null;
+  bsr_prioritisationcode?: bsr_buildingprofessionapplication_bsr_prioritisationcode | null;
+  bsr_rbcadeclaration?: boolean | null;
+  bsr_rbcadeclarationfirstname?: string | null;
+  bsr_rbcadeclarationlastname?: string | null;
+  bsr_rbcadeclarationpositioninbusiness?: string | null;
+  bsr_recommendedrejectionreason?: string | null;
+  bsr_registrationcommencementdate?: Date | null;
+  bsr_regulatorydecisionstatus?: bsr_regulatorydecisionstatus | null;
+  bsr_reviewdecision?: string | null;
+  bsr_reviewstatus?: bsr_reviewstatus | null;
+  bsr_secondarycontactposition?: string | null;
+  bsr_sizoeoforgcode?: bsr_buildingprofessionapplication_bsr_sizoeoforgcode | null;
+  bsr_tellusaboutanyotherrelevantbusinesseswhich?: boolean | null;
+  bsr_typeofbusiness?: string | null;
+  createdon?: Date | null;
+  importsequencenumber?: number | null;
+  modifiedon?: Date | null;
+  overriddencreatedon?: Date | null;
+  statecode?: bsr_buildingprofessionapplication_statecode | null;
+  statuscode?: bsr_buildingprofessionapplication_statuscode | null;
+  timezoneruleversionnumber?: number | null;
+  utcconversiontimezonecode?: number | null;
+  versionnumber?: number | null;
+}
+interface bsr_buildingprofessionapplication_Relationships {
+  bsr_bsr_biregclass_buildingprofessionapplicat?: bsr_biregclass_Result[] | null;
+}
+interface bsr_buildingprofessionapplication extends bsr_buildingprofessionapplication_Base, bsr_buildingprofessionapplication_Relationships {
+  bsr_applicantid_account_bind$accounts?: string | null;
+  bsr_applicantid_contact_bind$contacts?: string | null;
+  bsr_assessmentorganisationid_bind$accounts?: string | null;
+  bsr_onholdreason_bind$bsr_onholdreasons?: string | null;
+  bsr_rbcaaccountid_bind$accounts?: string | null;
+  bsr_rbcaprimarycontactid_bind$contacts?: string | null;
+  bsr_rbcasecondarycontactid_bind$contacts?: string | null;
+  ownerid_bind$systemusers?: string | null;
+  ownerid_bind$teams?: string | null;
+}
+interface bsr_buildingprofessionapplication_Create extends bsr_buildingprofessionapplication {
+}
+interface bsr_buildingprofessionapplication_Update extends bsr_buildingprofessionapplication {
+}
+interface bsr_buildingprofessionapplication_Select {
+  bsr_applicantid_guid: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_applicantid_guid: string | null }, { bsr_applicantid_formatted?: string }>;
+  bsr_assessmentcertnumber: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_assessmentcertnumber: string | null }, {  }>;
+  bsr_assessmentdate: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_assessmentdate: Date | null }, { bsr_assessmentdate_formatted?: string }>;
+  bsr_assessmentorganisationid_guid: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_assessmentorganisationid_guid: string | null }, { bsr_assessmentorganisationid_formatted?: string }>;
+  bsr_assessmentstatus: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_assessmentstatus: bsr_assessmentstatus | null }, { bsr_assessmentstatus_formatted?: string }>;
+  bsr_buildingproappid: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_buildingproappid: string | null }, {  }>;
+  bsr_buildingprofessionapplicationid: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_buildingprofessionapplicationid: string | null }, {  }>;
+  bsr_buildingprofessiontypecode: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_buildingprofessiontypecode: bsr_buildingprofessiontypecode | null }, { bsr_buildingprofessiontypecode_formatted?: string }>;
+  bsr_cicairregnumber: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_cicairregnumber: string | null }, {  }>;
+  bsr_countofrbis: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_countofrbis: string | null }, {  }>;
+  bsr_countpreregrbis: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_countpreregrbis: string | null }, {  }>;
+  bsr_decisioncondition: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_decisioncondition: string | null }, {  }>;
+  bsr_decisiondate: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_decisiondate: Date | null }, { bsr_decisiondate_formatted?: string }>;
+  bsr_decisionreason: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_decisionreason: string | null }, {  }>;
+  bsr_declarationdate: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_declarationdate: Date | null }, { bsr_declarationdate_formatted?: string }>;
+  bsr_escalationstatus: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_escalationstatus: boolean | null }, {  }>;
+  bsr_hasindependentassessment: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_hasindependentassessment: boolean | null }, {  }>;
+  bsr_holdreviewdate: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_holdreviewdate: Date | null }, { bsr_holdreviewdate_formatted?: string }>;
+  bsr_isantimoneylaundering: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_isantimoneylaundering: boolean | null }, {  }>;
+  bsr_isbusinessservicesoffered: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_isbusinessservicesoffered: boolean | null }, {  }>;
+  bsr_isbusregisteredasapprovedins: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_isbusregisteredasapprovedins: boolean | null }, {  }>;
+  bsr_iscomplaints: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_iscomplaints: boolean | null }, {  }>;
+  bsr_isconfirmationofcurrentownersdirectors: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_isconfirmationofcurrentownersdirectors: boolean | null }, {  }>;
+  bsr_isconflictofinterest: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_isconflictofinterest: boolean | null }, {  }>;
+  bsr_iscontractormanagement: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_iscontractormanagement: boolean | null }, {  }>;
+  bsr_isdataprotection: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_isdataprotection: boolean | null }, {  }>;
+  bsr_isenforcementorprosecution: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_isenforcementorprosecution: boolean | null }, {  }>;
+  bsr_isequalitydivertyinclusion: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_isequalitydivertyinclusion: boolean | null }, {  }>;
+  bsr_isformalorgstructure: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_isformalorgstructure: boolean | null }, {  }>;
+  bsr_ishascriminalconvictions: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_ishascriminalconvictions: boolean | null }, {  }>;
+  bsr_ishealthsafetywellbeing: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_ishealthsafetywellbeing: boolean | null }, {  }>;
+  bsr_isinternalaudit: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_isinternalaudit: boolean | null }, {  }>;
+  bsr_isongoinghighriskbuildingprojects: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_isongoinghighriskbuildingprojects: boolean | null }, {  }>;
+  bsr_isoperatingproceduresprovided: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_isoperatingproceduresprovided: boolean | null }, {  }>;
+  bsr_isrbisnamesprovided: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_isrbisnamesprovided: boolean | null }, {  }>;
+  bsr_isrecommendedforrejection: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_isrecommendedforrejection: boolean | null }, {  }>;
+  bsr_isrecruitmentandstaffdev: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_isrecruitmentandstaffdev: boolean | null }, {  }>;
+  bsr_isrelevantchangessincereg: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_isrelevantchangessincereg: boolean | null }, {  }>;
+  bsr_issendregulatorydecisionemail: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_issendregulatorydecisionemail: boolean | null }, {  }>;
+  bsr_isstaffconduct: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_isstaffconduct: boolean | null }, {  }>;
+  bsr_issubjecttoinvestigations: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_issubjecttoinvestigations: boolean | null }, {  }>;
+  bsr_isunregrbisnamesprovided: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_isunregrbisnamesprovided: boolean | null }, {  }>;
+  bsr_iswhistleblowing: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_iswhistleblowing: boolean | null }, {  }>;
+  bsr_name: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_name: string | null }, {  }>;
+  bsr_onholdreason_guid: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_onholdreason_guid: string | null }, { bsr_onholdreason_formatted?: string }>;
+  bsr_primarycontactposition: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_primarycontactposition: string | null }, {  }>;
+  bsr_prioritisationcode: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_prioritisationcode: bsr_buildingprofessionapplication_bsr_prioritisationcode | null }, { bsr_prioritisationcode_formatted?: string }>;
+  bsr_rbcaaccountid_guid: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_rbcaaccountid_guid: string | null }, { bsr_rbcaaccountid_formatted?: string }>;
+  bsr_rbcadeclaration: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_rbcadeclaration: boolean | null }, {  }>;
+  bsr_rbcadeclarationfirstname: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_rbcadeclarationfirstname: string | null }, {  }>;
+  bsr_rbcadeclarationlastname: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_rbcadeclarationlastname: string | null }, {  }>;
+  bsr_rbcadeclarationpositioninbusiness: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_rbcadeclarationpositioninbusiness: string | null }, {  }>;
+  bsr_rbcaprimarycontactid_guid: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_rbcaprimarycontactid_guid: string | null }, { bsr_rbcaprimarycontactid_formatted?: string }>;
+  bsr_rbcasecondarycontactid_guid: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_rbcasecondarycontactid_guid: string | null }, { bsr_rbcasecondarycontactid_formatted?: string }>;
+  bsr_recommendedrejectionreason: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_recommendedrejectionreason: string | null }, {  }>;
+  bsr_registrationcommencementdate: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_registrationcommencementdate: Date | null }, { bsr_registrationcommencementdate_formatted?: string }>;
+  bsr_regulatorydecisionstatus: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_regulatorydecisionstatus: bsr_regulatorydecisionstatus | null }, { bsr_regulatorydecisionstatus_formatted?: string }>;
+  bsr_reviewdecision: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_reviewdecision: string | null }, {  }>;
+  bsr_reviewstatus: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_reviewstatus: bsr_reviewstatus | null }, { bsr_reviewstatus_formatted?: string }>;
+  bsr_secondarycontactposition: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_secondarycontactposition: string | null }, {  }>;
+  bsr_sizoeoforgcode: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_sizoeoforgcode: bsr_buildingprofessionapplication_bsr_sizoeoforgcode | null }, { bsr_sizoeoforgcode_formatted?: string }>;
+  bsr_tellusaboutanyotherrelevantbusinesseswhich: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_tellusaboutanyotherrelevantbusinesseswhich: boolean | null }, {  }>;
+  bsr_typeofbusiness: WebAttribute<bsr_buildingprofessionapplication_Select, { bsr_typeofbusiness: string | null }, {  }>;
+  createdby_guid: WebAttribute<bsr_buildingprofessionapplication_Select, { createdby_guid: string | null }, { createdby_formatted?: string }>;
+  createdon: WebAttribute<bsr_buildingprofessionapplication_Select, { createdon: Date | null }, { createdon_formatted?: string }>;
+  createdonbehalfby_guid: WebAttribute<bsr_buildingprofessionapplication_Select, { createdonbehalfby_guid: string | null }, { createdonbehalfby_formatted?: string }>;
+  importsequencenumber: WebAttribute<bsr_buildingprofessionapplication_Select, { importsequencenumber: number | null }, {  }>;
+  modifiedby_guid: WebAttribute<bsr_buildingprofessionapplication_Select, { modifiedby_guid: string | null }, { modifiedby_formatted?: string }>;
+  modifiedon: WebAttribute<bsr_buildingprofessionapplication_Select, { modifiedon: Date | null }, { modifiedon_formatted?: string }>;
+  modifiedonbehalfby_guid: WebAttribute<bsr_buildingprofessionapplication_Select, { modifiedonbehalfby_guid: string | null }, { modifiedonbehalfby_formatted?: string }>;
+  overriddencreatedon: WebAttribute<bsr_buildingprofessionapplication_Select, { overriddencreatedon: Date | null }, { overriddencreatedon_formatted?: string }>;
+  ownerid_guid: WebAttribute<bsr_buildingprofessionapplication_Select, { ownerid_guid: string | null }, { ownerid_formatted?: string }>;
+  owningbusinessunit_guid: WebAttribute<bsr_buildingprofessionapplication_Select, { owningbusinessunit_guid: string | null }, { owningbusinessunit_formatted?: string }>;
+  owningteam_guid: WebAttribute<bsr_buildingprofessionapplication_Select, { owningteam_guid: string | null }, { owningteam_formatted?: string }>;
+  owninguser_guid: WebAttribute<bsr_buildingprofessionapplication_Select, { owninguser_guid: string | null }, { owninguser_formatted?: string }>;
+  statecode: WebAttribute<bsr_buildingprofessionapplication_Select, { statecode: bsr_buildingprofessionapplication_statecode | null }, { statecode_formatted?: string }>;
+  statuscode: WebAttribute<bsr_buildingprofessionapplication_Select, { statuscode: bsr_buildingprofessionapplication_statuscode | null }, { statuscode_formatted?: string }>;
+  timezoneruleversionnumber: WebAttribute<bsr_buildingprofessionapplication_Select, { timezoneruleversionnumber: number | null }, {  }>;
+  utcconversiontimezonecode: WebAttribute<bsr_buildingprofessionapplication_Select, { utcconversiontimezonecode: number | null }, {  }>;
+  versionnumber: WebAttribute<bsr_buildingprofessionapplication_Select, { versionnumber: number | null }, {  }>;
+}
+interface bsr_buildingprofessionapplication_Filter {
+  bsr_applicantid_guid: XQW.Guid;
+  bsr_assessmentcertnumber: string;
+  bsr_assessmentdate: Date;
+  bsr_assessmentorganisationid_guid: XQW.Guid;
+  bsr_assessmentstatus: bsr_assessmentstatus;
+  bsr_buildingproappid: string;
+  bsr_buildingprofessionapplicationid: XQW.Guid;
+  bsr_buildingprofessiontypecode: bsr_buildingprofessiontypecode;
+  bsr_cicairregnumber: string;
+  bsr_countofrbis: string;
+  bsr_countpreregrbis: string;
+  bsr_decisioncondition: string;
+  bsr_decisiondate: Date;
+  bsr_decisionreason: string;
+  bsr_declarationdate: Date;
+  bsr_escalationstatus: boolean;
+  bsr_hasindependentassessment: boolean;
+  bsr_holdreviewdate: Date;
+  bsr_isantimoneylaundering: boolean;
+  bsr_isbusinessservicesoffered: boolean;
+  bsr_isbusregisteredasapprovedins: boolean;
+  bsr_iscomplaints: boolean;
+  bsr_isconfirmationofcurrentownersdirectors: boolean;
+  bsr_isconflictofinterest: boolean;
+  bsr_iscontractormanagement: boolean;
+  bsr_isdataprotection: boolean;
+  bsr_isenforcementorprosecution: boolean;
+  bsr_isequalitydivertyinclusion: boolean;
+  bsr_isformalorgstructure: boolean;
+  bsr_ishascriminalconvictions: boolean;
+  bsr_ishealthsafetywellbeing: boolean;
+  bsr_isinternalaudit: boolean;
+  bsr_isongoinghighriskbuildingprojects: boolean;
+  bsr_isoperatingproceduresprovided: boolean;
+  bsr_isrbisnamesprovided: boolean;
+  bsr_isrecommendedforrejection: boolean;
+  bsr_isrecruitmentandstaffdev: boolean;
+  bsr_isrelevantchangessincereg: boolean;
+  bsr_issendregulatorydecisionemail: boolean;
+  bsr_isstaffconduct: boolean;
+  bsr_issubjecttoinvestigations: boolean;
+  bsr_isunregrbisnamesprovided: boolean;
+  bsr_iswhistleblowing: boolean;
+  bsr_name: string;
+  bsr_onholdreason_guid: XQW.Guid;
+  bsr_primarycontactposition: string;
+  bsr_prioritisationcode: bsr_buildingprofessionapplication_bsr_prioritisationcode;
+  bsr_rbcaaccountid_guid: XQW.Guid;
+  bsr_rbcadeclaration: boolean;
+  bsr_rbcadeclarationfirstname: string;
+  bsr_rbcadeclarationlastname: string;
+  bsr_rbcadeclarationpositioninbusiness: string;
+  bsr_rbcaprimarycontactid_guid: XQW.Guid;
+  bsr_rbcasecondarycontactid_guid: XQW.Guid;
+  bsr_recommendedrejectionreason: string;
+  bsr_registrationcommencementdate: Date;
+  bsr_regulatorydecisionstatus: bsr_regulatorydecisionstatus;
+  bsr_reviewdecision: string;
+  bsr_reviewstatus: bsr_reviewstatus;
+  bsr_secondarycontactposition: string;
+  bsr_sizoeoforgcode: bsr_buildingprofessionapplication_bsr_sizoeoforgcode;
+  bsr_tellusaboutanyotherrelevantbusinesseswhich: boolean;
+  bsr_typeofbusiness: string;
+  createdby_guid: XQW.Guid;
+  createdon: Date;
+  createdonbehalfby_guid: XQW.Guid;
+  importsequencenumber: number;
+  modifiedby_guid: XQW.Guid;
+  modifiedon: Date;
+  modifiedonbehalfby_guid: XQW.Guid;
+  overriddencreatedon: Date;
+  ownerid_guid: XQW.Guid;
+  owningbusinessunit_guid: XQW.Guid;
+  owningteam_guid: XQW.Guid;
+  owninguser_guid: XQW.Guid;
+  statecode: bsr_buildingprofessionapplication_statecode;
+  statuscode: bsr_buildingprofessionapplication_statuscode;
+  timezoneruleversionnumber: number;
+  utcconversiontimezonecode: number;
+  versionnumber: number;
+}
+interface bsr_buildingprofessionapplication_Expand {
+  bsr_bsr_biregclass_buildingprofessionapplicat: WebExpand<bsr_buildingprofessionapplication_Expand, bsr_biregclass_Select, bsr_biregclass_Filter, { bsr_bsr_biregclass_buildingprofessionapplicat: bsr_biregclass_Result[] }>;
+}
+interface bsr_buildingprofessionapplication_FormattedResult {
+  bsr_applicantid_formatted?: string;
+  bsr_assessmentdate_formatted?: string;
+  bsr_assessmentorganisationid_formatted?: string;
+  bsr_assessmentstatus_formatted?: string;
+  bsr_buildingprofessiontypecode_formatted?: string;
+  bsr_decisiondate_formatted?: string;
+  bsr_declarationdate_formatted?: string;
+  bsr_holdreviewdate_formatted?: string;
+  bsr_onholdreason_formatted?: string;
+  bsr_prioritisationcode_formatted?: string;
+  bsr_rbcaaccountid_formatted?: string;
+  bsr_rbcaprimarycontactid_formatted?: string;
+  bsr_rbcasecondarycontactid_formatted?: string;
+  bsr_registrationcommencementdate_formatted?: string;
+  bsr_regulatorydecisionstatus_formatted?: string;
+  bsr_reviewstatus_formatted?: string;
+  bsr_sizoeoforgcode_formatted?: string;
+  createdby_formatted?: string;
+  createdon_formatted?: string;
+  createdonbehalfby_formatted?: string;
+  modifiedby_formatted?: string;
+  modifiedon_formatted?: string;
+  modifiedonbehalfby_formatted?: string;
+  overriddencreatedon_formatted?: string;
+  ownerid_formatted?: string;
+  owningbusinessunit_formatted?: string;
+  owningteam_formatted?: string;
+  owninguser_formatted?: string;
+  statecode_formatted?: string;
+  statuscode_formatted?: string;
+}
+interface bsr_buildingprofessionapplication_Result extends bsr_buildingprofessionapplication_Base, bsr_buildingprofessionapplication_Relationships {
+  "@odata.etag": string;
+  bsr_applicantid_guid: string | null;
+  bsr_assessmentorganisationid_guid: string | null;
+  bsr_onholdreason_guid: string | null;
+  bsr_rbcaaccountid_guid: string | null;
+  bsr_rbcaprimarycontactid_guid: string | null;
+  bsr_rbcasecondarycontactid_guid: string | null;
+  createdby_guid: string | null;
+  createdonbehalfby_guid: string | null;
+  modifiedby_guid: string | null;
+  modifiedonbehalfby_guid: string | null;
+  ownerid_guid: string | null;
+  owningbusinessunit_guid: string | null;
+  owningteam_guid: string | null;
+  owninguser_guid: string | null;
+}
+interface bsr_buildingprofessionapplication_RelatedOne {
+}
+interface bsr_buildingprofessionapplication_RelatedMany {
+  bsr_bsr_biregclass_buildingprofessionapplicat: WebMappingRetrieve<bsr_biregclass_Select,bsr_biregclass_Expand,bsr_biregclass_Filter,bsr_biregclass_Fixed,bsr_biregclass_Result,bsr_biregclass_FormattedResult>;
+}
+interface WebEntitiesRetrieve {
+  bsr_buildingprofessionapplications: WebMappingRetrieve<bsr_buildingprofessionapplication_Select,bsr_buildingprofessionapplication_Expand,bsr_buildingprofessionapplication_Filter,bsr_buildingprofessionapplication_Fixed,bsr_buildingprofessionapplication_Result,bsr_buildingprofessionapplication_FormattedResult>;
+}
+interface WebEntitiesRelated {
+  bsr_buildingprofessionapplications: WebMappingRelated<bsr_buildingprofessionapplication_RelatedOne,bsr_buildingprofessionapplication_RelatedMany>;
+}
+interface WebEntitiesCUDA {
+  bsr_buildingprofessionapplications: WebMappingCUDA<bsr_buildingprofessionapplication_Create,bsr_buildingprofessionapplication_Update,bsr_buildingprofessionapplication_Select>;
+}

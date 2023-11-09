@@ -1,0 +1,757 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS3"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "f9e7b02b-3535-44a3-bfd1-92fc251823c3"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "contact",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "fullname"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Scope_-_Update_the_BPA_Name_and_Change_Request_Name": {
+          "actions": {
+            "List_rows": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "2ed0d527-3464-4342-a7b0-a78219ab06f4"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "bsr_buildingprofessionapplications",
+                  "$filter": "_bsr_applicantid_value eq @{triggerOutputs()?['body/contactid']}"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Apply_to_each": {
+              "foreach": "@outputs('List_rows')?['body/value']",
+              "actions": {
+                "Update_a_row": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "f2de7a95-afa6-4b9d-98cc-5d00caaaaa45"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "bsr_buildingprofessionapplications",
+                      "recordId": "@items('Apply_to_each')?['bsr_buildingprofessionapplicationid']",
+                      "item/bsr_name": "@{items('Apply_to_each')?['bsr_buildingproappid']}: @{triggerOutputs()?['body/fullname']}"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "List_Change_Request_Rows": {
+                  "runAfter": {
+                    "Update_a_row": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "6ac1837f-5b35-4744-a76f-37b580ef60d1"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "bsr_changerequests",
+                      "$filter": "_bsr_buildingprofessionappid_value eq @{items('Apply_to_each')?['bsr_buildingprofessionapplicationid']}"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Apply_to_each_Update_Change_Request_Names": {
+                  "foreach": "@outputs('List_Change_Request_Rows')?['body/value']",
+                  "actions": {
+                    "Set_varName_6": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "2fa026f7-56f1-4155-a270-30fac22dc922"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "varName",
+                        "value": "@items('Apply_to_each_Update_Change_Request_Names')?['bsr_name']"
+                      }
+                    },
+                    "Set_varUpdatedNameField_6": {
+                      "runAfter": {
+                        "Set_varName_6": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "eb29724b-a48d-4b86-b7e6-e1db750bd1ff"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "varNameToBePatched",
+                        "value": "@{concat(\r\n    substring(variables('varName'), 0, add(indexOf(variables('varName'), ':'), 2)),\r\n    variables('varNewName'),\r\n    substring(variables('varName'), lastIndexOf(variables('varName'), ':'))\r\n)\r\n}"
+                      }
+                    },
+                    "Update_a_row_7": {
+                      "runAfter": {
+                        "Set_varUpdatedNameField_6": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "c54562c9-279d-4259-8672-6578fad4aba6"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps_1",
+                          "operationId": "UpdateRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "bsr_changerequests",
+                          "recordId": "@items('Apply_to_each_Update_Change_Request_Names')?['bsr_changerequestid']",
+                          "item/bsr_name": "@variables('varNameToBePatched')"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "List_Change_Request_Rows": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "e1f96ea7-0368-4e93-b6d9-c550a8f0c9e6"
+                  },
+                  "type": "Foreach"
+                }
+              },
+              "runAfter": {
+                "List_rows": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "35a0b2e9-3cab-4637-9293-de4571d1bb30"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "Initialize_varNameToBePatched": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "83f8fae9-994d-418d-8774-039600a48248"
+          },
+          "type": "Scope"
+        },
+        "Scope_-_Update_the_BI_Registration_Class_Name": {
+          "actions": {
+            "List_BI_Reg_Rows": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "2ed0d527-3464-4342-a7b0-a78219ab06f4"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "bsr_biregclasses",
+                  "$filter": "_bsr_buildinginspectorid_value eq @{triggerOutputs()?['body/contactid']}"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Apply_to_each_2": {
+              "foreach": "@outputs('List_BI_Reg_Rows')?['body/value']",
+              "actions": {
+                "Set_varName": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "2fa026f7-56f1-4155-a270-30fac22dc922"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "varName",
+                    "value": "@items('Apply_to_each_2')?['bsr_name']"
+                  }
+                },
+                "Set_varUpdatedNameField": {
+                  "runAfter": {
+                    "Set_varName": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "eb29724b-a48d-4b86-b7e6-e1db750bd1ff"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "varNameToBePatched",
+                    "value": "@{concat(\r\n    substring(variables('varName'), 0, add(indexOf(variables('varName'), ':'), 2)),\r\n    variables('varNewName'),\r\n    substring(variables('varName'), add(add(indexOf(variables('varName'), ':'), 2), indexOf(substring(variables('varName'), add(indexOf(variables('varName'), ':'), 2)), ':')))\r\n)\r\n}"
+                  }
+                },
+                "Update_a_row_2": {
+                  "runAfter": {
+                    "Set_varUpdatedNameField": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "09610271-66c9-4a3e-be13-11a07544c8f2"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "bsr_biregclasses",
+                      "recordId": "@items('Apply_to_each_2')?['bsr_biregclassid']",
+                      "item/bsr_name": "@variables('varNameToBePatched')"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "List_BI_Reg_Rows": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "e1f96ea7-0368-4e93-b6d9-c550a8f0c9e6"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "Scope_-_Update_the_BPA_Name_and_Change_Request_Name": [
+              "Succeeded",
+              "Failed",
+              "Skipped",
+              "TimedOut"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "bf1e45fc-da2b-4a98-afbd-f7592fdc2d8b"
+          },
+          "type": "Scope"
+        },
+        "Initialize_varNewName": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "7a1c4a27-5921-4888-8072-aafabae52f74"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varNewName",
+                "type": "string",
+                "value": "@triggerOutputs()?['body/fullname']"
+              }
+            ]
+          }
+        },
+        "Initialize_vaName": {
+          "runAfter": {
+            "Initialize_varNewName": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "43245e93-1106-47cb-994f-88ae908e6dbd"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varName",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_varNameToBePatched": {
+          "runAfter": {
+            "Initialize_vaName": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "43245e93-1106-47cb-994f-88ae908e6dbd"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varNameToBePatched",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Scope_-_Update_the_BI_Registration_Activity_Name": {
+          "actions": {
+            "List_BI_Reg_Activities_Rows": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "2ed0d527-3464-4342-a7b0-a78219ab06f4"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "bsr_biregactivities",
+                  "$filter": "_bsr_buildinginspectorid_value eq @{triggerOutputs()?['body/contactid']}"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Apply_to_each_3": {
+              "foreach": "@outputs('List_BI_Reg_Activities_Rows')?['body/value']",
+              "actions": {
+                "Set_varName_2": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "2fa026f7-56f1-4155-a270-30fac22dc922"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "varName",
+                    "value": "@items('Apply_to_each_3')?['bsr_name']"
+                  }
+                },
+                "Set_varUpdatedNameField_2": {
+                  "runAfter": {
+                    "Set_varName_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "eb29724b-a48d-4b86-b7e6-e1db750bd1ff"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "varNameToBePatched",
+                    "value": "@{concat(substring(variables('varName'), 0, add(indexOf(variables('varName'), ':'), 2)), variables('varNewName'), substring(variables('varName'), add(add(indexOf(variables('varName'), ':'), 2), indexOf(substring(variables('varName'), add(indexOf(variables('varName'), ':'), 2)), ':'))))}"
+                  }
+                },
+                "Update_a_row_3": {
+                  "runAfter": {
+                    "Set_varUpdatedNameField_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "c54562c9-279d-4259-8672-6578fad4aba6"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "bsr_biregactivities",
+                      "recordId": "@items('Apply_to_each_3')?['bsr_biregactivityid']",
+                      "item/bsr_name": "@variables('varNameToBePatched')"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "List_BI_Reg_Activities_Rows": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "e1f96ea7-0368-4e93-b6d9-c550a8f0c9e6"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "Scope_-_Update_the_BI_Registration_Class_Name": [
+              "Succeeded",
+              "Failed",
+              "Skipped",
+              "TimedOut"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "bf1e45fc-da2b-4a98-afbd-f7592fdc2d8b"
+          },
+          "type": "Scope"
+        },
+        "Scope_-_Update_the_BI_Registration_Country_Name": {
+          "actions": {
+            "List_BI_RegCountries_Rows": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "2ed0d527-3464-4342-a7b0-a78219ab06f4"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "bsr_biregcountries",
+                  "$filter": "_bsr_buildinginspectorid_value eq @{triggerOutputs()?['body/contactid']}"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Apply_to_each_4": {
+              "foreach": "@outputs('List_BI_RegCountries_Rows')?['body/value']",
+              "actions": {
+                "Set_varName_3": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "2fa026f7-56f1-4155-a270-30fac22dc922"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "varName",
+                    "value": "@items('Apply_to_each_4')?['bsr_name']"
+                  }
+                },
+                "Set_varUpdatedNameField_3": {
+                  "runAfter": {
+                    "Set_varName_3": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "eb29724b-a48d-4b86-b7e6-e1db750bd1ff"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "varNameToBePatched",
+                    "value": "@{concat(substring(variables('varName'), 0, add(indexOf(variables('varName'), ':'), 2)), variables('varNewName'), substring(variables('varName'), add(add(indexOf(variables('varName'), ':'), 2), indexOf(substring(variables('varName'), add(indexOf(variables('varName'), ':'), 2)), ':'))))}"
+                  }
+                },
+                "Update_a_row_4": {
+                  "runAfter": {
+                    "Set_varUpdatedNameField_3": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "c54562c9-279d-4259-8672-6578fad4aba6"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "bsr_biregcountries",
+                      "recordId": "@items('Apply_to_each_4')?['bsr_biregcountryid']",
+                      "item/bsr_name": "@variables('varNameToBePatched')"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "List_BI_RegCountries_Rows": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "e1f96ea7-0368-4e93-b6d9-c550a8f0c9e6"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "Scope_-_Update_the_BI_Registration_Activity_Name": [
+              "Succeeded",
+              "Failed",
+              "Skipped",
+              "TimedOut"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "bf1e45fc-da2b-4a98-afbd-f7592fdc2d8b"
+          },
+          "type": "Scope"
+        },
+        "Scope_-_Update_the_BI_Professional_Memberships_Name": {
+          "actions": {
+            "List_BI_Professional_Memberships": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "2ed0d527-3464-4342-a7b0-a78219ab06f4"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "bsr_biprofessionalmemberships",
+                  "$filter": "_bsr_buildinginspectorid_value eq @{triggerOutputs()?['body/contactid']}"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Apply_to_each_5": {
+              "foreach": "@outputs('List_BI_Professional_Memberships')?['body/value']",
+              "actions": {
+                "Set_varName_4": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "2fa026f7-56f1-4155-a270-30fac22dc922"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "varName",
+                    "value": "@items('Apply_to_each_5')?['bsr_name']"
+                  }
+                },
+                "Set_varUpdatedNameField_4": {
+                  "runAfter": {
+                    "Set_varName_4": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "eb29724b-a48d-4b86-b7e6-e1db750bd1ff"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "varNameToBePatched",
+                    "value": "@{concat(\r\n    variables('varNewName'),\r\n    substring(variables('varName'), indexOf(variables('varName'), ':'))\r\n)\r\n}"
+                  }
+                },
+                "Update_a_row_5": {
+                  "runAfter": {
+                    "Set_varUpdatedNameField_4": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "a14e5a21-72a5-4836-8f09-662662c8e5ac"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "bsr_biprofessionalmemberships",
+                      "recordId": "@items('Apply_to_each_5')?['bsr_biprofessionalmembershipid']",
+                      "item/bsr_name": "@variables('varNameToBePatched')"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "List_BI_Professional_Memberships": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "e1f96ea7-0368-4e93-b6d9-c550a8f0c9e6"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "Scope_-_Update_the_BI_Employment_Detail_Name": [
+              "Succeeded",
+              "Failed",
+              "Skipped",
+              "TimedOut"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "bf1e45fc-da2b-4a98-afbd-f7592fdc2d8b"
+          },
+          "type": "Scope"
+        },
+        "Scope_-_Update_the_BI_Employment_Detail_Name": {
+          "actions": {
+            "List_BI_Employment_Deatil_Name": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "2ed0d527-3464-4342-a7b0-a78219ab06f4"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "bsr_biemploymentdetails",
+                  "$filter": "_bsr_buildinginspectorid_value eq @{triggerOutputs()?['body/contactid']}"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Apply_to_each_6": {
+              "foreach": "@outputs('List_BI_Employment_Deatil_Name')?['body/value']",
+              "actions": {
+                "Set_varName_5": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "2fa026f7-56f1-4155-a270-30fac22dc922"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "varName",
+                    "value": "@items('Apply_to_each_6')?['bsr_name']"
+                  }
+                },
+                "Set_varUpdatedNameField_5": {
+                  "runAfter": {
+                    "Set_varName_5": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "eb29724b-a48d-4b86-b7e6-e1db750bd1ff"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "varNameToBePatched",
+                    "value": "@{concat(substring(variables('varName'), 0, add(indexOf(variables('varName'), ':'), 2)), variables('varNewName'), substring(variables('varName'), add(add(indexOf(variables('varName'), ':'), 2), indexOf(substring(variables('varName'), add(indexOf(variables('varName'), ':'), 2)), ':'))))}"
+                  }
+                },
+                "Update_a_row_6": {
+                  "runAfter": {
+                    "Set_varUpdatedNameField_5": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "aaf3fe05-d070-4f88-9122-33b774b3da83"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "bsr_biemploymentdetails",
+                      "recordId": "@items('Apply_to_each_6')?['bsr_biemploymentdetailid']",
+                      "item/bsr_name": "@variables('varNameToBePatched')"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "List_BI_Employment_Deatil_Name": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "e1f96ea7-0368-4e93-b6d9-c550a8f0c9e6"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "Scope_-_Update_the_BI_Registration_Country_Name": [
+              "Succeeded",
+              "Failed",
+              "Skipped",
+              "TimedOut"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "bf1e45fc-da2b-4a98-afbd-f7592fdc2d8b"
+          },
+          "type": "Scope"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}
