@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Reg Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.12.37.0</Version>
+    <Version>1.12.38.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -104,6 +104,7 @@
       <RootComponent type="29" id="{7f165d07-03a7-ed11-aad1-0022481b5e4f}" behavior="0" />
       <RootComponent type="29" id="{7faddab7-17fa-ed11-8f6d-002248c727e7}" behavior="0" />
       <RootComponent type="29" id="{82b1a383-ea20-ee11-9966-002248c72859}" behavior="0" />
+      <RootComponent type="29" id="{885022a0-7e7d-ee11-8179-6045bd0c14e5}" behavior="0" />
       <RootComponent type="29" id="{906b4c99-4e67-ee11-9ae6-6045bd0c1726}" behavior="0" />
       <RootComponent type="29" id="{938f80db-d852-ee11-be6f-002248c727e7}" behavior="0" />
       <RootComponent type="29" id="{9c334b9e-f2bc-ed11-83fe-000d3a86ecac}" behavior="0" />
@@ -238,6 +239,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
+        <Dependent type="29" displayName="Send Email on the creation of a change request record where the change category is 'change applican" id="{885022a0-7e7d-ee11-8179-6045bd0c14e5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
         <Dependent type="29" displayName="Send Email when Primary user has been updated to the Building Application" id="{bbfbc85d-1256-ee11-be6f-002248c725da}" />
       </MissingDependency>
       <MissingDependency>
@@ -298,6 +303,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
+        <Dependent type="29" displayName="Send Email on the creation of a change request record where the change category is 'change applican" id="{885022a0-7e7d-ee11-8179-6045bd0c14e5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
         <Dependent type="29" displayName="Data fix - Create Building Application Document Locations" id="{906b4c99-4e67-ee11-9ae6-6045bd0c1726}" />
       </MissingDependency>
       <MissingDependency>
@@ -346,6 +355,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_changecategory" displayName="Change Category" solution="Active" />
+        <Dependent type="29" displayName="Send Email on the creation of a change request record where the change category is 'change applican" id="{885022a0-7e7d-ee11-8179-6045bd0c14e5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_changecategory" displayName="Change Category" solution="Active" />
         <Dependent type="29" displayName="Set Change Request Name" id="{938f80db-d852-ee11-be6f-002248c727e7}" />
       </MissingDependency>
       <MissingDependency>
@@ -355,6 +368,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_changerequest" displayName="Change Request" solution="Active" />
         <Dependent type="29" displayName="Deactivate the record On update of Change Request status reason" id="{48a0dcb2-a09b-4c23-a1ad-4a0766eb8293}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_changerequest" displayName="Change Request" solution="Active" />
+        <Dependent type="29" displayName="Send Email on the creation of a change request record where the change category is 'change applican" id="{885022a0-7e7d-ee11-8179-6045bd0c14e5}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_changerequest" displayName="Change Request" solution="Active" />
@@ -623,6 +640,10 @@
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="Active" id.schemaname="bsr_noreplyqueueid" />
         <Dependent type="29" displayName="Send submission confirmation email after invoice payment success" id="{82b1a383-ea20-ee11-9966-002248c72859}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="Active" id.schemaname="bsr_noreplyqueueid" />
+        <Dependent type="29" displayName="Send Email on the creation of a change request record where the change category is 'change applican" id="{885022a0-7e7d-ee11-8179-6045bd0c14e5}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="Active" id.schemaname="bsr_noreplyqueueid" />
