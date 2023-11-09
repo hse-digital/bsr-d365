@@ -63,6 +63,9 @@
                     <Sequence DisplayName="SetVisibilityStep1: Show PAP Org Lead Contact">
                       <mcwc:SetVisibility ControlId="bsr_paporgleadcontactid" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingapplication" IsVisible="True" />
                     </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep3: New Action">
+                      <mcwc:SetVisibility ControlId="bsr_previouspaporgleadcontactid" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingapplication" IsVisible="True" />
+                    </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
               </mxswa:ActivityReference>
@@ -91,6 +94,9 @@
                   <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
                     <Sequence DisplayName="SetVisibilityStep2: Hide PAP Org Lead Contact">
                       <mcwc:SetVisibility ControlId="bsr_paporgleadcontactid" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingapplication" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep4: New Action">
+                      <mcwc:SetVisibility ControlId="bsr_previouspaporgleadcontactid" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingapplication" IsVisible="False" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
