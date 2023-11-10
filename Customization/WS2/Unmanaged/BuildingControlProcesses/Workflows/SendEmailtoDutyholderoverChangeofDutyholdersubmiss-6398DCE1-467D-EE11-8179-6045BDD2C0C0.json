@@ -48,7 +48,7 @@
               "subscriptionRequest/entityname": "bsr_changerequest",
               "subscriptionRequest/scope": 4,
               "subscriptionRequest/filteringattributes": "createdon,bsr_changecategoryid",
-              "subscriptionRequest/filterexpression": "createdon ne null and _bsr_changecategoryid_value eq 5ea8e6ba-e877-ee11-8179-6045bdd0e4cf"
+              "subscriptionRequest/filterexpression": "bsr_submittedondate ne null and _bsr_changecategoryid_value eq 5ea8e6ba-e877-ee11-8179-6045bdd0e4cf"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -69,7 +69,8 @@
             },
             "parameters": {
               "entityName": "bsr_buildingcontrolapplications",
-              "recordId": "@triggerOutputs()?['body/_bsr_buildingcontrolapplicationid_value']"
+              "recordId": "@triggerOutputs()?['body/_bsr_buildingcontrolapplicationid_value']",
+              "$select": "_bsr_clientnamedcontact_value,_bsr_principaldesignernamedcontact_value,_bsr_principalcontractnamedcontact_value,bsr_buildingcontrolapplicationid,_bsr_applicantid_value"
             },
             "authentication": "@parameters('$authentication')"
           }
