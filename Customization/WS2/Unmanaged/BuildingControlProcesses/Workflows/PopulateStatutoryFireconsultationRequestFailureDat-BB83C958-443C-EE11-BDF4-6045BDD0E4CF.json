@@ -47,31 +47,7 @@
         }
       },
       "actions": {
-        "Set_the_failure_date_field": {
-          "runAfter": {
-            "Clear_the_Failure_date_field_(in_case_it's_already_been_modified)": [
-              "Succeeded"
-            ]
-          },
-          "metadata": {
-            "operationMetadataId": "fac3e228-3f62-461a-8026-367529911ab2"
-          },
-          "type": "OpenApiConnection",
-          "inputs": {
-            "host": {
-              "connectionName": "shared_commondataserviceforapps",
-              "operationId": "UpdateRecord",
-              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-            },
-            "parameters": {
-              "entityName": "bsr_buildingcontrollifecycles",
-              "recordId": "@triggerOutputs()?['body/bsr_buildingcontrollifecycleid']",
-              "item/bsr_statfireconsultfailuredate": "@addDays(variables('fireReqDate'), 21, 'MM/dd/yyyy')"
-            },
-            "authentication": "@parameters('$authentication')"
-          }
-        },
-        "Initialize_variable": {
+        "requestDate_+_21_days": {
           "runAfter": {},
           "metadata": {
             "operationMetadataId": "1d9b1e86-b7b8-4813-9d66-5a9442e14cd7"
@@ -80,36 +56,95 @@
           "inputs": {
             "variables": [
               {
-                "name": "fireReqDate",
+                "name": "fireReqDate_Plus_21_Days",
                 "type": "string",
-                "value": "@{addDays(triggerBody()['bsr_fireconsulteerequestdate'], 0)}"
+                "value": "@{addDays(triggerBody()['bsr_fireconsulteerequestdate'], 21)}"
               }
             ]
           }
         },
-        "Clear_the_Failure_date_field_(in_case_it's_already_been_modified)": {
+        "requestDate_+_14_days_(Change_Control)": {
           "runAfter": {
-            "Initialize_variable": [
+            "requestDate_+_21_days": [
               "Succeeded"
             ]
           },
           "metadata": {
-            "operationMetadataId": "3cce2397-1938-4e78-9661-ba259eff5e43"
+            "operationMetadataId": "ed169515-1448-41ee-b3d7-ec3fa68f28a7"
           },
-          "type": "OpenApiConnection",
+          "type": "InitializeVariable",
           "inputs": {
-            "host": {
-              "connectionName": "shared_commondataserviceforapps",
-              "operationId": "UpdateRecord",
-              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-            },
-            "parameters": {
-              "entityName": "bsr_buildingcontrollifecycles",
-              "recordId": "@triggerOutputs()?['body/bsr_buildingcontrollifecycleid']",
-              "item/bsr_statfireconsultfailuredate": "@null"
-            },
-            "authentication": "@parameters('$authentication')"
+            "variables": [
+              {
+                "name": "fireReqDate_Plus_14_Days",
+                "type": "string",
+                "value": "@{addDays(triggerBody()['bsr_fireconsulteerequestdate'], 14)}"
+              }
+            ]
           }
+        },
+        "Condition": {
+          "actions": {
+            "Set_the_failure_date_field_(change_control)": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "fac3e228-3f62-461a-8026-367529911ab2"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "bsr_buildingcontrollifecycles",
+                  "recordId": "@triggerOutputs()?['body/bsr_buildingcontrollifecycleid']",
+                  "item/bsr_statfireconsultfailuredate": "@variables('fireReqDate_Plus_14_Days')"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "requestDate_+_14_days_(Change_Control)": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Set_the_failure_date_field": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "fac3e228-3f62-461a-8026-367529911ab2"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps",
+                    "operationId": "UpdateRecord",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "bsr_buildingcontrollifecycles",
+                    "recordId": "@triggerOutputs()?['body/bsr_buildingcontrollifecycleid']",
+                    "item/bsr_statfireconsultfailuredate": "@variables('fireReqDate_Plus_21_Days')"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/bsr_changecontrol']",
+              true
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c0126ddb-9dc8-4d05-910a-f40df15e1aac"
+          },
+          "type": "If"
         }
       }
     },

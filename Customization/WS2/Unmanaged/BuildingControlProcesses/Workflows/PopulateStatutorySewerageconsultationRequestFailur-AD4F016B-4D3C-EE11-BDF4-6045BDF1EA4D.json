@@ -47,31 +47,7 @@
         }
       },
       "actions": {
-        "Set_Failure_Date_field": {
-          "runAfter": {
-            "Clear_Failure_Date_field_(otherwise_keeps_adding_21_every_time_it's_changed)": [
-              "Succeeded"
-            ]
-          },
-          "metadata": {
-            "operationMetadataId": "bb1425af-ef56-421a-9688-fd2ae5ab3a01"
-          },
-          "type": "OpenApiConnection",
-          "inputs": {
-            "host": {
-              "connectionName": "shared_commondataserviceforapps",
-              "operationId": "UpdateRecord",
-              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-            },
-            "parameters": {
-              "entityName": "bsr_buildingcontrollifecycles",
-              "recordId": "@triggerOutputs()?['body/bsr_buildingcontrollifecycleid']",
-              "item/bsr_statsewerconsultfailuredate": "@addDays(variables('sewerageReqDate'), 21, 'MM/dd/yyyy')"
-            },
-            "authentication": "@parameters('$authentication')"
-          }
-        },
-        "Initialize_variable": {
+        "requestDate_+_21_days": {
           "runAfter": {},
           "metadata": {
             "operationMetadataId": "623b728b-bf29-409e-8daf-96588f2ffde6"
@@ -80,36 +56,95 @@
           "inputs": {
             "variables": [
               {
-                "name": "sewerageReqDate",
+                "name": "sewerageReqDate_Plus_21_Days",
                 "type": "string",
-                "value": "@{addDays(triggerBody()['bsr_sewerageconsultationrequestdate'], 0)}"
+                "value": "@{addDays(triggerBody()['bsr_sewerageconsultationrequestdate'], 21)}"
               }
             ]
           }
         },
-        "Clear_Failure_Date_field_(otherwise_keeps_adding_21_every_time_it's_changed)": {
+        "requestDate_+_21_days_(change_control)": {
           "runAfter": {
-            "Initialize_variable": [
+            "requestDate_+_21_days": [
               "Succeeded"
             ]
           },
           "metadata": {
-            "operationMetadataId": "c1f5b852-daf0-4142-b9ea-0ccf005495f0"
+            "operationMetadataId": "623b728b-bf29-409e-8daf-96588f2ffde6"
           },
-          "type": "OpenApiConnection",
+          "type": "InitializeVariable",
           "inputs": {
-            "host": {
-              "connectionName": "shared_commondataserviceforapps",
-              "operationId": "UpdateRecord",
-              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-            },
-            "parameters": {
-              "entityName": "bsr_buildingcontrollifecycles",
-              "recordId": "@triggerOutputs()?['body/bsr_buildingcontrollifecycleid']",
-              "item/bsr_statsewerconsultfailuredate": "@null"
-            },
-            "authentication": "@parameters('$authentication')"
+            "variables": [
+              {
+                "name": "sewerageReqDate_Plus_14_Days",
+                "type": "string",
+                "value": "@{addDays(triggerBody()['bsr_sewerageconsultationrequestdate'], 14)}"
+              }
+            ]
           }
+        },
+        "Condition": {
+          "actions": {
+            "Set_Failure_Date_field_(change_control)": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "bb1425af-ef56-421a-9688-fd2ae5ab3a01"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "bsr_buildingcontrollifecycles",
+                  "recordId": "@triggerOutputs()?['body/bsr_buildingcontrollifecycleid']",
+                  "item/bsr_statsewerconsultfailuredate": "@variables('sewerageReqDate_Plus_14_Days')"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "requestDate_+_21_days_(change_control)": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Set_Failure_Date_field": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "bb1425af-ef56-421a-9688-fd2ae5ab3a01"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps",
+                    "operationId": "UpdateRecord",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "bsr_buildingcontrollifecycles",
+                    "recordId": "@triggerOutputs()?['body/bsr_buildingcontrollifecycleid']",
+                    "item/bsr_statsewerconsultfailuredate": "@variables('sewerageReqDate_Plus_21_Days')"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/bsr_changecontrol']",
+              true
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "84485b1f-0bc9-467b-b65c-4eeedb95a20a"
+          },
+          "type": "If"
         }
       }
     },
