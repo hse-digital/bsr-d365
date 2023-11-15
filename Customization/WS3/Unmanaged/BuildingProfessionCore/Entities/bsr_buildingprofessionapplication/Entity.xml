@@ -403,6 +403,46 @@
             <Description description="The registration number of the business with CICAIR." languagecode="1033" />
           </Descriptions>
         </attribute>
+        <attribute PhysicalName="bsr_cosmosid">
+          <Type>nvarchar</Type>
+          <Name>bsr_cosmosid</Name>
+          <LogicalName>bsr_cosmosid</LogicalName>
+          <RequiredLevel>none</RequiredLevel>
+          <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+          <ImeMode>auto</ImeMode>
+          <ValidForUpdateApi>1</ValidForUpdateApi>
+          <ValidForReadApi>1</ValidForReadApi>
+          <ValidForCreateApi>1</ValidForCreateApi>
+          <IsCustomField>1</IsCustomField>
+          <IsAuditEnabled>1</IsAuditEnabled>
+          <IsSecured>0</IsSecured>
+          <IntroducedVersion>1.0</IntroducedVersion>
+          <IsCustomizable>1</IsCustomizable>
+          <IsRenameable>1</IsRenameable>
+          <CanModifySearchSettings>1</CanModifySearchSettings>
+          <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+          <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+          <SourceType>0</SourceType>
+          <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+          <IsSortableEnabled>0</IsSortableEnabled>
+          <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+          <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+          <IsDataSourceSecret>0</IsDataSourceSecret>
+          <AutoNumberFormat></AutoNumberFormat>
+          <IsSearchable>0</IsSearchable>
+          <IsFilterable>0</IsFilterable>
+          <IsRetrievable>0</IsRetrievable>
+          <IsLocalizable>0</IsLocalizable>
+          <Format>text</Format>
+          <MaxLength>100</MaxLength>
+          <Length>200</Length>
+          <displaynames>
+            <displayname description="Cosmos ID" languagecode="1033" />
+          </displaynames>
+          <Descriptions>
+            <Description description="ID used by the portal to prevent duplicate applications being made" languagecode="1033" />
+          </Descriptions>
+        </attribute>
         <attribute PhysicalName="bsr_countofrbis">
           <Type>nvarchar</Type>
           <Name>bsr_countofrbis</Name>
@@ -4173,6 +4213,20 @@
           </Descriptions>
         </attribute>
       </attributes>
+      <EntityKeys>
+        <EntityKey>
+          <Name>bsr_cosmosid</Name>
+          <LogicalName>bsr_cosmosid</LogicalName>
+          <IntroducedVersion>1.0.0.0</IntroducedVersion>
+          <IsCustomizable>0</IsCustomizable>
+          <EntityKeyAttributes>
+            <AttributeName>bsr_cosmosid</AttributeName>
+          </EntityKeyAttributes>
+          <displaynames>
+            <displayname description="CosmosID" languagecode="1033" />
+          </displaynames>
+        </EntityKey>
+      </EntityKeys>
       <EntitySetName>bsr_buildingprofessionapplications</EntitySetName>
       <IsDuplicateCheckSupported>1</IsDuplicateCheckSupported>
       <IsBusinessProcessEnabled>0</IsBusinessProcessEnabled>
@@ -4192,7 +4246,6 @@
       <OwnershipTypeMask>UserOwned</OwnershipTypeMask>
       <EntityMask>ActivityPointer</EntityMask>
       <IsAuditEnabled>1</IsAuditEnabled>
-      <IsMSTeamsIntegrationEnabled>0</IsMSTeamsIntegrationEnabled>
       <IsRetrieveAuditEnabled>0</IsRetrieveAuditEnabled>
       <IsRetrieveMultipleAuditEnabled>0</IsRetrieveMultipleAuditEnabled>
       <IsActivity>0</IsActivity>
@@ -4238,6 +4291,7 @@
       <ChangeTrackingEnabled>0</ChangeTrackingEnabled>
       <CanChangeTrackingBeEnabled>1</CanChangeTrackingBeEnabled>
       <IsEnabledForExternalChannels>0</IsEnabledForExternalChannels>
+      <IsMSTeamsIntegrationEnabled>0</IsMSTeamsIntegrationEnabled>
       <IsSolutionAware>0</IsSolutionAware>
       <HasRelatedNotes>True</HasRelatedNotes>
       <HasRelatedActivities>True</HasRelatedActivities>
