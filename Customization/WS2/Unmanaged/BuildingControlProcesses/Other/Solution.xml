@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Control Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.38.0</Version>
+    <Version>1.0.39.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -251,7 +251,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingcontrolapplication" displayName="Building Control Application" solution="Active" />
-        <Dependent type="29" displayName="Change Control - Set Mandatory Timeline Failure Date" id="{d11e0b19-e77f-ee11-8179-6045bdd2c0c0}" />
+        <Dependent type="29" displayName="[DEPRECATED TURN OFF] Change Control - Set Mandatory Timeline Failure Date" id="{d11e0b19-e77f-ee11-8179-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingcontrolapplication" displayName="Building Control Application" solution="Active" />
@@ -271,7 +271,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingcontrolapplication" displayName="Building Control Application" solution="Active" />
-        <Dependent type="29" displayName="Create a BCL record when a CR of Category Major Change is created" id="{f685d418-457d-ee11-8179-6045bdf1e965}" />
+        <Dependent type="29" displayName="Create a BCL record when a CR of Category Major Change is submitted" id="{f685d418-457d-ee11-8179-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingcontrolapplication" displayName="Building Control Application" solution="Active" />
@@ -327,7 +327,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingcontrollifecycle" displayName="Building Control Lifecycle" solution="Active" />
-        <Dependent type="29" displayName="Change Control - Set Mandatory Timeline Failure Date" id="{d11e0b19-e77f-ee11-8179-6045bdd2c0c0}" />
+        <Dependent type="29" displayName="[DEPRECATED TURN OFF] Change Control - Set Mandatory Timeline Failure Date" id="{d11e0b19-e77f-ee11-8179-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingcontrollifecycle" displayName="Building Control Lifecycle" solution="Active" />
@@ -335,7 +335,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingcontrollifecycle" displayName="Building Control Lifecycle" solution="Active" />
-        <Dependent type="29" displayName="Create a BCL record when a CR of Category Major Change is created" id="{f685d418-457d-ee11-8179-6045bdf1e965}" />
+        <Dependent type="29" displayName="Create a BCL record when a CR of Category Major Change is submitted" id="{f685d418-457d-ee11-8179-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingcontrollifecycle" displayName="Building Control Lifecycle" solution="Active" />
@@ -379,7 +379,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingdetails" displayName="Building Details" solution="Active" />
-        <Dependent type="29" displayName="Create a BCL record when a CR of Category Major Change is created" id="{f685d418-457d-ee11-8179-6045bdf1e965}" />
+        <Dependent type="29" displayName="Create a BCL record when a CR of Category Major Change is submitted" id="{f685d418-457d-ee11-8179-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_changerequest" displayName="Change Request" solution="BuildingRegCore (1.17.78.0)" />
@@ -399,7 +399,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_changerequest" displayName="Change Request" solution="BuildingRegCore (1.17.78.0)" />
-        <Dependent type="29" displayName="Create a BCL record when a CR of Category Major Change is created" id="{f685d418-457d-ee11-8179-6045bdf1e965}" />
+        <Dependent type="29" displayName="Create a BCL record when a CR of Category Major Change is submitted" id="{f685d418-457d-ee11-8179-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_externalidentity" displayName="BSR External Identity" solution="BuildingRegCore (1.17.78.0)" />
@@ -647,7 +647,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_changecontrol" displayName="Change Control" parentSchemaName="bsr_buildingcontrollifecycle" parentDisplayName="Building Control Lifecycle" solution="Active" />
-        <Dependent type="29" displayName="Change Control - Set Mandatory Timeline Failure Date" id="{d11e0b19-e77f-ee11-8179-6045bdd2c0c0}" />
+        <Dependent type="29" displayName="[DEPRECATED TURN OFF] Change Control - Set Mandatory Timeline Failure Date" id="{d11e0b19-e77f-ee11-8179-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_changeprincipalcontractor" displayName="Change of Principal Contractor" parentSchemaName="bsr_buildingcontrolapplication" parentDisplayName="Building Control Application" solution="Active" />
@@ -908,6 +908,10 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_submissiondate" displayName="Submission Date" parentSchemaName="bsr_buildingcontrolapplication" parentDisplayName="Building Control Application" solution="Active" />
         <Dependent type="29" displayName="BCAA - When record submitted, update status on BCA &amp; Building Details, and send applicant email" id="{486ad290-6456-ee11-be6f-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_submittedondate" displayName="Submitted On" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.78.0)" />
+        <Dependent type="29" displayName="Create a BCL record when a CR of Category Major Change is submitted" id="{f685d418-457d-ee11-8179-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_triggerfollowupinforequestflow" displayName="Trigger Follow-up Info Request Flow" parentSchemaName="bsr_informationtracker" parentDisplayName="Information Request" solution="Active" />

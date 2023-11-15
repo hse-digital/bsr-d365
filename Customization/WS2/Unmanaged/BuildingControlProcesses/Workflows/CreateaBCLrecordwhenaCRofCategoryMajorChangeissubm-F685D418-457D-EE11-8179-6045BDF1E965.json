@@ -37,10 +37,11 @@
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
             },
             "parameters": {
-              "subscriptionRequest/message": 4,
+              "subscriptionRequest/message": 3,
               "subscriptionRequest/entityname": "bsr_changerequest",
               "subscriptionRequest/scope": 4,
-              "subscriptionRequest/filterexpression": "_bsr_changecategoryid_value eq 8c5213d0-547a-ee11-8179-6045bdf1e965\n"
+              "subscriptionRequest/filteringattributes": "bsr_submittedondate",
+              "subscriptionRequest/filterexpression": "_bsr_changecategoryid_value eq 8c5213d0-547a-ee11-8179-6045bdf1e965 and bsr_submittedondate ne null"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -48,7 +49,11 @@
       },
       "actions": {
         "Get_related_Building_Control_Application_record": {
-          "runAfter": {},
+          "runAfter": {
+            "Mandatory_Failure_Date_(Submitted_On_Plus_42_Days)": [
+              "Succeeded"
+            ]
+          },
           "metadata": {
             "operationMetadataId": "2455c3c9-6ee1-409b-83af-3111e9547dfc"
           },
@@ -130,10 +135,11 @@
                       "entityName": "bsr_buildingcontrollifecycles",
                       "item/bsr_bcaaapplication@odata.bind": "/bsr_buildingcontrolapplications(@{outputs('Get_related_Building_Control_Application_record')?['body/bsr_buildingcontrolapplicationid']})",
                       "item/bsr_buildingdetails@odata.bind": "/bsr_buildingdetailses(@{items('Apply_to_each_2')?['bsr_buildingdetailsid']})",
-                      "item/bsr_name": "Building Control Lifecycle Record",
+                      "item/bsr_name": "@triggerOutputs()?['body/bsr_referencenumber']",
                       "item/bsr_reglead@odata.bind": "/systemusers(@{outputs('Get_The_main_BCA_record_')?['body/_ownerid_value']})",
                       "item/bsr_buildingname": "@items('Apply_to_each_2')?['bsr_name']",
-                      "item/bsr_changecontrol": true
+                      "item/bsr_changecontrol": true,
+                      "item/bsr_mandatorytimelinefailuredate": "@variables('mandatoryFailureDate')"
                     },
                     "authentication": "@parameters('$authentication')"
                   }
@@ -220,10 +226,11 @@
                         "entityName": "bsr_buildingcontrollifecycles",
                         "item/bsr_bcaaapplication@odata.bind": "/bsr_buildingcontrolapplications(@{outputs('Get_related_Building_Control_Application_record')?['body/bsr_buildingcontrolapplicationid']})",
                         "item/bsr_buildingdetails@odata.bind": "/bsr_buildingdetailses(@{items('Apply_to_each')?['bsr_buildingdetailsid']})",
-                        "item/bsr_name": "Building Control Lifecycle Record",
+                        "item/bsr_name": "@triggerOutputs()?['body/bsr_referencenumber']",
                         "item/bsr_reglead@odata.bind": "/systemusers(@{outputs('Get_related_Building_Control_Application_record')?['body/_ownerid_value']})",
                         "item/bsr_buildingname": "@items('Apply_to_each')?['bsr_name']",
-                        "item/bsr_changecontrol": true
+                        "item/bsr_changecontrol": true,
+                        "item/bsr_mandatorytimelinefailuredate": "@variables('mandatoryFailureDate')"
                       },
                       "authentication": "@parameters('$authentication')"
                     }
@@ -275,6 +282,22 @@
             "operationMetadataId": "9c1f6db1-7ff9-427f-8f5d-eb2685b26ef5"
           },
           "type": "If"
+        },
+        "Mandatory_Failure_Date_(Submitted_On_Plus_42_Days)": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "15e6fe89-8a6e-47a4-978f-c33ac85eb9fa"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "mandatoryFailureDate",
+                "type": "string",
+                "value": "@{addDays(triggerOutputs()?['body/bsr_submittedondate'],42)}"
+              }
+            ]
+          }
         }
       }
     },

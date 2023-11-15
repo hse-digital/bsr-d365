@@ -85,7 +85,7 @@
             "parameters": {
               "entityName": "bsr_buildingcontrollifecycles",
               "$select": "bsr_buildingcontrollifecycleid",
-              "$filter": "_bsr_bcaaapplication_value eq @{outputs('Get_Related_BCA_record')?['body/bsr_buildingcontrolapplicationid']}",
+              "$filter": "_bsr_bcaaapplication_value eq @{outputs('Get_Related_BCA_record')?['body/bsr_buildingcontrolapplicationid']} and bsr_changecontrol eq false",
               "$top": 1
             },
             "authentication": "@parameters('$authentication')"
