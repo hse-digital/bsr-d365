@@ -61,7 +61,7 @@
     }
   }
 
-  export function ShowHidePrescribedDocumentSection(
+  export function ShowHideIfStagedApplication(
     executionContext: Xrm.ExecutionContext<any, any>
   ) {
     Form = <Form.bsr_buildingdetails.Main.Information>(
@@ -80,19 +80,39 @@
       function success(result) {
         var bsr_stagedapplication = result.bsr_stagedapplication;
         var bsr_issubsequentstagedapp = result.bsr_issubsequentstagedapp;
-        if (
-          bsr_stagedapplication == true ||
-          bsr_issubsequentstagedapp == true
-        ) {
-          Form.ui.tabs
-            .get('tab1')
-            .sections.get('tab1_section_12')
-            .setVisible(false);
-          Form.ui.tabs
-            .get('tab1')
-            .sections.get('tab1_section_16')
-            .setVisible(false);
-        }
+            if (
+                bsr_stagedapplication == true ||
+                bsr_issubsequentstagedapp == true
+            ) {
+                Form.ui.tabs
+                    .get('tab1')
+                    .sections.get('tab1_section_12')
+                    .setVisible(false);
+
+                Form.ui.tabs
+                    .get('tab1')
+                    .sections.get('tab1_section_16')
+                    .setVisible(false);
+
+                Form.ui.tabs
+                    .get("tab_staged_application")
+                    .setVisible(true);
+
+            } else {
+                Form.ui.tabs
+                    .get('tab1')
+                    .sections.get('tab1_section_12')
+                    .setVisible(true);
+
+                Form.ui.tabs
+                    .get('tab1')
+                    .sections.get('tab1_section_16')
+                    .setVisible(true);
+
+                Form.ui.tabs
+                    .get("tab_staged_application")
+                    .setVisible(false);
+            }
       },
       function (error) {
         console.log(error.message);
