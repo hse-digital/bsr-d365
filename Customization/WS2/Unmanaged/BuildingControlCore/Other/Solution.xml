@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Control Core" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.68.0</Version>
+    <Version>1.0.69.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -113,6 +113,7 @@
       <RootComponent type="20" id="{29493cfd-af53-ee11-be6f-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="20" id="{ae3b8727-b053-ee11-be6f-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="20" id="{f8d7b35d-1932-ee11-bdf3-6045bdd2c0c0}" behavior="0" />
+      <RootComponent type="29" id="{090b3ac5-ca83-ee11-8179-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{16a040a4-1f31-ee11-bdf3-6045bdc208e3}" behavior="0" />
       <RootComponent type="29" id="{1e664da0-4082-ee11-8179-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{265e2941-614b-ee11-be6f-6045bdf1e965}" behavior="0" />
@@ -140,7 +141,9 @@
       <RootComponent type="29" id="{5e82bc6f-7251-ee11-be6f-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{5fe59749-ff40-ee11-bdf3-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{628ccafb-5751-ee11-be6e-6045bdf1ea4d}" behavior="0" />
+      <RootComponent type="29" id="{6521174f-0236-ee11-bdf4-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{68a1ac8a-3057-ee11-be6f-6045bdf1e965}" behavior="0" />
+      <RootComponent type="29" id="{68e9995c-0c83-ee11-8179-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{6c26aacb-8d30-ee11-bdf3-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{6cf146e8-954c-ee11-be6f-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{6eab4f90-3f82-ee11-8179-6045bdf1e965}" behavior="0" />
@@ -159,9 +162,11 @@
       <RootComponent type="29" id="{946c126b-9e4c-ee11-be6f-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="29" id="{960d5df8-5451-ee11-be6f-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="29" id="{9a9ae38c-3752-ee11-be6f-6045bdf1e965}" behavior="0" />
+      <RootComponent type="29" id="{a3cfc24c-0136-ee11-bdf4-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{abafcbdd-bb66-ee11-9ae7-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{ad7132a6-f173-ee11-8179-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{add194c3-1940-ee11-bdf3-6045bdc208e3}" behavior="0" />
+      <RootComponent type="29" id="{ae7669e3-ca83-ee11-8179-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{b34470c6-1e52-ee11-be6f-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{bd8094d5-7251-ee11-be6f-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{be655499-d778-ee11-8179-6045bdd2c0c0}" behavior="0" />
@@ -178,6 +183,7 @@
       <RootComponent type="29" id="{e7702874-3652-ee11-be6f-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{e8864ef2-bc5b-ee11-8def-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{ea5d3efd-1a31-ee11-bdf3-6045bdc208e3}" behavior="0" />
+      <RootComponent type="29" id="{eb5c82f6-0236-ee11-bdf4-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{eed7668f-5656-ee11-be6f-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{f0f4f71c-2f59-ee11-be6f-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{f1621f2c-886e-ee11-9ae7-6045bdf1e965}" behavior="0" />
@@ -693,6 +699,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_changecategoryid" displayName="Change Category" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.78.0)" />
+        <Dependent type="26" schemaName="Ready to Assign" displayName="Ready to Assign" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" id="{ee655ea7-b383-ee11-8179-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_changecategoryid" displayName="Change Category" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.78.0)" />
         <Dependent type="26" schemaName="Active Change Control Applications" displayName="Active Change Control Applications" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" id="{f5db5e1a-517e-ee11-8179-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
@@ -750,6 +760,10 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_changerequestid" displayName="Change Request" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.78.0)" />
         <Dependent type="26" schemaName="Change of Dutyholder" displayName="Change of Dutyholder" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" id="{e2809520-fd77-ee11-8179-6045bdf1e965}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_changerequestid" displayName="Change Request" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.78.0)" />
+        <Dependent type="26" schemaName="Ready to Assign" displayName="Ready to Assign" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" id="{ee655ea7-b383-ee11-8179-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_changerequestid" displayName="Change Request" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.78.0)" />
@@ -909,6 +923,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.78.0)" />
+        <Dependent type="26" schemaName="Ready to Assign" displayName="Ready to Assign" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" id="{ee655ea7-b383-ee11-8179-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.78.0)" />
         <Dependent type="26" schemaName="Active Change Control Applications" displayName="Active Change Control Applications" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" id="{f5db5e1a-517e-ee11-8179-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
@@ -1017,6 +1035,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_referencenumber" displayName="Reference Number" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.78.0)" />
+        <Dependent type="26" schemaName="Ready to Assign" displayName="Ready to Assign" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" id="{ee655ea7-b383-ee11-8179-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_referencenumber" displayName="Reference Number" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.78.0)" />
         <Dependent type="26" schemaName="Active Change Control Applications" displayName="Active Change Control Applications" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" id="{f5db5e1a-517e-ee11-8179-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
@@ -1082,6 +1104,10 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_submittedondate" displayName="Submitted On" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.78.0)" />
         <Dependent type="26" schemaName="My Change Control Applications" displayName="My Change Control Applications" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" id="{66b2f1b3-4d7e-ee11-8179-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_submittedondate" displayName="Submitted On" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.78.0)" />
+        <Dependent type="26" schemaName="Ready to Assign" displayName="Ready to Assign" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" id="{ee655ea7-b383-ee11-8179-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_submittedondate" displayName="Submitted On" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.78.0)" />
@@ -1203,6 +1229,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="Active" />
+        <Dependent type="26" schemaName="Ready to Assign" displayName="Ready to Assign" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" id="{ee655ea7-b383-ee11-8179-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="Active" />
         <Dependent type="26" schemaName="Active Change Control Applications" displayName="Active Change Control Applications" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" id="{f5db5e1a-517e-ee11-8179-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
@@ -1258,6 +1288,10 @@
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.78.0)" />
         <Dependent type="26" schemaName="Active Change Requests (Building Control)" displayName="Active Change Requests (Building Control)" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" id="{3c70a21c-0478-ee11-8179-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.78.0)" />
+        <Dependent type="26" schemaName="Ready to Assign" displayName="Ready to Assign" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" id="{ee655ea7-b383-ee11-8179-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.78.0)" />
