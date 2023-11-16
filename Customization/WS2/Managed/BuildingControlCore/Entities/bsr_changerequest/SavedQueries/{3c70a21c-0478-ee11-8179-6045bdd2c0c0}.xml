@@ -39,8 +39,12 @@
           <order attribute="createdon" descending="true" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
-            <condition attribute="bsr_changecategoryid" operator="eq" value="{5ea8e6ba-e877-ee11-8179-6045bdd0e4cf}" uiname="Change of Dutyholder" uitype="bsr_changecategory" />
           </filter>
+          <link-entity name="bsr_changecategory" alias="aa" link-type="inner" from="bsr_changecategoryid" to="bsr_changecategoryid">
+            <filter type="and">
+              <condition attribute="bsr_servicecode" operator="eq" value="760810001" />
+            </filter>
+          </link-entity>
         </entity>
       </fetch>
     </fetchxml>

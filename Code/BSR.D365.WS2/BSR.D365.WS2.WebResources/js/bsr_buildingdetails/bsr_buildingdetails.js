@@ -46,7 +46,7 @@ var BuildingDetails;
         }
     }
     BuildingDetails.LockFieldsOnSubmissionDate = LockFieldsOnSubmissionDate;
-    function ShowHidePrescribedDocumentSection(executionContext) {
+    function ShowHideIfStagedApplication(executionContext) {
         Form = (executionContext.getFormContext());
         var bsr_bcapplicationid = Form.getAttribute('bsr_bcapplicationid').getValue()[0].id;
         Xrm.WebApi.retrieveRecord('bsr_buildingcontrolapplication', bsr_bcapplicationid, '?$select=bsr_stagedapplication,bsr_issubsequentstagedapp').then(function success(result) {
@@ -62,11 +62,27 @@ var BuildingDetails;
                     .get('tab1')
                     .sections.get('tab1_section_16')
                     .setVisible(false);
+                Form.ui.tabs
+                    .get("tab_staged_application")
+                    .setVisible(true);
+            }
+            else {
+                Form.ui.tabs
+                    .get('tab1')
+                    .sections.get('tab1_section_12')
+                    .setVisible(true);
+                Form.ui.tabs
+                    .get('tab1')
+                    .sections.get('tab1_section_16')
+                    .setVisible(true);
+                Form.ui.tabs
+                    .get("tab_staged_application")
+                    .setVisible(false);
             }
         }, function (error) {
             console.log(error.message);
         });
     }
-    BuildingDetails.ShowHidePrescribedDocumentSection = ShowHidePrescribedDocumentSection;
+    BuildingDetails.ShowHideIfStagedApplication = ShowHideIfStagedApplication;
 })(BuildingDetails || (BuildingDetails = {}));
 //# sourceMappingURL=bsr_buildingdetails.js.map

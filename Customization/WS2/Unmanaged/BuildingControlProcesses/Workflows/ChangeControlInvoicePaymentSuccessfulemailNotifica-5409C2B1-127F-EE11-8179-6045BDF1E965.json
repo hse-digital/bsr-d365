@@ -1,0 +1,268 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS2"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS2"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "NoReply Queue ID (bsr_noreplyqueueid)": {
+          "defaultValue": "35b883f4-7d16-ee11-9cbe-6045bdd2c0c0",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_noreplyqueueid"
+          }
+        }
+      },
+      "triggers": {
+        "When_a_Payment_record_status_is_Successful": {
+          "metadata": {
+            "operationMetadataId": "c82c450e-feec-45e4-96e4-dc69c1d1131b"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "bsr_payment",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "bsr_paymentreconciliationstatus",
+              "subscriptionRequest/filterexpression": "bsr_paymentreconciliationstatus eq 760810001 and _bsr_changerequestid_value ne null"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Initialize_variable_-_Major_Change_Control_Invoice_Payment_Recieved_TemplateId": {
+          "runAfter": {
+            "Initialize_variable_-_Change_Control_Invoice_Payment_Recieved_TemplateId": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "676522eb-c55e-4822-9e49-476a9121457d"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Change Control(Major Change) Invoice Invoice TemplateId",
+                "type": "string",
+                "value": "9639a810-1f7f-ee11-8179-6045bdd2c0c0"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_Change_Control_Invoice_Payment_Recieved_TemplateId": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "1a79bda5-a629-4966-abda-465936bb1abd"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Change Control Invoice TemplateId",
+                "type": "string",
+                "value": "c4be5302-187f-ee11-8179-6045bdf1e965"
+              }
+            ]
+          }
+        },
+        "Get_related_Change_Request_Record": {
+          "runAfter": {
+            "Initialize_variable_-_Major_Change_Control_Invoice_Payment_Recieved_TemplateId": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "dd1c6fb0-31c5-4fcd-a1c3-1c58ff4b92a7"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_changerequests",
+              "recordId": "@triggerOutputs()?['body/_bsr_changerequestid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Condition": {
+          "actions": {
+            "Send_Major_Change_Control_Payment_Confirmation_Email": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "91b4d901-b826-45ad-a598-469231f088ab"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "PerformUnboundAction",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "actionName": "SendEmailFromTemplate",
+                  "item/TemplateId": "@variables('Change Control(Major Change) Invoice Invoice TemplateId')",
+                  "item/Regarding": "/bsr_buildingcontrolapplications(@{outputs('GetBCA')?['body/bsr_buildingcontrolapplicationid']})",
+                  "item/Target": {
+                    "email_activity_parties": [
+                      {
+                        "partyid_queue@odata.bind": "/queues(@{outputs('GetNoReplyQueue')?['body/queueid']})",
+                        "participationtypemask": 1
+                      },
+                      {
+                        "partyid_contact@odata.bind": "/contacts(@{outputs('GetBCA')?['body/_bsr_applicantid_value']})",
+                        "participationtypemask": 2
+                      }
+                    ],
+                    "@@odata.type": "Microsoft.Dynamics.CRM.email"
+                  }
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "GetNoReplyQueue": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Send_Change_Control_Payment_Confirmation_Email_2": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "91b4d901-b826-45ad-a598-469231f088ab"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps_1",
+                    "operationId": "PerformUnboundAction",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "actionName": "SendEmailFromTemplate",
+                    "item/TemplateId": "@variables('Change Control Invoice TemplateId')",
+                    "item/Regarding": "/bsr_buildingcontrolapplications(@{outputs('GetBCA')?['body/bsr_buildingcontrolapplicationid']})",
+                    "item/Target": {
+                      "email_activity_parties": [
+                        {
+                          "partyid_queue@odata.bind": "/queues(@{outputs('GetNoReplyQueue')?['body/queueid']})",
+                          "participationtypemask": 1
+                        },
+                        {
+                          "partyid_contact@odata.bind": "/contacts(@{outputs('GetBCA')?['body/_bsr_applicantid_value']})",
+                          "participationtypemask": 2
+                        }
+                      ],
+                      "@@odata.type": "Microsoft.Dynamics.CRM.email"
+                    }
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@outputs('Get_related_Change_Request_Record')?['body/_bsr_changecategoryid_value']",
+              "8c5213d0-547a-ee11-8179-6045bdf1e965"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b6b5d269-043e-4e3a-9462-36e1ccd8d1d2"
+          },
+          "type": "If"
+        },
+        "GetBCA": {
+          "runAfter": {
+            "Get_related_Change_Request_Record": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "01cda44b-d1fb-4ce9-bd77-55c76074bb52"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_buildingcontrolapplications",
+              "recordId": "@outputs('Get_related_Change_Request_Record')?['body/_bsr_buildingcontrolapplicationid_value']",
+              "$select": "_bsr_applicantid_value,bsr_applicationname,bsr_bcaareferencenumber,bsr_name,bsr_buildingcontrolapplicationid,bsr_issubsequentstagedapp,_bsr_mainbcaappid_value"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "GetNoReplyQueue": {
+          "runAfter": {
+            "GetBCA": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "0b77d5be-d062-400f-ae1b-e01016599dc8"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "queues",
+              "recordId": "@parameters('NoReply Queue ID (bsr_noreplyqueueid)')",
+              "$select": "queueid,name"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

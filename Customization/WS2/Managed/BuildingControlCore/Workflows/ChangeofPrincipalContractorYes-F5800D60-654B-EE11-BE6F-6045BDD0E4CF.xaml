@@ -66,7 +66,7 @@
                     <Sequence DisplayName="SetDisplayModeStep3: New Action">
                       <mcwc:SetDisplayMode ControlId="bsr_princcontractchangedate" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingcontrolapplication" IsReadOnly="False" />
                     </Sequence>
-                    <Sequence DisplayName="SetDisplayModeStep5: New Action">
+                    <Sequence DisplayName="SetDisplayModeStep5: Unlock Principal Contractor">
                       <mcwc:SetDisplayMode ControlId="bsr_buildingprincipalcontractor" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingcontrolapplication" IsReadOnly="False" />
                     </Sequence>
                   </sco:Collection>
@@ -97,6 +97,9 @@
                   <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
                     <Sequence DisplayName="SetVisibilityStep4: Hide Change of Principal Contractor Date">
                       <mcwc:SetVisibility ControlId="bsr_princcontractchangedate" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingcontrolapplication" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep5: Lock Principal Contractor">
+                      <mcwc:SetDisplayMode ControlId="bsr_buildingprincipalcontractor" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingcontrolapplication" IsReadOnly="True" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>

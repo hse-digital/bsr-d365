@@ -15,6 +15,8 @@ var BuildingControlApplication;
             }
             else if (Form.getAttribute('bsr_issubsequentstagedapp').getValue() == true) {
                 Form.getControl('Subgrid_new_2').setVisible(false);
+                Form.ui.tabs.get("tab_4").setVisible(false);
+                Form.getControl("Subgrid_new_1").setVisible(false);
             }
         }
     }

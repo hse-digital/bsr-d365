@@ -104,6 +104,9 @@
                     <Sequence DisplayName="SetVisibilityStep4: Hide Applicant Validated">
                       <mcwc:SetVisibility ControlId="bsr_isapplicantvalidated" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingcontrolapplication" IsVisible="False" />
                     </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep7: Unlock Applicant Name">
+                      <mcwc:SetDisplayMode ControlId="bsr_applicantid" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingcontrolapplication" IsReadOnly="True" />
+                    </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
               </mxswa:ActivityReference>
