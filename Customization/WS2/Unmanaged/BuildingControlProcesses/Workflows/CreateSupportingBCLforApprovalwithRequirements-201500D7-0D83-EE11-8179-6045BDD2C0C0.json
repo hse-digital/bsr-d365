@@ -1,0 +1,109 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS2"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "45f64e05-7257-463b-ba1a-d15bc3b1bd95"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "bsr_buildingcontrollifecycle",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "bsr_approvalrequirementsdecisiondate",
+              "subscriptionRequest/filterexpression": "bsr_approvalrequirementsdecisiondate ne null and _bsr_supportingbcl_value eq null"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Create_a_Supporting_BCL_": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "5121211d-2d07-4bae-8a5a-0bed91c9e4b5"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_buildingcontrollifecycles",
+              "item/bsr_bcaaapplication@odata.bind": "/bsr_buildingcontrolapplications(@{triggerOutputs()?['body/_bsr_bcaaapplication_value']})",
+              "item/bsr_buildingdetails@odata.bind": "/bsr_buildingdetailses(@{triggerOutputs()?['body/_bsr_buildingdetails_value']})",
+              "item/bsr_name": "@triggerOutputs()?['body/bsr_name']",
+              "item/bsr_reglead@odata.bind": "/systemusers(@{triggerOutputs()?['body/_bsr_reglead_value']})",
+              "item/bsr_approvalrequirementsdecisionissueddate": "@triggerOutputs()?['body/bsr_approvalrequirementsdecisionissueddate']",
+              "item/bsr_assessmentofrequirements": true,
+              "item/bsr_buildingcontrollifecyclestatus": 760810001,
+              "item/bsr_lifecyclephase": 760810000
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Update_Main_BCL_record": {
+          "runAfter": {
+            "Create_a_Supporting_BCL_": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "aff6dcb6-7e48-456b-b5a1-6123dc456923"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_buildingcontrollifecycles",
+              "recordId": "@triggerOutputs()?['body/bsr_buildingcontrollifecycleid']",
+              "item/bsr_buildingcontrollifecyclestatus": 760810004,
+              "item/bsr_lifecyclecompletionreason": 760810002,
+              "item/statecode": 1,
+              "item/bsr_supportingbcl@odata.bind": "/bsr_buildingcontrollifecycles(@{outputs('Create_a_Supporting_BCL_')?['body/bsr_buildingcontrollifecycleid']})"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

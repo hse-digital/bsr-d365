@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Control Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.39.0</Version>
+    <Version>1.0.40.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -85,6 +85,7 @@
       <RootComponent type="29" id="{0522210c-3656-ee11-be6f-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{0e0ac90e-f756-ee11-be6f-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{173a80a5-053d-ee11-bdf4-6045bdf1e965}" behavior="0" />
+      <RootComponent type="29" id="{201500d7-0d83-ee11-8179-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{21cbcfb6-f140-ee11-bdf3-6045bdc208e3}" behavior="0" />
       <RootComponent type="29" id="{26bd59d9-2c22-ee11-9966-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{2841065e-dae1-416b-8e1b-8a1fb5804916}" behavior="0" />
@@ -137,6 +138,7 @@
       <RootComponent type="29" id="{d03ad382-ce58-ee11-be6f-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="29" id="{d11e0b19-e77f-ee11-8179-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{d1ae7983-8879-ee11-8179-6045bdd0e4cf}" behavior="0" />
+      <RootComponent type="29" id="{d26b6427-b483-ee11-8179-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{d98b493c-a662-ee11-8df0-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="29" id="{da51aeb9-426c-ee11-9ae7-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="29" id="{eee8de22-9b45-ee11-be6e-6045bdf1e965}" behavior="0" />
@@ -259,6 +261,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingcontrolapplication" displayName="Building Control Application" solution="Active" />
+        <Dependent type="29" displayName="Set Change Request Name for Change of Applicant" id="{d26b6427-b483-ee11-8179-6045bdf1e965}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingcontrolapplication" displayName="Building Control Application" solution="Active" />
         <Dependent type="29" displayName="BCAA - When Date of Client Change modified then reset yes/no fields " id="{eee8de22-9b45-ee11-be6e-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
@@ -276,6 +282,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingcontrolapplication" displayName="Building Control Application" solution="Active" />
         <Dependent type="29" displayName="BCAA - When Change of Principal Designer Date modified then reset yes/no fields" id="{ffa6df51-b645-ee11-be6e-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingcontrollifecycle" displayName="Building Control Lifecycle" solution="Active" />
+        <Dependent type="29" displayName="Create Supporting BCL for Approval with Requirements" id="{201500d7-0d83-ee11-8179-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingcontrollifecycle" displayName="Building Control Lifecycle" solution="Active" />
@@ -396,6 +406,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_changerequest" displayName="Change Request" solution="BuildingRegCore (1.17.78.0)" />
         <Dependent type="29" displayName="Send Email to Dutyholder over Change Control submission" id="{b05d33ff-bb7f-ee11-8179-6045bdd0e4cf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_changerequest" displayName="Change Request" solution="BuildingRegCore (1.17.78.0)" />
+        <Dependent type="29" displayName="Set Change Request Name for Change of Applicant" id="{d26b6427-b483-ee11-8179-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_changerequest" displayName="Change Request" solution="BuildingRegCore (1.17.78.0)" />
@@ -552,6 +566,10 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_approvaldecisionissueddate" displayName="Approval Decision Issued Date" parentSchemaName="bsr_buildingcontrollifecycle" parentDisplayName="Building Control Lifecycle" solution="Active" />
         <Dependent type="29" displayName="Set Assessment Success Criteria Met to 'Yes' when Decision Issue Date is Populated" id="{3afbc31a-c036-ee11-bdf4-6045bdd0e4cf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_approvalrequirementsdecisiondate" displayName="Decision Date" parentSchemaName="bsr_buildingcontrollifecycle" parentDisplayName="Building Control Lifecycle" solution="Active" />
+        <Dependent type="29" displayName="Create Supporting BCL for Approval with Requirements" id="{201500d7-0d83-ee11-8179-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_approvalrequirementsdecisionissueddate" displayName="Approval with Requirements Decision Issued Date" parentSchemaName="bsr_buildingcontrollifecycle" parentDisplayName="Building Control Lifecycle" solution="Active" />
