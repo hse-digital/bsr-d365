@@ -11,6 +11,7 @@ declare namespace Form.bsr_buildingdetails.Main {
         get(name: "tab1_section_15"): Xrm.PageSection;
         get(name: "tab1_section_16"): Xrm.PageSection;
         get(name: "tab1_section_17"): Xrm.PageSection;
+        get(name: "tab1_section_18"): Xrm.PageSection;
         get(name: "tab1_section_3"): Xrm.PageSection;
         get(name: "tab1_section_4"): Xrm.PageSection;
         get(name: "tab1_section_5"): Xrm.PageSection;
@@ -38,6 +39,13 @@ declare namespace Form.bsr_buildingdetails.Main {
         get(index: number): Xrm.PageSection;
         get(chooser: (item: Xrm.PageSection, index: number) => boolean): Xrm.PageSection[];
       }
+      interface tab_staged_application extends Xrm.SectionCollectionBase {
+        get(name: "tab_4_section_1"): Xrm.PageSection;
+        get(name: string): undefined;
+        get(): Xrm.PageSection[];
+        get(index: number): Xrm.PageSection;
+        get(chooser: (item: Xrm.PageSection, index: number) => boolean): Xrm.PageSection[];
+      }
     }
     interface Attributes extends Xrm.AttributeCollectionBase {
       get(name: "bsr_address1_city"): Xrm.Attribute<string>;
@@ -50,7 +58,6 @@ declare namespace Form.bsr_buildingdetails.Main {
       get(name: "bsr_builddetailscompletionreason"): Xrm.OptionSetAttribute<bsr_buildingdetailscompletionreason>;
       get(name: "bsr_builddetailsinvalidreason"): Xrm.OptionSetAttribute<bsr_buildingdetailsinvalidreason>;
       get(name: "bsr_buildingaddressmanual"): Xrm.OptionSetAttribute<boolean>;
-      get(name: "bsr_buildingcontrollifecycle"): Xrm.LookupAttribute<"bsr_buildingcontrollifecycle">;
       get(name: "bsr_buildingdetailsreference"): Xrm.Attribute<string>;
       get(name: "bsr_buildingdetailsstatus"): Xrm.OptionSetAttribute<bsr_statusofthebuildingdetailsrecord>;
       get(name: "bsr_buildingeasting"): Xrm.NumberAttribute;
@@ -110,6 +117,8 @@ declare namespace Form.bsr_buildingdetails.Main {
       get(name: "Subgrid_new_1"): Xrm.SubGridControl<"bsr_informationtracker">;
       get(name: "Subgrid_new_2"): Xrm.SubGridControl<"bsr_drawingsandplans">;
       get(name: "Subgrid_new_3"): Xrm.SubGridControl<"bsr_mdtproject">;
+      get(name: "Subgrid_new_4"): Xrm.SubGridControl<"bsr_buildingcontrolapplication">;
+      get(name: "Subgrid_new_5"): Xrm.SubGridControl<"bsr_buildingcontrollifecycle">;
       get(name: "Subgrid_projectbriefs"): Xrm.SubGridControl<"bsr_projectbriefs">;
       get(name: "bsr_address1_city"): Xrm.StringControl;
       get(name: "bsr_address1_line1"): Xrm.StringControl;
@@ -121,7 +130,6 @@ declare namespace Form.bsr_buildingdetails.Main {
       get(name: "bsr_builddetailscompletionreason"): Xrm.OptionSetControl<bsr_buildingdetailscompletionreason>;
       get(name: "bsr_builddetailsinvalidreason"): Xrm.OptionSetControl<bsr_buildingdetailsinvalidreason>;
       get(name: "bsr_buildingaddressmanual"): Xrm.OptionSetControl<boolean>;
-      get(name: "bsr_buildingcontrollifecycle"): Xrm.LookupControl<"bsr_buildingcontrollifecycle">;
       get(name: "bsr_buildingdetailsreference"): Xrm.StringControl;
       get(name: "bsr_buildingeasting"): Xrm.NumberControl;
       get(name: "bsr_buildingnorthing"): Xrm.NumberControl;
@@ -181,6 +189,7 @@ declare namespace Form.bsr_buildingdetails.Main {
       get(name: "tab1"): Xrm.PageTab<Tabs.tab1>;
       get(name: "tab_3"): Xrm.PageTab<Tabs.tab_3>;
       get(name: "tab_mdt"): Xrm.PageTab<Tabs.tab_mdt>;
+      get(name: "tab_staged_application"): Xrm.PageTab<Tabs.tab_staged_application>;
       get(name: string): undefined;
       get(): Xrm.PageTab<Xrm.Collection<Xrm.PageSection>>[];
       get(index: number): Xrm.PageTab<Xrm.Collection<Xrm.PageSection>>;
@@ -198,7 +207,6 @@ declare namespace Form.bsr_buildingdetails.Main {
     getAttribute(attributeName: "bsr_builddetailscompletionreason"): Xrm.OptionSetAttribute<bsr_buildingdetailscompletionreason>;
     getAttribute(attributeName: "bsr_builddetailsinvalidreason"): Xrm.OptionSetAttribute<bsr_buildingdetailsinvalidreason>;
     getAttribute(attributeName: "bsr_buildingaddressmanual"): Xrm.OptionSetAttribute<boolean>;
-    getAttribute(attributeName: "bsr_buildingcontrollifecycle"): Xrm.LookupAttribute<"bsr_buildingcontrollifecycle">;
     getAttribute(attributeName: "bsr_buildingdetailsreference"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_buildingdetailsstatus"): Xrm.OptionSetAttribute<bsr_statusofthebuildingdetailsrecord>;
     getAttribute(attributeName: "bsr_buildingeasting"): Xrm.NumberAttribute;
@@ -254,6 +262,8 @@ declare namespace Form.bsr_buildingdetails.Main {
     getControl(controlName: "Subgrid_new_1"): Xrm.SubGridControl<"bsr_informationtracker">;
     getControl(controlName: "Subgrid_new_2"): Xrm.SubGridControl<"bsr_drawingsandplans">;
     getControl(controlName: "Subgrid_new_3"): Xrm.SubGridControl<"bsr_mdtproject">;
+    getControl(controlName: "Subgrid_new_4"): Xrm.SubGridControl<"bsr_buildingcontrolapplication">;
+    getControl(controlName: "Subgrid_new_5"): Xrm.SubGridControl<"bsr_buildingcontrollifecycle">;
     getControl(controlName: "Subgrid_projectbriefs"): Xrm.SubGridControl<"bsr_projectbriefs">;
     getControl(controlName: "bsr_address1_city"): Xrm.StringControl;
     getControl(controlName: "bsr_address1_line1"): Xrm.StringControl;
@@ -265,7 +275,6 @@ declare namespace Form.bsr_buildingdetails.Main {
     getControl(controlName: "bsr_builddetailscompletionreason"): Xrm.OptionSetControl<bsr_buildingdetailscompletionreason>;
     getControl(controlName: "bsr_builddetailsinvalidreason"): Xrm.OptionSetControl<bsr_buildingdetailsinvalidreason>;
     getControl(controlName: "bsr_buildingaddressmanual"): Xrm.OptionSetControl<boolean>;
-    getControl(controlName: "bsr_buildingcontrollifecycle"): Xrm.LookupControl<"bsr_buildingcontrollifecycle">;
     getControl(controlName: "bsr_buildingdetailsreference"): Xrm.StringControl;
     getControl(controlName: "bsr_buildingeasting"): Xrm.NumberControl;
     getControl(controlName: "bsr_buildingnorthing"): Xrm.NumberControl;

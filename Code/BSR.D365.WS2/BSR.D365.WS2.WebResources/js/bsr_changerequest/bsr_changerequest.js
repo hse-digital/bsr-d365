@@ -1,8 +1,9 @@
 "use strict";
 var ChangeRequest;
 (function (ChangeRequest) {
+    var Form;
     function showHideChangeControlSection(executionContext) {
-        var formContext = executionContext.getFormContext();
+        var formContext = (executionContext.getFormContext());
         var changeCategory = formContext.getAttribute("bsr_changecategoryid");
         var changeCategoryValue;
         if (changeCategory !== null && changeCategory.getValue() !== null) {
