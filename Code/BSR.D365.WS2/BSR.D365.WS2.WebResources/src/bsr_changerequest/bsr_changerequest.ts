@@ -1,9 +1,13 @@
 "use strict";
 
 namespace ChangeRequest {
-    
-    export function showHideChangeControlSection(executionContext) {
-        var formContext = executionContext.getFormContext();
+    var Form: Form.bsr_changerequest.Main.Information;
+
+    export function showHideChangeControlSection(executionContext: Xrm.ExecutionContext<any, any>) {
+        var formContext = <Form.bsr_changerequest.Main.Information>(
+            executionContext.getFormContext()
+        );
+
         var changeCategory = formContext.getAttribute("bsr_changecategoryid");
         var changeCategoryValue;
 

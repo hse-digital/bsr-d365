@@ -1,10 +1,14 @@
 ﻿"use strict";
 
 namespace ChangeCategory {
-    
-    export function showHideProposedWorks(executionContext) {
-        var formContext = executionContext.getFormContext();
-        var bsrServiceCode = formContext.getAttribute("bsr_servicecode");
+    var Form: Form.bsr_changecategory.Main.Information;
+
+    export function showHideProposedWorks(executionContext: Xrm.ExecutionContext<any, any>) {
+        var Form = <Form.bsr_changecategory.Main.Information>(
+            executionContext.getFormContext()
+        );
+
+        var bsrServiceCode = Form.getAttribute("bsr_servicecode");
 
         var selectedOptions;
 
@@ -15,9 +19,9 @@ namespace ChangeCategory {
         }
 
         if (selectedOptions && selectedOptions.filter(i => i.text === "Building Control").length > 0) {
-            formContext.getControl("bsr_proposedworks").setVisible(true);
+            Form.getControl("bsr_proposedworks").setVisible(true);
         } else {
-            formContext.getControl("bsr_proposedworks").setVisible(false);
+            Form.getControl("bsr_proposedworks").setVisible(false);
         }
     }
 }

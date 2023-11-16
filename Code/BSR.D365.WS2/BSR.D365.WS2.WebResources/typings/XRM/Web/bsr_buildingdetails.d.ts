@@ -68,6 +68,8 @@ interface bsr_buildingdetails_Base extends WebEntity {
   versionnumber?: number | null;
 }
 interface bsr_buildingdetails_Relationships {
+  bsr_bsr_bca_bsr_buildingdetails?: bsr_buildingcontrolapplication_Result[] | null;
+  bsr_buildingcontrollifecycle_buildingdetails?: bsr_buildingcontrollifecycle_Result[] | null;
 }
 interface bsr_buildingdetails extends bsr_buildingdetails_Base, bsr_buildingdetails_Relationships {
   bsr_bcapplicationid_bind$bsr_buildingcontrolapplications?: string | null;
@@ -251,6 +253,9 @@ interface bsr_buildingdetails_Filter {
 }
 interface bsr_buildingdetails_Expand {
   bsr_bcapplicationid: WebExpand<bsr_buildingdetails_Expand, bsr_buildingcontrolapplication_Select, bsr_buildingcontrolapplication_Filter, { bsr_bcapplicationid: bsr_buildingcontrolapplication_Result }>;
+  bsr_bsr_bca_bsr_buildingdetails: WebExpand<bsr_buildingdetails_Expand, bsr_buildingcontrolapplication_Select, bsr_buildingcontrolapplication_Filter, { bsr_bsr_bca_bsr_buildingdetails: bsr_buildingcontrolapplication_Result[] }>;
+  bsr_buildingcontrollifecycle: WebExpand<bsr_buildingdetails_Expand, bsr_buildingcontrollifecycle_Select, bsr_buildingcontrollifecycle_Filter, { bsr_buildingcontrollifecycle: bsr_buildingcontrollifecycle_Result }>;
+  bsr_buildingcontrollifecycle_buildingdetails: WebExpand<bsr_buildingdetails_Expand, bsr_buildingcontrollifecycle_Select, bsr_buildingcontrollifecycle_Filter, { bsr_buildingcontrollifecycle_buildingdetails: bsr_buildingcontrollifecycle_Result[] }>;
 }
 interface bsr_buildingdetails_FormattedResult {
   bsr_bcapplicationid_formatted?: string;
@@ -303,8 +308,11 @@ interface bsr_buildingdetails_Result extends bsr_buildingdetails_Base, bsr_build
 }
 interface bsr_buildingdetails_RelatedOne {
   bsr_bcapplicationid: WebMappingRetrieve<bsr_buildingcontrolapplication_Select,bsr_buildingcontrolapplication_Expand,bsr_buildingcontrolapplication_Filter,bsr_buildingcontrolapplication_Fixed,bsr_buildingcontrolapplication_Result,bsr_buildingcontrolapplication_FormattedResult>;
+  bsr_buildingcontrollifecycle: WebMappingRetrieve<bsr_buildingcontrollifecycle_Select,bsr_buildingcontrollifecycle_Expand,bsr_buildingcontrollifecycle_Filter,bsr_buildingcontrollifecycle_Fixed,bsr_buildingcontrollifecycle_Result,bsr_buildingcontrollifecycle_FormattedResult>;
 }
 interface bsr_buildingdetails_RelatedMany {
+  bsr_bsr_bca_bsr_buildingdetails: WebMappingRetrieve<bsr_buildingcontrolapplication_Select,bsr_buildingcontrolapplication_Expand,bsr_buildingcontrolapplication_Filter,bsr_buildingcontrolapplication_Fixed,bsr_buildingcontrolapplication_Result,bsr_buildingcontrolapplication_FormattedResult>;
+  bsr_buildingcontrollifecycle_buildingdetails: WebMappingRetrieve<bsr_buildingcontrollifecycle_Select,bsr_buildingcontrollifecycle_Expand,bsr_buildingcontrollifecycle_Filter,bsr_buildingcontrollifecycle_Fixed,bsr_buildingcontrollifecycle_Result,bsr_buildingcontrollifecycle_FormattedResult>;
 }
 interface WebEntitiesRetrieve {
   bsr_buildingdetailses: WebMappingRetrieve<bsr_buildingdetails_Select,bsr_buildingdetails_Expand,bsr_buildingdetails_Filter,bsr_buildingdetails_Fixed,bsr_buildingdetails_Result,bsr_buildingdetails_FormattedResult>;
