@@ -1,8 +1,9 @@
 "use strict";
 var ChangeRequest;
 (function (ChangeRequest) {
+    var Form;
     function showHideChangeControlSection(executionContext) {
-        var formContext = executionContext.getFormContext();
+        var formContext = (executionContext.getFormContext());
         var changeCategory = formContext.getAttribute("bsr_changecategoryid");
         var changeCategoryValue;
         if (changeCategory !== null && changeCategory.getValue() !== null) {
@@ -17,23 +18,5 @@ var ChangeRequest;
         }
     }
     ChangeRequest.showHideChangeControlSection = showHideChangeControlSection;
-    function showHideOtherReason(executionContext) {
-        var formContext = executionContext.getFormContext();
-        var reasonsForChange = formContext.getAttribute("bsr_changereasons");
-        var selectedOptions;
-        if (reasonsForChange !== null) {
-            selectedOptions = reasonsForChange.getSelectedOption();
-        }
-        else {
-            selectedOptions = null;
-        }
-        if (selectedOptions && selectedOptions.filter(function (i) { return i.text === "Other"; }).length > 0) {
-            formContext.getControl("bsr_otherreason").setVisible(true);
-        }
-        else {
-            formContext.getControl("bsr_otherreason").setVisible(false);
-        }
-    }
-    ChangeRequest.showHideOtherReason = showHideOtherReason;
 })(ChangeRequest || (ChangeRequest = {}));
 //# sourceMappingURL=bsr_changerequest.js.map

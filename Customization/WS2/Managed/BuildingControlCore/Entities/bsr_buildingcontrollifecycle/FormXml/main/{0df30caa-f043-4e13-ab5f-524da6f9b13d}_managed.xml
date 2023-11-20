@@ -100,19 +100,11 @@
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{e0386ff2-a782-4649-8a2c-cb977876c086}" locklevel="0" colspan="1" rowspan="1">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_lifecyclephase" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_lifecyclephase" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
                       <cell id="{3855fc32-b7a5-446e-a1ae-6c15895d043f}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
-                        <control id="bsr_lifecyclecompletionreason" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_lifecyclecompletionreason" disabled="false" />
+                        <control id="bsr_lifecyclecompletionreason" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_lifecyclecompletionreason" disabled="false" uniqueid="{6c808a4a-a7ee-0507-6377-0b77bbcc9b56}" />
                       </cell>
                     </row>
                     <row>
@@ -669,7 +661,7 @@
                     <row>
                       <cell id="{f7e489e7-4faa-416e-be14-34375a35f4d3}" locklevel="0" colspan="1" rowspan="1" showlabel="true">
                         <labels>
-                          <label description="BCAA Approval" languagecode="1033" />
+                          <label description="Approval" languagecode="1033" />
                         </labels>
                         <control id="bsr_bcaaapproval" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="bsr_bcaaapproval" disabled="false" uniqueid="{ca10edf4-e6bb-4f37-bf90-f2dd3a195364}" />
                       </cell>
@@ -677,7 +669,7 @@
                     <row>
                       <cell id="{aee28965-76ca-4529-bbeb-719d2b5b5752}" locklevel="0" colspan="1" rowspan="1" showlabel="true">
                         <labels>
-                          <label description="BCAA Approval with Requirements" languagecode="1033" />
+                          <label description="Approval with Requirements" languagecode="1033" />
                         </labels>
                         <control id="bsr_bcaaapprovalrequirements" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="bsr_bcaaapprovalrequirements" disabled="false" uniqueid="{cd2388d4-eb01-44f9-8a60-d437f61b05a5}" />
                       </cell>
@@ -685,7 +677,7 @@
                     <row>
                       <cell id="{e635ed6d-83c3-4661-ab91-c53230a50a46}" locklevel="0" colspan="1" rowspan="1" showlabel="true">
                         <labels>
-                          <label description="BCAA Rejection" languagecode="1033" />
+                          <label description="Rejection" languagecode="1033" />
                         </labels>
                         <control id="bsr_bcaarejection" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="bsr_bcaarejection" disabled="false" uniqueid="{c9391fd5-789e-49d2-a430-7ca572ea9276}" />
                       </cell>
@@ -756,6 +748,14 @@
                           <label description="Decision Date" languagecode="1033" />
                         </labels>
                         <control id="bsr_approvalrequirementsdecisiondate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_approvalrequirementsdecisiondate" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{13ba1d02-d234-4831-9661-d5bde5eaa63c}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_numberofrequirements" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_numberofrequirements" disabled="false" />
                       </cell>
                     </row>
                     <row>
@@ -914,6 +914,22 @@
                           <label description="" languagecode="1033" />
                         </labels>
                         <control id="bsr_outcomedecisionissueddate" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="bsr_outcomedecisionissueddate" disabled="false" uniqueid="{7c70153c-b2d8-084a-a89e-2a3336382176}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="tab_assessment_section_16" id="cfc8cddf-384f-40cc-b227-0a13c0d957fb" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Notices (hidden)" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell id="{8b352bca-1342-4cc1-9971-07cb2541b297}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_buildenddate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_buildenddate" disabled="false" />
                       </cell>
                     </row>
                   </rows>
@@ -1210,6 +1226,37 @@
             </column>
           </columns>
         </tab>
+        <tab name="tab_notices" id="5636efa1-23c0-48df-a865-bb65e2b0219c" IsUserDefined="0" locklevel="0" showlabel="true">
+          <labels>
+            <label description="Notices" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="50%">
+              <sections>
+                <section name="tab_4_section_1" id="91a3d66c-9f82-40ba-b842-bdd7c7627084" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="50%">
+              <sections>
+                <section name="tab_4_section_2" id="3e461c99-72e2-4543-85c1-650b1ae99e75" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
       </tabs>
       <header id="{541f2a4d-b20e-47c2-8c62-dfe2d88323b7}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
         <rows>
@@ -1229,10 +1276,11 @@
                 <label description="" languagecode="1033" />
               </labels>
             </cell>
-            <cell locklevel="0" id="{b6d3133e-e1be-492f-b667-db0d6f503529}" showlabel="false">
+            <cell id="{32b8da22-d3bd-05d8-9716-091bc8ca1ecc}" showlabel="true" locklevel="0">
               <labels>
                 <label description="" languagecode="1033" />
               </labels>
+              <control id="header_bsr_lifecyclephase" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="bsr_lifecyclephase" disabled="false" uniqueid="{ce426ba7-dc0e-1c36-3827-8ee37d59bcb1}" />
             </cell>
             <cell id="{2d321319-756e-4300-965d-49874106278d}" locklevel="0" colspan="1" rowspan="1">
               <labels>

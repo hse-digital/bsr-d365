@@ -102,7 +102,13 @@
                     <label description="Building Control Lifecycle" languagecode="1033" />
                   </labels>
                   <rows>
-                    <row />
+                    <row>
+                      <cell id="{01c7114a-4e81-49e3-b045-673af91cc601}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
                     <row>
                       <cell locklevel="0" id="{c80a3973-d3ff-4a16-a3d1-37fdfd50c269}" rowspan="4" colspan="1" auto="false">
                         <labels>
@@ -523,14 +529,39 @@
                 </section>
                 <section name="_section_557" id="2063115e-c798-46cf-8eb8-b1efbc6c9e7d" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
-                    <label description="Proposed Works" languagecode="1033" />
+                    <label description="Proposed or Completed Works" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell showlabel="false" locklevel="0" id="{7e102048-db6c-4f48-a01c-cb228e139c9d}">
+                      <cell id="{42b67446-8a3c-16e7-adc9-9c7c327754b8}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Completed Works" languagecode="1033" />
                         </labels>
+                        <control id="bsr_iscompletedworks" classid="{67FAC785-CD58-4f9f-ABB3-4B7DDC6ED5ED}" datafieldname="bsr_iscompletedworks" disabled="true" uniqueid="{b7d86c24-975c-2ec7-4576-6cd9d664d7b7}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4673c3f2-b85c-415a-a9c3-6d80f18eae25}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Principal Contractor-Signed Compliance Declaration" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_principalcontcompldeclaration" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_principalcontcompldeclaration" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{471612ba-bd38-4269-97f2-ef24ae56c41a}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Principal Designer-Signed Compliance Declaration​" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_principaldesigncompldeclaration" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_principaldesigncompldeclaration" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7fc29370-da3e-413d-9d12-d03716ea6d3e}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Why Signed Compliance Declaration Not Provided" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_principalsigneddecnotprovided" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="bsr_principalsigneddecnotprovided" disabled="false" />
                       </cell>
                     </row>
                     <row>
@@ -548,7 +579,7 @@
                         <labels>
                           <label description="Number of Floors" languagecode="1033" />
                         </labels>
-                        <control id="bsr_numberstoreys" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_numberstoreys" disabled="false" />
+                        <control id="bsr_numberstoreys" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_numberstoreys" disabled="false" uniqueid="{924b5096-0767-7304-8371-03ed195c105b}" />
                       </cell>
                     </row>
                     <row>
@@ -605,7 +636,7 @@
                 </section>
                 <section name="tab1_section_15" id="49d7b967-ba5a-4f98-8a70-17f88cb19bbb" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
-                    <label description="Current Details" languagecode="1033" />
+                    <label description="Current Works (Existing Buildings)" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
@@ -736,7 +767,7 @@
                     <row>
                       <cell locklevel="0" id="{20dbca11-f929-4a3d-90c2-03b568d1af50}" rowspan="4" colspan="1" auto="false" showlabel="true">
                         <labels>
-                          <label description="Building Control Lifecycles" languagecode="1033" />
+                          <label description="Drawings and Plans" languagecode="1033" />
                         </labels>
                         <control indicationOfSubgrid="true" id="Subgrid_new_2" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
                           <parameters>
@@ -775,7 +806,13 @@
                     <label description="New Section" languagecode="1033" />
                   </labels>
                   <rows>
-                    <row />
+                    <row>
+                      <cell id="{f1a4f19e-e873-4014-a71d-2b93c3c70d00}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
                     <row>
                       <cell locklevel="0" id="{6860d399-0c31-47d9-bd31-6309e81636a1}" rowspan="4" colspan="1" auto="false">
                         <labels>
@@ -1162,9 +1199,6 @@
           </NavBarArea>
         </NavBarAreas>
       </Navigation>
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
       <formLibraries>
         <Library name="bsr_/buildingcontrol/tables/bsr_buildingdetails/script/bsr_buildingdetails.js" libraryUniqueId="{a175ef69-85d7-49be-bb6a-af63bb38638c}" />
       </formLibraries>
@@ -1184,6 +1218,9 @@
           </Handlers>
         </event>
       </events>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
