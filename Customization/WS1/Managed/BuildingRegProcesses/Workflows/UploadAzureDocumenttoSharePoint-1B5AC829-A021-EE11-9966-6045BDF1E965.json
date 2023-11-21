@@ -326,9 +326,39 @@
                     }
                   }
                 },
-                "Add_a_new_row": {
+                "Response": {
                   "runAfter": {
                     "Create_file": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "3e2f1ea7-3197-49e5-9835-97786136ec60"
+                  },
+                  "type": "Response",
+                  "kind": "Http",
+                  "inputs": {
+                    "statusCode": 200,
+                    "body": {
+                      "sharePointFileId": "@outputs('Create_file')?['body/ItemId']",
+                      "sharePointFileLocator": "@{outputs('Create_file')?['body/FileLocator']}"
+                    },
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "sharePointFileId": {
+                          "type": "string"
+                        },
+                        "bsr_documentid": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "Add_a_new_row": {
+                  "runAfter": {
+                    "Response": [
                       "Succeeded"
                     ]
                   },
@@ -354,37 +384,6 @@
                       "item/bsr_targettable": "@triggerBody()['targetTable']"
                     },
                     "authentication": "@parameters('$authentication')"
-                  }
-                },
-                "Response": {
-                  "runAfter": {
-                    "Add_a_new_row": [
-                      "Succeeded"
-                    ]
-                  },
-                  "metadata": {
-                    "operationMetadataId": "3e2f1ea7-3197-49e5-9835-97786136ec60"
-                  },
-                  "type": "Response",
-                  "kind": "Http",
-                  "inputs": {
-                    "statusCode": 200,
-                    "body": {
-                      "sharePointFileId": "@outputs('Create_file')?['body/ItemId']",
-                      "bsr_documentid": "@{outputs('Add_a_new_row')?['body/activityid']}",
-                      "sharePointFileLocator": "@{outputs('Create_file')?['body/FileLocator']}"
-                    },
-                    "schema": {
-                      "type": "object",
-                      "properties": {
-                        "sharePointFileId": {
-                          "type": "string"
-                        },
-                        "bsr_documentid": {
-                          "type": "string"
-                        }
-                      }
-                    }
                   }
                 }
               },
