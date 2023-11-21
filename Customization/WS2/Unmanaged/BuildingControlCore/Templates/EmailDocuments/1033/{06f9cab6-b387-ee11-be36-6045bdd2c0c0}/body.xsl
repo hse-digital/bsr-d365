@@ -4,31 +4,37 @@
 <div><span style="font-family:Arial,Helvetica,sans-serif; font-size:12pt">&nbsp;&nbsp;</span></div>
 <div><span style="font-family:Arial,Helvetica,sans-serif">We have received your application for a completion certificate for&nbsp;]]><xsl:choose><xsl:when test="bsr_buildingcontrolapplication/bsr_name"><xsl:value-of select="bsr_buildingcontrolapplication/bsr_name" /></xsl:when><xsl:otherwise></xsl:otherwise></xsl:choose><![CDATA[.</span></div>
 <div>&nbsp;</div>
-<div><span style="font-family:Arial,Helvetica,sans-serif">Your building control application reference is <strong>]]><xsl:choose><xsl:when test="bsr_buildingcontrolapplication/bsr_bcaareferencenumber"><xsl:value-of select="bsr_buildingcontrolapplication/bsr_bcaareferencenumber" /></xsl:when><xsl:otherwise></xsl:otherwise></xsl:choose><![CDATA[</strong>.</span></div>
+<div><span style="font-family:Arial,Helvetica,sans-serif">Your building control application reference is
+<strong>]]><xsl:choose><xsl:when test="bsr_buildingcontrolapplication/bsr_bcaareferencenumber"><xsl:value-of select="bsr_buildingcontrolapplication/bsr_bcaareferencenumber" /></xsl:when><xsl:otherwise></xsl:otherwise></xsl:choose><![CDATA[</strong>.</span></div>
 <div>&nbsp;</div>
 <div>&nbsp;</div>
 <div>&nbsp;</div>
-<div><span style="font-family:Arial,Helvetica,sans-serif">What happens next</span></div>
+<div><span style="font-size:14pt"><strong><span style="font-family:Arial,Helvetica,sans-serif">What happens next?</span></strong></span></div>
 <div>&nbsp;</div>
+<div><span style="font-family:Arial,Helvetica,sans-serif">Your case officer, will assess your application. You don’t need to do anything else for now.If you need to make any changes to your application, you must contact your case officer.
+</span></div>
 <div>&nbsp;</div>
-<div><span style="font-family:Arial,Helvetica,sans-serif">Your case officer, will assess your application. You don’t need to do anything else for now.If you need to make any changes to your application, you must contact your case officer. </span></div>
-<div>&nbsp;</div>
-<div>&nbsp;</div>
-<div><span style="font-family:Arial,Helvetica,sans-serif">The decision on your application may take up to 8 weeks. </span></div>
-<div>&nbsp;</div>
+<div><span style="font-family:Arial,Helvetica,sans-serif">The decision on your application may take up to 8 weeks.
+</span></div>
 <div>&nbsp;</div>
 <div><span style="font-family:Arial,Helvetica,sans-serif">If your application is approved, you will receive your completion certificate by email.</span></div>
 <div>&nbsp;</div>
 <div>&nbsp;</div>
 <div>&nbsp;</div>
-<div><span style="font-family:Arial,Helvetica,sans-serif">Register your building</span></div>
+<div><strong><span style="font-size:14pt"><span style="font-family:Arial,Helvetica,sans-serif">Register your building</span></span></strong></div>
+<div>&nbsp;</div>
+<div><span style="font-family:Arial,Helvetica,sans-serif">If you have built a high-rise residential building, you must
+<a href="https://www.gov.uk/guidance/register-a-high-rise-residential-building">register it with the Building Safety Regulator</a>&nbsp;when you have your completion certificate.</span></div>
 <div>&nbsp;</div>
 <div>&nbsp;</div>
-<div><span style="font-family:Arial,Helvetica,sans-serif">If you have built a high-rise residential building, you must <a href="https://www.gov.uk/guidance/register-a-high-rise-residential-building">register it with the Building Safety Regulator</a>&nbsp;when you have your completion certificate.</span></div>
+<div><span style="font-family:Arial,Helvetica,sans-serif">From the Health and Safety Executive<br>
+as the Building Safety Regulator&nbsp;</span></div>
 <div>&nbsp;</div>
+<div>&nbsp;
+<div align="center" style="margin-bottom:16px; text-align:center">
+<hr align="center" size="2" width="100%">
+</div>
 <div>&nbsp;</div>
-<div><span style="font-family:Arial,Helvetica,sans-serif">From the Health and Safety Executive<br>as the Building Safety Regulator&nbsp;</span></div>
-<div>&nbsp;</div>
-<div>&nbsp;<div align="center" style="margin-bottom:16px; text-align:center"><hr align="center" size="2" width="100%"></div>
-<div>&nbsp;</div>
-<div><span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">Do not reply to this email. It’s an automatic message from an unmonitored account.</span></span></span></div></div>]]></xsl:template></xsl:stylesheet>
+<div><span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">Do not reply to this email. It’s an automatic message from an unmonitored account.</span></span></span></div>
+</div>
+]]></xsl:template></xsl:stylesheet>
