@@ -12,7 +12,7 @@
 <div>&nbsp;</div>
 <div><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:12pt">If you are aware of the change, you do not need to do anything.</span></span></div>
 <div>&nbsp;</div>
-<div><font style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:12pt">If you would like to challenge this, please&nbsp;<a href="https://www.hse.gov.uk/contact/tell-us-about-a-health-and-safety-issue.htm">Contact the Building Safety Regulator</a>&nbsp;and quote the application reference.&nbsp;</span></font></div>
+<div><font style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:12pt">If you would like to challenge this, please&nbsp;<a href="https://www.gov.uk/guidance/contact-the-building-safety-regulator">Contact the Building Safety Regulator</a>&nbsp;and quote the application reference.&nbsp;</span></font></div>
 <div>&nbsp;</div>
 <div><div><font style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:12pt">From the Health and Safety Executive&nbsp;</span></font><br><font style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:12pt">as the Building Safety Regulator&nbsp;</span></font></div>
 <div>&nbsp;</div>
