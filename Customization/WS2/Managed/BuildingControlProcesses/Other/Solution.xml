@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Control Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.43.0</Version>
+    <Version>1.0.44.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -126,11 +126,9 @@
       <RootComponent type="29" id="{af3d24a4-c356-ee11-be6f-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{b05d33ff-bb7f-ee11-8179-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="29" id="{b964226d-1548-ee11-be6f-6045bdd2c0c0}" behavior="0" />
-      <RootComponent type="29" id="{b9cec256-e253-ee11-be6f-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{bb509aa7-7d51-ee11-be6e-6045bdf1ea4d}" behavior="0" />
       <RootComponent type="29" id="{bb83c958-443c-ee11-bdf4-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="29" id="{bc7ba397-6f79-ee11-8179-6045bdf1e965}" behavior="0" />
-      <RootComponent type="29" id="{be2fb66d-f556-ee11-be6f-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{c21aabfe-5d59-ee11-be6f-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="29" id="{c98ae97b-465c-ee11-8def-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{ca7fdd69-d73d-ee11-bdf4-6045bdd0ef54}" behavior="0" />
@@ -466,15 +464,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_inspection" displayName="MDT Inspection Schedule" solution="Active" />
-        <Dependent type="29" displayName="[DEPRECATED] Map MDT Project From Inspection Schedule to Task" id="{b9cec256-e253-ee11-be6f-6045bdd2c0c0}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="1" schemaName="bsr_inspection" displayName="MDT Inspection Schedule" solution="Active" />
-        <Dependent type="29" displayName="Set MDT Project field in Task table" id="{be2fb66d-f556-ee11-be6f-6045bdd2c0c0}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="1" schemaName="bsr_inspection" displayName="MDT Inspection Schedule" solution="Active" />
-        <Dependent type="29" displayName="Set BCA in MDT Task from MDT Inspection Schedule" id="{da51aeb9-426c-ee11-9ae7-6045bdd0e4cf}" />
+        <Dependent type="29" displayName="Set BCA and MDT Project Lookups in MDT Task " id="{da51aeb9-426c-ee11-9ae7-6045bdd0e4cf}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_inspectiondocument" displayName="MDT Inspection Document" solution="Active" />
@@ -506,11 +496,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_mdtproject" displayName="MDT Project" solution="Active" />
-        <Dependent type="29" displayName="Set BCA in MDT Task record from MDT Project" id="{b964226d-1548-ee11-be6f-6045bdd2c0c0}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="1" schemaName="bsr_mdtproject" displayName="MDT Project" solution="Active" />
-        <Dependent type="29" displayName="Set MDT Project field in Task table" id="{be2fb66d-f556-ee11-be6f-6045bdd2c0c0}" />
+        <Dependent type="29" displayName="Set BCA and MDT Project Lookups in MDT Task " id="{da51aeb9-426c-ee11-9ae7-6045bdd0e4cf}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_notices" displayName="Notices" solution="Active" />
@@ -594,7 +580,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_buidlingcontrolapplicationid" displayName="Building Control Application" parentSchemaName="bsr_mdtproject" parentDisplayName="MDT Project" solution="Active" />
-        <Dependent type="29" displayName="Set BCA in MDT Task record from MDT Project" id="{b964226d-1548-ee11-be6f-6045bdd2c0c0}" />
+        <Dependent type="29" displayName="Set BCA and MDT Project Lookups in MDT Task " id="{da51aeb9-426c-ee11-9ae7-6045bdd0e4cf}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_buildingclientname" displayName="Building Client Name" parentSchemaName="bsr_buildingcontrolapplication" parentDisplayName="Building Control Application" solution="Active" />
@@ -638,7 +624,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_buildingcontrolapplicationid" displayName="Building Control Application" parentSchemaName="bsr_inspection" parentDisplayName="MDT Inspection Schedule" solution="Active" />
-        <Dependent type="29" displayName="Set BCA in MDT Task from MDT Inspection Schedule" id="{da51aeb9-426c-ee11-9ae7-6045bdd0e4cf}" />
+        <Dependent type="29" displayName="Set BCA and MDT Project Lookups in MDT Task " id="{da51aeb9-426c-ee11-9ae7-6045bdd0e4cf}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_buildingcontrolapplicationid" displayName="Building Control Application" parentSchemaName="bsr_inspectiondocument" parentDisplayName="MDT Inspection Document" solution="Active" />
@@ -746,7 +732,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_inspectionid" displayName="Inspection" parentSchemaName="bsr_inspection" parentDisplayName="MDT Inspection Schedule" solution="Active" />
-        <Dependent type="29" displayName="Set BCA in MDT Task from MDT Inspection Schedule" id="{da51aeb9-426c-ee11-9ae7-6045bdd0e4cf}" />
+        <Dependent type="29" displayName="Set BCA and MDT Project Lookups in MDT Task " id="{da51aeb9-426c-ee11-9ae7-6045bdd0e4cf}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_inspectionid" displayName="MDT Inspection Schedule" parentSchemaName="bsr_inspectiondocument" parentDisplayName="MDT Inspection Document" solution="Active" />
@@ -813,16 +799,16 @@
         <Dependent type="29" displayName="Set the Task's Rate field on population of Task 'Assigned To'" id="{57863141-3543-ee11-bdf3-6045bdf1ea4d}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_mdtproject" displayName="MDT Project" parentSchemaName="bsr_inspection" parentDisplayName="MDT Inspection Schedule" solution="Active" />
+        <Dependent type="29" displayName="Set BCA and MDT Project Lookups in MDT Task " id="{da51aeb9-426c-ee11-9ae7-6045bdd0e4cf}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_mdtproject" displayName="MDT Project" parentSchemaName="task" parentDisplayName="Task" solution="Active" />
-        <Dependent type="29" displayName="Set BCA in MDT Task from MDT Inspection Schedule" id="{da51aeb9-426c-ee11-9ae7-6045bdd0e4cf}" />
+        <Dependent type="29" displayName="Set BCA and MDT Project Lookups in MDT Task " id="{da51aeb9-426c-ee11-9ae7-6045bdd0e4cf}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_mdtprojectbuildingcontrolapplicationid" displayName="MDT Project Building Control Application" parentSchemaName="task" parentDisplayName="Task" solution="Active" />
-        <Dependent type="29" displayName="Set BCA in MDT Task record from MDT Project" id="{b964226d-1548-ee11-be6f-6045bdd2c0c0}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_mdtprojectbuildingcontrolapplicationid" displayName="MDT Project Building Control Application" parentSchemaName="task" parentDisplayName="Task" solution="Active" />
-        <Dependent type="29" displayName="Set BCA in MDT Task from MDT Inspection Schedule" id="{da51aeb9-426c-ee11-9ae7-6045bdd0e4cf}" />
+        <Dependent type="29" displayName="Set BCA and MDT Project Lookups in MDT Task " id="{da51aeb9-426c-ee11-9ae7-6045bdd0e4cf}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_mdtprojectid" displayName="MDT Project" parentSchemaName="bsr_mdtproject" parentDisplayName="MDT Project" solution="Active" />
@@ -830,7 +816,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_mdtprojectid" displayName="MDT Project" parentSchemaName="bsr_mdtproject" parentDisplayName="MDT Project" solution="Active" />
-        <Dependent type="29" displayName="Set BCA in MDT Task record from MDT Project" id="{b964226d-1548-ee11-be6f-6045bdd2c0c0}" />
+        <Dependent type="29" displayName="Set BCA and MDT Project Lookups in MDT Task " id="{da51aeb9-426c-ee11-9ae7-6045bdd0e4cf}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_mdttask" displayName="MDT Task" parentSchemaName="task" parentDisplayName="Task" solution="Active" />
@@ -838,7 +824,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_mdttask" displayName="MDT Task" parentSchemaName="task" parentDisplayName="Task" solution="Active" />
-        <Dependent type="29" displayName="Set BCA in MDT Task record from MDT Project" id="{b964226d-1548-ee11-be6f-6045bdd2c0c0}" />
+        <Dependent type="29" displayName="[DEPRECATED] Set BCA in MDT Task record from MDT Project" id="{b964226d-1548-ee11-be6f-6045bdd2c0c0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_buildingcontrolapplication" parentDisplayName="Building Control Application" solution="Active" />
@@ -882,7 +868,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_name" displayName="Inspection Name" parentSchemaName="bsr_inspection" parentDisplayName="MDT Inspection Schedule" solution="Active" />
-        <Dependent type="29" displayName="Set BCA in MDT Task from MDT Inspection Schedule" id="{da51aeb9-426c-ee11-9ae7-6045bdd0e4cf}" />
+        <Dependent type="29" displayName="Set BCA and MDT Project Lookups in MDT Task " id="{da51aeb9-426c-ee11-9ae7-6045bdd0e4cf}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_inspectiondocument" parentDisplayName="MDT Inspection Document" solution="Active" />
@@ -894,7 +880,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_name" displayName="Project Name" parentSchemaName="bsr_mdtproject" parentDisplayName="MDT Project" solution="Active" />
-        <Dependent type="29" displayName="Set BCA in MDT Task record from MDT Project" id="{b964226d-1548-ee11-be6f-6045bdd2c0c0}" />
+        <Dependent type="29" displayName="Set BCA and MDT Project Lookups in MDT Task " id="{da51aeb9-426c-ee11-9ae7-6045bdd0e4cf}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_notices" parentDisplayName="Notices" solution="Active" />
@@ -951,6 +937,10 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_submissiondate" displayName="Submission Date" parentSchemaName="bsr_buildingcontrolapplication" parentDisplayName="Building Control Application" solution="Active" />
         <Dependent type="29" displayName="BCAA - When record submitted, update status on BCA &amp; Building Details, and send applicant email" id="{486ad290-6456-ee11-be6f-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_submittedondate" displayName="Submitted On" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.82.0)" />
+        <Dependent type="29" displayName="Send Email to Dutyholder over Change Control submission" id="{b05d33ff-bb7f-ee11-8179-6045bdd0e4cf}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_submittedondate" displayName="Submitted On" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.82.0)" />

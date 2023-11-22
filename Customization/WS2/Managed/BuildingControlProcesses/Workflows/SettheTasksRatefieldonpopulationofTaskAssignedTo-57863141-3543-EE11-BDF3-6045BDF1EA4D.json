@@ -97,7 +97,7 @@
                 },
                 "parameters": {
                   "entityName": "bsr_mdtmembers",
-                  "$filter": "_bsr_contact_value eq @{triggerOutputs()?['body/_bsr_mdtmemberid_value']} and _bsr_mdtproject_value eq @{triggerOutputs()?['body/_regardingobjectid_value']}",
+                  "$filter": "_bsr_contact_value eq @{triggerOutputs()?['body/_bsr_mdtmemberid_value']} and (_bsr_mdtproject_value eq @{triggerOutputs()?['body/_regardingobjectid_value']} or _bsr_mdtproject_value  eq @{triggerOutputs()?['body/_bsr_mdtproject_value']})",
                   "$top": 1
                 },
                 "authentication": "@parameters('$authentication')"
