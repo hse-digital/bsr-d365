@@ -293,6 +293,64 @@
                 },
                 "authentication": "@parameters('$authentication')"
               }
+            },
+            "Get_all_related_Building_Details_2": {
+              "runAfter": {
+                "Send_Completion_Certificate_application_email_to_Applicant": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "55d20e58-b9c4-4113-94f1-dec65cfdaae2"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "bsr_buildingdetailses",
+                  "$filter": "_bsr_bcapplicationid_value eq @{outputs('Update_BCAA_status_to_Submitted')?['body/bsr_buildingcontrolapplicationid']}"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Update_Status_of_Building_Details_to_Submitted": {
+              "foreach": "@outputs('Get_all_related_Building_Details_2')?['body/value']",
+              "actions": {
+                "Update_a_row": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "e3ff9659-4de1-4313-88f2-1872da221005"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "bsr_buildingdetailses",
+                      "recordId": "@items('Update_Status_of_Building_Details_to_Submitted')?['bsr_buildingdetailsid']",
+                      "item/bsr_buildingdetailsstatus": 760810001,
+                      "item/bsr_submissiondate": "@triggerOutputs()?['body/bsr_submissiondate']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "Get_all_related_Building_Details_2": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "935c380e-239d-4614-91af-9df9ca4d2f06"
+              },
+              "type": "Foreach"
             }
           },
           "runAfter": {
