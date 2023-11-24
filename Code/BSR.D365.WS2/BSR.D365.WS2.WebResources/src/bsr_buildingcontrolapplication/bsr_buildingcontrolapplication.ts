@@ -27,5 +27,26 @@ namespace BuildingControlApplication {
           Form.getControl("Subgrid_new_1").setVisible(false);
       }
     }
-  }
+    }
+    export function ShowHideTabsBasedOnCompletionCertificate(
+        executionContext: Xrm.ExecutionContext<any, any>
+    ) {
+        Form = <Form.bsr_buildingcontrolapplication.Main.Information>(
+            executionContext.getFormContext()
+        );
+
+        if (
+            Form.getAttribute('bsr_iscompletioncertificate').getValue() !== null && Form.getAttribute('bsr_iscompletioncertificate').getValue() == true  ) {
+            Form.ui.tabs.get('tab_staged_application').setVisible(false);
+            Form.ui.tabs.get('bcaa_changecontrol_tab').setVisible(false);
+            Form.ui.tabs.get('bcaa_completioncert_tab').setVisible(false);
+            Form.ui.tabs.get('bcaa_complcertstages_tab').setVisible(true);
+            Form.ui.tabs.get("tab_4").setVisible(false);
+
+        } else {
+            Form.ui.tabs.get('bcaa_complcertstages_tab').setVisible(false);
+
+        }
+    }
+
 }
