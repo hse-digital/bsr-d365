@@ -96,7 +96,7 @@
                               "item/bsr_reglead@odata.bind": "bsr_buildingdetailses(@{items('Apply_to_each_3')?['_ownerid_value']})",
                               "item/bsr_buildingname": "@items('Apply_to_each_3')?['bsr_name']",
                               "item/bsr_completioncertappid@odata.bind": "bsr_buildingcontrolapplications(@{triggerOutputs()?['body/bsr_buildingcontrolapplicationid']})",
-                              "item/bsr_mandatorytimelinefailuredate": "@variables('submissionDate')"
+                              "item/bsr_mandatorytimelinefailuredate": "@variables('completionCertFailureDate')"
                             },
                             "authentication": "@parameters('$authentication')"
                           }
@@ -288,9 +288,23 @@
             }
           },
           "runAfter": {
-            "submissionDate_plus_84_days_(setting_mandatory_timer)": [
+            "submissionDate_plus_56_days_(Completion_Cert_mandatory_timer)": [
               "Succeeded"
             ]
+          },
+          "else": {
+            "actions": {
+              "Terminate": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "b8d2b0f6-93b4-4cc5-acb4-f4357eea70ec"
+                },
+                "type": "Terminate",
+                "inputs": {
+                  "runStatus": "Cancelled"
+                }
+              }
+            }
           },
           "expression": {
             "equals": [
@@ -315,6 +329,26 @@
                 "name": "submissionDate",
                 "type": "string",
                 "value": "@{addDays(triggerOutputs()?['body/bsr_submissiondate'],84)}"
+              }
+            ]
+          }
+        },
+        "submissionDate_plus_56_days_(Completion_Cert_mandatory_timer)": {
+          "runAfter": {
+            "submissionDate_plus_84_days_(setting_mandatory_timer)": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "0e270f73-9b26-4893-8937-e59274b08a5d"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "completionCertFailureDate",
+                "type": "string",
+                "value": "@{addDays(triggerOutputs()?['body/bsr_submissiondate'],56)}"
               }
             ]
           }
