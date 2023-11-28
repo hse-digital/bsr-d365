@@ -28,6 +28,7 @@ var BuildingControlApplication;
             Form.ui.tabs.get('bcaa_changecontrol_tab').setVisible(false);
             Form.ui.tabs.get('bcaa_completioncert_tab').setVisible(false);
             Form.ui.tabs.get('bcaa_complcertstages_tab').setVisible(true);
+            Form.ui.tabs.get("tab_4").setVisible(false);
         }
         else {
             Form.ui.tabs.get('bcaa_complcertstages_tab').setVisible(false);

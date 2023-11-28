@@ -85,6 +85,14 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{540ee352-6806-199b-4e71-e5504bd127a1}" showlabel="true" locklevel="0" visible="false">
+                        <labels>
+                          <label description="Assessment of Requirements" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_assessmentofrequirements" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="bsr_assessmentofrequirements" disabled="false" uniqueid="{e739fadf-db10-4401-aea4-cd270e6f69e5}" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{784b9187-b542-5ce2-6046-741a7eda0d56}" showlabel="true" locklevel="1" colspan="1" rowspan="1">
                         <labels>
                           <label description="Supporting BCL" languagecode="1033" />
@@ -512,14 +520,6 @@
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{540ee352-6806-199b-4e71-e5504bd127a1}" showlabel="true" locklevel="0" visible="false">
-                        <labels>
-                          <label description="Assessment of Requirements" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_assessmentofrequirements" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="bsr_assessmentofrequirements" disabled="false" uniqueid="{e739fadf-db10-4401-aea4-cd270e6f69e5}" />
-                      </cell>
-                    </row>
-                    <row>
                       <cell id="{e040550d-ea50-0694-3cc7-be705acb44d9}" showlabel="true" locklevel="0" visible="false">
                         <labels>
                           <label description="Assessment of Requirements Outcome" languagecode="1033" />
@@ -557,6 +557,14 @@
                           <label description="Outcome Decision Issued Date" languagecode="1033" />
                         </labels>
                         <control id="bsr_outcomedecisionissueddate" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="bsr_outcomedecisionissueddate" disabled="false" uniqueid="{7c70153c-b2d8-084a-a89e-2a3336382176}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b694712c-61a4-dc92-c73a-7aa2a7aa90a6}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Requirement Submission Date" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_requirementsubmissiondate" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="bsr_requirementsubmissiondate" disabled="false" />
                       </cell>
                     </row>
                   </rows>
@@ -995,7 +1003,7 @@
                         </labels>
                         <control id="bsr_buildenddate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_buildenddate" disabled="false" />
                       </cell>
-                      <cell locklevel="0" id="{1bafe5bc-e50f-4c32-a9ba-e0d27ea9a6ef}">
+                      <cell locklevel="0" id="{1bafe5bc-e50f-4c32-a9ba-e0d27ea9a6ef}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -1130,49 +1138,6 @@
                     <row />
                     <row />
                     <row />
-                  </rows>
-                </section>
-              </sections>
-            </column>
-          </columns>
-        </tab>
-        <tab name="completion" id="516596e4-afe9-4971-aa89-359e5fec3f58" IsUserDefined="0" locklevel="0" showlabel="true" expanded="true">
-          <labels>
-            <label description="Completion" languagecode="1033" />
-          </labels>
-          <columns>
-            <column width="50%">
-              <sections>
-                <section name="tab_4_section_1" id="99a0e2ef-26fc-4f9c-a312-8e55f1e665ad" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
-                  <labels>
-                    <label description="New Section" languagecode="1033" />
-                  </labels>
-                  <rows>
-                    <row>
-                      <cell showlabel="false" locklevel="0" id="{7f412f43-ff51-4b88-a009-fd9c0b3ad429}">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
-                  </rows>
-                </section>
-              </sections>
-            </column>
-            <column width="50%">
-              <sections>
-                <section name="tab_4_section_2" id="12a3dfb4-176d-4261-bbf6-f1d7280a310d" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
-                  <labels>
-                    <label description="New Section" languagecode="1033" />
-                  </labels>
-                  <rows>
-                    <row>
-                      <cell showlabel="false" locklevel="0" id="{5852970c-11cd-4ef9-a812-83f0da143a9a}">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
                   </rows>
                 </section>
               </sections>
@@ -1525,18 +1490,12 @@
       <events>
         <event name="onload" application="false" active="false">
           <Handlers>
-            <Handler functionName="BuildingControlLifecycle.showHideCompletionTab" libraryName="bsr_/buildingcontrol/tables/bsr_buildingcontrollifecycle/script/bsr_buildingcontrollifecycle.js" handlerUniqueId="{4d562a46-9203-6740-e13c-a1d19a69b922}" enabled="true" parameters="" passExecutionContext="true" />
             <Handler functionName="BuildingControlLifecycle.showHideRegulatoryDecisionSectionsOnLoad" libraryName="bsr_/buildingcontrol/tables/bsr_buildingcontrollifecycle/script/bsr_buildingcontrollifecycle.js" handlerUniqueId="{2421cc8b-139b-4fe5-898e-9706b8be8dd5}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="bsr_changecontrol">
           <Handlers>
             <Handler functionName="BuildingControlLifecycle.showHideCompletionTab" libraryName="bsr_/buildingcontrol/tables/bsr_buildingcontrollifecycle/script/bsr_buildingcontrollifecycle.js" handlerUniqueId="{ad7ca58c-5a3b-871c-48a4-023d56a63e4b}" enabled="true" parameters="" passExecutionContext="true" />
-          </Handlers>
-        </event>
-        <event name="onsave" application="false" active="false">
-          <Handlers>
-            <Handler functionName="BuildingControlLifecycle.showHideCompletionTab" libraryName="bsr_/buildingcontrol/tables/bsr_buildingcontrollifecycle/script/bsr_buildingcontrollifecycle.js" handlerUniqueId="{5bc12a6d-eb17-3ca3-ba6d-7de5ce5e088c}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="bsr_bcaaapproval">

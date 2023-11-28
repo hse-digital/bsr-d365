@@ -20,6 +20,8 @@
           <Variable x:TypeArguments="x:Boolean" Default="False" Name="ConditionBranchStep2_condition" />
           <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep2_1" />
           <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep2_2" />
+          <Variable x:TypeArguments="x:Boolean" Default="False" Name="True" />
+          <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep3_1" />
         </sco:Collection>
         <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
           <mxswa:GetEntityProperty Attribute="bsr_assessmentofrequirements" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingcontrollifecycle" Value="[ConditionBranchStep2_1]">
@@ -76,11 +78,93 @@
                     <Sequence DisplayName="SetVisibilityStep6: Hide BCAA Approval with Requirements">
                       <mcwc:SetVisibility ControlId="bsr_bcaaapprovalrequirements" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingcontrollifecycle" IsVisible="False" />
                     </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep7: Show Requirement Submission Date">
+                      <mcwc:SetVisibility ControlId="bsr_requirementsubmissiondate" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingcontrollifecycle" IsVisible="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep8: Show Assessment of Requirements">
+                      <mcwc:SetVisibility ControlId="bsr_assessmentofrequirements" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingcontrollifecycle" IsVisible="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep11: Hide Time Requirement">
+                      <mcwc:SetVisibility ControlId="bsr_timerequirement" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingcontrollifecycle" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep12: Hide Reason required">
+                      <mcwc:SetVisibility ControlId="bsr_reasonrequired" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingcontrollifecycle" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep13: Hide Dutyholder agreement">
+                      <mcwc:SetVisibility ControlId="bsr_dutyholderagreement" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingcontrollifecycle" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep14: Hide Dutyholder agreement Email">
+                      <mcwc:SetVisibility ControlId="bsr_dutyholderagreementemail" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingcontrollifecycle" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep15: Hide Agreed extension period">
+                      <mcwc:SetVisibility ControlId="bsr_agreedextensionperiod" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingcontrollifecycle" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep16: Hide Email">
+                      <mcwc:SetVisibility ControlId="bsr_timeextensionemail" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingcontrollifecycle" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetAttributeValueStep17: Set Lifecycle Phase to 'Assessment'">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep17_1" />
+                      </Sequence.Variables>
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;bsr_buildingcontrollifecycle&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateExpression, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateExpression">
+                        <mxswa:ActivityReference.Arguments>
+                          <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">CreateCrmType</InArgument>
+                          <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { Microsoft.Xrm.Sdk.Workflow.WorkflowPropertyType.OptionSetValue, "760810000", "Picklist" }]</InArgument>
+                          <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:OptionSetValue" />
+                          </InArgument>
+                          <OutArgument x:TypeArguments="x:Object" x:Key="Result">[SetAttributeValueStep17_1]</OutArgument>
+                        </mxswa:ActivityReference.Arguments>
+                      </mxswa:ActivityReference>
+                      <mxswa:SetEntityProperty Attribute="bsr_lifecyclephase" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="bsr_buildingcontrollifecycle" Value="[SetAttributeValueStep17_1]">
+                        <mxswa:SetEntityProperty.TargetType>
+                          <InArgument x:TypeArguments="s:Type">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:OptionSetValue" />
+                          </InArgument>
+                        </mxswa:SetEntityProperty.TargetType>
+                      </mxswa:SetEntityProperty>
+                      <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep17" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="bsr_buildingcontrollifecycle" />
+                      <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
+                    </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
               </mxswa:ActivityReference>
               <x:Null x:Key="Else" />
               <x:String x:Key="Description">if Assessment of Requirements = Yes</x:String>
+            </mxswa:ActivityReference.Properties>
+          </mxswa:ActivityReference>
+          <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateExpression, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateExpression">
+            <mxswa:ActivityReference.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">CreateCrmType</InArgument>
+              <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { Microsoft.Xrm.Sdk.Workflow.WorkflowPropertyType.Boolean, "True" }]</InArgument>
+              <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
+                <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:Boolean" />
+              </InArgument>
+              <OutArgument x:TypeArguments="x:Object" x:Key="Result">[ConditionBranchStep3_1]</OutArgument>
+            </mxswa:ActivityReference.Arguments>
+          </mxswa:ActivityReference>
+          <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.ConditionBranch, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="ConditionBranchStep3">
+            <mxswa:ActivityReference.Arguments>
+              <InArgument x:TypeArguments="x:Boolean" x:Key="Condition">[True]</InArgument>
+            </mxswa:ActivityReference.Arguments>
+            <mxswa:ActivityReference.Properties>
+              <mxswa:ActivityReference x:Key="Then" AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.Composite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="ConditionBranchStep3">
+                <mxswa:ActivityReference.Properties>
+                  <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
+                  <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
+                    <Sequence DisplayName="SetVisibilityStep9: Hide Requirement Submission Date">
+                      <mcwc:SetVisibility ControlId="bsr_requirementsubmissiondate" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingcontrollifecycle" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep10: Hide Assessment of Requirements">
+                      <mcwc:SetVisibility ControlId="bsr_assessmentofrequirements" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_buildingcontrollifecycle" IsVisible="False" />
+                    </Sequence>
+                  </sco:Collection>
+                </mxswa:ActivityReference.Properties>
+              </mxswa:ActivityReference>
+              <x:Null x:Key="Else" />
+              <x:String x:Key="Description"></x:String>
             </mxswa:ActivityReference.Properties>
           </mxswa:ActivityReference>
         </sco:Collection>

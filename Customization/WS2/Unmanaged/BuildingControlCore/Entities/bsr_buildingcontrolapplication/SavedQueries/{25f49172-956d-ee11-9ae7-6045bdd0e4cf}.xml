@@ -25,7 +25,7 @@
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
         <entity name="bsr_buildingcontrolapplication">
           <attribute name="bsr_name" />
           <attribute name="bsr_buildingcontrolapplicationid" />
@@ -39,6 +39,9 @@
           <attribute name="bsr_applicationname" />
           <attribute name="bsr_submissiondate" />
           <order attribute="bsr_stagenumber" descending="false" />
+          <filter type="and">
+            <condition attribute="bsr_issubsequentstagedapp" operator="eq" value="1" />
+          </filter>
         </entity>
       </fetch>
     </fetchxml>

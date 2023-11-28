@@ -2,20 +2,6 @@
 var BuildingControlLifecycle;
 (function (BuildingControlLifecycle) {
     var Form;
-    function showHideCompletionTab(executionContext) {
-        var Form = (executionContext.getFormContext());
-        var changeControl = Form.getAttribute("bsr_changecontrol");
-        if (changeControl !== null) {
-            var changeControlValue = changeControl.getValue();
-            if (changeControlValue === true) {
-                Form.ui.tabs.get("completion").setVisible(false);
-            }
-            else if (changeControlValue === false) {
-                Form.ui.tabs.get("completion").setVisible(true);
-            }
-        }
-    }
-    BuildingControlLifecycle.showHideCompletionTab = showHideCompletionTab;
     function regulatoryDecision(executionContext) {
         var Form = (executionContext.getFormContext());
         var bccaApproval = Form.getAttribute("bsr_bcaaapproval");
