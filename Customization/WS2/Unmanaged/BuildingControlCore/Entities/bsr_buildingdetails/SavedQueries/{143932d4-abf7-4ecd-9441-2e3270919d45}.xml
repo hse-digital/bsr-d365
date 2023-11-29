@@ -11,7 +11,9 @@
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_buildingdetailsid">
           <cell name="bsr_name" width="300" />
-          <cell name="createdon" width="125" />
+          <cell name="bsr_buildingdetailsreference" width="193" />
+          <cell name="bsr_bcapplicationid" width="205" />
+          <cell name="bsr_address1_postalcode" width="172" />
         </row>
       </grid>
     </layoutxml>
@@ -21,14 +23,20 @@
         <entity name="bsr_buildingdetails">
           <attribute name="bsr_buildingdetailsid" />
           <attribute name="bsr_name" />
-          <attribute name="createdon" />
           <order attribute="bsr_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
           <filter type="or" isquickfindfields="1">
             <condition attribute="bsr_name" operator="like" value="{0}" />
+            <condition attribute="bsr_buildingdetailsreference" operator="like" value="{0}" />
+            <condition attribute="bsr_bcapplicationid" operator="like" value="{0}" />
+            <condition attribute="bsr_address1_postalcode" operator="like" value="{0}" />
+            <condition attribute="createdon" operator="on" value="{3}" />
           </filter>
+          <attribute name="bsr_buildingdetailsreference" />
+          <attribute name="bsr_bcapplicationid" />
+          <attribute name="bsr_address1_postalcode" />
         </entity>
       </fetch>
     </fetchxml>

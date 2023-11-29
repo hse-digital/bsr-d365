@@ -11,7 +11,11 @@
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_buildingcontrolapplicationid">
           <cell name="bsr_name" width="300" />
-          <cell name="createdon" width="125" />
+          <cell name="bsr_bcaareferencenumber" width="179" />
+          <cell name="bsr_applicantid" width="133" />
+          <cell name="bsr_clientnamedcontact" width="166" />
+          <cell name="bsr_principaldesignernamedcontact" width="236" />
+          <cell name="bsr_principalcontractnamedcontact" width="245" />
         </row>
       </grid>
     </layoutxml>
@@ -21,7 +25,6 @@
         <entity name="bsr_buildingcontrolapplication">
           <attribute name="bsr_buildingcontrolapplicationid" />
           <attribute name="bsr_name" />
-          <attribute name="createdon" />
           <order attribute="bsr_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
@@ -29,7 +32,17 @@
           <filter type="or" isquickfindfields="1">
             <condition attribute="bsr_name" operator="like" value="{0}" />
             <condition attribute="bsr_bcaareferencenumber" operator="like" value="{0}" />
+            <condition attribute="bsr_applicantid" operator="like" value="{0}" />
+            <condition attribute="bsr_clientnamedcontact" operator="like" value="{0}" />
+            <condition attribute="bsr_principaldesignernamedcontact" operator="like" value="{0}" />
+            <condition attribute="bsr_principalcontractnamedcontact" operator="like" value="{0}" />
+            <condition attribute="createdon" operator="on" value="{3}" />
           </filter>
+          <attribute name="bsr_bcaareferencenumber" />
+          <attribute name="bsr_applicantid" />
+          <attribute name="bsr_clientnamedcontact" />
+          <attribute name="bsr_principaldesignernamedcontact" />
+          <attribute name="bsr_principalcontractnamedcontact" />
         </entity>
       </fetch>
     </fetchxml>
