@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Control Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.46.0</Version>
+    <Version>1.0.47.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -96,6 +96,7 @@
       <RootComponent type="29" id="{2f3184e0-b83a-ee11-bdf4-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="29" id="{32ba05d6-bb45-ee11-be6e-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{379640c4-aa58-ee11-be6f-6045bdd0e4cf}" behavior="0" />
+      <RootComponent type="29" id="{3a685418-a88e-ee11-be36-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="29" id="{3afbc31a-c036-ee11-bdf4-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="29" id="{3c1b9718-8979-ee11-8179-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{486ad290-6456-ee11-be6f-6045bdd2c0c0}" behavior="0" />
@@ -188,6 +189,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingcontrolapplication" displayName="Building Control Application" solution="Active" />
         <Dependent type="29" displayName="BCAA - When Change of Principal Contractor Date modified then reset yes/no fields " id="{32ba05d6-bb45-ee11-be6e-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingcontrolapplication" displayName="Building Control Application" solution="Active" />
+        <Dependent type="29" displayName="Map Case Officer and Reg Lead from BCA to Building Details" id="{3a685418-a88e-ee11-be36-6045bdd0e4cf}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingcontrolapplication" displayName="Building Control Application" solution="Active" />
@@ -356,6 +361,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingdetails" displayName="Building Details" solution="Active" />
         <Dependent type="29" displayName="Set Building Control Life cycle On Update of Building Details" id="{2f3184e0-b83a-ee11-bdf4-6045bdd0e4cf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingdetails" displayName="Building Details" solution="Active" />
+        <Dependent type="29" displayName="Map Case Officer and Reg Lead from BCA to Building Details" id="{3a685418-a88e-ee11-be36-6045bdd0e4cf}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingdetails" displayName="Building Details" solution="Active" />
@@ -644,6 +653,10 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_buildingprincipaldesigner" displayName="Building Principal Designer" parentSchemaName="bsr_buildingcontrolapplication" parentDisplayName="Building Control Application" solution="Active" />
         <Dependent type="29" displayName="Set Validated to No when Principal Designer changed" id="{d1ae7983-8879-ee11-8179-6045bdd0e4cf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_caseofficer" displayName="Case Officer" parentSchemaName="bsr_buildingcontrolapplication" parentDisplayName="Building Control Application" solution="Active" />
+        <Dependent type="29" displayName="Map Case Officer and Reg Lead from BCA to Building Details" id="{3a685418-a88e-ee11-be36-6045bdd0e4cf}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_changeapplicantorganisation" displayName="Change of Applicant Organisation" parentSchemaName="bsr_buildingcontrolapplication" parentDisplayName="Building Control Application" solution="Active" />
@@ -964,6 +977,10 @@
       <MissingDependency>
         <Required type="2" schemaName="createdon" displayName="Created On" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.82.0)" />
         <Dependent type="29" displayName="Send Email to Dutyholder over Change Control submission" id="{b05d33ff-bb7f-ee11-8179-6045bdd0e4cf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ownerid" displayName="Regulatory Lead" parentSchemaName="bsr_buildingcontrolapplication" parentDisplayName="Building Control Application" solution="Active" />
+        <Dependent type="29" displayName="Map Case Officer and Reg Lead from BCA to Building Details" id="{3a685418-a88e-ee11-be36-6045bdd0e4cf}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="ownerid" displayName="Regulatory Lead" parentSchemaName="bsr_buildingdetails" parentDisplayName="Building Details" solution="Active" />
