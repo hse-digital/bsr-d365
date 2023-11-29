@@ -280,6 +280,26 @@
       </EntityRelationshipRole>
     </EntityRelationshipRoles>
   </EntityRelationship>
+  <EntityRelationship Name="incident_bsr_bsrdocuments">
+    <EntityRelationshipType>OneToMany</EntityRelationshipType>
+    <IsCustomizable>1</IsCustomizable>
+    <IntroducedVersion>1.17.41.3</IntroducedVersion>
+    <IsHierarchical>0</IsHierarchical>
+    <ReferencingEntityName>bsr_bsrdocument</ReferencingEntityName>
+    <ReferencedEntityName>Incident</ReferencedEntityName>
+    <CascadeAssign>Cascade</CascadeAssign>
+    <CascadeDelete>Cascade</CascadeDelete>
+    <CascadeArchive>NoCascade</CascadeArchive>
+    <CascadeReparent>Cascade</CascadeReparent>
+    <CascadeShare>Cascade</CascadeShare>
+    <CascadeUnshare>Cascade</CascadeUnshare>
+    <ReferencingAttributeName>RegardingObjectId</ReferencingAttributeName>
+    <RelationshipDescription>
+      <Descriptions>
+        <Description description="Unique identifier of the object with which the document is associated." languagecode="1033" />
+      </Descriptions>
+    </RelationshipDescription>
+  </EntityRelationship>
   <EntityRelationship Name="Incident_IncidentResolutions">
     <EntityRelationshipType>OneToMany</EntityRelationshipType>
     <IntroducedVersion>5.0.0.0</IntroducedVersion>
@@ -299,26 +319,5 @@
         <Description description="Unique identifier of the case." languagecode="1033" />
       </Descriptions>
     </RelationshipDescription>
-  </EntityRelationship>
-  <EntityRelationship Name="msdyn_incident_msdyn_customerasset">
-    <EntityRelationshipType>ManyToMany</EntityRelationshipType>
-    <IntroducedVersion>1.0</IntroducedVersion>
-    <IsHierarchical>0</IsHierarchical>
-    <FirstEntityName>Incident</FirstEntityName>
-    <SecondEntityName>msdyn_customerasset</SecondEntityName>
-    <IntersectEntityName>msdyn_incident_msdyn_customerasset</IntersectEntityName>
-    <IsValidForAdvancedFind>1</IsValidForAdvancedFind>
-    <EntityRelationshipRoles>
-      <EntityRelationshipRole>
-        <NavPaneDisplayOption>DoNotDisplay</NavPaneDisplayOption>
-        <NavigationPropertyName>msdyn_incident_msdyn_customerasset</NavigationPropertyName>
-        <AssociationRoleOrdinal>1</AssociationRoleOrdinal>
-      </EntityRelationshipRole>
-      <EntityRelationshipRole>
-        <NavPaneDisplayOption>DoNotDisplay</NavPaneDisplayOption>
-        <NavigationPropertyName>msdyn_incident_msdyn_customerasset</NavigationPropertyName>
-        <AssociationRoleOrdinal>2</AssociationRoleOrdinal>
-      </EntityRelationshipRole>
-    </EntityRelationshipRoles>
   </EntityRelationship>
 </EntityRelationships>
