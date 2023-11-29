@@ -3069,6 +3069,81 @@
             <Description description="The default image for the entity." languagecode="1033" />
           </Descriptions>
         </attribute>
+        <attribute PhysicalName="IncidentStageCode">
+          <Type>picklist</Type>
+          <Name>incidentstagecode</Name>
+          <LogicalName>incidentstagecode</LogicalName>
+          <RequiredLevel>none</RequiredLevel>
+          <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+          <ImeMode>auto</ImeMode>
+          <ValidForUpdateApi>1</ValidForUpdateApi>
+          <ValidForReadApi>1</ValidForReadApi>
+          <ValidForCreateApi>1</ValidForCreateApi>
+          <IsCustomField>0</IsCustomField>
+          <IsAuditEnabled>1</IsAuditEnabled>
+          <IsSecured>0</IsSecured>
+          <IntroducedVersion>5.0.0.0</IntroducedVersion>
+          <SourceType>0</SourceType>
+          <IsGlobalFilterEnabled>1</IsGlobalFilterEnabled>
+          <IsSortableEnabled>1</IsSortableEnabled>
+          <IsDataSourceSecret>0</IsDataSourceSecret>
+          <AutoNumberFormat></AutoNumberFormat>
+          <IsSearchable>0</IsSearchable>
+          <IsFilterable>0</IsFilterable>
+          <IsRetrievable>0</IsRetrievable>
+          <IsLocalizable>0</IsLocalizable>
+          <AppDefaultValue>1</AppDefaultValue>
+          <optionset Name="incident_incidentstagecode">
+            <OptionSetType>picklist</OptionSetType>
+            <IntroducedVersion>5.0.0.0</IntroducedVersion>
+            <displaynames>
+              <displayname description="Case Stage" languagecode="1033" />
+            </displaynames>
+            <Descriptions>
+              <Description description="Stage of the resolution process for the case." languagecode="1033" />
+            </Descriptions>
+            <options>
+              <option value="1" ExternalValue="" Color="">
+                <labels>
+                  <label description="New" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="760810001" ExternalValue="" Color="">
+                <labels>
+                  <label description="Triage" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="760810002" ExternalValue="" Color="">
+                <labels>
+                  <label description="Follow Up" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="" languagecode="1033" />
+                </Descriptions>
+              </option>
+              <option value="760810003" ExternalValue="" Color="">
+                <labels>
+                  <label description="Resolution" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="" languagecode="1033" />
+                </Descriptions>
+              </option>
+            </options>
+          </optionset>
+          <displaynames>
+            <displayname description="Case Stage" languagecode="1033" />
+          </displaynames>
+          <Descriptions>
+            <Description description="Select the current stage of the service process for the case to assist service team members when they review or transfer a case." languagecode="1033" />
+          </Descriptions>
+        </attribute>
         <attribute PhysicalName="PriorityCode">
           <Type>picklist</Type>
           <Name>prioritycode</Name>
@@ -3182,6 +3257,106 @@
           </displaynames>
           <Descriptions>
             <Description description="Shows whether the case is active, resolved, or canceled. Resolved and canceled cases are read-only and can't be edited unless they are reactivated." languagecode="1033" />
+          </Descriptions>
+        </attribute>
+        <attribute PhysicalName="StatusCode">
+          <Type>status</Type>
+          <Name>statuscode</Name>
+          <LogicalName>statuscode</LogicalName>
+          <RequiredLevel>none</RequiredLevel>
+          <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+          <ImeMode>auto</ImeMode>
+          <ValidForUpdateApi>1</ValidForUpdateApi>
+          <ValidForReadApi>1</ValidForReadApi>
+          <ValidForCreateApi>1</ValidForCreateApi>
+          <IsCustomField>0</IsCustomField>
+          <IsAuditEnabled>1</IsAuditEnabled>
+          <IsSecured>0</IsSecured>
+          <IntroducedVersion>5.0.0.0</IntroducedVersion>
+          <SourceType>0</SourceType>
+          <IsGlobalFilterEnabled>1</IsGlobalFilterEnabled>
+          <IsSortableEnabled>1</IsSortableEnabled>
+          <IsDataSourceSecret>0</IsDataSourceSecret>
+          <AutoNumberFormat></AutoNumberFormat>
+          <IsSearchable>0</IsSearchable>
+          <IsFilterable>0</IsFilterable>
+          <IsRetrievable>0</IsRetrievable>
+          <IsLocalizable>0</IsLocalizable>
+          <optionset Name="incident_statuscode">
+            <OptionSetType>status</OptionSetType>
+            <IntroducedVersion>5.0.0.0</IntroducedVersion>
+            <displaynames>
+              <displayname description="Status Reason" languagecode="1033" />
+            </displaynames>
+            <Descriptions>
+              <Description description="Reason for the status of the case." languagecode="1033" />
+            </Descriptions>
+            <statuses>
+              <status value="760810001" state="1" TransitionData="" Color="#0000ff">
+                <labels>
+                  <label description="Investigation in progress" languagecode="1033" />
+                </labels>
+              </status>
+              <status value="1" state="0" TransitionData="" Color="#E7EFFF">
+                <labels>
+                  <label description="New" languagecode="1033" />
+                </labels>
+              </status>
+              <status value="2" state="0" TransitionData="" Color="#EEDBEB">
+                <labels>
+                  <label description="Allocated" languagecode="1033" />
+                </labels>
+              </status>
+              <status value="3" state="0" TransitionData="" Color="#F9DCD1">
+                <labels>
+                  <label description="In progress" languagecode="1033" />
+                </labels>
+              </status>
+              <status value="4" state="0" TransitionData="" Color="#FBEEB5">
+                <labels>
+                  <label description="Pending response from customer" languagecode="1033" />
+                </labels>
+              </status>
+              <status value="760810000" state="0" TransitionData="" Color="#0000ff">
+                <labels>
+                  <label description="Pending response from BSR" languagecode="1033" />
+                </labels>
+              </status>
+              <status value="5" state="1" TransitionData="" Color="#CAEAD8">
+                <labels>
+                  <label description="Resolved" languagecode="1033" />
+                </labels>
+              </status>
+              <status value="1000" state="1" TransitionData="" Color="#CFE4FA">
+                <labels>
+                  <label description="Closed" languagecode="1033" />
+                </labels>
+                <Descriptions>
+                  <Description description="" languagecode="1033" />
+                </Descriptions>
+              </status>
+              <status value="6" state="2" TransitionData="" Color="#EDEBE9">
+                <labels>
+                  <label description="Withdrawn" languagecode="1033" />
+                </labels>
+              </status>
+              <status value="2000" state="2" TransitionData="" Color="#806c00">
+                <labels>
+                  <label description="Merged" languagecode="1033" />
+                </labels>
+              </status>
+              <status value="760810002" state="2" TransitionData="" Color="#0000ff">
+                <labels>
+                  <label description="Unable to resolve" languagecode="1033" />
+                </labels>
+              </status>
+            </statuses>
+          </optionset>
+          <displaynames>
+            <displayname description="Status Reason" languagecode="1033" />
+          </displaynames>
+          <Descriptions>
+            <Description description="Select the case's status." languagecode="1033" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="TicketNumber">
