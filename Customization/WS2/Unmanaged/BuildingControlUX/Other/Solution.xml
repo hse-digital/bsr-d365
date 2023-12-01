@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Control UX" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.26.0</Version>
+    <Version>1.0.27.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -80,8 +80,6 @@
       </Addresses>
     </Publisher>
     <RootComponents>
-      <RootComponent type="1" schemaName="contact" behavior="2" />
-      <RootComponent type="300" schemaName="bsr_bsrdefaultcommandlibrary_a4cc5" behavior="0" />
       <RootComponent type="62" schemaName="bsr_BSR" behavior="0" />
       <RootComponent type="80" schemaName="bsr_BSR" behavior="0" />
     </RootComponents>
@@ -193,10 +191,6 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_building" displayName="Building" solution="BuildingRegCore (1.17.82.0)" />
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="BuildingRegCore (1.17.82.0)" />
-        <Dependent type="300" schemaName="bsr_bsrdefaultcommandlibrary_a4cc5" displayName="BSR_DefaultCommandLibrary" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="BuildingRegCore (1.17.82.0)" />
@@ -353,10 +347,6 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_firesmokeprovision" displayName="Fire Smoke Provision" solution="BuildingRegCore (1.17.82.0)" />
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="1" schemaName="bsr_informationtracker" displayName="Information Request" solution="Active" />
-        <Dependent type="300" schemaName="bsr_bsrdefaultcommandlibrary_a4cc5" displayName="BSR_DefaultCommandLibrary" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_informationtracker" displayName="Information Request" solution="Active" />
@@ -830,6 +820,10 @@
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="All Completion Certification Applications" displayName="All Completion Certification Applications" parentSchemaName="bsr_buildingcontrolapplication" parentDisplayName="Building Control Application" solution="Active" id="{2655068b-da83-ee11-8179-6045bdf1e965}" />
+        <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="All Contacts" displayName="All Contacts" parentSchemaName="contact" parentDisplayName="Contact" solution="msdynce_AppCommon (9.0.4.0066)" id="{0d5d377b-5e7c-47b5-bab1-a5cb8b4ac105}">
           <package>msdynce_AppCommonAnchor (9.0.23103.10001)</package>
         </Required>
@@ -887,10 +881,6 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Building Details Advanced Find View" displayName="Building Details Advanced Find View" parentSchemaName="bsr_buildingdetails" parentDisplayName="Building Details" solution="Active" id="{f1d497fc-90f0-4908-b8c9-5a465d1076bf}" />
-        <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="26" schemaName="Building Details Associated View" displayName="Building Details Associated View" parentSchemaName="bsr_buildingdetails" parentDisplayName="Building Details" solution="Active" id="{d8142dcf-bbdd-46c6-87a0-edcc4bc22dc5}" />
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
@@ -978,14 +968,6 @@
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="26" schemaName="Quick Find Active Building Control Applications" displayName="Quick Find Active Building Control Applications" parentSchemaName="bsr_buildingcontrolapplication" parentDisplayName="Building Control Application" solution="Active" id="{09307147-a7f3-47d6-b812-9fb322bb4e20}" />
-        <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="26" schemaName="Quick Find Active Building Details" displayName="Quick Find Active Building Details" parentSchemaName="bsr_buildingdetails" parentDisplayName="Building Details" solution="Active" id="{143932d4-abf7-4ecd-9441-2e3270919d45}" />
-        <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="26" schemaName="Registered building applications" displayName="Registered building applications" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="BuildingRegCore (1.17.82.0)" id="{69d1efa0-79b3-ed11-b596-0022481b5e4f}" />
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
       </MissingDependency>
@@ -1000,10 +982,6 @@
       <MissingDependency>
         <Required type="26" schemaName="Withdrawn building applications" displayName="Withdrawn building applications" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="BuildingRegCore (1.17.82.0)" id="{ef1e4cb8-83b7-ed11-b597-0022481b568f}" />
         <Dependent type="80" schemaName="bsr_BSR" displayName="BSR" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="300" schemaName="bsr_bsrdefaultcommandlibrary_a4cc5" displayName="BSR_DefaultCommandLibrary" solution="BuildingRegUX (1.11.20.0)" />
-        <Dependent type="300" schemaName="bsr_bsrdefaultcommandlibrary_a4cc5" displayName="BSR_DefaultCommandLibrary" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="Case Officer Dashboard" solution="Active" id="{2f8b6927-f040-ee11-bdf3-6045bdd2c0c0}" />
