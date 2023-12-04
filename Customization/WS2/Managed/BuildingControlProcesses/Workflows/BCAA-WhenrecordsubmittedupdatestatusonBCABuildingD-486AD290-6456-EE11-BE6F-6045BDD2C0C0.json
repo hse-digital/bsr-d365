@@ -247,7 +247,7 @@
                 "operationMetadataId": "851f8b5f-0d33-40df-a348-66132ed6c118"
               },
               "type": "Compose",
-              "inputs": "@replace(outputs('GetApplicantEmailTemplate')?['body/subjectsafehtml'], '%%bsr_bcaareferencenumber%%',triggerOutputs()?['body/bsr_bcaareferencenumber'])"
+              "inputs": "@replace(outputs('GetApplicantEmailTemplate')?['body/subjectsafehtml'], '%%bsr_bcaareferencenumber%%',outputs('GetParentBCAA')?['body/bsr_bcaareferencenumber'])"
             },
             "ApplicantEmailBody": {
               "runAfter": {
@@ -259,7 +259,7 @@
                 "operationMetadataId": "5908739c-54e4-424a-8a42-f2efd1906c6d"
               },
               "type": "Compose",
-              "inputs": "@replace(replace(replace(outputs('GetApplicantEmailTemplate')?['body/safehtml'],'%%bsr_applicantid%%',outputs('GetParentBCAA')?['body/_bsr_applicantid_value@OData.Community.Display.V1.FormattedValue']),'%%bsr_name%%',outputs('GetParentBCAA')?['body/bsr_name']),'%%bsr_bcaareferencenumber%%',triggeroutputs()?['body/bsr_bcaareferencenumber'])"
+              "inputs": "@replace(replace(replace(outputs('GetApplicantEmailTemplate')?['body/safehtml'],'%%bsr_applicantid%%',outputs('GetParentBCAA')?['body/_bsr_applicantid_value@OData.Community.Display.V1.FormattedValue']),'%%bsr_name%%',outputs('GetParentBCAA')?['body/bsr_name']),'%%bsr_bcaareferencenumber%%',outputs('GetParentBCAA')?['body/bsr_bcaareferencenumber'])"
             },
             "SendApplicantEmail": {
               "runAfter": {
