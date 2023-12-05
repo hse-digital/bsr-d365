@@ -2,10 +2,10 @@
 <div>&nbsp;</div>
 <div><div><span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">Dear %outgoingPAPName%</span></span></span></div>
 <div><br><span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">We’ve been told that you will no longer be the principal accountable person for %buildingName%.</span></span></span></div>
-<div><br><span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">We’ve also written to %newPAPName% to tell them about this change.</span></span></span></div>
+<div><br><span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">We’ve also written to %newPAPname% to tell them about this change.</span></span></span></div>
 <h2 style="margin-bottom:16px; margin-top:24px"><span style="font-size:16pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">What happens next</span></span></span></h2>
-<div><span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">We’ll review the changes requested. We’ll let you know when we have removed your details from the register of higher-risk buildings.</span></span></span></div>
-<div><br><span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">If you’re still the principal accountable person for this building, contact us at <a href="https://www.hse.gov.uk/contact/tell-us-about-a-health-and-safety-issue.htm" style="color:#0563c1; text-decoration:underline">https://www.hse.gov.uk/contact/tell-us-about-a-health-and-safety-issue.htm</a></span></span></span></div>
+<div><span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">We’ll review the changes requested.</span></span></span></div>
+<div><br><span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">If you’re still the principal accountable person for this building, contact us at <a href="https://www.hse.gov.uk/contact/tell-us-about-a-health-and-safety-issue.htm" style="color:#0563c1; text-decoration:underline"> https://www.hse.gov.uk/contact/tell-us-about-a-health-and-safety-issue.htm</a></span></span></span></div>
 <div><br><span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">From the Health and Safety Executive<br>as the Building Safety Regulator</span></span></span></div>
 <div>&nbsp;</div>
 <div align="center" style="margin-bottom:16px; text-align:center"><hr align="center" size="2" width="100%"></div>
