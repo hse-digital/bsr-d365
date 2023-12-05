@@ -11,6 +11,15 @@
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_morid">
           <cell name="bsr_name" width="300" />
+          <cell name="bsr_incident" width="100" />
+          <cell name="a_58cef7739cda449689e41857e451f786.customerid" width="135" />
+          <cell name="a_58cef7739cda449689e41857e451f786.bsr_building" width="130" />
+          <cell name="bsr_morstage" width="107" />
+          <cell name="bsr_riskorincident" width="131" />
+          <cell name="bsr_typeofoccurrence" width="151" />
+          <cell name="bsr_occurrenceidentifiedon" width="184" />
+          <cell name="statuscode" width="119" />
+          <cell name="ownerid" width="100" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -22,10 +31,21 @@
           <attribute name="bsr_morid" />
           <attribute name="bsr_name" />
           <attribute name="createdon" />
-          <order attribute="bsr_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="1" />
           </filter>
+          <attribute name="bsr_incident" />
+          <link-entity alias="a_58cef7739cda449689e41857e451f786" name="incident" to="bsr_incident" from="incidentid" link-type="outer" visible="false">
+            <attribute name="customerid" />
+            <attribute name="bsr_building" />
+          </link-entity>
+          <attribute name="bsr_morstage" />
+          <attribute name="bsr_typeofoccurrence" />
+          <attribute name="bsr_occurrenceidentifiedon" />
+          <attribute name="statuscode" />
+          <attribute name="ownerid" />
+          <order attribute="bsr_name" descending="true" />
+          <attribute name="bsr_riskorincident" />
         </entity>
       </fetch>
     </fetchxml>
