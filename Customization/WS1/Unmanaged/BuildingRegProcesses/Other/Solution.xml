@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Reg Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.12.42.0</Version>
+    <Version>1.12.43.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -82,6 +82,7 @@
     <RootComponents>
       <RootComponent type="29" id="{041ef549-a2b7-ed11-b597-0022481b568f}" behavior="0" />
       <RootComponent type="29" id="{0426ebcf-1252-ee11-be6f-002248c725da}" behavior="0" />
+      <RootComponent type="29" id="{058572cc-a58e-ee11-be36-6045bd0c1726}" behavior="0" />
       <RootComponent type="29" id="{06333f46-6f25-ee11-9965-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{08a7257e-2b64-ee11-8def-6045bd0c14e5}" behavior="0" />
       <RootComponent type="29" id="{0db0e68b-ca6c-ee11-9ae6-6045bd0c1096}" behavior="0" />
@@ -220,6 +221,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
+        <Dependent type="29" displayName="Send Emails for Changing PAP" id="{058572cc-a58e-ee11-be36-6045bd0c1726}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
         <Dependent type="29" displayName="Send  email notification to applicant when Building Application Stage is invoice raised" id="{06333f46-6f25-ee11-9965-002248c725da}" />
       </MissingDependency>
       <MissingDependency>
@@ -269,6 +274,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
         <Dependent type="29" displayName="Send Email after declaration and submitted in Change request" id="{0426ebcf-1252-ee11-be6f-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
+        <Dependent type="29" displayName="Send Emails for Changing PAP" id="{058572cc-a58e-ee11-be36-6045bd0c1726}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
@@ -369,6 +378,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_changerequest" displayName="Change Request" solution="Active" />
         <Dependent type="29" displayName="Send Email after declaration and submitted in Change request" id="{0426ebcf-1252-ee11-be6f-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_changerequest" displayName="Change Request" solution="Active" />
+        <Dependent type="29" displayName="Send Emails for Changing PAP" id="{058572cc-a58e-ee11-be36-6045bd0c1726}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_changerequest" displayName="Change Request" solution="Active" />
@@ -625,6 +638,10 @@
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="Active" id.schemaname="bsr_noreplyqueueid" />
         <Dependent type="29" displayName="Send Email after declaration and submitted in Change request" id="{0426ebcf-1252-ee11-be6f-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="Active" id.schemaname="bsr_noreplyqueueid" />
+        <Dependent type="29" displayName="Send Emails for Changing PAP" id="{058572cc-a58e-ee11-be36-6045bd0c1726}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="Active" id.schemaname="bsr_noreplyqueueid" />
