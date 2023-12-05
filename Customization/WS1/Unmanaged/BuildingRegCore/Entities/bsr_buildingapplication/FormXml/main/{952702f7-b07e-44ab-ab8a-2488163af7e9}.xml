@@ -97,6 +97,10 @@
                     </row>
                   </rows>
                 </section>
+              </sections>
+            </column>
+            <column width="33%">
+              <sections>
                 <section name="{75bcf7a5-de09-4215-b67c-05b51400068b}_section_6" id="9a772ee4-370a-46f6-8ba4-a213f1c6a4e0" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
                     <label description="Building Details" languagecode="1033" />
@@ -126,97 +130,60 @@
                     </row>
                   </rows>
                 </section>
-              </sections>
-            </column>
-            <column width="33%">
-              <sections>
-                <section showlabel="true" showbar="false" IsUserDefined="0" id="{95053e8a-2d87-4a1e-a26d-878f9337b19b}" name="{95053e8a-2d87-4a1e-a26d-878f9337b19b}" columns="1" locklevel="0" labelwidth="130" celllabelalignment="Left" celllabelposition="Left">
+                <section name="{75bcf7a5-de09-4215-b67c-05b51400068b}_section_7" showlabel="true" showbar="false" locklevel="0" id="{e9782ebc-db86-2ca7-3214-18853b85497e}" IsUserDefined="0" layout="varwidth" columns="11" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
-                    <label description="PAP details" languagecode="1033" />
+                    <label description="Duplication" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{c9c6b53c-32a4-4b01-89ec-ce558690b57c}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{316dd664-32a9-adeb-7353-9d117396d11b}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="PAP type" languagecode="1033" />
+                          <label description="Duplicate detected" languagecode="1033" />
                         </labels>
-                        <control id="bsr_paptype" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_paptype" disabled="false" />
+                        <control id="bsr_duplicatedetected" classid="{B0C6723A-8503-4fd7-BB28-C8A06AC933C2}" datafieldname="bsr_duplicatedetected" disabled="false" uniqueid="{b19a769d-ed18-c4e4-a760-6464154d0edb}" />
+                      </cell>
+                      <cell id="{3da0f09f-f590-463b-bbad-aa2108703dcd}" locklevel="0" colspan="1" rowspan="1" showlabel="true">
+                        <labels>
+                          <label description="Share details declared" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_sharedetailsdeclared" classid="{B0C6723A-8503-4fd7-BB28-C8A06AC933C2}" datafieldname="bsr_sharedetailsdeclared" disabled="false" uniqueid="{ddd2a417-ed20-b1d1-9577-66a3bb8537aa}" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{e728190c-3282-4895-9a2d-d94aeb7c8324}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{9c37cc08-42db-85b8-d3b9-2db89d87a3e7}" showlabel="true" colspan="2" auto="false" rowspan="7">
                         <labels>
-                          <label description="PAP" languagecode="1033" />
+                          <label description="Potential duplicates" languagecode="1033" />
                         </labels>
-                        <control id="bsr_papid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_papid" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{ad239943-d1d1-d2a6-37a3-c0160d452bbe}" showlabel="false" colspan="1" auto="false" rowspan="1">
-                        <labels>
-                          <label description="PAP Details Account" languagecode="1033" />
-                        </labels>
-                        <control id="PAP_Details_Account" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="bsr_papid" disabled="false">
+                        <control id="Potentialduplicates" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true" uniqueid="{5678502e-902a-b573-76ac-b32e0850b8b9}">
                           <parameters>
-                            <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="account"&gt;70ec01c1-98b7-ed11-b597-0022481b5e4f&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
-                            <ControlMode>Edit</ControlMode>
-                            <DisplayAsCustomer360Tile>false</DisplayAsCustomer360Tile>
+                            <ViewId>{B0587EE2-C201-4B42-A952-7B471BCED0D1}</ViewId>
+                            <IsUserView>false</IsUserView>
+                            <RelationshipName>bsr_duplicatebuildingapplications</RelationshipName>
+                            <TargetEntityType>bsr_buildingapplication</TargetEntityType>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <ViewIds>{B0587EE2-C201-4B42-A952-7B471BCED0D1}</ViewIds>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>All</ChartGridMode>
+                            <VisualizationId>{AD12A46A-2EC3-ED11-B597-6045BD0D4376}</VisualizationId>
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                            <RelationshipRoleOrdinal>1</RelationshipRoleOrdinal>
                           </parameters>
                         </control>
                       </cell>
                     </row>
-                    <row>
-                      <cell id="{64680c1e-5e33-d841-0652-2b365e916d3c}" showlabel="false" colspan="1" auto="false" rowspan="1">
-                        <labels>
-                          <label description="PAP Details Contact" languagecode="1033" />
-                        </labels>
-                        <control id="PAP_Details_Contact" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="bsr_papid" disabled="false">
-                          <parameters>
-                            <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="contact"&gt;61f19af2-96b7-ed11-b597-0022481b5e4f&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
-                            <ControlMode>Edit</ControlMode>
-                            <DisplayAsCustomer360Tile>false</DisplayAsCustomer360Tile>
-                          </parameters>
-                        </control>
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{32857409-278d-4e88-aa2b-71a3d15b9204}" locklevel="0" colspan="1" rowspan="1">
-                        <labels>
-                          <label description="Previous PAP - individual" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_previouspapindividualid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_previouspapindividualid" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{7b289f87-cb0c-466d-b3ef-547b60c1bd00}" locklevel="0" colspan="1" rowspan="1">
-                        <labels>
-                          <label description="Previous PAP Org Lead Contact" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_previouspaporgleadcontactid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_previouspaporgleadcontactid" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{f099bbef-c15a-4708-9a18-b21a0afd8396}" locklevel="0" colspan="1" rowspan="1">
-                        <labels>
-                          <label description="PAP Org Lead Contact" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_paporgleadcontactid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_paporgleadcontactid" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{b8c75b84-bd24-1c4c-bc69-a742adb434a4}" showlabel="false" colspan="1" auto="false">
-                        <labels>
-                          <label description="Lead Contact Details" languagecode="1033" />
-                        </labels>
-                        <control id="Lead_Contact_Details" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="bsr_paporgleadcontactid" disabled="false">
-                          <parameters>
-                            <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="contact"&gt;61f19af2-96b7-ed11-b597-0022481b5e4f&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
-                            <ControlMode>Edit</ControlMode>
-                            <DisplayAsCustomer360Tile>false</DisplayAsCustomer360Tile>
-                          </parameters>
-                        </control>
-                      </cell>
-                    </row>
+                  </rows>
+                </section>
+                <section name="{75bcf7a5-de09-4215-b67c-05b51400068b}_section_8" id="fe23c34a-2b4c-4d48-88ed-da6aa64b97fc" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
                   </rows>
                 </section>
               </sections>
@@ -308,54 +275,6 @@
                     </row>
                   </rows>
                 </section>
-                <section name="{75bcf7a5-de09-4215-b67c-05b51400068b}_section_7" showlabel="true" showbar="false" locklevel="0" id="{e9782ebc-db86-2ca7-3214-18853b85497e}" IsUserDefined="0" layout="varwidth" columns="11" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
-                  <labels>
-                    <label description="Duplication" languagecode="1033" />
-                  </labels>
-                  <rows>
-                    <row>
-                      <cell id="{316dd664-32a9-adeb-7353-9d117396d11b}" showlabel="true" locklevel="0">
-                        <labels>
-                          <label description="Duplicate detected" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_duplicatedetected" classid="{B0C6723A-8503-4fd7-BB28-C8A06AC933C2}" datafieldname="bsr_duplicatedetected" disabled="false" uniqueid="{b19a769d-ed18-c4e4-a760-6464154d0edb}" />
-                      </cell>
-                      <cell id="{3da0f09f-f590-463b-bbad-aa2108703dcd}" locklevel="0" colspan="1" rowspan="1" showlabel="true">
-                        <labels>
-                          <label description="Share details declared" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_sharedetailsdeclared" classid="{B0C6723A-8503-4fd7-BB28-C8A06AC933C2}" datafieldname="bsr_sharedetailsdeclared" disabled="false" uniqueid="{ddd2a417-ed20-b1d1-9577-66a3bb8537aa}" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{9c37cc08-42db-85b8-d3b9-2db89d87a3e7}" showlabel="true" colspan="2" auto="false" rowspan="7">
-                        <labels>
-                          <label description="Potential duplicates" languagecode="1033" />
-                        </labels>
-                        <control id="Potentialduplicates" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true" uniqueid="{5678502e-902a-b573-76ac-b32e0850b8b9}">
-                          <parameters>
-                            <ViewId>{B0587EE2-C201-4B42-A952-7B471BCED0D1}</ViewId>
-                            <IsUserView>false</IsUserView>
-                            <RelationshipName>bsr_duplicatebuildingapplications</RelationshipName>
-                            <TargetEntityType>bsr_buildingapplication</TargetEntityType>
-                            <AutoExpand>Fixed</AutoExpand>
-                            <EnableQuickFind>false</EnableQuickFind>
-                            <EnableViewPicker>false</EnableViewPicker>
-                            <ViewIds>{B0587EE2-C201-4B42-A952-7B471BCED0D1}</ViewIds>
-                            <EnableJumpBar>false</EnableJumpBar>
-                            <ChartGridMode>All</ChartGridMode>
-                            <VisualizationId>{AD12A46A-2EC3-ED11-B597-6045BD0D4376}</VisualizationId>
-                            <IsUserChart>false</IsUserChart>
-                            <EnableChartPicker>true</EnableChartPicker>
-                            <RecordsPerPage>4</RecordsPerPage>
-                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
-                            <RelationshipRoleOrdinal>1</RelationshipRoleOrdinal>
-                          </parameters>
-                        </control>
-                      </cell>
-                    </row>
-                  </rows>
-                </section>
                 <section name="_section_865" id="609151f6-2c9a-489c-9eaf-2119bc148317" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
                     <label description="Timeline" languagecode="1033" />
@@ -383,6 +302,152 @@
                     <row />
                     <row />
                     <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="papdetails" id="bb762f5f-e480-4c07-ac0f-22766a7b03af" IsUserDefined="0" locklevel="0" showlabel="true">
+          <labels>
+            <label description="PAP Details" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="50%">
+              <sections>
+                <section showlabel="true" showbar="false" IsUserDefined="0" id="{95053e8a-2d87-4a1e-a26d-878f9337b19b}" name="95053e8a-2d87-4a1e-a26d-878f9337b19b" columns="1" locklevel="0" labelwidth="130" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="PAP details" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{c9c6b53c-32a4-4b01-89ec-ce558690b57c}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="PAP type" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_paptype" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_paptype" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e728190c-3282-4895-9a2d-d94aeb7c8324}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="PAP" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_papid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_papid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ad239943-d1d1-d2a6-37a3-c0160d452bbe}" showlabel="false" colspan="1" auto="false" rowspan="1">
+                        <labels>
+                          <label description="PAP Details Account" languagecode="1033" />
+                        </labels>
+                        <control id="PAP_Details_Account" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="bsr_papid" disabled="false">
+                          <parameters>
+                            <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="account"&gt;70ec01c1-98b7-ed11-b597-0022481b5e4f&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
+                            <ControlMode>Edit</ControlMode>
+                            <DisplayAsCustomer360Tile>false</DisplayAsCustomer360Tile>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{64680c1e-5e33-d841-0652-2b365e916d3c}" showlabel="false" colspan="1" auto="false" rowspan="1">
+                        <labels>
+                          <label description="PAP Details Contact" languagecode="1033" />
+                        </labels>
+                        <control id="PAP_Details_Contact" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="bsr_papid" disabled="false">
+                          <parameters>
+                            <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="contact"&gt;61f19af2-96b7-ed11-b597-0022481b5e4f&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
+                            <ControlMode>Edit</ControlMode>
+                            <DisplayAsCustomer360Tile>false</DisplayAsCustomer360Tile>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f099bbef-c15a-4708-9a18-b21a0afd8396}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="PAP Org Lead Contact" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_paporgleadcontactid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_paporgleadcontactid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b8c75b84-bd24-1c4c-bc69-a742adb434a4}" showlabel="false" colspan="1" auto="false">
+                        <labels>
+                          <label description="Lead Contact Details" languagecode="1033" />
+                        </labels>
+                        <control id="Lead_Contact_Details" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="bsr_paporgleadcontactid" disabled="false">
+                          <parameters>
+                            <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="contact"&gt;61f19af2-96b7-ed11-b597-0022481b5e4f&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
+                            <ControlMode>Edit</ControlMode>
+                            <DisplayAsCustomer360Tile>false</DisplayAsCustomer360Tile>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="50%">
+              <sections>
+                <section name="previouspapdetails" id="5fc29122-c173-4fe4-ad22-651cb21b88f3" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Previous PAP Details" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell id="{e92132bf-72ee-42fb-8a1b-118e6b83bba1}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Previous PAP Type" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_previouspaptype" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_previouspaptype" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0932919d-e933-4651-9446-7704b7d17b20}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Previous PAP" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_previouspap" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_previouspap" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{4859bedf-5ced-48f2-bcde-85f97e66b3e3}" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="New QV control 1701447635164" languagecode="1033" />
+                        </labels>
+                        <control id="QuickviewControl1701447635164" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="bsr_previouspap">
+                          <parameters>
+                            <DisplayAsCustomer360Tile>false</DisplayAsCustomer360Tile>
+                            <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="account"&gt;70ec01c1-98b7-ed11-b597-0022481b5e4f&lt;/QuickFormId&gt;&lt;QuickFormId entityname="contact"&gt;61f19af2-96b7-ed11-b597-0022481b5e4f&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7b289f87-cb0c-466d-b3ef-547b60c1bd00}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Previous PAP Org Lead Contact" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_previouspaporgleadcontactid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_previouspaporgleadcontactid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{7ffc41af-9441-40ec-bce0-00d6542d2c40}" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="New QV control 1701447742161" languagecode="1033" />
+                        </labels>
+                        <control id="QuickviewControl1701447742161" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="bsr_previouspaporgleadcontactid">
+                          <parameters>
+                            <DisplayAsCustomer360Tile>false</DisplayAsCustomer360Tile>
+                            <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="contact"&gt;61f19af2-96b7-ed11-b597-0022481b5e4f&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
                   </rows>
                 </section>
               </sections>
