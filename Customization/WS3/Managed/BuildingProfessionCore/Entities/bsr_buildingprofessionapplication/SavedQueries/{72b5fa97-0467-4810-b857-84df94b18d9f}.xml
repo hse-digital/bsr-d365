@@ -11,6 +11,11 @@
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_buildingprofessionapplicationid">
           <cell name="bsr_name" width="300" />
+          <cell name="bsr_applicantid" width="100" />
+          <cell name="bsr_buildingproappid" width="167" />
+          <cell name="bsr_rbcaaccountid" width="124" />
+          <cell name="bsr_rbcasecondarycontactid" width="147" />
+          <cell name="bsr_rbcaprimarycontactid" width="133" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -28,7 +33,19 @@
           </filter>
           <filter type="or" isquickfindfields="1">
             <condition attribute="bsr_name" operator="like" value="{0}" />
+            <condition attribute="bsr_applicantid" operator="like" value="{0}" />
+            <condition attribute="bsr_buildingproappid" operator="like" value="{0}" />
+            <condition attribute="bsr_rbcaaccountid" operator="like" value="{0}" />
+            <condition attribute="bsr_rbcadeclarationfirstname" operator="like" value="{0}" />
+            <condition attribute="bsr_rbcasecondarycontactid" operator="like" value="{0}" />
+            <condition attribute="bsr_rbcaprimarycontactid" operator="like" value="{0}" />
+            <condition attribute="bsr_rbcadeclarationlastname" operator="like" value="{0}" />
           </filter>
+          <attribute name="bsr_applicantid" />
+          <attribute name="bsr_buildingproappid" />
+          <attribute name="bsr_rbcaaccountid" />
+          <attribute name="bsr_rbcasecondarycontactid" />
+          <attribute name="bsr_rbcaprimarycontactid" />
         </entity>
       </fetch>
     </fetchxml>
