@@ -185,7 +185,7 @@
                 "operationMetadataId": "ed7e6a6d-ccd2-46ef-87ed-c616b583deb6"
               },
               "type": "Compose",
-              "inputs": "@replace(outputs('GetApplicantEmailTemplate')?['body/subjectsafehtml'], '%%bsr_bcaareferencenumber%%', outputs('Get_related_BCA_record')?['body/bsr_bcaareferencenumber'])"
+              "inputs": "@replace(outputs('GetApplicantEmailTemplate')?['body/subjectsafehtml'], '%%bsr_bcaareferencenumber%%', outputs('Get_Stage_1_(parent)_BCA_record')?['body/bsr_bcaareferencenumber'])"
             },
             "ComposeClientBodySubStage": {
               "runAfter": {
@@ -197,7 +197,7 @@
                 "operationMetadataId": "df5dc877-577e-4db3-bf00-6f4d0aece3fa"
               },
               "type": "Compose",
-              "inputs": "@replace(replace(replace(outputs('GetClientEmailTemplate')?['body/safehtml'],'%%bsr_clientnamedcontact%%',outputs('Get_Stage_1_(parent)_BCA_record')?['body/_bsr_clientnamedcontact_value@OData.Community.Display.V1.FormattedValue']),'%%bsr_bcaareferencenumber%%',outputs('Get_related_BCA_record')?['body/bsr_bcaareferencenumber']),'%%bsr_buildingclientname%%',outputs('Get_Stage_1_(parent)_BCA_record')?['body/_bsr_buildingclientname_value@OData.Community.Display.V1.FormattedValue'])"
+              "inputs": "@replace(replace(replace(outputs('GetClientEmailTemplate')?['body/safehtml'],'%%bsr_clientnamedcontact%%',outputs('Get_Stage_1_(parent)_BCA_record')?['body/_bsr_clientnamedcontact_value@OData.Community.Display.V1.FormattedValue']),'%%bsr_bcaareferencenumber%%',outputs('Get_Stage_1_(parent)_BCA_record')?['body/bsr_bcaareferencenumber']),'%%bsr_buildingclientname%%',outputs('Get_Stage_1_(parent)_BCA_record')?['body/_bsr_buildingclientname_value@OData.Community.Display.V1.FormattedValue'])"
             },
             "CreateClientEmailSubStage": {
               "runAfter": {
@@ -269,7 +269,7 @@
                 "operationMetadataId": "1830d783-6b36-4bff-9e1a-c3f8eaccf555"
               },
               "type": "Compose",
-              "inputs": "@replace(replace(replace(outputs('GetDesignerEmailTemplate')?['body/safehtml'],'%%bsr_principaldesignernamedcontact%%',outputs('Get_Stage_1_(parent)_BCA_record')?['body/_bsr_principaldesignernamedcontact_value@OData.Community.Display.V1.FormattedValue']),'%%bsr_bcaareferencenumber%%',outputs('Get_related_BCA_record')?['body/bsr_bcaareferencenumber']),'%%bsr_buildingprincipaldesigner%%',outputs('Get_Stage_1_(parent)_BCA_record')?['body/_bsr_buildingprincipaldesigner_value@OData.Community.Display.V1.FormattedValue'])"
+              "inputs": "@replace(replace(replace(outputs('GetDesignerEmailTemplate')?['body/safehtml'],'%%bsr_principaldesignernamedcontact%%',outputs('Get_Stage_1_(parent)_BCA_record')?['body/_bsr_principaldesignernamedcontact_value@OData.Community.Display.V1.FormattedValue']),'%%bsr_bcaareferencenumber%%',outputs('Get_Stage_1_(parent)_BCA_record')?['body/bsr_bcaareferencenumber']),'%%bsr_buildingprincipaldesigner%%',outputs('Get_Stage_1_(parent)_BCA_record')?['body/_bsr_buildingprincipaldesigner_value@OData.Community.Display.V1.FormattedValue'])"
             },
             "CreateDesignerEmailSubStage": {
               "runAfter": {
@@ -341,7 +341,7 @@
                 "operationMetadataId": "036feff7-f36d-43cc-b288-ce4d9a016cc9"
               },
               "type": "Compose",
-              "inputs": "@replace(replace(replace(outputs('GetContractorEmailTemplate')?['body/safehtml'],'%%bsr_principalcontractnamedcontact%%',outputs('Get_Stage_1_(parent)_BCA_record')?['body/_bsr_principalcontractnamedcontact_value@OData.Community.Display.V1.FormattedValue']),'%%bsr_bcaareferencenumber%%',outputs('Get_related_BCA_record')?['body/bsr_bcaareferencenumber']),'%%bsr_buildingprincipalcontractor%%',outputs('Get_Stage_1_(parent)_BCA_record')?['body/_bsr_buildingprincipalcontractor_value@OData.Community.Display.V1.FormattedValue'])"
+              "inputs": "@replace(replace(replace(outputs('GetContractorEmailTemplate')?['body/safehtml'],'%%bsr_principalcontractnamedcontact%%',outputs('Get_Stage_1_(parent)_BCA_record')?['body/_bsr_principalcontractnamedcontact_value@OData.Community.Display.V1.FormattedValue']),'%%bsr_bcaareferencenumber%%',outputs('Get_Stage_1_(parent)_BCA_record')?['body/bsr_bcaareferencenumber']),'%%bsr_buildingprincipalcontractor%%',outputs('Get_Stage_1_(parent)_BCA_record')?['body/_bsr_buildingprincipalcontractor_value@OData.Community.Display.V1.FormattedValue'])"
             },
             "CreateContractorEmailSubStage": {
               "runAfter": {
@@ -411,7 +411,7 @@
                     "operationMetadataId": "257af183-3165-4d1f-8f2f-62a6556b7069"
                   },
                   "type": "Compose",
-                  "inputs": "@replace(replace(outputs('GetApplicantEmailTemplate')?['body/safehtml'],'%%bsr_applicantid%%',outputs('Get_Stage_1_(parent)_BCA_record')?['body/_bsr_applicantid_value@OData.Community.Display.V1.FormattedValue']),'%%bsr_bcaareferencenumber%%',outputs('Get_related_BCA_record')?['body/bsr_bcaareferencenumber'])"
+                  "inputs": "@replace(replace(outputs('GetApplicantEmailTemplate')?['body/safehtml'],'%%bsr_applicantid%%',outputs('Get_Stage_1_(parent)_BCA_record')?['body/_bsr_applicantid_value@OData.Community.Display.V1.FormattedValue']),'%%bsr_bcaareferencenumber%%',outputs('Get_Stage_1_(parent)_BCA_record')?['body/bsr_bcaareferencenumber'])"
                 },
                 "CreateApplicantEmailSubStage": {
                   "runAfter": {
@@ -487,7 +487,7 @@
                       "operationMetadataId": "cc39019b-d7d4-4172-87f5-8f95db4aecec"
                     },
                     "type": "Compose",
-                    "inputs": "@replace(replace(outputs('GetApplicantEmailTemplateNotifiableChange')?['body/safehtml'],'%%bsr_applicantid%%',outputs('Get_Stage_1_(parent)_BCA_record')?['body/_bsr_applicantid_value@OData.Community.Display.V1.FormattedValue']),'%%bsr_bcaareferencenumber%%',outputs('Get_related_BCA_record')?['body/bsr_bcaareferencenumber'])"
+                    "inputs": "@replace(replace(outputs('GetApplicantEmailTemplateNotifiableChange')?['body/safehtml'],'%%bsr_applicantid%%',outputs('Get_Stage_1_(parent)_BCA_record')?['body/_bsr_applicantid_value@OData.Community.Display.V1.FormattedValue']),'%%bsr_bcaareferencenumber%%',outputs('Get_Stage_1_(parent)_BCA_record')?['body/bsr_bcaareferencenumber'])"
                   },
                   "CreateApplicantEmailSubStageNotifiable": {
                     "runAfter": {

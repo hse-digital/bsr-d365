@@ -679,35 +679,128 @@
                 "runAfter": {},
                 "else": {
                   "actions": {
-                    "Send_confirmation_email_to_applicant_for_subsequent_stage_application": {
+                    "GetStage1BCAA": {
                       "runAfter": {},
                       "metadata": {
-                        "operationMetadataId": "1c74617b-1a4c-446d-80e7-30709601c38a"
+                        "operationMetadataId": "5a39ae55-217e-41cc-94f7-478b8f5e4be1"
                       },
                       "type": "OpenApiConnection",
                       "inputs": {
                         "host": {
                           "connectionName": "shared_commondataserviceforapps",
-                          "operationId": "PerformUnboundAction",
+                          "operationId": "GetItem",
                           "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
                         },
                         "parameters": {
-                          "actionName": "SendEmailFromTemplate",
-                          "item/TemplateId": "@body('ParseEmailTemplateJSON')?['SubsequentStageTemplateID']",
-                          "item/Regarding": "/bsr_buildingcontrolapplications(@{triggerOutputs()?['body/bsr_buildingcontrolapplicationid']})",
-                          "item/Target": {
-                            "email_activity_parties": [
-                              {
-                                "partyid_queue@odata.bind": "/queues(@{outputs('GetNoReplyQueue')?['body/queueid']})",
-                                "participationtypemask": 1
-                              },
-                              {
-                                "partyid_contact@odata.bind": "/contacts(@{triggerOutputs()?['body/_bsr_applicantid_value']})",
-                                "participationtypemask": 2
-                              }
-                            ],
-                            "@@odata.type": "Microsoft.Dynamics.CRM.email"
-                          }
+                          "entityName": "bsr_buildingcontrolapplications",
+                          "recordId": "@triggerOutputs()?['body/_bsr_mainbcaappid_value']"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "SubStageSubject": {
+                      "runAfter": {
+                        "GetSubStageEmailTemplate": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "f20d86f7-434f-4b20-9cf4-d5ca6f277ab8"
+                      },
+                      "type": "Compose",
+                      "inputs": "@replace(outputs('GetSubStageEmailTemplate')?['body/subjectsafehtml'], '%%bsr_bcaareferencenumber%%',outputs('GetStage1BCAA')?['body/bsr_bcaareferencenumber'])"
+                    },
+                    "GetSubStageEmailTemplate": {
+                      "runAfter": {
+                        "GetStage1BCAA": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "d4a1176b-0c9c-4e7d-b01d-5cfab90cea35"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps",
+                          "operationId": "GetItem",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "templates",
+                          "recordId": "@body('ParseEmailTemplateJSON')?['SubsequentStageTemplateID']"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "SubStageBody": {
+                      "runAfter": {
+                        "SubStageSubject": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "7dd2906a-d19d-4433-a057-4e8a684c9a60"
+                      },
+                      "type": "Compose",
+                      "inputs": "@replace(replace(replace(outputs('GetSubStageEmailTemplate')?['body/safehtml'],'%%bsr_applicantid%%',outputs('GetStage1BCAA')?['body/_bsr_applicantid_value@OData.Community.Display.V1.FormattedValue']),'%%bsr_stagename%%',triggerOutputs()?['body/bsr_stagename']),'%%bsr_bcaareferencenumber%%',outputs('GetStage1BCAA')?['body/bsr_bcaareferencenumber'])"
+                    },
+                    "CreateSubStageEmail": {
+                      "runAfter": {
+                        "SubStageBody": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "8c9f15df-b3f0-4723-a975-7200bd240aa9"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps",
+                          "operationId": "CreateRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "emails",
+                          "item/activitypointer_activity_parties": [
+                            {
+                              "participationtypemask": 1,
+                              "partyid@odata.bind": "queues(@{outputs('GetNoReplyQueue')?['body/queueid']})"
+                            },
+                            {
+                              "participationtypemask": 2,
+                              "partyid@odata.bind": "contacts(@{outputs('GetStage1BCAA')?['body/_bsr_applicantid_value']})"
+                            }
+                          ],
+                          "item/description": "@outputs('SubStageBody')",
+                          "item/regardingobjectid_bsr_buildingcontrolapplication_email@odata.bind": "/bsr_buildingcontrolapplications(@{triggerOutputs()?['body/bsr_buildingcontrolapplicationid']})",
+                          "item/subject": "@outputs('SubStageSubject')"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "SendSubStageEmal": {
+                      "runAfter": {
+                        "CreateSubStageEmail": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "940f3ad7-a4f2-45e7-9e5e-40d0659a002d"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps",
+                          "operationId": "PerformBoundAction",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "emails",
+                          "actionName": "Microsoft.Dynamics.CRM.SendEmail",
+                          "recordId": "@outputs('CreateSubStageEmail')?['body/activityid']",
+                          "item/IssueSend": true
                         },
                         "authentication": "@parameters('$authentication')"
                       }
