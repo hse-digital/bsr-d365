@@ -38,55 +38,87 @@
             },
             "parameters": {
               "subscriptionRequest/message": 3,
-              "subscriptionRequest/entityname": "bsr_section25review",
-              "subscriptionRequest/scope": 4
+              "subscriptionRequest/entityname": "incident",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "bsr_caseoutcome",
+              "subscriptionRequest/filterexpression": "casetypecode eq 7 and _bsr_caseoutcome_value ne null"
             },
             "authentication": "@parameters('$authentication')"
           }
         }
       },
       "actions": {
-        "Condition": {
-          "actions": {
-            "Add_a_new_row": {
-              "runAfter": {},
-              "metadata": {
-                "operationMetadataId": "3549692f-1932-4517-a4a6-6a596f7e98c9"
-              },
-              "type": "OpenApiConnection",
-              "inputs": {
-                "host": {
-                  "connectionName": "shared_commondataserviceforapps",
-                  "operationId": "CreateRecord",
-                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                },
-                "parameters": {
-                  "entityName": "tasks",
-                  "item/subject": "Notify relevant parties of that the Section 25 review has been resolved",
-                  "item/description": "Notify relevant parties of that the Section 25 review has been resolved",
-                  "item/ownerid_task@odata.bind": "@triggerOutputs()?['body/_ownerid_value']"
-                },
-                "authentication": "@parameters('$authentication')"
-              }
-            }
-          },
+        "Get_a_row_by_ID": {
           "runAfter": {},
-          "expression": {
-            "not": {
-              "equals": [
-                "@triggerOutputs()?['body/bsr_outcome']",
-                ""
-              ]
-            }
+          "metadata": {
+            "operationMetadataId": "5f236b0a-2eac-42a7-9f94-3d366ac9715e"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_section25reviews",
+              "recordId": "@triggerOutputs()?['body/_bsr_section25review_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_a_row_by_ID_2": {
+          "runAfter": {
+            "Get_a_row_by_ID": [
+              "Succeeded"
+            ]
           },
           "metadata": {
-            "operationMetadataId": "9ccda403-4259-4f7e-af8d-bb0f572d08c9"
+            "operationMetadataId": "6d90681a-e9ee-4be2-a5e1-a2aa37301772"
           },
-          "type": "If"
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "systemusers",
+              "recordId": "@outputs('Get_a_row_by_ID')?['body/_ownerid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Add_a_new_row": {
+          "runAfter": {
+            "Get_a_row_by_ID_2": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3549692f-1932-4517-a4a6-6a596f7e98c9"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "tasks",
+              "item/subject": "Notify relevant parties of that the Section 25 review has been resolved",
+              "item/description": "Notify relevant parties of that the Section 25 review has been resolved",
+              "item/ownerid_task@odata.bind": "@outputs('Get_a_row_by_ID_2')?['body/@odata.id']",
+              "item/regardingobjectid_bsr_section25review_task@odata.bind": "@outputs('Get_a_row_by_ID')?['body/@odata.id']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
         }
       }
     },
-    "templateName": null
+    "templateName": ""
   },
   "schemaVersion": "1.0.0.0"
 }
