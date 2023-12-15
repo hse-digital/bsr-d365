@@ -25,7 +25,7 @@
         }
       },
       "triggers": {
-        "When_a_new_Change_Request_is_Created": {
+        "When_Major_Change_is_Validated": {
           "metadata": {
             "operationMetadataId": "933bb2eb-0206-449f-95c5-8f4c8c969b66"
           },
@@ -40,8 +40,8 @@
               "subscriptionRequest/message": 3,
               "subscriptionRequest/entityname": "bsr_changerequest",
               "subscriptionRequest/scope": 4,
-              "subscriptionRequest/filteringattributes": "bsr_submittedondate",
-              "subscriptionRequest/filterexpression": "_bsr_changecategoryid_value eq 8c5213d0-547a-ee11-8179-6045bdf1e965 and bsr_submittedondate ne null"
+              "subscriptionRequest/filteringattributes": "bsr_validapplication",
+              "subscriptionRequest/filterexpression": "_bsr_changecategoryid_value eq 8c5213d0-547a-ee11-8179-6045bdf1e965 and bsr_validapplication eq true"
             },
             "authentication": "@parameters('$authentication')"
           }

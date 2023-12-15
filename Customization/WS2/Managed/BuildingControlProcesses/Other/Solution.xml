@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23111.228" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.23112.204" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>BuildingControlProcesses</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Control Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.51.0</Version>
+    <Version>1.0.52.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -285,7 +285,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingcontrolapplication" displayName="Building Control Application" solution="Active" />
-        <Dependent type="29" displayName="Create a BCL record when a CR of Category Major Change is submitted" id="{f685d418-457d-ee11-8179-6045bdf1e965}" />
+        <Dependent type="29" displayName="Create a BCL record when a CR of Category Major Change is validated" id="{f685d418-457d-ee11-8179-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingcontrolapplication" displayName="Building Control Application" solution="Active" />
@@ -353,7 +353,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingcontrollifecycle" displayName="Building Control Lifecycle" solution="Active" />
-        <Dependent type="29" displayName="Create a BCL record when a CR of Category Major Change is submitted" id="{f685d418-457d-ee11-8179-6045bdf1e965}" />
+        <Dependent type="29" displayName="Create a BCL record when a CR of Category Major Change is validated" id="{f685d418-457d-ee11-8179-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingcontrollifecycle" displayName="Building Control Lifecycle" solution="Active" />
@@ -401,7 +401,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingdetails" displayName="Building Details" solution="Active" />
-        <Dependent type="29" displayName="Create a BCL record when a CR of Category Major Change is submitted" id="{f685d418-457d-ee11-8179-6045bdf1e965}" />
+        <Dependent type="29" displayName="Create a BCL record when a CR of Category Major Change is validated" id="{f685d418-457d-ee11-8179-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_changerequest" displayName="Change Request" solution="BuildingRegCore (1.17.82.0)" />
@@ -425,7 +425,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_changerequest" displayName="Change Request" solution="BuildingRegCore (1.17.82.0)" />
-        <Dependent type="29" displayName="Create a BCL record when a CR of Category Major Change is submitted" id="{f685d418-457d-ee11-8179-6045bdf1e965}" />
+        <Dependent type="29" displayName="Create a BCL record when a CR of Category Major Change is validated" id="{f685d418-457d-ee11-8179-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_declarations" displayName="Declarations" solution="Active" />
@@ -956,10 +956,6 @@
         <Dependent type="29" displayName="Send Email to Dutyholder over Change Control submission" id="{b05d33ff-bb7f-ee11-8179-6045bdd0e4cf}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_submittedondate" displayName="Submitted On" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.82.0)" />
-        <Dependent type="29" displayName="Create a BCL record when a CR of Category Major Change is submitted" id="{f685d418-457d-ee11-8179-6045bdf1e965}" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="2" schemaName="bsr_triggerfollowupinforequestflow" displayName="Trigger Follow-up Info Request Flow" parentSchemaName="bsr_informationtracker" parentDisplayName="Information Request" solution="Active" />
         <Dependent type="29" displayName="Send Follow-up info request email" id="{a8ddfb56-465c-ee11-8def-6045bdd2c0c0}" />
       </MissingDependency>
@@ -978,6 +974,10 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_validapplication" displayName="Valid Application" parentSchemaName="bsr_buildingcontrolapplication" parentDisplayName="Building Control Application" solution="Active" />
         <Dependent type="29" displayName="Set Validation Date for Building Control Application" id="{21cbcfb6-f140-ee11-bdf3-6045bdc208e3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_validapplication" displayName="Valid Application" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="Active" />
+        <Dependent type="29" displayName="Create a BCL record when a CR of Category Major Change is validated" id="{f685d418-457d-ee11-8179-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="createdon" displayName="Created On" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.82.0)" />
