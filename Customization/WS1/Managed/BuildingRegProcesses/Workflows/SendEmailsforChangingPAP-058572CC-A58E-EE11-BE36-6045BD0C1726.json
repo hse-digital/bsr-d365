@@ -1685,81 +1685,9 @@
           "actions": {
             "Scope_-_Variable_Setting_3": {
               "actions": {
-                "Get_Previous_PAP_by_ID_4": {
-                  "runAfter": {},
-                  "metadata": {
-                    "operationMetadataId": "dd3962fd-4574-45ef-904b-836b208be304"
-                  },
-                  "type": "OpenApiConnection",
-                  "inputs": {
-                    "host": {
-                      "connectionName": "shared_commondataserviceforapps_1",
-                      "operationId": "GetItem",
-                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                    },
-                    "parameters": {
-                      "entityName": "accounts",
-                      "recordId": "@outputs('Get_Building_Application_by_ID')?['body/_bsr_previouspap_value']"
-                    },
-                    "authentication": "@parameters('$authentication')"
-                  }
-                },
-                "Set_outgoingPAPName_4": {
-                  "runAfter": {
-                    "Get_Previous_PAP_by_ID_4": [
-                      "Succeeded"
-                    ]
-                  },
-                  "metadata": {
-                    "operationMetadataId": "c12a7210-dd79-42a9-9c59-0bfa954053af"
-                  },
-                  "type": "SetVariable",
-                  "inputs": {
-                    "name": "varOutgoingPAPName",
-                    "value": "@outputs('Get_Previous_PAP_by_ID_4')?['body/name']"
-                  }
-                },
-                "Get_New_PAP_by_ID_4": {
-                  "runAfter": {
-                    "Set_outgoingPAPName_4": [
-                      "Succeeded"
-                    ]
-                  },
-                  "metadata": {
-                    "operationMetadataId": "1b58f07c-1423-4ebc-80d9-45be447c2664"
-                  },
-                  "type": "OpenApiConnection",
-                  "inputs": {
-                    "host": {
-                      "connectionName": "shared_commondataserviceforapps_1",
-                      "operationId": "GetItem",
-                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                    },
-                    "parameters": {
-                      "entityName": "accounts",
-                      "recordId": "@outputs('Get_Building_Application_by_ID')?['body/_bsr_papid_value']"
-                    },
-                    "authentication": "@parameters('$authentication')"
-                  }
-                },
-                "Set_varNewPAPName_4": {
-                  "runAfter": {
-                    "Get_New_PAP_by_ID_4": [
-                      "Succeeded"
-                    ]
-                  },
-                  "metadata": {
-                    "operationMetadataId": "e38e9862-3892-4d68-bb6c-22f54a1619d2"
-                  },
-                  "type": "SetVariable",
-                  "inputs": {
-                    "name": "varNewPAPName",
-                    "value": "@outputs('Get_New_PAP_by_ID_4')?['body/name']"
-                  }
-                },
                 "Get_Outgoing_PAP_Org_Lead_Contact_2": {
                   "runAfter": {
-                    "Set_varNewPAPName_4": [
+                    "Scope-_Pap_details": [
                       "Succeeded"
                     ]
                   },
@@ -1832,6 +1760,87 @@
                     "name": "varNewPAPOrgLeadContactName",
                     "value": "@outputs('Get_New_PAP_Org_Lead_Contact_3')?['body/fullname']"
                   }
+                },
+                "Scope-_Pap_details": {
+                  "actions": {
+                    "Get_Previous_PAP_by_ID_4": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "dd3962fd-4574-45ef-904b-836b208be304"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps_1",
+                          "operationId": "GetItem",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "accounts",
+                          "recordId": "@outputs('Get_Building_Application_by_ID')?['body/_bsr_previouspap_value']"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Set_outgoingPAPName_4": {
+                      "runAfter": {
+                        "Get_Previous_PAP_by_ID_4": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "c12a7210-dd79-42a9-9c59-0bfa954053af"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "varOutgoingPAPName",
+                        "value": "@outputs('Get_Previous_PAP_by_ID_4')?['body/name']"
+                      }
+                    },
+                    "Get_New_PAP_by_ID_4": {
+                      "runAfter": {
+                        "Set_outgoingPAPName_4": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "1b58f07c-1423-4ebc-80d9-45be447c2664"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps_1",
+                          "operationId": "GetItem",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "accounts",
+                          "recordId": "@outputs('Get_Building_Application_by_ID')?['body/_bsr_papid_value']"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Set_varNewPAPName_4": {
+                      "runAfter": {
+                        "Get_New_PAP_by_ID_4": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "e38e9862-3892-4d68-bb6c-22f54a1619d2"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "varNewPAPName",
+                        "value": "@outputs('Get_New_PAP_by_ID_4')?['body/name']"
+                      }
+                    }
+                  },
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "c175618c-cea7-44c7-96d8-294b1de76777"
+                  },
+                  "type": "Scope"
                 }
               },
               "runAfter": {},
@@ -2436,6 +2445,53 @@
                     "name": "varOutgoingPAPOrgLeadContactName",
                     "value": "@outputs('Get_Previous_PAP_Org_Lead_Contact_5')?['body/fullname']"
                   }
+                },
+                "Scope": {
+                  "actions": {
+                    "Get_New_PAP_by_ID_5": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "1b58f07c-1423-4ebc-80d9-45be447c2664"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps_1",
+                          "operationId": "GetItem",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "accounts",
+                          "recordId": "@outputs('Get_Building_Application_by_ID')?['body/_bsr_papid_value']"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Set_varNewPAPName_5": {
+                      "runAfter": {
+                        "Get_New_PAP_by_ID_5": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "e38e9862-3892-4d68-bb6c-22f54a1619d2"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "varNewPAPName",
+                        "value": "@outputs('Get_New_PAP_by_ID_5')?['body/name']"
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Set_varPreviousOrgLeadContactName_4": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "7efeed26-8f9f-4605-802a-14eac9cc968b"
+                  },
+                  "type": "Scope"
                 }
               },
               "runAfter": {},
