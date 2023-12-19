@@ -273,7 +273,11 @@
           }
         },
         "Initialize_varPreviousPapEmailBody": {
-          "runAfter": {},
+          "runAfter": {
+            "Delay": [
+              "Succeeded"
+            ]
+          },
           "metadata": {
             "operationMetadataId": "0cb57df0-890d-45cb-bbf8-01a46cbac386"
           },
@@ -2852,6 +2856,19 @@
             "operationMetadataId": "6cbe44f1-6ef5-45ce-91bf-2e154e1bfab4"
           },
           "type": "If"
+        },
+        "Delay": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "866dcb92-8f6d-4ea3-8653-ff143198068c"
+          },
+          "type": "Wait",
+          "inputs": {
+            "interval": {
+              "count": 30,
+              "unit": "Second"
+            }
+          }
         }
       }
     },
