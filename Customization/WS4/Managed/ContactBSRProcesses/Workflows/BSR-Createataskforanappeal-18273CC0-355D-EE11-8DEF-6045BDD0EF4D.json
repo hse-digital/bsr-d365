@@ -38,9 +38,10 @@
             },
             "parameters": {
               "subscriptionRequest/message": 3,
-              "subscriptionRequest/entityname": "bsr_appeal",
+              "subscriptionRequest/entityname": "incident",
               "subscriptionRequest/scope": 4,
-              "subscriptionRequest/filterexpression": "bsr_outcome"
+              "subscriptionRequest/filteringattributes": "bsr_caseoutcome",
+              "subscriptionRequest/filterexpression": "casetypecode eq 6 and _bsr_caseoutcome_value ne null"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -48,7 +49,11 @@
       },
       "actions": {
         "Add_a_new_row": {
-          "runAfter": {},
+          "runAfter": {
+            "Get_a_row_by_ID_2": [
+              "Succeeded"
+            ]
+          },
           "metadata": {
             "operationMetadataId": "5081ef3b-fc81-449f-a2ed-8b902a106d5a"
           },
@@ -63,14 +68,57 @@
               "entityName": "tasks",
               "item/subject": "Notify relevant parties of that the appeal has been resolved",
               "item/description": "Please ensure that the relevant parties are notified.",
-              "item/ownerid_task@odata.bind": "@triggerOutputs()?['body/_ownerid_value']"
+              "item/ownerid_task@odata.bind": "@outputs('Get_a_row_by_ID_2')?['body/@odata.id']",
+              "item/regardingobjectid_bsr_appeal_task@odata.bind": "@outputs('Get_a_row_by_ID')?['body/@odata.id']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_a_row_by_ID": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "41c043a5-679d-48ab-a09f-4bc7f9634966"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_appeals",
+              "recordId": "@triggerOutputs()?['body/_bsr_appeal_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_a_row_by_ID_2": {
+          "runAfter": {
+            "Get_a_row_by_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b80000aa-ecbc-423e-9b1f-8626880240dd"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "systemusers",
+              "recordId": "@outputs('Get_a_row_by_ID')?['body/_ownerid_value']"
             },
             "authentication": "@parameters('$authentication')"
           }
         }
       }
     },
-    "templateName": null
+    "templateName": ""
   },
   "schemaVersion": "1.0.0.0"
 }
