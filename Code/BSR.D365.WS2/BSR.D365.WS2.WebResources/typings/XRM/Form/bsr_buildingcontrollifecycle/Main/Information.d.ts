@@ -1,41 +1,55 @@
 declare namespace Form.bsr_buildingcontrollifecycle.Main {
   namespace Information {
     namespace Tabs {
-      interface completion extends Xrm.SectionCollectionBase {
-        get(name: "tab_4_section_1"): Xrm.PageSection;
-        get(name: "tab_4_section_2"): Xrm.PageSection;
+      interface bsr_referrals extends Xrm.SectionCollectionBase {
+        get(name: "tab_build_section_8"): Xrm.PageSection;
         get(name: string): undefined;
         get(): Xrm.PageSection[];
         get(index: number): Xrm.PageSection;
         get(chooser: (item: Xrm.PageSection, index: number) => boolean): Xrm.PageSection[];
       }
       interface tab_assessment extends Xrm.SectionCollectionBase {
-        get(name: "AssessmentValidationChecks"): Xrm.PageSection;
         get(name: "bsr_assessment_requirement"): Xrm.PageSection;
         get(name: "section_approval"): Xrm.PageSection;
-        get(name: "section_assessment_meetings"): Xrm.PageSection;
         get(name: "section_assessment_timeline"): Xrm.PageSection;
-        get(name: "section_fire"): Xrm.PageSection;
         get(name: "section_information"): Xrm.PageSection;
         get(name: "section_mandatory_timeline"): Xrm.PageSection;
         get(name: "section_phase"): Xrm.PageSection;
         get(name: "section_regulatory"): Xrm.PageSection;
         get(name: "section_rejection "): Xrm.PageSection;
         get(name: "section_requirements"): Xrm.PageSection;
-        get(name: "section_sewerage"): Xrm.PageSection;
         get(name: "section_time_extension"): Xrm.PageSection;
         get(name: string): undefined;
         get(): Xrm.PageSection[];
         get(index: number): Xrm.PageSection;
         get(chooser: (item: Xrm.PageSection, index: number) => boolean): Xrm.PageSection[];
       }
-      interface tab_build extends Xrm.SectionCollectionBase {
-        get(name: "buildvalidationchecks"): Xrm.PageSection;
-        get(name: "section_current_phase"): Xrm.PageSection;
-        get(name: "section_timeline"): Xrm.PageSection;
+      interface tab_consultation extends Xrm.SectionCollectionBase {
+        get(name: "section_fire"): Xrm.PageSection;
+        get(name: "section_sewerage"): Xrm.PageSection;
+        get(name: string): undefined;
+        get(): Xrm.PageSection[];
+        get(index: number): Xrm.PageSection;
+        get(chooser: (item: Xrm.PageSection, index: number) => boolean): Xrm.PageSection[];
+      }
+      interface tab_meetings extends Xrm.SectionCollectionBase {
+        get(name: "section_assessment_meetings"): Xrm.PageSection;
         get(name: "tab_5_section_8"): Xrm.PageSection;
+        get(name: string): undefined;
+        get(): Xrm.PageSection[];
+        get(index: number): Xrm.PageSection;
+        get(chooser: (item: Xrm.PageSection, index: number) => boolean): Xrm.PageSection[];
+      }
+      interface tab_notices extends Xrm.SectionCollectionBase {
         get(name: "tab_build_section_7"): Xrm.PageSection;
-        get(name: "tab_build_section_8"): Xrm.PageSection;
+        get(name: string): undefined;
+        get(): Xrm.PageSection[];
+        get(index: number): Xrm.PageSection;
+        get(chooser: (item: Xrm.PageSection, index: number) => boolean): Xrm.PageSection[];
+      }
+      interface tab_validation extends Xrm.SectionCollectionBase {
+        get(name: "AssessmentValidationChecks"): Xrm.PageSection;
+        get(name: "buildvalidationchecks"): Xrm.PageSection;
         get(name: string): undefined;
         get(): Xrm.PageSection[];
         get(index: number): Xrm.PageSection;
@@ -70,12 +84,14 @@ declare namespace Form.bsr_buildingcontrollifecycle.Main {
       get(name: "bsr_bclreference"): Xrm.Attribute<string>;
       get(name: "bsr_bsr_fireereceipt"): Xrm.OptionSetAttribute<bsr_receiptofconsultation>;
       get(name: "bsr_bsr_seweragereceipt"): Xrm.OptionSetAttribute<bsr_receiptofconsultation>;
+      get(name: "bsr_buildenddate"): Xrm.DateAttribute;
       get(name: "bsr_buildingcontrollifecyclestatus"): Xrm.OptionSetAttribute<bsr_buildingcontrollifecyclestatus>;
       get(name: "bsr_buildingdetails"): Xrm.LookupAttribute<"bsr_buildingdetails">;
       get(name: "bsr_buildinspectionscompletedate"): Xrm.DateAttribute;
       get(name: "bsr_ccfirereceipt"): Xrm.OptionSetAttribute<bsr_ccfirereceiptchoice>;
       get(name: "bsr_ccseweragereceipt"): Xrm.OptionSetAttribute<bsr_ccfirereceiptchoice>;
       get(name: "bsr_changecontrol"): Xrm.OptionSetAttribute<boolean>;
+      get(name: "bsr_completioncertappid"): Xrm.LookupAttribute<"bsr_buildingcontrolapplication">;
       get(name: "bsr_dutyholderagreement"): Xrm.OptionSetAttribute<boolean>;
       get(name: "bsr_dutyholderagreementemail"): Xrm.Attribute<string>;
       get(name: "bsr_finaliseassessrecords"): Xrm.OptionSetAttribute<bsr_finaliseassessrecords>;
@@ -87,12 +103,14 @@ declare namespace Form.bsr_buildingcontrollifecycle.Main {
       get(name: "bsr_fireextensionagreement"): Xrm.Attribute<string>;
       get(name: "bsr_fireextensionrequest"): Xrm.Attribute<string>;
       get(name: "bsr_fireextensionrequired"): Xrm.OptionSetAttribute<boolean>;
+      get(name: "bsr_firerequestemailurl"): Xrm.Attribute<string>;
       get(name: "bsr_isbuildcomplete"): Xrm.OptionSetAttribute<bsr_isbuildcomplete>;
       get(name: "bsr_lifecyclecancellationreason"): Xrm.OptionSetAttribute<bsr_lifecyclecancellationreason>;
       get(name: "bsr_lifecyclecompletionreason"): Xrm.OptionSetAttribute<bsr_lifecyclecompletionreason>;
       get(name: "bsr_lifecyclephase"): Xrm.OptionSetAttribute<bsr_lifecyclephase>;
       get(name: "bsr_mandatorytimelinefailuredate"): Xrm.DateAttribute;
       get(name: "bsr_name"): Xrm.Attribute<string>;
+      get(name: "bsr_numberofrequirements"): Xrm.NumberAttribute;
       get(name: "bsr_outcomedecisionissueddate"): Xrm.DateAttribute;
       get(name: "bsr_outcomedocument"): Xrm.Attribute<string>;
       get(name: "bsr_outcomeemail"): Xrm.Attribute<string>;
@@ -108,12 +126,14 @@ declare namespace Form.bsr_buildingcontrollifecycle.Main {
       get(name: "bsr_rejectiondocument"): Xrm.Attribute<string>;
       get(name: "bsr_rejectionemail"): Xrm.Attribute<string>;
       get(name: "bsr_rejectionreasons"): Xrm.Attribute<string>;
+      get(name: "bsr_requirementsubmissiondate"): Xrm.DateAttribute;
       get(name: "bsr_sewerageconsultationreceiveddate"): Xrm.DateAttribute;
       get(name: "bsr_sewerageconsultationrequestdate"): Xrm.DateAttribute;
       get(name: "bsr_sewerageconsultationurl"): Xrm.Attribute<string>;
       get(name: "bsr_sewerageextensionagreed"): Xrm.OptionSetAttribute<boolean>;
       get(name: "bsr_sewerageextensionagreement"): Xrm.Attribute<string>;
       get(name: "bsr_sewerageextensionrequired"): Xrm.OptionSetAttribute<boolean>;
+      get(name: "bsr_seweragerequestemailurl"): Xrm.Attribute<string>;
       get(name: "bsr_seweragerxtensionrequest"): Xrm.Attribute<string>;
       get(name: "bsr_sewerageundertaker"): Xrm.LookupAttribute<"contact">;
       get(name: "bsr_statfireconsultfailuredate"): Xrm.DateAttribute;
@@ -123,7 +143,7 @@ declare namespace Form.bsr_buildingcontrollifecycle.Main {
       get(name: "bsr_supportingbcl"): Xrm.LookupAttribute<"bsr_buildingcontrollifecycle">;
       get(name: "bsr_timeextensionemail"): Xrm.Attribute<string>;
       get(name: "bsr_timerequirement"): Xrm.NumberAttribute;
-      get(name: "createdon"): Xrm.DateAttribute | null;
+      get(name: "createdon"): Xrm.DateAttribute;
       get(name: "ownerid"): Xrm.LookupAttribute<"systemuser" | "team">;
       get(name: string): undefined;
       get(): Xrm.Attribute<any>[];
@@ -162,11 +182,13 @@ declare namespace Form.bsr_buildingcontrollifecycle.Main {
       get(name: "bsr_bclreference"): Xrm.StringControl;
       get(name: "bsr_bsr_fireereceipt"): Xrm.OptionSetControl<bsr_receiptofconsultation>;
       get(name: "bsr_bsr_seweragereceipt"): Xrm.OptionSetControl<bsr_receiptofconsultation>;
+      get(name: "bsr_buildenddate"): Xrm.DateControl;
       get(name: "bsr_buildingdetails"): Xrm.LookupControl<"bsr_buildingdetails">;
       get(name: "bsr_buildinspectionscompletedate"): Xrm.DateControl;
       get(name: "bsr_ccfirereceipt"): Xrm.OptionSetControl<bsr_ccfirereceiptchoice>;
       get(name: "bsr_ccseweragereceipt"): Xrm.OptionSetControl<bsr_ccfirereceiptchoice>;
       get(name: "bsr_changecontrol"): Xrm.OptionSetControl<boolean>;
+      get(name: "bsr_completioncertappid"): Xrm.LookupControl<"bsr_buildingcontrolapplication">;
       get(name: "bsr_dutyholderagreement"): Xrm.OptionSetControl<boolean>;
       get(name: "bsr_dutyholderagreementemail"): Xrm.StringControl;
       get(name: "bsr_finaliseassessrecords"): Xrm.OptionSetControl<bsr_finaliseassessrecords>;
@@ -179,14 +201,14 @@ declare namespace Form.bsr_buildingcontrollifecycle.Main {
       get(name: "bsr_fireextensionagreement"): Xrm.StringControl;
       get(name: "bsr_fireextensionrequest"): Xrm.StringControl;
       get(name: "bsr_fireextensionrequired"): Xrm.OptionSetControl<boolean>;
+      get(name: "bsr_firerequestemailurl"): Xrm.StringControl;
       get(name: "bsr_isbuildcomplete"): Xrm.OptionSetControl<bsr_isbuildcomplete>;
       get(name: "bsr_lifecyclecancellationreason"): Xrm.OptionSetControl<bsr_lifecyclecancellationreason>;
       get(name: "bsr_lifecyclecompletionreason"): Xrm.OptionSetControl<bsr_lifecyclecompletionreason>;
-      get(name: "bsr_lifecyclephase"): Xrm.OptionSetControl<bsr_lifecyclephase>;
-      get(name: "bsr_lifecyclephase1"): Xrm.OptionSetControl<bsr_lifecyclephase>;
       get(name: "bsr_mandatorytimelinefailuredate"): Xrm.DateControl;
       get(name: "bsr_mandatorytimer"): Xrm.BaseControl;
       get(name: "bsr_name"): Xrm.StringControl;
+      get(name: "bsr_numberofrequirements"): Xrm.NumberControl;
       get(name: "bsr_outcomedecisionissueddate"): Xrm.DateControl;
       get(name: "bsr_outcomedocument"): Xrm.StringControl;
       get(name: "bsr_outcomeemail"): Xrm.StringControl;
@@ -202,6 +224,7 @@ declare namespace Form.bsr_buildingcontrollifecycle.Main {
       get(name: "bsr_rejectiondocument"): Xrm.StringControl;
       get(name: "bsr_rejectionemail"): Xrm.StringControl;
       get(name: "bsr_rejectionreasons"): Xrm.StringControl;
+      get(name: "bsr_requirementsubmissiondate"): Xrm.DateControl;
       get(name: "bsr_sewerageconsultationreceiveddate"): Xrm.DateControl;
       get(name: "bsr_sewerageconsultationrequestdate"): Xrm.DateControl;
       get(name: "bsr_sewerageconsultationurl"): Xrm.StringControl;
@@ -209,6 +232,7 @@ declare namespace Form.bsr_buildingcontrollifecycle.Main {
       get(name: "bsr_sewerageextensionagreed"): Xrm.OptionSetControl<boolean>;
       get(name: "bsr_sewerageextensionagreement"): Xrm.StringControl;
       get(name: "bsr_sewerageextensionrequired"): Xrm.OptionSetControl<boolean>;
+      get(name: "bsr_seweragerequestemailurl"): Xrm.StringControl;
       get(name: "bsr_seweragerxtensionrequest"): Xrm.StringControl;
       get(name: "bsr_sewerageundertaker"): Xrm.LookupControl<"contact">;
       get(name: "bsr_statfireconsultfailuredate"): Xrm.DateControl;
@@ -218,7 +242,9 @@ declare namespace Form.bsr_buildingcontrollifecycle.Main {
       get(name: "bsr_supportingbcl"): Xrm.LookupControl<"bsr_buildingcontrollifecycle">;
       get(name: "bsr_timeextensionemail"): Xrm.StringControl;
       get(name: "bsr_timerequirement"): Xrm.NumberControl;
+      get(name: "createdon"): Xrm.DateControl;
       get(name: "header_bsr_buildingcontrollifecyclestatus"): Xrm.OptionSetControl<bsr_buildingcontrollifecyclestatus>;
+      get(name: "header_bsr_lifecyclephase"): Xrm.OptionSetControl<bsr_lifecyclephase>;
       get(name: "header_ownerid"): Xrm.LookupControl<"systemuser" | "team">;
       get(name: "header_process_bsr_allrequirementsassessed"): Xrm.OptionSetControl<bsr_allrequirementsassessed> | null;
       get(name: "header_process_bsr_allrequirementssubmitted"): Xrm.OptionSetControl<bsr_allrequirementssubmitted> | null;
@@ -245,16 +271,18 @@ declare namespace Form.bsr_buildingcontrollifecycle.Main {
       get(name: "header_process_bsr_rejectiondecisionissueddate"): Xrm.DateControl | null;
       get(name: "header_process_createdon"): Xrm.DateControl | null;
       get(name: "notescontrol"): Xrm.BaseControl;
-      get(name: "notescontrol1"): Xrm.BaseControl;
       get(name: string): undefined;
       get(): Xrm.BaseControl[];
       get(index: number): Xrm.BaseControl;
       get(chooser: (item: Xrm.BaseControl, index: number) => boolean): Xrm.BaseControl[];
     }
     interface Tabs extends Xrm.TabCollectionBase {
-      get(name: "completion"): Xrm.PageTab<Tabs.completion>;
+      get(name: "bsr_referrals"): Xrm.PageTab<Tabs.bsr_referrals>;
       get(name: "tab_assessment"): Xrm.PageTab<Tabs.tab_assessment>;
-      get(name: "tab_build"): Xrm.PageTab<Tabs.tab_build>;
+      get(name: "tab_consultation"): Xrm.PageTab<Tabs.tab_consultation>;
+      get(name: "tab_meetings"): Xrm.PageTab<Tabs.tab_meetings>;
+      get(name: "tab_notices"): Xrm.PageTab<Tabs.tab_notices>;
+      get(name: "tab_validation"): Xrm.PageTab<Tabs.tab_validation>;
       get(name: string): undefined;
       get(): Xrm.PageTab<Xrm.Collection<Xrm.PageSection>>[];
       get(index: number): Xrm.PageTab<Xrm.Collection<Xrm.PageSection>>;
@@ -289,12 +317,14 @@ declare namespace Form.bsr_buildingcontrollifecycle.Main {
     getAttribute(attributeName: "bsr_bclreference"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_bsr_fireereceipt"): Xrm.OptionSetAttribute<bsr_receiptofconsultation>;
     getAttribute(attributeName: "bsr_bsr_seweragereceipt"): Xrm.OptionSetAttribute<bsr_receiptofconsultation>;
+    getAttribute(attributeName: "bsr_buildenddate"): Xrm.DateAttribute;
     getAttribute(attributeName: "bsr_buildingcontrollifecyclestatus"): Xrm.OptionSetAttribute<bsr_buildingcontrollifecyclestatus>;
     getAttribute(attributeName: "bsr_buildingdetails"): Xrm.LookupAttribute<"bsr_buildingdetails">;
     getAttribute(attributeName: "bsr_buildinspectionscompletedate"): Xrm.DateAttribute;
     getAttribute(attributeName: "bsr_ccfirereceipt"): Xrm.OptionSetAttribute<bsr_ccfirereceiptchoice>;
     getAttribute(attributeName: "bsr_ccseweragereceipt"): Xrm.OptionSetAttribute<bsr_ccfirereceiptchoice>;
     getAttribute(attributeName: "bsr_changecontrol"): Xrm.OptionSetAttribute<boolean>;
+    getAttribute(attributeName: "bsr_completioncertappid"): Xrm.LookupAttribute<"bsr_buildingcontrolapplication">;
     getAttribute(attributeName: "bsr_dutyholderagreement"): Xrm.OptionSetAttribute<boolean>;
     getAttribute(attributeName: "bsr_dutyholderagreementemail"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_finaliseassessrecords"): Xrm.OptionSetAttribute<bsr_finaliseassessrecords>;
@@ -306,12 +336,14 @@ declare namespace Form.bsr_buildingcontrollifecycle.Main {
     getAttribute(attributeName: "bsr_fireextensionagreement"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_fireextensionrequest"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_fireextensionrequired"): Xrm.OptionSetAttribute<boolean>;
+    getAttribute(attributeName: "bsr_firerequestemailurl"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_isbuildcomplete"): Xrm.OptionSetAttribute<bsr_isbuildcomplete>;
     getAttribute(attributeName: "bsr_lifecyclecancellationreason"): Xrm.OptionSetAttribute<bsr_lifecyclecancellationreason>;
     getAttribute(attributeName: "bsr_lifecyclecompletionreason"): Xrm.OptionSetAttribute<bsr_lifecyclecompletionreason>;
     getAttribute(attributeName: "bsr_lifecyclephase"): Xrm.OptionSetAttribute<bsr_lifecyclephase>;
     getAttribute(attributeName: "bsr_mandatorytimelinefailuredate"): Xrm.DateAttribute;
     getAttribute(attributeName: "bsr_name"): Xrm.Attribute<string>;
+    getAttribute(attributeName: "bsr_numberofrequirements"): Xrm.NumberAttribute;
     getAttribute(attributeName: "bsr_outcomedecisionissueddate"): Xrm.DateAttribute;
     getAttribute(attributeName: "bsr_outcomedocument"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_outcomeemail"): Xrm.Attribute<string>;
@@ -327,12 +359,14 @@ declare namespace Form.bsr_buildingcontrollifecycle.Main {
     getAttribute(attributeName: "bsr_rejectiondocument"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_rejectionemail"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_rejectionreasons"): Xrm.Attribute<string>;
+    getAttribute(attributeName: "bsr_requirementsubmissiondate"): Xrm.DateAttribute;
     getAttribute(attributeName: "bsr_sewerageconsultationreceiveddate"): Xrm.DateAttribute;
     getAttribute(attributeName: "bsr_sewerageconsultationrequestdate"): Xrm.DateAttribute;
     getAttribute(attributeName: "bsr_sewerageconsultationurl"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_sewerageextensionagreed"): Xrm.OptionSetAttribute<boolean>;
     getAttribute(attributeName: "bsr_sewerageextensionagreement"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_sewerageextensionrequired"): Xrm.OptionSetAttribute<boolean>;
+    getAttribute(attributeName: "bsr_seweragerequestemailurl"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_seweragerxtensionrequest"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_sewerageundertaker"): Xrm.LookupAttribute<"contact">;
     getAttribute(attributeName: "bsr_statfireconsultfailuredate"): Xrm.DateAttribute;
@@ -342,7 +376,7 @@ declare namespace Form.bsr_buildingcontrollifecycle.Main {
     getAttribute(attributeName: "bsr_supportingbcl"): Xrm.LookupAttribute<"bsr_buildingcontrollifecycle">;
     getAttribute(attributeName: "bsr_timeextensionemail"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_timerequirement"): Xrm.NumberAttribute;
-    getAttribute(attributeName: "createdon"): Xrm.DateAttribute | null;
+    getAttribute(attributeName: "createdon"): Xrm.DateAttribute;
     getAttribute(attributeName: "ownerid"): Xrm.LookupAttribute<"systemuser" | "team">;
     getAttribute(attributeName: string): undefined;
     getAttribute(delegateFunction: Xrm.Collection.MatchingDelegate<Xrm.Attribute<any>>): Xrm.Attribute<any>[];
@@ -377,11 +411,13 @@ declare namespace Form.bsr_buildingcontrollifecycle.Main {
     getControl(controlName: "bsr_bclreference"): Xrm.StringControl;
     getControl(controlName: "bsr_bsr_fireereceipt"): Xrm.OptionSetControl<bsr_receiptofconsultation>;
     getControl(controlName: "bsr_bsr_seweragereceipt"): Xrm.OptionSetControl<bsr_receiptofconsultation>;
+    getControl(controlName: "bsr_buildenddate"): Xrm.DateControl;
     getControl(controlName: "bsr_buildingdetails"): Xrm.LookupControl<"bsr_buildingdetails">;
     getControl(controlName: "bsr_buildinspectionscompletedate"): Xrm.DateControl;
     getControl(controlName: "bsr_ccfirereceipt"): Xrm.OptionSetControl<bsr_ccfirereceiptchoice>;
     getControl(controlName: "bsr_ccseweragereceipt"): Xrm.OptionSetControl<bsr_ccfirereceiptchoice>;
     getControl(controlName: "bsr_changecontrol"): Xrm.OptionSetControl<boolean>;
+    getControl(controlName: "bsr_completioncertappid"): Xrm.LookupControl<"bsr_buildingcontrolapplication">;
     getControl(controlName: "bsr_dutyholderagreement"): Xrm.OptionSetControl<boolean>;
     getControl(controlName: "bsr_dutyholderagreementemail"): Xrm.StringControl;
     getControl(controlName: "bsr_finaliseassessrecords"): Xrm.OptionSetControl<bsr_finaliseassessrecords>;
@@ -394,14 +430,14 @@ declare namespace Form.bsr_buildingcontrollifecycle.Main {
     getControl(controlName: "bsr_fireextensionagreement"): Xrm.StringControl;
     getControl(controlName: "bsr_fireextensionrequest"): Xrm.StringControl;
     getControl(controlName: "bsr_fireextensionrequired"): Xrm.OptionSetControl<boolean>;
+    getControl(controlName: "bsr_firerequestemailurl"): Xrm.StringControl;
     getControl(controlName: "bsr_isbuildcomplete"): Xrm.OptionSetControl<bsr_isbuildcomplete>;
     getControl(controlName: "bsr_lifecyclecancellationreason"): Xrm.OptionSetControl<bsr_lifecyclecancellationreason>;
     getControl(controlName: "bsr_lifecyclecompletionreason"): Xrm.OptionSetControl<bsr_lifecyclecompletionreason>;
-    getControl(controlName: "bsr_lifecyclephase"): Xrm.OptionSetControl<bsr_lifecyclephase>;
-    getControl(controlName: "bsr_lifecyclephase1"): Xrm.OptionSetControl<bsr_lifecyclephase>;
     getControl(controlName: "bsr_mandatorytimelinefailuredate"): Xrm.DateControl;
     getControl(controlName: "bsr_mandatorytimer"): Xrm.BaseControl;
     getControl(controlName: "bsr_name"): Xrm.StringControl;
+    getControl(controlName: "bsr_numberofrequirements"): Xrm.NumberControl;
     getControl(controlName: "bsr_outcomedecisionissueddate"): Xrm.DateControl;
     getControl(controlName: "bsr_outcomedocument"): Xrm.StringControl;
     getControl(controlName: "bsr_outcomeemail"): Xrm.StringControl;
@@ -417,6 +453,7 @@ declare namespace Form.bsr_buildingcontrollifecycle.Main {
     getControl(controlName: "bsr_rejectiondocument"): Xrm.StringControl;
     getControl(controlName: "bsr_rejectionemail"): Xrm.StringControl;
     getControl(controlName: "bsr_rejectionreasons"): Xrm.StringControl;
+    getControl(controlName: "bsr_requirementsubmissiondate"): Xrm.DateControl;
     getControl(controlName: "bsr_sewerageconsultationreceiveddate"): Xrm.DateControl;
     getControl(controlName: "bsr_sewerageconsultationrequestdate"): Xrm.DateControl;
     getControl(controlName: "bsr_sewerageconsultationurl"): Xrm.StringControl;
@@ -424,6 +461,7 @@ declare namespace Form.bsr_buildingcontrollifecycle.Main {
     getControl(controlName: "bsr_sewerageextensionagreed"): Xrm.OptionSetControl<boolean>;
     getControl(controlName: "bsr_sewerageextensionagreement"): Xrm.StringControl;
     getControl(controlName: "bsr_sewerageextensionrequired"): Xrm.OptionSetControl<boolean>;
+    getControl(controlName: "bsr_seweragerequestemailurl"): Xrm.StringControl;
     getControl(controlName: "bsr_seweragerxtensionrequest"): Xrm.StringControl;
     getControl(controlName: "bsr_sewerageundertaker"): Xrm.LookupControl<"contact">;
     getControl(controlName: "bsr_statfireconsultfailuredate"): Xrm.DateControl;
@@ -433,7 +471,9 @@ declare namespace Form.bsr_buildingcontrollifecycle.Main {
     getControl(controlName: "bsr_supportingbcl"): Xrm.LookupControl<"bsr_buildingcontrollifecycle">;
     getControl(controlName: "bsr_timeextensionemail"): Xrm.StringControl;
     getControl(controlName: "bsr_timerequirement"): Xrm.NumberControl;
+    getControl(controlName: "createdon"): Xrm.DateControl;
     getControl(controlName: "header_bsr_buildingcontrollifecyclestatus"): Xrm.OptionSetControl<bsr_buildingcontrollifecyclestatus>;
+    getControl(controlName: "header_bsr_lifecyclephase"): Xrm.OptionSetControl<bsr_lifecyclephase>;
     getControl(controlName: "header_ownerid"): Xrm.LookupControl<"systemuser" | "team">;
     getControl(controlName: "header_process_bsr_allrequirementsassessed"): Xrm.OptionSetControl<bsr_allrequirementsassessed> | null;
     getControl(controlName: "header_process_bsr_allrequirementssubmitted"): Xrm.OptionSetControl<bsr_allrequirementssubmitted> | null;
@@ -460,7 +500,6 @@ declare namespace Form.bsr_buildingcontrollifecycle.Main {
     getControl(controlName: "header_process_bsr_rejectiondecisionissueddate"): Xrm.DateControl | null;
     getControl(controlName: "header_process_createdon"): Xrm.DateControl | null;
     getControl(controlName: "notescontrol"): Xrm.BaseControl;
-    getControl(controlName: "notescontrol1"): Xrm.BaseControl;
     getControl(controlName: string): undefined;
     getControl(delegateFunction: Xrm.Collection.MatchingDelegate<Xrm.Control<any>>): Xrm.Control<any>[];
   }

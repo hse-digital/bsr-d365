@@ -38,21 +38,6 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
         get(index: number): Xrm.PageSection;
         get(chooser: (item: Xrm.PageSection, index: number) => boolean): Xrm.PageSection[];
       }
-      interface d103eaff7e6e4c0abf8b3f8c87b278c1 extends Xrm.SectionCollectionBase {
-        get(name: "null_section_4"): Xrm.PageSection;
-        get(name: "section_application_submission"): Xrm.PageSection;
-        get(name: "statusdetails"): Xrm.PageSection;
-        get(name: "tab_2_section_1"): Xrm.PageSection;
-        get(name: "tab_2_section_2"): Xrm.PageSection;
-        get(name: "{d103eaff-7e6e-4c0a-bf8b-3f8c87b278c1}_section_5"): Xrm.PageSection;
-        get(name: "{d103eaff-7e6e-4c0a-bf8b-3f8c87b278c1}_section_6"): Xrm.PageSection;
-        get(name: "{d103eaff-7e6e-4c0a-bf8b-3f8c87b278c1}_section_7"): Xrm.PageSection;
-        get(name: "{d103eaff-7e6e-4c0a-bf8b-3f8c87b278c1}_section_8"): Xrm.PageSection;
-        get(name: string): undefined;
-        get(): Xrm.PageSection[];
-        get(index: number): Xrm.PageSection;
-        get(chooser: (item: Xrm.PageSection, index: number) => boolean): Xrm.PageSection[];
-      }
       interface tab_4 extends Xrm.SectionCollectionBase {
         get(name: "_section_188"): Xrm.PageSection;
         get(name: "tab_4_section_1"): Xrm.PageSection;
@@ -66,6 +51,22 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
         get(name: "tab_4_section_7"): Xrm.PageSection;
         get(name: "tab_4_section_8"): Xrm.PageSection;
         get(name: "tab_4_section_9"): Xrm.PageSection;
+        get(name: "tab_applicant_organisation"): Xrm.PageSection;
+        get(name: string): undefined;
+        get(): Xrm.PageSection[];
+        get(index: number): Xrm.PageSection;
+        get(chooser: (item: Xrm.PageSection, index: number) => boolean): Xrm.PageSection[];
+      }
+      interface tab_key_info extends Xrm.SectionCollectionBase {
+        get(name: "null_section_4"): Xrm.PageSection;
+        get(name: "section_application_submission"): Xrm.PageSection;
+        get(name: "statusdetails"): Xrm.PageSection;
+        get(name: "tab_2_section_1"): Xrm.PageSection;
+        get(name: "tab_2_section_2"): Xrm.PageSection;
+        get(name: "tab_key_info_section_11"): Xrm.PageSection;
+        get(name: "{d103eaff-7e6e-4c0a-bf8b-3f8c87b278c1}_section_5"): Xrm.PageSection;
+        get(name: "{d103eaff-7e6e-4c0a-bf8b-3f8c87b278c1}_section_6"): Xrm.PageSection;
+        get(name: "{d103eaff-7e6e-4c0a-bf8b-3f8c87b278c1}_section_7"): Xrm.PageSection;
         get(name: string): undefined;
         get(): Xrm.PageSection[];
         get(index: number): Xrm.PageSection;
@@ -89,6 +90,7 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
       get(name: "bsr_applicantchanged"): Xrm.OptionSetAttribute<boolean>;
       get(name: "bsr_applicantchangeddate"): Xrm.DateAttribute;
       get(name: "bsr_applicantid"): Xrm.LookupAttribute<"contact">;
+      get(name: "bsr_applicantorgchangedate"): Xrm.DateAttribute;
       get(name: "bsr_applicationvalidated"): Xrm.OptionSetAttribute<boolean>;
       get(name: "bsr_bcaacancellationreason"): Xrm.OptionSetAttribute<bsr_bcaacancellationreason>;
       get(name: "bsr_bcaacompletionreason"): Xrm.OptionSetAttribute<bsr_bcaacompletionreason>;
@@ -100,6 +102,7 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
       get(name: "bsr_buildingprincipaldesigner"): Xrm.LookupAttribute<"account" | "contact">;
       get(name: "bsr_buildingregcompliance"): Xrm.Attribute<string>;
       get(name: "bsr_caseofficer"): Xrm.LookupAttribute<"systemuser">;
+      get(name: "bsr_changeapplicantorganisation"): Xrm.OptionSetAttribute<boolean>;
       get(name: "bsr_changecontrolplan"): Xrm.Attribute<string>;
       get(name: "bsr_changeprincipalcontractor"): Xrm.OptionSetAttribute<boolean>;
       get(name: "bsr_changeprincipaldesigner"): Xrm.OptionSetAttribute<boolean>;
@@ -124,6 +127,7 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
       get(name: "bsr_informationrequesttracker"): Xrm.Attribute<string>;
       get(name: "bsr_invalidapplication"): Xrm.OptionSetAttribute<boolean>;
       get(name: "bsr_invalidapplicationemail"): Xrm.Attribute<string>;
+      get(name: "bsr_isapplicantorgvalidated"): Xrm.OptionSetAttribute<boolean>;
       get(name: "bsr_isapplicantvalidated"): Xrm.OptionSetAttribute<boolean>;
       get(name: "bsr_ischangeclientcontact"): Xrm.OptionSetAttribute<boolean>;
       get(name: "bsr_ischangeprincipalcontractorcontact"): Xrm.OptionSetAttribute<boolean>;
@@ -159,10 +163,12 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
       get(name: "bsr_princdesigninvestenforce"): Xrm.Attribute<string>;
       get(name: "bsr_principalcontractnamedcontact"): Xrm.LookupAttribute<"contact">;
       get(name: "bsr_principaldesignernamedcontact"): Xrm.LookupAttribute<"contact">;
+      get(name: "bsr_principalsigneddecnotprovided"): Xrm.Attribute<string>;
       get(name: "bsr_raslastcheckeddate"): Xrm.DateAttribute;
       get(name: "bsr_regleadsupport"): Xrm.LookupAttribute<"systemuser">;
       get(name: "bsr_responsibleactorsscheme"): Xrm.OptionSetAttribute<bsr_responsibleactorsschemechoice>;
       get(name: "bsr_sewerageundertakerid"): Xrm.LookupAttribute<"account" | "contact">;
+      get(name: "bsr_signedhandoverstatement"): Xrm.Attribute<string>;
       get(name: "bsr_stagedapplication"): Xrm.OptionSetAttribute<boolean>;
       get(name: "bsr_stagedworkdoc"): Xrm.Attribute<string>;
       get(name: "bsr_stagedworkstatement"): Xrm.Attribute<string>;
@@ -186,12 +192,14 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
       get(name: "Subgrid_new_2"): Xrm.SubGridControl<"bsr_buildingcontrolapplication">;
       get(name: "Subgrid_new_3"): Xrm.SubGridControl<"bsr_drawingsandplans">;
       get(name: "Subgrid_new_4"): Xrm.SubGridControl<"bsr_changerequest">;
+      get(name: "Subgrid_new_5"): Xrm.SubGridControl<"bsr_declarations">;
       get(name: "bsr_addressline2"): Xrm.StringControl;
       get(name: "bsr_addressline3"): Xrm.StringControl;
       get(name: "bsr_adressline1"): Xrm.StringControl;
       get(name: "bsr_applicantchanged"): Xrm.OptionSetControl<boolean>;
       get(name: "bsr_applicantchangeddate"): Xrm.DateControl;
       get(name: "bsr_applicantid"): Xrm.LookupControl<"contact">;
+      get(name: "bsr_applicantorgchangedate"): Xrm.DateControl;
       get(name: "bsr_applicationvalidated"): Xrm.OptionSetControl<boolean>;
       get(name: "bsr_bcaacancellationreason"): Xrm.OptionSetControl<bsr_bcaacancellationreason>;
       get(name: "bsr_bcaacompletionreason"): Xrm.OptionSetControl<bsr_bcaacompletionreason>;
@@ -202,6 +210,7 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
       get(name: "bsr_buildingprincipaldesigner"): Xrm.LookupControl<"account" | "contact">;
       get(name: "bsr_buildingregcompliance"): Xrm.StringControl;
       get(name: "bsr_caseofficer"): Xrm.LookupControl<"systemuser">;
+      get(name: "bsr_changeapplicantorganisation"): Xrm.OptionSetControl<boolean>;
       get(name: "bsr_changecontrol"): Xrm.SubGridControl<"bsr_changerequest">;
       get(name: "bsr_changecontrolplan"): Xrm.StringControl;
       get(name: "bsr_changeprincipalcontractor"): Xrm.OptionSetControl<boolean>;
@@ -229,6 +238,7 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
       get(name: "bsr_informationrequesttracker"): Xrm.StringControl;
       get(name: "bsr_invalidapplication"): Xrm.OptionSetControl<boolean>;
       get(name: "bsr_invalidapplicationemail"): Xrm.StringControl;
+      get(name: "bsr_isapplicantorgvalidated"): Xrm.OptionSetControl<boolean>;
       get(name: "bsr_isapplicantvalidated"): Xrm.OptionSetControl<boolean>;
       get(name: "bsr_ischangeclientcontact"): Xrm.OptionSetControl<boolean>;
       get(name: "bsr_ischangeprincipalcontractorcontact"): Xrm.OptionSetControl<boolean>;
@@ -264,10 +274,12 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
       get(name: "bsr_princdesigninvestenforce"): Xrm.StringControl;
       get(name: "bsr_principalcontractnamedcontact"): Xrm.LookupControl<"contact">;
       get(name: "bsr_principaldesignernamedcontact"): Xrm.LookupControl<"contact">;
+      get(name: "bsr_principalsigneddecnotprovided"): Xrm.StringControl;
       get(name: "bsr_raslastcheckeddate"): Xrm.DateControl;
       get(name: "bsr_regleadsupport"): Xrm.LookupControl<"systemuser">;
       get(name: "bsr_responsibleactorsscheme"): Xrm.OptionSetControl<bsr_responsibleactorsschemechoice>;
       get(name: "bsr_sewerageundertakerid"): Xrm.LookupControl<"account" | "contact">;
+      get(name: "bsr_signedhandoverstatement"): Xrm.StringControl;
       get(name: "bsr_stagedapplication"): Xrm.OptionSetControl<boolean>;
       get(name: "bsr_stagedworkdoc"): Xrm.StringControl;
       get(name: "bsr_stagedworkstatement"): Xrm.StringControl;
@@ -296,8 +308,8 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
       get(name: "bcaa_completioncert_tab"): Xrm.PageTab<Tabs.bcaa_completioncert_tab>;
       get(name: "bcaa_payments_tab"): Xrm.PageTab<Tabs.bcaa_payments_tab>;
       get(name: "bcaa_validation_tab"): Xrm.PageTab<Tabs.bcaa_validation_tab>;
-      get(name: "{d103eaff-7e6e-4c0a-bf8b-3f8c87b278c1}"): Xrm.PageTab<Tabs.d103eaff7e6e4c0abf8b3f8c87b278c1>;
       get(name: "tab_4"): Xrm.PageTab<Tabs.tab_4>;
+      get(name: "tab_key_info"): Xrm.PageTab<Tabs.tab_key_info>;
       get(name: "tab_staged_application"): Xrm.PageTab<Tabs.tab_staged_application>;
       get(name: string): undefined;
       get(): Xrm.PageTab<Xrm.Collection<Xrm.PageSection>>[];
@@ -312,6 +324,7 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
     getAttribute(attributeName: "bsr_applicantchanged"): Xrm.OptionSetAttribute<boolean>;
     getAttribute(attributeName: "bsr_applicantchangeddate"): Xrm.DateAttribute;
     getAttribute(attributeName: "bsr_applicantid"): Xrm.LookupAttribute<"contact">;
+    getAttribute(attributeName: "bsr_applicantorgchangedate"): Xrm.DateAttribute;
     getAttribute(attributeName: "bsr_applicationvalidated"): Xrm.OptionSetAttribute<boolean>;
     getAttribute(attributeName: "bsr_bcaacancellationreason"): Xrm.OptionSetAttribute<bsr_bcaacancellationreason>;
     getAttribute(attributeName: "bsr_bcaacompletionreason"): Xrm.OptionSetAttribute<bsr_bcaacompletionreason>;
@@ -323,6 +336,7 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
     getAttribute(attributeName: "bsr_buildingprincipaldesigner"): Xrm.LookupAttribute<"account" | "contact">;
     getAttribute(attributeName: "bsr_buildingregcompliance"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_caseofficer"): Xrm.LookupAttribute<"systemuser">;
+    getAttribute(attributeName: "bsr_changeapplicantorganisation"): Xrm.OptionSetAttribute<boolean>;
     getAttribute(attributeName: "bsr_changecontrolplan"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_changeprincipalcontractor"): Xrm.OptionSetAttribute<boolean>;
     getAttribute(attributeName: "bsr_changeprincipaldesigner"): Xrm.OptionSetAttribute<boolean>;
@@ -347,6 +361,7 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
     getAttribute(attributeName: "bsr_informationrequesttracker"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_invalidapplication"): Xrm.OptionSetAttribute<boolean>;
     getAttribute(attributeName: "bsr_invalidapplicationemail"): Xrm.Attribute<string>;
+    getAttribute(attributeName: "bsr_isapplicantorgvalidated"): Xrm.OptionSetAttribute<boolean>;
     getAttribute(attributeName: "bsr_isapplicantvalidated"): Xrm.OptionSetAttribute<boolean>;
     getAttribute(attributeName: "bsr_ischangeclientcontact"): Xrm.OptionSetAttribute<boolean>;
     getAttribute(attributeName: "bsr_ischangeprincipalcontractorcontact"): Xrm.OptionSetAttribute<boolean>;
@@ -382,10 +397,12 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
     getAttribute(attributeName: "bsr_princdesigninvestenforce"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_principalcontractnamedcontact"): Xrm.LookupAttribute<"contact">;
     getAttribute(attributeName: "bsr_principaldesignernamedcontact"): Xrm.LookupAttribute<"contact">;
+    getAttribute(attributeName: "bsr_principalsigneddecnotprovided"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_raslastcheckeddate"): Xrm.DateAttribute;
     getAttribute(attributeName: "bsr_regleadsupport"): Xrm.LookupAttribute<"systemuser">;
     getAttribute(attributeName: "bsr_responsibleactorsscheme"): Xrm.OptionSetAttribute<bsr_responsibleactorsschemechoice>;
     getAttribute(attributeName: "bsr_sewerageundertakerid"): Xrm.LookupAttribute<"account" | "contact">;
+    getAttribute(attributeName: "bsr_signedhandoverstatement"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_stagedapplication"): Xrm.OptionSetAttribute<boolean>;
     getAttribute(attributeName: "bsr_stagedworkdoc"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_stagedworkstatement"): Xrm.Attribute<string>;
@@ -405,12 +422,14 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
     getControl(controlName: "Subgrid_new_2"): Xrm.SubGridControl<"bsr_buildingcontrolapplication">;
     getControl(controlName: "Subgrid_new_3"): Xrm.SubGridControl<"bsr_drawingsandplans">;
     getControl(controlName: "Subgrid_new_4"): Xrm.SubGridControl<"bsr_changerequest">;
+    getControl(controlName: "Subgrid_new_5"): Xrm.SubGridControl<"bsr_declarations">;
     getControl(controlName: "bsr_addressline2"): Xrm.StringControl;
     getControl(controlName: "bsr_addressline3"): Xrm.StringControl;
     getControl(controlName: "bsr_adressline1"): Xrm.StringControl;
     getControl(controlName: "bsr_applicantchanged"): Xrm.OptionSetControl<boolean>;
     getControl(controlName: "bsr_applicantchangeddate"): Xrm.DateControl;
     getControl(controlName: "bsr_applicantid"): Xrm.LookupControl<"contact">;
+    getControl(controlName: "bsr_applicantorgchangedate"): Xrm.DateControl;
     getControl(controlName: "bsr_applicationvalidated"): Xrm.OptionSetControl<boolean>;
     getControl(controlName: "bsr_bcaacancellationreason"): Xrm.OptionSetControl<bsr_bcaacancellationreason>;
     getControl(controlName: "bsr_bcaacompletionreason"): Xrm.OptionSetControl<bsr_bcaacompletionreason>;
@@ -421,6 +440,7 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
     getControl(controlName: "bsr_buildingprincipaldesigner"): Xrm.LookupControl<"account" | "contact">;
     getControl(controlName: "bsr_buildingregcompliance"): Xrm.StringControl;
     getControl(controlName: "bsr_caseofficer"): Xrm.LookupControl<"systemuser">;
+    getControl(controlName: "bsr_changeapplicantorganisation"): Xrm.OptionSetControl<boolean>;
     getControl(controlName: "bsr_changecontrol"): Xrm.SubGridControl<"bsr_changerequest">;
     getControl(controlName: "bsr_changecontrolplan"): Xrm.StringControl;
     getControl(controlName: "bsr_changeprincipalcontractor"): Xrm.OptionSetControl<boolean>;
@@ -448,6 +468,7 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
     getControl(controlName: "bsr_informationrequesttracker"): Xrm.StringControl;
     getControl(controlName: "bsr_invalidapplication"): Xrm.OptionSetControl<boolean>;
     getControl(controlName: "bsr_invalidapplicationemail"): Xrm.StringControl;
+    getControl(controlName: "bsr_isapplicantorgvalidated"): Xrm.OptionSetControl<boolean>;
     getControl(controlName: "bsr_isapplicantvalidated"): Xrm.OptionSetControl<boolean>;
     getControl(controlName: "bsr_ischangeclientcontact"): Xrm.OptionSetControl<boolean>;
     getControl(controlName: "bsr_ischangeprincipalcontractorcontact"): Xrm.OptionSetControl<boolean>;
@@ -483,10 +504,12 @@ declare namespace Form.bsr_buildingcontrolapplication.Main {
     getControl(controlName: "bsr_princdesigninvestenforce"): Xrm.StringControl;
     getControl(controlName: "bsr_principalcontractnamedcontact"): Xrm.LookupControl<"contact">;
     getControl(controlName: "bsr_principaldesignernamedcontact"): Xrm.LookupControl<"contact">;
+    getControl(controlName: "bsr_principalsigneddecnotprovided"): Xrm.StringControl;
     getControl(controlName: "bsr_raslastcheckeddate"): Xrm.DateControl;
     getControl(controlName: "bsr_regleadsupport"): Xrm.LookupControl<"systemuser">;
     getControl(controlName: "bsr_responsibleactorsscheme"): Xrm.OptionSetControl<bsr_responsibleactorsschemechoice>;
     getControl(controlName: "bsr_sewerageundertakerid"): Xrm.LookupControl<"account" | "contact">;
+    getControl(controlName: "bsr_signedhandoverstatement"): Xrm.StringControl;
     getControl(controlName: "bsr_stagedapplication"): Xrm.OptionSetControl<boolean>;
     getControl(controlName: "bsr_stagedworkdoc"): Xrm.StringControl;
     getControl(controlName: "bsr_stagedworkstatement"): Xrm.StringControl;

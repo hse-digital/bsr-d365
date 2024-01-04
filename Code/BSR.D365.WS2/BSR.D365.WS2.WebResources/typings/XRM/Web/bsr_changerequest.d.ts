@@ -9,6 +9,10 @@ interface bsr_changerequest_Base extends WebEntity {
   bsr_datevalidated?: Date | null;
   bsr_declaration?: boolean | null;
   bsr_impactedstages?: string | null;
+  bsr_informationrequest?: boolean | null;
+  bsr_informationrequesttracker?: string | null;
+  bsr_invalidapplicationemail?: string | null;
+  bsr_invalidpplication?: boolean | null;
   bsr_majorandnotifiablechange?: boolean | null;
   bsr_name?: string | null;
   bsr_newdutyholderstartdate?: Date | null;
@@ -21,6 +25,7 @@ interface bsr_changerequest_Base extends WebEntity {
   bsr_reviewrequired?: boolean | null;
   bsr_submittedondate?: Date | null;
   bsr_typeofdutyholdercode?: bsr_typeofdutyholderchoice | null;
+  bsr_validapplication?: boolean | null;
   bsr_validationurl?: string | null;
   createdon?: Date | null;
   importsequencenumber?: number | null;
@@ -42,6 +47,7 @@ interface bsr_changerequest extends bsr_changerequest_Base, bsr_changerequest_Re
   bsr_buildingcontrolapplicationid_bind$bsr_buildingcontrolapplications?: string | null;
   bsr_buildingcontrollifecycleid_bind$bsr_buildingcontrollifecycles?: string | null;
   bsr_changecategoryid_bind$bsr_changecategories?: string | null;
+  bsr_structureid_bind$bsr_blocks?: string | null;
   bsr_submittedbyid_bind$contacts?: string | null;
   ownerid_bind$systemusers?: string | null;
   ownerid_bind$teams?: string | null;
@@ -66,6 +72,10 @@ interface bsr_changerequest_Select {
   bsr_datevalidated: WebAttribute<bsr_changerequest_Select, { bsr_datevalidated: Date | null }, { bsr_datevalidated_formatted?: string }>;
   bsr_declaration: WebAttribute<bsr_changerequest_Select, { bsr_declaration: boolean | null }, {  }>;
   bsr_impactedstages: WebAttribute<bsr_changerequest_Select, { bsr_impactedstages: string | null }, {  }>;
+  bsr_informationrequest: WebAttribute<bsr_changerequest_Select, { bsr_informationrequest: boolean | null }, {  }>;
+  bsr_informationrequesttracker: WebAttribute<bsr_changerequest_Select, { bsr_informationrequesttracker: string | null }, {  }>;
+  bsr_invalidapplicationemail: WebAttribute<bsr_changerequest_Select, { bsr_invalidapplicationemail: string | null }, {  }>;
+  bsr_invalidpplication: WebAttribute<bsr_changerequest_Select, { bsr_invalidpplication: boolean | null }, {  }>;
   bsr_majorandnotifiablechange: WebAttribute<bsr_changerequest_Select, { bsr_majorandnotifiablechange: boolean | null }, {  }>;
   bsr_name: WebAttribute<bsr_changerequest_Select, { bsr_name: string | null }, {  }>;
   bsr_newdutyholderstartdate: WebAttribute<bsr_changerequest_Select, { bsr_newdutyholderstartdate: Date | null }, { bsr_newdutyholderstartdate_formatted?: string }>;
@@ -76,9 +86,11 @@ interface bsr_changerequest_Select {
   bsr_reg25notice: WebAttribute<bsr_changerequest_Select, { bsr_reg25notice: string | null }, {  }>;
   bsr_reg25noticerequired: WebAttribute<bsr_changerequest_Select, { bsr_reg25noticerequired: boolean | null }, {  }>;
   bsr_reviewrequired: WebAttribute<bsr_changerequest_Select, { bsr_reviewrequired: boolean | null }, {  }>;
+  bsr_structureid_guid: WebAttribute<bsr_changerequest_Select, { bsr_structureid_guid: string | null }, { bsr_structureid_formatted?: string }>;
   bsr_submittedbyid_guid: WebAttribute<bsr_changerequest_Select, { bsr_submittedbyid_guid: string | null }, { bsr_submittedbyid_formatted?: string }>;
   bsr_submittedondate: WebAttribute<bsr_changerequest_Select, { bsr_submittedondate: Date | null }, { bsr_submittedondate_formatted?: string }>;
   bsr_typeofdutyholdercode: WebAttribute<bsr_changerequest_Select, { bsr_typeofdutyholdercode: bsr_typeofdutyholderchoice | null }, { bsr_typeofdutyholdercode_formatted?: string }>;
+  bsr_validapplication: WebAttribute<bsr_changerequest_Select, { bsr_validapplication: boolean | null }, {  }>;
   bsr_validationurl: WebAttribute<bsr_changerequest_Select, { bsr_validationurl: string | null }, {  }>;
   createdby_guid: WebAttribute<bsr_changerequest_Select, { createdby_guid: string | null }, { createdby_formatted?: string }>;
   createdon: WebAttribute<bsr_changerequest_Select, { createdon: Date | null }, { createdon_formatted?: string }>;
@@ -114,6 +126,10 @@ interface bsr_changerequest_Filter {
   bsr_datevalidated: Date;
   bsr_declaration: boolean;
   bsr_impactedstages: string;
+  bsr_informationrequest: boolean;
+  bsr_informationrequesttracker: string;
+  bsr_invalidapplicationemail: string;
+  bsr_invalidpplication: boolean;
   bsr_majorandnotifiablechange: boolean;
   bsr_name: string;
   bsr_newdutyholderstartdate: Date;
@@ -124,9 +140,11 @@ interface bsr_changerequest_Filter {
   bsr_reg25notice: string;
   bsr_reg25noticerequired: boolean;
   bsr_reviewrequired: boolean;
+  bsr_structureid_guid: XQW.Guid;
   bsr_submittedbyid_guid: XQW.Guid;
   bsr_submittedondate: Date;
   bsr_typeofdutyholdercode: bsr_typeofdutyholderchoice;
+  bsr_validapplication: boolean;
   bsr_validationurl: string;
   createdby_guid: XQW.Guid;
   createdon: Date;
@@ -164,6 +182,7 @@ interface bsr_changerequest_FormattedResult {
   bsr_datevalidated_formatted?: string;
   bsr_newdutyholderstartdate_formatted?: string;
   bsr_previousdutyholderenddate_formatted?: string;
+  bsr_structureid_formatted?: string;
   bsr_submittedbyid_formatted?: string;
   bsr_submittedondate_formatted?: string;
   bsr_typeofdutyholdercode_formatted?: string;
@@ -188,6 +207,7 @@ interface bsr_changerequest_Result extends bsr_changerequest_Base, bsr_changereq
   bsr_buildingcontrolapplicationid_guid: string | null;
   bsr_buildingcontrollifecycleid_guid: string | null;
   bsr_changecategoryid_guid: string | null;
+  bsr_structureid_guid: string | null;
   bsr_submittedbyid_guid: string | null;
   createdby_guid: string | null;
   createdonbehalfby_guid: string | null;

@@ -27,6 +27,8 @@ namespace BuildingControlApplication {
           Form.getControl("Subgrid_new_1").setVisible(false);
       }
     }
+    // Make sure that focus is on Key Information tab
+    Form.ui.tabs.get('tab_key_info').setFocus();
     }
     export function ShowHideTabsBasedOnCompletionCertificate(
         executionContext: Xrm.ExecutionContext<any, any>
@@ -47,6 +49,9 @@ namespace BuildingControlApplication {
             Form.ui.tabs.get('bcaa_complcertstages_tab').setVisible(false);
 
         }
+
+        // Make sure that focus is on Key Information tab
+        Form.ui.tabs.get('tab_key_info').setFocus();
     }
 
 }

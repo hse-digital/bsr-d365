@@ -24,6 +24,7 @@ interface bsr_buildingcontrollifecycle_Base extends WebEntity {
   bsr_bclreference?: string | null;
   bsr_bsr_fireereceipt?: bsr_receiptofconsultation | null;
   bsr_bsr_seweragereceipt?: bsr_receiptofconsultation | null;
+  bsr_buildenddate?: Date | null;
   bsr_buildingcontrollifecycleid?: string | null;
   bsr_buildingcontrollifecyclestatus?: bsr_buildingcontrollifecyclestatus | null;
   bsr_buildingname?: string | null;
@@ -42,12 +43,14 @@ interface bsr_buildingcontrollifecycle_Base extends WebEntity {
   bsr_fireextensionagreement?: string | null;
   bsr_fireextensionrequest?: string | null;
   bsr_fireextensionrequired?: boolean | null;
+  bsr_firerequestemailurl?: string | null;
   bsr_isbuildcomplete?: bsr_isbuildcomplete | null;
   bsr_lifecyclecancellationreason?: bsr_lifecyclecancellationreason | null;
   bsr_lifecyclecompletionreason?: bsr_lifecyclecompletionreason | null;
   bsr_lifecyclephase?: bsr_lifecyclephase | null;
   bsr_mandatorytimelinefailuredate?: Date | null;
   bsr_name?: string | null;
+  bsr_numberofrequirements?: number | null;
   bsr_outcomedecisionissueddate?: Date | null;
   bsr_outcomedocument?: string | null;
   bsr_outcomeemail?: string | null;
@@ -55,6 +58,8 @@ interface bsr_buildingcontrollifecycle_Base extends WebEntity {
   bsr_outstandingissueschecked?: bsr_outstandingissueschecked | null;
   bsr_outstandingissuesdatecompleted?: Date | null;
   bsr_reasonrequired?: string | null;
+  bsr_receiptoffireforcompletion?: bsr_buildingcontrollifecycle_bsr_receiptoffireforcompletion | null;
+  bsr_receiptofsewerageforcompletion?: bsr_buildingcontrollifecycle_bsr_receiptofsewerageforcompletion | null;
   bsr_receiveddate?: Date | null;
   bsr_regtaskscheduledatecreated?: Date | null;
   bsr_regulatorytaskschedulecreated?: bsr_regulatorytaskschedulecreated | null;
@@ -64,6 +69,7 @@ interface bsr_buildingcontrollifecycle_Base extends WebEntity {
   bsr_rejectionemail?: string | null;
   bsr_rejectionreasons?: string | null;
   bsr_requirementrequest?: string | null;
+  bsr_requirementsubmissiondate?: Date | null;
   bsr_sewerageconsultationreceiveddate?: Date | null;
   bsr_sewerageconsultationrequestdate?: Date | null;
   bsr_sewerageconsultationurl?: string | null;
@@ -71,6 +77,7 @@ interface bsr_buildingcontrollifecycle_Base extends WebEntity {
   bsr_sewerageextensionagreed?: boolean | null;
   bsr_sewerageextensionagreement?: string | null;
   bsr_sewerageextensionrequired?: boolean | null;
+  bsr_seweragerequestemailurl?: string | null;
   bsr_seweragerxtensionrequest?: string | null;
   bsr_statfireconsultfailuredate?: Date | null;
   bsr_statfireconsultsuccess?: boolean | null;
@@ -100,6 +107,7 @@ interface bsr_buildingcontrollifecycle extends bsr_buildingcontrollifecycle_Base
   bsr_bcaaapplication_bind$bsr_buildingcontrolapplications?: string | null;
   bsr_bclrcaseofficer_bind$systemusers?: string | null;
   bsr_buildingdetails_bind$bsr_buildingdetailses?: string | null;
+  bsr_completioncertappid_bind$bsr_buildingcontrolapplications?: string | null;
   bsr_fireconsultee_bind$contacts?: string | null;
   bsr_reglead_bind$systemusers?: string | null;
   bsr_sewerageundertaker_bind$contacts?: string | null;
@@ -140,6 +148,7 @@ interface bsr_buildingcontrollifecycle_Select {
   bsr_bclreference: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_bclreference: string | null }, {  }>;
   bsr_bsr_fireereceipt: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_bsr_fireereceipt: bsr_receiptofconsultation | null }, { bsr_bsr_fireereceipt_formatted?: string }>;
   bsr_bsr_seweragereceipt: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_bsr_seweragereceipt: bsr_receiptofconsultation | null }, { bsr_bsr_seweragereceipt_formatted?: string }>;
+  bsr_buildenddate: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_buildenddate: Date | null }, { bsr_buildenddate_formatted?: string }>;
   bsr_buildingcontrollifecycleid: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_buildingcontrollifecycleid: string | null }, {  }>;
   bsr_buildingcontrollifecyclestatus: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_buildingcontrollifecyclestatus: bsr_buildingcontrollifecyclestatus | null }, { bsr_buildingcontrollifecyclestatus_formatted?: string }>;
   bsr_buildingdetails_guid: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_buildingdetails_guid: string | null }, { bsr_buildingdetails_formatted?: string }>;
@@ -148,6 +157,7 @@ interface bsr_buildingcontrollifecycle_Select {
   bsr_ccfirereceipt: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_ccfirereceipt: bsr_ccfirereceiptchoice | null }, { bsr_ccfirereceipt_formatted?: string }>;
   bsr_ccseweragereceipt: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_ccseweragereceipt: bsr_ccfirereceiptchoice | null }, { bsr_ccseweragereceipt_formatted?: string }>;
   bsr_changecontrol: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_changecontrol: boolean | null }, {  }>;
+  bsr_completioncertappid_guid: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_completioncertappid_guid: string | null }, { bsr_completioncertappid_formatted?: string }>;
   bsr_dutyholderagreement: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_dutyholderagreement: boolean | null }, {  }>;
   bsr_dutyholderagreementemail: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_dutyholderagreementemail: string | null }, {  }>;
   bsr_finaliseassessrecords: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_finaliseassessrecords: bsr_finaliseassessrecords | null }, { bsr_finaliseassessrecords_formatted?: string }>;
@@ -160,12 +170,14 @@ interface bsr_buildingcontrollifecycle_Select {
   bsr_fireextensionagreement: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_fireextensionagreement: string | null }, {  }>;
   bsr_fireextensionrequest: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_fireextensionrequest: string | null }, {  }>;
   bsr_fireextensionrequired: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_fireextensionrequired: boolean | null }, {  }>;
+  bsr_firerequestemailurl: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_firerequestemailurl: string | null }, {  }>;
   bsr_isbuildcomplete: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_isbuildcomplete: bsr_isbuildcomplete | null }, { bsr_isbuildcomplete_formatted?: string }>;
   bsr_lifecyclecancellationreason: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_lifecyclecancellationreason: bsr_lifecyclecancellationreason | null }, { bsr_lifecyclecancellationreason_formatted?: string }>;
   bsr_lifecyclecompletionreason: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_lifecyclecompletionreason: bsr_lifecyclecompletionreason | null }, { bsr_lifecyclecompletionreason_formatted?: string }>;
   bsr_lifecyclephase: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_lifecyclephase: bsr_lifecyclephase | null }, { bsr_lifecyclephase_formatted?: string }>;
   bsr_mandatorytimelinefailuredate: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_mandatorytimelinefailuredate: Date | null }, { bsr_mandatorytimelinefailuredate_formatted?: string }>;
   bsr_name: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_name: string | null }, {  }>;
+  bsr_numberofrequirements: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_numberofrequirements: number | null }, {  }>;
   bsr_outcomedecisionissueddate: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_outcomedecisionissueddate: Date | null }, { bsr_outcomedecisionissueddate_formatted?: string }>;
   bsr_outcomedocument: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_outcomedocument: string | null }, {  }>;
   bsr_outcomeemail: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_outcomeemail: string | null }, {  }>;
@@ -173,6 +185,8 @@ interface bsr_buildingcontrollifecycle_Select {
   bsr_outstandingissueschecked: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_outstandingissueschecked: bsr_outstandingissueschecked | null }, { bsr_outstandingissueschecked_formatted?: string }>;
   bsr_outstandingissuesdatecompleted: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_outstandingissuesdatecompleted: Date | null }, { bsr_outstandingissuesdatecompleted_formatted?: string }>;
   bsr_reasonrequired: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_reasonrequired: string | null }, {  }>;
+  bsr_receiptoffireforcompletion: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_receiptoffireforcompletion: bsr_buildingcontrollifecycle_bsr_receiptoffireforcompletion | null }, { bsr_receiptoffireforcompletion_formatted?: string }>;
+  bsr_receiptofsewerageforcompletion: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_receiptofsewerageforcompletion: bsr_buildingcontrollifecycle_bsr_receiptofsewerageforcompletion | null }, { bsr_receiptofsewerageforcompletion_formatted?: string }>;
   bsr_receiveddate: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_receiveddate: Date | null }, { bsr_receiveddate_formatted?: string }>;
   bsr_reglead_guid: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_reglead_guid: string | null }, { bsr_reglead_formatted?: string }>;
   bsr_regtaskscheduledatecreated: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_regtaskscheduledatecreated: Date | null }, { bsr_regtaskscheduledatecreated_formatted?: string }>;
@@ -183,6 +197,7 @@ interface bsr_buildingcontrollifecycle_Select {
   bsr_rejectionemail: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_rejectionemail: string | null }, {  }>;
   bsr_rejectionreasons: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_rejectionreasons: string | null }, {  }>;
   bsr_requirementrequest: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_requirementrequest: string | null }, {  }>;
+  bsr_requirementsubmissiondate: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_requirementsubmissiondate: Date | null }, { bsr_requirementsubmissiondate_formatted?: string }>;
   bsr_sewerageconsultationreceiveddate: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_sewerageconsultationreceiveddate: Date | null }, { bsr_sewerageconsultationreceiveddate_formatted?: string }>;
   bsr_sewerageconsultationrequestdate: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_sewerageconsultationrequestdate: Date | null }, { bsr_sewerageconsultationrequestdate_formatted?: string }>;
   bsr_sewerageconsultationurl: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_sewerageconsultationurl: string | null }, {  }>;
@@ -190,6 +205,7 @@ interface bsr_buildingcontrollifecycle_Select {
   bsr_sewerageextensionagreed: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_sewerageextensionagreed: boolean | null }, {  }>;
   bsr_sewerageextensionagreement: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_sewerageextensionagreement: string | null }, {  }>;
   bsr_sewerageextensionrequired: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_sewerageextensionrequired: boolean | null }, {  }>;
+  bsr_seweragerequestemailurl: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_seweragerequestemailurl: string | null }, {  }>;
   bsr_seweragerxtensionrequest: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_seweragerxtensionrequest: string | null }, {  }>;
   bsr_sewerageundertaker_guid: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_sewerageundertaker_guid: string | null }, { bsr_sewerageundertaker_formatted?: string }>;
   bsr_statfireconsultfailuredate: WebAttribute<bsr_buildingcontrollifecycle_Select, { bsr_statfireconsultfailuredate: Date | null }, { bsr_statfireconsultfailuredate_formatted?: string }>;
@@ -248,6 +264,7 @@ interface bsr_buildingcontrollifecycle_Filter {
   bsr_bclreference: string;
   bsr_bsr_fireereceipt: bsr_receiptofconsultation;
   bsr_bsr_seweragereceipt: bsr_receiptofconsultation;
+  bsr_buildenddate: Date;
   bsr_buildingcontrollifecycleid: XQW.Guid;
   bsr_buildingcontrollifecyclestatus: bsr_buildingcontrollifecyclestatus;
   bsr_buildingdetails_guid: XQW.Guid;
@@ -256,6 +273,7 @@ interface bsr_buildingcontrollifecycle_Filter {
   bsr_ccfirereceipt: bsr_ccfirereceiptchoice;
   bsr_ccseweragereceipt: bsr_ccfirereceiptchoice;
   bsr_changecontrol: boolean;
+  bsr_completioncertappid_guid: XQW.Guid;
   bsr_dutyholderagreement: boolean;
   bsr_dutyholderagreementemail: string;
   bsr_finaliseassessrecords: bsr_finaliseassessrecords;
@@ -268,12 +286,14 @@ interface bsr_buildingcontrollifecycle_Filter {
   bsr_fireextensionagreement: string;
   bsr_fireextensionrequest: string;
   bsr_fireextensionrequired: boolean;
+  bsr_firerequestemailurl: string;
   bsr_isbuildcomplete: bsr_isbuildcomplete;
   bsr_lifecyclecancellationreason: bsr_lifecyclecancellationreason;
   bsr_lifecyclecompletionreason: bsr_lifecyclecompletionreason;
   bsr_lifecyclephase: bsr_lifecyclephase;
   bsr_mandatorytimelinefailuredate: Date;
   bsr_name: string;
+  bsr_numberofrequirements: number;
   bsr_outcomedecisionissueddate: Date;
   bsr_outcomedocument: string;
   bsr_outcomeemail: string;
@@ -281,6 +301,8 @@ interface bsr_buildingcontrollifecycle_Filter {
   bsr_outstandingissueschecked: bsr_outstandingissueschecked;
   bsr_outstandingissuesdatecompleted: Date;
   bsr_reasonrequired: string;
+  bsr_receiptoffireforcompletion: bsr_buildingcontrollifecycle_bsr_receiptoffireforcompletion;
+  bsr_receiptofsewerageforcompletion: bsr_buildingcontrollifecycle_bsr_receiptofsewerageforcompletion;
   bsr_receiveddate: Date;
   bsr_reglead_guid: XQW.Guid;
   bsr_regtaskscheduledatecreated: Date;
@@ -291,6 +313,7 @@ interface bsr_buildingcontrollifecycle_Filter {
   bsr_rejectionemail: string;
   bsr_rejectionreasons: string;
   bsr_requirementrequest: string;
+  bsr_requirementsubmissiondate: Date;
   bsr_sewerageconsultationreceiveddate: Date;
   bsr_sewerageconsultationrequestdate: Date;
   bsr_sewerageconsultationurl: string;
@@ -298,6 +321,7 @@ interface bsr_buildingcontrollifecycle_Filter {
   bsr_sewerageextensionagreed: boolean;
   bsr_sewerageextensionagreement: string;
   bsr_sewerageextensionrequired: boolean;
+  bsr_seweragerequestemailurl: string;
   bsr_seweragerxtensionrequest: string;
   bsr_sewerageundertaker_guid: XQW.Guid;
   bsr_statfireconsultfailuredate: Date;
@@ -334,6 +358,7 @@ interface bsr_buildingcontrollifecycle_Expand {
   bsr_bsr_buildingcontrollifecycle_bsr_changerequest_buildingcontrollifecycleid: WebExpand<bsr_buildingcontrollifecycle_Expand, bsr_changerequest_Select, bsr_changerequest_Filter, { bsr_bsr_buildingcontrollifecycle_bsr_changerequest_buildingcontrollifecycleid: bsr_changerequest_Result[] }>;
   bsr_buildingdetails: WebExpand<bsr_buildingcontrollifecycle_Expand, bsr_buildingdetails_Select, bsr_buildingdetails_Filter, { bsr_buildingdetails: bsr_buildingdetails_Result }>;
   bsr_buildingdetails_buildingcontrollifecycle: WebExpand<bsr_buildingcontrollifecycle_Expand, bsr_buildingdetails_Select, bsr_buildingdetails_Filter, { bsr_buildingdetails_buildingcontrollifecycle: bsr_buildingdetails_Result[] }>;
+  bsr_completioncertappid: WebExpand<bsr_buildingcontrollifecycle_Expand, bsr_buildingcontrolapplication_Select, bsr_buildingcontrolapplication_Filter, { bsr_completioncertappid: bsr_buildingcontrolapplication_Result }>;
   bsr_supportingbcl: WebExpand<bsr_buildingcontrollifecycle_Expand, bsr_buildingcontrollifecycle_Select, bsr_buildingcontrollifecycle_Filter, { bsr_supportingbcl: bsr_buildingcontrollifecycle_Result }>;
 }
 interface bsr_buildingcontrollifecycle_FormattedResult {
@@ -352,11 +377,13 @@ interface bsr_buildingcontrollifecycle_FormattedResult {
   bsr_bclrcaseofficer_formatted?: string;
   bsr_bsr_fireereceipt_formatted?: string;
   bsr_bsr_seweragereceipt_formatted?: string;
+  bsr_buildenddate_formatted?: string;
   bsr_buildingcontrollifecyclestatus_formatted?: string;
   bsr_buildingdetails_formatted?: string;
   bsr_buildinspectionscompletedate_formatted?: string;
   bsr_ccfirereceipt_formatted?: string;
   bsr_ccseweragereceipt_formatted?: string;
+  bsr_completioncertappid_formatted?: string;
   bsr_finaliseassessrecords_formatted?: string;
   bsr_fireconsultee_formatted?: string;
   bsr_fireconsulteereceiveddate_formatted?: string;
@@ -370,12 +397,15 @@ interface bsr_buildingcontrollifecycle_FormattedResult {
   bsr_outcomedecisionissueddate_formatted?: string;
   bsr_outstandingissueschecked_formatted?: string;
   bsr_outstandingissuesdatecompleted_formatted?: string;
+  bsr_receiptoffireforcompletion_formatted?: string;
+  bsr_receiptofsewerageforcompletion_formatted?: string;
   bsr_receiveddate_formatted?: string;
   bsr_reglead_formatted?: string;
   bsr_regtaskscheduledatecreated_formatted?: string;
   bsr_regulatorytaskschedulecreated_formatted?: string;
   bsr_rejectiondecisiondate_formatted?: string;
   bsr_rejectiondecisionissueddate_formatted?: string;
+  bsr_requirementsubmissiondate_formatted?: string;
   bsr_sewerageconsultationreceiveddate_formatted?: string;
   bsr_sewerageconsultationrequestdate_formatted?: string;
   bsr_sewerageconsulttimer_formatted?: string;
@@ -402,6 +432,7 @@ interface bsr_buildingcontrollifecycle_Result extends bsr_buildingcontrollifecyc
   bsr_bcaaapplication_guid: string | null;
   bsr_bclrcaseofficer_guid: string | null;
   bsr_buildingdetails_guid: string | null;
+  bsr_completioncertappid_guid: string | null;
   bsr_fireconsultee_guid: string | null;
   bsr_reglead_guid: string | null;
   bsr_sewerageundertaker_guid: string | null;
@@ -418,6 +449,7 @@ interface bsr_buildingcontrollifecycle_Result extends bsr_buildingcontrollifecyc
 interface bsr_buildingcontrollifecycle_RelatedOne {
   bsr_bcaaapplication: WebMappingRetrieve<bsr_buildingcontrolapplication_Select,bsr_buildingcontrolapplication_Expand,bsr_buildingcontrolapplication_Filter,bsr_buildingcontrolapplication_Fixed,bsr_buildingcontrolapplication_Result,bsr_buildingcontrolapplication_FormattedResult>;
   bsr_buildingdetails: WebMappingRetrieve<bsr_buildingdetails_Select,bsr_buildingdetails_Expand,bsr_buildingdetails_Filter,bsr_buildingdetails_Fixed,bsr_buildingdetails_Result,bsr_buildingdetails_FormattedResult>;
+  bsr_completioncertappid: WebMappingRetrieve<bsr_buildingcontrolapplication_Select,bsr_buildingcontrolapplication_Expand,bsr_buildingcontrolapplication_Filter,bsr_buildingcontrolapplication_Fixed,bsr_buildingcontrolapplication_Result,bsr_buildingcontrolapplication_FormattedResult>;
   bsr_supportingbcl: WebMappingRetrieve<bsr_buildingcontrollifecycle_Select,bsr_buildingcontrollifecycle_Expand,bsr_buildingcontrollifecycle_Filter,bsr_buildingcontrollifecycle_Fixed,bsr_buildingcontrollifecycle_Result,bsr_buildingcontrollifecycle_FormattedResult>;
 }
 interface bsr_buildingcontrollifecycle_RelatedMany {

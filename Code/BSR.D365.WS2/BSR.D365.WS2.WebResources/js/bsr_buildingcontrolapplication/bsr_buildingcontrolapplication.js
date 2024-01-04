@@ -19,6 +19,7 @@ var BuildingControlApplication;
                 Form.getControl("Subgrid_new_1").setVisible(false);
             }
         }
+        Form.ui.tabs.get('tab_key_info').setFocus();
     }
     BuildingControlApplication.ShowHideStagedApplicationsTab = ShowHideStagedApplicationsTab;
     function ShowHideTabsBasedOnCompletionCertificate(executionContext) {
@@ -33,6 +34,7 @@ var BuildingControlApplication;
         else {
             Form.ui.tabs.get('bcaa_complcertstages_tab').setVisible(false);
         }
+        Form.ui.tabs.get('tab_key_info').setFocus();
     }
     BuildingControlApplication.ShowHideTabsBasedOnCompletionCertificate = ShowHideTabsBasedOnCompletionCertificate;
 })(BuildingControlApplication || (BuildingControlApplication = {}));

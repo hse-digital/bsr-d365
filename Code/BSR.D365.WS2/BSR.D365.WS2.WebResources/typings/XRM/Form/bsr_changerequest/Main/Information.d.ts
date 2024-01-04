@@ -8,6 +8,14 @@ declare namespace Form.bsr_changerequest.Main {
         get(index: number): Xrm.PageSection;
         get(chooser: (item: Xrm.PageSection, index: number) => boolean): Xrm.PageSection[];
       }
+      interface validation_tab extends Xrm.SectionCollectionBase {
+        get(name: "reg25_section"): Xrm.PageSection;
+        get(name: "validation_section"): Xrm.PageSection;
+        get(name: string): undefined;
+        get(): Xrm.PageSection[];
+        get(index: number): Xrm.PageSection;
+        get(chooser: (item: Xrm.PageSection, index: number) => boolean): Xrm.PageSection[];
+      }
     }
     interface Attributes extends Xrm.AttributeCollectionBase {
       get(name: "bsr_advicesought"): Xrm.OptionSetAttribute<boolean>;
@@ -24,6 +32,10 @@ declare namespace Form.bsr_changerequest.Main {
       get(name: "bsr_datevalidated"): Xrm.DateAttribute;
       get(name: "bsr_declaration"): Xrm.OptionSetAttribute<boolean>;
       get(name: "bsr_impactedstages"): Xrm.Attribute<string>;
+      get(name: "bsr_informationrequest"): Xrm.OptionSetAttribute<boolean>;
+      get(name: "bsr_informationrequesttracker"): Xrm.Attribute<string>;
+      get(name: "bsr_invalidapplicationemail"): Xrm.Attribute<string>;
+      get(name: "bsr_invalidpplication"): Xrm.OptionSetAttribute<boolean>;
       get(name: "bsr_majorandnotifiablechange"): Xrm.OptionSetAttribute<boolean>;
       get(name: "bsr_name"): Xrm.Attribute<string>;
       get(name: "bsr_newdutyholderstartdate"): Xrm.DateAttribute;
@@ -34,9 +46,11 @@ declare namespace Form.bsr_changerequest.Main {
       get(name: "bsr_reg25notice"): Xrm.Attribute<string>;
       get(name: "bsr_reg25noticerequired"): Xrm.OptionSetAttribute<boolean>;
       get(name: "bsr_reviewrequired"): Xrm.OptionSetAttribute<boolean>;
+      get(name: "bsr_structureid"): Xrm.LookupAttribute<"bsr_block">;
       get(name: "bsr_submittedbyid"): Xrm.LookupAttribute<"contact">;
       get(name: "bsr_submittedondate"): Xrm.DateAttribute;
       get(name: "bsr_typeofdutyholdercode"): Xrm.OptionSetAttribute<bsr_typeofdutyholderchoice>;
+      get(name: "bsr_validapplication"): Xrm.OptionSetAttribute<boolean>;
       get(name: "bsr_validationurl"): Xrm.Attribute<string>;
       get(name: "createdon"): Xrm.DateAttribute;
       get(name: "ownerid"): Xrm.LookupAttribute<"systemuser" | "team">;
@@ -66,6 +80,10 @@ declare namespace Form.bsr_changerequest.Main {
       get(name: "bsr_declaration"): Xrm.OptionSetControl<boolean>;
       get(name: "bsr_documenttypes"): Xrm.SubGridControl<"bsr_documenttypes">;
       get(name: "bsr_impactedstages"): Xrm.StringControl;
+      get(name: "bsr_informationrequest"): Xrm.OptionSetControl<boolean>;
+      get(name: "bsr_informationrequesttracker"): Xrm.StringControl;
+      get(name: "bsr_invalidapplicationemail"): Xrm.StringControl;
+      get(name: "bsr_invalidpplication"): Xrm.OptionSetControl<boolean>;
       get(name: "bsr_majorandnotifiablechange"): Xrm.OptionSetControl<boolean>;
       get(name: "bsr_name"): Xrm.StringControl;
       get(name: "bsr_newdutyholderstartdate"): Xrm.DateControl;
@@ -75,9 +93,11 @@ declare namespace Form.bsr_changerequest.Main {
       get(name: "bsr_reg25notice"): Xrm.StringControl;
       get(name: "bsr_reg25noticerequired"): Xrm.OptionSetControl<boolean>;
       get(name: "bsr_reviewrequired"): Xrm.OptionSetControl<boolean>;
+      get(name: "bsr_structureid"): Xrm.LookupControl<"bsr_block">;
       get(name: "bsr_submittedbyid"): Xrm.LookupControl<"contact">;
       get(name: "bsr_submittedondate"): Xrm.DateControl;
       get(name: "bsr_typeofdutyholdercode"): Xrm.OptionSetControl<bsr_typeofdutyholderchoice>;
+      get(name: "bsr_validapplication"): Xrm.OptionSetControl<boolean>;
       get(name: "bsr_validationurl"): Xrm.StringControl;
       get(name: "createdon"): Xrm.DateControl;
       get(name: "header_bsr_changecategoryid"): Xrm.LookupControl<"bsr_changecategory">;
@@ -91,6 +111,7 @@ declare namespace Form.bsr_changerequest.Main {
     }
     interface Tabs extends Xrm.TabCollectionBase {
       get(name: "tab_2"): Xrm.PageTab<Tabs.tab_2>;
+      get(name: "validation_tab"): Xrm.PageTab<Tabs.validation_tab>;
       get(name: string): undefined;
       get(): Xrm.PageTab<Xrm.Collection<Xrm.PageSection>>[];
       get(index: number): Xrm.PageTab<Xrm.Collection<Xrm.PageSection>>;
@@ -112,6 +133,10 @@ declare namespace Form.bsr_changerequest.Main {
     getAttribute(attributeName: "bsr_datevalidated"): Xrm.DateAttribute;
     getAttribute(attributeName: "bsr_declaration"): Xrm.OptionSetAttribute<boolean>;
     getAttribute(attributeName: "bsr_impactedstages"): Xrm.Attribute<string>;
+    getAttribute(attributeName: "bsr_informationrequest"): Xrm.OptionSetAttribute<boolean>;
+    getAttribute(attributeName: "bsr_informationrequesttracker"): Xrm.Attribute<string>;
+    getAttribute(attributeName: "bsr_invalidapplicationemail"): Xrm.Attribute<string>;
+    getAttribute(attributeName: "bsr_invalidpplication"): Xrm.OptionSetAttribute<boolean>;
     getAttribute(attributeName: "bsr_majorandnotifiablechange"): Xrm.OptionSetAttribute<boolean>;
     getAttribute(attributeName: "bsr_name"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_newdutyholderstartdate"): Xrm.DateAttribute;
@@ -122,9 +147,11 @@ declare namespace Form.bsr_changerequest.Main {
     getAttribute(attributeName: "bsr_reg25notice"): Xrm.Attribute<string>;
     getAttribute(attributeName: "bsr_reg25noticerequired"): Xrm.OptionSetAttribute<boolean>;
     getAttribute(attributeName: "bsr_reviewrequired"): Xrm.OptionSetAttribute<boolean>;
+    getAttribute(attributeName: "bsr_structureid"): Xrm.LookupAttribute<"bsr_block">;
     getAttribute(attributeName: "bsr_submittedbyid"): Xrm.LookupAttribute<"contact">;
     getAttribute(attributeName: "bsr_submittedondate"): Xrm.DateAttribute;
     getAttribute(attributeName: "bsr_typeofdutyholdercode"): Xrm.OptionSetAttribute<bsr_typeofdutyholderchoice>;
+    getAttribute(attributeName: "bsr_validapplication"): Xrm.OptionSetAttribute<boolean>;
     getAttribute(attributeName: "bsr_validationurl"): Xrm.Attribute<string>;
     getAttribute(attributeName: "createdon"): Xrm.DateAttribute;
     getAttribute(attributeName: "ownerid"): Xrm.LookupAttribute<"systemuser" | "team">;
@@ -150,6 +177,10 @@ declare namespace Form.bsr_changerequest.Main {
     getControl(controlName: "bsr_declaration"): Xrm.OptionSetControl<boolean>;
     getControl(controlName: "bsr_documenttypes"): Xrm.SubGridControl<"bsr_documenttypes">;
     getControl(controlName: "bsr_impactedstages"): Xrm.StringControl;
+    getControl(controlName: "bsr_informationrequest"): Xrm.OptionSetControl<boolean>;
+    getControl(controlName: "bsr_informationrequesttracker"): Xrm.StringControl;
+    getControl(controlName: "bsr_invalidapplicationemail"): Xrm.StringControl;
+    getControl(controlName: "bsr_invalidpplication"): Xrm.OptionSetControl<boolean>;
     getControl(controlName: "bsr_majorandnotifiablechange"): Xrm.OptionSetControl<boolean>;
     getControl(controlName: "bsr_name"): Xrm.StringControl;
     getControl(controlName: "bsr_newdutyholderstartdate"): Xrm.DateControl;
@@ -159,9 +190,11 @@ declare namespace Form.bsr_changerequest.Main {
     getControl(controlName: "bsr_reg25notice"): Xrm.StringControl;
     getControl(controlName: "bsr_reg25noticerequired"): Xrm.OptionSetControl<boolean>;
     getControl(controlName: "bsr_reviewrequired"): Xrm.OptionSetControl<boolean>;
+    getControl(controlName: "bsr_structureid"): Xrm.LookupControl<"bsr_block">;
     getControl(controlName: "bsr_submittedbyid"): Xrm.LookupControl<"contact">;
     getControl(controlName: "bsr_submittedondate"): Xrm.DateControl;
     getControl(controlName: "bsr_typeofdutyholdercode"): Xrm.OptionSetControl<bsr_typeofdutyholderchoice>;
+    getControl(controlName: "bsr_validapplication"): Xrm.OptionSetControl<boolean>;
     getControl(controlName: "bsr_validationurl"): Xrm.StringControl;
     getControl(controlName: "createdon"): Xrm.DateControl;
     getControl(controlName: "header_bsr_changecategoryid"): Xrm.LookupControl<"bsr_changecategory">;

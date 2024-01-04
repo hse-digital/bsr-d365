@@ -4,6 +4,7 @@ interface bsr_buildingcontrolapplication_Base extends WebEntity {
   bsr_adressline1?: string | null;
   bsr_applicantchanged?: boolean | null;
   bsr_applicantchangeddate?: Date | null;
+  bsr_applicantorgchangedate?: Date | null;
   bsr_applicationname?: string | null;
   bsr_applicationvalidated?: boolean | null;
   bsr_bcaacancellationreason?: bsr_bcaacancellationreason | null;
@@ -13,6 +14,7 @@ interface bsr_buildingcontrolapplication_Base extends WebEntity {
   bsr_buildingcontrolapplicationid?: string | null;
   bsr_buildingcontrolapplicationstatus?: bsr_buildingcontrolapplicationstatus | null;
   bsr_buildingregcompliance?: string | null;
+  bsr_changeapplicantorganisation?: boolean | null;
   bsr_changecontrolplan?: string | null;
   bsr_changeprincipalcontractor?: boolean | null;
   bsr_changeprincipaldesigner?: boolean | null;
@@ -38,6 +40,7 @@ interface bsr_buildingcontrolapplication_Base extends WebEntity {
   bsr_informationrequesttracker?: string | null;
   bsr_invalidapplication?: boolean | null;
   bsr_invalidapplicationemail?: string | null;
+  bsr_isapplicantorgvalidated?: boolean | null;
   bsr_isapplicantvalidated?: boolean | null;
   bsr_ischangeclientcontact?: boolean | null;
   bsr_ischangeprincipalcontractorcontact?: boolean | null;
@@ -67,8 +70,12 @@ interface bsr_buildingcontrolapplication_Base extends WebEntity {
   bsr_princdesigncomplaints?: string | null;
   bsr_princdesigninspectmods?: string | null;
   bsr_princdesigninvestenforce?: string | null;
+  bsr_principalcontcompldeclaration?: string | null;
+  bsr_principaldesigncompldeclaration?: string | null;
+  bsr_principalsigneddecnotprovided?: string | null;
   bsr_raslastcheckeddate?: Date | null;
   bsr_responsibleactorsscheme?: bsr_responsibleactorsschemechoice | null;
+  bsr_signedhandoverstatement?: string | null;
   bsr_stagedapplication?: boolean | null;
   bsr_stagedinformationrequest?: boolean | null;
   bsr_stagedinformationrequesttracker?: string | null;
@@ -101,6 +108,7 @@ interface bsr_buildingcontrolapplication_Base extends WebEntity {
 interface bsr_buildingcontrolapplication_Relationships {
   bsr_bsr_bca_bsr_buildingdetails?: bsr_buildingdetails_Result[] | null;
   bsr_bsr_buildingcontrolapplication_bsr_buildingcontrolapplication_parentbcaappid?: bsr_buildingcontrolapplication_Result[] | null;
+  bsr_bsr_buildingcontrolapplication_bsr_buildingcontrollifecycle_completioncertappid?: bsr_buildingcontrollifecycle_Result[] | null;
   bsr_bsr_buildingcontrolapplication_mainbcaapp?: bsr_buildingcontrolapplication_Result[] | null;
   bsr_bsr_changerequest_bcaa?: bsr_changerequest_Result[] | null;
   bsr_buildingcontrollifecycle_bcaaapplication?: bsr_buildingcontrollifecycle_Result[] | null;
@@ -141,6 +149,7 @@ interface bsr_buildingcontrolapplication_Select {
   bsr_applicantchanged: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_applicantchanged: boolean | null }, {  }>;
   bsr_applicantchangeddate: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_applicantchangeddate: Date | null }, { bsr_applicantchangeddate_formatted?: string }>;
   bsr_applicantid_guid: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_applicantid_guid: string | null }, { bsr_applicantid_formatted?: string }>;
+  bsr_applicantorgchangedate: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_applicantorgchangedate: Date | null }, { bsr_applicantorgchangedate_formatted?: string }>;
   bsr_applicationname: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_applicationname: string | null }, {  }>;
   bsr_applicationvalidated: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_applicationvalidated: boolean | null }, {  }>;
   bsr_bcaacancellationreason: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_bcaacancellationreason: bsr_bcaacancellationreason | null }, { bsr_bcaacancellationreason_formatted?: string }>;
@@ -154,6 +163,7 @@ interface bsr_buildingcontrolapplication_Select {
   bsr_buildingprincipaldesigner_guid: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_buildingprincipaldesigner_guid: string | null }, { bsr_buildingprincipaldesigner_formatted?: string }>;
   bsr_buildingregcompliance: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_buildingregcompliance: string | null }, {  }>;
   bsr_caseofficer_guid: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_caseofficer_guid: string | null }, { bsr_caseofficer_formatted?: string }>;
+  bsr_changeapplicantorganisation: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_changeapplicantorganisation: boolean | null }, {  }>;
   bsr_changecontrolplan: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_changecontrolplan: string | null }, {  }>;
   bsr_changeprincipalcontractor: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_changeprincipalcontractor: boolean | null }, {  }>;
   bsr_changeprincipaldesigner: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_changeprincipaldesigner: boolean | null }, {  }>;
@@ -181,6 +191,7 @@ interface bsr_buildingcontrolapplication_Select {
   bsr_informationrequesttracker: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_informationrequesttracker: string | null }, {  }>;
   bsr_invalidapplication: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_invalidapplication: boolean | null }, {  }>;
   bsr_invalidapplicationemail: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_invalidapplicationemail: string | null }, {  }>;
+  bsr_isapplicantorgvalidated: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_isapplicantorgvalidated: boolean | null }, {  }>;
   bsr_isapplicantvalidated: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_isapplicantvalidated: boolean | null }, {  }>;
   bsr_ischangeclientcontact: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_ischangeclientcontact: boolean | null }, {  }>;
   bsr_ischangeprincipalcontractorcontact: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_ischangeprincipalcontractorcontact: boolean | null }, {  }>;
@@ -214,12 +225,16 @@ interface bsr_buildingcontrolapplication_Select {
   bsr_princdesigncomplaints: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_princdesigncomplaints: string | null }, {  }>;
   bsr_princdesigninspectmods: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_princdesigninspectmods: string | null }, {  }>;
   bsr_princdesigninvestenforce: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_princdesigninvestenforce: string | null }, {  }>;
+  bsr_principalcontcompldeclaration: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_principalcontcompldeclaration: string | null }, {  }>;
   bsr_principalcontractnamedcontact_guid: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_principalcontractnamedcontact_guid: string | null }, { bsr_principalcontractnamedcontact_formatted?: string }>;
+  bsr_principaldesigncompldeclaration: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_principaldesigncompldeclaration: string | null }, {  }>;
   bsr_principaldesignernamedcontact_guid: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_principaldesignernamedcontact_guid: string | null }, { bsr_principaldesignernamedcontact_formatted?: string }>;
+  bsr_principalsigneddecnotprovided: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_principalsigneddecnotprovided: string | null }, {  }>;
   bsr_raslastcheckeddate: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_raslastcheckeddate: Date | null }, { bsr_raslastcheckeddate_formatted?: string }>;
   bsr_regleadsupport_guid: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_regleadsupport_guid: string | null }, { bsr_regleadsupport_formatted?: string }>;
   bsr_responsibleactorsscheme: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_responsibleactorsscheme: bsr_responsibleactorsschemechoice | null }, { bsr_responsibleactorsscheme_formatted?: string }>;
   bsr_sewerageundertakerid_guid: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_sewerageundertakerid_guid: string | null }, { bsr_sewerageundertakerid_formatted?: string }>;
+  bsr_signedhandoverstatement: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_signedhandoverstatement: string | null }, {  }>;
   bsr_stagedapplication: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_stagedapplication: boolean | null }, {  }>;
   bsr_stagedinformationrequest: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_stagedinformationrequest: boolean | null }, {  }>;
   bsr_stagedinformationrequesttracker: WebAttribute<bsr_buildingcontrolapplication_Select, { bsr_stagedinformationrequesttracker: string | null }, {  }>;
@@ -264,6 +279,7 @@ interface bsr_buildingcontrolapplication_Filter {
   bsr_applicantchanged: boolean;
   bsr_applicantchangeddate: Date;
   bsr_applicantid_guid: XQW.Guid;
+  bsr_applicantorgchangedate: Date;
   bsr_applicationname: string;
   bsr_applicationvalidated: boolean;
   bsr_bcaacancellationreason: bsr_bcaacancellationreason;
@@ -277,6 +293,7 @@ interface bsr_buildingcontrolapplication_Filter {
   bsr_buildingprincipaldesigner_guid: XQW.Guid;
   bsr_buildingregcompliance: string;
   bsr_caseofficer_guid: XQW.Guid;
+  bsr_changeapplicantorganisation: boolean;
   bsr_changecontrolplan: string;
   bsr_changeprincipalcontractor: boolean;
   bsr_changeprincipaldesigner: boolean;
@@ -304,6 +321,7 @@ interface bsr_buildingcontrolapplication_Filter {
   bsr_informationrequesttracker: string;
   bsr_invalidapplication: boolean;
   bsr_invalidapplicationemail: string;
+  bsr_isapplicantorgvalidated: boolean;
   bsr_isapplicantvalidated: boolean;
   bsr_ischangeclientcontact: boolean;
   bsr_ischangeprincipalcontractorcontact: boolean;
@@ -337,12 +355,16 @@ interface bsr_buildingcontrolapplication_Filter {
   bsr_princdesigncomplaints: string;
   bsr_princdesigninspectmods: string;
   bsr_princdesigninvestenforce: string;
+  bsr_principalcontcompldeclaration: string;
   bsr_principalcontractnamedcontact_guid: XQW.Guid;
+  bsr_principaldesigncompldeclaration: string;
   bsr_principaldesignernamedcontact_guid: XQW.Guid;
+  bsr_principalsigneddecnotprovided: string;
   bsr_raslastcheckeddate: Date;
   bsr_regleadsupport_guid: XQW.Guid;
   bsr_responsibleactorsscheme: bsr_responsibleactorsschemechoice;
   bsr_sewerageundertakerid_guid: XQW.Guid;
+  bsr_signedhandoverstatement: string;
   bsr_stagedapplication: boolean;
   bsr_stagedinformationrequest: boolean;
   bsr_stagedinformationrequesttracker: string;
@@ -383,6 +405,7 @@ interface bsr_buildingcontrolapplication_Filter {
 interface bsr_buildingcontrolapplication_Expand {
   bsr_bsr_bca_bsr_buildingdetails: WebExpand<bsr_buildingcontrolapplication_Expand, bsr_buildingdetails_Select, bsr_buildingdetails_Filter, { bsr_bsr_bca_bsr_buildingdetails: bsr_buildingdetails_Result[] }>;
   bsr_bsr_buildingcontrolapplication_bsr_buildingcontrolapplication_parentbcaappid: WebExpand<bsr_buildingcontrolapplication_Expand, bsr_buildingcontrolapplication_Select, bsr_buildingcontrolapplication_Filter, { bsr_bsr_buildingcontrolapplication_bsr_buildingcontrolapplication_parentbcaappid: bsr_buildingcontrolapplication_Result[] }>;
+  bsr_bsr_buildingcontrolapplication_bsr_buildingcontrollifecycle_completioncertappid: WebExpand<bsr_buildingcontrolapplication_Expand, bsr_buildingcontrollifecycle_Select, bsr_buildingcontrollifecycle_Filter, { bsr_bsr_buildingcontrolapplication_bsr_buildingcontrollifecycle_completioncertappid: bsr_buildingcontrollifecycle_Result[] }>;
   bsr_bsr_buildingcontrolapplication_mainbcaapp: WebExpand<bsr_buildingcontrolapplication_Expand, bsr_buildingcontrolapplication_Select, bsr_buildingcontrolapplication_Filter, { bsr_bsr_buildingcontrolapplication_mainbcaapp: bsr_buildingcontrolapplication_Result[] }>;
   bsr_bsr_changerequest_bcaa: WebExpand<bsr_buildingcontrolapplication_Expand, bsr_changerequest_Select, bsr_changerequest_Filter, { bsr_bsr_changerequest_bcaa: bsr_changerequest_Result[] }>;
   bsr_buildingcontrollifecycle_bcaaapplication: WebExpand<bsr_buildingcontrolapplication_Expand, bsr_buildingcontrollifecycle_Select, bsr_buildingcontrollifecycle_Filter, { bsr_buildingcontrollifecycle_bcaaapplication: bsr_buildingcontrollifecycle_Result[] }>;
@@ -394,6 +417,7 @@ interface bsr_buildingcontrolapplication_Expand {
 interface bsr_buildingcontrolapplication_FormattedResult {
   bsr_applicantchangeddate_formatted?: string;
   bsr_applicantid_formatted?: string;
+  bsr_applicantorgchangedate_formatted?: string;
   bsr_bcaacancellationreason_formatted?: string;
   bsr_bcaacompletionreason_formatted?: string;
   bsr_bcaainvalidreason_formatted?: string;
@@ -473,6 +497,7 @@ interface bsr_buildingcontrolapplication_RelatedOne {
 interface bsr_buildingcontrolapplication_RelatedMany {
   bsr_bsr_bca_bsr_buildingdetails: WebMappingRetrieve<bsr_buildingdetails_Select,bsr_buildingdetails_Expand,bsr_buildingdetails_Filter,bsr_buildingdetails_Fixed,bsr_buildingdetails_Result,bsr_buildingdetails_FormattedResult>;
   bsr_bsr_buildingcontrolapplication_bsr_buildingcontrolapplication_parentbcaappid: WebMappingRetrieve<bsr_buildingcontrolapplication_Select,bsr_buildingcontrolapplication_Expand,bsr_buildingcontrolapplication_Filter,bsr_buildingcontrolapplication_Fixed,bsr_buildingcontrolapplication_Result,bsr_buildingcontrolapplication_FormattedResult>;
+  bsr_bsr_buildingcontrolapplication_bsr_buildingcontrollifecycle_completioncertappid: WebMappingRetrieve<bsr_buildingcontrollifecycle_Select,bsr_buildingcontrollifecycle_Expand,bsr_buildingcontrollifecycle_Filter,bsr_buildingcontrollifecycle_Fixed,bsr_buildingcontrollifecycle_Result,bsr_buildingcontrollifecycle_FormattedResult>;
   bsr_bsr_buildingcontrolapplication_mainbcaapp: WebMappingRetrieve<bsr_buildingcontrolapplication_Select,bsr_buildingcontrolapplication_Expand,bsr_buildingcontrolapplication_Filter,bsr_buildingcontrolapplication_Fixed,bsr_buildingcontrolapplication_Result,bsr_buildingcontrolapplication_FormattedResult>;
   bsr_bsr_changerequest_bcaa: WebMappingRetrieve<bsr_changerequest_Select,bsr_changerequest_Expand,bsr_changerequest_Filter,bsr_changerequest_Fixed,bsr_changerequest_Result,bsr_changerequest_FormattedResult>;
   bsr_buildingcontrollifecycle_bcaaapplication: WebMappingRetrieve<bsr_buildingcontrollifecycle_Select,bsr_buildingcontrollifecycle_Expand,bsr_buildingcontrollifecycle_Filter,bsr_buildingcontrollifecycle_Fixed,bsr_buildingcontrollifecycle_Result,bsr_buildingcontrollifecycle_FormattedResult>;
