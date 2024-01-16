@@ -28,19 +28,20 @@
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" mapping="logical">
+      <fetch version="1.0" mapping="logical" distinct="true">
         <entity name="bsr_mor">
           <attribute name="bsr_morid" />
           <attribute name="bsr_name" />
           <attribute name="createdon" />
+          <attribute name="bsr_incident" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
             <condition attribute="bsr_morstage" operator="in">
               <value>760810001</value>
               <value>760810002</value>
             </condition>
+            <condition attribute="bsr_daysbetweenoccurrenceandreport" operator="eq" value="14400" />
           </filter>
-          <attribute name="bsr_incident" />
           <link-entity alias="a_c99299996c3042789a3cd297c47d3090" name="incident" to="bsr_incident" from="incidentid" link-type="outer" visible="false">
             <attribute name="bsr_building" />
             <attribute name="customerid" />
