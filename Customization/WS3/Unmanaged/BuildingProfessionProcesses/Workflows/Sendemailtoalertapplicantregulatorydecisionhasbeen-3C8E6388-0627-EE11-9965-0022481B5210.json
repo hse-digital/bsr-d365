@@ -166,132 +166,221 @@
             },
             "Condition_If_it's_a_Class_1_Application": {
               "actions": {
-                "Template_Class_1": {
-                  "runAfter": {},
+                "Set_variable": {
+                  "runAfter": {
+                    "Get_Email_Template_by_ID": [
+                      "Succeeded"
+                    ]
+                  },
                   "metadata": {
-                    "operationMetadataId": "2b87d439-21a7-4052-9f43-4314b61829cd"
+                    "operationMetadataId": "701c75f2-b46a-4229-8bf1-9914f56ea613"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "EmailBody",
+                    "value": "@outputs('Get_Email_Template_by_ID')?['body/safehtml']"
+                  }
+                },
+                "Html_to_text": {
+                  "runAfter": {
+                    "Set_variable": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "5a17fa06-32be-4bf2-b22c-75bfeba0a8e8"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_conversionservice_1",
+                      "operationId": "HtmlToText",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_conversionservice"
+                    },
+                    "parameters": {
+                      "Content": "<p>@{outputs('Get_Email_Template_by_ID')?['body/subjectsafehtml']}</p>"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Compose_Replace_Application_ID": {
+                  "runAfter": {
+                    "Html_to_text": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "1263aa6c-4a0b-4bd0-beaf-3f0cd369b5d0"
+                  },
+                  "type": "Compose",
+                  "inputs": "@replace(variables('EmailBody'), '%applicationId%', triggerOutputs()?['body/bsr_buildingproappid'])"
+                },
+                "Compose_Replace_fromDate": {
+                  "runAfter": {
+                    "Compose_Replace_Application_ID": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "1263aa6c-4a0b-4bd0-beaf-3f0cd369b5d0"
+                  },
+                  "type": "Compose",
+                  "inputs": "@replace(outputs('Compose_Replace_Application_ID'), '%fromDate%', variables('varRegistrationCommencmentDate'))"
+                },
+                "Add_a_new_row_EmailMessages": {
+                  "runAfter": {
+                    "Compose_Replace_fromDate": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "39db0d3c-1a5c-4cb0-ab2a-e9bae4d14818"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "CreateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "emails",
+                      "item/activitypointer_activity_parties": [
+                        {
+                          "participationtypemask": 2,
+                          "partyid@odata.bind": "contacts(@{triggerOutputs()?['body/_bsr_applicantid_value']})"
+                        },
+                        {
+                          "participationtypemask": 1,
+                          "partyid@odata.bind": "queues(@{outputs('Queue')?['body/queueid']})"
+                        }
+                      ],
+                      "item/description": "@outputs('Compose_Replace_fromDate')",
+                      "item/regardingobjectid_bsr_buildingprofessionapplication_email@odata.bind": "\\bsr_buildingprofessionapplications\\@{triggerOutputs()?['body/bsr_buildingprofessionapplicationid']}",
+                      "item/statuscode": 1,
+                      "item/subject": "@body('Html_to_text')"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Get_Email_Template_by_ID": {
+                  "runAfter": {
+                    "Condition_Country_is_Both_England_and_Wales_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "26261860-f1b9-47c1-b338-57aef2e1ad3d"
                   },
                   "type": "OpenApiConnection",
                   "inputs": {
                     "host": {
                       "connectionName": "shared_commondataserviceforapps_1",
-                      "operationId": "ListRecords",
+                      "operationId": "GetItem",
                       "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
                     },
                     "parameters": {
                       "entityName": "templates",
-                      "$filter": "templateid eq 'a718d867-b241-ee11-bdf3-0022481b59de'",
-                      "$top": 1
+                      "recordId": "@variables('varEmailTemplateID')"
                     },
                     "authentication": "@parameters('$authentication')"
                   }
                 },
-                "Apply_to_each": {
-                  "foreach": "@outputs('Template_Class_1')?['body/value']",
+                "Condition_Country_is_Both_England_and_Wales_2": {
                   "actions": {
-                    "Set_variable": {
+                    "Set_varEmailTemplateID_Class_1_Both": {
                       "runAfter": {},
                       "metadata": {
-                        "operationMetadataId": "701c75f2-b46a-4229-8bf1-9914f56ea613"
+                        "operationMetadataId": "6156e1a8-f046-47c8-862e-752246307c38"
                       },
                       "type": "SetVariable",
                       "inputs": {
-                        "name": "EmailBody",
-                        "value": "@items('Apply_to_each')?['safehtml']"
-                      }
-                    },
-                    "Html_to_text": {
-                      "runAfter": {
-                        "Set_variable": [
-                          "Succeeded"
-                        ]
-                      },
-                      "metadata": {
-                        "operationMetadataId": "5a17fa06-32be-4bf2-b22c-75bfeba0a8e8"
-                      },
-                      "type": "OpenApiConnection",
-                      "inputs": {
-                        "host": {
-                          "connectionName": "shared_conversionservice_1",
-                          "operationId": "HtmlToText",
-                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_conversionservice"
-                        },
-                        "parameters": {
-                          "Content": "<p>@{items('Apply_to_each')?['subjectsafehtml']}</p>"
-                        },
-                        "authentication": "@parameters('$authentication')"
-                      }
-                    },
-                    "Compose_Replace_Application_ID": {
-                      "runAfter": {
-                        "Html_to_text": [
-                          "Succeeded"
-                        ]
-                      },
-                      "metadata": {
-                        "operationMetadataId": "1263aa6c-4a0b-4bd0-beaf-3f0cd369b5d0"
-                      },
-                      "type": "Compose",
-                      "inputs": "@replace(variables('EmailBody'), '%applicationId%', triggerOutputs()?['body/bsr_buildingproappid'])"
-                    },
-                    "Compose_Replace_fromDate": {
-                      "runAfter": {
-                        "Compose_Replace_Application_ID": [
-                          "Succeeded"
-                        ]
-                      },
-                      "metadata": {
-                        "operationMetadataId": "1263aa6c-4a0b-4bd0-beaf-3f0cd369b5d0"
-                      },
-                      "type": "Compose",
-                      "inputs": "@replace(outputs('Compose_Replace_Application_ID'), '%fromDate%', variables('varRegistrationCommencmentDate'))"
-                    },
-                    "Add_a_new_row_EmailMessages": {
-                      "runAfter": {
-                        "Compose_Replace_fromDate": [
-                          "Succeeded"
-                        ]
-                      },
-                      "metadata": {
-                        "operationMetadataId": "39db0d3c-1a5c-4cb0-ab2a-e9bae4d14818"
-                      },
-                      "type": "OpenApiConnection",
-                      "inputs": {
-                        "host": {
-                          "connectionName": "shared_commondataserviceforapps",
-                          "operationId": "CreateRecord",
-                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                        },
-                        "parameters": {
-                          "entityName": "emails",
-                          "item/activitypointer_activity_parties": [
-                            {
-                              "participationtypemask": 2,
-                              "partyid@odata.bind": "contacts(@{triggerOutputs()?['body/_bsr_applicantid_value']})"
-                            },
-                            {
-                              "participationtypemask": 1,
-                              "partyid@odata.bind": "queues(@{outputs('Queue')?['body/queueid']})"
-                            }
-                          ],
-                          "item/description": "@outputs('Compose_Replace_fromDate')",
-                          "item/regardingobjectid_bsr_buildingprofessionapplication_email@odata.bind": "\\bsr_buildingprofessionapplications\\@{triggerOutputs()?['body/bsr_buildingprofessionapplicationid']}",
-                          "item/statuscode": 1,
-                          "item/subject": "@body('Html_to_text')"
-                        },
-                        "authentication": "@parameters('$authentication')"
+                        "name": "varEmailTemplateID",
+                        "value": "35671ee8-ddab-ee11-be37-0022481b5210"
                       }
                     }
                   },
-                  "runAfter": {
-                    "Template_Class_1": [
-                      "Succeeded"
+                  "runAfter": {},
+                  "else": {
+                    "actions": {
+                      "Condition_Country_is_England_3": {
+                        "actions": {
+                          "Set_varEmailTemplateID_Class_1_England": {
+                            "runAfter": {},
+                            "metadata": {
+                              "operationMetadataId": "988eef55-0bc6-4a76-86e1-c6d0352abaca"
+                            },
+                            "type": "SetVariable",
+                            "inputs": {
+                              "name": "varEmailTemplateID",
+                              "value": "a718d867-b241-ee11-bdf3-0022481b59de"
+                            }
+                          }
+                        },
+                        "runAfter": {},
+                        "else": {
+                          "actions": {
+                            "Condition_Country_is_Wales_2": {
+                              "actions": {
+                                "Set_varEmailTemplateID_Class_1_Wales": {
+                                  "runAfter": {},
+                                  "metadata": {
+                                    "operationMetadataId": "a74af86b-01f4-43b8-8d04-8bbdf6ef52fb"
+                                  },
+                                  "type": "SetVariable",
+                                  "inputs": {
+                                    "name": "varEmailTemplateID",
+                                    "value": "539ac176-ddab-ee11-be37-0022481b5210"
+                                  }
+                                }
+                              },
+                              "runAfter": {},
+                              "expression": {
+                                "contains": [
+                                  "@variables('varCountriesArray')",
+                                  "ab22b657-30b8-ed11-b597-0022481b5e4f"
+                                ]
+                              },
+                              "metadata": {
+                                "operationMetadataId": "f20414ac-057f-460e-a39b-2e31f8536c7e"
+                              },
+                              "type": "If"
+                            }
+                          }
+                        },
+                        "expression": {
+                          "contains": [
+                            "@variables('varCountriesArray')",
+                            "65eeb151-30b8-ed11-b597-0022481b5e4f"
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "e86dbea1-21e6-49ff-bb15-6c845fe307ff"
+                        },
+                        "type": "If"
+                      }
+                    }
+                  },
+                  "expression": {
+                    "and": [
+                      {
+                        "contains": [
+                          "@variables('varCountriesArray')",
+                          "65eeb151-30b8-ed11-b597-0022481b5e4f"
+                        ]
+                      },
+                      {
+                        "contains": [
+                          "@variables('varCountriesArray')",
+                          "ab22b657-30b8-ed11-b597-0022481b5e4f"
+                        ]
+                      }
                     ]
                   },
                   "metadata": {
-                    "operationMetadataId": "45bde4c9-5cf5-4b52-a2f9-c175117bfaed"
+                    "operationMetadataId": "61facbc4-41d6-4096-8ee6-a45b9f64ee5f"
                   },
-                  "type": "Foreach"
+                  "type": "If"
                 }
               },
               "runAfter": {
@@ -301,91 +390,9 @@
               },
               "else": {
                 "actions": {
-                  "Template_Class_2_or_3": {
-                    "runAfter": {},
-                    "metadata": {
-                      "operationMetadataId": "2b87d439-21a7-4052-9f43-4314b61829cd"
-                    },
-                    "type": "OpenApiConnection",
-                    "inputs": {
-                      "host": {
-                        "connectionName": "shared_commondataserviceforapps_1",
-                        "operationId": "ListRecords",
-                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                      },
-                      "parameters": {
-                        "entityName": "templates",
-                        "$filter": "templateid eq 'f8a57011-bd41-ee11-bdf3-0022481b59de'",
-                        "$top": 1
-                      },
-                      "authentication": "@parameters('$authentication')"
-                    }
-                  },
-                  "Apply_to_each_3": {
-                    "foreach": "@outputs('Template_Class_2_or_3')?['body/value']",
-                    "actions": {
-                      "Set_varEmailBody": {
-                        "runAfter": {},
-                        "metadata": {
-                          "operationMetadataId": "8b1b7229-71ca-4f92-b131-10f136a85d20"
-                        },
-                        "type": "SetVariable",
-                        "inputs": {
-                          "name": "EmailBody",
-                          "value": "@items('Apply_to_each_3')?['safehtml']"
-                        }
-                      },
-                      "Html_to_text_Class_2_3_Subject": {
-                        "runAfter": {
-                          "Set_varEmailBody": [
-                            "Succeeded"
-                          ]
-                        },
-                        "metadata": {
-                          "operationMetadataId": "5a17fa06-32be-4bf2-b22c-75bfeba0a8e8"
-                        },
-                        "type": "OpenApiConnection",
-                        "inputs": {
-                          "host": {
-                            "connectionName": "shared_conversionservice_1",
-                            "operationId": "HtmlToText",
-                            "apiId": "/providers/Microsoft.PowerApps/apis/shared_conversionservice"
-                          },
-                          "parameters": {
-                            "Content": "<p>@{items('Apply_to_each_3')?['subjectsafehtml']}</p>"
-                          },
-                          "authentication": "@parameters('$authentication')"
-                        }
-                      },
-                      "Set_varEmailSubject": {
-                        "runAfter": {
-                          "Html_to_text_Class_2_3_Subject": [
-                            "Succeeded"
-                          ]
-                        },
-                        "metadata": {
-                          "operationMetadataId": "623ab300-016e-48d2-864f-f4d8a68f26b6"
-                        },
-                        "type": "SetVariable",
-                        "inputs": {
-                          "name": "varEmailSubject",
-                          "value": "@body('Html_to_text_Class_2_3_Subject')"
-                        }
-                      }
-                    },
-                    "runAfter": {
-                      "Template_Class_2_or_3": [
-                        "Succeeded"
-                      ]
-                    },
-                    "metadata": {
-                      "operationMetadataId": "79687b7b-a13a-4abc-abe3-7515a47d10ad"
-                    },
-                    "type": "Foreach"
-                  },
                   "Add_a_new_row_EmailMessages_3": {
                     "runAfter": {
-                      "Compose_Replace_fromDate_2_3": [
+                      "Compose_Replace_assessCategories": [
                         "Succeeded"
                       ]
                     },
@@ -411,7 +418,7 @@
                             "partyid@odata.bind": "queues(@{outputs('Queue')?['body/queueid']})"
                           }
                         ],
-                        "item/description": "@outputs('Compose_Replace_fromDate_2_3')",
+                        "item/description": "@outputs('Compose_Replace_assessCategories')",
                         "item/regardingobjectid_bsr_buildingprofessionapplication_email@odata.bind": "\\bsr_buildingprofessionapplications\\@{triggerOutputs()?['body/bsr_buildingprofessionapplicationid']}",
                         "item/statuscode": 1,
                         "item/subject": "@outputs('Compose_Replace_Subject_with_Class')"
@@ -457,7 +464,7 @@
                   },
                   "Compose_Replace_Subject_with_Class": {
                     "runAfter": {
-                      "Apply_to_each_3": [
+                      "Does_our_email_require_a_comma": [
                         "Succeeded"
                       ]
                     },
@@ -466,6 +473,593 @@
                     },
                     "type": "Compose",
                     "inputs": "@replace(variables('varEmailSubject'), '%classNumber%', variables('varClasses'))"
+                  },
+                  "Set_varEmailBody": {
+                    "runAfter": {
+                      "Get_email_Temaplate_Class_2_or_3_row_by_ID": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "8b1b7229-71ca-4f92-b131-10f136a85d20"
+                    },
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "EmailBody",
+                      "value": "@outputs('Get_email_Temaplate_Class_2_or_3_row_by_ID')?['body/safehtml']"
+                    }
+                  },
+                  "Html_to_text_Class_2_3_Subject": {
+                    "runAfter": {
+                      "Set_varEmailBody": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "5a17fa06-32be-4bf2-b22c-75bfeba0a8e8"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_conversionservice_1",
+                        "operationId": "HtmlToText",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_conversionservice"
+                      },
+                      "parameters": {
+                        "Content": "<p>@{outputs('Get_email_Temaplate_Class_2_or_3_row_by_ID')?['body/subjectsafehtml']}</p>"
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  },
+                  "Set_varEmailSubject": {
+                    "runAfter": {
+                      "Html_to_text_Class_2_3_Subject": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "623ab300-016e-48d2-864f-f4d8a68f26b6"
+                    },
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "varEmailSubject",
+                      "value": "@body('Html_to_text_Class_2_3_Subject')"
+                    }
+                  },
+                  "Condition_Country_is_Both_England_and_Wales_Class_2_or_3": {
+                    "actions": {
+                      "Set_varEmailTemplateID_Class_2_or_3_Both_2": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "61ae0495-4841-4774-89bf-d71edfb0339e"
+                        },
+                        "type": "SetVariable",
+                        "inputs": {
+                          "name": "varEmailTemplateID",
+                          "value": "467662c4-daab-ee11-be37-0022481b5210"
+                        }
+                      }
+                    },
+                    "runAfter": {},
+                    "else": {
+                      "actions": {
+                        "Condition_Country_is_England": {
+                          "actions": {
+                            "Set_varEmailTemplateID_Class_2_or_3_England": {
+                              "runAfter": {},
+                              "metadata": {
+                                "operationMetadataId": "46d25346-4aa8-4ae2-8850-73022abb8cdc"
+                              },
+                              "type": "SetVariable",
+                              "inputs": {
+                                "name": "varEmailTemplateID",
+                                "value": "f8a57011-bd41-ee11-bdf3-0022481b59de"
+                              }
+                            }
+                          },
+                          "runAfter": {},
+                          "else": {
+                            "actions": {
+                              "Condition_Country_is_Wales": {
+                                "actions": {
+                                  "Set_varEmailTemplateID_Class_2_or_3_Wales": {
+                                    "runAfter": {},
+                                    "metadata": {
+                                      "operationMetadataId": "839c194e-e08c-4134-a04b-29baf867cd7b"
+                                    },
+                                    "type": "SetVariable",
+                                    "inputs": {
+                                      "name": "varEmailTemplateID",
+                                      "value": "c9656d40-daab-ee11-be37-0022481b5210"
+                                    }
+                                  }
+                                },
+                                "runAfter": {},
+                                "expression": {
+                                  "contains": [
+                                    "@variables('varCountriesArray')",
+                                    "ab22b657-30b8-ed11-b597-0022481b5e4f"
+                                  ]
+                                },
+                                "metadata": {
+                                  "operationMetadataId": "f20414ac-057f-460e-a39b-2e31f8536c7e"
+                                },
+                                "type": "If"
+                              }
+                            }
+                          },
+                          "expression": {
+                            "contains": [
+                              "@variables('varCountriesArray')",
+                              "65eeb151-30b8-ed11-b597-0022481b5e4f"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "e86dbea1-21e6-49ff-bb15-6c845fe307ff"
+                          },
+                          "type": "If"
+                        }
+                      }
+                    },
+                    "expression": {
+                      "and": [
+                        {
+                          "contains": [
+                            "@variables('varCountriesArray')",
+                            "65eeb151-30b8-ed11-b597-0022481b5e4f"
+                          ]
+                        },
+                        {
+                          "contains": [
+                            "@variables('varCountriesArray')",
+                            "ab22b657-30b8-ed11-b597-0022481b5e4f"
+                          ]
+                        }
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "61facbc4-41d6-4096-8ee6-a45b9f64ee5f"
+                    },
+                    "type": "If"
+                  },
+                  "Get_email_Temaplate_Class_2_or_3_row_by_ID": {
+                    "runAfter": {
+                      "Condition_Country_is_Both_England_and_Wales_Class_2_or_3": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "da670b25-55dd-47b0-a5cb-f69a08f18fdc"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps_1",
+                        "operationId": "GetItem",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "templates",
+                        "recordId": "@variables('varEmailTemplateID')"
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  },
+                  "Compose_Replace_inspectionCategories_2": {
+                    "runAfter": {
+                      "Compose_Replace_fromDate_2_3": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "1263aa6c-4a0b-4bd0-beaf-3f0cd369b5d0"
+                    },
+                    "type": "Compose",
+                    "inputs": "@replace(outputs('Compose_Replace_fromDate_2_3'), '%inspectionCategories%', variables('varInspectCategoriesEmailLine'))"
+                  },
+                  "Scope_-_Assessing_Plans_Details_2": {
+                    "actions": {
+                      "List_Assessing_Plans_Activities_2": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "649d5379-fedc-454e-b6cf-a1f688475a34"
+                        },
+                        "type": "OpenApiConnection",
+                        "inputs": {
+                          "host": {
+                            "connectionName": "shared_commondataserviceforapps_1",
+                            "operationId": "ListRecords",
+                            "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                          },
+                          "parameters": {
+                            "entityName": "bsr_biregactivities",
+                            "$filter": "_bsr_biapplicationid_value eq @{triggerOutputs()?['body/bsr_buildingprofessionapplicationid']} and _bsr_biactivityid_value eq '5723c81c-8b24-ee11-9965-0022481b5210' and statuscode eq 760810002"
+                          },
+                          "authentication": "@parameters('$authentication')"
+                        }
+                      },
+                      "Apply_to_each_Assessing_Plans_to_get_the_Category_Name_2": {
+                        "foreach": "@outputs('List_Assessing_Plans_Activities_2')?['body/value']",
+                        "actions": {
+                          "Get_a_Building_Category_Name_4": {
+                            "runAfter": {},
+                            "metadata": {
+                              "operationMetadataId": "994a3e8e-bb4a-4050-97c2-332189ea1f52"
+                            },
+                            "type": "OpenApiConnection",
+                            "inputs": {
+                              "host": {
+                                "connectionName": "shared_commondataserviceforapps",
+                                "operationId": "GetItem",
+                                "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                              },
+                              "parameters": {
+                                "entityName": "bsr_bibuildingcategories",
+                                "recordId": "@items('Apply_to_each_Assessing_Plans_to_get_the_Category_Name_2')?['_bsr_bibuildingcategoryid_value']"
+                              },
+                              "authentication": "@parameters('$authentication')"
+                            }
+                          },
+                          "Compose_Get_just_the_letter_of_the_Category_4": {
+                            "runAfter": {
+                              "Get_a_Building_Category_Name_4": [
+                                "Succeeded"
+                              ]
+                            },
+                            "metadata": {
+                              "operationMetadataId": "6a9f2ce6-4e24-42fd-898e-9a4a19435f9c"
+                            },
+                            "type": "Compose",
+                            "inputs": "@split(outputs('Get_a_Building_Category_Name_4')?['body/bsr_name'], ' ')[1]"
+                          },
+                          "Append_to_varInspectCategories_array_variable_4": {
+                            "runAfter": {
+                              "Compose_Get_just_the_letter_of_the_Category_4": [
+                                "Succeeded"
+                              ]
+                            },
+                            "metadata": {
+                              "operationMetadataId": "d1753f9f-d33b-4d17-91db-9b343a81c6e1"
+                            },
+                            "type": "AppendToArrayVariable",
+                            "inputs": {
+                              "name": "varAssessCategories",
+                              "value": "@outputs('Compose_Get_just_the_letter_of_the_Category_4')"
+                            }
+                          }
+                        },
+                        "runAfter": {
+                          "List_Assessing_Plans_Activities_2": [
+                            "Succeeded"
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "485f7cbc-d0f5-425e-bbd2-2a5cafbed0cc"
+                        },
+                        "type": "Foreach"
+                      },
+                      "Check_if_the_Inspect_Activity_Arrray_is_empty_3": {
+                        "actions": {
+                          "Set_varAssessCategoriesExist_to_False": {
+                            "runAfter": {},
+                            "metadata": {
+                              "operationMetadataId": "92431d2c-298b-4399-9f09-2c253cf39744"
+                            },
+                            "type": "SetVariable",
+                            "inputs": {
+                              "name": "varAssessCategoriesExist",
+                              "value": false
+                            }
+                          }
+                        },
+                        "runAfter": {
+                          "Apply_to_each_Assessing_Plans_to_get_the_Category_Name_2": [
+                            "Succeeded"
+                          ]
+                        },
+                        "else": {
+                          "actions": {
+                            "Compose_Join_the_Inspect_Array_as_text_3": {
+                              "runAfter": {},
+                              "metadata": {
+                                "operationMetadataId": "8efde8d0-29d7-4d90-851d-a7e710023e14"
+                              },
+                              "type": "Compose",
+                              "inputs": "@join(sort(variables('varAssessCategories')), ', ')"
+                            },
+                            "Set_varAssessCategoriesEmailLine": {
+                              "runAfter": {
+                                "Compose_Join_the_Inspect_Array_as_text_3": [
+                                  "Succeeded"
+                                ]
+                              },
+                              "metadata": {
+                                "operationMetadataId": "12baa978-215b-4b00-b1dd-26c57055ed2f"
+                              },
+                              "type": "SetVariable",
+                              "inputs": {
+                                "name": "varAssessCategoriesEmailLine",
+                                "value": "categories @{outputs('Compose_Join_the_Inspect_Array_as_text_3')} unsupervised for plans assessment "
+                              }
+                            },
+                            "Set_varAssessCategoriesExist_to_True": {
+                              "runAfter": {
+                                "Set_varAssessCategoriesEmailLine": [
+                                  "Succeeded"
+                                ]
+                              },
+                              "metadata": {
+                                "operationMetadataId": "0b6ec26c-35dc-48de-8f93-74d70ec69daf"
+                              },
+                              "type": "SetVariable",
+                              "inputs": {
+                                "name": "varAssessCategoriesExist",
+                                "value": true
+                              }
+                            }
+                          }
+                        },
+                        "expression": {
+                          "equals": [
+                            "@length(variables('varAssessCategories'))",
+                            0
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "1ad7d333-fd32-4e59-ad42-c8d47112d04f"
+                        },
+                        "type": "If"
+                      }
+                    },
+                    "runAfter": {
+                      "Set_varEmailSubject": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "c55ec91c-dc9b-4f96-802f-22767b0bcd4a"
+                    },
+                    "type": "Scope"
+                  },
+                  "Compose_Replace_assessCategories": {
+                    "runAfter": {
+                      "Compose_Replace_inspectionCategories_2": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "1263aa6c-4a0b-4bd0-beaf-3f0cd369b5d0"
+                    },
+                    "type": "Compose",
+                    "inputs": "@replace(outputs('Compose_Replace_inspectionCategories_2'), '%assessmentCategories%', variables('varAssessCategoriesEmailLine'))"
+                  },
+                  "Scope_-_Inspect_Activities_Details_2": {
+                    "actions": {
+                      "List_Inspect_Activities_2": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "649d5379-fedc-454e-b6cf-a1f688475a34"
+                        },
+                        "type": "OpenApiConnection",
+                        "inputs": {
+                          "host": {
+                            "connectionName": "shared_commondataserviceforapps_1",
+                            "operationId": "ListRecords",
+                            "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                          },
+                          "parameters": {
+                            "entityName": "bsr_biregactivities",
+                            "$filter": "_bsr_biapplicationid_value eq @{triggerOutputs()?['body/bsr_buildingprofessionapplicationid']} and _bsr_biactivityid_value eq '5f23c81c-8b24-ee11-9965-0022481b5210' and statuscode eq 760810002"
+                          },
+                          "authentication": "@parameters('$authentication')"
+                        }
+                      },
+                      "Apply_to_each_Inspect_to_get_the_activity_Name_2": {
+                        "foreach": "@outputs('List_Inspect_Activities_2')?['body/value']",
+                        "actions": {
+                          "Get_a_Building_Category_Name_3": {
+                            "runAfter": {},
+                            "metadata": {
+                              "operationMetadataId": "994a3e8e-bb4a-4050-97c2-332189ea1f52"
+                            },
+                            "type": "OpenApiConnection",
+                            "inputs": {
+                              "host": {
+                                "connectionName": "shared_commondataserviceforapps",
+                                "operationId": "GetItem",
+                                "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                              },
+                              "parameters": {
+                                "entityName": "bsr_bibuildingcategories",
+                                "recordId": "@items('Apply_to_each_Inspect_to_get_the_activity_Name_2')?['_bsr_bibuildingcategoryid_value']"
+                              },
+                              "authentication": "@parameters('$authentication')"
+                            }
+                          },
+                          "Compose_Get_just_the_letter_of_the_Category_2": {
+                            "runAfter": {
+                              "Get_a_Building_Category_Name_3": [
+                                "Succeeded"
+                              ]
+                            },
+                            "metadata": {
+                              "operationMetadataId": "6a9f2ce6-4e24-42fd-898e-9a4a19435f9c"
+                            },
+                            "type": "Compose",
+                            "inputs": "@split(outputs('Get_a_Building_Category_Name_3')?['body/bsr_name'], ' ')[1]"
+                          },
+                          "Append_to_varInspectCategories_array_variable_2": {
+                            "runAfter": {
+                              "Compose_Get_just_the_letter_of_the_Category_2": [
+                                "Succeeded"
+                              ]
+                            },
+                            "metadata": {
+                              "operationMetadataId": "d1753f9f-d33b-4d17-91db-9b343a81c6e1"
+                            },
+                            "type": "AppendToArrayVariable",
+                            "inputs": {
+                              "name": "varInspectCategories",
+                              "value": "@outputs('Compose_Get_just_the_letter_of_the_Category_2')"
+                            }
+                          }
+                        },
+                        "runAfter": {
+                          "List_Inspect_Activities_2": [
+                            "Succeeded"
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "ce6a0246-7308-4491-b68e-64d1597192a3"
+                        },
+                        "type": "Foreach"
+                      },
+                      "Check_if_the_Inspect_Activity_Arrray_is_empty_2": {
+                        "actions": {
+                          "Set_varInspectCategoriesExist_to_False": {
+                            "runAfter": {},
+                            "metadata": {
+                              "operationMetadataId": "175f6db2-7737-482f-9ab9-f81fc0b897ef"
+                            },
+                            "type": "SetVariable",
+                            "inputs": {
+                              "name": "varInspectCategoriesExist",
+                              "value": false
+                            }
+                          }
+                        },
+                        "runAfter": {
+                          "Apply_to_each_Inspect_to_get_the_activity_Name_2": [
+                            "Succeeded"
+                          ]
+                        },
+                        "else": {
+                          "actions": {
+                            "Compose_Join_the_Inspect_Array_as_text_2": {
+                              "runAfter": {},
+                              "metadata": {
+                                "operationMetadataId": "8efde8d0-29d7-4d90-851d-a7e710023e14"
+                              },
+                              "type": "Compose",
+                              "inputs": "@join(sort(variables('varInspectCategories')), ', ')"
+                            },
+                            "Set_varInspectCategoriesEmailLine_to_NA_4": {
+                              "runAfter": {
+                                "Compose_Join_the_Inspect_Array_as_text_2": [
+                                  "Succeeded"
+                                ]
+                              },
+                              "metadata": {
+                                "operationMetadataId": "12baa978-215b-4b00-b1dd-26c57055ed2f"
+                              },
+                              "type": "SetVariable",
+                              "inputs": {
+                                "name": "varInspectCategoriesEmailLine",
+                                "value": " categories @{outputs('Compose_Join_the_Inspect_Array_as_text_2')} unsupervised for inspection"
+                              }
+                            },
+                            "Set_varInspectCategoriesExist_to_True": {
+                              "runAfter": {
+                                "Set_varInspectCategoriesEmailLine_to_NA_4": [
+                                  "Succeeded"
+                                ]
+                              },
+                              "metadata": {
+                                "operationMetadataId": "2d5c3472-64c7-4a85-8fb9-ad0348f2347a"
+                              },
+                              "type": "SetVariable",
+                              "inputs": {
+                                "name": "varInspectCategoriesExist",
+                                "value": true
+                              }
+                            }
+                          }
+                        },
+                        "expression": {
+                          "equals": [
+                            "@length(variables('varInspectCategories'))",
+                            0
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "1ad7d333-fd32-4e59-ad42-c8d47112d04f"
+                        },
+                        "type": "If"
+                      }
+                    },
+                    "runAfter": {
+                      "Scope_-_Assessing_Plans_Details_2": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "0695a522-0687-437e-8ec1-f188cf28845a"
+                    },
+                    "type": "Scope"
+                  },
+                  "Does_our_email_require_a_comma": {
+                    "actions": {
+                      "Set_varInspectCategoriesEmailLine_to_NA_7": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "12baa978-215b-4b00-b1dd-26c57055ed2f"
+                        },
+                        "type": "SetVariable",
+                        "inputs": {
+                          "name": "varInspectCategoriesEmailLine",
+                          "value": " categories @{outputs('Compose_Join_the_Inspect_Array_as_text_2')} unsupervised for inspection,"
+                        }
+                      }
+                    },
+                    "runAfter": {
+                      "Compose_varInspect": [
+                        "Succeeded"
+                      ]
+                    },
+                    "expression": {
+                      "and": [
+                        {
+                          "equals": [
+                            "@variables('varInspectCategoriesExist')",
+                            "@true"
+                          ]
+                        },
+                        {
+                          "equals": [
+                            "@variables('varAssessCategoriesExist')",
+                            "@true"
+                          ]
+                        }
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "ac75a488-5f3b-41e1-b28a-63dbe619ef7b"
+                    },
+                    "type": "If"
+                  },
+                  "Compose_varAssessCategories": {
+                    "runAfter": {
+                      "Scope_-_Inspect_Activities_Details_2": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "2c9e59b6-78fa-4d84-81c4-7651a273c004"
+                    },
+                    "type": "Compose",
+                    "inputs": "@variables('varAssessCategoriesExist')"
+                  },
+                  "Compose_varInspect": {
+                    "runAfter": {
+                      "Compose_varAssessCategories": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "e5fa67cd-3334-4864-8646-0af6593a0f81"
+                    },
+                    "type": "Compose",
+                    "inputs": "@variables('varInspectCategoriesExist')"
                   }
                 }
               },
@@ -542,7 +1136,7 @@
             }
           },
           "runAfter": {
-            "List_rows_BI_Reg_Classes": [
+            "Initialize_varInspectCategoriesExist": [
               "Succeeded"
             ]
           },
@@ -559,91 +1153,9 @@
         },
         "Condition_If_Regulatory_Decision_equals_Rejected": {
           "actions": {
-            "Template_BPA_Rejeceted": {
-              "runAfter": {},
-              "metadata": {
-                "operationMetadataId": "2b87d439-21a7-4052-9f43-4314b61829cd"
-              },
-              "type": "OpenApiConnection",
-              "inputs": {
-                "host": {
-                  "connectionName": "shared_commondataserviceforapps_1",
-                  "operationId": "ListRecords",
-                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                },
-                "parameters": {
-                  "entityName": "templates",
-                  "$filter": "templateid eq '49519dea-c641-ee11-bdf3-0022481b56d1'",
-                  "$top": 1
-                },
-                "authentication": "@parameters('$authentication')"
-              }
-            },
-            "Apply_to_each_4": {
-              "foreach": "@outputs('Template_BPA_Rejeceted')?['body/value']",
-              "actions": {
-                "Set_varEmailBody_2": {
-                  "runAfter": {},
-                  "metadata": {
-                    "operationMetadataId": "8b1b7229-71ca-4f92-b131-10f136a85d20"
-                  },
-                  "type": "SetVariable",
-                  "inputs": {
-                    "name": "EmailBody",
-                    "value": "@items('Apply_to_each_4')?['safehtml']"
-                  }
-                },
-                "Html_to_text_Rejected": {
-                  "runAfter": {
-                    "Set_varEmailBody_2": [
-                      "Succeeded"
-                    ]
-                  },
-                  "metadata": {
-                    "operationMetadataId": "5a17fa06-32be-4bf2-b22c-75bfeba0a8e8"
-                  },
-                  "type": "OpenApiConnection",
-                  "inputs": {
-                    "host": {
-                      "connectionName": "shared_conversionservice_1",
-                      "operationId": "HtmlToText",
-                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_conversionservice"
-                    },
-                    "parameters": {
-                      "Content": "<p>@{items('Apply_to_each_4')?['subjectsafehtml']}</p>"
-                    },
-                    "authentication": "@parameters('$authentication')"
-                  }
-                },
-                "Set_varEmailSubject_Rejection": {
-                  "runAfter": {
-                    "Html_to_text_Rejected": [
-                      "Succeeded"
-                    ]
-                  },
-                  "metadata": {
-                    "operationMetadataId": "120b179e-1d79-4c26-bea4-7d150024aa72"
-                  },
-                  "type": "SetVariable",
-                  "inputs": {
-                    "name": "varEmailSubject",
-                    "value": "@body('Html_to_text_Rejected')"
-                  }
-                }
-              },
-              "runAfter": {
-                "Apply_to_each_Class_Loop": [
-                  "Succeeded"
-                ]
-              },
-              "metadata": {
-                "operationMetadataId": "79687b7b-a13a-4abc-abe3-7515a47d10ad"
-              },
-              "type": "Foreach"
-            },
             "Compose_Rejected_Replace_Application_ID": {
               "runAfter": {
-                "Apply_to_each_4": [
+                "Set_varEmailSubject_Rejection": [
                   "Succeeded"
                 ]
               },
@@ -849,7 +1361,7 @@
             },
             "List_rows_BI_Reg_Classes_2": {
               "runAfter": {
-                "Template_BPA_Rejeceted": [
+                "Get_Rejected_Email_row_by_ID": [
                   "Succeeded"
                 ]
               },
@@ -866,6 +1378,177 @@
                 "parameters": {
                   "entityName": "bsr_biregclasses",
                   "$filter": "_bsr_biapplicationid_value eq '@{triggerOutputs()?['body/bsr_buildingprofessionapplicationid']}'"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Set_varEmailBody_2": {
+              "runAfter": {
+                "Apply_to_each_Class_Loop": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "8b1b7229-71ca-4f92-b131-10f136a85d20"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "EmailBody",
+                "value": "@outputs('Get_Rejected_Email_row_by_ID')?['body/safehtml']"
+              }
+            },
+            "Html_to_text_Rejected": {
+              "runAfter": {
+                "Set_varEmailBody_2": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "5a17fa06-32be-4bf2-b22c-75bfeba0a8e8"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_conversionservice_1",
+                  "operationId": "HtmlToText",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_conversionservice"
+                },
+                "parameters": {
+                  "Content": "<p>@{outputs('Get_Rejected_Email_row_by_ID')?['body/subjectsafehtml']}</p>"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Set_varEmailSubject_Rejection": {
+              "runAfter": {
+                "Html_to_text_Rejected": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "120b179e-1d79-4c26-bea4-7d150024aa72"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "varEmailSubject",
+                "value": "@body('Html_to_text_Rejected')"
+              }
+            },
+            "Condition_Country_is_Both_England_and_Wales_Rejected": {
+              "actions": {
+                "Set_varEmailTemplateID_England_and_Wales_rejected": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "61ae0495-4841-4774-89bf-d71edfb0339e"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "varEmailTemplateID",
+                    "value": "bf31101e-e7ab-ee11-be37-0022481b5210"
+                  }
+                }
+              },
+              "runAfter": {},
+              "else": {
+                "actions": {
+                  "Condition_Country_is_England_Rejected": {
+                    "actions": {
+                      "Set_varEmailTemplateID_England_Rejected": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "46d25346-4aa8-4ae2-8850-73022abb8cdc"
+                        },
+                        "type": "SetVariable",
+                        "inputs": {
+                          "name": "varEmailTemplateID",
+                          "value": "49519dea-c641-ee11-bdf3-0022481b56d1"
+                        }
+                      }
+                    },
+                    "runAfter": {},
+                    "else": {
+                      "actions": {
+                        "Condition_Country_is_Wales_3": {
+                          "actions": {
+                            "Set_varEmailTemplateID_Wales_Rejected": {
+                              "runAfter": {},
+                              "metadata": {
+                                "operationMetadataId": "839c194e-e08c-4134-a04b-29baf867cd7b"
+                              },
+                              "type": "SetVariable",
+                              "inputs": {
+                                "name": "varEmailTemplateID",
+                                "value": "e7dcd1be-e6ab-ee11-be37-0022481b5210"
+                              }
+                            }
+                          },
+                          "runAfter": {},
+                          "expression": {
+                            "contains": [
+                              "@variables('varCountriesArray')",
+                              "ab22b657-30b8-ed11-b597-0022481b5e4f"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "f20414ac-057f-460e-a39b-2e31f8536c7e"
+                          },
+                          "type": "If"
+                        }
+                      }
+                    },
+                    "expression": {
+                      "contains": [
+                        "@variables('varCountriesArray')",
+                        "65eeb151-30b8-ed11-b597-0022481b5e4f"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "e86dbea1-21e6-49ff-bb15-6c845fe307ff"
+                    },
+                    "type": "If"
+                  }
+                }
+              },
+              "expression": {
+                "and": [
+                  {
+                    "contains": [
+                      "@variables('varCountriesArray')",
+                      "65eeb151-30b8-ed11-b597-0022481b5e4f"
+                    ]
+                  },
+                  {
+                    "contains": [
+                      "@variables('varCountriesArray')",
+                      "ab22b657-30b8-ed11-b597-0022481b5e4f"
+                    ]
+                  }
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "61facbc4-41d6-4096-8ee6-a45b9f64ee5f"
+              },
+              "type": "If"
+            },
+            "Get_Rejected_Email_row_by_ID": {
+              "runAfter": {
+                "Condition_Country_is_Both_England_and_Wales_Rejected": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "f4fa299f-c48c-4e5e-be98-f5f1d4072e8c"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "templates",
+                  "recordId": "@variables('varEmailTemplateID')"
                 },
                 "authentication": "@parameters('$authentication')"
               }
@@ -889,25 +1572,333 @@
         },
         "Condition_If_Regulatory_Decision_equals_Approved_with_Condition": {
           "actions": {
-            "Template_BPA_Approved_with_Conditions": {
-              "runAfter": {},
+            "Compose_AwC_Replace_Application_ID": {
+              "runAfter": {
+                "Set_varEmailSubject_Rejection_2": [
+                  "Succeeded"
+                ]
+              },
               "metadata": {
-                "operationMetadataId": "2b87d439-21a7-4052-9f43-4314b61829cd"
+                "operationMetadataId": "1263aa6c-4a0b-4bd0-beaf-3f0cd369b5d0"
+              },
+              "type": "Compose",
+              "inputs": "@replace(variables('EmailBody'), '%applicationId%', triggerOutputs()?['body/bsr_buildingproappid'])"
+            },
+            "Compose_AwC_Replace_classNumber": {
+              "runAfter": {
+                "Compose_AwC_Replace_Application_ID": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "1263aa6c-4a0b-4bd0-beaf-3f0cd369b5d0"
+              },
+              "type": "Compose",
+              "inputs": "@replace(outputs('Compose_AwC_Replace_Application_ID'), '%classNumber%', variables('varClasses'))"
+            },
+            "Compose_AwC_Replace_applicationDate": {
+              "runAfter": {
+                "Compose_AwC_Replace_classNumber": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "1263aa6c-4a0b-4bd0-beaf-3f0cd369b5d0"
+              },
+              "type": "Compose",
+              "inputs": "@replace(outputs('Compose_AwC_Replace_classNumber'), '%applicationDate%', variables('varApplicationDate'))"
+            },
+            "Set_varApprovedConditions": {
+              "runAfter": {
+                "Compose_Replace_inspectionCategories": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "afc3fd6f-e9a4-4d13-a557-eebd7bce04b4"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "varApprovedConditions",
+                "value": "@triggerOutputs()?['body/bsr_decisioncondition']"
+              }
+            },
+            "Compose_AwC_Replace_approvedConditions": {
+              "runAfter": {
+                "Set_varApprovedConditions": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "1263aa6c-4a0b-4bd0-beaf-3f0cd369b5d0"
+              },
+              "type": "Compose",
+              "inputs": "@replace(outputs('Compose_Replace_fromDate_2'), '%condition%', variables('varApprovedConditions'))"
+            },
+            "Add_a_new_row_EmailMessages_4": {
+              "runAfter": {
+                "Compose_AwC_Replace_approvedConditions": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "39db0d3c-1a5c-4cb0-ab2a-e9bae4d14818"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "emails",
+                  "item/activitypointer_activity_parties": [
+                    {
+                      "participationtypemask": 2,
+                      "partyid@odata.bind": "contacts(@{triggerOutputs()?['body/_bsr_applicantid_value']})"
+                    },
+                    {
+                      "participationtypemask": 1,
+                      "partyid@odata.bind": "queues(@{outputs('Queue')?['body/queueid']})"
+                    }
+                  ],
+                  "item/description": "@outputs('Compose_AwC_Replace_approvedConditions')",
+                  "item/regardingobjectid_bsr_buildingprofessionapplication_email@odata.bind": "\\bsr_buildingprofessionapplications\\@{triggerOutputs()?['body/bsr_buildingprofessionapplicationid']}",
+                  "item/statuscode": 1,
+                  "item/subject": "@variables('varEmailSubject')"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Compose_Replace_fromDate_2": {
+              "runAfter": {
+                "Compose_AwC_Replace_applicationDate": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "1263aa6c-4a0b-4bd0-beaf-3f0cd369b5d0"
+              },
+              "type": "Compose",
+              "inputs": "@replace(outputs('Compose_AwC_Replace_applicationDate'), '%fromDate%', variables('varRegistrationCommencmentDate'))"
+            },
+            "Set_varRegistrationCommencementDate_2": {
+              "runAfter": {
+                "Scope_-_Assessing_Plans_Details": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "201dc70a-41e1-479b-879d-3dcc87d2c2ee"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "varRegistrationCommencmentDate",
+                "value": "@{formatDateTime(triggerOutputs()?['body/bsr_registrationcommencementdate'], 'dd/MM/yyyy')}"
+              }
+            },
+            "Condition_Class_list_is_empty_2": {
+              "actions": {
+                "Terminate_4": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "1eccca2d-e05f-474a-876b-826d01f55c40"
+                  },
+                  "type": "Terminate",
+                  "inputs": {
+                    "runStatus": "Succeeded"
+                  }
+                }
+              },
+              "runAfter": {
+                "Set_varRegistrationCommencementDate_2": [
+                  "Succeeded"
+                ]
+              },
+              "expression": {
+                "not": {
+                  "contains": [
+                    "@variables('varClasses')",
+                    "Class"
+                  ]
+                }
+              },
+              "metadata": {
+                "operationMetadataId": "fefa9831-84d1-4140-b765-900f998a9fcb"
+              },
+              "type": "If"
+            },
+            "Get_a_approved_with_condition_email_template_row_by_ID": {
+              "runAfter": {
+                "Condition_Country_is_Both_England_and_Wales_Approved_with_Conditions": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "d97c0a6e-ac6f-4a1b-9e65-9242ae1a4061"
               },
               "type": "OpenApiConnection",
               "inputs": {
                 "host": {
                   "connectionName": "shared_commondataserviceforapps_1",
-                  "operationId": "ListRecords",
+                  "operationId": "GetItem",
                   "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
                 },
                 "parameters": {
                   "entityName": "templates",
-                  "$filter": "templateid eq '79225171-6842-ee11-bdf3-0022481b59de'",
-                  "$top": 1
+                  "recordId": "@variables('varEmailTemplateID')"
                 },
                 "authentication": "@parameters('$authentication')"
               }
+            },
+            "Set_varEmailBody_3": {
+              "runAfter": {
+                "Condition_Class_list_is_empty_2": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "8b1b7229-71ca-4f92-b131-10f136a85d20"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "EmailBody",
+                "value": "@outputs('Get_a_approved_with_condition_email_template_row_by_ID')?['body/safehtml']"
+              }
+            },
+            "Html_to_text_Rejected_2": {
+              "runAfter": {
+                "Set_varEmailBody_3": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "5a17fa06-32be-4bf2-b22c-75bfeba0a8e8"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_conversionservice_1",
+                  "operationId": "HtmlToText",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_conversionservice"
+                },
+                "parameters": {
+                  "Content": "<p>@{outputs('Get_a_approved_with_condition_email_template_row_by_ID')?['body/subjectsafehtml']}</p>"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Set_varEmailSubject_Rejection_2": {
+              "runAfter": {
+                "Html_to_text_Rejected_2": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "120b179e-1d79-4c26-bea4-7d150024aa72"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "varEmailSubject",
+                "value": "@body('Html_to_text_Rejected_2')"
+              }
+            },
+            "Condition_Country_is_Both_England_and_Wales_Approved_with_Conditions": {
+              "actions": {
+                "Set_varEmailTemplateID_Approved_with_Condition_England_and_Wales": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "61ae0495-4841-4774-89bf-d71edfb0339e"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "varEmailTemplateID",
+                    "value": "c99a9859-e2ab-ee11-be37-0022481b56d1"
+                  }
+                }
+              },
+              "runAfter": {},
+              "else": {
+                "actions": {
+                  "Condition_Country_is_England_2": {
+                    "actions": {
+                      "Set_varEmailTemplateID_Approved_with_Condition_England": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "46d25346-4aa8-4ae2-8850-73022abb8cdc"
+                        },
+                        "type": "SetVariable",
+                        "inputs": {
+                          "name": "varEmailTemplateID",
+                          "value": "79225171-6842-ee11-bdf3-0022481b59de"
+                        }
+                      }
+                    },
+                    "runAfter": {},
+                    "else": {
+                      "actions": {
+                        "Condition_Country_is_Wales_Approved_with_Condition": {
+                          "actions": {
+                            "Set_varEmailTemplateID_Approved_with_Condition_Wales": {
+                              "runAfter": {},
+                              "metadata": {
+                                "operationMetadataId": "839c194e-e08c-4134-a04b-29baf867cd7b"
+                              },
+                              "type": "SetVariable",
+                              "inputs": {
+                                "name": "varEmailTemplateID",
+                                "value": "dc08dff8-dfab-ee11-be37-0022481b56d1"
+                              }
+                            }
+                          },
+                          "runAfter": {},
+                          "expression": {
+                            "contains": [
+                              "@variables('varCountriesArray')",
+                              "ab22b657-30b8-ed11-b597-0022481b5e4f"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "f20414ac-057f-460e-a39b-2e31f8536c7e"
+                          },
+                          "type": "If"
+                        }
+                      }
+                    },
+                    "expression": {
+                      "contains": [
+                        "@variables('varCountriesArray')",
+                        "65eeb151-30b8-ed11-b597-0022481b5e4f"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "e86dbea1-21e6-49ff-bb15-6c845fe307ff"
+                    },
+                    "type": "If"
+                  }
+                }
+              },
+              "expression": {
+                "and": [
+                  {
+                    "contains": [
+                      "@variables('varCountriesArray')",
+                      "65eeb151-30b8-ed11-b597-0022481b5e4f"
+                    ]
+                  },
+                  {
+                    "contains": [
+                      "@variables('varCountriesArray')",
+                      "ab22b657-30b8-ed11-b597-0022481b5e4f"
+                    ]
+                  }
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "61facbc4-41d6-4096-8ee6-a45b9f64ee5f"
+              },
+              "type": "If"
             },
             "Apply_to_each_Class_Loop_2": {
               "foreach": "@outputs('List_rows_BI_Reg_Classes')?['body/value']",
@@ -993,7 +1984,7 @@
                 }
               },
               "runAfter": {
-                "Set_varRegistrationCommencementDate_2": [
+                "Get_a_approved_with_condition_email_template_row_by_ID": [
                   "Succeeded"
                 ]
               },
@@ -1002,205 +1993,143 @@
               },
               "type": "Foreach"
             },
-            "Apply_to_each_5": {
-              "foreach": "@outputs('Template_BPA_Approved_with_Conditions')?['body/value']",
+            "Scope_-_Inspect_Activities_Details": {
               "actions": {
-                "Set_varEmailBody_3": {
+                "List_Inspect_Activities": {
                   "runAfter": {},
                   "metadata": {
-                    "operationMetadataId": "8b1b7229-71ca-4f92-b131-10f136a85d20"
-                  },
-                  "type": "SetVariable",
-                  "inputs": {
-                    "name": "EmailBody",
-                    "value": "@items('Apply_to_each_5')?['safehtml']"
-                  }
-                },
-                "Html_to_text_Rejected_2": {
-                  "runAfter": {
-                    "Set_varEmailBody_3": [
-                      "Succeeded"
-                    ]
-                  },
-                  "metadata": {
-                    "operationMetadataId": "5a17fa06-32be-4bf2-b22c-75bfeba0a8e8"
+                    "operationMetadataId": "649d5379-fedc-454e-b6cf-a1f688475a34"
                   },
                   "type": "OpenApiConnection",
                   "inputs": {
                     "host": {
-                      "connectionName": "shared_conversionservice_1",
-                      "operationId": "HtmlToText",
-                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_conversionservice"
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
                     },
                     "parameters": {
-                      "Content": "<p>@{items('Apply_to_each_5')?['subjectsafehtml']}</p>"
+                      "entityName": "bsr_biregactivities",
+                      "$filter": "_bsr_biapplicationid_value eq @{triggerOutputs()?['body/bsr_buildingprofessionapplicationid']} and _bsr_biactivityid_value eq '5f23c81c-8b24-ee11-9965-0022481b5210' and statuscode eq 760810002"
                     },
                     "authentication": "@parameters('$authentication')"
                   }
                 },
-                "Set_varEmailSubject_Rejection_2": {
+                "Apply_to_each_Inspect_to_get_the_activity_Name": {
+                  "foreach": "@outputs('List_Inspect_Activities')?['body/value']",
+                  "actions": {
+                    "Get_a_Building_Category_Name": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "994a3e8e-bb4a-4050-97c2-332189ea1f52"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps",
+                          "operationId": "GetItem",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "bsr_bibuildingcategories",
+                          "recordId": "@items('Apply_to_each_Inspect_to_get_the_activity_Name')?['_bsr_bibuildingcategoryid_value']"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Compose_Get_just_the_letter_of_the_Category": {
+                      "runAfter": {
+                        "Get_a_Building_Category_Name": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "6a9f2ce6-4e24-42fd-898e-9a4a19435f9c"
+                      },
+                      "type": "Compose",
+                      "inputs": "@split(outputs('Get_a_Building_Category_Name')?['body/bsr_name'], ' ')[1]\r\n"
+                    },
+                    "Append_to_varInspectCategories_array_variable": {
+                      "runAfter": {
+                        "Compose_Get_just_the_letter_of_the_Category": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "d1753f9f-d33b-4d17-91db-9b343a81c6e1"
+                      },
+                      "type": "AppendToArrayVariable",
+                      "inputs": {
+                        "name": "varInspectCategories",
+                        "value": "@outputs('Compose_Get_just_the_letter_of_the_Category')"
+                      }
+                    }
+                  },
                   "runAfter": {
-                    "Html_to_text_Rejected_2": [
+                    "List_Inspect_Activities": [
                       "Succeeded"
                     ]
                   },
                   "metadata": {
-                    "operationMetadataId": "120b179e-1d79-4c26-bea4-7d150024aa72"
+                    "operationMetadataId": "ce6a0246-7308-4491-b68e-64d1597192a3"
                   },
-                  "type": "SetVariable",
-                  "inputs": {
-                    "name": "varEmailSubject",
-                    "value": "@body('Html_to_text_Rejected_2')"
-                  }
-                }
-              },
-              "runAfter": {
-                "Condition_Class_list_is_empty_2": [
-                  "Succeeded"
-                ]
-              },
-              "metadata": {
-                "operationMetadataId": "79687b7b-a13a-4abc-abe3-7515a47d10ad"
-              },
-              "type": "Foreach"
-            },
-            "Compose_AwC_Replace_Application_ID": {
-              "runAfter": {
-                "Apply_to_each_5": [
-                  "Succeeded"
-                ]
-              },
-              "metadata": {
-                "operationMetadataId": "1263aa6c-4a0b-4bd0-beaf-3f0cd369b5d0"
-              },
-              "type": "Compose",
-              "inputs": "@replace(variables('EmailBody'), '%applicationId%', triggerOutputs()?['body/bsr_buildingproappid'])"
-            },
-            "Compose_AwC_Replace_classNumber": {
-              "runAfter": {
-                "Compose_AwC_Replace_Application_ID": [
-                  "Succeeded"
-                ]
-              },
-              "metadata": {
-                "operationMetadataId": "1263aa6c-4a0b-4bd0-beaf-3f0cd369b5d0"
-              },
-              "type": "Compose",
-              "inputs": "@replace(outputs('Compose_AwC_Replace_Application_ID'), '%classNumber%', variables('varClasses'))"
-            },
-            "Compose_AwC_Replace_applicationDate": {
-              "runAfter": {
-                "Compose_AwC_Replace_classNumber": [
-                  "Succeeded"
-                ]
-              },
-              "metadata": {
-                "operationMetadataId": "1263aa6c-4a0b-4bd0-beaf-3f0cd369b5d0"
-              },
-              "type": "Compose",
-              "inputs": "@replace(outputs('Compose_AwC_Replace_classNumber'), '%applicationDate%', variables('varApplicationDate'))"
-            },
-            "Set_varApprovedConditions": {
-              "runAfter": {
-                "Compose_Replace_fromDate_2": [
-                  "Succeeded"
-                ]
-              },
-              "metadata": {
-                "operationMetadataId": "afc3fd6f-e9a4-4d13-a557-eebd7bce04b4"
-              },
-              "type": "SetVariable",
-              "inputs": {
-                "name": "varApprovedConditions",
-                "value": "@triggerOutputs()?['body/bsr_decisioncondition']"
-              }
-            },
-            "Compose_AwC_Replace_approvedConditions": {
-              "runAfter": {
-                "Set_varApprovedConditions": [
-                  "Succeeded"
-                ]
-              },
-              "metadata": {
-                "operationMetadataId": "1263aa6c-4a0b-4bd0-beaf-3f0cd369b5d0"
-              },
-              "type": "Compose",
-              "inputs": "@replace(outputs('Compose_Replace_fromDate_2'), '%condition%', variables('varApprovedConditions'))"
-            },
-            "Add_a_new_row_EmailMessages_4": {
-              "runAfter": {
-                "Compose_AwC_Replace_approvedConditions": [
-                  "Succeeded"
-                ]
-              },
-              "metadata": {
-                "operationMetadataId": "39db0d3c-1a5c-4cb0-ab2a-e9bae4d14818"
-              },
-              "type": "OpenApiConnection",
-              "inputs": {
-                "host": {
-                  "connectionName": "shared_commondataserviceforapps",
-                  "operationId": "CreateRecord",
-                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  "type": "Foreach"
                 },
-                "parameters": {
-                  "entityName": "emails",
-                  "item/activitypointer_activity_parties": [
-                    {
-                      "participationtypemask": 2,
-                      "partyid@odata.bind": "contacts(@{triggerOutputs()?['body/_bsr_applicantid_value']})"
-                    },
-                    {
-                      "participationtypemask": 1,
-                      "partyid@odata.bind": "queues(@{outputs('Queue')?['body/queueid']})"
+                "Check_if_the_Inspect_Activity_Arrray_is_empty": {
+                  "actions": {
+                    "Set_varInspectCategoriesEmailLine_to_NA": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "ff6099c1-7249-4349-bf82-6573a3bf5632"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "varInspectCategoriesEmailLine",
+                        "value": "N/A"
+                      }
                     }
-                  ],
-                  "item/description": "@outputs('Compose_AwC_Replace_approvedConditions')",
-                  "item/regardingobjectid_bsr_buildingprofessionapplication_email@odata.bind": "\\bsr_buildingprofessionapplications\\@{triggerOutputs()?['body/bsr_buildingprofessionapplicationid']}",
-                  "item/statuscode": 1,
-                  "item/subject": "@variables('varEmailSubject')"
-                },
-                "authentication": "@parameters('$authentication')"
-              }
-            },
-            "Compose_Replace_fromDate_2": {
-              "runAfter": {
-                "Compose_AwC_Replace_applicationDate": [
-                  "Succeeded"
-                ]
-              },
-              "metadata": {
-                "operationMetadataId": "1263aa6c-4a0b-4bd0-beaf-3f0cd369b5d0"
-              },
-              "type": "Compose",
-              "inputs": "@replace(outputs('Compose_AwC_Replace_applicationDate'), '%fromDate%', variables('varRegistrationCommencmentDate'))"
-            },
-            "Set_varRegistrationCommencementDate_2": {
-              "runAfter": {
-                "Template_BPA_Approved_with_Conditions": [
-                  "Succeeded"
-                ]
-              },
-              "metadata": {
-                "operationMetadataId": "201dc70a-41e1-479b-879d-3dcc87d2c2ee"
-              },
-              "type": "SetVariable",
-              "inputs": {
-                "name": "varRegistrationCommencmentDate",
-                "value": "@{formatDateTime(triggerOutputs()?['body/bsr_registrationcommencementdate'], 'dd/MM/yyyy')}"
-              }
-            },
-            "Condition_Class_list_is_empty_2": {
-              "actions": {
-                "Terminate_4": {
-                  "runAfter": {},
-                  "metadata": {
-                    "operationMetadataId": "1eccca2d-e05f-474a-876b-826d01f55c40"
                   },
-                  "type": "Terminate",
-                  "inputs": {
-                    "runStatus": "Succeeded"
-                  }
+                  "runAfter": {
+                    "Apply_to_each_Inspect_to_get_the_activity_Name": [
+                      "Succeeded"
+                    ]
+                  },
+                  "else": {
+                    "actions": {
+                      "Compose_Join_the_Inspect_Array_as_text": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "8efde8d0-29d7-4d90-851d-a7e710023e14"
+                        },
+                        "type": "Compose",
+                        "inputs": "@join(sort(variables('varInspectCategories')), ', ')"
+                      },
+                      "Set_varInspectCategoriesEmailLine_to_NA_2": {
+                        "runAfter": {
+                          "Compose_Join_the_Inspect_Array_as_text": [
+                            "Succeeded"
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "4afb8e60-ccae-4254-9617-e58cd7ab96cd"
+                        },
+                        "type": "SetVariable",
+                        "inputs": {
+                          "name": "varInspectCategoriesEmailLine",
+                          "value": "@{outputs('Compose_Join_the_Inspect_Array_as_text')}"
+                        }
+                      }
+                    }
+                  },
+                  "expression": {
+                    "equals": [
+                      "@length(variables('varInspectCategories'))",
+                      0
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "1ad7d333-fd32-4e59-ad42-c8d47112d04f"
+                  },
+                  "type": "If"
                 }
               },
               "runAfter": {
@@ -1208,18 +2137,114 @@
                   "Succeeded"
                 ]
               },
-              "expression": {
-                "not": {
-                  "contains": [
-                    "@variables('varClasses')",
-                    "Class"
-                  ]
+              "metadata": {
+                "operationMetadataId": "0695a522-0687-437e-8ec1-f188cf28845a"
+              },
+              "type": "Scope"
+            },
+            "Scope_-_Assessing_Plans_Details": {
+              "actions": {
+                "List_Assessing_Plans_Activities": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "649d5379-fedc-454e-b6cf-a1f688475a34"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "bsr_biregactivities",
+                      "$filter": "_bsr_biapplicationid_value eq @{triggerOutputs()?['body/bsr_buildingprofessionapplicationid']} and _bsr_biactivityid_value eq '5723c81c-8b24-ee11-9965-0022481b5210' and statuscode eq 760810002"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Apply_to_each_Assessing_Plans_to_get_the_Category_Name": {
+                  "foreach": "@outputs('List_Assessing_Plans_Activities')?['body/value']",
+                  "actions": {
+                    "Get_a_Building_Category_Name_2": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "994a3e8e-bb4a-4050-97c2-332189ea1f52"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps",
+                          "operationId": "GetItem",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "bsr_bibuildingcategories",
+                          "recordId": "@items('Apply_to_each_Assessing_Plans_to_get_the_Category_Name')?['_bsr_bibuildingcategoryid_value']"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Compose_Get_just_the_letter_of_the_Category_3": {
+                      "runAfter": {
+                        "Get_a_Building_Category_Name_2": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "6a9f2ce6-4e24-42fd-898e-9a4a19435f9c"
+                      },
+                      "type": "Compose",
+                      "inputs": "@split(outputs('Get_a_Building_Category_Name_2')?['body/bsr_name'], ' ')[1]"
+                    },
+                    "Append_to_varInspectCategories_array_variable_3": {
+                      "runAfter": {
+                        "Compose_Get_just_the_letter_of_the_Category_3": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "d1753f9f-d33b-4d17-91db-9b343a81c6e1"
+                      },
+                      "type": "AppendToArrayVariable",
+                      "inputs": {
+                        "name": "varInspectCategories",
+                        "value": "@outputs('Compose_Get_just_the_letter_of_the_Category_3')"
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "List_Assessing_Plans_Activities": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "485f7cbc-d0f5-425e-bbd2-2a5cafbed0cc"
+                  },
+                  "type": "Foreach"
                 }
               },
-              "metadata": {
-                "operationMetadataId": "fefa9831-84d1-4140-b765-900f998a9fcb"
+              "runAfter": {
+                "Scope_-_Inspect_Activities_Details": [
+                  "Succeeded"
+                ]
               },
-              "type": "If"
+              "metadata": {
+                "operationMetadataId": "c55ec91c-dc9b-4f96-802f-22767b0bcd4a"
+              },
+              "type": "Scope"
+            },
+            "Compose_Replace_inspectionCategories": {
+              "runAfter": {
+                "Compose_Replace_fromDate_2": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "1263aa6c-4a0b-4bd0-beaf-3f0cd369b5d0"
+              },
+              "type": "Compose",
+              "inputs": "@replace(outputs('Compose_Replace_fromDate_2'), '%inspectionCategories%', variables('varInspectCategoriesEmailLine'))"
             }
           },
           "runAfter": {
@@ -1239,7 +2264,11 @@
           "type": "If"
         },
         "Initialize_varClasses": {
-          "runAfter": {},
+          "runAfter": {
+            "Initialize_varEmailTemplateID": [
+              "Succeeded"
+            ]
+          },
           "metadata": {
             "operationMetadataId": "2f41fadf-cda3-49d6-8a68-42239b59bc6c"
           },
@@ -1430,6 +2459,202 @@
               {
                 "name": "varApprovedConditions",
                 "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_varCountriesArray": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "cd8ffa43-c057-4ac0-a5d1-f40d7d97fd6c"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varCountriesArray",
+                "type": "array"
+              }
+            ]
+          }
+        },
+        "List_rows": {
+          "runAfter": {
+            "Initialize_varCountriesArray": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e345bdf6-cf47-4a54-9368-792ea086664f"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_biregcountries",
+              "$filter": "_bsr_biapplicationid_value eq '@{triggerOutputs()?['body/bsr_buildingprofessionapplicationid']}' and statecode eq 0"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_Countries_Loop": {
+          "foreach": "@outputs('List_rows')?['body/value']",
+          "actions": {
+            "Append_to_array_varCountries": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "48583e95-ebe1-4607-ab2e-15df82b31c8f"
+              },
+              "type": "AppendToArrayVariable",
+              "inputs": {
+                "name": "varCountriesArray",
+                "value": "@items('Get_Countries_Loop')?['_bsr_countryid_value']"
+              }
+            }
+          },
+          "runAfter": {
+            "List_rows": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b7e6ec3d-19fd-4acc-8fd0-ffa2ce11f356"
+          },
+          "type": "Foreach"
+        },
+        "Initialize_varEmailTemplateID": {
+          "runAfter": {
+            "Get_Countries_Loop": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "d72e0a4a-9b74-4565-bd1f-dc6430e20393"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varEmailTemplateID",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_varInspectCategories": {
+          "runAfter": {
+            "List_rows_BI_Reg_Classes": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "885309d6-26dd-4ba9-9ced-6abe6bfb5777"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varInspectCategories",
+                "type": "array"
+              }
+            ]
+          }
+        },
+        "Initialize_varInspectCategoriesEmailLine": {
+          "runAfter": {
+            "Initialize_varInspectCategories": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "4127614f-c407-424e-a550-0aad2a85e9ba"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varInspectCategoriesEmailLine",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_varAssessCategories": {
+          "runAfter": {
+            "Initialize_varInspectCategoriesEmailLine": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c8f70a19-084f-45ac-ab6b-c44a357c5abc"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varAssessCategories",
+                "type": "array"
+              }
+            ]
+          }
+        },
+        "Initialize_varAssessCategoriesEmailLine": {
+          "runAfter": {
+            "Initialize_varAssessCategories": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "d94f8332-2211-4862-9255-9733a2c8bc90"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varAssessCategoriesEmailLine",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_varAssessCategoriesExist": {
+          "runAfter": {
+            "Initialize_varAssessCategoriesEmailLine": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9b7d0979-3bc3-4403-b048-e502535428e1"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varAssessCategoriesExist",
+                "type": "boolean"
+              }
+            ]
+          }
+        },
+        "Initialize_varInspectCategoriesExist": {
+          "runAfter": {
+            "Initialize_varAssessCategoriesExist": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "6587212c-c004-4456-85b2-3c3c70a3d2b3"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varInspectCategoriesExist",
+                "type": "boolean"
               }
             ]
           }
