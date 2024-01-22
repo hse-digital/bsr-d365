@@ -7,14 +7,14 @@
     <FormActivationState>1</FormActivationState>
     <form headerdensity="HighWithControls">
       <tabs>
-        <tab verticallayout="true" id="{62d41257-b49d-464a-8663-88316beebbee}" IsUserDefined="1">
+        <tab verticallayout="true" id="{62d41257-b49d-464a-8663-88316beebbee}" IsUserDefined="1" name="summary_tab">
           <labels>
-            <label description="General" languagecode="1033" />
+            <label description="Summary" languagecode="1033" />
           </labels>
           <columns>
             <column width="50%">
               <sections>
-                <section name="null_section_4" id="f028a06c-4b4f-49a6-839e-9d0738a38e49" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115">
+                <section name="null_section_4" id="f028a06c-4b4f-49a6-839e-9d0738a38e49" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
                     <label description="Case Summary" languagecode="1033" />
                   </labels>
@@ -27,11 +27,6 @@
                         </labels>
                         <control id="bsr_incident" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_incident" disabled="false" />
                       </cell>
-                      <cell locklevel="0" id="{03718a08-52bb-43ba-8c2b-15ffe5c0fb37}">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
                     </row>
                     <row>
                       <cell locklevel="0" id="{f841d054-e09b-4b57-9ef6-5a340f88b21c}" colspan="1" rowspan="1">
@@ -43,11 +38,6 @@
                             <DefaultViewId>{9AC51863-58C7-49A0-ADCC-AFD9A4C3EE59}</DefaultViewId>
                           </parameters>
                         </control>
-                      </cell>
-                      <cell locklevel="0" id="{4304acfb-1f3a-4432-a20e-f73c5d97d0aa}">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
                       </cell>
                     </row>
                   </rows>
@@ -87,11 +77,11 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{cc039d12-0185-4646-aa06-4275e34314ae}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{0f761f07-856a-4b64-a664-d8a2643ea828}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="Incident or Situation" languagecode="1033" />
+                          <label description="Risk or Incident" languagecode="1033" />
                         </labels>
-                        <control id="bsr_incidentorsituation" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_incidentorsituation" disabled="false" />
+                        <control id="bsr_riskorincident" classid="{4AA28AB7-9C13-4F57-A73D-AD894D048B5F}" datafieldname="bsr_riskorincident" disabled="false" />
                       </cell>
                     </row>
                     <row>
@@ -202,21 +192,27 @@
                   <rows>
                     <row />
                     <row>
-                      <cell id="{03eee55f-ebf9-434d-89d5-1ea3018c5468}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{03eee55f-ebf9-434d-89d5-1ea3018c5468}" locklevel="0" colspan="1" rowspan="4">
                         <labels>
                           <label description="Brief description of the occurrence" languagecode="1033" />
                         </labels>
                         <control id="bsr_briefdescription" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_briefdescription" disabled="false" />
                       </cell>
                     </row>
+                    <row />
+                    <row />
+                    <row />
                     <row>
-                      <cell id="{633ad14f-4aa2-48c6-982d-d140ef4052ae}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{633ad14f-4aa2-48c6-982d-d140ef4052ae}" locklevel="0" colspan="1" rowspan="4">
                         <labels>
                           <label description="Immediate actions taken to keep people safe" languagecode="1033" />
                         </labels>
                         <control id="bsr_immediateactionstaken" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_immediateactionstaken" disabled="false" />
                       </cell>
                     </row>
+                    <row />
+                    <row />
+                    <row />
                   </rows>
                 </section>
               </sections>
@@ -285,14 +281,6 @@
                   <rows>
                     <row />
                     <row>
-                      <cell id="{108d3864-b429-4a8e-9336-69980f4a6788}" locklevel="0" colspan="1" rowspan="1">
-                        <labels>
-                          <label description="Incident or Situation" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_incidentorsituation" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_incidentorsituation" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
                       <cell id="{36512572-bbc1-4408-b222-f199e54e97cb}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="Type of Occurrence" languagecode="1033" />
@@ -309,23 +297,236 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{4add2eac-227c-405c-97c0-16703c79f3e8}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{4add2eac-227c-405c-97c0-16703c79f3e8}" locklevel="0" colspan="1" rowspan="4">
                         <labels>
                           <label description="What is the occurrence?" languagecode="1033" />
                         </labels>
                         <control id="bsr_occurrencedescription" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_occurrencedescription" disabled="false" />
                       </cell>
                     </row>
+                    <row />
+                    <row />
+                    <row />
                     <row>
-                      <cell id="{5ebe46c5-8393-441e-b1d4-a55906175530}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{5ebe46c5-8393-441e-b1d4-a55906175530}" locklevel="0" colspan="1" rowspan="4">
                         <labels>
                           <label description="What caused it?" languagecode="1033" />
                         </labels>
                         <control id="bsr_cause" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_cause" disabled="false" />
                       </cell>
                     </row>
+                    <row />
+                    <row />
+                    <row />
                     <row>
-                      <cell id="{7e62e249-3436-40dd-8916-f4e7f26bf094}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{7e62e249-3436-40dd-8916-f4e7f26bf094}" locklevel="0" colspan="1" rowspan="4">
+                        <labels>
+                          <label description="Who affected and in what way?" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_affected" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_affected" disabled="false" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row>
+                      <cell id="{ce04daa8-f5f8-42b3-a422-40d786f6e93f}" locklevel="0" colspan="1" rowspan="4">
+                        <labels>
+                          <label description="Actions to keep people safe" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_actionstokeeppeoplesafe" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_actionstokeeppeoplesafe" disabled="false" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row>
+                      <cell id="{9dcd1b50-cbd0-4801-b6c2-51b0f2d55d57}" locklevel="0" colspan="1" rowspan="4">
+                        <labels>
+                          <label description="How was the occurrence discovered?" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_howdiscovered" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_howdiscovered" disabled="false" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row>
+                      <cell id="{8ee6f19b-437f-4877-b951-983c4cd17b08}" locklevel="0" colspan="1" rowspan="4">
+                        <labels>
+                          <label description="Info to be shared for others to learn from" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_infotobeshared" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_infotobeshared" disabled="false" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_4" id="45a6a0df-1886-4d47-934c-55eae057043b" IsUserDefined="0" locklevel="0" showlabel="true" visible="false">
+          <labels>
+            <label description="Phone Call" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_4_section_1" id="7b860276-a7c9-4eb2-81ad-7d8676c8eacd" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Top" columns="11" labelwidth="115">
+                  <labels>
+                    <label description="Notice Details" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{d7c69184-4584-4980-bb34-8b4e5df34d34}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{57e81b37-1376-4a51-8002-cc097f04ab3e}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a4c5492e-da3c-416a-994e-18fcaec3f2e2}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Notice Submitted On" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_noticesubmittedon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_noticesubmittedon" disabled="false" />
+                      </cell>
+                      <cell id="{4553f4fb-e643-41c7-863f-3bf06713cf41}" locklevel="0" colspan="1" rowspan="6">
+                        <labels>
+                          <label description="Brief description of the occurrence" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_briefdescription" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_briefdescription" disabled="false" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row>
+                      <cell id="{82f3cf6e-bc7b-451e-865a-2bc389bb9bc3}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Notice Submitted By" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_noticesubmittedby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_noticesubmittedby" disabled="false" />
+                      </cell>
+                      <cell id="{78f6ecb4-76fd-4e6d-aa31-ab843a49f938}" locklevel="0" colspan="1" rowspan="6">
+                        <labels>
+                          <label description="Immediate actions taken to keep people safe" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_immediateactionstaken" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_immediateactionstaken" disabled="false" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row>
+                      <cell id="{03c71de5-5d2b-4344-9a5c-4e23a95f9367}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Notice Submitted By Role" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_noticesubmittedbyrole" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_noticesubmittedbyrole" disabled="false" />
+                      </cell>
+                      <cell locklevel="0" id="{de3c1c7d-28db-458a-99be-db75921d1a1e}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2d63f593-0f11-4f13-a589-950064483154}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Notice Organisation Name" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_noticeorganisationname" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_noticeorganisationname" disabled="false" />
+                      </cell>
+                      <cell locklevel="0" id="{60485e03-218d-463d-a0ac-58e9be911a6c}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{9c58d31f-2f9c-4dcc-b54f-a0aaebd32d8f}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Building Location" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_buildinglocation" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_buildinglocation" disabled="false" />
+                      </cell>
+                      <cell locklevel="0" id="{1ce88732-2b0b-4d0a-bf7c-50f921b1e7b3}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="tab_4_section_3" id="6e62966e-6ce2-4d04-9b9f-8314e4da67d4" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Top" columns="11" labelwidth="115">
+                  <labels>
+                    <label description="Report Details" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell id="{165f9e2a-f4be-4d96-9692-a089443d35af}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Report Submitted On" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_reportsubmittedon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_reportsubmittedon" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{45dccd05-e696-4a13-802c-6cace25e0480}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Report Submitted By" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_reportsubmittedby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_reportsubmittedby" disabled="false" />
+                      </cell>
+                      <cell id="{f8998a07-2c39-4e2a-8b21-1c713e02374a}" locklevel="0" colspan="1" rowspan="4">
+                        <labels>
+                          <label description="What is the occurrence?" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_occurrencedescription" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_occurrencedescription" disabled="false" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row>
+                      <cell id="{d513016e-b817-4cab-ae80-64e5c45ffad0}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Report Submitted By Role" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_reportsubmittedbyrole" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_reportsubmittedbyrole" disabled="false" />
+                      </cell>
+                      <cell id="{74ce693b-9d23-43a4-b788-722009fb5ac6}" locklevel="0" colspan="1" rowspan="4">
+                        <labels>
+                          <label description="What caused it?" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_cause" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_cause" disabled="false" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row>
+                      <cell id="{da19dfa4-838e-41a1-aac1-51474fbceb0b}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Report Organisation Name" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_reportorganisationname" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_reportorganisationname" disabled="false" />
+                      </cell>
+                      <cell id="{31eafb6a-0f26-4a44-89d3-b85d8e7de513}" locklevel="0" colspan="1" rowspan="4">
                         <labels>
                           <label description="Who affected and in what way?" languagecode="1033" />
                         </labels>
@@ -333,7 +534,35 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{ce04daa8-f5f8-42b3-a422-40d786f6e93f}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{7790ff18-faea-42a3-8c3c-a7fb1554bb47}" userspacer="true" showlabel="false" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{790193bc-e0ed-4b45-8daa-f2d649ffdf28}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Type of Occurrence" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_typeofoccurrence" classid="{4AA28AB7-9C13-4F57-A73D-AD894D048B5F}" datafieldname="bsr_typeofoccurrence" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{05eaf3c7-e0bb-441e-8f52-dc7e20f49486}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Occurrence Identified On" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_occurrenceidentifiedon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_occurrenceidentifiedon" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{22227964-1280-4357-b7d1-541755009c88}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{2373cb9e-f59a-4969-8fa6-e03086ada465}" locklevel="0" colspan="1" rowspan="4">
                         <labels>
                           <label description="Actions to keep people safe" languagecode="1033" />
                         </labels>
@@ -341,7 +570,33 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{9dcd1b50-cbd0-4801-b6c2-51b0f2d55d57}" locklevel="0" colspan="1" rowspan="1">
+                      <cell locklevel="0" id="{875ee67e-9c6f-471d-b727-256926d60b98}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{742970e0-32cb-44dd-8175-93b447fae3f2}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{2cc08582-9972-4b03-8ce1-837cb0886c4d}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{9df37b9e-56f1-47bb-8fd6-1a47638ab2f4}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{e402edc5-13e6-4f8b-a3e2-6517ca0d9bf6}" locklevel="0" colspan="1" rowspan="4">
                         <labels>
                           <label description="How was the occurrence discovered?" languagecode="1033" />
                         </labels>
@@ -349,13 +604,157 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{8ee6f19b-437f-4877-b951-983c4cd17b08}" locklevel="0" colspan="1" rowspan="1">
+                      <cell locklevel="0" id="{dbb75a89-e3ff-4822-bdf0-77c42706049b}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{e03e900a-47ad-44a8-9e6d-604ee31ae93f}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{ae0dde0e-3ff6-4cd9-ad75-bad02c318a3a}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{72ba9cb6-88ed-4c14-a08a-90e92aa45230}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{34033b81-6ada-44b3-8c2a-c480716d6253}" locklevel="0" colspan="1" rowspan="4">
                         <labels>
                           <label description="Info to be shared for others to learn from" languagecode="1033" />
                         </labels>
                         <control id="bsr_infotobeshared" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_infotobeshared" disabled="false" />
                       </cell>
                     </row>
+                    <row>
+                      <cell locklevel="0" id="{1f69e27b-38ef-47da-b70f-04ac9db4dbd9}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{85f48ce7-500a-44fb-825b-63ed7e7515d8}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{b91ead68-7784-4ecc-97c7-ed572f77ed0a}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_6" id="ba15ac8f-eb83-494d-ac18-db2873ff0b19" IsUserDefined="0" locklevel="0" showlabel="true">
+          <labels>
+            <label description="Case Relationships" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_6_section_1" id="fa95d142-e749-4f5e-acb0-01fe557ed462" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell locklevel="0" id="{05582fff-0329-4d99-85c9-52c4eb5cc599}" rowspan="4" colspan="1" auto="false">
+                        <labels>
+                          <label description="Child Cases" languagecode="1033" />
+                        </labels>
+                        <control indicationOfSubgrid="true" id="Subgrid_new_2" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                          <parameters>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <ChartGridMode>All</ChartGridMode>
+                            <TargetEntityType>incident</TargetEntityType>
+                            <ViewId>{00000000-0000-0000-00AA-000010001032}</ViewId>
+                            <ViewIds>{00000000-0000-0000-00AA-000010001028},{00000000-0000-0000-00AA-000010001032}</ViewIds>
+                            <RelationshipName>bsr_MOR_bsr_MOR_Incident</RelationshipName>
+                            <VisualizationId>{4143B74E-4A07-4D01-9FFE-2CDCAA4208FD}</VisualizationId>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_5" id="d73cfd36-3225-4520-b411-eceaab80ef38" IsUserDefined="0" locklevel="0" showlabel="true">
+          <labels>
+            <label description="Admin" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="50%">
+              <sections>
+                <section name="tab_5_section_1" id="2b555a53-c839-4ae5-96e3-af40dac9197b" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell locklevel="0" id="{add54762-03e6-461b-a59d-9d27f30d2d8a}" rowspan="15" colspan="1">
+                        <labels>
+                          <label description="Note Text" languagecode="1033" />
+                        </labels>
+                        <control id="notescontrol" classid="{06375649-C143-495E-A496-C962E5B4488E}" disabled="false" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="50%">
+              <sections>
+                <section name="tab_5_section_2" id="2636402f-52db-4b1f-895a-e95b0d8b9738" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
                   </rows>
                 </section>
               </sections>
@@ -453,10 +852,10 @@
               <value>
                 <BindAttribute>bsr_incident</BindAttribute>
                 <DefaultViewId>{9AC51863-58C7-49A0-ADCC-AFD9A4C3EE59}</DefaultViewId>
-                <FilterRelationshipName></FilterRelationshipName>
-                <DependentAttributeName></DependentAttributeName>
-                <DependentAttributeType></DependentAttributeType>
-                <AvailableViewIds></AvailableViewIds>
+                <FilterRelationshipName />
+                <DependentAttributeName />
+                <DependentAttributeType />
+                <AvailableViewIds />
                 <AllowFilterOff>false</AllowFilterOff>
                 <DisableQuickFind>false</DisableQuickFind>
                 <DisableViewPicker>false</DisableViewPicker>
@@ -473,10 +872,10 @@
               <value>
                 <BindAttribute>bsr_incident</BindAttribute>
                 <DefaultViewId>{9AC51863-58C7-49A0-ADCC-AFD9A4C3EE59}</DefaultViewId>
-                <FilterRelationshipName></FilterRelationshipName>
-                <DependentAttributeName></DependentAttributeName>
-                <DependentAttributeType></DependentAttributeType>
-                <AvailableViewIds></AvailableViewIds>
+                <FilterRelationshipName />
+                <DependentAttributeName />
+                <DependentAttributeType />
+                <AvailableViewIds />
                 <AllowFilterOff>false</AllowFilterOff>
                 <DisableQuickFind>false</DisableQuickFind>
                 <DisableViewPicker>false</DisableViewPicker>
@@ -493,10 +892,10 @@
               <value>
                 <BindAttribute>bsr_incident</BindAttribute>
                 <DefaultViewId>{9AC51863-58C7-49A0-ADCC-AFD9A4C3EE59}</DefaultViewId>
-                <FilterRelationshipName></FilterRelationshipName>
-                <DependentAttributeName></DependentAttributeName>
-                <DependentAttributeType></DependentAttributeType>
-                <AvailableViewIds></AvailableViewIds>
+                <FilterRelationshipName />
+                <DependentAttributeName />
+                <DependentAttributeType />
+                <AvailableViewIds />
                 <AllowFilterOff>false</AllowFilterOff>
                 <DisableQuickFind>false</DisableQuickFind>
                 <DisableViewPicker>false</DisableViewPicker>
