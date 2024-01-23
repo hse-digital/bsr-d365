@@ -25,7 +25,7 @@
                         <labels>
                           <label description="Case" languagecode="1033" />
                         </labels>
-                        <control id="bsr_incident" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_incident" disabled="false" />
+                        <control id="bsr_incident" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_incident" disabled="true" />
                       </cell>
                     </row>
                     <row>
@@ -294,6 +294,14 @@
                           <label description="Occurrence Identified On" languagecode="1033" />
                         </labels>
                         <control id="bsr_occurrenceidentifiedon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_occurrenceidentifiedon" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{9cf9b0bd-9271-476a-84f5-20a954574c67}" locklevel="0" colspan="1" rowspan="1" visible="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_daysbetweenoccurrenceandreport" classid="{AA987274-CE4E-4271-A803-66164311A958}" datafieldname="bsr_daysbetweenoccurrenceandreport" disabled="false" />
                       </cell>
                     </row>
                     <row>
@@ -678,30 +686,17 @@
                   <rows>
                     <row />
                     <row>
-                      <cell locklevel="0" id="{05582fff-0329-4d99-85c9-52c4eb5cc599}" rowspan="4" colspan="1" auto="false">
+                      <cell locklevel="0" id="{b3171b79-7cca-4968-9940-d6a27e4631a6}" colspan="1" rowspan="1">
                         <labels>
-                          <label description="Child Cases" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
-                        <control indicationOfSubgrid="true" id="Subgrid_new_2" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                        <control id="bsr_incident" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="bsr_incident" uniqueid="{8a733360-849b-4438-a167-268a4d079d7a}">
                           <parameters>
-                            <RecordsPerPage>4</RecordsPerPage>
-                            <AutoExpand>Fixed</AutoExpand>
-                            <EnableQuickFind>false</EnableQuickFind>
-                            <EnableViewPicker>false</EnableViewPicker>
-                            <EnableChartPicker>true</EnableChartPicker>
-                            <ChartGridMode>All</ChartGridMode>
-                            <TargetEntityType>incident</TargetEntityType>
-                            <ViewId>{00000000-0000-0000-00AA-000010001032}</ViewId>
-                            <ViewIds>{00000000-0000-0000-00AA-000010001028},{00000000-0000-0000-00AA-000010001032}</ViewIds>
-                            <RelationshipName>bsr_MOR_bsr_MOR_Incident</RelationshipName>
-                            <VisualizationId>{4143B74E-4A07-4D01-9FFE-2CDCAA4208FD}</VisualizationId>
+                            <DefaultViewId>{9AC51863-58C7-49A0-ADCC-AFD9A4C3EE59}</DefaultViewId>
                           </parameters>
                         </control>
                       </cell>
                     </row>
-                    <row />
-                    <row />
-                    <row />
                   </rows>
                 </section>
               </sections>
@@ -713,6 +708,18 @@
             <label description="Admin" languagecode="1033" />
           </labels>
           <columns>
+            <column width="50%">
+              <sections>
+                <section name="tab_5_section_2" id="2636402f-52db-4b1f-895a-e95b0d8b9738" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Outcome" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
             <column width="50%">
               <sections>
                 <section name="tab_5_section_1" id="2b555a53-c839-4ae5-96e3-af40dac9197b" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
@@ -742,18 +749,6 @@
                     <row />
                     <row />
                     <row />
-                    <row />
-                  </rows>
-                </section>
-              </sections>
-            </column>
-            <column width="50%">
-              <sections>
-                <section name="tab_5_section_2" id="2636402f-52db-4b1f-895a-e95b0d8b9738" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
-                  <labels>
-                    <label description="New Section" languagecode="1033" />
-                  </labels>
-                  <rows>
                     <row />
                   </rows>
                 </section>
@@ -901,6 +896,78 @@
                 <DisableViewPicker>false</DisableViewPicker>
               </value>
               <QuickForms type="SingleLine.Text" static="true">&lt;QuickForms&gt;&lt;QuickFormIds&gt;&lt;QuickFormId entityname="incident"&gt;8adf04ff-0542-ee11-bdf3-6045bdd2cb7b&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;&lt;/QuickForms&gt;</QuickForms>
+              <SaveMode type="Enum" static="true">0</SaveMode>
+              <EnableHighDensityPageHeader type="Enum" static="true">false</EnableHighDensityPageHeader>
+              <DisplayFormSelector type="Enum" static="true">false</DisplayFormSelector>
+              <AddToRecentItems type="Enum" static="true">false</AddToRecentItems>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{8a733360-849b-4438-a167-268a4d079d7a}">
+          <customControl id="{270BD3DB-D9AF-4782-9025-509E298DEC0A}">
+            <parameters>
+              <datafieldname>bsr_incident</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl id="{270BD3DB-D9AF-4782-9025-509E298DEC0A}">
+            <parameters>
+              <datafieldname>bsr_incident</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.ModelForm.ModelFormControl">
+            <parameters>
+              <value>
+                <BindAttribute>bsr_incident</BindAttribute>
+                <DefaultViewId>{9AC51863-58C7-49A0-ADCC-AFD9A4C3EE59}</DefaultViewId>
+                <FilterRelationshipName />
+                <DependentAttributeName />
+                <DependentAttributeType />
+                <AvailableViewIds />
+                <AllowFilterOff>false</AllowFilterOff>
+                <DisableQuickFind>false</DisableQuickFind>
+                <DisableViewPicker>false</DisableViewPicker>
+              </value>
+              <QuickForms type="SingleLine.Text" static="true">&lt;QuickForms&gt;&lt;QuickFormIds&gt;&lt;QuickFormId entityname="incident"&gt;059ad2cc-0642-ee11-bdf3-6045bdd2cb7b&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;&lt;/QuickForms&gt;</QuickForms>
+              <SaveMode type="Enum" static="true">0</SaveMode>
+              <EnableHighDensityPageHeader type="Enum" static="true">false</EnableHighDensityPageHeader>
+              <DisplayFormSelector type="Enum" static="true">false</DisplayFormSelector>
+              <AddToRecentItems type="Enum" static="true">false</AddToRecentItems>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.ModelForm.ModelFormControl">
+            <parameters>
+              <value>
+                <BindAttribute>bsr_incident</BindAttribute>
+                <DefaultViewId>{9AC51863-58C7-49A0-ADCC-AFD9A4C3EE59}</DefaultViewId>
+                <FilterRelationshipName />
+                <DependentAttributeName />
+                <DependentAttributeType />
+                <AvailableViewIds />
+                <AllowFilterOff>false</AllowFilterOff>
+                <DisableQuickFind>false</DisableQuickFind>
+                <DisableViewPicker>false</DisableViewPicker>
+              </value>
+              <QuickForms type="SingleLine.Text" static="true">&lt;QuickForms&gt;&lt;QuickFormIds&gt;&lt;QuickFormId entityname="incident"&gt;059ad2cc-0642-ee11-bdf3-6045bdd2cb7b&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;&lt;/QuickForms&gt;</QuickForms>
+              <SaveMode type="Enum" static="true">0</SaveMode>
+              <EnableHighDensityPageHeader type="Enum" static="true">false</EnableHighDensityPageHeader>
+              <DisplayFormSelector type="Enum" static="true">false</DisplayFormSelector>
+              <AddToRecentItems type="Enum" static="true">false</AddToRecentItems>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.ModelForm.ModelFormControl">
+            <parameters>
+              <value>
+                <BindAttribute>bsr_incident</BindAttribute>
+                <DefaultViewId>{9AC51863-58C7-49A0-ADCC-AFD9A4C3EE59}</DefaultViewId>
+                <FilterRelationshipName />
+                <DependentAttributeName />
+                <DependentAttributeType />
+                <AvailableViewIds />
+                <AllowFilterOff>false</AllowFilterOff>
+                <DisableQuickFind>false</DisableQuickFind>
+                <DisableViewPicker>false</DisableViewPicker>
+              </value>
+              <QuickForms type="SingleLine.Text" static="true">&lt;QuickForms&gt;&lt;QuickFormIds&gt;&lt;QuickFormId entityname="incident"&gt;059ad2cc-0642-ee11-bdf3-6045bdd2cb7b&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;&lt;/QuickForms&gt;</QuickForms>
               <SaveMode type="Enum" static="true">0</SaveMode>
               <EnableHighDensityPageHeader type="Enum" static="true">false</EnableHighDensityPageHeader>
               <DisplayFormSelector type="Enum" static="true">false</DisplayFormSelector>
