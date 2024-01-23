@@ -1,0 +1,360 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUser"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "Cosmos End Points (bsr_CosmosEndPoints)": {
+          "defaultValue": "https://icy-stone-00138e503.2.azurestaticapps.net/api/UpdateApplicant?code=a7wddDUKMpvWc5L4YpAt0aLZ7qp5E5nO4Zavds2vWwXhAzFuPti0-w==",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_CosmosEndPoints"
+          }
+        }
+      },
+      "triggers": {
+        "When_a_row_is_modified_": {
+          "metadata": {
+            "operationMetadataId": "5d051c11-30ae-42ab-9533-2d4d35222e4e"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "bsr_buildingapplication",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "bsr_building,bsr_registreeid,bsr_secondaryapplicantid"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Initialize_variable_Application_Number": {
+          "runAfter": {
+            "GetBuilding": [
+              "Succeeded",
+              "Failed",
+              "Skipped",
+              "TimedOut"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "341f7760-096f-4528-b0d5-693672aaa058"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "applicationNumber",
+                "type": "string",
+                "value": "@triggerOutputs()?['body/bsr_applicationid']"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_Applicant_First_Name": {
+          "runAfter": {
+            "Initialize_variable_Application_Number": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "21e57bcf-2139-4d8b-b779-fb0c385ec0d4"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "applicantFirstName",
+                "type": "string",
+                "value": "@outputs('GetPrimaryApplicant')?['body/firstname']"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_Applicant_Last_Name": {
+          "runAfter": {
+            "Initialize_variable_Applicant_First_Name": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9a0846c9-e96e-415f-81bf-0a51f4512a23"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "applicantLastName",
+                "type": "string",
+                "value": "@outputs('GetPrimaryApplicant')?['body/lastname']"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_Applicant_Phone_Number": {
+          "runAfter": {
+            "Initialize_variable_Applicant_Last_Name": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "0293e76e-adc8-4586-b454-b4079a9916eb"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "applicant Phone Number",
+                "type": "string",
+                "value": "@outputs('GetPrimaryApplicant')?['body/telephone1']"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_Applicant_Email_Address": {
+          "runAfter": {
+            "Initialize_variable_Applicant_Phone_Number": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "4d103766-f12d-425b-a2c8-97d34fbeb0e6"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "applicantEmailAddress",
+                "type": "string",
+                "value": "@outputs('GetPrimaryApplicant')?['body/emailaddress1']"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_Secondary_Applicant_First_Name": {
+          "runAfter": {
+            "Initialize_variable_Applicant_Email_Address": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b866f0c0-337e-4f4f-82ee-5933ea8dbd89"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "secondaryApplicant FirstName",
+                "type": "string",
+                "value": "@outputs('GetSecondaryApplicant')?['body/firstname']"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_Secondary_Applicant_Last_Name": {
+          "runAfter": {
+            "Initialize_variable_Secondary_Applicant_First_Name": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "70767adc-0aca-4fa9-835b-5ce20941bed2"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "secondaryApplicantLastName",
+                "type": "string",
+                "value": "@outputs('GetSecondaryApplicant')?['body/lastname']"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_Secondary_Applicant_Phone_Number": {
+          "runAfter": {
+            "Initialize_variable_Secondary_Applicant_Last_Name": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3b988dc2-7de4-4684-9ebf-681fa46c6003"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "secondaryApplicantPhoneNumber",
+                "type": "string",
+                "value": "@outputs('GetSecondaryApplicant')?['body/telephone1']"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_Secondary_Applicant_Email_Address": {
+          "runAfter": {
+            "Initialize_variable_Secondary_Applicant_Phone_Number": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2a34fa26-20e6-47ea-b69a-898fc004e561"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "secondaryApplicantEmailAddress",
+                "type": "string",
+                "value": "@outputs('GetSecondaryApplicant')?['body/emailaddress1']"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_Building_Name": {
+          "runAfter": {
+            "Initialize_variable_Secondary_Applicant_Email_Address": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "1c302b1b-a4c8-48a8-99b9-55b92828122b"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "buildingName",
+                "type": "string",
+                "value": "@outputs('GetBuilding')?['body/bsr_name']"
+              }
+            ]
+          }
+        },
+        "HTTP": {
+          "runAfter": {
+            "Initialize_variable_Building_Name": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "86330c16-83bd-4389-9e65-af3c0c0cdf79"
+          },
+          "type": "Http",
+          "inputs": {
+            "method": "POST",
+            "uri": "@parameters('Cosmos End Points (bsr_CosmosEndPoints)')",
+            "body": {
+              "ApplicationNumber": "@{variables('applicationNumber')}",
+              "ApplicantFirstName": "@{variables('applicantFirstName')}",
+              "ApplicantLastName": "@{variables('applicantLastName')}",
+              "ApplicantPhoneNumber": "@{variables('applicant Phone Number')}",
+              "ApplicantEmailAddress": "@{variables('applicantEmailAddress')}",
+              "SecondaryApplicantFirstName": "@{variables('secondaryApplicant FirstName')}",
+              "SecondaryApplicantLastName": "@{variables('secondaryApplicantLastName')}",
+              "SecondaryApplicantPhoneNumber": "@{variables('secondaryApplicantPhoneNumber')}",
+              "SecondaryApplicantEmailAddress": "@{variables('secondaryApplicantEmailAddress')}",
+              "BuildingName": "@{variables('buildingName')}"
+            }
+          }
+        },
+        "GetPrimaryApplicant": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "3c73b880-1056-4636-8e2b-147b407ce457"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "contacts",
+              "recordId": "@triggerOutputs()?['body/_bsr_registreeid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "GetSecondaryApplicant": {
+          "runAfter": {
+            "GetPrimaryApplicant": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "42099cd3-c738-4139-965e-6bded584b298"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "contacts",
+              "recordId": "@triggerOutputs()?['body/_bsr_secondaryapplicantid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "GetBuilding": {
+          "runAfter": {
+            "GetSecondaryApplicant": [
+              "Succeeded",
+              "Failed",
+              "Skipped",
+              "TimedOut"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "4a08c37a-be47-4422-a1a6-38ed5f5a7314"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_buildings",
+              "recordId": "@triggerOutputs()?['body/_bsr_building_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}
