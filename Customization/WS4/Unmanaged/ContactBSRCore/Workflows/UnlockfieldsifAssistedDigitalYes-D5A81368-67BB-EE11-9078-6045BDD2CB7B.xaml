@@ -1,0 +1,209 @@
+<Activity x:Class="XrmWorkflowd5a8136867bbee1190786045bdd2cb7b" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mcwc="clr-namespace:Microsoft.Crm.Workflow.ClientActivities;assembly=Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" xmlns:mxs="clr-namespace:Microsoft.Xrm.Sdk;assembly=Microsoft.Xrm.Sdk, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" xmlns:mxsq="clr-namespace:Microsoft.Xrm.Sdk.Query;assembly=Microsoft.Xrm.Sdk, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" xmlns:mxswa="clr-namespace:Microsoft.Xrm.Sdk.Workflow.Activities;assembly=Microsoft.Xrm.Sdk.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" xmlns:s="clr-namespace:System;assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:srs="clr-namespace:System.Runtime.Serialization;assembly=System.Runtime.Serialization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:this="clr-namespace:" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="InputEntities" Type="InArgument(scg:IDictionary(x:String, mxs:Entity))" />
+    <x:Property Name="CreatedEntities" Type="InArgument(scg:IDictionary(x:String, mxs:Entity))" />
+  </x:Members>
+  <this:XrmWorkflowd5a8136867bbee1190786045bdd2cb7b.InputEntities>
+    <InArgument x:TypeArguments="scg:IDictionary(x:String, mxs:Entity)" />
+  </this:XrmWorkflowd5a8136867bbee1190786045bdd2cb7b.InputEntities>
+  <this:XrmWorkflowd5a8136867bbee1190786045bdd2cb7b.CreatedEntities>
+    <InArgument x:TypeArguments="scg:IDictionary(x:String, mxs:Entity)" />
+  </this:XrmWorkflowd5a8136867bbee1190786045bdd2cb7b.CreatedEntities>
+  <mva:VisualBasic.Settings>Assembly references and imported namespaces for internal implementation</mva:VisualBasic.Settings>
+  <mxswa:Workflow>
+    <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.ConditionSequence, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="ConditionStep1">
+      <mxswa:ActivityReference.Arguments>
+        <InArgument x:TypeArguments="x:Boolean" x:Key="Wait">False</InArgument>
+      </mxswa:ActivityReference.Arguments>
+      <mxswa:ActivityReference.Properties>
+        <sco:Collection x:TypeArguments="Variable" x:Key="Variables">
+          <Variable x:TypeArguments="x:Boolean" Default="False" Name="ConditionBranchStep2_condition" />
+          <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep2_1" />
+          <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep2_2" />
+          <Variable x:TypeArguments="x:Boolean" Default="False" Name="True" />
+          <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep3_1" />
+        </sco:Collection>
+        <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
+          <mxswa:GetEntityProperty Attribute="bsr_assisteddigital" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" Value="[ConditionBranchStep2_1]">
+            <mxswa:GetEntityProperty.TargetType>
+              <InArgument x:TypeArguments="s:Type">
+                <mxswa:ReferenceLiteral x:TypeArguments="s:Type">
+                  <x:Null />
+                </mxswa:ReferenceLiteral>
+              </InArgument>
+            </mxswa:GetEntityProperty.TargetType>
+          </mxswa:GetEntityProperty>
+          <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateExpression, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateExpression">
+            <mxswa:ActivityReference.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">CreateCrmType</InArgument>
+              <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { Microsoft.Xrm.Sdk.Workflow.WorkflowPropertyType.Boolean, "1" }]</InArgument>
+              <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
+                <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:Boolean" />
+              </InArgument>
+              <OutArgument x:TypeArguments="x:Object" x:Key="Result">[ConditionBranchStep2_2]</OutArgument>
+            </mxswa:ActivityReference.Arguments>
+          </mxswa:ActivityReference>
+          <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateCondition, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateCondition">
+            <mxswa:ActivityReference.Arguments>
+              <InArgument x:TypeArguments="mxsq:ConditionOperator" x:Key="ConditionOperator">Equal</InArgument>
+              <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { ConditionBranchStep2_2 }]</InArgument>
+              <InArgument x:TypeArguments="x:Object" x:Key="Operand">[ConditionBranchStep2_1]</InArgument>
+              <OutArgument x:TypeArguments="x:Boolean" x:Key="Result">[ConditionBranchStep2_condition]</OutArgument>
+            </mxswa:ActivityReference.Arguments>
+          </mxswa:ActivityReference>
+          <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.ConditionBranch, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="ConditionBranchStep2">
+            <mxswa:ActivityReference.Arguments>
+              <InArgument x:TypeArguments="x:Boolean" x:Key="Condition">[ConditionBranchStep2_condition]</InArgument>
+            </mxswa:ActivityReference.Arguments>
+            <mxswa:ActivityReference.Properties>
+              <mxswa:ActivityReference x:Key="Then" AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.Composite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="ConditionBranchStep2">
+                <mxswa:ActivityReference.Properties>
+                  <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
+                  <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
+                    <Sequence DisplayName="SetDisplayModeStep1: Unlock Notice Submitted On">
+                      <mcwc:SetDisplayMode ControlId="bsr_noticesubmittedon" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep2: Unlock Notice Submitted By">
+                      <mcwc:SetDisplayMode ControlId="bsr_noticesubmittedby" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep4: Unlock Notice Submitted By Role">
+                      <mcwc:SetDisplayMode ControlId="bsr_noticesubmittedbyrole" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep3: Unlock Notice Organisation Name">
+                      <mcwc:SetDisplayMode ControlId="bsr_noticeorganisationname" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep5: Unlock Building Location">
+                      <mcwc:SetDisplayMode ControlId="bsr_buildinglocation" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep6: Unlock Brief Desc of Occurrence">
+                      <mcwc:SetDisplayMode ControlId="bsr_briefdescription" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep7: Unlock Immediate Actions">
+                      <mcwc:SetDisplayMode ControlId="bsr_immediateactionstaken" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep15: Unlock Report Submitted On">
+                      <mcwc:SetDisplayMode ControlId="bsr_reportsubmittedon" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep16: Unlock Report Submitted By">
+                      <mcwc:SetDisplayMode ControlId="bsr_reportsubmittedby" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep17: Unlock Report Submitted By Role">
+                      <mcwc:SetDisplayMode ControlId="bsr_reportsubmittedbyrole" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep18: Unlock Report Organisation Name">
+                      <mcwc:SetDisplayMode ControlId="bsr_reportorganisationname" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep19: Unlock Occurrence Identified On">
+                      <mcwc:SetDisplayMode ControlId="bsr_occurrenceidentifiedon" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep20: Unlock What it the Occurrence">
+                      <mcwc:SetDisplayMode ControlId="bsr_occurrencedescription" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep21: Unlock What Caused It">
+                      <mcwc:SetDisplayMode ControlId="bsr_cause" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep22: Unlock What Affected and in what way">
+                      <mcwc:SetDisplayMode ControlId="bsr_affected" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep23: Unlock Actions to keep people safe">
+                      <mcwc:SetDisplayMode ControlId="bsr_actionstokeeppeoplesafe" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep24: Unlock how was the occurrence discovered">
+                      <mcwc:SetDisplayMode ControlId="bsr_howdiscovered" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep25: Unlock Info to be shared">
+                      <mcwc:SetDisplayMode ControlId="bsr_infotobeshared" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="False" />
+                    </Sequence>
+                  </sco:Collection>
+                </mxswa:ActivityReference.Properties>
+              </mxswa:ActivityReference>
+              <x:Null x:Key="Else" />
+              <x:String x:Key="Description">If Assisted Digital = Yes</x:String>
+            </mxswa:ActivityReference.Properties>
+          </mxswa:ActivityReference>
+          <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateExpression, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateExpression">
+            <mxswa:ActivityReference.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">CreateCrmType</InArgument>
+              <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { Microsoft.Xrm.Sdk.Workflow.WorkflowPropertyType.Boolean, "True" }]</InArgument>
+              <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
+                <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:Boolean" />
+              </InArgument>
+              <OutArgument x:TypeArguments="x:Object" x:Key="Result">[ConditionBranchStep3_1]</OutArgument>
+            </mxswa:ActivityReference.Arguments>
+          </mxswa:ActivityReference>
+          <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.ConditionBranch, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="ConditionBranchStep3">
+            <mxswa:ActivityReference.Arguments>
+              <InArgument x:TypeArguments="x:Boolean" x:Key="Condition">[True]</InArgument>
+            </mxswa:ActivityReference.Arguments>
+            <mxswa:ActivityReference.Properties>
+              <mxswa:ActivityReference x:Key="Then" AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.Composite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="ConditionBranchStep3">
+                <mxswa:ActivityReference.Properties>
+                  <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
+                  <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
+                    <Sequence DisplayName="SetDisplayModeStep8: Lock Notice Submitted On">
+                      <mcwc:SetDisplayMode ControlId="bsr_noticesubmittedon" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep9: Lock Notice Submitted By">
+                      <mcwc:SetDisplayMode ControlId="bsr_noticesubmittedby" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep10: Lock Notice Submitted By Role">
+                      <mcwc:SetDisplayMode ControlId="bsr_noticesubmittedbyrole" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep11: Lock Notice Organisation Name">
+                      <mcwc:SetDisplayMode ControlId="bsr_noticeorganisationname" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep12: Lock Building Location">
+                      <mcwc:SetDisplayMode ControlId="bsr_buildinglocation" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep13: Lock Brief Desc of Occurrence">
+                      <mcwc:SetDisplayMode ControlId="bsr_briefdescription" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep14: Lock Immediate Actions">
+                      <mcwc:SetDisplayMode ControlId="bsr_immediateactionstaken" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep26: Lock Report Submitted On">
+                      <mcwc:SetDisplayMode ControlId="bsr_reportsubmittedon" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep27: Lock Report Submitted By">
+                      <mcwc:SetDisplayMode ControlId="bsr_reportsubmittedby" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep28: Lock Report Submitted By Role">
+                      <mcwc:SetDisplayMode ControlId="bsr_reportsubmittedbyrole" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep29: Lock Report Organisation Name">
+                      <mcwc:SetDisplayMode ControlId="bsr_reportorganisationname" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep30: Lock Occurrence Identified On">
+                      <mcwc:SetDisplayMode ControlId="bsr_occurrenceidentifiedon" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep31: Lock What it the Occurrence">
+                      <mcwc:SetDisplayMode ControlId="bsr_occurrencedescription" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep32: Lock What Caused It">
+                      <mcwc:SetDisplayMode ControlId="bsr_cause" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep33: Lock What Affected and in what way">
+                      <mcwc:SetDisplayMode ControlId="bsr_affected" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep34: Lock Actions to keep people safe">
+                      <mcwc:SetDisplayMode ControlId="bsr_actionstokeeppeoplesafe" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep35: Lock how was the occurrence discovered">
+                      <mcwc:SetDisplayMode ControlId="bsr_howdiscovered" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep36: Lock Info to be shared">
+                      <mcwc:SetDisplayMode ControlId="bsr_infotobeshared" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_mor" IsReadOnly="True" />
+                    </Sequence>
+                  </sco:Collection>
+                </mxswa:ActivityReference.Properties>
+              </mxswa:ActivityReference>
+              <x:Null x:Key="Else" />
+              <x:String x:Key="Description"></x:String>
+            </mxswa:ActivityReference.Properties>
+          </mxswa:ActivityReference>
+        </sco:Collection>
+        <x:Boolean x:Key="ContainsElseBranch">False</x:Boolean>
+      </mxswa:ActivityReference.Properties>
+    </mxswa:ActivityReference>
+  </mxswa:Workflow>
+</Activity>
