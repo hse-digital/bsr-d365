@@ -27,14 +27,17 @@ https://www.gov.uk/government/collections/residential-property-first-tier-tribun
 <div><br>
 <span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">When the First-tier Tribunal has made a decision, you need to tell us about that decision.</span></span></span></div>
 <div><br>
-<span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">To tell us the tribunal’s decision or what you have agreed, contact us at&nbsp;</span></span></span><span style="font-family:Arial,Helvetica,sans-serif"><a href="https://www.gov.uk/contact-building-safety-regulator" style="color:#0563c1; text-decoration:underline">www.gov.uk/contact-building-safety-regulator</a></span><span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">&nbsp;</span></span></span></div>
+<span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">To tell us the tribunal’s decision or what you have agreed, contact us at&nbsp;</span></span></span><span style="font-family:Arial,Helvetica,sans-serif"><a href="https://www.gov.uk/guidance/contact-the-building-safety-regulator" style="color:#0563c1; text-decoration:underline">https://www.gov.uk/guidance/contact-the-building-safety-regulator</a></span><span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">&nbsp;</span></span></span></div>
 <div><br>
 <span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">You can also apply to withdraw one of the applications. Find out more about withdrawing an application at
 <a href="https://www.gov.uk/guidance/applying-to-register-a-high-rise-residential-building#withdraw-an-application" style="color:#0563c1; text-decoration:underline">
 https://www.gov.uk/guidance/applying-to-register-a-high-rise-residential-building#withdraw-an-application</a></span></span></span></div>
 <div><br>
 <span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">We will make a decision about the remaining application.</span></span></span></div>
-<div>&nbsp;</div>
+<h2 style="margin-bottom:16px; margin-top:24px"><span style="font-size:16pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">What do you think of this service?</span></span></span></h2>
+<div><span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">You can tell us what you think of the service through our feedback form:
+<a href="https://forms.office.com/e/dRsZyPur6S" style="color:#0563c1; text-decoration:underline">
+<span style="line-height:115%">https://forms.office.com/e/dRsZyPur6S</span></a></span></span></span></div>
 <div><br>
 <span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">From the Health and Safety Executive<br>
 as the Building Safety Regulator</span></span></span></div>
