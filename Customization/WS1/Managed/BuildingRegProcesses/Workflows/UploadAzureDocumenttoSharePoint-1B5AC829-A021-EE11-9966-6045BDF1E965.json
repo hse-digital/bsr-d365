@@ -356,35 +356,74 @@
                     }
                   }
                 },
-                "Add_a_new_row": {
+                "List_rows_3": {
                   "runAfter": {
                     "Response": [
                       "Succeeded"
                     ]
                   },
                   "metadata": {
-                    "operationMetadataId": "889eeee5-60fc-47ae-95d2-4ec62eda146a"
+                    "operationMetadataId": "e81eed4a-d0a3-4345-aa0e-195025c3c85f"
                   },
                   "type": "OpenApiConnection",
                   "inputs": {
                     "host": {
                       "connectionName": "shared_commondataserviceforapps",
-                      "operationId": "CreateRecord",
+                      "operationId": "ListRecords",
                       "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
                     },
                     "parameters": {
                       "entityName": "bsr_bsrdocuments",
-                      "item/subject": "@triggerBody()['fileName']",
-                      "item/description": "@triggerBody()?['fileDescription']",
-                      "item/bsr_documentlocationcode": 760810000,
-                      "item/bsr_bsrdocumentorigincode": 760810000,
-                      "item/bsr_contactid_bsr_bsrdocument@odata.bind": "@if(equals(variables('SetProviderContact'),true),concat('/contacts/',triggerBody()?['providerContactId']),null)",
-                      "item/bsr_sharepointfileid": "@outputs('Create_file')?['body/ItemId']",
-                      "item/bsr_targetrecordid": "@triggerBody()['targetRecordId']",
-                      "item/bsr_targettable": "@triggerBody()['targetTable']"
+                      "$filter": "bsr_documentpath eq '@{triggerBody()['targetTable']}' and bsr_sharepointfileid eq '@{outputs('Create_file')?['body/ItemId']}'"
                     },
                     "authentication": "@parameters('$authentication')"
                   }
+                },
+                "Condition_4": {
+                  "actions": {
+                    "Add_a_new_row": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "889eeee5-60fc-47ae-95d2-4ec62eda146a"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps",
+                          "operationId": "CreateRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "bsr_bsrdocuments",
+                          "item/subject": "@triggerBody()['fileName']",
+                          "item/description": "@triggerBody()?['fileDescription']",
+                          "item/bsr_documentlocationcode": 760810000,
+                          "item/bsr_documentpath": "@triggerBody()['targetTable']",
+                          "item/bsr_bsrdocumentorigincode": 760810000,
+                          "item/bsr_contactid_bsr_bsrdocument@odata.bind": "@if(equals(variables('SetProviderContact'),true),concat('/contacts/',triggerBody()?['providerContactId']),null)",
+                          "item/bsr_sharepointfileid": "@outputs('Create_file')?['body/ItemId']",
+                          "item/bsr_targetrecordid": "@triggerBody()['targetRecordId']",
+                          "item/bsr_targettable": "@triggerBody()['targetTable']"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "List_rows_3": [
+                      "Succeeded"
+                    ]
+                  },
+                  "expression": {
+                    "equals": [
+                      "@length(outputs('List_rows_3')?['body/value'])",
+                      0
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "f16a2218-2284-4961-a208-43b83cf6f854"
+                  },
+                  "type": "If"
                 }
               },
               "runAfter": {
