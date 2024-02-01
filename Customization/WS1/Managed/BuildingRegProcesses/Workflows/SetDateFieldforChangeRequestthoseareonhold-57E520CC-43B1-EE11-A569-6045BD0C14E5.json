@@ -37,7 +37,7 @@
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
             },
             "parameters": {
-              "subscriptionRequest/message": 3,
+              "subscriptionRequest/message": 4,
               "subscriptionRequest/entityname": "bsr_changerequest",
               "subscriptionRequest/scope": 4,
               "subscriptionRequest/filteringattributes": "statuscode"
@@ -183,8 +183,7 @@
                               },
                               "parameters": {
                                 "entityName": "bsr_changerequests",
-                                "recordId": "@triggerOutputs()?['body/bsr_changerequestid']",
-                                "item/bsr_date": "@null"
+                                "recordId": "@triggerOutputs()?['body/bsr_changerequestid']"
                               },
                               "authentication": "@parameters('$authentication')"
                             }
@@ -218,9 +217,37 @@
             }
           },
           "expression": {
-            "equals": [
-              "@triggerOutputs()?['body/statuscode']",
-              760810005
+            "or": [
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/statuscode']",
+                  760810001
+                ]
+              },
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/statuscode']",
+                  1
+                ]
+              },
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/statuscode']",
+                  760810002
+                ]
+              },
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/statuscode']",
+                  760810003
+                ]
+              },
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/statuscode']",
+                  760810004
+                ]
+              }
             ]
           },
           "metadata": {
