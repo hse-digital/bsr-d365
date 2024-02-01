@@ -49,7 +49,7 @@
       "actions": {
         "Update_the_BI_Employment_Detail_Name_field": {
           "runAfter": {
-            "Condition_2": [
+            "Condition_Handle_Blank_Employer": [
               "Succeeded"
             ]
           },
@@ -71,7 +71,7 @@
             "authentication": "@parameters('$authentication')"
           }
         },
-        "Condition": {
+        "Condition_Handle_Blank_Contact": {
           "actions": {
             "Set_varContact_to_Blank": {
               "runAfter": {},
@@ -81,7 +81,7 @@
               "type": "SetVariable",
               "inputs": {
                 "name": "varContact",
-                "value": " "
+                "value": " NA"
               }
             }
           },
@@ -131,7 +131,7 @@
           "expression": {
             "equals": [
               "@triggerOutputs()?['body/_bsr_buildinginspectorid_value']",
-              null
+              "@null"
             ]
           },
           "metadata": {
@@ -173,16 +173,28 @@
             ]
           }
         },
-        "Condition_2": {
-          "actions": {},
+        "Condition_Handle_Blank_Employer": {
+          "actions": {
+            "Set_varEmployer_to_NA": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "38727b04-4467-46a8-8c4d-0c4f14733550"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "varEmployer",
+                "value": "NA"
+              }
+            }
+          },
           "runAfter": {
-            "Condition": [
+            "Condition_Handle_Blank_Contact": [
               "Succeeded"
             ]
           },
           "else": {
             "actions": {
-              "Condition_3": {
+              "Condition_grab_the_employers_account_OR_contact": {
                 "actions": {
                   "Get_a_contacts_row_by_ID": {
                     "runAfter": {},
@@ -274,7 +286,7 @@
           "expression": {
             "equals": [
               "@triggerOutputs()?['body/_bsr_biemployerid_value']",
-              null
+              "@null"
             ]
           },
           "metadata": {

@@ -40,7 +40,7 @@
               "subscriptionRequest/message": 4,
               "subscriptionRequest/entityname": "bsr_biregcountry",
               "subscriptionRequest/scope": 4,
-              "subscriptionRequest/filteringattributes": "bsr_countryid, bsr_biapplicationid,bsr_buildinginspectorid"
+              "subscriptionRequest/filteringattributes": "bsr_countryid, bsr_biapplicationid,bsr_buildinginspectorid, bsr_account"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -89,36 +89,59 @@
             "parameters": {
               "entityName": "bsr_biregcountries",
               "recordId": "@triggerOutputs()?['body/bsr_biregcountryid']",
-              "item/bsr_name": "@{variables('varBPA')}: @{outputs('Get_a_Country_row_by_ID')?['body/bsr_name']}"
+              "item/bsr_name": "@{outputs('Get_a_Building_Profession_Application_row_by_ID')?['body/bsr_buildingproappid']}: @{variables('varApplicantOrBusinessName')}: @{outputs('Get_a_Country_row_by_ID')?['body/bsr_name']}"
             },
             "authentication": "@parameters('$authentication')"
           }
         },
-        "Condition": {
+        "Condition_-_Is_it_a_BI_Application": {
           "actions": {
-            "Set_varBPA_Blank": {
+            "Get_a_Contact_row_by_ID": {
               "runAfter": {},
               "metadata": {
-                "operationMetadataId": "b9a02714-b57f-4559-bf06-ccb115313abe"
+                "operationMetadataId": "248ede78-2325-4072-8a41-cc256f0e0a65"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "contacts",
+                  "recordId": "@triggerOutputs()?['body/_bsr_buildinginspectorid_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Set_varApplicantOrBusinessName_to_Contact": {
+              "runAfter": {
+                "Get_a_Contact_row_by_ID": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "7a743530-1f9c-417d-9b78-1dbe55c9b2e4"
               },
               "type": "SetVariable",
               "inputs": {
-                "name": "varBPA",
-                "value": " "
+                "name": "varApplicantOrBusinessName",
+                "value": "@outputs('Get_a_Contact_row_by_ID')?['body/fullname']"
               }
             }
           },
           "runAfter": {
-            "Initialize_varBPA": [
+            "Get_a_Building_Profession_Application_row_by_ID": [
               "Succeeded"
             ]
           },
           "else": {
             "actions": {
-              "Get_a_Building_Profession_Application_row_by_ID": {
+              "Get_a_Account_row_by_ID": {
                 "runAfter": {},
                 "metadata": {
-                  "operationMetadataId": "bb55c880-8a9f-4b9c-82e9-b9bbb2d7524a"
+                  "operationMetadataId": "61f872ac-322a-46a9-b9ef-4e88f7995132"
                 },
                 "type": "OpenApiConnection",
                 "inputs": {
@@ -128,33 +151,33 @@
                     "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
                   },
                   "parameters": {
-                    "entityName": "bsr_buildingprofessionapplications",
-                    "recordId": "@triggerOutputs()?['body/_bsr_biapplicationid_value']"
+                    "entityName": "accounts",
+                    "recordId": "@triggerOutputs()?['body/_bsr_account_value']"
                   },
                   "authentication": "@parameters('$authentication')"
                 }
               },
-              "Set_varBPA_to_BPA": {
+              "Set_varApplicantOrBusinessName_to_Account": {
                 "runAfter": {
-                  "Get_a_Building_Profession_Application_row_by_ID": [
+                  "Get_a_Account_row_by_ID": [
                     "Succeeded"
                   ]
                 },
                 "metadata": {
-                  "operationMetadataId": "cc4755af-6780-4bd7-8288-6522d997ee73"
+                  "operationMetadataId": "6826742e-fe6a-4e4c-8f29-c387b6b0c01d"
                 },
                 "type": "SetVariable",
                 "inputs": {
-                  "name": "varBPA",
-                  "value": " @{outputs('Get_a_Building_Profession_Application_row_by_ID')?['body/bsr_name']}"
+                  "name": "varApplicantOrBusinessName",
+                  "value": "@outputs('Get_a_Account_row_by_ID')?['body/name']"
                 }
               }
             }
           },
           "expression": {
             "equals": [
-              "@triggerOutputs()?['body/_bsr_biapplicationid_value']",
-              null
+              "@outputs('Get_a_Building_Profession_Application_row_by_ID')?['body/bsr_buildingprofessiontypecode']",
+              760810000
             ]
           },
           "metadata": {
@@ -162,7 +185,7 @@
           },
           "type": "If"
         },
-        "Initialize_varBPA": {
+        "Initialize_varApplicantOrBusinessName": {
           "runAfter": {},
           "metadata": {
             "operationMetadataId": "157d75be-5f8c-423e-8502-a978cdcae3f9"
@@ -171,10 +194,51 @@
           "inputs": {
             "variables": [
               {
-                "name": "varBPA",
+                "name": "varApplicantOrBusinessName",
                 "type": "string"
               }
             ]
+          }
+        },
+        "Condition": {
+          "actions": {},
+          "runAfter": {
+            "Condition_-_Is_it_a_BI_Application": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "equals": [
+              "",
+              ""
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "896a6fbe-af03-48e8-88e7-c42069f0442c"
+          },
+          "type": "If"
+        },
+        "Get_a_Building_Profession_Application_row_by_ID": {
+          "runAfter": {
+            "Initialize_varApplicantOrBusinessName": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "bb55c880-8a9f-4b9c-82e9-b9bbb2d7524a"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_buildingprofessionapplications",
+              "recordId": "@triggerOutputs()?['body/_bsr_biapplicationid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
           }
         }
       }

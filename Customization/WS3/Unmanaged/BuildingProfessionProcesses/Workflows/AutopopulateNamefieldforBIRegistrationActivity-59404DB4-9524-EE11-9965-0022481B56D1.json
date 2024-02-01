@@ -91,7 +91,7 @@
         },
         "Update_a_row": {
           "runAfter": {
-            "Get_a_BPA_row_by_ID": [
+            "Get_a_Contact_row_by_ID": [
               "Succeeded"
             ]
           },
@@ -108,7 +108,7 @@
             "parameters": {
               "entityName": "bsr_biregactivities",
               "recordId": "@triggerOutputs()?['body/bsr_biregactivityid']",
-              "item/bsr_name": "@{outputs('Get_a_BPA_row_by_ID')?['body/bsr_name']}: @{outputs('Get_a_BI_Activity_row_by_ID')?['body/bsr_name']}: @{outputs('Get_a_BI_Building_Category_row_by_ID')?['body/bsr_name']}"
+              "item/bsr_name": "@{outputs('Get_a_BPA_row_by_ID')?['body/bsr_buildingproappid']}: @{outputs('Get_a_Contact_row_by_ID')?['body/fullname']}: @{outputs('Get_a_BI_Activity_row_by_ID')?['body/bsr_name']}: @{outputs('Get_a_BI_Building_Category_row_by_ID')?['body/bsr_name']}"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -132,6 +132,29 @@
             "parameters": {
               "entityName": "bsr_buildingprofessionapplications",
               "recordId": "@triggerOutputs()?['body/_bsr_biapplicationid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_a_Contact_row_by_ID": {
+          "runAfter": {
+            "Get_a_BPA_row_by_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "da0fee48-708e-4b19-bb7a-b659e531a6c4"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "contacts",
+              "recordId": "@triggerOutputs()?['body/_bsr_buildinginspectorid_value']"
             },
             "authentication": "@parameters('$authentication')"
           }

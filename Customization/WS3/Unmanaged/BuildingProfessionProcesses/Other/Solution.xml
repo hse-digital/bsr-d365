@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.23122.186" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.24012.218" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>BuildingProfessionProcesses</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Profession Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.35.0</Version>
+    <Version>1.0.36.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -94,6 +94,7 @@
       <RootComponent type="29" id="{56967f64-6852-ee11-be6f-0022481b56d1}" behavior="0" />
       <RootComponent type="29" id="{59404db4-9524-ee11-9965-0022481b56d1}" behavior="0" />
       <RootComponent type="29" id="{6fc3c612-902c-ee11-bdf4-0022481b56d1}" behavior="0" />
+      <RootComponent type="29" id="{7f3d0320-44c0-ee11-9079-0022481b59de}" behavior="0" />
       <RootComponent type="29" id="{817a3841-cf40-ee11-bdf3-0022481b56d1}" behavior="0" />
       <RootComponent type="29" id="{8421f89c-b027-ee11-9965-0022481b56d1}" behavior="0" />
       <RootComponent type="29" id="{856e368d-1553-ee11-be6f-0022481b56d1}" behavior="0" />
@@ -114,7 +115,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_biactivity" displayName="BI Activity" solution="Active" />
+        <Dependent type="29" displayName="Update name of BPA when Contact changes" id="{0dc48644-d048-ee11-be6f-0022481b5c8e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_biactivity" displayName="BI Activity" solution="Active" />
         <Dependent type="29" displayName="Auto populate Name field for BI Registration Activity " id="{59404db4-9524-ee11-9965-0022481b56d1}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_bibuildingcategory" displayName="BI Building Category" solution="Active" />
+        <Dependent type="29" displayName="Update name of BPA when Contact changes" id="{0dc48644-d048-ee11-be6f-0022481b5c8e}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_bibuildingcategory" displayName="BI Building Category" solution="Active" />
@@ -123,6 +132,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_bibuildingcategory" displayName="BI Building Category" solution="Active" />
         <Dependent type="29" displayName="Auto populate Name field for BI Registration Activity " id="{59404db4-9524-ee11-9965-0022481b56d1}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_biclass" displayName="BI Class" solution="Active" />
+        <Dependent type="29" displayName="Update name of BPA when Contact changes" id="{0dc48644-d048-ee11-be6f-0022481b5c8e}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_biclass" displayName="BI Class" solution="Active" />
@@ -189,6 +202,10 @@
         <Dependent type="29" displayName="Send email to alert applicant regulatory decision has been made" id="{3c8e6388-0627-ee11-9965-0022481b5210}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="bsr_biregcountry" displayName="BI Registration Country" solution="Active" />
+        <Dependent type="29" displayName="Update name of BPA when Account changes" id="{7f3d0320-44c0-ee11-9079-0022481b59de}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="BuildingRegCore (1.17.82.0)" />
         <Dependent type="29" displayName="Delete BPA BSR Document On File Deletion" id="{000276b7-de3d-ee11-bdf4-0022481b5210}" />
       </MissingDependency>
@@ -242,6 +259,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingprofessionapplication" displayName="Building Profession Application" solution="Active" />
+        <Dependent type="29" displayName="Update name of BPA when Account changes" id="{7f3d0320-44c0-ee11-9079-0022481b59de}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingprofessionapplication" displayName="Building Profession Application" solution="Active" />
         <Dependent type="29" displayName="Send BPA Submission Confirmation Email" id="{817a3841-cf40-ee11-bdf3-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
@@ -282,7 +303,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_changecategory" displayName="Change Category" solution="BuildingRegCore (1.17.82.0)" />
+        <Dependent type="29" displayName="Update name of BPA when Contact changes" id="{0dc48644-d048-ee11-be6f-0022481b5c8e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_changecategory" displayName="Change Category" solution="BuildingRegCore (1.17.82.0)" />
         <Dependent type="29" displayName="Set Change Request Name - Building Profession applications" id="{1f300edc-935c-ee11-8def-0022481b5c8e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_changecategory" displayName="Change Category" solution="BuildingRegCore (1.17.82.0)" />
+        <Dependent type="29" displayName="Update name of BPA when Account changes" id="{7f3d0320-44c0-ee11-9079-0022481b59de}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_changerequest" displayName="Change Request" solution="BuildingRegCore (1.17.82.0)" />
@@ -293,8 +322,16 @@
         <Dependent type="29" displayName="Set Change Request Name - Building Profession applications" id="{1f300edc-935c-ee11-8def-0022481b5c8e}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="bsr_changerequest" displayName="Change Request" solution="BuildingRegCore (1.17.82.0)" />
+        <Dependent type="29" displayName="Update name of BPA when Account changes" id="{7f3d0320-44c0-ee11-9079-0022481b59de}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="bsr_contacttype" displayName="Contact Type" solution="BuildingRegCore (1.17.82.0)" />
         <Dependent type="29" displayName="BI Application Approved - Registered BI Contact Update" id="{bd52e87e-7342-ee11-bdf3-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_country" displayName="Country" solution="BuildingRegCore (1.17.82.0)" />
+        <Dependent type="29" displayName="Update name of BPA when Contact changes" id="{0dc48644-d048-ee11-be6f-0022481b5c8e}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_country" displayName="Country" solution="BuildingRegCore (1.17.82.0)" />
@@ -303,6 +340,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_country" displayName="Country" solution="BuildingRegCore (1.17.82.0)" />
         <Dependent type="29" displayName="Populate Address 2 Country Field Post Contact" id="{4661f63d-9536-ee11-bdf4-0022481b56d1}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_country" displayName="Country" solution="BuildingRegCore (1.17.82.0)" />
+        <Dependent type="29" displayName="Update name of BPA when Account changes" id="{7f3d0320-44c0-ee11-9079-0022481b59de}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_onholdreason" displayName="On Hold Reason" solution="BuildingRegCore (1.17.82.0)" />
@@ -321,8 +362,16 @@
         <Dependent type="29" displayName="Auto populate Name field for BP Registration Region" id="{56967f64-6852-ee11-be6f-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="bsr_region" displayName="Region" solution="BuildingRegCore (1.17.82.0)" />
+        <Dependent type="29" displayName="Update name of BPA when Account changes" id="{7f3d0320-44c0-ee11-9079-0022481b59de}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="bsr_registrationregion" displayName="BP Registration Region" solution="Active" />
         <Dependent type="29" displayName="Auto populate Name field for BP Registration Region" id="{56967f64-6852-ee11-be6f-0022481b56d1}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_registrationregion" displayName="BP Registration Region" solution="Active" />
+        <Dependent type="29" displayName="Update name of BPA when Account changes" id="{7f3d0320-44c0-ee11-9079-0022481b59de}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_address2countrycode" displayName="Address 2: Country Code" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
