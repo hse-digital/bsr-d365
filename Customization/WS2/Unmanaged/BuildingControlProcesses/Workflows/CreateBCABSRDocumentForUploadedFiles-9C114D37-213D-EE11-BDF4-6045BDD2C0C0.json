@@ -92,7 +92,7 @@
             },
             "parameters": {
               "entityName": "bsr_bsrdocuments",
-              "$filter": "bsr_sharepointfileid eq '@{triggerOutputs()?['body/ID']}'"
+              "$filter": "bsr_sharepointfileid eq '@{triggerOutputs()?['body/ID']}' and bsr_documentpath eq 'bsr_buildingcontrolapplication'"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -162,9 +162,10 @@
                       "entityName": "bsr_bsrdocuments",
                       "item/subject": "@triggerOutputs()?['body/{FilenameWithExtension}']",
                       "item/bsr_documentlocationcode": 760810000,
+                      "item/bsr_documentpath": "@triggerOutputs()?['body/{FullPath}']",
                       "item/bsr_bsrdocumentorigincode": 760810001,
                       "item/regardingobjectid_bsr_buildingcontrolapplication_bsr_bsrdocument@odata.bind": "/bsr_buildingcontrolapplications/@{items('Apply_to_each')?['_regardingobjectid_value']}",
-                      "item/bsr_sharepointfileid": "@triggerOutputs()?['body/ID']"
+                      "item/bsr_sharepointfileid": "@{triggerOutputs()?['body/ID']}@{triggerOutputs()?['body/{Identifier}']}"
                     },
                     "authentication": "@parameters('$authentication')"
                   }
