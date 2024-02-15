@@ -87,7 +87,7 @@
                 "operationMetadataId": "3184be58-d963-4c1d-9064-d8d52908389a"
               },
               "type": "Compose",
-              "inputs": "@replace(outputs('GetNoticeEmailTemplate')?['body/safehtml'], '%%bsr_name%%', triggerOutputs()?['body/bsr_name'])"
+              "inputs": "@replace(outputs('GetNoticeEmailTemplate')?['body/safehtml'], '%%bsr_name%%', outputs('Get_a_row_by_ID')?['body/ticketnumber'])"
             },
             "createNoticeEmail": {
               "runAfter": {
@@ -150,7 +150,11 @@
               }
             }
           },
-          "runAfter": {},
+          "runAfter": {
+            "Get_a_row_by_ID": [
+              "Succeeded"
+            ]
+          },
           "else": {
             "actions": {
               "getReportEmailTemplate": {
@@ -183,7 +187,7 @@
                   "operationMetadataId": "4b05a61f-a523-4a4a-8a73-f8c115a0680b"
                 },
                 "type": "Compose",
-                "inputs": "@replace(outputs('GetReportEmailTemplate')?['body/safehtml'], '%%bsr_name%%', triggerOutputs()?['body/bsr_name'])"
+                "inputs": "@replace(outputs('GetReportEmailTemplate')?['body/safehtml'], '%%bsr_name%%', outputs('Get_a_row_by_ID')?['body/ticketnumber'])"
               },
               "createReportEmail": {
                 "runAfter": {
@@ -257,6 +261,25 @@
             "operationMetadataId": "4fa9bdfd-1b91-4b6b-9a9b-ac359bbb5678"
           },
           "type": "If"
+        },
+        "Get_a_row_by_ID": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "a3880e56-c65c-484a-b07d-66f17d40442d"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "incidents",
+              "recordId": "@triggerOutputs()?['body/_bsr_incident_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
         }
       }
     },
