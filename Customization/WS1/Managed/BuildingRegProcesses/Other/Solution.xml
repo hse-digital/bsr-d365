@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.24013.172" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.24014.176" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>BuildingRegProcesses</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Reg Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.12.57.0</Version>
+    <Version>1.12.58.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -88,6 +88,7 @@
       <RootComponent type="29" id="{0f0464dc-a1bd-ed11-83fe-000d3a86e5b0}" behavior="0" />
       <RootComponent type="29" id="{1b5ac829-a021-ee11-9966-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{1cfbd44f-cd09-ee11-8f6e-002248c727e7}" behavior="0" />
+      <RootComponent type="29" id="{23336aad-f0cb-ee11-9079-6045bd0c1726}" behavior="0" />
       <RootComponent type="29" id="{247c4f6b-c066-ee11-9ae6-6045bd0c1096}" behavior="0" />
       <RootComponent type="29" id="{2c2f2d80-83bb-ee11-9078-6045bd0c14e5}" behavior="0" />
       <RootComponent type="29" id="{2c334355-7e4d-ee11-be6f-002248c72859}" behavior="0" />
@@ -115,6 +116,7 @@
       <RootComponent type="29" id="{a29c510f-d406-ee11-8f6e-002248c727e7}" behavior="0" />
       <RootComponent type="29" id="{a329224e-c166-ee11-9ae6-6045bd0c1726}" behavior="0" />
       <RootComponent type="29" id="{ae2c04a4-d614-ee11-9cbe-002248c725da}" behavior="0" />
+      <RootComponent type="29" id="{b386cb98-b2cc-ee11-9079-6045bd0c14e5}" behavior="0" />
       <RootComponent type="29" id="{bbfbc85d-1256-ee11-be6f-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{bd4d2e09-7067-ee11-9ae6-6045bd0c18a5}" behavior="0" />
       <RootComponent type="29" id="{cdf3d0a3-43c7-ed11-b596-6045bd0b9760}" behavior="0" />
@@ -146,6 +148,14 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_applicationstatustimestamp" displayName="Application Status Timestamp" solution="Active" />
         <Dependent type="29" displayName="Trigger Flow to check if the Building Application has any active status timestamp records" id="{53791bc6-edbc-ed11-83fe-000d3a86ecac}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_bacapplication" displayName="BAC Application" solution="Active" />
+        <Dependent type="29" displayName="Set BAC Application Name" id="{23336aad-f0cb-ee11-9079-6045bd0c1726}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_bacapplication" displayName="BAC Application" solution="Active" />
+        <Dependent type="29" displayName="Create BAC Application Document Location" id="{b386cb98-b2cc-ee11-9079-6045bd0c14e5}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_block" displayName="Structure" solution="Active" />
@@ -237,6 +247,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
+        <Dependent type="29" displayName="Set BAC Application Name" id="{23336aad-f0cb-ee11-9079-6045bd0c1726}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
         <Dependent type="29" displayName="Send Email notification on update of Safety case declaration in Building Application" id="{2c2f2d80-83bb-ee11-9078-6045bd0c14e5}" />
       </MissingDependency>
       <MissingDependency>
@@ -309,6 +323,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
+        <Dependent type="29" displayName="Set BAC Application Name" id="{23336aad-f0cb-ee11-9079-6045bd0c1726}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
         <Dependent type="29" displayName="Create Building Application Document Location" id="{247c4f6b-c066-ee11-9ae6-6045bd0c1096}" />
       </MissingDependency>
       <MissingDependency>
@@ -353,7 +371,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
-        <Dependent type="29" displayName="Set the Building Application status on Payment update of Payment Reconciliation status" id="{9c334b9e-f2bc-ed11-83fe-000d3a86ecac}" />
+        <Dependent type="29" displayName="DEPRECATED - Set the Building Application status on Payment update of Payment Reconciliation status" id="{9c334b9e-f2bc-ed11-83fe-000d3a86ecac}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
@@ -489,7 +507,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_payment" displayName="Payment" solution="Active" />
-        <Dependent type="29" displayName="Set the Building Application status on Payment update of Payment Reconciliation status" id="{9c334b9e-f2bc-ed11-83fe-000d3a86ecac}" />
+        <Dependent type="29" displayName="DEPRECATED - Set the Building Application status on Payment update of Payment Reconciliation status" id="{9c334b9e-f2bc-ed11-83fe-000d3a86ecac}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_payment" displayName="Payment" solution="Active" />
@@ -568,12 +586,20 @@
         <Dependent type="29" displayName="Trigger flow when the Building Name, Primary applicant or Secondary applicant changes" id="{d2846fde-1bb9-ee11-9078-6045bd0c1726}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_buildingapplicationid" displayName="Building application" parentSchemaName="bsr_bacapplication" parentDisplayName="BAC Application" solution="Active" />
+        <Dependent type="29" displayName="Set BAC Application Name" id="{23336aad-f0cb-ee11-9079-6045bd0c1726}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_buildingapplicationid" displayName="Building Application" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
         <Dependent type="29" displayName="Set Applicant Email Recipient" id="{ae2c04a4-d614-ee11-9cbe-002248c725da}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_buildingapplicationid" displayName="Building application" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="Active" />
         <Dependent type="29" displayName="Set Change Request Name" id="{938f80db-d852-ee11-be6f-002248c727e7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_buildingid" displayName="Building" parentSchemaName="bsr_bacapplication" parentDisplayName="BAC Application" solution="Active" />
+        <Dependent type="29" displayName="Set BAC Application Name" id="{23336aad-f0cb-ee11-9079-6045bd0c1726}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_changecategoryid" displayName="Change Category" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="Active" />
@@ -605,7 +631,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_paymentreconciliationstatus" displayName="Payment Reconciliation Status" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="Active" />
-        <Dependent type="29" displayName="Set the Building Application status on Payment update of Payment Reconciliation status" id="{9c334b9e-f2bc-ed11-83fe-000d3a86ecac}" />
+        <Dependent type="29" displayName="DEPRECATED - Set the Building Application status on Payment update of Payment Reconciliation status" id="{9c334b9e-f2bc-ed11-83fe-000d3a86ecac}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_paymentreconciliationstatus" displayName="Payment Reconciliation Status" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="Active" />
