@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Reg Core" languagecode="1033" />
     </Descriptions>
-    <Version>1.17.100.0</Version>
+    <Version>1.17.101.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -85,6 +85,7 @@
       <RootComponent type="1" schemaName="bsr_accounttype" behavior="0" />
       <RootComponent type="1" schemaName="bsr_address" behavior="0" />
       <RootComponent type="1" schemaName="bsr_applicationstatustimestamp" behavior="0" />
+      <RootComponent type="1" schemaName="bsr_bacapplication" behavior="0" />
       <RootComponent type="1" schemaName="bsr_block" behavior="0" />
       <RootComponent type="1" schemaName="bsr_blockarea" behavior="0" />
       <RootComponent type="1" schemaName="bsr_blockexternalfeature" behavior="0" />
@@ -253,6 +254,7 @@
       <RootComponent type="61" schemaName="bsr_buildingapplications" behavior="0" />
       <RootComponent type="61" schemaName="bsr_buildingcompletioncertificates" behavior="0" />
       <RootComponent type="61" schemaName="bsr_buildingtype" behavior="0" />
+      <RootComponent type="61" schemaName="bsr_businessapplications" behavior="0" />
       <RootComponent type="61" schemaName="bsr_calendar" behavior="0" />
       <RootComponent type="61" schemaName="bsr_cancel" behavior="0" />
       <RootComponent type="61" schemaName="bsr_category" behavior="0" />
@@ -292,6 +294,7 @@
       <RootComponent type="9" schemaName="bsr_addresstype" behavior="0" />
       <RootComponent type="9" schemaName="bsr_applicationstage" behavior="0" />
       <RootComponent type="9" schemaName="bsr_approvalstatuscode" behavior="0" />
+      <RootComponent type="9" schemaName="bsr_bacstageid" behavior="0" />
       <RootComponent type="9" schemaName="bsr_bsrdocumentorigin" behavior="0" />
       <RootComponent type="9" schemaName="bsr_bsrservicecode" behavior="0" />
       <RootComponent type="9" schemaName="bsr_buildingconnection" behavior="0" />
@@ -315,6 +318,7 @@
       <RootComponent type="9" schemaName="bsr_rejectionreason" behavior="0" />
       <RootComponent type="9" schemaName="bsr_roofstructurelayerofinsulation" behavior="0" />
       <RootComponent type="9" schemaName="bsr_section25reviewstatuscode" behavior="0" />
+      <RootComponent type="9" schemaName="bsr_tranchecode" behavior="0" />
       <RootComponent type="9" schemaName="bsr_typeofroof" behavior="0" />
       <RootComponent type="9" schemaName="bsr_whoareyou" behavior="0" />
       <RootComponent type="9" schemaName="bsr_withdrawalreason" behavior="0" />
@@ -322,7 +326,7 @@
     <MissingDependencies>
       <MissingDependency>
         <Required type="1" schemaName="campaign" displayName="Campaign" solution="msdynce_Marketing (9.0.4.37)">
-          <package>msdynce_MarketingAnchor (9.0.24012.10001)</package>
+          <package>msdynce_MarketingAnchor (9.0.24014.10001)</package>
         </Required>
         <Dependent type="1" schemaName="campaign" displayName="Campaign" />
       </MissingDependency>
@@ -334,27 +338,27 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="list" displayName="Marketing List" solution="msdynce_Marketing (9.0.4.37)">
-          <package>msdynce_MarketingAnchor (9.0.24012.10001)</package>
+          <package>msdynce_MarketingAnchor (9.0.24014.10001)</package>
         </Required>
         <Dependent type="1" schemaName="list" displayName="Marketing List" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="msdyn_customerasset" displayName="Customer Asset" solution="msdyn_AssetCommon (1.0.46.7)">
-          <package>FieldService_Anchor (8.8.105.55)</package>
+          <package>FieldService_Anchor (8.8.107.25)</package>
           <package>msdynce_ServiceAnchor (9.0.24014.1004)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="msdyn_account_msdyn_customerasset_Account" displayName="msdyn_account_msdyn_customerasset_Account" parentSchemaName="msdyn_customerasset" parentDisplayName="Customer Asset" solution="msdyn_AssetCommon (1.0.46.7)">
-          <package>FieldService_Anchor (8.8.105.55)</package>
+          <package>FieldService_Anchor (8.8.107.25)</package>
           <package>msdynce_ServiceAnchor (9.0.24014.1004)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="defaultpricelevelid" displayName="Price List" parentSchemaName="account" parentDisplayName="Account" solution="msdynce_ProductManagement (9.0.4.0066)">
-          <package>msdynce_ProductManagementAnchor (9.0.24012.10001)</package>
+          <package>msdynce_ProductManagementAnchor (9.0.24014.10001)</package>
         </Required>
         <Dependent type="60" displayName="Information" parentDisplayName="Account" id="{b053a39a-041a-4356-acef-ddf00182762b}" />
       </MissingDependency>
@@ -378,10 +382,22 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Active Customer Assets" displayName="Active Customer Assets" parentSchemaName="msdyn_customerasset" parentDisplayName="Customer Asset" solution="msdyn_AssetCommon (1.0.46.7)" id="{6ecb03a4-acda-44ae-83e3-c60ba8338dbb}">
-          <package>FieldService_Anchor (8.8.105.55)</package>
+          <package>FieldService_Anchor (8.8.107.25)</package>
           <package>msdynce_ServiceAnchor (9.0.24014.1004)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="All Accounts" displayName="All Accounts" parentSchemaName="account" parentDisplayName="Account" solution="msdynce_AppCommon (9.0.4.0066)" id="{65ffaf9a-e8c5-432d-860b-32f841b00d87}">
+          <package>msdynce_AppCommonAnchor (9.0.24014.10002)</package>
+        </Required>
+        <Dependent type="26" schemaName="All Accounts" displayName="All Accounts" parentSchemaName="account" parentDisplayName="Account" id="{65ffaf9a-e8c5-432d-860b-32f841b00d87}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="All Contacts" displayName="All Contacts" parentSchemaName="contact" parentDisplayName="Contact" solution="msdynce_AppCommon (9.0.4.0066)" id="{0d5d377b-5e7c-47b5-bab1-a5cb8b4ac105}">
+          <package>msdynce_AppCommonAnchor (9.0.24014.10002)</package>
+        </Required>
+        <Dependent type="26" schemaName="All Contacts" displayName="All Contacts" parentSchemaName="contact" parentDisplayName="Contact" id="{0d5d377b-5e7c-47b5-bab1-a5cb8b4ac105}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Customer Asset associated view with alerts" displayName="Customer Asset associated view with alerts" parentSchemaName="msdyn_customerasset" parentDisplayName="Customer Asset" solution="msdyn_ConnectedCustomerService (9.0.23122.1017)" id="{38cc036f-fbfe-e911-a81c-000d3ac2c6cb}">
@@ -429,7 +445,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="Activities/SystemLibraries/Task_main_system_library.js" displayName="Activities/SystemLibraries/Task_main_system_library.js" solution="msdynce_Activities (9.0.1.2033)" />
-        <Dependent type="60" displayName="Task quick create form." parentDisplayName="Task" id="{a1c8a6dc-8804-4019-9c78-7dbe86560ea1}" />
+        <Dependent type="60" displayName="Task" parentDisplayName="Task" id="{16654191-19ad-48ca-9e46-c4b4fbdad76f}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="AppCommon/Account/Account_main_system_library.js" displayName="AppCommon/Account/Account_main_system_library.js" solution="msdynce_AppCommon (9.0.4.0066)">
@@ -441,13 +457,13 @@
         <Required type="61" schemaName="AppCommon/Account/Account_main_system_library.js" displayName="AppCommon/Account/Account_main_system_library.js" solution="msdynce_AppCommon (9.0.4.0066)">
           <package>msdynce_AppCommonAnchor (9.0.24014.10002)</package>
         </Required>
-        <Dependent type="60" displayName="In Context Form" parentDisplayName="Account" id="{face3aa6-99c4-4b7e-af07-55f121cdca86}" />
+        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="AppCommon/Contact/Contact_main_system_library.js" displayName="AppCommon/Contact/Contact_main_system_library.js" solution="msdynce_AppCommon (9.0.4.0066)">
           <package>msdynce_AppCommonAnchor (9.0.24014.10002)</package>
         </Required>
-        <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
+        <Dependent type="60" displayName="TimelineWallControl - Contact - Main" parentDisplayName="Contact" id="{986258b5-2985-4ae0-970a-5e1d108ab793}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_/ActivityFeeds.Form.js" displayName="msdyn_/ActivityFeeds.Form.js" solution="ActivityFeedsCore (9.0.0.0009)" />
