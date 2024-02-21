@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.24013.172" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.24015.174" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>BuildingProfessionProcesses</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Profession Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.38.0</Version>
+    <Version>1.0.39.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -104,6 +104,8 @@
       <RootComponent type="29" id="{b267ad7a-8b21-ee11-9966-0022481b59de}" behavior="0" />
       <RootComponent type="29" id="{ba0777e5-2126-ee11-9965-0022481b59de}" behavior="0" />
       <RootComponent type="29" id="{bd52e87e-7342-ee11-bdf3-0022481b5210}" behavior="0" />
+      <RootComponent type="29" id="{c3fad657-e8cc-ee11-9079-0022481b59de}" behavior="0" />
+      <RootComponent type="29" id="{c550a433-eacc-ee11-9079-0022481b5210}" behavior="0" />
       <RootComponent type="29" id="{e6cc9dae-fc56-ee11-be6f-0022481b5210}" behavior="0" />
       <RootComponent type="29" id="{eb2ebefd-2d0c-ee11-8f6e-0022481b5210}" behavior="0" />
       <RootComponent type="29" id="{f07e24bb-a341-ee11-bdf3-0022481b5210}" behavior="0" />
@@ -188,6 +190,10 @@
         <Dependent type="29" displayName="Auto populate Name field for BI Registration Activity " id="{59404db4-9524-ee11-9965-0022481b56d1}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="bsr_biregactivity" displayName="BI Registration Activity" solution="Active" />
+        <Dependent type="29" displayName="Considered Activity Data Remediation" id="{c550a433-eacc-ee11-9079-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="bsr_biregclass" displayName="BI Registration Class" solution="Active" />
         <Dependent type="29" displayName="Update name of BPA when Contact changes" id="{0dc48644-d048-ee11-be6f-0022481b5c8e}" />
       </MissingDependency>
@@ -198,6 +204,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_biregclass" displayName="BI Registration Class" solution="Active" />
         <Dependent type="29" displayName="Auto populate Name field for BI Registration Class" id="{895b6bde-5b25-ee11-9965-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_biregclass" displayName="BI Registration Class" solution="Active" />
+        <Dependent type="29" displayName="Considered Class Data Remediation" id="{c3fad657-e8cc-ee11-9079-0022481b59de}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_biregcountry" displayName="BI Registration Country" solution="Active" />
@@ -408,6 +418,14 @@
         <Dependent type="29" displayName="Auto populate Name field for BI Registration Class" id="{895b6bde-5b25-ee11-9965-0022481b5210}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_biregactivityid" displayName="BI Registration Activity" parentSchemaName="bsr_biregactivity" parentDisplayName="BI Registration Activity" solution="Active" />
+        <Dependent type="29" displayName="Considered Activity Data Remediation" id="{c550a433-eacc-ee11-9079-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_biregclassid" displayName="BI Registration Class" parentSchemaName="bsr_biregclass" parentDisplayName="BI Registration Class" solution="Active" />
+        <Dependent type="29" displayName="Considered Class Data Remediation" id="{c3fad657-e8cc-ee11-9079-0022481b59de}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_buildinginspectorid" displayName="Building Inspector" parentSchemaName="bsr_biemploymentdetail" parentDisplayName="BI Employment Detail" solution="Active" />
         <Dependent type="29" displayName="Auto populate Name field for BI Employment Detail" id="{152cb1e4-0d32-ee11-bdf3-0022481b5210}" />
       </MissingDependency>
@@ -446,6 +464,14 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_issendregulatorydecisionemail" displayName="Send regulatory decision email" parentSchemaName="bsr_buildingprofessionapplication" parentDisplayName="Building Profession Application" solution="Active" />
         <Dependent type="29" displayName="Send email to alert applicant regulatory decision has been made" id="{3c8e6388-0627-ee11-9965-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_biregactivity" parentDisplayName="BI Registration Activity" solution="Active" />
+        <Dependent type="29" displayName="Considered Activity Data Remediation" id="{c550a433-eacc-ee11-9079-0022481b5210}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_biregclass" parentDisplayName="BI Registration Class" solution="Active" />
+        <Dependent type="29" displayName="Considered Class Data Remediation" id="{c3fad657-e8cc-ee11-9079-0022481b59de}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_buildingprofessionapplication" parentDisplayName="Building Profession Application" solution="Active" />
