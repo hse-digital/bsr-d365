@@ -40,7 +40,7 @@
               "subscriptionRequest/message": 4,
               "subscriptionRequest/entityname": "bsr_bacapplication",
               "subscriptionRequest/scope": 4,
-              "subscriptionRequest/filteringattributes": "bsr_buildingapplicationid,bsr_buildingid"
+              "subscriptionRequest/filteringattributes": "bsr_bacapplicationnumber,bsr_buildingid"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -49,31 +49,8 @@
       "actions": {
         "Condition": {
           "actions": {
-            "Get_Building_application_row_by_ID": {
-              "runAfter": {},
-              "metadata": {
-                "operationMetadataId": "b8b5b75c-9aa9-416d-8317-033fae85e706"
-              },
-              "type": "OpenApiConnection",
-              "inputs": {
-                "host": {
-                  "connectionName": "shared_commondataserviceforapps",
-                  "operationId": "GetItem",
-                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                },
-                "parameters": {
-                  "entityName": "bsr_buildingapplications",
-                  "recordId": "@triggerOutputs()?['body/_bsr_buildingapplicationid_value']"
-                },
-                "authentication": "@parameters('$authentication')"
-              }
-            },
             "Get_Building_row_by_ID": {
-              "runAfter": {
-                "Get_Building_application_row_by_ID": [
-                  "Succeeded"
-                ]
-              },
+              "runAfter": {},
               "metadata": {
                 "operationMetadataId": "0ba5d8b3-9982-419c-a75f-423e4cb81b49"
               },
@@ -101,7 +78,7 @@
                 "operationMetadataId": "28b8a79d-c784-45c4-9fa5-c843b7eac75a"
               },
               "type": "Compose",
-              "inputs": "@{outputs('Get_Building_application_row_by_ID')?['body/bsr_name']} - @{outputs('Get_Building_row_by_ID')?['body/bsr_name']}"
+              "inputs": "@{triggerOutputs()?['body/bsr_bacapplicationnumber']} - @{outputs('Get_Building_row_by_ID')?['body/bsr_name']}"
             },
             "Update_Name": {
               "runAfter": {
@@ -130,24 +107,12 @@
           },
           "runAfter": {},
           "expression": {
-            "and": [
-              {
-                "not": {
-                  "equals": [
-                    "@triggerOutputs()?['body/_bsr_buildingapplicationid_value']",
-                    "@null"
-                  ]
-                }
-              },
-              {
-                "not": {
-                  "equals": [
-                    "@triggerOutputs()?['body/_bsr_buildingid_value']",
-                    "@null"
-                  ]
-                }
-              }
-            ]
+            "not": {
+              "equals": [
+                "@triggerOutputs()?['body/_bsr_buildingid_value']",
+                "@null"
+              ]
+            }
           },
           "metadata": {
             "operationMetadataId": "01032e1a-5e4b-4233-9a35-6dc3be855f76"
@@ -156,7 +121,7 @@
         }
       }
     },
-    "templateName": null
+    "templateName": ""
   },
   "schemaVersion": "1.0.0.0"
 }
