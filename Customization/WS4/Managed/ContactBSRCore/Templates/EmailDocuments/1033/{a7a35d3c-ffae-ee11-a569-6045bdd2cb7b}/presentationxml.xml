@@ -6,13 +6,13 @@
 <table style="width:100%;border-collapse:collapse" class="containerWrapper tbContainer multi" cellpadding="0" cellspacing="0" role="presentation">
 <tbody>
 <tr>
-<th class="columnContainer columnContainerWrapper" style="font-weight:400;text-align:left;vertical-align:top;min-width:5px;width:297px;height:35px;max-width:46px;padding:0;min-height:35px" role="presentation">
-<table width="100%" cellpadding="0" cellspacing="0" style="height:100%;min-height:35px" role="presentation" class="innerTable">
+<th class="columnContainer columnContainerWrapper" style="font-weight:400;text-align:left;vertical-align:top;min-width:5px;width:297px;height:37.99px;max-width:46px;padding:0;min-height:37.99px" role="presentation">
+<table width="100%" cellpadding="0" cellspacing="0" style="height:100%;min-height:37.99px" role="presentation" class="innerTable">
 <tbody>
 <tr>
-<th class="inner" style="text-align:left;min-width:5px;vertical-align:middle;word-wrap:break-word;word-break:break-word;font-weight:400;height:35px;min-height:35px" role="presentation">
+<th class="inner" style="text-align:left;min-width:5px;vertical-align:middle;word-wrap:break-word;word-break:break-word;font-weight:400;height:37.99px;min-height:37.99px" role="presentation">
 <div style="font-family:Arial,Helvetica,sans-serif;font-size:19px;color:#0b0c0c;background-color:transparent">
-<div align="center" class="imageWrapper" style="font-family:Arial,Helvetica,sans-serif; font-size:19px; color:#0b0c0c; background-color:transparent; width:100%;" width="100%"><img src="https://raw.githubusercontent.com/alphagov/email-template/master/crown-32px.gif" style="max-height:100%;box-sizing:border-box;display:block;margin-left:auto;margin-right:auto;height:32px!important;width:46px!important;max-width:100%!important" height="32" width="46">
+<div align="center" class="imageWrapper" style="font-family:Arial,Helvetica,sans-serif; font-size:19px; color:#0b0c0c; background-color:transparent; width:100%;" width="100%"><img src="https://raw.githubusercontent.com/alphagov/govuk-frontend/0b316d4306160c784a0c75cbdce5ee40ce59e4a8/packages/govuk-frontend/src/govuk/assets/images/favicon.svg" style="max-height:100%;box-sizing:border-box;display:block;margin-left:auto;margin-right:auto;height:38px!important;width:54px!important;max-width:100%!important" height="38" width="54">
 <div class="clear" style="font-family:Arial,Helvetica,sans-serif;font-size:19px;color:#0b0c0c;background-color:transparent;clear:both;height:0;width:0"></div>
 </div>
 </div></th>
@@ -20,11 +20,11 @@
 </tbody>
 </table>
 </th>
-<th class="columnContainer columnContainerWrapper" style="font-weight:400;text-align:left;vertical-align:top;min-width:5px;width:603px;height:35px;min-height:35px" role="presentation">
-<table width="100%" cellpadding="0" cellspacing="0" style="height:100%;min-height:35px" role="presentation" class="innerTable">
+<th class="columnContainer columnContainerWrapper" style="font-weight:400;text-align:left;vertical-align:top;min-width:5px;width:603px;height:37.99px;min-height:37.99px" role="presentation">
+<table width="100%" cellpadding="0" cellspacing="0" style="height:100%;min-height:37.99px" role="presentation" class="innerTable">
 <tbody>
 <tr>
-<th class="columnContainer inner" style="text-align:left;padding-left:5px;min-width:5px;vertical-align:middle;word-wrap:break-word;word-break:break-word;font-weight:400;height:35px;min-height:35px" role="presentation">
+<th class="columnContainer inner" style="text-align:left;padding-left:5px;min-width:5px;vertical-align:middle;word-wrap:break-word;word-break:break-word;font-weight:400;height:37.99px;min-height:37.99px" role="presentation">
 <!--[if gte mso 9]> <div style="font-family: Arial, Helvetica, sans-serif; font-size: 19px; color: #0b0c0c; background-color: transparent; margin: 0px;"><p style="margin: 0px; padding: 0px; line-height: 125%; mso-line-height-rule: at-least;"><span style="font-size:28px;"><strong><span style="color:#ffffff;"><span style="">GOV.UK</span></span></strong></span></p></div> <![endif]--> <!--[if !mso]> <!----><div style="font-family:Arial,Helvetica,sans-serif;font-size:19px;color:#0b0c0c;background-color:transparent;margin:0"><p style="margin:0;padding:0;line-height:1.25;mso-line-height-rule:at-least"><span style="font-size:28px"><strong><span style="color:#fff"><span style="line-height:1.25">GOV.UK</span></span></strong></span></p></div><!--[endif]---->
 </th>
 </tr>
