@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Reg Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.12.59.0</Version>
+    <Version>1.12.60.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -86,6 +86,7 @@
       <RootComponent type="29" id="{06333f46-6f25-ee11-9965-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{08a7257e-2b64-ee11-8def-6045bd0c14e5}" behavior="0" />
       <RootComponent type="29" id="{0f0464dc-a1bd-ed11-83fe-000d3a86e5b0}" behavior="0" />
+      <RootComponent type="29" id="{11a2b767-b7d0-ee11-9079-6045bd0c14e5}" behavior="0" />
       <RootComponent type="29" id="{1b5ac829-a021-ee11-9966-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{1cfbd44f-cd09-ee11-8f6e-002248c727e7}" behavior="0" />
       <RootComponent type="29" id="{23336aad-f0cb-ee11-9079-6045bd0c1726}" behavior="0" />
@@ -148,6 +149,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_applicationstatustimestamp" displayName="Application Status Timestamp" solution="Active" />
         <Dependent type="29" displayName="Trigger Flow to check if the Building Application has any active status timestamp records" id="{53791bc6-edbc-ed11-83fe-000d3a86ecac}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_bacapplication" displayName="BAC Application" solution="Active" />
+        <Dependent type="29" displayName="Send Email notification on update of BAC Stage for BAC Application" id="{11a2b767-b7d0-ee11-9079-6045bd0c14e5}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_bacapplication" displayName="BAC Application" solution="Active" />
@@ -243,6 +248,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
+        <Dependent type="29" displayName="Send Email notification on update of BAC Stage for BAC Application" id="{11a2b767-b7d0-ee11-9079-6045bd0c14e5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
         <Dependent type="29" displayName="Auto Populate Name field for 'Structure Connections' table" id="{1cfbd44f-cd09-ee11-8f6e-002248c727e7}" />
       </MissingDependency>
       <MissingDependency>
@@ -320,6 +329,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
         <Dependent type="29" displayName="Create a Quality Assurance record when an Application Status is QA in progress" id="{0f0464dc-a1bd-ed11-83fe-000d3a86e5b0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
+        <Dependent type="29" displayName="Send Email notification on update of BAC Stage for BAC Application" id="{11a2b767-b7d0-ee11-9079-6045bd0c14e5}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
@@ -578,6 +591,10 @@
         <Dependent type="29" displayName="Set BAC Application Name" id="{23336aad-f0cb-ee11-9079-6045bd0c1726}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_bacstageid" displayName="BAC Stage" parentSchemaName="bsr_bacapplication" parentDisplayName="BAC Application" solution="Active" />
+        <Dependent type="29" displayName="Send Email notification on update of BAC Stage for BAC Application" id="{11a2b767-b7d0-ee11-9079-6045bd0c14e5}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_building" displayName="Building" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
         <Dependent type="29" displayName="Set the Building Application Name field to ApplicationId and Building Name " id="{041ef549-a2b7-ed11-b597-0022481b568f}" />
       </MissingDependency>
@@ -732,6 +749,10 @@
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="Active" id.schemaname="bsr_noreplyqueueid" />
         <Dependent type="29" displayName="Send  email notification to applicant when Building Application Stage is invoice raised" id="{06333f46-6f25-ee11-9965-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="Active" id.schemaname="bsr_noreplyqueueid" />
+        <Dependent type="29" displayName="Send Email notification on update of BAC Stage for BAC Application" id="{11a2b767-b7d0-ee11-9079-6045bd0c14e5}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="Active" id.schemaname="bsr_noreplyqueueid" />
