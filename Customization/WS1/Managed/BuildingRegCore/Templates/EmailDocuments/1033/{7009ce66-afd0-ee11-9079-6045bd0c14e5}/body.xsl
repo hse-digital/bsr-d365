@@ -4,7 +4,7 @@
 <div>&nbsp;</div>
 <div><span style="font-family:Arial,Helvetica,sans-serif">Documents submitted&nbsp;</span></div>
 <div>&nbsp;</div>
-<div><span style="font-family:Arial,Helvetica,sans-serif">%buildingName%_safety-case-report.pdf</span></div>
+<div><span style="font-family:Arial,Helvetica,sans-serif">%documentName%</span></div>
 <div>&nbsp;</div>
 <div><span style="font-size:14pt"><span style="font-family:'Arial Black',Arial,sans-serif">What happens next</span></span></div>
 <div>&nbsp;</div>

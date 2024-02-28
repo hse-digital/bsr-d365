@@ -4,7 +4,7 @@
 <div>&nbsp;</div>
 <div><span style="font-family:Arial,Helvetica,sans-serif">Documents submitted&nbsp;</span></div>
 <div>&nbsp;</div>
-<div><span style="font-family:Arial,Helvetica,sans-serif">%buildingName%_safety-case-report.pdf</span></div>
+<div><span style="font-family:Arial,Helvetica,sans-serif">%documentName%</span></div>
 <div>&nbsp;</div>
 <div><span style="font-size:14pt"><span style="font-family:'Arial Black',Arial,sans-serif">What happens next</span></span></div>
 <div>&nbsp;</div>
@@ -24,7 +24,5 @@
 <div>&nbsp;</div>
 <div><div><span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">From the Health and Safety Executive<br>as the Building Safety Regulator</span></span></span><br>&nbsp;</div>
 <div><div align="center" style="margin-bottom:16px; text-align:center"><hr align="center" size="2" width="100%"></div><span style="font-size:12pt"><span style="line-height:115%"><span style="font-family:Arial,sans-serif">Do not reply to this email. It’s an automatic message from an unmonitored account.</span></span></span></div></div>
-<div>&nbsp;</div>
-<div>&nbsp;</div>
 <div>&nbsp;</div>
 <div>&nbsp;</div>]]></xsl:template></xsl:stylesheet>
