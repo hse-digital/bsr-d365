@@ -17,6 +17,10 @@
           <cell name="a_81632abe98a0ed11aad10022481b5e4f.bsr_registreeid" width="100" disableSorting="1" />
           <cell name="a_81632abe98a0ed11aad10022481b5e4f.bsr_applicationstage" width="100" disableSorting="1" />
           <cell name="a_81632abe98a0ed11aad10022481b5e4f.statuscode" width="100" disableSorting="1" />
+          <cell name="a_53e00afb63db4c78aa93df8cfb6a7751.bsr_mbppapcode" width="141" />
+          <cell name="a_53e00afb63db4c78aa93df8cfb6a7751.bsr_numberofassociatedbuildingspap" width="179" />
+          <cell name="a_8294817826a44bb7aea5c6ec12032145.bsr_mbpcode" width="211" />
+          <cell name="a_8294817826a44bb7aea5c6ec12032145.bsr_numberofassociatedbuildings" width="249" />
           <cell name="ownerid" width="100" />
           <cell name="createdon" width="125" />
         </row>
@@ -44,6 +48,14 @@
             <attribute name="statuscode" />
           </link-entity>
           <attribute name="bsr_buildingid" />
+          <link-entity alias="a_53e00afb63db4c78aa93df8cfb6a7751" name="contact" to="bsr_papid" from="contactid" link-type="outer" visible="false">
+            <attribute name="bsr_mbppapcode" />
+            <attribute name="bsr_numberofassociatedbuildingspap" />
+          </link-entity>
+          <link-entity alias="a_8294817826a44bb7aea5c6ec12032145" name="contact" to="bsr_paporgleadcontactid" from="contactid" link-type="outer" visible="false">
+            <attribute name="bsr_mbpcode" />
+            <attribute name="bsr_numberofassociatedbuildings" />
+          </link-entity>
         </entity>
       </fetch>
     </fetchxml>

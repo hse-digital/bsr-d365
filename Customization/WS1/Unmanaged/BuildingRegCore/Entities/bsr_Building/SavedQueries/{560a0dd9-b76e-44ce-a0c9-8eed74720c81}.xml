@@ -17,6 +17,10 @@
           <cell name="a_866875c18d51434ba0b9d88d2bfdb85e.bsr_registreeid" width="227" />
           <cell name="a_866875c18d51434ba0b9d88d2bfdb85e.bsr_applicationstage" width="325" />
           <cell name="a_866875c18d51434ba0b9d88d2bfdb85e.statuscode" width="276" />
+          <cell name="a_65d4a300482c413ea807be3ad91a2afc.bsr_mbppapcode" width="141" />
+          <cell name="a_65d4a300482c413ea807be3ad91a2afc.bsr_numberofassociatedbuildingspap" width="179" />
+          <cell name="a_e115537b7dce44fd9e718314614a5809.bsr_mbpcode" width="211" />
+          <cell name="a_e115537b7dce44fd9e718314614a5809.bsr_numberofassociatedbuildings" width="249" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -40,6 +44,14 @@
             <attribute name="statuscode" />
           </link-entity>
           <attribute name="bsr_numberofsectionsassociatedtoabuilding" />
+          <link-entity alias="a_65d4a300482c413ea807be3ad91a2afc" name="contact" to="bsr_papid" from="contactid" link-type="outer" visible="false">
+            <attribute name="bsr_mbppapcode" />
+            <attribute name="bsr_numberofassociatedbuildingspap" />
+          </link-entity>
+          <link-entity alias="a_e115537b7dce44fd9e718314614a5809" name="contact" to="bsr_paporgleadcontactid" from="contactid" link-type="outer" visible="false">
+            <attribute name="bsr_mbpcode" />
+            <attribute name="bsr_numberofassociatedbuildings" />
+          </link-entity>
         </entity>
       </fetch>
     </fetchxml>

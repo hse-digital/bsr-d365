@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{fd0577af-c6d7-ee11-904c-000d3a0cd6d5}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
+        <row name="result" id="bsr_bacapplicationid">
+          <cell name="bsr_name" width="300" />
+          <cell name="bsr_buildingapplicationid" width="155" />
+          <cell name="bsr_buildingid" width="100" />
+          <cell name="bsr_submittedbyid" width="116" />
+          <cell name="bsr_bacstageid" width="104" />
+          <cell name="statuscode" width="119" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical" distinct="true">
+        <entity name="bsr_bacapplication">
+          <attribute name="bsr_name" />
+          <attribute name="createdon" />
+          <order attribute="bsr_name" descending="false" />
+          <attribute name="bsr_buildingapplicationid" />
+          <attribute name="bsr_buildingid" />
+          <attribute name="bsr_submittedbyid" />
+          <attribute name="bsr_bacstageid" />
+          <attribute name="statuscode" />
+          <attribute name="bsr_bacapplicationid" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+            <condition attribute="bsr_bacstageid" operator="eq" value="760810001" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.17.104.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Submitted BAC applications" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Submitted BAC applications" languagecode="1033" />
+    </Descriptions>
+  </savedquery>
+</savedqueries>

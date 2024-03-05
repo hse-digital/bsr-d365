@@ -20,6 +20,10 @@
           <cell name="bsr_numberofmanuallyenteredaddresses" width="259" />
           <cell name="bsr_registreeid" width="140" />
           <cell name="statuscode" width="144" />
+          <cell name="a_54eb325886c349e79c96184c8992976d.bsr_mbppapcode" width="141" />
+          <cell name="a_54eb325886c349e79c96184c8992976d.bsr_numberofassociatedbuildingspap" width="179" />
+          <cell name="a_d0ef867f31e746ecaccff8075baa1053.bsr_mbpcode" width="211" />
+          <cell name="a_d0ef867f31e746ecaccff8075baa1053.bsr_numberofassociatedbuildings" width="249" />
           <cell name="ownerid" width="100" />
           <cell name="createdon" width="105" />
         </row>
@@ -50,12 +54,18 @@
           </link-entity>
           <link-entity alias="a_54eb325886c349e79c96184c8992976d" name="contact" to="bsr_papid" from="contactid" link-type="outer" visible="false">
             <attribute name="bsr_manualaddress" />
+            <attribute name="bsr_mbppapcode" />
+            <attribute name="bsr_numberofassociatedbuildingspap" />
           </link-entity>
           <attribute name="bsr_numberofmanuallyenteredaddresses" />
           <attribute name="bsr_registreeid" />
           <attribute name="statuscode" />
           <attribute name="ownerid" />
           <attribute name="createdon" />
+          <link-entity alias="a_d0ef867f31e746ecaccff8075baa1053" name="contact" to="bsr_paporgleadcontactid" from="contactid" link-type="outer" visible="false">
+            <attribute name="bsr_mbpcode" />
+            <attribute name="bsr_numberofassociatedbuildings" />
+          </link-entity>
         </entity>
       </fetch>
     </fetchxml>

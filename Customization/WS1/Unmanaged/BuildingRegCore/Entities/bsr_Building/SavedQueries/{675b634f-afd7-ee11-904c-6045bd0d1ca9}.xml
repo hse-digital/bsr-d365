@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{675b634f-afd7-ee11-904c-6045bd0d1ca9}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
+        <row name="result" id="bsr_buildingid">
+          <cell name="bsr_name" width="200" />
+          <cell name="bsr_tranchecode" width="100" />
+          <cell name="bsr_overallaveragefireriskscore" width="223" />
+          <cell name="bsr_overallaveragestructureriskscore" width="252" />
+          <cell name="bsr_scaledoverallaverageriskscore" width="233" />
+          <cell name="a_ed68bfe481224ba79c4ae9586b342c63.bsr_applicationid" width="298" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
+        <entity name="bsr_building">
+          <attribute name="bsr_name" />
+          <attribute name="bsr_buildingid" />
+          <filter type="and">
+            <condition attribute="bsr_bacdirectionstatecode" operator="eq" value="760810000" />
+          </filter>
+          <attribute name="bsr_tranchecode" />
+          <attribute name="bsr_overallaveragefireriskscore" />
+          <attribute name="bsr_overallaveragestructureriskscore" />
+          <attribute name="bsr_scaledoverallaverageriskscore" />
+          <link-entity alias="a_ed68bfe481224ba79c4ae9586b342c63" name="bsr_buildingapplication" to="bsr_buildingapplication_buildingid" from="bsr_buildingapplicationid" link-type="outer" visible="false">
+            <attribute name="bsr_applicationid" />
+          </link-entity>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.17.104.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="BAC Applications Awaiting Direction" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{7c707dcf-b014-4263-9ffc-b96d23d7d03e}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
+        <row name="result" id="bsr_backgroundinformationrequestid">
+          <cell name="bsr_name" width="300" />
+          <cell name="bsr_buildingid" width="100" />
+          <cell name="createdon" width="125" />
+          <cell name="createdonbehalfby" width="166" />
+          <cell name="bsr_informationproviderid" width="159" />
+          <cell name="bsr_informationtypeid" width="139" />
+          <cell name="bsr_description" width="106" />
+          <cell name="statuscode" width="119" />
+          <cell name="bsr_onholdreasonid" width="134" />
+          <cell name="bsr_backgroundinformationreceiveddate" width="265" />
+          <cell name="bsr_backgroundinformationrequesteddate" width="271" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="bsr_backgroundinformationrequest">
+          <attribute name="bsr_backgroundinformationrequestid" />
+          <attribute name="bsr_name" />
+          <attribute name="createdon" />
+          <order attribute="bsr_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="bsr_buildingid" />
+          <attribute name="createdonbehalfby" />
+          <attribute name="bsr_informationproviderid" />
+          <attribute name="bsr_informationtypeid" />
+          <attribute name="bsr_description" />
+          <attribute name="statuscode" />
+          <attribute name="bsr_onholdreasonid" />
+          <attribute name="bsr_backgroundinformationreceiveddate" />
+          <attribute name="bsr_backgroundinformationrequesteddate" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Background information Requests" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
