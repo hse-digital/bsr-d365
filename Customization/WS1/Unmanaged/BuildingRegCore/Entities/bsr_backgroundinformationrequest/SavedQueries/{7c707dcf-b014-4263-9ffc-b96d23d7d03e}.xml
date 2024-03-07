@@ -21,6 +21,7 @@
           <cell name="bsr_onholdreasonid" width="134" />
           <cell name="bsr_backgroundinformationreceiveddate" width="265" />
           <cell name="bsr_backgroundinformationrequesteddate" width="271" />
+          <cell name="a_f02312b08bb245f6ab25ed5da07d783e.bsr_bsrservicecode" width="219" />
         </row>
       </grid>
     </layoutxml>
@@ -44,6 +45,9 @@
           <attribute name="bsr_onholdreasonid" />
           <attribute name="bsr_backgroundinformationreceiveddate" />
           <attribute name="bsr_backgroundinformationrequesteddate" />
+          <link-entity alias="a_f02312b08bb245f6ab25ed5da07d783e" name="bsr_onholdreason" to="bsr_onholdreasonid" from="bsr_onholdreasonid" link-type="outer" visible="false">
+            <attribute name="bsr_bsrservicecode" />
+          </link-entity>
         </entity>
       </fetch>
     </fetchxml>

@@ -16,26 +16,33 @@
           <cell name="bsr_submittedbyid" width="116" />
           <cell name="bsr_bacstageid" width="104" />
           <cell name="statuscode" width="119" />
+          <cell name="bsr_caseofficerid" width="111" />
+          <cell name="bsr_principalregulatoryleadid" width="188" />
+          <cell name="bsr_regulatoryleadid" width="134" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" mapping="logical">
+      <fetch version="1.0" mapping="logical" distinct="true">
         <entity name="bsr_bacapplication">
           <attribute name="bsr_name" />
           <attribute name="createdon" />
           <order attribute="bsr_name" descending="false" />
-          <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
-          </filter>
           <attribute name="bsr_buildingapplicationid" />
           <attribute name="bsr_buildingid" />
           <attribute name="bsr_submittedbyid" />
           <attribute name="bsr_bacstageid" />
           <attribute name="statuscode" />
           <attribute name="bsr_bacapplicationid" />
+          <filter type="and">
+            <condition attribute="statuscode" operator="ne" value="760810007" />
+            <condition attribute="statuscode" operator="ne" value="760810006" />
+          </filter>
+          <attribute name="bsr_caseofficerid" />
+          <attribute name="bsr_principalregulatoryleadid" />
+          <attribute name="bsr_regulatoryleadid" />
         </entity>
       </fetch>
     </fetchxml>

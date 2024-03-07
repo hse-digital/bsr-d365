@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{494d4871-a7db-ee11-904c-6045bd0ac62f}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
+        <row name="result" id="bsr_bacapplicationid">
+          <cell name="bsr_name" width="300" />
+          <cell name="bsr_buildingapplicationid" width="155" />
+          <cell name="bsr_buildingid" width="100" />
+          <cell name="bsr_submittedbyid" width="116" />
+          <cell name="bsr_bacstageid" width="104" />
+          <cell name="statuscode" width="119" />
+          <cell name="bsr_caseofficerid" width="111" />
+          <cell name="bsr_principalregulatoryleadid" width="188" />
+          <cell name="bsr_regulatoryleadid" width="134" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical" distinct="true">
+        <entity name="bsr_bacapplication">
+          <attribute name="bsr_name" />
+          <attribute name="createdon" />
+          <order attribute="bsr_name" descending="false" />
+          <attribute name="bsr_buildingapplicationid" />
+          <attribute name="bsr_buildingid" />
+          <attribute name="bsr_submittedbyid" />
+          <attribute name="bsr_bacstageid" />
+          <attribute name="statuscode" />
+          <attribute name="bsr_bacapplicationid" />
+          <filter type="and">
+            <condition attribute="statuscode" operator="ne" value="760810007" />
+            <condition attribute="statuscode" operator="ne" value="760810006" />
+            <condition attribute="ownerid" operator="eq-userid" />
+          </filter>
+          <attribute name="bsr_caseofficerid" />
+          <attribute name="bsr_principalregulatoryleadid" />
+          <attribute name="bsr_regulatoryleadid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.17.105.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="My BAC Applications" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

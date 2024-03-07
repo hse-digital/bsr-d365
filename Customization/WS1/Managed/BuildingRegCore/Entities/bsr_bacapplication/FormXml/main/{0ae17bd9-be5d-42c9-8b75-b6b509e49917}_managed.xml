@@ -7,12 +7,12 @@
     <FormActivationState>1</FormActivationState>
     <form headerdensity="HighWithControls">
       <tabs>
-        <tab verticallayout="true" id="{d4bc2609-4ba0-4c8a-acbd-670423414ab6}" IsUserDefined="1">
+        <tab verticallayout="true" id="{d4bc2609-4ba0-4c8a-acbd-670423414ab6}" IsUserDefined="1" name="{d4bc2609-4ba0-4c8a-acbd-670423414ab6}" locklevel="0" expanded="true" showlabel="true">
           <labels>
             <label description="General" languagecode="1033" />
           </labels>
           <columns>
-            <column width="100%">
+            <column width="50%">
               <sections>
                 <section name="null_section_3" id="18311c5a-ee25-4db2-9af9-f2a68e971492" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115">
                   <labels>
@@ -20,29 +20,17 @@
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{0bb14b03-26c9-48c0-87e9-a0324667808a}">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                      <cell id="{1267fcce-ebd1-4bd0-be42-2f95ff0eb85e}">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
-                    <row>
                       <cell id="{069b133a-1f26-4ddf-aeed-99721cd791f8}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="BAC Application Number" languagecode="1033" />
                         </labels>
                         <control id="bsr_bacapplicationnumber" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_bacapplicationnumber" disabled="true" />
                       </cell>
-                      <cell id="{e1302dbe-b8e3-218e-aea7-e1a19e590547}" showlabel="true" rowspan="15" auto="false" colspan="1">
+                      <cell id="{2bc813cc-0575-4763-95b1-d90a54de8058}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="Note Text" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
-                        <control id="notescontrol" classid="{06375649-c143-495e-a496-c962e5b4488e}" />
+                        <control id="bsr_principalregulatoryleadid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_principalregulatoryleadid" disabled="false" />
                       </cell>
                     </row>
                     <row>
@@ -51,6 +39,12 @@
                           <label description="Building application" languagecode="1033" />
                         </labels>
                         <control id="bsr_buildingapplicationid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_buildingapplicationid" disabled="false" />
+                      </cell>
+                      <cell id="{d3d35996-072b-4495-a1c4-592edb16f12b}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_regulatoryleadid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_regulatoryleadid" disabled="false" />
                       </cell>
                     </row>
                     <row>
@@ -66,6 +60,12 @@
                           </parameters>
                         </control>
                       </cell>
+                      <cell id="{d45063a0-39c9-4d99-8d65-32959aac67f3}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_caseofficerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_caseofficerid" disabled="false" />
+                      </cell>
                     </row>
                     <row>
                       <cell id="{ba76b906-1b45-4a38-a3af-e44effbf4ca8}" locklevel="0" colspan="1" rowspan="1">
@@ -74,30 +74,26 @@
                         </labels>
                         <control id="bsr_buildingid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_buildingid" disabled="false" />
                       </cell>
-                    </row>
-                    <row>
-                      <cell id="{c31772c7-d888-2685-a91a-9368e7629532}" showlabel="false" colspan="1" auto="false" rowspan="1">
+                      <cell id="{26eea2ac-e28b-4086-af4b-4a461f5283fe}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="Building Quick View form" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
-                        <control id="BuildingQuickViewform" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="bsr_buildingid" disabled="false">
+                        <control id="bsr_onholdreasonid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_onholdreasonid" disabled="false">
                           <parameters>
-                            <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="bsr_building"&gt;0d551a37-747c-47be-86e2-b17cf31f0956&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
-                            <ControlMode>Edit</ControlMode>
-                            <DisplayAsCustomer360Tile>false</DisplayAsCustomer360Tile>
+                            <DefaultViewId>{5FC12D17-C9DB-EE11-904C-002248C748E0}</DefaultViewId>
+                            <AvailableViewIds>{E1DCA288-3349-4D57-9420-9DF8A065E646},{5FC12D17-C9DB-EE11-904C-002248C748E0},{AB76C26A-2E45-4EB3-A5C0-35F257E54DE4},{51BA5E97-BA85-4192-8E84-53F4D940906D}</AvailableViewIds>
+                            <DisableViewPicker>false</DisableViewPicker>
                           </parameters>
                         </control>
                       </cell>
                     </row>
                     <row>
-                      <cell id="{b8c6f6bd-5f97-4a6f-b29e-d9ea95b8d0f8}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{71ea1123-45eb-483e-93cc-6e6ffb835f77}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="Submitted by" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
-                        <control id="bsr_submittedbyid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_submittedbyid" disabled="false" />
+                        <control id="bsr_pappapnamedcontactid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_pappapnamedcontactid" disabled="false" />
                       </cell>
-                    </row>
-                    <row>
                       <cell id="{6b044e54-920e-48ee-86af-74fd206dbc2e}" locklevel="0" colspan="1" rowspan="1" showlabel="true">
                         <labels>
                           <label description="BAC declaration" languagecode="1033" />
@@ -106,6 +102,30 @@
                       </cell>
                     </row>
                     <row>
+                      <cell locklevel="0" id="{00c6f37a-f4b8-4933-a262-5aa5f6c472c6}" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="New QV control 1709733620573" languagecode="1033" />
+                        </labels>
+                        <control id="QuickviewControl1709733620573" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="bsr_pappapnamedcontactid">
+                          <parameters>
+                            <DisplayAsCustomer360Tile>false</DisplayAsCustomer360Tile>
+                            <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="contact"&gt;714e74da-c1db-ee11-904c-002248c748e0&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
+                          </parameters>
+                        </control>
+                      </cell>
+                      <cell id="{b8c6f6bd-5f97-4a6f-b29e-d9ea95b8d0f8}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Submitted by" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_submittedbyid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_submittedbyid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{99407ab5-aae8-8d84-0e64-3c67ad428648}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
                       <cell id="{3b8dafdf-8bf4-4555-9a0a-866bedaf3208}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="Created On" languagecode="1033" />
@@ -113,55 +133,54 @@
                         <control id="createdon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="createdon" disabled="false" />
                       </cell>
                     </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="50%">
+              <sections>
+                <section name="null_section_32" id="7a837386-6ad5-4c04-9f1c-7e995885e1df" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="58">
+                  <labels>
+                    <label description="Outcomes" languagecode="1033" />
+                  </labels>
+                  <rows>
                     <row>
-                      <cell locklevel="0" id="{3a8042ec-1e7a-4078-9edb-f41b7805cefd}" showlabel="false">
+                      <cell id="{5e677753-0e5d-40fd-bd27-fb098015f6b5}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
                       </cell>
                     </row>
                     <row>
-                      <cell locklevel="0" id="{b2b6e328-f325-4bf3-8efd-372bbbcf3b39}" showlabel="false">
+                      <cell id="{0d35cf14-4a3c-4044-bd1c-fd84628231cb}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
+                        <control id="bsr_validationoutcomecode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_validationoutcomecode" disabled="false" />
                       </cell>
                     </row>
                     <row>
-                      <cell locklevel="0" id="{20c91b57-9721-4e0f-9fe1-264827e7387a}" showlabel="false">
+                      <cell id="{b401ea42-c080-7498-777d-8009c171428e}" showlabel="true" rowspan="15" auto="false" colspan="1">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Note Text" languagecode="1033" />
                         </labels>
+                        <control id="notescontrol" classid="{06375649-c143-495e-a496-c962e5b4488e}" />
                       </cell>
                     </row>
-                    <row>
-                      <cell locklevel="0" id="{57e3b855-48f4-456f-b021-195a9d88b91c}" showlabel="false">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
-                    <row>
-                      <cell locklevel="0" id="{2d617a3b-ea91-44a1-8ba3-d7d748474c95}" showlabel="false">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
-                    <row>
-                      <cell locklevel="0" id="{74c23cb9-f303-4113-955b-ae08f7ef726b}" showlabel="false">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
-                    <row>
-                      <cell locklevel="0" id="{f67b25ea-f4a7-45ee-85d0-d6c53d8210af}" showlabel="false">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
                   </rows>
                 </section>
               </sections>
@@ -206,7 +225,7 @@
                         </control>
                       </cell>
                     </row>
-                    <row></row>
+                    <row />
                     <row />
                     <row />
                     <row />
@@ -284,7 +303,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar></NavBar>
+        <NavBar />
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
