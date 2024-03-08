@@ -118,5 +118,24 @@
         console.log(error.message);
       }
     );
-  }
+    }
+
+    export function ShowHideTransitionalSection(executionContext: Xrm.ExecutionContext<any, any>) {
+
+        Form = <Form.bsr_buildingdetails.Main.Information>(
+            executionContext.getFormContext()
+        );
+
+        var transitionalBuilding = Form.getAttribute("bsr_transitionalbuilding").getValue();
+        var transitionalSection = Form.ui.tabs.get("tab1").sections.get("transitional_section");
+        var transitionalSubgridSection = Form.ui.tabs.get("tab1").sections.get("transitional_subgrid_section");
+
+        if (transitionalBuilding === true) {
+            transitionalSection.setVisible(true);
+            transitionalSubgridSection.setVisible(true);
+        } else {
+            transitionalSection.setVisible(false);
+            transitionalSubgridSection.setVisible(false);
+        }
+    }
 }
