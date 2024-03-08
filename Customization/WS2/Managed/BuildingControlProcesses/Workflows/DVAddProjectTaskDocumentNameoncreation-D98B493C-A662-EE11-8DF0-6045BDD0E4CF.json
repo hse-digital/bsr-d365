@@ -1,0 +1,120 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS2"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "ff991be8-8bea-4e77-9072-004315877e83"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "parameters": {
+              "subscriptionRequest/message": 1,
+              "subscriptionRequest/entityname": "bsr_projecttaskdocument",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/name": "d98b493c-a662-ee11-8df0-6045bdd0e4cf"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        }
+      },
+      "actions": {
+        "Update_a_row": {
+          "runAfter": {
+            "Document_Name": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "45aaf968-8513-456c-9b46-0c729cf45484"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "bsr_projecttaskdocuments",
+              "recordId": "@triggerOutputs()?['body/bsr_projecttaskdocumentid']",
+              "item/bsr_name": "@{outputs('Task_Name')} - @{outputs('Document_Name')}"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        },
+        "Document_Name": {
+          "runAfter": {
+            "Task_Name": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "70d5411a-d5c0-4895-96ab-f5dd9da76cba"
+          },
+          "type": "Compose",
+          "inputs": "@outputs('Get_a_row_by_ID')?['body/_bsr_bsrdocumentid_value@OData.Community.Display.V1.FormattedValue']"
+        },
+        "Get_a_row_by_ID": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "902fb9e9-587e-4046-8524-859bce56ee9d"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "bsr_projecttaskdocuments",
+              "recordId": "@triggerOutputs()?['body/bsr_projecttaskdocumentid']",
+              "$select": "_bsr_bsrdocumentid_value,_bsr_taskid_value"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        },
+        "Task_Name": {
+          "runAfter": {
+            "Get_a_row_by_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "58f8b804-e12c-4703-b978-2a1c832e7c0b"
+          },
+          "type": "Compose",
+          "inputs": "@outputs('Get_a_row_by_ID')?['body/_bsr_taskid_value@OData.Community.Display.V1.FormattedValue']"
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

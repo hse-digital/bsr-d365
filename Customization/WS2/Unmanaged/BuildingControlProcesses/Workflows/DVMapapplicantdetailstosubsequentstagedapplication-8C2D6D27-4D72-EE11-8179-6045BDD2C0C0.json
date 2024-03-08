@@ -1,0 +1,97 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS2"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "When_Subsequent_Staged_Application_is_added": {
+          "metadata": {
+            "operationMetadataId": "ee8c04b6-d28c-4f63-896b-3777a4d972f9"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "parameters": {
+              "subscriptionRequest/message": 1,
+              "subscriptionRequest/entityname": "bsr_buildingcontrolapplication",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filterexpression": "bsr_issubsequentstagedapp eq true",
+              "subscriptionRequest/name": "8c2d6d27-4d72-ee11-8179-6045bdd2c0c0"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        }
+      },
+      "actions": {
+        "Get_(Stage_1)_BCA_record": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "778cdae9-a74e-409f-b539-b4500a8618b8"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "bsr_buildingcontrolapplications",
+              "recordId": "@triggerOutputs()?['body/_bsr_mainbcaappid_value']",
+              "$select": "_bsr_applicantid_value"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        },
+        "Add_Applicant_details_from_Stage_1_BCA_to_subsequent_staged_app_record": {
+          "runAfter": {
+            "Get_(Stage_1)_BCA_record": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "5bcddde4-108b-4b7e-a0c4-e0b42f629e77"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "bsr_buildingcontrolapplications",
+              "recordId": "@triggerOutputs()?['body/bsr_buildingcontrolapplicationid']",
+              "item/bsr_applicantid@odata.bind": "/contacts(@{outputs('Get_(Stage_1)_BCA_record')?['body/_bsr_applicantid_value']})"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

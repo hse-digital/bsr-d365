@@ -1,0 +1,131 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS2"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "Declaration_Record_Added": {
+          "metadata": {
+            "operationMetadataId": "f8f4beed-1d85-43f5-a7eb-a54ecadcedb5"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "parameters": {
+              "subscriptionRequest/message": 1,
+              "subscriptionRequest/entityname": "bsr_declarations",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/name": "d51073ac-8f93-ee11-be37-6045bdd0e4cf"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        }
+      },
+      "actions": {
+        "Get_BCA_Name": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "762f8dac-ea0a-40b4-a6cc-31a7494b8fec"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "bsr_buildingcontrolapplications",
+              "recordId": "@triggerOutputs()?['body/_bsr_bcaaid_value']",
+              "$select": "bsr_name"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        },
+        "Update_Declaration_Record": {
+          "runAfter": {
+            "Type_Option_Set_Label": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "03ddaff3-cc86-4e57-9ad9-2af17fb08482"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "bsr_declarationses",
+              "recordId": "@triggerOutputs()?['body/bsr_declarationsid']",
+              "item/bsr_name": "@{outputs('Get_BCA_Name')?['body/bsr_name']} - @{outputs('Type_Option_Set_Label')} Declaration"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        },
+        "Type_Option_Set_Label": {
+          "runAfter": {
+            "Get_Declaration_Type_(needed_for_Compose)": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f900f582-c40d-41d3-8c96-bd9516ee1c66"
+          },
+          "type": "Compose",
+          "inputs": "@outputs('Get_Declaration_Type_(needed_for_Compose)')?['body/bsr_type@OData.Community.Display.V1.FormattedValue']"
+        },
+        "Get_Declaration_Type_(needed_for_Compose)": {
+          "runAfter": {
+            "Get_BCA_Name": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "32d67a7a-0944-47d3-8891-7712f5cee358"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "bsr_declarationses",
+              "recordId": "@triggerOutputs()?['body/bsr_declarationsid']",
+              "$select": "bsr_type"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

@@ -1,0 +1,107 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS2"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "When_reg_lead_or_case_officer_is_modified": {
+          "metadata": {
+            "operationMetadataId": "4eb97837-76ca-4cb7-891c-36e4cadbaeca"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "bsr_buildingcontrolapplication",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ownerid,bsr_caseofficer",
+              "subscriptionRequest/filterexpression": "_ownerid_value ne null and _bsr_caseofficer_value ne null",
+              "subscriptionRequest/name": "3a685418-a88e-ee11-be36-6045bdd0e4cf"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        }
+      },
+      "actions": {
+        "Get_all_related_Building_Details_records": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "f9f2bc24-9e33-4e58-a255-e4e7f05da690"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "bsr_buildingdetailses",
+              "$filter": "_bsr_bcapplicationid_value eq @{triggerOutputs()?['body/bsr_buildingcontrolapplicationid']}"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('Get_all_related_Building_Details_records')?['body/value']",
+          "actions": {
+            "Update_case_officer_and_reg_lead": {
+              "metadata": {
+                "operationMetadataId": "5761f504-2fc4-4ca8-b806-a6243ba9deb0"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "entityName": "bsr_buildingdetailses",
+                  "recordId": "@items('Apply_to_each')?['bsr_buildingdetailsid']",
+                  "item/bsr_bdrcaseofficer@odata.bind": "systemusers(@{triggerOutputs()?['body/_bsr_caseofficer_value']})",
+                  "item/ownerid@odata.bind": "systemusers(@{triggerOutputs()?['body/_ownerid_value']})"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "connectionName": "shared_commondataserviceforapps"
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Get_all_related_Building_Details_records": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "42200d13-82cc-48df-8d00-d735ed613f21"
+          },
+          "type": "Foreach"
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

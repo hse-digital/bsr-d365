@@ -1,0 +1,297 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS2"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "When_Major_Change_is_Validated": {
+          "metadata": {
+            "operationMetadataId": "933bb2eb-0206-449f-95c5-8f4c8c969b66"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "bsr_changerequest",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "bsr_validapplication",
+              "subscriptionRequest/filterexpression": "_bsr_changecategoryid_value eq 8c5213d0-547a-ee11-8179-6045bdf1e965 and bsr_validapplication eq true",
+              "subscriptionRequest/name": "f685d418-457d-ee11-8179-6045bdf1e965"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        }
+      },
+      "actions": {
+        "Get_related_Building_Control_Application_record": {
+          "runAfter": {
+            "Mandatory_Failure_Date_(Submitted_On_Plus_42_Days)": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2455c3c9-6ee1-409b-83af-3111e9547dfc"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "bsr_buildingcontrolapplications",
+              "recordId": "@triggerOutputs()?['body/_bsr_buildingcontrolapplicationid_value']"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        },
+        "Check_if_retrieved_BCA_has_Subsequent_Staged_Application_to_Yes_or_No": {
+          "actions": {
+            "Get_The_main_BCA_record_": {
+              "metadata": {
+                "operationMetadataId": "e15a5928-4d3a-4157-8264-9345a5d45a6f"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "entityName": "bsr_buildingcontrolapplications",
+                  "recordId": "@outputs('Get_related_Building_Control_Application_record')?['body/_bsr_mainbcaappid_value']"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "connectionName": "shared_commondataserviceforapps"
+                }
+              }
+            },
+            "List_related_Building_Details_Record_2": {
+              "runAfter": {
+                "Get_The_main_BCA_record_": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "9dcd279c-19c3-419e-ad7b-06c05b069036"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "entityName": "bsr_buildingdetailses",
+                  "$filter": "_bsr_bcapplicationid_value eq '@{outputs('Get_The_main_BCA_record_')?['body/bsr_buildingcontrolapplicationid']}'",
+                  "$top": 1
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "connectionName": "shared_commondataserviceforapps"
+                }
+              }
+            },
+            "Apply_to_each_2": {
+              "foreach": "@outputs('List_related_Building_Details_Record_2')?['body/value']",
+              "actions": {
+                "Create_Building_Control_Lifecycle_record_2": {
+                  "metadata": {
+                    "operationMetadataId": "b319cedf-7389-4165-9fa7-921f57805081"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "parameters": {
+                      "entityName": "bsr_buildingcontrollifecycles",
+                      "item/bsr_bcaaapplication@odata.bind": "/bsr_buildingcontrolapplications(@{outputs('Get_related_Building_Control_Application_record')?['body/bsr_buildingcontrolapplicationid']})",
+                      "item/bsr_buildingdetails@odata.bind": "/bsr_buildingdetailses(@{items('Apply_to_each_2')?['bsr_buildingdetailsid']})",
+                      "item/bsr_lifecyclephase": 760810000,
+                      "item/bsr_name": "@triggerOutputs()?['body/bsr_referencenumber']",
+                      "item/bsr_reglead@odata.bind": "/systemusers(@{outputs('Get_The_main_BCA_record_')?['body/_ownerid_value']})",
+                      "item/bsr_buildingname": "@items('Apply_to_each_2')?['bsr_name']",
+                      "item/bsr_changecontrol": true,
+                      "item/bsr_mandatorytimelinefailuredate": "@variables('mandatoryFailureDate')"
+                    },
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                      "operationId": "CreateRecord",
+                      "connectionName": "shared_commondataserviceforapps"
+                    }
+                  }
+                },
+                "Update_the_Change_Request_with_BCL_2": {
+                  "runAfter": {
+                    "Create_Building_Control_Lifecycle_record_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "ebbee1fc-2da2-41bc-b837-be94f0a418c8"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "parameters": {
+                      "entityName": "bsr_changerequests",
+                      "recordId": "@triggerOutputs()?['body/bsr_changerequestid']",
+                      "item/bsr_buildingcontrollifecycleid@odata.bind": "/bsr_buildingcontrollifecycles(@{outputs('Create_Building_Control_Lifecycle_record_2')?['body/bsr_buildingcontrollifecycleid']})"
+                    },
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "connectionName": "shared_commondataserviceforapps"
+                    }
+                  }
+                }
+              },
+              "runAfter": {
+                "List_related_Building_Details_Record_2": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "fcc7028d-0a1d-48f1-b319-8f8e4e83e423"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "Get_related_Building_Control_Application_record": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "List_related_Building_Details_Record": {
+                "metadata": {
+                  "operationMetadataId": "5b021a45-8ea9-442c-b785-edfd82b686b3"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "parameters": {
+                    "entityName": "bsr_buildingdetailses",
+                    "$filter": "_bsr_bcapplicationid_value eq '@{outputs('Get_related_Building_Control_Application_record')?['body/bsr_buildingcontrolapplicationid']}'",
+                    "$top": 1
+                  },
+                  "host": {
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                    "operationId": "ListRecords",
+                    "connectionName": "shared_commondataserviceforapps"
+                  }
+                }
+              },
+              "Apply_to_each": {
+                "foreach": "@outputs('List_related_Building_Details_Record')?['body/value']",
+                "actions": {
+                  "Create_Building_Control_Lifecycle_record": {
+                    "metadata": {
+                      "operationMetadataId": "b319cedf-7389-4165-9fa7-921f57805081"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "parameters": {
+                        "entityName": "bsr_buildingcontrollifecycles",
+                        "item/bsr_bcaaapplication@odata.bind": "/bsr_buildingcontrolapplications(@{outputs('Get_related_Building_Control_Application_record')?['body/bsr_buildingcontrolapplicationid']})",
+                        "item/bsr_buildingdetails@odata.bind": "/bsr_buildingdetailses(@{items('Apply_to_each')?['bsr_buildingdetailsid']})",
+                        "item/bsr_lifecyclephase": 760810000,
+                        "item/bsr_name": "@triggerOutputs()?['body/bsr_referencenumber']",
+                        "item/bsr_reglead@odata.bind": "/systemusers(@{outputs('Get_related_Building_Control_Application_record')?['body/_ownerid_value']})",
+                        "item/bsr_buildingname": "@items('Apply_to_each')?['bsr_name']",
+                        "item/bsr_changecontrol": true,
+                        "item/bsr_mandatorytimelinefailuredate": "@variables('mandatoryFailureDate')"
+                      },
+                      "host": {
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                        "operationId": "CreateRecord",
+                        "connectionName": "shared_commondataserviceforapps"
+                      }
+                    }
+                  },
+                  "Update_the_Change_Request_with_BCL": {
+                    "runAfter": {
+                      "Create_Building_Control_Lifecycle_record": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "ebbee1fc-2da2-41bc-b837-be94f0a418c8"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "parameters": {
+                        "entityName": "bsr_changerequests",
+                        "recordId": "@triggerOutputs()?['body/bsr_changerequestid']",
+                        "item/bsr_buildingcontrollifecycleid@odata.bind": "/bsr_buildingcontrollifecycles(@{outputs('Create_Building_Control_Lifecycle_record')?['body/bsr_buildingcontrollifecycleid']})"
+                      },
+                      "host": {
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                        "operationId": "UpdateRecord",
+                        "connectionName": "shared_commondataserviceforapps"
+                      }
+                    }
+                  }
+                },
+                "runAfter": {
+                  "List_related_Building_Details_Record": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "927a8fe5-f84e-4e54-aaab-1d2bbf7ba094"
+                },
+                "type": "Foreach"
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@outputs('Get_related_Building_Control_Application_record')?['body/bsr_issubsequentstagedapp']",
+              true
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9c1f6db1-7ff9-427f-8f5d-eb2685b26ef5"
+          },
+          "type": "If"
+        },
+        "Mandatory_Failure_Date_(Submitted_On_Plus_42_Days)": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "15e6fe89-8a6e-47a4-978f-c33ac85eb9fa"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "mandatoryFailureDate",
+                "type": "string",
+                "value": "@{addDays(triggerOutputs()?['body/bsr_submittedondate'],42)}"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

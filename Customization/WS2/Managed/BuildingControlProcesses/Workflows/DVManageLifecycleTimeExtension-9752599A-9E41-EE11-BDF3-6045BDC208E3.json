@@ -1,0 +1,114 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS2"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "When_Time_Requirement_is_updated": {
+          "metadata": {
+            "operationMetadataId": "67d405f3-92f0-4df8-9d37-436ed38071e1"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "bsr_buildingcontrollifecycle",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "bsr_agreedextensionperiod",
+              "subscriptionRequest/name": "9752599a-9e41-ee11-bdf3-6045bdc208e3"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "connectionName": "shared_commondataserviceforapps_1"
+            }
+          }
+        }
+      },
+      "actions": {
+        "Update_Mandatory_Timeline_Failure_Date": {
+          "runAfter": {
+            "Initialize_Agreed_Extension_Period": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "aad41680-0c4a-43fc-8ccf-3983d927f9f4"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "bsr_buildingcontrollifecycles",
+              "recordId": "@triggerOutputs()?['body/bsr_buildingcontrollifecycleid']",
+              "item/bsr_mandatorytimelinefailuredate": "@addDays(variables('Mandatory Timeline Failure Date'), variables('Agreed Extension Period'))"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "connectionName": "shared_commondataserviceforapps_1"
+            }
+          }
+        },
+        "Initialize_Mandatory_Failure_Date": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "a3195161-e5cf-4ac2-8e42-8a9c8ed630d3"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Mandatory Timeline Failure Date",
+                "type": "string",
+                "value": "@{addDays(triggerBody()['bsr_mandatorytimelinefailuredate'], 0)}"
+              }
+            ]
+          }
+        },
+        "Initialize_Agreed_Extension_Period": {
+          "runAfter": {
+            "Initialize_Mandatory_Failure_Date": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "bbf1122c-1b70-49ea-9b72-7aab8e4241ed"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Agreed Extension Period",
+                "type": "integer",
+                "value": "@triggerOutputs()?['body/bsr_agreedextensionperiod']"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}
