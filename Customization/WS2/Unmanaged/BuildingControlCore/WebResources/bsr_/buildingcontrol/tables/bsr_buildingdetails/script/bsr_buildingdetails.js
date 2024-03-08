@@ -84,5 +84,20 @@ var BuildingDetails;
         });
     }
     BuildingDetails.ShowHideIfStagedApplication = ShowHideIfStagedApplication;
+    function ShowHideTransitionalSection(executionContext) {
+        Form = (executionContext.getFormContext());
+        var transitionalBuilding = Form.getAttribute("bsr_transitionalbuilding").getValue();
+        var transitionalSection = Form.ui.tabs.get("tab1").sections.get("transitional_section");
+        var transitionalSubgridSection = Form.ui.tabs.get("tab1").sections.get("transitional_subgrid_section");
+        if (transitionalBuilding === true) {
+            transitionalSection.setVisible(true);
+            transitionalSubgridSection.setVisible(true);
+        }
+        else {
+            transitionalSection.setVisible(false);
+            transitionalSubgridSection.setVisible(false);
+        }
+    }
+    BuildingDetails.ShowHideTransitionalSection = ShowHideTransitionalSection;
 })(BuildingDetails || (BuildingDetails = {}));
 //# sourceMappingURL=bsr_buildingdetails.js.map

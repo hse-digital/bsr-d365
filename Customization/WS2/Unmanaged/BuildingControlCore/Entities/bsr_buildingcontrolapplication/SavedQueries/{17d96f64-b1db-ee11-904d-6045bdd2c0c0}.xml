@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{17d96f64-b1db-ee11-904d-6045bdd2c0c0}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
+        <row name="result" id="bsr_buildingcontrolapplicationid">
+          <cell name="bsr_name" width="200" />
+          <cell name="bsr_bcaareferencenumber" width="179" />
+          <cell name="bsr_applicantid" width="133" />
+          <cell name="createdon" width="105" />
+          <cell name="bsr_submissiondate" width="136" />
+          <cell name="ownerid" width="134" />
+          <cell name="bsr_buildingcontrolapplicationstatus" width="243" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
+        <entity name="bsr_buildingcontrolapplication">
+          <attribute name="bsr_name" />
+          <attribute name="bsr_buildingcontrolapplicationid" />
+          <attribute name="bsr_bcaareferencenumber" />
+          <attribute name="bsr_applicantid" />
+          <attribute name="createdon" />
+          <attribute name="bsr_submissiondate" />
+          <attribute name="ownerid" />
+          <attribute name="bsr_buildingcontrolapplicationstatus" />
+          <order attribute="createdon" descending="false" />
+          <filter type="and">
+            <condition attribute="bsr_transitionalbuildingapp" operator="eq" value="1" />
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.87.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Transitional Building Applications" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
