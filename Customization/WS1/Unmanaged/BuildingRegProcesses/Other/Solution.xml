@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.24015.174" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.24022.184" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>BuildingRegProcesses</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Reg Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.12.60.0</Version>
+    <Version>1.12.61.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -105,7 +105,9 @@
       <RootComponent type="29" id="{57e520cc-43b1-ee11-a569-6045bd0c14e5}" behavior="0" />
       <RootComponent type="29" id="{64521b66-6527-47d1-b4aa-b2795f4e694a}" behavior="0" />
       <RootComponent type="29" id="{65643344-016c-ee11-9ae6-6045bd0c1726}" behavior="0" />
+      <RootComponent type="29" id="{65983779-34dd-ee11-904c-002248c748e0}" behavior="0" />
       <RootComponent type="29" id="{76ece167-ba7f-ee11-8179-6045bd0c1726}" behavior="0" />
+      <RootComponent type="29" id="{782adde6-65dd-ee11-904c-002248c748e0}" behavior="0" />
       <RootComponent type="29" id="{7f165d07-03a7-ed11-aad1-0022481b5e4f}" behavior="0" />
       <RootComponent type="29" id="{7faddab7-17fa-ed11-8f6d-002248c727e7}" behavior="0" />
       <RootComponent type="29" id="{82b1a383-ea20-ee11-9966-002248c72859}" behavior="0" />
@@ -120,6 +122,7 @@
       <RootComponent type="29" id="{b386cb98-b2cc-ee11-9079-6045bd0c14e5}" behavior="0" />
       <RootComponent type="29" id="{bbfbc85d-1256-ee11-be6f-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{bd4d2e09-7067-ee11-9ae6-6045bd0c18a5}" behavior="0" />
+      <RootComponent type="29" id="{bd79e2bd-ccde-ee11-904c-6045bd0ac62f}" behavior="0" />
       <RootComponent type="29" id="{cdf3d0a3-43c7-ed11-b596-6045bd0b9760}" behavior="0" />
       <RootComponent type="29" id="{d1a53032-2601-ee11-8f6c-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{d2846fde-1bb9-ee11-9078-6045bd0c1726}" behavior="0" />
@@ -161,6 +164,18 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_bacapplication" displayName="BAC Application" solution="Active" />
         <Dependent type="29" displayName="Create BAC Application Document Location" id="{b386cb98-b2cc-ee11-9079-6045bd0c14e5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_bacapplicationdirection" displayName="BAC Application Direction" solution="Active" />
+        <Dependent type="29" displayName="Send an Email based on 'BAC Direction Stae' to to PAP in Building" id="{65983779-34dd-ee11-904c-002248c748e0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_bacapplicationdirection" displayName="BAC Application Direction" solution="Active" />
+        <Dependent type="29" displayName="Set SLA Timer Field for BAC Application Direction" id="{782adde6-65dd-ee11-904c-002248c748e0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_bacapplicationdirection" displayName="BAC Application Direction" solution="Active" />
+        <Dependent type="29" displayName="Scheduled flow to Send an Email based on 'BAC Direction State' in Building" id="{bd79e2bd-ccde-ee11-904c-6045bd0ac62f}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_block" displayName="Structure" solution="Active" />
@@ -272,6 +287,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
+        <Dependent type="29" displayName="Send an Email based on 'BAC Direction Stae' to to PAP in Building" id="{65983779-34dd-ee11-904c-002248c748e0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
         <Dependent type="29" displayName="Send Email notifications for Registered Building Application" id="{7faddab7-17fa-ed11-8f6d-002248c727e7}" />
       </MissingDependency>
       <MissingDependency>
@@ -285,6 +304,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
         <Dependent type="29" displayName="Send Email when Primary user has been updated to the Building Application" id="{bbfbc85d-1256-ee11-be6f-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
+        <Dependent type="29" displayName="Scheduled flow to Send an Email based on 'BAC Direction State' in Building" id="{bd79e2bd-ccde-ee11-904c-6045bd0ac62f}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
@@ -360,6 +383,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
+        <Dependent type="29" displayName="Send an Email based on 'BAC Direction Stae' to to PAP in Building" id="{65983779-34dd-ee11-904c-002248c748e0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
         <Dependent type="29" displayName="Send Email notifications for Registered Building Application" id="{7faddab7-17fa-ed11-8f6d-002248c727e7}" />
       </MissingDependency>
       <MissingDependency>
@@ -389,6 +416,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
         <Dependent type="29" displayName="Send Email when Primary user has been updated to the Building Application" id="{bbfbc85d-1256-ee11-be6f-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
+        <Dependent type="29" displayName="Scheduled flow to Send an Email based on 'BAC Direction State' in Building" id="{bd79e2bd-ccde-ee11-904c-6045bd0ac62f}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
@@ -683,6 +714,10 @@
         <Dependent type="29" displayName="Send Email when Primary or Secondary user has been added to the Building Application" id="{f872e448-4552-ee11-be6f-002248c725da}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_submissionrequesteddate" displayName="Submission Requested Date" parentSchemaName="bsr_bacapplicationdirection" parentDisplayName="BAC Application Direction" solution="Active" />
+        <Dependent type="29" displayName="Set SLA Timer Field for BAC Application Direction" id="{782adde6-65dd-ee11-904c-002248c748e0}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_tasktypeid" displayName="Task Type" parentSchemaName="bsr_tasktype" parentDisplayName="Task Type" solution="Active" />
         <Dependent type="29" displayName="Set Task if it has Task type" id="{64521b66-6527-47d1-b4aa-b2795f4e694a}" />
       </MissingDependency>
@@ -768,6 +803,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="Active" id.schemaname="bsr_noreplyqueueid" />
+        <Dependent type="29" displayName="Send an Email based on 'BAC Direction Stae' to to PAP in Building" id="{65983779-34dd-ee11-904c-002248c748e0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="Active" id.schemaname="bsr_noreplyqueueid" />
         <Dependent type="29" displayName="Send Email notifications for Registered Building Application" id="{7faddab7-17fa-ed11-8f6d-002248c727e7}" />
       </MissingDependency>
       <MissingDependency>
@@ -785,6 +824,10 @@
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="Active" id.schemaname="bsr_noreplyqueueid" />
         <Dependent type="29" displayName="Send Email when Primary user has been updated to the Building Application" id="{bbfbc85d-1256-ee11-be6f-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="Active" id.schemaname="bsr_noreplyqueueid" />
+        <Dependent type="29" displayName="Scheduled flow to Send an Email based on 'BAC Direction State' in Building" id="{bd79e2bd-ccde-ee11-904c-6045bd0ac62f}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="Active" id.schemaname="bsr_noreplyqueueid" />

@@ -1,0 +1,112 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUser"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "BAC_Application_Direction": {
+          "metadata": {
+            "operationMetadataId": "02b108db-9461-4d79-9333-eb8a93ece6f9"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "bsr_bacapplicationdirection",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "bsr_submissionrequesteddate"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Set_Date_field(+28_Days)": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "61014293-6e30-483a-b649-3539e7e40a38"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Date",
+                "type": "string",
+                "value": "@{addDays(triggerOutputs()?['body/bsr_submissionrequesteddate'],28)}"
+              }
+            ]
+          }
+        },
+        "Condition": {
+          "actions": {
+            "Update_row_with_above_date": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "1b533feb-3c68-4961-8869-c29e55fe0b43"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "bsr_bacapplicationdirections",
+                  "recordId": "@triggerOutputs()?['body/bsr_bacapplicationdirectionid']",
+                  "item/bsr_date": "@variables('Date')"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Set_Date_field(+28_Days)": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "not": {
+              "equals": [
+                "@triggerOutputs()?['body/bsr_submissionrequesteddate']",
+                "@null"
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "e62bb21e-4905-4aad-8501-1e838d0ede6d"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}
