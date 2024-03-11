@@ -19,27 +19,12 @@
                     <label description="General" languagecode="1033" />
                   </labels>
                   <rows>
-                    <row />
                     <row>
-                      <cell id="{f8ab9408-218b-4ccb-ad3b-cc9b5b4ba099}" colspan="1" rowspan="1">
-                        <labels>
-                          <label description="Name" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="bsr_name" />
-                      </cell>
                       <cell id="{a918af07-e3f1-4752-9c90-9acf91d102a0}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="Building Application" languagecode="1033" />
                         </labels>
                         <control id="bsr_buildingapplicationid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_buildingapplicationid" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{8a54aa28-ea9d-4030-99cd-e20082bea8fd}" locklevel="0" colspan="1" rowspan="1">
-                        <labels>
-                          <label description="Building" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_buildingid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_buildingid" disabled="false" />
                       </cell>
                       <cell id="{80d19577-515d-4a69-93aa-da6f4787008e}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
@@ -49,17 +34,170 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{9461ddd9-d2a3-482f-a2e7-8ebf6becd635}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{8a54aa28-ea9d-4030-99cd-e20082bea8fd}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="Created On" languagecode="1033" />
+                          <label description="Building" languagecode="1033" />
                         </labels>
-                        <control id="createdon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="createdon" disabled="false" />
+                        <control id="bsr_buildingid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_buildingid" disabled="false" />
                       </cell>
                       <cell id="{71e72fb9-1945-4c55-b580-4539ea32e10f}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="Reminder Sent Date" languagecode="1033" />
                         </labels>
                         <control id="bsr_remindersentdate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_remindersentdate" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4e1ac82c-f381-4705-bb0b-4d4197405b66}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_bacapplicationid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_bacapplicationid" disabled="false" />
+                      </cell>
+                      <cell id="{9461ddd9-d2a3-482f-a2e7-8ebf6becd635}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Created On" languagecode="1033" />
+                        </labels>
+                        <control id="createdon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="createdon" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{518c88ae-5c14-1c55-2c83-4752d1c35132}" showlabel="true" colspan="2" auto="false" rowspan="2">
+                        <labels>
+                          <label description="SLA Timer" languagecode="1033" />
+                        </labels>
+                        <control id="SLATimer" classid="{9C5CA0A1-AB4D-4781-BE7E-8DFBE867B87E}">
+                          <parameters>
+                            <SuccessConditionName>statuscode</SuccessConditionName>
+                            <SuccessConditionValue>760810006</SuccessConditionValue>
+                            <FailureTimeField>bsr_date</FailureTimeField>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row></row>
+                    <row>
+                      <cell id="{b9ce0b08-a4bd-008b-d60b-74accb806ad0}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{83b4181a-14bb-4128-8974-70499162a21c}" rowspan="15" colspan="1">
+                        <labels>
+                          <label description="Note Text" languagecode="1033" />
+                        </labels>
+                        <control id="notescontrol" classid="{06375649-C143-495E-A496-C962E5B4488E}" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{665cb274-3661-2a8d-1a36-ba647c09adb6}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{bba58da3-3d2a-0030-cac8-e089c80cd72e}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ae0d55ab-1b18-a040-e667-d964599e9cd0}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e8029b00-e44a-d7ca-d90d-a224680dc74c}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{dd6c6a1a-0bd7-e142-c674-9e557a9c0d8e}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{decc713e-7919-aaa9-589b-4cd9c16b9513}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d34ee1ed-bc47-5030-024b-771767d7c8ae}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6ec7949b-5149-ad94-082b-4dc9a454290c}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{739a9db0-1d9a-4b51-07e4-43a993bb91dc}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d444b26d-4bba-9d15-308a-2542b334a037}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{070a40ac-8676-7785-0866-1ae2c4e9e963}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{75011c7c-b435-ccae-7541-09365a010242}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{62656b9e-aa48-4608-5b8c-1a598b50dd4a}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{47b94483-2d40-0241-904d-bceec7244027}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{fa146d63-7860-459e-bf30-c33cd936bb9d}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{de2208f4-d1a6-4fb3-b5f0-de6d4e55f49a}" locklevel="0" colspan="1" rowspan="1" visible="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_submissionrequesteddate23daystoreview" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_submissionrequesteddate23daystoreview" disabled="false" />
                       </cell>
                     </row>
                   </rows>
@@ -123,6 +261,36 @@
           </row>
         </rows>
       </footer>
+      <Navigation>
+        <NavBar></NavBar>
+        <NavBarAreas>
+          <NavBarArea Id="Info">
+            <Titles>
+              <Title LCID="1033" Text="Common" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Sales">
+            <Titles>
+              <Title LCID="1033" Text="Sales" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Service">
+            <Titles>
+              <Title LCID="1033" Text="Service" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Marketing">
+            <Titles>
+              <Title LCID="1033" Text="Marketing" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="ProcessCenter">
+            <Titles>
+              <Title LCID="1033" Text="Process Sessions" />
+            </Titles>
+          </NavBarArea>
+        </NavBarAreas>
+      </Navigation>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>

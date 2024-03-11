@@ -1,0 +1,1 @@
+﻿<?xml version="1.0" ?><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"><xsl:output method="text" indent="no"/><xsl:template match="/data"><![CDATA[<span style="font-family:Arial,Helvetica,sans-serif;">Direction to apply for building assessment certificate for %buildingName%</span>]]></xsl:template></xsl:stylesheet>

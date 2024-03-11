@@ -10,7 +10,11 @@
     <layoutxml>
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_bacapplicationdirectionid">
-          <cell name="bsr_name" width="300" />
+          <cell name="bsr_buildingid" width="100" />
+          <cell name="bsr_buildingapplicationid" width="159" />
+          <cell name="bsr_submissionrequesteddate" width="198" />
+          <cell name="bsr_remindersentdate" width="154" />
+          <cell name="statuscode" width="119" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -20,12 +24,15 @@
       <fetch version="1.0" mapping="logical">
         <entity name="bsr_bacapplicationdirection">
           <attribute name="bsr_bacapplicationdirectionid" />
-          <attribute name="bsr_name" />
           <attribute name="createdon" />
-          <order attribute="bsr_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="1" />
           </filter>
+          <attribute name="bsr_buildingid" />
+          <attribute name="bsr_buildingapplicationid" />
+          <attribute name="bsr_submissionrequesteddate" />
+          <attribute name="bsr_remindersentdate" />
+          <attribute name="statuscode" />
         </entity>
       </fetch>
     </fetchxml>
