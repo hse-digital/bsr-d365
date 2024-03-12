@@ -47,6 +47,13 @@
           "metadata": {
             "schemaName": "bsr_noreplyqueueid"
           }
+        },
+        "SharePoint Site URL (bsr_sharepointsiteurl)": {
+          "defaultValue": "https://hsegov.sharepoint.com/sites/bsr-ws1-dev",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_sharepointsiteurl"
+          }
         }
       },
       "triggers": {
@@ -797,7 +804,7 @@
                 "expression": {
                   "equals": [
                     "@triggerOutputs()?['body/bsr_bacstageid']",
-                    760810002
+                    760810003
                   ]
                 },
                 "metadata": {
@@ -1190,7 +1197,7 @@
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
             },
             "parameters": {
-              "dataset": "https://hsegov.sharepoint.com/sites/bsr-ws1-dev",
+              "dataset": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
               "table": "b5ee69a2-8194-4a35-b7b1-5eba18bc37f2",
               "$filter": "FSObjType eq 0"
             },
