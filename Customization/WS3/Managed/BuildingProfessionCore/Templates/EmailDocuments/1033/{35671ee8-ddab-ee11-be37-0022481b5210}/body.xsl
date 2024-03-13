@@ -4,7 +4,9 @@
 <div>&nbsp;</div>
 <div><span style="font-size:12pt"><span style="font-family:Arial,Helvetica,sans-serif"><span style="line-height:107%">Your application to register as a class 1 building inspector is successful. </span></span></span></div>
 <div>&nbsp;</div>
-<div><span style="font-size:12pt"><span style="font-family:Arial,Helvetica,sans-serif"><span style="line-height:107%">You are registered to do BSR-regulated activities only under supervision of a class 2 or 3 registered building inspector from %fromDate%. Your registration is valid from %fromDate% until [date].</span></span></span></div>
+<div><span style="font-size:12pt"><span style="font-family:Arial,Helvetica,sans-serif"><span style="line-height:107%">You are registered to do BSR-regulated activities only under supervision of a class 2 or 3 registered building inspector from %fromDate%, </span></span><span style="line-height:107%"><span style="font-family:&quot;Arial&quot;,sans-serif">unless the competency assessment extension period applies to you. Find out more about the extension period in </span></span><span style="font-family:Arial,Helvetica,sans-serif"><a href="https://www.gov.uk/guidance/registered-building-inspectors">England</a>&nbsp;and&nbsp;<a href="https://www.gov.wales/new-commencement-and-transitional-regulations-supporting-building-safety-act-2022-wgc-0022024">Wales</a><span style="line-height:107%">.</span></span></span></div>
+<div>&nbsp;</div>
+<div><span style="font-size:12pt"><span style="font-family:Arial,Helvetica,sans-serif"><span style="line-height:107%">Your registration is valid from %fromDate% until [date].</span></span></span></div>
 <div>&nbsp;</div>
 <div><span style="font-size:12pt"><span style="font-family:Arial,Helvetica,sans-serif"><span style="line-height:107%">Details of your name, class, the BSR-regulated activities you can do, and any conditions will be published on the public register for England and Wales.</span></span></span></div>
 <div>&nbsp;</div>
