@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{e834cb21-28e1-ee11-904c-6045bd0ac62f}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="bsr_name" select="1" preview="1" icon="1">
+        <row name="result" id="bsr_bacapplicationid">
+          <cell name="bsr_name" width="150" />
+          <cell name="bsr_bacapplicationnumber" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="bsr_buildingapplicationid" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="bsr_buildingid" width="100" />
+          <cell name="a_0c58d7ff4ccbee1190796045bd0c1726.bsr_papid" width="100" disableSorting="1" />
+          <cell name="a_0c58d7ff4ccbee1190796045bd0c1726.bsr_paporgleadcontactid" width="150" disableSorting="1" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="bsr_principalregulatoryleadid" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="bsr_regulatoryleadid" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="bsr_caseofficerid" width="100" />
+          <cell name="bsr_declaration" width="100" />
+          <cell name="bsr_bacstageid" width="100" />
+          <cell name="statuscode" width="100" />
+          <cell name="bsr_validationoutcomecode" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="bsr_bacapplication">
+          <attribute name="bsr_name" />
+          <order attribute="bsr_name" descending="false" />
+          <link-entity alias="a_0c58d7ff4ccbee1190796045bd0c1726" name="bsr_building" from="bsr_buildingid" to="bsr_buildingid" link-type="outer" visible="false">
+            <attribute name="bsr_paporgleadcontactid" />
+            <attribute name="bsr_papid" />
+          </link-entity>
+          <attribute name="bsr_validationoutcomecode" />
+          <attribute name="statuscode" />
+          <attribute name="bsr_regulatoryleadid" />
+          <attribute name="bsr_principalregulatoryleadid" />
+          <attribute name="bsr_declaration" />
+          <attribute name="bsr_caseofficerid" />
+          <attribute name="bsr_buildingapplicationid" />
+          <attribute name="bsr_buildingid" />
+          <attribute name="bsr_bacstageid" />
+          <attribute name="bsr_bacapplicationnumber" />
+          <attribute name="bsr_bacapplicationid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.17.108.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="All Active BAC applications" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

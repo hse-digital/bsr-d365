@@ -26,12 +26,6 @@
                         </labels>
                         <control id="bsr_buildingapplicationid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_buildingapplicationid" disabled="false" />
                       </cell>
-                      <cell id="{80d19577-515d-4a69-93aa-da6f4787008e}" locklevel="0" colspan="1" rowspan="1">
-                        <labels>
-                          <label description="Submission Requested Date" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_submissionrequesteddate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_submissionrequesteddate" disabled="false" />
-                      </cell>
                     </row>
                     <row>
                       <cell id="{8a54aa28-ea9d-4030-99cd-e20082bea8fd}" locklevel="0" colspan="1" rowspan="1">
@@ -39,12 +33,6 @@
                           <label description="Building" languagecode="1033" />
                         </labels>
                         <control id="bsr_buildingid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_buildingid" disabled="false" />
-                      </cell>
-                      <cell id="{71e72fb9-1945-4c55-b580-4539ea32e10f}" locklevel="0" colspan="1" rowspan="1">
-                        <labels>
-                          <label description="Reminder Sent Date" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_remindersentdate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_remindersentdate" disabled="false" />
                       </cell>
                     </row>
                     <row>
@@ -54,6 +42,14 @@
                         </labels>
                         <control id="bsr_bacapplicationid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_bacapplicationid" disabled="false" />
                       </cell>
+                    </row>
+                    <row>
+                      <cell id="{80d19577-515d-4a69-93aa-da6f4787008e}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Submission Requested Date" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_submissionrequesteddate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_submissionrequesteddate" disabled="false" />
+                      </cell>
                       <cell id="{9461ddd9-d2a3-482f-a2e7-8ebf6becd635}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="Created On" languagecode="1033" />
@@ -62,25 +58,11 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{518c88ae-5c14-1c55-2c83-4752d1c35132}" showlabel="true" colspan="2" auto="false" rowspan="2">
+                      <cell id="{3d4edc25-a4d7-458f-a780-53af32d2942f}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="SLA Timer" languagecode="1033" />
+                          <label description="Submission Due Date" languagecode="1033" />
                         </labels>
-                        <control id="SLATimer" classid="{9C5CA0A1-AB4D-4781-BE7E-8DFBE867B87E}">
-                          <parameters>
-                            <SuccessConditionName>statuscode</SuccessConditionName>
-                            <SuccessConditionValue>760810006</SuccessConditionValue>
-                            <FailureTimeField>bsr_date</FailureTimeField>
-                          </parameters>
-                        </control>
-                      </cell>
-                    </row>
-                    <row></row>
-                    <row>
-                      <cell id="{b9ce0b08-a4bd-008b-d60b-74accb806ad0}" showlabel="false">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
+                        <control id="bsr_submissionduedate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_submissionduedate" disabled="false" />
                       </cell>
                       <cell locklevel="0" id="{83b4181a-14bb-4128-8974-70499162a21c}" rowspan="15" colspan="1">
                         <labels>
@@ -90,17 +72,11 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{665cb274-3661-2a8d-1a36-ba647c09adb6}" showlabel="false">
+                      <cell id="{71e72fb9-1945-4c55-b580-4539ea32e10f}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Reminder Sent Date" languagecode="1033" />
                         </labels>
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{bba58da3-3d2a-0030-cac8-e089c80cd72e}" showlabel="false">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
+                        <control id="bsr_remindersentdate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_remindersentdate" disabled="false" />
                       </cell>
                     </row>
                     <row>
@@ -193,12 +169,6 @@
                           <label description="" languagecode="1033" />
                         </labels>
                       </cell>
-                      <cell id="{de2208f4-d1a6-4fb3-b5f0-de6d4e55f49a}" locklevel="0" colspan="1" rowspan="1" visible="false">
-                        <labels>
-                          <label description="Submission Requested Date 23 Days to review" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_submissionrequesteddate23daystoreview" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_submissionrequesteddate23daystoreview" disabled="false" />
-                      </cell>
                     </row>
                   </rows>
                 </section>
@@ -262,7 +232,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar></NavBar>
+        <NavBar />
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
