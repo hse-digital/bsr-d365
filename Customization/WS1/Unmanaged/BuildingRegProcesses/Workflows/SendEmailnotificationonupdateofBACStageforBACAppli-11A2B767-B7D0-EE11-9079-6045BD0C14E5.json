@@ -1180,7 +1180,7 @@
             ]
           }
         },
-        "Get_files": {
+        "Get_files_from_SharePoint": {
           "runAfter": {
             "Set_Primary_Applicant": [
               "Succeeded"
@@ -1206,7 +1206,7 @@
         },
         "Filter_array_2": {
           "runAfter": {
-            "Get_files": [
+            "Get_files_from_SharePoint": [
               "Succeeded"
             ]
           },
@@ -1215,7 +1215,7 @@
           },
           "type": "Query",
           "inputs": {
-            "from": "@outputs('Get_files')?['body/value']",
+            "from": "@outputs('Get_files_from_SharePoint')?['body/value']",
             "where": "@contains(item()?['{Path}'], triggerOutputs()?['body/bsr_bacapplicationnumber'])"
           }
         },
