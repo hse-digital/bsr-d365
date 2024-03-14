@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Reg Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.12.63.0</Version>
+    <Version>1.12.64.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -108,6 +108,7 @@
       <RootComponent type="29" id="{65983779-34dd-ee11-904c-002248c748e0}" behavior="0" />
       <RootComponent type="29" id="{76ece167-ba7f-ee11-8179-6045bd0c1726}" behavior="0" />
       <RootComponent type="29" id="{782adde6-65dd-ee11-904c-002248c748e0}" behavior="0" />
+      <RootComponent type="29" id="{7df6da83-0723-4c72-8647-1a486ae9ed78}" behavior="0" />
       <RootComponent type="29" id="{7f165d07-03a7-ed11-aad1-0022481b5e4f}" behavior="0" />
       <RootComponent type="29" id="{7faddab7-17fa-ed11-8f6d-002248c727e7}" behavior="0" />
       <RootComponent type="29" id="{82b1a383-ea20-ee11-9966-002248c72859}" behavior="0" />
@@ -115,6 +116,7 @@
       <RootComponent type="29" id="{8bff9cf3-5fb0-ee11-a569-6045bd0c1726}" behavior="0" />
       <RootComponent type="29" id="{906b4c99-4e67-ee11-9ae6-6045bd0c1726}" behavior="0" />
       <RootComponent type="29" id="{938f80db-d852-ee11-be6f-002248c727e7}" behavior="0" />
+      <RootComponent type="29" id="{9b1f153c-4abe-47df-8948-4e1ecd89950f}" behavior="0" />
       <RootComponent type="29" id="{9c334b9e-f2bc-ed11-83fe-000d3a86ecac}" behavior="0" />
       <RootComponent type="29" id="{a29c510f-d406-ee11-8f6e-002248c727e7}" behavior="0" />
       <RootComponent type="29" id="{a329224e-c166-ee11-9ae6-6045bd0c1726}" behavior="0" />
@@ -163,6 +165,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_bacapplication" displayName="BAC Application" solution="Active" />
+        <Dependent type="29" displayName="Populate PAP/PAP Named contact from Building" id="{9b1f153c-4abe-47df-8948-4e1ecd89950f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_bacapplication" displayName="BAC Application" solution="Active" />
         <Dependent type="29" displayName="Create BAC Application Document Location" id="{b386cb98-b2cc-ee11-9079-6045bd0c14e5}" />
       </MissingDependency>
       <MissingDependency>
@@ -172,6 +178,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_bacapplicationdirection" displayName="BAC Application Direction" solution="Active" />
         <Dependent type="29" displayName="Set SLA Timer Field for BAC Application Direction" id="{782adde6-65dd-ee11-904c-002248c748e0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_bacapplicationdirection" displayName="BAC Application Direction" solution="Active" />
+        <Dependent type="29" displayName="Auto populate 'submission requested date' in BAC Application Directions" id="{7df6da83-0723-4c72-8647-1a486ae9ed78}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_bacapplicationdirection" displayName="BAC Application Direction" solution="Active" />
@@ -300,6 +310,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
         <Dependent type="29" displayName="DEPRECATED - Send Email on the creation of a change request record where the change category is 'ch" id="{885022a0-7e7d-ee11-8179-6045bd0c14e5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
+        <Dependent type="29" displayName="Populate PAP/PAP Named contact from Building" id="{9b1f153c-4abe-47df-8948-4e1ecd89950f}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
@@ -590,6 +604,10 @@
         <Dependent type="29" displayName="Set Task if it has Task type" id="{64521b66-6527-47d1-b4aa-b2795f4e694a}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="10" schemaName="bsr_bacapplication_buildingid_building" displayName="bsr_bacapplication_buildingid_building" parentSchemaName="bsr_building" parentDisplayName="Building" solution="Active" />
+        <Dependent type="29" displayName="Populate PAP/PAP Named contact from Building" id="{9b1f153c-4abe-47df-8948-4e1ecd89950f}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="10" schemaName="bsr_task_tasktypeid_tasktype" displayName="bsr_task_tasktypeid_tasktype" parentSchemaName="bsr_tasktype" parentDisplayName="Task Type" solution="Active" />
         <Dependent type="29" displayName="Set Task if it has Task type" id="{64521b66-6527-47d1-b4aa-b2795f4e694a}" />
       </MissingDependency>
@@ -616,6 +634,14 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_applicationstage" displayName="Building Application Stage" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
         <Dependent type="29" displayName="Trigger Flow to check if the Building Application has any active status timestamp records" id="{53791bc6-edbc-ed11-83fe-000d3a86ecac}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_bacapplicationdirectionid" displayName="BAC Application Direction" parentSchemaName="bsr_bacapplicationdirection" parentDisplayName="BAC Application Direction" solution="Active" />
+        <Dependent type="29" displayName="Auto populate 'submission requested date' in BAC Application Directions" id="{7df6da83-0723-4c72-8647-1a486ae9ed78}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_bacapplicationid" displayName="BAC Application" parentSchemaName="bsr_bacapplication" parentDisplayName="BAC Application" solution="Active" />
+        <Dependent type="29" displayName="Populate PAP/PAP Named contact from Building" id="{9b1f153c-4abe-47df-8948-4e1ecd89950f}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_bacapplicationnumber" displayName="BAC Application Number" parentSchemaName="bsr_bacapplication" parentDisplayName="BAC Application" solution="Active" />
@@ -646,6 +672,14 @@
         <Dependent type="29" displayName="Set BAC Application Name" id="{23336aad-f0cb-ee11-9079-6045bd0c1726}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_buildingid" displayName="Building" parentSchemaName="bsr_bacapplication" parentDisplayName="BAC Application" solution="Active" />
+        <Dependent type="29" displayName="Populate PAP/PAP Named contact from Building" id="{9b1f153c-4abe-47df-8948-4e1ecd89950f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_buildingid" displayName="Building" parentSchemaName="bsr_building" parentDisplayName="Building" solution="Active" />
+        <Dependent type="29" displayName="Populate PAP/PAP Named contact from Building" id="{9b1f153c-4abe-47df-8948-4e1ecd89950f}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_changecategoryid" displayName="Change Category" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="Active" />
         <Dependent type="29" displayName="Set Change Request Name" id="{938f80db-d852-ee11-be6f-002248c727e7}" />
       </MissingDependency>
@@ -658,6 +692,18 @@
         <Dependent type="29" displayName="Send Email after declaration and submitted in Change request" id="{0426ebcf-1252-ee11-be6f-002248c725da}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_bacapplication" parentDisplayName="BAC Application" solution="Active" />
+        <Dependent type="29" displayName="Populate PAP/PAP Named contact from Building" id="{9b1f153c-4abe-47df-8948-4e1ecd89950f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_bacapplicationdirection" parentDisplayName="BAC Application Direction" solution="Active" />
+        <Dependent type="29" displayName="Auto populate 'submission requested date' in BAC Application Directions" id="{7df6da83-0723-4c72-8647-1a486ae9ed78}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_building" parentDisplayName="Building" solution="Active" />
+        <Dependent type="29" displayName="Populate PAP/PAP Named contact from Building" id="{9b1f153c-4abe-47df-8948-4e1ecd89950f}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="Active" />
         <Dependent type="29" displayName="Set Applicant Email Recipient" id="{ae2c04a4-d614-ee11-9cbe-002248c725da}" />
       </MissingDependency>
@@ -668,6 +714,22 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_tasktype" parentDisplayName="Task Type" solution="Active" />
         <Dependent type="29" displayName="Set Task if it has Task type" id="{64521b66-6527-47d1-b4aa-b2795f4e694a}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_papid" displayName="PAP" parentSchemaName="bsr_building" parentDisplayName="Building" solution="Active" />
+        <Dependent type="29" displayName="Populate PAP/PAP Named contact from Building" id="{9b1f153c-4abe-47df-8948-4e1ecd89950f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_paporgleadcontactid" displayName="PAP Org Lead Contact" parentSchemaName="bsr_building" parentDisplayName="Building" solution="Active" />
+        <Dependent type="29" displayName="Populate PAP/PAP Named contact from Building" id="{9b1f153c-4abe-47df-8948-4e1ecd89950f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_pappapnamedcontactid" displayName="PAP/PAP Named contact" parentSchemaName="bsr_bacapplication" parentDisplayName="BAC Application" solution="Active" />
+        <Dependent type="29" displayName="Populate PAP/PAP Named contact from Building" id="{9b1f153c-4abe-47df-8948-4e1ecd89950f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_paptypecode" displayName="PAP Type" parentSchemaName="bsr_building" parentDisplayName="Building" solution="Active" />
+        <Dependent type="29" displayName="Populate PAP/PAP Named contact from Building" id="{9b1f153c-4abe-47df-8948-4e1ecd89950f}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_paymentreconciliationstatus" displayName="Payment Reconciliation Status" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="Active" />
@@ -714,8 +776,16 @@
         <Dependent type="29" displayName="Send Email when Primary or Secondary user has been added to the Building Application" id="{f872e448-4552-ee11-be6f-002248c725da}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_submissionduedate" displayName="Submission Due Date" parentSchemaName="bsr_bacapplicationdirection" parentDisplayName="BAC Application Direction" solution="Active" />
+        <Dependent type="29" displayName="Auto populate 'submission requested date' in BAC Application Directions" id="{7df6da83-0723-4c72-8647-1a486ae9ed78}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_submissionrequesteddate" displayName="Submission Requested Date" parentSchemaName="bsr_bacapplicationdirection" parentDisplayName="BAC Application Direction" solution="Active" />
         <Dependent type="29" displayName="Set SLA Timer Field for BAC Application Direction" id="{782adde6-65dd-ee11-904c-002248c748e0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_submissionrequesteddate" displayName="Submission Requested Date" parentSchemaName="bsr_bacapplicationdirection" parentDisplayName="BAC Application Direction" solution="Active" />
+        <Dependent type="29" displayName="Auto populate 'submission requested date' in BAC Application Directions" id="{7df6da83-0723-4c72-8647-1a486ae9ed78}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_tasktypeid" displayName="Task Type" parentSchemaName="bsr_tasktype" parentDisplayName="Task Type" solution="Active" />
@@ -844,6 +914,10 @@
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="Active" id.schemaname="bsr_noreplyqueueid" />
         <Dependent type="29" displayName="Send Email when Primary or Secondary user has been added to the Building Application" id="{f872e448-4552-ee11-be6f-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointbacfolderid" solution="Active" id.schemaname="bsr_sharepointbacfolderid" />
+        <Dependent type="29" displayName="Send Email notification on update of BAC Stage for BAC Application" id="{11a2b767-b7d0-ee11-9079-6045bd0c14e5}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointbafolderid" solution="Active" id.schemaname="bsr_sharepointbafolderid" />

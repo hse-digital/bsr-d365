@@ -54,6 +54,13 @@
           "metadata": {
             "schemaName": "bsr_sharepointsiteurl"
           }
+        },
+        "SharePoint BAC Folder ID (bsr_sharepointbacfolderid)": {
+          "defaultValue": "b5ee69a2-8194-4a35-b7b1-5eba18bc37f2",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_sharepointbacfolderid"
+          }
         }
       },
       "triggers": {
@@ -1198,7 +1205,7 @@
             },
             "parameters": {
               "dataset": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
-              "table": "b5ee69a2-8194-4a35-b7b1-5eba18bc37f2",
+              "table": "@parameters('SharePoint BAC Folder ID (bsr_sharepointbacfolderid)')",
               "$filter": "FSObjType eq 0"
             },
             "authentication": "@parameters('$authentication')"
