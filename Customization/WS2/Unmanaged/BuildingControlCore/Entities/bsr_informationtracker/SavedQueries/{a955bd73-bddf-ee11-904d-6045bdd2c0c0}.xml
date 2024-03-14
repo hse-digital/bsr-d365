@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{a955bd73-bddf-ee11-904d-6045bdd2c0c0}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
+        <row name="result" id="bsr_informationtrackerid">
+          <cell name="bsr_name" width="300" />
+          <cell name="bsr_inforeqid" width="135" />
+          <cell name="statecode" width="100" />
+          <cell name="bsr_bacapplicationid" width="139" />
+          <cell name="bsr_buildingid" width="100" />
+          <cell name="bsr_bacrequesttypecode" width="141" />
+          <cell name="createdon" width="125" />
+          <cell name="bsr_inforeqactualdate" width="177" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical" distinct="true">
+        <entity name="bsr_informationtracker">
+          <attribute name="bsr_informationtrackerid" />
+          <attribute name="bsr_name" />
+          <attribute name="createdon" />
+          <attribute name="bsr_inforeqactualdate" />
+          <attribute name="statecode" />
+          <attribute name="bsr_inforeqid" />
+          <order attribute="createdon" descending="true" />
+          <filter type="and">
+            <condition attribute="bsr_servicetypecode" operator="eq" value="760810001" />
+          </filter>
+          <attribute name="bsr_bacapplicationid" />
+          <attribute name="bsr_buildingid" />
+          <attribute name="bsr_bacrequesttypecode" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.88.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="All BAC information requests" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

@@ -14,7 +14,7 @@
           <columns>
             <column width="50%">
               <sections>
-                <section name="{117c5943-6562-4eed-87bb-9384cf3231bd}_section_2" showlabel="true" showbar="false" locklevel="0" id="{4951c3e0-7e49-da18-3076-8886182c3155}" IsUserDefined="0" layout="varwidth" columns="11" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="{117c5943-6562-4eed-87bb-9384cf3231bd}_section_2" showlabel="true" showbar="false" locklevel="0" id="{4951c3e0-7e49-da18-3076-8886182c3155}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="MDT Project Information" languagecode="1033" />
                   </labels>
@@ -26,12 +26,39 @@
                         </labels>
                         <control id="bsr_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="bsr_name" />
                       </cell>
-                      <cell id="{b63f111e-8d33-4eea-83f3-3992ca13b2fc}">
+                    </row>
+                    <row>
+                      <cell id="{3f07fad0-7a6b-464d-847b-bf9ebc7e02d2}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Application Type" languagecode="1033" />
                         </labels>
+                        <control id="bsr_applicationtype" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_applicationtype" disabled="false" />
                       </cell>
                     </row>
+                    <row>
+                      <cell id="{1d37ec18-d2a7-4127-a386-aa5c4c9d30ec}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Completed On" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_completedon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_completedon" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f9f2c1bc-b1c5-447c-bba6-801181e3d36e}" locklevel="0" colspan="1" rowspan="1" visible="false">
+                        <labels>
+                          <label description="Todays Date (needed for Completed On, keep hidden)" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_todaysdateneededforcompletedon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_todaysdateneededforcompletedon" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="null_section_5" id="4515a094-59c2-420e-a7c6-1e9410fd01f3" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Building Control Information" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
                     <row>
                       <cell id="{51aceb83-382f-4d87-a475-394db985ddbd}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
@@ -45,11 +72,6 @@
                             <DisableMru>true</DisableMru>
                           </parameters>
                         </control>
-                      </cell>
-                      <cell id="{4d93567b-98cb-449d-2c08-4b324b0d58ca}" showlabel="false">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
                       </cell>
                     </row>
                     <row>
@@ -65,23 +87,29 @@
                           </parameters>
                         </control>
                       </cell>
-                      <cell id="{6ab3c191-274e-c71c-909e-e2005d718e4c}" showlabel="false">
+                    </row>
+                  </rows>
+                </section>
+                <section name="null_section_6" id="3918f890-5f3e-4616-ab13-64e6aa7b3e26" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="BAC Information" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell id="{3f1fa6b9-2aab-4a50-bebe-07eb1a6a87b8}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="BAC application" languagecode="1033" />
                         </labels>
+                        <control id="bsr_bacapplicationid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_bacapplicationid" disabled="false" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{8ec78e74-24d1-4be8-a16f-ba2dc4ea0f73}">
+                      <cell id="{08c60b61-c1c8-4e20-9678-c0ea6253ae7f}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="Owner" languagecode="1033" />
+                          <label description="Building" languagecode="1033" />
                         </labels>
-                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
-                      </cell>
-                      <cell locklevel="0" id="{ea89cbc2-bb29-4da7-9d1a-0b48736d35a8}">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
+                        <control id="bsr_building" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_building" disabled="false" />
                       </cell>
                     </row>
                   </rows>
@@ -308,6 +336,12 @@
                 <label description="Project Status" languagecode="1033" />
               </labels>
               <control id="header_bsr_projectstatus" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_projectstatus" disabled="false" />
+            </cell>
+            <cell id="{8ec78e74-24d1-4be8-a16f-ba2dc4ea0f73}" colspan="1" rowspan="1">
+              <labels>
+                <label description="Owner" languagecode="1033" />
+              </labels>
+              <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
             </cell>
           </row>
         </rows>
