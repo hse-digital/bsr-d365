@@ -28,14 +28,9 @@
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
         <entity name="bsr_bacapplication">
           <attribute name="bsr_name" />
-          <order attribute="bsr_name" descending="false" />
-          <link-entity alias="a_0c58d7ff4ccbee1190796045bd0c1726" name="bsr_building" from="bsr_buildingid" to="bsr_buildingid" link-type="outer" visible="false">
-            <attribute name="bsr_paporgleadcontactid" />
-            <attribute name="bsr_papid" />
-          </link-entity>
           <attribute name="bsr_validationoutcomecode" />
           <attribute name="statuscode" />
           <attribute name="bsr_regulatoryleadid" />
@@ -46,13 +41,21 @@
           <attribute name="bsr_buildingid" />
           <attribute name="bsr_bacstageid" />
           <attribute name="bsr_bacapplicationnumber" />
+          <order attribute="bsr_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <link-entity name="bsr_building" from="bsr_buildingid" to="bsr_buildingid" visible="false" link-type="outer" alias="a_0c58d7ff4ccbee1190796045bd0c1726">
+            <attribute name="bsr_paporgleadcontactid" />
+            <attribute name="bsr_papid" />
+          </link-entity>
           <attribute name="bsr_bacapplicationid" />
         </entity>
       </fetch>
     </fetchxml>
     <IntroducedVersion>1.17.108.0</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="All Active BAC applications" languagecode="1033" />
+      <LocalizedName description="All Active BAC Applications" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>
