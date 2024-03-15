@@ -15,13 +15,13 @@
       "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
       "contentVersion": "1.0.0.0",
       "parameters": {
-        "$authentication": {
-          "defaultValue": {},
-          "type": "SecureObject"
-        },
         "$connections": {
           "defaultValue": {},
           "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
         }
       },
       "triggers": {
@@ -31,17 +31,17 @@
           },
           "type": "OpenApiConnectionWebhook",
           "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
             "parameters": {
               "subscriptionRequest/message": 1,
               "subscriptionRequest/entityname": "bsr_issue",
-              "subscriptionRequest/scope": 4,
-              "subscriptionRequest/name": "62dd4b63-884d-ee11-be6f-6045bdf1e965"
+              "subscriptionRequest/scope": 4
             },
-            "host": {
-              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
-              "operationId": "SubscribeWebhookTrigger",
-              "connectionName": "shared_commondataserviceforapps"
-            }
+            "authentication": "@parameters('$authentication')"
           }
         }
       },
@@ -53,43 +53,87 @@
           },
           "type": "OpenApiConnection",
           "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
             "parameters": {
               "entityName": "bsr_mdtprojects",
               "recordId": "@triggerOutputs()?['body/_bsr_mdtprojectid_value']"
             },
-            "host": {
-              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
-              "operationId": "GetItem",
-              "connectionName": "shared_commondataserviceforapps"
-            }
+            "authentication": "@parameters('$authentication')"
           }
         },
-        "Update_a_row": {
+        "ifApplicationTypeEqualsBCA": {
+          "actions": {
+            "updateMDTIssuesForBCA": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "e636fffe-2463-4f97-933f-883e023155f3"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "bsr_issues",
+                  "recordId": "@triggerOutputs()?['body/bsr_issueid']",
+                  "item/bsr_applicationtype": 760810001,
+                  "item/bsr_buildingcontrolapplicationid@odata.bind": "bsr_mdtprojects(@{outputs('Get_a_row_by_ID')?['body/_bsr_buidlingcontrolapplicationid_value']})"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
           "runAfter": {
             "Get_a_row_by_ID": [
               "Succeeded"
             ]
           },
-          "metadata": {
-            "operationMetadataId": "e636fffe-2463-4f97-933f-883e023155f3"
-          },
-          "type": "OpenApiConnection",
-          "inputs": {
-            "parameters": {
-              "entityName": "bsr_issues",
-              "recordId": "@triggerOutputs()?['body/bsr_issueid']",
-              "item/bsr_buildingcontrolapplicationid@odata.bind": "bsr_mdtprojects(@{outputs('Get_a_row_by_ID')?['body/_bsr_buidlingcontrolapplicationid_value']})"
-            },
-            "host": {
-              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
-              "operationId": "UpdateRecord",
-              "connectionName": "shared_commondataserviceforapps"
+          "else": {
+            "actions": {
+              "updateMDTIssuesForBAC": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "e636fffe-2463-4f97-933f-883e023155f3"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps",
+                    "operationId": "UpdateRecord",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "bsr_issues",
+                    "recordId": "@triggerOutputs()?['body/bsr_issueid']",
+                    "item/bsr_applicationtype": 760810000,
+                    "item/bsr_bacapplicationid@odata.bind": "bsr_mdtprojects(@{outputs('Get_a_row_by_ID')?['body/_bsr_bacapplicationid_value']})",
+                    "item/bsr_buildingid@odata.bind": "bsr_mdtprojects(@{outputs('Get_a_row_by_ID')?['body/_bsr_building_value']})"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              }
             }
-          }
+          },
+          "expression": {
+            "equals": [
+              "@outputs('Get_a_row_by_ID')?['body/bsr_applicationtype']",
+              760810001
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9104a503-2a30-487c-80da-3ca90e75d00b"
+          },
+          "type": "If"
         }
       }
     },
-    "templateName": null
+    "templateName": ""
   },
   "schemaVersion": "1.0.0.0"
 }
