@@ -283,10 +283,7 @@
                               "recordId": "@outputs('Add_a_new_row')?['body/activityid']",
                               "item/IssueSend": true
                             },
-                            "authentication": {
-                              "type": "Raw",
-                              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
-                            }
+                            "authentication": "@parameters('$authentication')"
                           }
                         },
                         "Add_BAC_Application_Direction": {
@@ -387,10 +384,7 @@
                                 "recordId": "@outputs('Add_a_new_row_2')?['body/activityid']",
                                 "item/IssueSend": true
                               },
-                              "authentication": {
-                                "type": "Raw",
-                                "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
-                              }
+                              "authentication": "@parameters('$authentication')"
                             }
                           },
                           "Add_BAC_Application_Direction_2": {
@@ -502,10 +496,7 @@
                                 "recordId": "@outputs('Add_a_new_row_4')?['body/activityid']",
                                 "item/IssueSend": true
                               },
-                              "authentication": {
-                                "type": "Raw",
-                                "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
-                              }
+                              "authentication": "@parameters('$authentication')"
                             }
                           },
                           "Add_BAC_Application_Direction_4": {
@@ -606,10 +597,7 @@
                                   "recordId": "@outputs('Add_a_new_row_3')?['body/activityid']",
                                   "item/IssueSend": true
                                 },
-                                "authentication": {
-                                  "type": "Raw",
-                                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
-                                }
+                                "authentication": "@parameters('$authentication')"
                               }
                             },
                             "Add_BAC_Application_Direction_3": {
