@@ -8,7 +8,7 @@
 <div>&nbsp;</div>
 <div><span style="font-family:Arial,Helvetica,sans-serif"><strong><span style="font-size:18pt">If you do not apply for your building assessment certificate</span></strong></span></div>
 <div>&nbsp;</div>
-<div><span style="font-family:Arial,Helvetica,sans-serif">Failure to submit your application within 28 days of being directed to apply is a criminal offence, under section 79(3) of the Building Safety Act 2022. BSR may consider taking enforcement action against you. Any enforcement action will be considered in line with our enforcement policy statement.&nbsp;</span></div>
+<div><span style="font-family:Arial,Helvetica,sans-serif">Failure to submit your application within 28 days of being directed to apply is a criminal offence, under section 79(3) of the Building Safety Act 2022. BSR may consider taking enforcement action against you. Any enforcement action will be considered in line with our enforcement policy statement:&nbsp;<a href="https://www.hse.gov.uk/building-safety/enforcement-policy.htm">https://www.hse.gov.uk/building-safety/enforcement-policy.htm</a></span></div>
 <div>&nbsp;</div>
 <div><span style="font-family:Arial,Helvetica,sans-serif">If you are not able to submit your application for your building assessment certificate within 28 days of being directed to, then contact BSR to tell us reasons why at:&nbsp;<a href="https://www.contact-building-safety-regulator.service.gov.uk">www.contact-building-safety-regulator.service.gov.uk</a></span></div>
 <div>&nbsp;</div>
@@ -18,7 +18,7 @@
 <div>&nbsp;</div>
 <div><span style="font-family:Arial,Helvetica,sans-serif">The&nbsp;assessment of your application will also incur further ongoing charges. You will need to provide details so we can send you invoices for the work undertaken to assess your application. If you want to include a purchase order number on the invoices, you may want to get this before staring your application.</span></div>
 <div>&nbsp;</div>
-<div><span style="font-family:Arial,Helvetica,sans-serif">Find out more about the charges which apply in the Building Safety Regulator charging schema at.</span></div>
+<div><span style="font-family:Arial,Helvetica,sans-serif">Find out more about the charges which apply in the Building Safety Regulator charging schema at:&nbsp;<a href="https://www.hse.gov.uk/building-safety/charging-scheme.htm">https://www.hse.gov.uk/building-safety/charging-scheme.htm</a></span></div>
 <div>&nbsp;</div>
 <div><span style="font-family:Arial,Helvetica,sans-serif"><strong><span style="font-size:18pt">If you do not think you should have received this email&nbsp;</span></strong></span></div>
 <div>&nbsp;</div>

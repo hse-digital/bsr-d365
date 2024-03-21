@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{034fcaf2-00e6-ee11-904c-6045bd0ac62f}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
+        <row name="result" id="bsr_bacapplicationid">
+          <cell name="bsr_name" width="300" />
+          <cell name="bsr_buildingapplicationid" width="155" />
+          <cell name="bsr_buildingid" width="100" />
+          <cell name="aa.bsr_tranchecode" width="100" disableSorting="1" />
+          <cell name="aa.bsr_tranchequartercode" width="100" disableSorting="1" />
+          <cell name="bsr_pappapnamedcontactid" width="100" />
+          <cell name="bsr_principalregulatoryleadid" width="188" />
+          <cell name="bsr_regulatoryleadid" width="134" />
+          <cell name="bsr_caseofficerid" width="111" />
+          <cell name="bsr_declaration" width="100" />
+          <cell name="bsr_bacstageid" width="104" />
+          <cell name="statuscode" width="119" />
+          <cell name="bsr_validationoutcomecode" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+        <entity name="bsr_bacapplication">
+          <attribute name="bsr_name" />
+          <attribute name="bsr_buildingapplicationid" />
+          <attribute name="bsr_buildingid" />
+          <attribute name="bsr_bacstageid" />
+          <attribute name="statuscode" />
+          <attribute name="bsr_caseofficerid" />
+          <attribute name="bsr_principalregulatoryleadid" />
+          <attribute name="bsr_regulatoryleadid" />
+          <attribute name="bsr_pappapnamedcontactid" />
+          <attribute name="bsr_declaration" />
+          <attribute name="bsr_validationoutcomecode" />
+          <order attribute="bsr_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statuscode" operator="ne" value="760810007" />
+            <condition attribute="statuscode" operator="ne" value="760810006" />
+            <condition attribute="ownerid" operator="eq-userid" />
+            <condition attribute="createdon" operator="this-year" />
+          </filter>
+          <link-entity name="bsr_building" from="bsr_buildingid" to="bsr_buildingid" visible="false" link-type="outer" alias="aa">
+            <attribute name="bsr_tranchequartercode" />
+            <attribute name="bsr_tranchecode" />
+          </link-entity>
+          <attribute name="bsr_bacapplicationid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.17.111.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="My Active BAC applications created this year" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
