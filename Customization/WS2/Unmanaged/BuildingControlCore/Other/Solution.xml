@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.24024.178" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.24024.198" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>BuildingControlCore</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Control Core" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.89.0</Version>
+    <Version>1.0.90.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -172,6 +172,7 @@
       <RootComponent type="29" id="{90255bb6-3452-ee11-be6f-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{946c126b-9e4c-ee11-be6f-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="29" id="{960d5df8-5451-ee11-be6f-6045bdd0e4cf}" behavior="0" />
+      <RootComponent type="29" id="{985d0d33-e7e2-ee11-904d-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{9a9ae38c-3752-ee11-be6f-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{9c82c7d9-a187-ee11-be36-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{abafcbdd-bb66-ee11-9ae7-6045bdd2c0c0}" behavior="0" />
@@ -347,6 +348,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_bacapplication" displayName="BAC Application" solution="BuildingRegCore (1.17.109.0)" />
+        <Dependent type="10" schemaName="bsr_projecttaskdocument_bsr_bacapplicationid" displayName="bsr_projecttaskdocument_bsr_bacapplicationid" parentSchemaName="bsr_bacapplication" parentDisplayName="BAC Application" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_bacapplication" displayName="BAC Application" solution="BuildingRegCore (1.17.109.0)" />
         <Dependent type="26" schemaName="My BAC Severe Issues " displayName="My BAC Severe Issues " parentSchemaName="bsr_issue" parentDisplayName="MDT Project Issue" id="{5ab35b53-b3e2-ee11-904d-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
@@ -436,6 +441,14 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_qualityassurance" displayName="Quality Assurance" solution="BuildingRegCore (1.17.109.0)" />
         <Dependent type="26" schemaName="All BAC QA records created this year" displayName="All BAC QA records created this year" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" id="{32d28172-f1e1-ee11-904d-6045bdc208e3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_qualityassurance" displayName="Quality Assurance" solution="BuildingRegCore (1.17.109.0)" />
+        <Dependent type="26" schemaName="My associated BAC QA records created this year" displayName="My associated BAC QA records created this year" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" id="{354af70e-d8e5-ee11-904d-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_qualityassurance" displayName="Quality Assurance" solution="BuildingRegCore (1.17.109.0)" />
+        <Dependent type="26" schemaName="My BAC QA records created this year" displayName="My BAC QA records created this year" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" id="{8f938423-fde5-ee11-904c-0022480749bf}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_taskcategory" displayName="Task Category" solution="BuildingRegCore (1.17.109.0)" />
@@ -769,6 +782,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_bacapplicationid" displayName="BAC Application" parentSchemaName="bsr_bacapplication" parentDisplayName="BAC Application" solution="BuildingRegCore (1.17.109.0)" />
+        <Dependent type="10" schemaName="bsr_projecttaskdocument_bsr_bacapplicationid" displayName="bsr_projecttaskdocument_bsr_bacapplicationid" parentSchemaName="bsr_bacapplication" parentDisplayName="BAC Application" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_bacapplicationid" displayName="BAC Application" parentSchemaName="bsr_bacapplication" parentDisplayName="BAC Application" solution="BuildingRegCore (1.17.109.0)" />
         <Dependent type="26" schemaName="My BAC Severe Issues " displayName="My BAC Severe Issues " parentSchemaName="bsr_issue" parentDisplayName="MDT Project Issue" id="{5ab35b53-b3e2-ee11-904d-6045bdf1e965}" />
       </MissingDependency>
       <MissingDependency>
@@ -810,6 +827,14 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_buildingapplication" displayName="Building Application" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" solution="BuildingRegCore (1.17.109.0)" />
         <Dependent type="26" schemaName="All BAC QA records created this year" displayName="All BAC QA records created this year" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" id="{32d28172-f1e1-ee11-904d-6045bdc208e3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_buildingapplication" displayName="Building Application" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" solution="BuildingRegCore (1.17.109.0)" />
+        <Dependent type="26" schemaName="My associated BAC QA records created this year" displayName="My associated BAC QA records created this year" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" id="{354af70e-d8e5-ee11-904d-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_buildingapplication" displayName="Building Application" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" solution="BuildingRegCore (1.17.109.0)" />
+        <Dependent type="26" schemaName="My BAC QA records created this year" displayName="My BAC QA records created this year" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" id="{8f938423-fde5-ee11-904c-0022480749bf}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_buildingapplicationid" displayName="Building application" parentSchemaName="bsr_bacapplication" parentDisplayName="BAC Application" solution="BuildingRegCore (1.17.109.0)" />
@@ -1052,6 +1077,14 @@
         <Dependent type="26" schemaName="All BAC QA records created this year" displayName="All BAC QA records created this year" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" id="{32d28172-f1e1-ee11-904d-6045bdc208e3}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_description" displayName="Description" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" solution="BuildingRegCore (1.17.109.0)" />
+        <Dependent type="26" schemaName="My associated BAC QA records created this year" displayName="My associated BAC QA records created this year" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" id="{354af70e-d8e5-ee11-904d-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_description" displayName="Description" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" solution="BuildingRegCore (1.17.109.0)" />
+        <Dependent type="26" schemaName="My BAC QA records created this year" displayName="My BAC QA records created this year" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" id="{8f938423-fde5-ee11-904c-0022480749bf}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_dutyholderid" displayName="Dutyholder" parentSchemaName="bsr_bacapplication" parentDisplayName="BAC Application" solution="BuildingRegCore (1.17.109.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="BAC Application" id="{0ae17bd9-be5d-42c9-8b75-b6b509e49917}" />
       </MissingDependency>
@@ -1160,6 +1193,10 @@
         <Dependent type="10" schemaName="bsr_mdtproject_bacapplicationid_bacappliction" displayName="bsr_mdtproject_bacapplicationid_bacappliction" parentSchemaName="bsr_bacapplication" parentDisplayName="BAC Application" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_bacapplication" parentDisplayName="BAC Application" solution="BuildingRegCore (1.17.109.0)" />
+        <Dependent type="10" schemaName="bsr_projecttaskdocument_bsr_bacapplicationid" displayName="bsr_projecttaskdocument_bsr_bacapplicationid" parentSchemaName="bsr_bacapplication" parentDisplayName="BAC Application" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="BuildingRegCore (1.17.109.0)" />
         <Dependent type="10" schemaName="bsr_buildingapplication_building" displayName="bsr_buildingapplication_building" parentSchemaName="bsr_building" parentDisplayName="Building" />
       </MissingDependency>
@@ -1222,6 +1259,14 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" solution="BuildingRegCore (1.17.109.0)" />
         <Dependent type="26" schemaName="All BAC QA records created this year" displayName="All BAC QA records created this year" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" id="{32d28172-f1e1-ee11-904d-6045bdc208e3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" solution="BuildingRegCore (1.17.109.0)" />
+        <Dependent type="26" schemaName="My associated BAC QA records created this year" displayName="My associated BAC QA records created this year" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" id="{354af70e-d8e5-ee11-904d-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" solution="BuildingRegCore (1.17.109.0)" />
+        <Dependent type="26" schemaName="My BAC QA records created this year" displayName="My BAC QA records created this year" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" id="{8f938423-fde5-ee11-904c-0022480749bf}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_numberofassociatedbuildings" displayName="Number of associated buildings" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.109.0)" />
@@ -1308,8 +1353,24 @@
         <Dependent type="26" schemaName="All BAC QA records created this year" displayName="All BAC QA records created this year" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" id="{32d28172-f1e1-ee11-904d-6045bdc208e3}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_qaresult" displayName="QA Result" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" solution="BuildingRegCore (1.17.109.0)" />
+        <Dependent type="26" schemaName="My associated BAC QA records created this year" displayName="My associated BAC QA records created this year" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" id="{354af70e-d8e5-ee11-904d-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_qaresult" displayName="QA Result" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" solution="BuildingRegCore (1.17.109.0)" />
+        <Dependent type="26" schemaName="My BAC QA records created this year" displayName="My BAC QA records created this year" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" id="{8f938423-fde5-ee11-904c-0022480749bf}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_qualityassuranceid" displayName="Quality Assurance" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" solution="BuildingRegCore (1.17.109.0)" />
         <Dependent type="26" schemaName="All BAC QA records created this year" displayName="All BAC QA records created this year" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" id="{32d28172-f1e1-ee11-904d-6045bdc208e3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_qualityassuranceid" displayName="Quality Assurance" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" solution="BuildingRegCore (1.17.109.0)" />
+        <Dependent type="26" schemaName="My associated BAC QA records created this year" displayName="My associated BAC QA records created this year" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" id="{354af70e-d8e5-ee11-904d-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_qualityassuranceid" displayName="Quality Assurance" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" solution="BuildingRegCore (1.17.109.0)" />
+        <Dependent type="26" schemaName="My BAC QA records created this year" displayName="My BAC QA records created this year" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" id="{8f938423-fde5-ee11-904c-0022480749bf}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_refundreason" displayName="Refund Reason" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.109.0)" />
@@ -1476,6 +1537,14 @@
         <Dependent type="26" schemaName="All BAC QA records created this year" displayName="All BAC QA records created this year" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" id="{32d28172-f1e1-ee11-904d-6045bdc208e3}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="createdon" displayName="Created On" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" solution="BuildingRegCore (1.17.109.0)" />
+        <Dependent type="26" schemaName="My associated BAC QA records created this year" displayName="My associated BAC QA records created this year" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" id="{354af70e-d8e5-ee11-904d-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="createdon" displayName="Created On" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" solution="BuildingRegCore (1.17.109.0)" />
+        <Dependent type="26" schemaName="My BAC QA records created this year" displayName="My BAC QA records created this year" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" id="{8f938423-fde5-ee11-904c-0022480749bf}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="description" displayName="Description" parentSchemaName="bsr_bsrdocument" parentDisplayName="BSR Document" solution="BuildingRegCore (1.17.109.0)" />
         <Dependent type="26" schemaName="Related MDT Task Document Attached by BSR" displayName="Related MDT Task Document Attached by BSR" parentSchemaName="bsr_projecttaskdocument" parentDisplayName="MDT Task Document" id="{8678935a-1140-ee11-bdf3-6045bdd0e4cf}" />
       </MissingDependency>
@@ -1540,6 +1609,14 @@
       <MissingDependency>
         <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" solution="Active" />
         <Dependent type="26" schemaName="All BAC QA records created this year" displayName="All BAC QA records created this year" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" id="{32d28172-f1e1-ee11-904d-6045bdc208e3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" solution="Active" />
+        <Dependent type="26" schemaName="My associated BAC QA records created this year" displayName="My associated BAC QA records created this year" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" id="{354af70e-d8e5-ee11-904d-6045bdd2c0c0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" solution="Active" />
+        <Dependent type="26" schemaName="My BAC QA records created this year" displayName="My BAC QA records created this year" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" id="{8f938423-fde5-ee11-904c-0022480749bf}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="serviceid" displayName="Service" parentSchemaName="task" parentDisplayName="Task" solution="msdynce_Service (9.0.5.56)">
@@ -1734,14 +1811,14 @@
         <Dependent type="60" displayName="Information" parentDisplayName="BAC Application" id="{0ae17bd9-be5d-42c9-8b75-b6b509e49917}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="26" schemaName="My Active Contacts by Relationship" displayName="My Active Contacts by Relationship" parentSchemaName="contact" parentDisplayName="Contact" solution="RelationshipAnalytics (9.0.24022.2)" id="{ef26335d-6f4e-e611-80be-0024e8469fb9}">
-          <package>msdynce_SalesInsightsAnchor (9.0.24022.10005)</package>
+        <Required type="26" schemaName="My Active Contacts by Relationship" displayName="My Active Contacts by Relationship" parentSchemaName="contact" parentDisplayName="Contact" solution="RelationshipAnalytics (9.0.24023.2)" id="{ef26335d-6f4e-e611-80be-0024e8469fb9}">
+          <package>msdynce_SalesInsightsAnchor (9.0.24023.10008)</package>
         </Required>
         <Dependent type="60" displayName="Task" parentDisplayName="Task" id="{16654191-19ad-48ca-9e46-c4b4fbdad76f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="26" schemaName="My Active Contacts by Relationship" displayName="My Active Contacts by Relationship" parentSchemaName="contact" parentDisplayName="Contact" solution="RelationshipAnalytics (9.0.24022.2)" id="{ef26335d-6f4e-e611-80be-0024e8469fb9}">
-          <package>msdynce_SalesInsightsAnchor (9.0.24022.10005)</package>
+        <Required type="26" schemaName="My Active Contacts by Relationship" displayName="My Active Contacts by Relationship" parentSchemaName="contact" parentDisplayName="Contact" solution="RelationshipAnalytics (9.0.24023.2)" id="{ef26335d-6f4e-e611-80be-0024e8469fb9}">
+          <package>msdynce_SalesInsightsAnchor (9.0.24023.10008)</package>
         </Required>
         <Dependent type="60" displayName="MDT Member quick create form" parentDisplayName="MDT Member" id="{afe515a9-674b-ee11-be6f-6045bdf1e965}" />
       </MissingDependency>
@@ -1861,56 +1938,56 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_talkingpointsloader.js" displayName="msdyn_talkingpointsloader.js" solution="msdynce_Talkingpoints (9.1.0.59)">
-          <package>msdynce_SalesInsightsAnchor (9.0.24022.10005)</package>
+          <package>msdynce_SalesInsightsAnchor (9.0.24023.10008)</package>
         </Required>
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2402.4012)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2402.4013)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Building Control Lifecycle" id="{0df30caa-f043-4e13-ab5f-524da6f9b13d}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2402.4012)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2402.4013)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Information Request" id="{10426a89-353f-4fda-9041-628c74f72d9c}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2402.4012)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2402.4013)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Staged Application" id="{16e23bf3-91ec-4e02-8e80-7c9479aa5b5f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2402.4012)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2402.4013)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Drawings and Plans" id="{6cb0462c-4569-4f66-82db-d1188b9666c3}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2402.4012)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2402.4013)" />
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2402.4012)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2402.4013)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Change Category" id="{a244ada5-7598-4dc7-a990-1a69b2a8398d}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2402.4012)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2402.4013)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Notices" id="{e22cb3c2-63fe-4cf2-b70d-be5e0a02cc8a}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2402.4012)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2402.4013)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Building Details" id="{e39fd151-fe03-4620-b14c-3de9ac05b6a9}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2402.4012)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2402.4013)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Building Control Application" id="{e775f7c6-149b-429d-bd84-417d949d6bae}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2402.4012)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2402.4013)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Change Request" id="{e80c0676-2f9a-4c01-966c-0f7fe8f1140e}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.OptionSet.OptionSetControl" displayName="MscrmControls.OptionSet.OptionSetControl" solution="CustomControlsCore (9.2.24024.00178)" />
+        <Required type="66" schemaName="MscrmControls.OptionSet.OptionSetControl" displayName="MscrmControls.OptionSet.OptionSetControl" solution="CustomControlsCore (9.2.24024.00198)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Building Details" id="{e39fd151-fe03-4620-b14c-3de9ac05b6a9}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.OptionSet.OptionSetControl" displayName="MscrmControls.OptionSet.OptionSetControl" solution="CustomControlsCore (9.2.24024.00178)" />
+        <Required type="66" schemaName="MscrmControls.OptionSet.OptionSetControl" displayName="MscrmControls.OptionSet.OptionSetControl" solution="CustomControlsCore (9.2.24024.00198)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Building Control Application" id="{e775f7c6-149b-429d-bd84-417d949d6bae}" />
       </MissingDependency>
       <MissingDependency>

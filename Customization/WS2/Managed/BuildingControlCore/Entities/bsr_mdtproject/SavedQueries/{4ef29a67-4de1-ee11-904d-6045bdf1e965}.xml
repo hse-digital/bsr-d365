@@ -20,14 +20,18 @@
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
         <entity name="bsr_mdtproject">
           <attribute name="bsr_name" />
-          <order attribute="bsr_name" descending="false" />
           <attribute name="statuscode" />
           <attribute name="ownerid" />
           <attribute name="bsr_buidlingdetailsid" />
           <attribute name="bsr_bacapplicationid" />
+          <order attribute="bsr_name" descending="false" />
+          <filter type="and">
+            <condition attribute="createdon" operator="this-year" />
+            <condition attribute="ownerid" operator="eq-userid" />
+          </filter>
           <attribute name="bsr_mdtprojectid" />
         </entity>
       </fetch>
