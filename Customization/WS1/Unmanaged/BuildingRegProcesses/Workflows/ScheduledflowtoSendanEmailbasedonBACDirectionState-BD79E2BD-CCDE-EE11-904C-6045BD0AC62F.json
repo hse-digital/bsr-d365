@@ -369,6 +369,7 @@
                                     "partyid@odata.bind": "contacts(@{outputs('Get_Building_Application')?['body/_bsr_registreeid_value']})"
                                   }
                                 ],
+                                "item/description": "@outputs('ComposeEmailDescription')",
                                 "item/regardingobjectid_bsr_bacapplicationdirection_email@odata.bind": "\\bsr_bacapplicationdirections\\@{outputs('Get_BAC_Application_Direction_ID')?['body/bsr_bacapplicationdirectionid']}",
                                 "item/subject": "@replace(outputs('Html_to_text')?['body'], '%buildingName%', outputs('Get_Building_by_ID')?['body/bsr_name'])"
                               },
@@ -436,6 +437,7 @@
                                       "partyid@odata.bind": "contacts(@{outputs('Get_Building_Application')?['body/_bsr_secondaryapplicantid_value']})"
                                     }
                                   ],
+                                  "item/description": "@outputs('ComposeEmailDescription')",
                                   "item/regardingobjectid_bsr_bacapplicationdirection_email@odata.bind": "\\bsr_bacapplicationdirections\\@{outputs('Get_BAC_Application_Direction_ID')?['body/bsr_bacapplicationdirectionid']}",
                                   "item/subject": "@replace(outputs('Html_to_text')?['body'], '%buildingName%', outputs('Get_Building_by_ID')?['body/bsr_name'])"
                                 },
