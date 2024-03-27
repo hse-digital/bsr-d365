@@ -12,16 +12,21 @@
         <row name="result" id="bsr_mdtmemberid">
           <cell name="bsr_contact" width="100" />
           <cell name="bsr_jobrole" width="100" />
+          <cell name="bsr_rate" width="100" />
         </row>
       </grid>
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
         <entity name="bsr_mdtmember">
           <attribute name="bsr_mdtmemberid" />
           <attribute name="bsr_contact" />
           <attribute name="bsr_jobrole" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="bsr_rate" />
         </entity>
       </fetch>
     </fetchxml>

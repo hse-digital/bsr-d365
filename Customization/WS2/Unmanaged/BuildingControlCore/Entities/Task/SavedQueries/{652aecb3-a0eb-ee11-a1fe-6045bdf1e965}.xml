@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{652aecb3-a0eb-ee11-a1fe-6045bdf1e965}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="subject" select="1" preview="1" icon="1">
+        <row name="result" id="activityid">
+          <cell name="bsr_taskcode" width="100" />
+          <cell name="subject" width="250" />
+          <cell name="regardingobjectid" width="100" />
+          <cell name="a_48d7634160e045bda9d290e94def55c0.bsr_buildingapplicationid" width="344" />
+          <cell name="a_48d7634160e045bda9d290e94def55c0.bsr_buildingid" width="278" />
+          <cell name="prioritycode" width="100" />
+          <cell name="scheduledend" width="100" />
+          <cell name="bsr_taskcategoryid" width="122" />
+          <cell name="bsr_tasktypeid" width="100" />
+          <cell name="bsr_mdtmemberid" width="167" />
+          <cell name="bsr_mdttask" width="101" />
+          <cell name="bsr_mdtwebsitestatus" width="153" />
+          <cell name="statuscode" width="100" />
+          <cell name="ownerid" width="150" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
+        <entity name="task">
+          <attribute name="subject" />
+          <order attribute="subject" descending="false" />
+          <attribute name="ownerid" />
+          <attribute name="regardingobjectid" />
+          <attribute name="prioritycode" />
+          <attribute name="scheduledend" />
+          <attribute name="activityid" />
+          <attribute name="statuscode" />
+          <filter type="and">
+            <condition attribute="statecode" operator="not-null" />
+            <condition attribute="bsr_mdttask" operator="eq" value="1" />
+            <condition attribute="bsr_mdtbacapplicationid" operator="not-null" />
+          </filter>
+          <attribute name="bsr_taskcategoryid" />
+          <attribute name="bsr_tasktypeid" />
+          <attribute name="bsr_taskcode" />
+          <attribute name="bsr_mdtmemberid" />
+          <attribute name="bsr_mdttask" />
+          <attribute name="bsr_mdtwebsitestatus" />
+          <link-entity alias="a_48d7634160e045bda9d290e94def55c0" name="bsr_bacapplication" to="bsr_mdtbacapplicationid" from="bsr_bacapplicationid" link-type="outer" visible="false">
+            <attribute name="bsr_buildingapplicationid" />
+            <attribute name="bsr_buildingid" />
+          </link-entity>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.91.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="All BAC MDT Tasks" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
