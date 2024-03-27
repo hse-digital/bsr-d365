@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Reg Core" languagecode="1033" />
     </Descriptions>
-    <Version>1.17.114.0</Version>
+    <Version>1.17.115.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -143,7 +143,6 @@
       <RootComponent type="1" schemaName="incident" behavior="1" />
       <RootComponent type="1" schemaName="list" behavior="1" />
       <RootComponent type="1" schemaName="sharepointdocument" behavior="2" />
-      <RootComponent type="1" schemaName="systemuser" behavior="1" />
       <RootComponent type="1" schemaName="task" behavior="1" />
       <RootComponent type="1" schemaName="team" behavior="1" />
       <RootComponent type="20" id="{0b90c986-fda6-ed11-aad1-0022481b5e4f}" behavior="0" />
@@ -375,14 +374,16 @@
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
-        <Required type="1" schemaName="bookableresource" displayName="Bookable Resource" solution="msdynce_Scheduling (9.0.0.0)" />
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="1" schemaName="campaign" displayName="Campaign" solution="msdynce_Marketing (9.0.4.37)">
           <package>msdynce_MarketingAnchor (9.0.24023.10001)</package>
         </Required>
         <Dependent type="1" schemaName="campaign" displayName="Campaign" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="entitlement" displayName="Entitlement" solution="msdynce_Service (9.0.5.56)">
+          <package>msdynce_ServiceAnchor (9.0.24014.1004)</package>
+        </Required>
+        <Dependent type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
@@ -397,17 +398,67 @@
         <Dependent type="1" schemaName="list" displayName="Marketing List" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_capacityprofile" displayName="Capacity Profile" solution="UnifiedRouting (1.0.0.4864)">
-          <package>UnifiedRoutingPrimeAnchor (1.5.26.89)</package>
-        </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="1" schemaName="msdyn_customerasset" displayName="Customer Asset" solution="msdyn_AssetCommon (1.0.46.7)">
           <package>FieldService_Anchor (8.8.109.12)</package>
           <package>msdynce_ServiceAnchor (9.0.24014.1004)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="msdyn_insurance" displayName="Insurance" solution="msdyn_FieldService_patch_update (8.8.109.12)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="msdyn_tradecoverage" displayName="Trade Coverage" solution="msdyn_FieldService_patch_update (8.8.109.12)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="msdyn_warranty" displayName="Warranty" solution="msdyn_AssetCommon (1.0.46.7)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+          <package>msdynce_ServiceAnchor (9.0.24014.1004)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="msdyn_workorder" displayName="Work Order" solution="FieldService (8.8.0.88)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="opportunity" displayName="Opportunity" solution="msdynce_Sales (9.0.4.0076)">
+          <package>msdynce_SalesAnchor (9.0.24023.10004)</package>
+        </Required>
+        <Dependent type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="msdyn_account_account_BillingAccount" displayName="msdyn_account_account_BillingAccount" parentSchemaName="account" parentDisplayName="Account" solution="FieldServiceCommon (1.0.0.217)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="msdyn_account_msdyn_agreement_BillingAccount" displayName="msdyn_account_msdyn_agreement_BillingAccount" parentSchemaName="account" parentDisplayName="Account" solution="FieldService (8.8.0.88)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="msdyn_account_msdyn_agreement_ServiceAccount" displayName="msdyn_account_msdyn_agreement_ServiceAccount" parentSchemaName="account" parentDisplayName="Account" solution="FieldService (8.8.0.88)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="msdyn_account_msdyn_customerasset_Account" displayName="msdyn_account_msdyn_customerasset_Account" parentSchemaName="msdyn_customerasset" parentDisplayName="Customer Asset" solution="msdyn_AssetCommon (1.0.46.7)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+          <package>msdynce_ServiceAnchor (9.0.24014.1004)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="msdyn_account_msdyn_customerasset_Account" displayName="msdyn_account_msdyn_customerasset_Account" parentSchemaName="msdyn_customerasset" parentDisplayName="Customer Asset" solution="msdyn_AssetCommon (1.0.46.7)">
@@ -417,10 +468,121 @@
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="10" schemaName="msdyn_msdyn_presence_systemuser" displayName="msdyn_msdyn_presence_systemuser" parentSchemaName="msdyn_presence" parentDisplayName="Presence" solution="OmnichannelBase (1.10.0.76)">
-          <package>UnifiedRoutingPrimeAnchor (1.5.26.89)</package>
+        <Required type="10" schemaName="msdyn_account_msdyn_insurance_InsuranceCarrier" displayName="msdyn_account_msdyn_insurance_InsuranceCarrier" parentSchemaName="account" parentDisplayName="Account" solution="msdyn_FieldService_patch_update (8.8.109.12)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
         </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="msdyn_account_msdyn_payment_Account" displayName="msdyn_account_msdyn_payment_Account" parentSchemaName="account" parentDisplayName="Account" solution="FieldService (8.8.0.88)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="msdyn_account_msdyn_purchaseorder_Vendor" displayName="msdyn_account_msdyn_purchaseorder_Vendor" parentSchemaName="msdyn_purchaseorder" parentDisplayName="Purchase Order" solution="FieldServiceCommon (1.0.0.217)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="msdyn_account_msdyn_rma_BillingAccount" displayName="msdyn_account_msdyn_rma_BillingAccount" parentSchemaName="account" parentDisplayName="Account" solution="FieldService (8.8.0.88)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="msdyn_account_msdyn_rma_ServiceAccount" displayName="msdyn_account_msdyn_rma_ServiceAccount" parentSchemaName="account" parentDisplayName="Account" solution="FieldService (8.8.0.88)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="msdyn_account_msdyn_rtv_Vendor" displayName="msdyn_account_msdyn_rtv_Vendor" parentSchemaName="account" parentDisplayName="Account" solution="FieldService (8.8.0.88)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="msdyn_account_msdyn_tradecoverage_Account" displayName="msdyn_account_msdyn_tradecoverage_Account" parentSchemaName="account" parentDisplayName="Account" solution="msdyn_FieldService_patch_update (8.8.109.12)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="msdyn_account_msdyn_warranty_WarrantyHolder" displayName="msdyn_account_msdyn_warranty_WarrantyHolder" parentSchemaName="account" parentDisplayName="Account" solution="msdyn_AssetCommon (1.0.46.7)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+          <package>msdynce_ServiceAnchor (9.0.24014.1004)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="msdyn_account_msdyn_warranty_WarrantyProvider" displayName="msdyn_account_msdyn_warranty_WarrantyProvider" parentSchemaName="account" parentDisplayName="Account" solution="msdyn_AssetCommon (1.0.46.7)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+          <package>msdynce_ServiceAnchor (9.0.24014.1004)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="msdyn_account_msdyn_workorder_BillingAccount" displayName="msdyn_account_msdyn_workorder_BillingAccount" parentSchemaName="account" parentDisplayName="Account" solution="FieldService (8.8.0.88)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="msdyn_account_msdyn_workorder_ServiceAccount" displayName="msdyn_account_msdyn_workorder_ServiceAccount" parentSchemaName="account" parentDisplayName="Account" solution="FieldService (8.8.0.88)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="msdyn_msdyn_insurance_PolicyHolder_account" displayName="msdyn_msdyn_insurance_PolicyHolder_account" parentSchemaName="account" parentDisplayName="Account" solution="msdyn_FieldService_patch_update (8.8.109.12)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="msdyn_msdyn_taxcode_account_SalesTaxCode" displayName="msdyn_msdyn_taxcode_account_SalesTaxCode" parentSchemaName="msdyn_taxcode" parentDisplayName="Tax Code" solution="FieldService (8.8.0.88)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="msdyn_msdyn_warranty_account" displayName="msdyn_msdyn_warranty_account" parentSchemaName="msdyn_warranty" parentDisplayName="Warranty" solution="msdyn_AssetCommon (1.0.46.7)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+          <package>msdynce_ServiceAnchor (9.0.24014.1004)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="msdyn_msdyn_workhourtemplate_account_workhourtemplate" displayName="msdyn_msdyn_workhourtemplate_account_workhourtemplate" parentSchemaName="msdyn_workhourtemplate" parentDisplayName="Work Template" solution="FieldService (8.8.0.88)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="msdyn_territory_account_ServiceTerritory" displayName="msdyn_territory_account_ServiceTerritory" parentSchemaName="territory" parentDisplayName="Territory" solution="FieldService (8.8.0.88)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="businesscard" displayName="Business Card" parentSchemaName="contact" parentDisplayName="Contact" solution="msdynce_SalesPatch201904 (9.0.1912.1007)">
+          <package>msdynce_SalesAnchor (9.0.24023.10004)</package>
+        </Required>
+        <Dependent type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="businesscardattributes" displayName="BusinessCardAttributes" parentSchemaName="contact" parentDisplayName="Contact" solution="msdynce_SalesPatch201904 (9.0.1912.1007)">
+          <package>msdynce_SalesAnchor (9.0.24023.10004)</package>
+        </Required>
+        <Dependent type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="defaultpricelevelid" displayName="Price List" parentSchemaName="account" parentDisplayName="Account" solution="msdynce_ProductManagement (9.0.4.0066)">
+          <package>msdynce_ProductManagementAnchor (9.0.24022.10001)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="defaultpricelevelid" displayName="Price List" parentSchemaName="account" parentDisplayName="Account" solution="msdynce_ProductManagement (9.0.4.0066)">
@@ -433,40 +595,72 @@
         <Dependent type="60" displayName="Appointment" parentDisplayName="Appointment" id="{549a8aa3-c349-4ab9-8bac-4873fa9a7a5c}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="msdyn_agentType" displayName="User type" parentSchemaName="systemuser" parentDisplayName="User" solution="OmnichannelBotEnabler (1.5.0.4)">
-          <package>OmnichannelPrimeAnchor (1.5.26.136)</package>
+        <Required type="2" schemaName="msdyn_billingaccount" displayName="Billing Account" parentSchemaName="account" parentDisplayName="Account" solution="FieldServiceCommon (1.0.0.217)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
         </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="msdyn_botapplicationid" displayName="Bot application ID" parentSchemaName="systemuser" parentDisplayName="User" solution="OmnichannelBotEnabler (1.5.0.4)">
-          <package>OmnichannelPrimeAnchor (1.5.26.136)</package>
+        <Required type="2" schemaName="msdyn_primarytimezone" displayName="Primary Time Zone" parentSchemaName="account" parentDisplayName="Account" solution="msdyn_AssetCommon (1.0.46.7)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+          <package>msdynce_ServiceAnchor (9.0.24014.1004)</package>
         </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="msdyn_botdescription" displayName="Description" parentSchemaName="systemuser" parentDisplayName="User" solution="OmnichannelBase (1.10.0.76)">
-          <package>UnifiedRoutingPrimeAnchor (1.5.26.89)</package>
+        <Required type="2" schemaName="msdyn_primarytimezone" displayName="Primary Time Zone" parentSchemaName="contact" parentDisplayName="Contact" solution="msdyn_AssetCommon (1.0.46.7)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+          <package>msdynce_ServiceAnchor (9.0.24014.1004)</package>
         </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
+        <Dependent type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="msdyn_botprovider" displayName="Bot Provider" parentSchemaName="systemuser" parentDisplayName="User" solution="msdyn_OmnichannelBotEnablerPatch (1.5.26.2)">
-          <package>OmnichannelPrimeAnchor (1.5.26.136)</package>
+        <Required type="2" schemaName="msdyn_salestaxcode" displayName="Sales Tax Code" parentSchemaName="account" parentDisplayName="Account" solution="FieldService (8.8.0.88)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
         </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="msdyn_capacity" displayName="Capacity" parentSchemaName="systemuser" parentDisplayName="User" solution="OmnichannelBase (1.10.0.76)">
-          <package>UnifiedRoutingPrimeAnchor (1.5.26.89)</package>
+        <Required type="2" schemaName="msdyn_serviceterritory" displayName="Service Territory" parentSchemaName="account" parentDisplayName="Account" solution="FieldService (8.8.0.88)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
         </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="msdyn_defaultpresenceiduser" displayName="Default Presence" parentSchemaName="systemuser" parentDisplayName="User" solution="OmnichannelBase (1.10.0.76)">
-          <package>UnifiedRoutingPrimeAnchor (1.5.26.89)</package>
+        <Required type="2" schemaName="msdyn_taxexempt" displayName="Tax Exempt" parentSchemaName="account" parentDisplayName="Account" solution="FieldServiceCommon (1.0.0.217)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
         </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="msdyn_taxexemptnumber" displayName="Tax Exempt Number" parentSchemaName="account" parentDisplayName="Account" solution="FieldServiceCommon (1.0.0.217)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="msdyn_travelcharge" displayName="Travel Charge" parentSchemaName="account" parentDisplayName="Account" solution="FieldService (8.8.0.88)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="msdyn_travelchargetype" displayName="Travel Charge Type" parentSchemaName="account" parentDisplayName="Account" solution="FieldService (8.8.0.88)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="msdyn_workhourtemplate" displayName="Work Hour Template" parentSchemaName="account" parentDisplayName="Account" solution="FieldService (8.8.0.88)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="msdyn_workorderinstructions" displayName="Work Order Instructions" parentSchemaName="account" parentDisplayName="Account" solution="FieldService (8.8.0.88)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="onlinemeetingjoinurl" displayName="Online Meeting Join Url" parentSchemaName="appointment" parentDisplayName="Appointment" solution="msft_ActivitiesInfra_Extensions (9.2.0.59)" />
@@ -485,10 +679,10 @@
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="siteid" displayName="Site" parentSchemaName="systemuser" parentDisplayName="User" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.24014.1004)</package>
+        <Required type="2" schemaName="originatingleadid" displayName="Originating Lead" parentSchemaName="contact" parentDisplayName="Contact" solution="msdynce_LeadManagement (9.0.4.0066)">
+          <package>msdynce_LeadManagementAnchor (9.0.24023.10001)</package>
         </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
+        <Dependent type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="territoryid" displayName="Territory" parentSchemaName="account" parentDisplayName="Account" solution="msdynce_Sales (9.0.4.0076)">
@@ -497,27 +691,36 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Account" id="{b053a39a-041a-4356-acef-ddf00182762b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="territoryid" displayName="Territory" parentSchemaName="systemuser" parentDisplayName="User" solution="msdynce_AppCommon (9.0.4.0066)">
-          <package>msdynce_AppCommonAnchor (9.0.24031.10002)</package>
-        </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="26" schemaName="Active Bookable Resources" displayName="Active Bookable Resources" parentSchemaName="bookableresource" parentDisplayName="Bookable Resource" solution="msdynce_Scheduling (9.0.0.0)" id="{662706ca-6ec0-4c0e-a281-521161be48fa}" />
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="26" schemaName="Active Capacity Profiles" displayName="Active Capacity Profiles" parentSchemaName="msdyn_capacityprofile" parentDisplayName="Capacity Profile" solution="UnifiedRouting (1.0.0.4864)" id="{59137c65-5747-433b-8a7d-fd1dc252f13f}">
-          <package>UnifiedRoutingPrimeAnchor (1.5.26.89)</package>
-        </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="26" schemaName="Active Customer Assets" displayName="Active Customer Assets" parentSchemaName="msdyn_customerasset" parentDisplayName="Customer Asset" solution="msdyn_AssetCommon (1.0.46.7)" id="{6ecb03a4-acda-44ae-83e3-c60ba8338dbb}">
           <package>FieldService_Anchor (8.8.109.12)</package>
           <package>msdynce_ServiceAnchor (9.0.24014.1004)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Active Insurance" displayName="Active Insurance" parentSchemaName="msdyn_insurance" parentDisplayName="Insurance" solution="msdyn_FieldService_patch_update (8.8.109.12)" id="{2f839d03-a901-46b6-a1a6-c5d699ac11b2}">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Active Trade Coverages" displayName="Active Trade Coverages" parentSchemaName="msdyn_tradecoverage" parentDisplayName="Trade Coverage" solution="msdyn_FieldService_patch_update (8.8.109.12)" id="{e60599de-acaf-445c-a301-606d70df464c}">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Active Warranties" displayName="Active Warranties" parentSchemaName="msdyn_warranty" parentDisplayName="Warranty" solution="msdyn_AssetCommon (1.0.46.7)" id="{070174b8-8f77-44d1-ac5b-f617f7953a52}">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+          <package>msdynce_ServiceAnchor (9.0.24014.1004)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Active Work Orders" displayName="Active Work Orders" parentSchemaName="msdyn_workorder" parentDisplayName="Work Order" solution="FieldService (8.8.0.88)" id="{fce37246-eba1-4e92-bb9d-f8cb3ec38e3f}">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="All Accounts" displayName="All Accounts" parentSchemaName="account" parentDisplayName="Account" solution="msdynce_AppCommon (9.0.4.0066)" id="{65ffaf9a-e8c5-432d-860b-32f841b00d87}">
@@ -532,10 +735,10 @@
         <Dependent type="26" schemaName="All Contacts" displayName="All Contacts" parentSchemaName="contact" parentDisplayName="Contact" id="{0d5d377b-5e7c-47b5-bab1-a5cb8b4ac105}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="26" schemaName="Capacity profile Subgrid View" displayName="Capacity profile Subgrid View" parentSchemaName="msdyn_capacityprofile" parentDisplayName="Capacity Profile" solution="OCBaseURBase (1.1.0.654)" id="{6313eed9-e160-eb11-a812-000d3a9bbc54}">
-          <package>UnifiedRoutingPrimeAnchor (1.5.26.89)</package>
+        <Required type="26" schemaName="All Entitlements" displayName="All Entitlements" parentSchemaName="entitlement" parentDisplayName="Entitlement" solution="msdynce_Service (9.0.5.56)" id="{aa69e7e2-913a-4a5a-8609-8ca443554909}">
+          <package>msdynce_ServiceAnchor (9.0.24014.1004)</package>
         </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
+        <Dependent type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Customer Asset associated view with alerts" displayName="Customer Asset associated view with alerts" parentSchemaName="msdyn_customerasset" parentDisplayName="Customer Asset" solution="msdyn_ConnectedCustomerService (9.0.23122.1017)" id="{38cc036f-fbfe-e911-a81c-000d3ac2c6cb}">
@@ -544,10 +747,64 @@
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="26" schemaName="Omnichannel queues" displayName="Omnichannel queues" parentSchemaName="queue" parentDisplayName="Queue" solution="OmnichannelBase (1.10.0.76)" id="{475ba760-c16c-e911-8196-000d3af7379e}">
-          <package>UnifiedRoutingPrimeAnchor (1.5.26.89)</package>
+        <Required type="26" schemaName="Inactive Insurance" displayName="Inactive Insurance" parentSchemaName="msdyn_insurance" parentDisplayName="Insurance" solution="msdyn_FieldService_patch_update (8.8.109.12)" id="{78a49141-bf86-4bfe-8c6e-d08ed03bb442}">
+          <package>FieldService_Anchor (8.8.109.12)</package>
         </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Inactive Trade Coverages" displayName="Inactive Trade Coverages" parentSchemaName="msdyn_tradecoverage" parentDisplayName="Trade Coverage" solution="msdyn_FieldService_patch_update (8.8.109.12)" id="{2d04551b-f57d-4097-a927-92521e638a6f}">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="My Active Cases" displayName="My Active Cases" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)" id="{00000000-0000-0000-00aa-000010001028}">
+          <package>msdynce_ServiceAnchor (9.0.24014.1004)</package>
+        </Required>
+        <Dependent type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="My Open Opportunities" displayName="My Open Opportunities" parentSchemaName="opportunity" parentDisplayName="Opportunity" solution="msdynce_Sales (9.0.4.0076)" id="{00000000-0000-0000-00aa-000010003000}">
+          <package>msdynce_SalesAnchor (9.0.24023.10004)</package>
+        </Required>
+        <Dependent type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Recent Cases" displayName="Recent Cases" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)" id="{ebd1d24a-eea7-e211-9fb6-00155dd0ea05}">
+          <package>msdynce_ServiceAnchor (9.0.24014.1004)</package>
+        </Required>
+        <Dependent type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Recent Opportunities" displayName="Recent Opportunities" parentSchemaName="opportunity" parentDisplayName="Opportunity" solution="msdynce_Sales (9.0.4.0076)" id="{9c3f7ee8-eca7-e211-9fb6-00155dd0ea05}">
+          <package>msdynce_SalesAnchor (9.0.24023.10004)</package>
+        </Required>
+        <Dependent type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Trade Coverages For Account" displayName="Trade Coverages For Account" parentSchemaName="msdyn_tradecoverage" parentDisplayName="Trade Coverage" solution="msdyn_FieldService_patch_update (8.8.109.12)" id="{50980487-9c33-ed11-9db1-0022482aea7b}">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="59" schemaName="Active Work Orders By Type" displayName="Active Work Orders By Type" parentSchemaName="msdyn_workorder" parentDisplayName="Work Order" solution="FieldService (8.8.0.88)" id="{8e746648-1a4e-e111-93b3-000c2959f9b8}">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="59" schemaName="Case Mix (By Business Unit)" displayName="Case Mix (By Business Unit)" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)" id="{f10375a6-4893-de11-97d4-00155da3b01e}">
+          <package>msdynce_ServiceAnchor (9.0.24014.1004)</package>
+        </Required>
+        <Dependent type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="59" schemaName="Entitlements Expiration" displayName="Entitlements Expiration" parentSchemaName="entitlement" parentDisplayName="Entitlement" solution="msdynce_Service (9.0.5.56)" id="{fdb919bb-c6fc-4fc8-8fa5-67ace68e41d1}">
+          <package>msdynce_ServiceAnchor (9.0.24014.1004)</package>
+        </Required>
+        <Dependent type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="59" schemaName="Tasks by Month Due" displayName="Tasks by Month Due" parentSchemaName="task" parentDisplayName="Task" solution="msdynce_AppCommon (9.0.4.0066)" id="{9e6a8b06-6d14-46e6-bbf5-95c388c6eb7a}">
@@ -562,8 +819,32 @@
         <Dependent type="60" displayName="Structure" parentDisplayName="Structure" id="{58e353f6-2098-ed11-aad1-0022481b5e4f}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="59" schemaName="Top Customers" displayName="Top Customers" parentSchemaName="opportunity" parentDisplayName="Opportunity" solution="msdynce_Sales (9.0.4.0076)" id="{8bc5fb18-48f2-4782-9e16-3d452fa4ddce}">
+          <package>msdynce_SalesAnchor (9.0.24023.10004)</package>
+        </Required>
+        <Dependent type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="60" displayName="Task" parentDisplayName="Task" solution="msdynce_Activities (9.0.1.2033)" id="{16654191-19ad-48ca-9e46-c4b4fbdad76f}" />
         <Dependent type="60" displayName="Task" parentDisplayName="Task" id="{16654191-19ad-48ca-9e46-c4b4fbdad76f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Contact" parentDisplayName="Contact" solution="msdynce_AppCommon (9.0.4.0066)" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}">
+          <package>msdynce_AppCommonAnchor (9.0.24031.10002)</package>
+        </Required>
+        <Dependent type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="account contact card" parentDisplayName="Contact" solution="msdynce_AppCommon (9.0.4.0066)" id="{29de27bc-a257-4f29-99cf-bab4a84e688f}">
+          <package>msdynce_AppCommonAnchor (9.0.24031.10002)</package>
+        </Required>
+        <Dependent type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="account contact card" parentDisplayName="Contact" solution="msdynce_AppCommon (9.0.4.0066)" id="{29de27bc-a257-4f29-99cf-bab4a84e688f}">
+          <package>msdynce_AppCommonAnchor (9.0.24031.10002)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="account contact card" parentDisplayName="Contact" solution="msdynce_AppCommon (9.0.4.0066)" id="{29de27bc-a257-4f29-99cf-bab4a84e688f}">
@@ -574,6 +855,12 @@
       <MissingDependency>
         <Required type="60" displayName="Appointment" parentDisplayName="Appointment" solution="msdynce_Activities (9.0.1.2033)" id="{549a8aa3-c349-4ab9-8bac-4873fa9a7a5c}" />
         <Dependent type="60" displayName="Appointment" parentDisplayName="Appointment" id="{549a8aa3-c349-4ab9-8bac-4873fa9a7a5c}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Account" parentDisplayName="Account" solution="msdynce_AppCommon (9.0.4.0066)" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}">
+          <package>msdynce_AppCommonAnchor (9.0.24031.10002)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="TimelineWallControl - Contact - Main" parentDisplayName="Contact" solution="OmnichannelBase (1.10.0.76)" id="{986258b5-2985-4ae0-970a-5e1d108ab793}">
@@ -605,7 +892,13 @@
         <Required type="61" schemaName="AppCommon/Account/Account_main_system_library.js" displayName="AppCommon/Account/Account_main_system_library.js" solution="msdynce_AppCommon (9.0.4.0066)">
           <package>msdynce_AppCommonAnchor (9.0.24031.10002)</package>
         </Required>
-        <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="AppCommon/Account/Account_main_system_library.js" displayName="AppCommon/Account/Account_main_system_library.js" solution="msdynce_AppCommon (9.0.4.0066)">
+          <package>msdynce_AppCommonAnchor (9.0.24031.10002)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="Account" id="{b053a39a-041a-4356-acef-ddf00182762b}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="AppCommon/Account/Account_main_system_library.js" displayName="AppCommon/Account/Account_main_system_library.js" solution="msdynce_AppCommon (9.0.4.0066)">
@@ -620,6 +913,25 @@
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="61" schemaName="AppCommon/Contact/Contact_main_system_library.js" displayName="AppCommon/Contact/Contact_main_system_library.js" solution="msdynce_AppCommon (9.0.4.0066)">
+          <package>msdynce_AppCommonAnchor (9.0.24031.10002)</package>
+        </Required>
+        <Dependent type="60" displayName="TimelineWallControl - Contact - Main" parentDisplayName="Contact" id="{986258b5-2985-4ae0-970a-5e1d108ab793}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="msdyn_/Account/Account.Library.js" displayName="msdyn_/Account/Account.Library.js" solution="FieldService (8.8.0.88)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="msdyn_/Account/AssetCommon.Account.Library.js" displayName="msdyn_/Account/AssetCommon.Account.Library.js" solution="msdyn_AssetCommon (1.0.46.7)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+          <package>msdynce_ServiceAnchor (9.0.24014.1004)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="61" schemaName="msdyn_/ActivityFeeds.Form.js" displayName="msdyn_/ActivityFeeds.Form.js" solution="ActivityFeedsCore (9.0.0.0009)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Account" id="{b053a39a-041a-4356-acef-ddf00182762b}" />
       </MissingDependency>
@@ -628,6 +940,12 @@
           <package>msdynce_ServiceAnchor (9.0.24014.1004)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="msdyn_/Contact/Contact.Library.js" displayName="msdyn_/Contact/Contact.Library.js" solution="FieldService (8.8.0.88)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+        </Required>
+        <Dependent type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_/Images/task_16.png" displayName="msdyn_/Images/task_16.png" solution="RelationshipAnalytics (9.0.24022.2)">
@@ -652,16 +970,16 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Account" id="{b053a39a-041a-4356-acef-ddf00182762b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="61" schemaName="msdyn_/User/FieldService.SystemUser.js" displayName="msdyn_/User/FieldService.SystemUser.js" solution="FieldService (8.8.0.88)">
-          <package>FieldService_Anchor (8.8.109.12)</package>
+        <Required type="61" schemaName="msdyn_/Scripts/WhoKnowsWhomLoader.js" displayName="msdyn_/Scripts/WhoKnowsWhomLoader.js" solution="msdyn_connectiongraph (9.3.24022.2)">
+          <package>msdynce_SalesInsightsAnchor (9.0.24022.10005)</package>
         </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
+        <Dependent type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="61" schemaName="msdyn_capacityprofileSubgridActions.js" displayName="msdyn_capacityprofileSubgridActions.js" solution="OCBaseURBase (1.1.0.654)">
-          <package>UnifiedRoutingPrimeAnchor (1.5.26.89)</package>
+        <Required type="61" schemaName="msdyn_/Utils/FieldServiceTrial.js" displayName="msdyn_/Utils/FieldServiceTrial.js" solution="FieldService (8.8.0.88)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
         </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_ci_activity_form" displayName="msdyn_ci_activity_form" solution="msdyn_Conversation_Intelligence (9.0.1.1181)">
@@ -670,10 +988,22 @@
         <Dependent type="60" displayName="Appointment" parentDisplayName="Appointment" id="{549a8aa3-c349-4ab9-8bac-4873fa9a7a5c}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="61" schemaName="msdyn_OmnichannelBotEnabler/msdyn_BotUser.js" displayName="msdyn_OmnichannelBotEnabler/msdyn_BotUser.js" solution="msdyn_OmnichannelBotEnablerPatch (1.5.26.2)">
-          <package>OmnichannelPrimeAnchor (1.5.26.136)</package>
+        <Required type="61" schemaName="msdyn_SalesOmniChannel/SalesPhoneNumber.Library.js" displayName="msdyn_SalesOmniChannel/SalesPhoneNumber.Library.js" solution="msdyn_SalesOmniChannel (9.1.24023.10012)">
+          <package>msdyn_AcceleratedSalesAnchor (9.1.24023.10012)</package>
         </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
+        <Dependent type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="msdyn_SalesOmniChannel/SalesPhoneNumber.Library.js" displayName="msdyn_SalesOmniChannel/SalesPhoneNumber.Library.js" solution="msdyn_SalesOmniChannel (9.1.24023.10012)">
+          <package>msdyn_AcceleratedSalesAnchor (9.1.24023.10012)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="msdyn_talkingpointsloader.js" displayName="msdyn_talkingpointsloader.js" solution="msdynce_Talkingpoints (9.1.0.59)">
+          <package>msdynce_SalesInsightsAnchor (9.0.24022.10005)</package>
+        </Required>
+        <Dependent type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_talkingpointsloader.js" displayName="msdyn_talkingpointsloader.js" solution="msdynce_Talkingpoints (9.1.0.59)">
@@ -682,10 +1012,22 @@
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="61" schemaName="msdyn_userSettings.js" displayName="msdyn_userSettings.js" solution="OmnichannelBase (1.10.0.76)">
-          <package>UnifiedRoutingPrimeAnchor (1.5.26.89)</package>
+        <Required type="61" schemaName="Sales/ClientCommon/Sales_ClientCommon.js" displayName="Sales/ClientCommon/Sales_ClientCommon.js" solution="msdynce_Sales (9.0.4.0076)">
+          <package>msdynce_SalesAnchor (9.0.24023.10004)</package>
         </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
+        <Dependent type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="Sales/ClientCommon/Sales_ClientCommon.js" displayName="Sales/ClientCommon/Sales_ClientCommon.js" solution="msdynce_Sales (9.0.4.0076)">
+          <package>msdynce_SalesAnchor (9.0.24023.10004)</package>
+        </Required>
+        <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="Sales/Contact/Contact_main_system_library.js" displayName="Sales/Contact/Contact_main_system_library.js" solution="msdynce_SalesPatch201904 (9.0.1912.1007)">
+          <package>msdynce_SalesAnchor (9.0.24023.10004)</package>
+        </Required>
+        <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="66" schemaName="CI.Controls.CallSummaryControlTwin" displayName="CI.Controls.CallSummaryControlTwin" solution="msdyn_Conversation_Intelligence (9.0.1.1181)">
@@ -694,12 +1036,28 @@
         <Dependent type="60" displayName="Appointment" parentDisplayName="Appointment" id="{549a8aa3-c349-4ab9-8bac-4873fa9a7a5c}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="66" schemaName="Intelligence.BusinessCardReaderControl.BusinessCardReader" displayName="Intelligence.BusinessCardReaderControl.BusinessCardReader" solution="BaseCustomControlsCore (9.0.2403.1011)" />
+        <Dependent type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="66" schemaName="Microsoft.AddressInputUCI" displayName="Microsoft.AddressInputUCI" solution="BaseCustomControlsCore (9.0.2403.1011)" />
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
+        <Dependent type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="Microsoft.AddressInputUCI" displayName="Microsoft.AddressInputUCI" solution="BaseCustomControlsCore (9.0.2403.1011)" />
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="66" schemaName="MscrmControls.Activity.HyperlinkControlWithImage" displayName="MscrmControls.Activity.HyperlinkControlWithImage" solution="msdynce_ActivitiesPatch (9.0.24024.240216001)" />
         <Dependent type="60" displayName="Appointment" parentDisplayName="Appointment" id="{549a8aa3-c349-4ab9-8bac-4873fa9a7a5c}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.CardFeedContainer.CardFeedContainer" displayName="MscrmControls.CardFeedContainer.CardFeedContainer" solution="BaseCustomControlsCore (9.0.2403.1011)" />
+        <Dependent type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.CardFeedContainer.CardFeedContainer" displayName="MscrmControls.CardFeedContainer.CardFeedContainer" solution="BaseCustomControlsCore (9.0.2403.1011)" />
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="66" schemaName="MscrmControls.CardFeedContainer.CardFeedContainer" displayName="MscrmControls.CardFeedContainer.CardFeedContainer" solution="BaseCustomControlsCore (9.0.2403.1011)" />
@@ -711,15 +1069,52 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2403.1011)" />
-        <Dependent type="60" displayName="Information" parentDisplayName="Background information Request" id="{6ad91134-7afc-4a2b-9d96-697c7c5a8fb6}" />
+        <Dependent type="60" displayName="Information" parentDisplayName="BAC Request" id="{6ad91134-7afc-4a2b-9d96-697c7c5a8fb6}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2403.1011)" />
         <Dependent type="60" displayName="Information" parentDisplayName="BAC Application Direction" id="{aeb0ddf0-f4e7-4dcb-929e-c7423cf3d8b9}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.LeadHygiene.ValidatedFieldControl" displayName="MscrmControls.LeadHygiene.ValidatedFieldControl" solution="msdyn_leadhygiene (9.1.2402.3001)">
+          <package>msdyn_AcceleratedSalesAnchor (9.1.24023.10012)</package>
+        </Required>
+        <Dependent type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="66" schemaName="MscrmControls.RichTextEditor.RichTextEditorControl" displayName="MscrmControls.RichTextEditor.RichTextEditorControl" solution="msdyn_RichTextEditor (1.0.0.3241)" />
         <Dependent type="60" displayName="Appointment" parentDisplayName="Appointment" id="{549a8aa3-c349-4ab9-8bac-4873fa9a7a5c}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.TalkingPointsControl.TalkingPoints" displayName="MscrmControls.TalkingPointsControl.TalkingPoints" solution="msdynce_Talkingpoints (9.1.0.59)">
+          <package>msdynce_SalesInsightsAnchor (9.0.24022.10005)</package>
+        </Required>
+        <Dependent type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="msdyn_MscrmControls.TreeView.TreeViewControl" displayName="msdyn_MscrmControls.TreeView.TreeViewControl" solution="msdyn_AssetCommon (1.0.46.7)">
+          <package>FieldService_Anchor (8.8.109.12)</package>
+          <package>msdynce_ServiceAnchor (9.0.24014.1004)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="msdyn_SalesOmniChannel.SalesPhoneNumberControl" displayName="msdyn_SalesOmniChannel.SalesPhoneNumberControl" solution="msdyn_SalesOmniChannel (9.1.24023.10012)">
+          <package>msdyn_AcceleratedSalesAnchor (9.1.24023.10012)</package>
+        </Required>
+        <Dependent type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="msdyn_SalesOmniChannel.SalesPhoneNumberControl" displayName="msdyn_SalesOmniChannel.SalesPhoneNumberControl" solution="msdyn_SalesOmniChannel (9.1.24023.10012)">
+          <package>msdyn_AcceleratedSalesAnchor (9.1.24023.10012)</package>
+        </Required>
+        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MsdynControls.WKWControls.ConnectionsWidget" displayName="MsdynControls.WKWControls.ConnectionsWidget" solution="msdyn_connectiongraph (9.3.24022.2)">
+          <package>msdynce_SalesInsightsAnchor (9.0.24022.10005)</package>
+        </Required>
+        <Dependent type="60" displayName="Contact" parentDisplayName="Contact" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
       </MissingDependency>
     </MissingDependencies>
   </SolutionManifest>
