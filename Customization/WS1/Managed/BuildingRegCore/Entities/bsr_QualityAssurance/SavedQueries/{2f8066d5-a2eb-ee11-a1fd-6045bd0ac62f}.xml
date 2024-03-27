@@ -6,15 +6,15 @@
     <isquickfindquery>0</isquickfindquery>
     <isprivate>0</isprivate>
     <isdefault>0</isdefault>
-    <savedqueryid>{ac341279-a7bd-ed11-83fe-000d3a86e5b0}</savedqueryid>
+    <savedqueryid>{2f8066d5-a2eb-ee11-a1fd-6045bd0ac62f}</savedqueryid>
     <layoutxml>
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_qualityassuranceid">
           <cell name="bsr_name" width="300" />
-          <cell name="bsr_buildingapplication" width="159" />
-          <cell name="bsr_description" width="106" />
+          <cell name="bsr_bacapplicationid" width="139" />
+          <cell name="bsr_description" width="100" />
           <cell name="bsr_qaresult" width="100" />
-          <cell name="bsr_resultdetails" width="119" />
+          <cell name="bsr_resultdetails" width="100" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -30,21 +30,18 @@
           <attribute name="bsr_description" />
           <attribute name="bsr_qaresult" />
           <attribute name="bsr_resultdetails" />
+          <attribute name="bsr_bacapplicationid" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
+            <condition attribute="bsr_bacapplicationid" operator="not-null" />
             <condition attribute="ownerid" operator="eq-userid" />
-            <condition attribute="bsr_buildingapplication" operator="not-null" />
           </filter>
-          <attribute name="bsr_buildingapplication" />
         </entity>
       </fetch>
     </fetchxml>
-    <IntroducedVersion>1.6.1.1</IntroducedVersion>
+    <IntroducedVersion>1.17.114.0</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="My Active QA Building Applications" languagecode="1033" />
+      <LocalizedName description="My Active BAC Quality Assurances " languagecode="1033" />
     </LocalizedNames>
-    <Descriptions>
-      <Description description="My Active QA Building Applications" languagecode="1033" />
-    </Descriptions>
   </savedquery>
 </savedqueries>
