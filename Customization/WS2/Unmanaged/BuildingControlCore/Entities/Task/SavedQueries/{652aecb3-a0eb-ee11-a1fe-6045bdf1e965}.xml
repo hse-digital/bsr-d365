@@ -15,6 +15,7 @@
           <cell name="regardingobjectid" width="100" />
           <cell name="a_48d7634160e045bda9d290e94def55c0.bsr_buildingapplicationid" width="344" />
           <cell name="a_48d7634160e045bda9d290e94def55c0.bsr_buildingid" width="278" />
+          <cell name="a_750ab216c513429cb65ebc56aab47b7d.bsr_applicationtype" width="209" />
           <cell name="prioritycode" width="100" />
           <cell name="scheduledend" width="100" />
           <cell name="bsr_taskcategoryid" width="122" />
@@ -39,20 +40,26 @@
           <attribute name="scheduledend" />
           <attribute name="activityid" />
           <attribute name="statuscode" />
-          <filter type="and">
-            <condition attribute="statecode" operator="not-null" />
-            <condition attribute="bsr_mdttask" operator="eq" value="1" />
-            <condition attribute="bsr_mdtbacapplicationid" operator="not-null" />
-          </filter>
           <attribute name="bsr_taskcategoryid" />
           <attribute name="bsr_tasktypeid" />
           <attribute name="bsr_taskcode" />
           <attribute name="bsr_mdtmemberid" />
           <attribute name="bsr_mdttask" />
           <attribute name="bsr_mdtwebsitestatus" />
+          <filter type="and">
+            <condition attribute="statecode" operator="not-null" />
+            <condition attribute="bsr_mdttask" operator="eq" value="1" />
+            <condition attribute="bsr_mdtbacapplicationid" operator="not-null" />
+          </filter>
           <link-entity alias="a_48d7634160e045bda9d290e94def55c0" name="bsr_bacapplication" to="bsr_mdtbacapplicationid" from="bsr_bacapplicationid" link-type="outer" visible="false">
             <attribute name="bsr_buildingapplicationid" />
             <attribute name="bsr_buildingid" />
+          </link-entity>
+          <link-entity alias="a_750ab216c513429cb65ebc56aab47b7d" name="bsr_mdtproject" to="regardingobjectid" from="bsr_mdtprojectid" link-type="inner">
+            <attribute name="bsr_applicationtype" />
+            <filter type="and">
+              <condition attribute="bsr_applicationtype" operator="eq" value="760810000" />
+            </filter>
           </link-entity>
         </entity>
       </fetch>

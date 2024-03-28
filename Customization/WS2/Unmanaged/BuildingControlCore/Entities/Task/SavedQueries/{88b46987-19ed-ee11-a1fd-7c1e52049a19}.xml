@@ -6,7 +6,7 @@
     <isquickfindquery>0</isquickfindquery>
     <isprivate>0</isprivate>
     <isdefault>0</isdefault>
-    <savedqueryid>{652aecb3-a0eb-ee11-a1fe-6045bdf1e965}</savedqueryid>
+    <savedqueryid>{88b46987-19ed-ee11-a1fd-7c1e52049a19}</savedqueryid>
     <layoutxml>
       <grid name="resultset" jump="subject" select="1" preview="1" icon="1">
         <row name="result" id="activityid">
@@ -51,9 +51,16 @@
             <condition attribute="bsr_mdttask" operator="eq" value="1" />
             <condition attribute="bsr_mdtbacapplicationid" operator="not-null" />
           </filter>
-          <link-entity alias="a_48d7634160e045bda9d290e94def55c0" name="bsr_bacapplication" to="bsr_mdtbacapplicationid" from="bsr_bacapplicationid" link-type="outer" visible="false">
+          <link-entity alias="a_48d7634160e045bda9d290e94def55c0" name="bsr_bacapplication" to="bsr_mdtbacapplicationid" from="bsr_bacapplicationid" link-type="inner">
             <attribute name="bsr_buildingapplicationid" />
             <attribute name="bsr_buildingid" />
+            <filter type="and">
+              <filter type="or">
+                <condition attribute="bsr_caseofficerid" operator="eq-userid" />
+                <condition attribute="bsr_regulatoryleadid" operator="eq-userid" />
+                <condition attribute="bsr_principalregulatoryleadid" operator="eq-userid" />
+              </filter>
+            </filter>
           </link-entity>
           <link-entity alias="a_750ab216c513429cb65ebc56aab47b7d" name="bsr_mdtproject" to="regardingobjectid" from="bsr_mdtprojectid" link-type="inner">
             <attribute name="bsr_applicationtype" />
@@ -64,9 +71,9 @@
         </entity>
       </fetch>
     </fetchxml>
-    <IntroducedVersion>1.0.91.0</IntroducedVersion>
+    <IntroducedVersion>1.0.93.0</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="All BAC MDT Tasks" languagecode="1033" />
+      <LocalizedName description="My Associated BAC MDT Tasks" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>

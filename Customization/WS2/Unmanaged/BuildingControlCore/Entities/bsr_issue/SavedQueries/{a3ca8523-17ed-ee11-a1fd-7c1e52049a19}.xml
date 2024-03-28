@@ -6,7 +6,7 @@
     <isquickfindquery>0</isquickfindquery>
     <isprivate>0</isprivate>
     <isdefault>0</isdefault>
-    <savedqueryid>{219fbde2-e6e1-ee11-904d-6045bdd2c0c0}</savedqueryid>
+    <savedqueryid>{a3ca8523-17ed-ee11-a1fd-7c1e52049a19}</savedqueryid>
     <layoutxml>
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_issueid">
@@ -20,36 +20,51 @@
           <cell name="bsr_resolveby" width="109" />
           <cell name="bsr_status" width="161" />
           <cell name="statuscode" width="119" />
+          <cell name="a_f1f83ca570c54b979a5777850b21e270.bsr_caseofficerid" width="223" />
+          <cell name="a_f1f83ca570c54b979a5777850b21e270.bsr_regulatoryleadid" width="245" />
+          <cell name="a_f1f83ca570c54b979a5777850b21e270.bsr_principalregulatoryleadid" width="299" />
           <cell name="ownerid" width="100" />
         </row>
       </grid>
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
         <entity name="bsr_issue">
           <attribute name="bsr_name" />
-          <attribute name="bsr_issueid" />
           <attribute name="bsr_issuecode" />
-          <filter type="and">
-            <condition attribute="createdon" operator="this-year" />
-            <condition attribute="bsr_applicationtype" operator="eq" value="760810000" />
-          </filter>
           <attribute name="bsr_loggedon" />
           <attribute name="bsr_resolveby" />
           <attribute name="statuscode" />
           <attribute name="ownerid" />
+          <attribute name="bsr_issueid" />
           <attribute name="bsr_applicationtype" />
           <attribute name="bsr_bacapplicationid" />
           <attribute name="bsr_buildingid" />
           <attribute name="bsr_bacissuetype" />
           <attribute name="bsr_status" />
+          <filter type="and">
+            <condition attribute="createdon" operator="this-year" />
+            <condition attribute="bsr_applicationtype" operator="eq" value="760810000" />
+          </filter>
+          <link-entity alias="a_f1f83ca570c54b979a5777850b21e270" name="bsr_bacapplication" to="bsr_bacapplicationid" from="bsr_bacapplicationid" link-type="inner">
+            <attribute name="bsr_caseofficerid" />
+            <attribute name="bsr_regulatoryleadid" />
+            <attribute name="bsr_principalregulatoryleadid" />
+            <filter type="and">
+              <filter type="or">
+                <condition attribute="bsr_caseofficerid" operator="eq-userid" />
+                <condition attribute="bsr_regulatoryleadid" operator="eq-userid" />
+                <condition attribute="bsr_principalregulatoryleadid" operator="eq-userid" />
+              </filter>
+            </filter>
+          </link-entity>
         </entity>
       </fetch>
     </fetchxml>
-    <IntroducedVersion>1.0.88.0</IntroducedVersion>
+    <IntroducedVersion>1.0.93.0</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="All BAC MDT Intervention requests created this year" languagecode="1033" />
+      <LocalizedName description="My Associated BAC MDT Intervention requests created this year" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>

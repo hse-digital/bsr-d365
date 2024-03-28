@@ -11,8 +11,9 @@
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_inspectionid">
           <cell name="bsr_name" width="200" />
-          <cell name="bsr_buildingcontrolapplicationid" width="205" />
-          <cell name="bsr_buildingdetails" width="133" />
+          <cell name="bsr_scheduletype" width="123" />
+          <cell name="bsr_bacapplicationid" width="139" />
+          <cell name="bsr_buildingid" width="100" />
           <cell name="bsr_mdtproject" width="115" />
           <cell name="bsr_resourceid" width="130" />
           <cell name="bsr_plannedstart" width="145" />
@@ -30,8 +31,6 @@
         <entity name="bsr_inspection">
           <attribute name="bsr_name" />
           <attribute name="bsr_inspectionid" />
-          <attribute name="bsr_buildingcontrolapplicationid" />
-          <attribute name="bsr_buildingdetails" />
           <attribute name="bsr_mdtproject" />
           <attribute name="bsr_resourceid" />
           <attribute name="bsr_plannedstart" />
@@ -40,8 +39,13 @@
           <attribute name="bsr_actualend" />
           <attribute name="statuscode" />
           <attribute name="ownerid" />
+          <attribute name="bsr_bacapplicationid" />
+          <attribute name="bsr_buildingid" />
+          <attribute name="bsr_scheduletype" />
           <filter type="and">
             <condition attribute="ownerid" operator="eq-userid" />
+            <condition attribute="createdon" operator="this-year" />
+            <condition attribute="bsr_scheduletype" operator="eq" value="760810001" />
           </filter>
         </entity>
       </fetch>

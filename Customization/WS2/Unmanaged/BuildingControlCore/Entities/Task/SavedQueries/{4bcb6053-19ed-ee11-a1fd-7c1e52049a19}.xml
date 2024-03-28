@@ -6,7 +6,7 @@
     <isquickfindquery>0</isquickfindquery>
     <isprivate>0</isprivate>
     <isdefault>0</isdefault>
-    <savedqueryid>{652aecb3-a0eb-ee11-a1fe-6045bdf1e965}</savedqueryid>
+    <savedqueryid>{4bcb6053-19ed-ee11-a1fd-7c1e52049a19}</savedqueryid>
     <layoutxml>
       <grid name="resultset" jump="subject" select="1" preview="1" icon="1">
         <row name="result" id="activityid">
@@ -50,6 +50,7 @@
             <condition attribute="statecode" operator="not-null" />
             <condition attribute="bsr_mdttask" operator="eq" value="1" />
             <condition attribute="bsr_mdtbacapplicationid" operator="not-null" />
+            <condition attribute="ownerid" operator="eq-userid" />
           </filter>
           <link-entity alias="a_48d7634160e045bda9d290e94def55c0" name="bsr_bacapplication" to="bsr_mdtbacapplicationid" from="bsr_bacapplicationid" link-type="outer" visible="false">
             <attribute name="bsr_buildingapplicationid" />
@@ -64,9 +65,9 @@
         </entity>
       </fetch>
     </fetchxml>
-    <IntroducedVersion>1.0.91.0</IntroducedVersion>
+    <IntroducedVersion>1.0.93.0</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="All BAC MDT Tasks" languagecode="1033" />
+      <LocalizedName description="My BAC MDT Tasks" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>

@@ -15,6 +15,7 @@
           <cell name="regardingobjectid" width="100" />
           <cell name="a_48d7634160e045bda9d290e94def55c0.bsr_buildingapplicationid" width="344" />
           <cell name="a_48d7634160e045bda9d290e94def55c0.bsr_buildingid" width="278" />
+          <cell name="a_132c6661d2f64a24ad832b99f7c459f2.bsr_applicationtype" width="209" />
           <cell name="prioritycode" width="100" />
           <cell name="scheduledend" width="100" />
           <cell name="bsr_taskcategoryid" width="122" />
@@ -54,6 +55,14 @@
           <link-entity alias="a_48d7634160e045bda9d290e94def55c0" name="bsr_bacapplication" to="bsr_mdtbacapplicationid" from="bsr_bacapplicationid" link-type="outer" visible="false">
             <attribute name="bsr_buildingapplicationid" />
             <attribute name="bsr_buildingid" />
+          </link-entity>
+          <link-entity name="bsr_mdtproject" alias="ab" link-type="inner" from="bsr_mdtprojectid" to="regardingobjectid">
+            <filter type="and">
+              <condition attribute="bsr_applicationtype" operator="eq" value="760810000" />
+            </filter>
+          </link-entity>
+          <link-entity alias="a_132c6661d2f64a24ad832b99f7c459f2" name="bsr_mdtproject" to="regardingobjectid" from="bsr_mdtprojectid" link-type="outer" visible="false">
+            <attribute name="bsr_applicationtype" />
           </link-entity>
         </entity>
       </fetch>

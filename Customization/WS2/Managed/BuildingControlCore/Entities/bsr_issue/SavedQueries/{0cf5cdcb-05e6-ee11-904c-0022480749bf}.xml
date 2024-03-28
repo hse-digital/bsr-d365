@@ -12,11 +12,17 @@
         <row name="result" id="bsr_issueid">
           <cell name="bsr_name" width="200" />
           <cell name="bsr_issuecode" width="100" />
-          <cell name="bsr_buildingcontrolapplicationid" width="205" />
-          <cell name="a_eb6cf90c59a94ed99ede3d87f298f58b.bsr_buidlingdetailsid" width="220" />
+          <cell name="bsr_applicationtype" width="138" />
+          <cell name="bsr_bacissuetype" width="133" />
+          <cell name="bsr_bacapplicationid" width="139" />
+          <cell name="bsr_buildingid" width="100" />
           <cell name="bsr_loggedon" width="104" />
           <cell name="bsr_resolveby" width="109" />
+          <cell name="bsr_status" width="161" />
           <cell name="statuscode" width="119" />
+          <cell name="a_f1f83ca570c54b979a5777850b21e270.bsr_caseofficerid" width="223" />
+          <cell name="a_f1f83ca570c54b979a5777850b21e270.bsr_regulatoryleadid" width="245" />
+          <cell name="a_f1f83ca570c54b979a5777850b21e270.bsr_principalregulatoryleadid" width="299" />
           <cell name="ownerid" width="100" />
         </row>
       </grid>
@@ -27,19 +33,26 @@
         <entity name="bsr_issue">
           <attribute name="bsr_name" />
           <attribute name="bsr_issuecode" />
-          <attribute name="bsr_buildingcontrolapplicationid" />
           <attribute name="bsr_loggedon" />
           <attribute name="bsr_resolveby" />
           <attribute name="statuscode" />
           <attribute name="ownerid" />
+          <attribute name="bsr_issueid" />
+          <attribute name="bsr_applicationtype" />
+          <attribute name="bsr_bacapplicationid" />
+          <attribute name="bsr_buildingid" />
+          <attribute name="bsr_bacissuetype" />
+          <attribute name="bsr_status" />
           <filter type="and">
             <condition attribute="createdon" operator="this-year" />
             <condition attribute="ownerid" operator="eq-userid" />
+            <condition attribute="bsr_applicationtype" operator="eq" value="760810000" />
           </filter>
-          <link-entity name="bsr_mdtproject" from="bsr_mdtprojectid" to="bsr_mdtprojectid" visible="false" link-type="outer" alias="a_eb6cf90c59a94ed99ede3d87f298f58b">
-            <attribute name="bsr_buidlingdetailsid" />
+          <link-entity alias="a_f1f83ca570c54b979a5777850b21e270" name="bsr_bacapplication" to="bsr_bacapplicationid" from="bsr_bacapplicationid" link-type="outer" visible="false">
+            <attribute name="bsr_caseofficerid" />
+            <attribute name="bsr_regulatoryleadid" />
+            <attribute name="bsr_principalregulatoryleadid" />
           </link-entity>
-          <attribute name="bsr_issueid" />
         </entity>
       </fetch>
     </fetchxml>
