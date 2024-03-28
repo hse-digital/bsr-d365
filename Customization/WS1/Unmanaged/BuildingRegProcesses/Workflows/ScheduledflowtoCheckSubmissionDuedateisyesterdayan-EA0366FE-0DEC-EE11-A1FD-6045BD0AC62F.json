@@ -1,0 +1,105 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedcommondataserviceforapps_12864"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Recurrence": {
+          "recurrence": {
+            "frequency": "Day",
+            "interval": 1,
+            "timeZone": "GMT Standard Time",
+            "schedule": {
+              "hours": [
+                "6"
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "15cfb473-9652-4988-aa04-e9c48b3d4881"
+          },
+          "type": "Recurrence"
+        }
+      },
+      "actions": {
+        "List_rows_from_'BAC_Application_Directions'": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "309832f1-21c4-4a3c-999b-02b0ca692f0e"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_bacapplicationdirections",
+              "fetchXml": "<fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\">\n  <entity name=\"bsr_bacapplicationdirection\">\n    <attribute name=\"bsr_bacapplicationdirectionid\" />\n    <attribute name=\"bsr_name\" />\n    <attribute name=\"createdon\" />\n    <order attribute=\"bsr_name\" descending=\"false\" />\n    <filter type=\"and\">\n      <condition attribute=\"bsr_submissionduedate\" operator=\"yesterday\" />\n      <condition attribute=\"statuscode\" operator=\"eq\" value=\"760810004\" />\n    </filter>\n  </entity>\n</fetch>"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('List_rows_from_''BAC_Application_Directions''')?['body/value']",
+          "actions": {
+            "Update_BAC_Application_Direction_table": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "32d0c415-4455-455e-89a4-0b80c8b2f103"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "bsr_bacapplicationdirections",
+                  "recordId": "@items('Apply_to_each')?['bsr_bacapplicationdirectionid']",
+                  "item/bsr_completionreason": 760810001,
+                  "item/statuscode": 760810006
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "List_rows_from_'BAC_Application_Directions'": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "14ea6f67-33ca-4ec7-a9bf-085c916ac9ad"
+          },
+          "type": "Foreach"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

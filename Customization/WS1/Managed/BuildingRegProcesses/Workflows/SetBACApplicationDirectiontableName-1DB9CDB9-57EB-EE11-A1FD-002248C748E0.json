@@ -98,7 +98,8 @@
                 },
                 "parameters": {
                   "entityName": "bsr_bacapplicationdirections",
-                  "recordId": "@triggerOutputs()?['body/bsr_bacapplicationdirectionid']"
+                  "recordId": "@triggerOutputs()?['body/bsr_bacapplicationdirectionid']",
+                  "item/bsr_name": "@outputs('Compose')"
                 },
                 "authentication": "@parameters('$authentication')"
               }

@@ -78,7 +78,7 @@
                 "operationMetadataId": "9105edf7-9995-4f61-9b5e-d1c992157929"
               },
               "type": "Compose",
-              "inputs": "@{Triggeroutputs()?['body/_bsr_requesttype_label']} - @{outputs('Get_Building_row_by_ID')?['body/bsr_name']}"
+              "inputs": "@{outputs('Get_Building_row_by_ID')?['body/bsr_name']} - @{Triggeroutputs()?['body/_bsr_requesttype_label']}"
             },
             "Update_Name": {
               "runAfter": {

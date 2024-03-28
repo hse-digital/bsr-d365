@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Reg Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.12.68.0</Version>
+    <Version>1.12.69.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -134,6 +134,7 @@
       <RootComponent type="29" id="{db26296d-5837-ee11-bdf4-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{db4bcb3e-cb09-ee11-8f6e-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{ddb5e613-64a9-ed11-aad1-0022481b5e4f}" behavior="0" />
+      <RootComponent type="29" id="{ea0366fe-0dec-ee11-a1fd-6045bd0ac62f}" behavior="0" />
       <RootComponent type="29" id="{ea2afa2e-5b6e-ee11-9ae6-6045bd0c1726}" behavior="0" />
       <RootComponent type="29" id="{ed126c2c-bf62-ee11-8def-6045bd0c14e5}" behavior="0" />
       <RootComponent type="29" id="{edadf639-95d4-ed11-a7c6-6045bd0d6610}" behavior="0" />
@@ -199,7 +200,11 @@
         <Dependent type="29" displayName="Scheduled flow to Send an Email based on 'BAC Direction State' in Building" id="{bd79e2bd-ccde-ee11-904c-6045bd0ac62f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_backgroundinformationrequest" displayName="Background information Request" solution="Active" />
+        <Required type="1" schemaName="bsr_bacapplicationdirection" displayName="BAC Application Direction" solution="Active" />
+        <Dependent type="29" displayName="Scheduled flow to Check 'Submission Due date' is yesterday and update 'BAC Application Direction' t" id="{ea0366fe-0dec-ee11-a1fd-6045bd0ac62f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_backgroundinformationrequest" displayName="BAC Request" solution="Active" />
         <Dependent type="29" displayName="Set 'BAC Request' table Name" id="{4ad47eb0-43eb-ee11-a1fd-002248c748e0}" />
       </MissingDependency>
       <MissingDependency>
@@ -723,7 +728,7 @@
         <Dependent type="29" displayName="Set 'BAC Application Direction' table Name" id="{1db9cdb9-57eb-ee11-a1fd-002248c748e0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_buildingid" displayName="Building" parentSchemaName="bsr_backgroundinformationrequest" parentDisplayName="Background information Request" solution="Active" />
+        <Required type="2" schemaName="bsr_buildingid" displayName="Building" parentSchemaName="bsr_backgroundinformationrequest" parentDisplayName="BAC Request" solution="Active" />
         <Dependent type="29" displayName="Set 'BAC Request' table Name" id="{4ad47eb0-43eb-ee11-a1fd-002248c748e0}" />
       </MissingDependency>
       <MissingDependency>
@@ -815,7 +820,7 @@
         <Dependent type="29" displayName="Trigger flow when the Building Name, Primary applicant or Secondary applicant changes" id="{d2846fde-1bb9-ee11-9078-6045bd0c1726}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_requesttype" displayName="Request Type" parentSchemaName="bsr_backgroundinformationrequest" parentDisplayName="Background information Request" solution="Active" />
+        <Required type="2" schemaName="bsr_requesttype" displayName="Request Type" parentSchemaName="bsr_backgroundinformationrequest" parentDisplayName="BAC Request" solution="Active" />
         <Dependent type="29" displayName="Set 'BAC Request' table Name" id="{4ad47eb0-43eb-ee11-a1fd-002248c748e0}" />
       </MissingDependency>
       <MissingDependency>
@@ -905,6 +910,12 @@
           <package>msdyn_SalesConversationIntelligenceAnchor (9.0.1.1181)</package>
         </Required>
         <Dependent type="29" displayName="Set 'BAC Request' table Name" id="{4ad47eb0-43eb-ee11-a1fd-002248c748e0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="new_sharedcommondataserviceforapps_12864" solution="msdyn_Conversation_Intelligence (9.0.1.1181)" id.connectionreferencelogicalname="new_sharedcommondataserviceforapps_12864">
+          <package>msdyn_SalesConversationIntelligenceAnchor (9.0.1.1181)</package>
+        </Required>
+        <Dependent type="29" displayName="Scheduled flow to Check 'Submission Due date' is yesterday and update 'BAC Application Direction' t" id="{ea0366fe-0dec-ee11-a1fd-6045bd0ac62f}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_azuredocblobstorageaccount" solution="Active" id.schemaname="bsr_azuredocblobstorageaccount" />

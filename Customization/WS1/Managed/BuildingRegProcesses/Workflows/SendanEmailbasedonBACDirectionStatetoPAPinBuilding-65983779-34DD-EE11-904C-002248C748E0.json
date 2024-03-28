@@ -283,7 +283,10 @@
                               "recordId": "@outputs('Add_a_new_row')?['body/activityid']",
                               "item/IssueSend": true
                             },
-                            "authentication": "@parameters('$authentication')"
+                            "authentication": {
+                              "type": "Raw",
+                              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                            }
                           }
                         },
                         "Add_BAC_Application_Direction": {
@@ -309,6 +312,33 @@
                               "item/ownerid@odata.bind": "systemusers(@{outputs('Get_Building_by_ID')?['body/_ownerid_value']})",
                               "item/statuscode": 760810004,
                               "item/bsr_submissionrequesteddate": "@triggerOutputs()['headers']['x-ms-user-timestamp']"
+                            },
+                            "authentication": {
+                              "type": "Raw",
+                              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                            }
+                          }
+                        },
+                        "Update_a_row": {
+                          "runAfter": {
+                            "Add_BAC_Application_Direction": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "93119342-83a0-4959-8e0a-b33ae5275988"
+                          },
+                          "type": "OpenApiConnection",
+                          "inputs": {
+                            "host": {
+                              "connectionName": "shared_commondataserviceforapps",
+                              "operationId": "UpdateRecord",
+                              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                            },
+                            "parameters": {
+                              "entityName": "bsr_bacapplicationdirections",
+                              "recordId": "@outputs('Add_BAC_Application_Direction')?['body/bsr_bacapplicationdirectionid']",
+                              "item/bsr_directiontosubmitsent": true
                             },
                             "authentication": {
                               "type": "Raw",
@@ -384,7 +414,10 @@
                                 "recordId": "@outputs('Add_a_new_row_2')?['body/activityid']",
                                 "item/IssueSend": true
                               },
-                              "authentication": "@parameters('$authentication')"
+                              "authentication": {
+                                "type": "Raw",
+                                "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                              }
                             }
                           },
                           "Add_BAC_Application_Direction_2": {
@@ -410,6 +443,33 @@
                                 "item/ownerid@odata.bind": "systemusers(@{outputs('Get_Building_by_ID')?['body/_ownerid_value']})",
                                 "item/statuscode": 760810004,
                                 "item/bsr_submissionrequesteddate": "@triggerOutputs()['headers']['x-ms-user-timestamp']"
+                              },
+                              "authentication": {
+                                "type": "Raw",
+                                "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                              }
+                            }
+                          },
+                          "Update_a_row_2": {
+                            "runAfter": {
+                              "Add_BAC_Application_Direction_2": [
+                                "Succeeded"
+                              ]
+                            },
+                            "metadata": {
+                              "operationMetadataId": "597559cb-d754-435b-8a7f-190712b5f7bd"
+                            },
+                            "type": "OpenApiConnection",
+                            "inputs": {
+                              "host": {
+                                "connectionName": "shared_commondataserviceforapps",
+                                "operationId": "UpdateRecord",
+                                "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                              },
+                              "parameters": {
+                                "entityName": "bsr_bacapplicationdirections",
+                                "recordId": "@outputs('Add_BAC_Application_Direction_2')?['body/bsr_bacapplicationdirectionid']",
+                                "item/bsr_directiontosubmitsent": true
                               },
                               "authentication": {
                                 "type": "Raw",
@@ -496,7 +556,10 @@
                                 "recordId": "@outputs('Add_a_new_row_4')?['body/activityid']",
                                 "item/IssueSend": true
                               },
-                              "authentication": "@parameters('$authentication')"
+                              "authentication": {
+                                "type": "Raw",
+                                "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                              }
                             }
                           },
                           "Add_BAC_Application_Direction_4": {
@@ -522,6 +585,33 @@
                                 "item/ownerid@odata.bind": "systemusers(@{outputs('Get_Building_by_ID')?['body/_ownerid_value']})",
                                 "item/statuscode": 760810004,
                                 "item/bsr_submissionrequesteddate": "@triggerOutputs()['headers']['x-ms-user-timestamp']"
+                              },
+                              "authentication": {
+                                "type": "Raw",
+                                "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                              }
+                            }
+                          },
+                          "Update_a_row_3": {
+                            "runAfter": {
+                              "Add_BAC_Application_Direction_4": [
+                                "Succeeded"
+                              ]
+                            },
+                            "metadata": {
+                              "operationMetadataId": "93119342-83a0-4959-8e0a-b33ae5275988"
+                            },
+                            "type": "OpenApiConnection",
+                            "inputs": {
+                              "host": {
+                                "connectionName": "shared_commondataserviceforapps",
+                                "operationId": "UpdateRecord",
+                                "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                              },
+                              "parameters": {
+                                "entityName": "bsr_bacapplicationdirections",
+                                "recordId": "@outputs('Add_BAC_Application_Direction_4')?['body/bsr_bacapplicationdirectionid']",
+                                "item/bsr_directiontosubmitsent": true
                               },
                               "authentication": {
                                 "type": "Raw",
@@ -597,7 +687,10 @@
                                   "recordId": "@outputs('Add_a_new_row_3')?['body/activityid']",
                                   "item/IssueSend": true
                                 },
-                                "authentication": "@parameters('$authentication')"
+                                "authentication": {
+                                  "type": "Raw",
+                                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                                }
                               }
                             },
                             "Add_BAC_Application_Direction_3": {
@@ -623,6 +716,33 @@
                                   "item/ownerid@odata.bind": "systemusers(@{outputs('Get_Building_by_ID')?['body/_ownerid_value']})",
                                   "item/statuscode": 760810004,
                                   "item/bsr_submissionrequesteddate": "@triggerOutputs()['headers']['x-ms-user-timestamp']"
+                                },
+                                "authentication": {
+                                  "type": "Raw",
+                                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                                }
+                              }
+                            },
+                            "Update_a_row_4": {
+                              "runAfter": {
+                                "Add_BAC_Application_Direction_3": [
+                                  "Succeeded"
+                                ]
+                              },
+                              "metadata": {
+                                "operationMetadataId": "93119342-83a0-4959-8e0a-b33ae5275988"
+                              },
+                              "type": "OpenApiConnection",
+                              "inputs": {
+                                "host": {
+                                  "connectionName": "shared_commondataserviceforapps",
+                                  "operationId": "UpdateRecord",
+                                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                                },
+                                "parameters": {
+                                  "entityName": "bsr_bacapplicationdirections",
+                                  "recordId": "@outputs('Add_BAC_Application_Direction_3')?['body/bsr_bacapplicationdirectionid']",
+                                  "item/bsr_directiontosubmitsent": true
                                 },
                                 "authentication": {
                                   "type": "Raw",
