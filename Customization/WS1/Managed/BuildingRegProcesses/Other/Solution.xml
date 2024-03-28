@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Reg Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.12.69.0</Version>
+    <Version>1.12.70.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -131,6 +131,7 @@
       <RootComponent type="29" id="{cdf3d0a3-43c7-ed11-b596-6045bd0b9760}" behavior="0" />
       <RootComponent type="29" id="{d1a53032-2601-ee11-8f6c-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{d2846fde-1bb9-ee11-9078-6045bd0c1726}" behavior="0" />
+      <RootComponent type="29" id="{d8c3b7ec-0fed-ee11-a1fd-002248c748e0}" behavior="0" />
       <RootComponent type="29" id="{db26296d-5837-ee11-bdf4-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{db4bcb3e-cb09-ee11-8f6e-002248c725da}" behavior="0" />
       <RootComponent type="29" id="{ddb5e613-64a9-ed11-aad1-0022481b5e4f}" behavior="0" />
@@ -178,6 +179,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_bacapplication" displayName="BAC Application" solution="Active" />
         <Dependent type="29" displayName="Create BAC Application Document Location" id="{b386cb98-b2cc-ee11-9079-6045bd0c14e5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_bacapplication" displayName="BAC Application" solution="Active" />
+        <Dependent type="29" displayName="Send Email notification when 'Validation Outcome' is Valid for BAC Application" id="{d8c3b7ec-0fed-ee11-a1fd-002248c748e0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_bacapplicationdirection" displayName="BAC Application Direction" solution="Active" />
@@ -361,6 +366,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
+        <Dependent type="29" displayName="Send Email notification when 'Validation Outcome' is Valid for BAC Application" id="{d8c3b7ec-0fed-ee11-a1fd-002248c748e0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
         <Dependent type="29" displayName="Send Email notifications for Rejected Building Application" id="{db26296d-5837-ee11-bdf4-002248c725da}" />
       </MissingDependency>
       <MissingDependency>
@@ -478,6 +487,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
         <Dependent type="29" displayName="Trigger flow when the Building Name, Primary applicant or Secondary applicant changes" id="{d2846fde-1bb9-ee11-9078-6045bd0c1726}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
+        <Dependent type="29" displayName="Send Email notification when 'Validation Outcome' is Valid for BAC Application" id="{d8c3b7ec-0fed-ee11-a1fd-002248c748e0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="Active" />
@@ -864,6 +877,10 @@
         <Dependent type="29" displayName="Set Task if it has Task type" id="{64521b66-6527-47d1-b4aa-b2795f4e694a}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_validationoutcomecode" displayName="Validation Outcome" parentSchemaName="bsr_bacapplication" parentDisplayName="BAC Application" solution="Active" />
+        <Dependent type="29" displayName="Send Email notification when 'Validation Outcome' is Valid for BAC Application" id="{d8c3b7ec-0fed-ee11-a1fd-002248c748e0}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="statecode" displayName="Status" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="Active" />
         <Dependent type="29" displayName="Deactivate the record On update of Change Request status reason" id="{48a0dcb2-a09b-4c23-a1ad-4a0766eb8293}" />
       </MissingDependency>
@@ -910,6 +927,12 @@
           <package>msdyn_SalesConversationIntelligenceAnchor (9.0.1.1181)</package>
         </Required>
         <Dependent type="29" displayName="Set 'BAC Request' table Name" id="{4ad47eb0-43eb-ee11-a1fd-002248c748e0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="new_sharedcommondataserviceforapps_12864" solution="msdyn_Conversation_Intelligence (9.0.1.1181)" id.connectionreferencelogicalname="new_sharedcommondataserviceforapps_12864">
+          <package>msdyn_SalesConversationIntelligenceAnchor (9.0.1.1181)</package>
+        </Required>
+        <Dependent type="29" displayName="Send Email notification when 'Validation Outcome' is Valid for BAC Application" id="{d8c3b7ec-0fed-ee11-a1fd-002248c748e0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="new_sharedcommondataserviceforapps_12864" solution="msdyn_Conversation_Intelligence (9.0.1.1181)" id.connectionreferencelogicalname="new_sharedcommondataserviceforapps_12864">
@@ -988,6 +1011,10 @@
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="Active" id.schemaname="bsr_noreplyqueueid" />
         <Dependent type="29" displayName="Send Email Notification when KBI Declared check box is selected on the Building" id="{d1a53032-2601-ee11-8f6c-002248c725da}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="Active" id.schemaname="bsr_noreplyqueueid" />
+        <Dependent type="29" displayName="Send Email notification when 'Validation Outcome' is Valid for BAC Application" id="{d8c3b7ec-0fed-ee11-a1fd-002248c748e0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_noreplyqueueid" solution="Active" id.schemaname="bsr_noreplyqueueid" />
