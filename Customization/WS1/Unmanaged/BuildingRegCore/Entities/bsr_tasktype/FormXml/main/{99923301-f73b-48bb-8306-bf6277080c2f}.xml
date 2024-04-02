@@ -51,6 +51,14 @@
                         <control id="bsr_taskcategoryid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_taskcategoryid" disabled="false" />
                       </cell>
                     </row>
+                    <row>
+                      <cell id="{d5f163b5-f310-42f6-9564-e451db1a8a59}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Billable for BAC" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_billableforbac" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="bsr_billableforbac" disabled="false" uniqueid="{60795295-daf2-47b4-b416-558d0120aeef}" />
+                      </cell>
+                    </row>
                   </rows>
                 </section>
               </sections>
@@ -109,6 +117,30 @@
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <controlDescriptions>
+        <controlDescription forControl="{60795295-daf2-47b4-b416-558d0120aeef}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>bsr_billableforbac</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">bsr_billableforbac</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">bsr_billableforbac</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">bsr_billableforbac</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
