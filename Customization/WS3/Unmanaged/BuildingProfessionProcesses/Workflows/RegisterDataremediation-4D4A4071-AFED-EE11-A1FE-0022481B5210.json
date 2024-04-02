@@ -1,0 +1,400 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS3"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "fd356b57-62de-490c-b88f-d73e0bdf0864"
+          },
+          "type": "Request",
+          "kind": "Button",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "title": "JSON",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Input the JSON",
+                  "x-ms-content-hint": "TEXT"
+                }
+              },
+              "required": [
+                "text"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Parse_JSON": {
+          "runAfter": {
+            "Initialize_varManualAddress": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "6c13653d-d440-458c-90ab-be6361af8bd5"
+          },
+          "type": "ParseJson",
+          "inputs": {
+            "content": "@triggerBody()['text']",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "EmployerAddress": {
+                  "type": "object",
+                  "properties": {
+                    "CompletionState": {
+                      "type": "integer"
+                    },
+                    "UPRN": {
+                      "type": "string"
+                    },
+                    "USRN": {},
+                    "Address": {
+                      "type": "string"
+                    },
+                    "AddressLineTwo": {},
+                    "BuildingName": {},
+                    "Number": {
+                      "type": "string"
+                    },
+                    "Street": {},
+                    "Town": {
+                      "type": "string"
+                    },
+                    "Country": {
+                      "type": "string"
+                    },
+                    "AdministrativeArea": {
+                      "type": "string"
+                    },
+                    "Postcode": {
+                      "type": "string"
+                    },
+                    "IsManual": {
+                      "type": "boolean"
+                    },
+                    "ClassificationCode": {
+                      "type": "string"
+                    },
+                    "CustodianCode": {},
+                    "CustodianDescription": {}
+                  }
+                }
+              }
+            }
+          }
+        },
+        "List_rows": {
+          "runAfter": {
+            "Initialize_varCountryCode": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "97be6a86-7c36-4f24-abc8-6d4f25afd4eb"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_buildingprofessionapplications",
+              "$filter": "bsr_buildingproappid eq '@{body('Parse_JSON')?['id']}'"
+            },
+            "authentication": {
+              "type": "Raw",
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+            }
+          }
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('List_rows')?['body/value']",
+          "actions": {
+            "Get_a_row_by_ID": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "e82fa2a9-a74d-433b-9ab4-fb885934e06c"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "contacts",
+                  "recordId": "@items('Apply_to_each')?['_bsr_applicantid_value']"
+                },
+                "authentication": {
+                  "type": "Raw",
+                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                }
+              }
+            },
+            "Set_varContactID": {
+              "runAfter": {
+                "Get_a_row_by_ID": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "c1cb3add-a9a1-4a90-8887-6ce4ca8a2c23"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "varContactID",
+                "value": "@outputs('Get_a_row_by_ID')?['body/contactid']"
+              }
+            }
+          },
+          "runAfter": {
+            "Switch": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "61d06a8c-459b-4060-9cbd-9b0e536fdb69"
+          },
+          "type": "Foreach"
+        },
+        "Initialize_varManualAddress": {
+          "runAfter": {
+            "Initialize_varContactID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "db989bf8-ef18-44b6-bd74-0244bdd7a481"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varManualAddress",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Terminate": {
+          "runAfter": {
+            "Update_a_row_2": [
+              "Failed",
+              "Skipped",
+              "TimedOut"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f89a22af-4db0-4dbb-8212-3743d5d28da8"
+          },
+          "type": "Terminate",
+          "inputs": {
+            "runStatus": "Failed"
+          }
+        },
+        "Initialize_varContactID": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "f7207a2b-6956-4adb-9aef-ee94acd097aa"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varContactID",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Update_a_row_2": {
+          "runAfter": {
+            "Condition_Set_varManualAddress": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "cdcbb472-b534-426b-88d3-2ea90746b81d"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "contacts",
+              "recordId": "@variables('varContactID')",
+              "item/address2_addresstypecode": 760810001,
+              "item/address2_city": "@body('Parse_JSON')?['EmployerAddress']?['Town']",
+              "item/bsr_address2countrycode@odata.bind": "\\bsr_countries\\@{variables('varCountryCode')}",
+              "item/address2_country": "@body('Parse_JSON')?['EmployerAddress']?['Country']",
+              "item/bsr_address2lacode": "@body('Parse_JSON')?['EmployerAddress']?['CustodianCode']",
+              "item/bsr_address2ladescription": "@body('Parse_JSON')?['EmployerAddress']?['CustodianDescription']",
+              "item/address2_line1": "@body('Parse_JSON')?['EmployerAddress']?['Address']",
+              "item/address2_line2": "@body('Parse_JSON')?['EmployerAddress']?['AddressLineTwo']",
+              "item/bsr_address2uprn": "@body('Parse_JSON')?['EmployerAddress']?['UPRN']",
+              "item/bsr_address2usrn": "@body('Parse_JSON')?['EmployerAddress']?['USRN']",
+              "item/address2_postalcode": "@body('Parse_JSON')?['EmployerAddress']?['Postcode']",
+              "item/bsr_manualaddress2": "@variables('varManualAddress')"
+            },
+            "authentication": {
+              "type": "Raw",
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+            }
+          }
+        },
+        "Condition_Set_varManualAddress": {
+          "actions": {
+            "Set_varManualAdress_to_True": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "963100a9-262d-4175-befe-5d6b66d018f4"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "varManualAddress",
+                "value": "760810000"
+              }
+            }
+          },
+          "runAfter": {
+            "Apply_to_each": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Set_varManualAdress_to_False": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "963100a9-262d-4175-befe-5d6b66d018f4"
+                },
+                "type": "SetVariable",
+                "inputs": {
+                  "name": "varManualAddress",
+                  "value": "760810001"
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@body('Parse_JSON')?['EmployerAddress']?['IsManual']",
+              true
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f6f1e20b-4f45-45d0-a084-1859f6493e6e"
+          },
+          "type": "If"
+        },
+        "Switch": {
+          "runAfter": {
+            "List_rows": [
+              "Succeeded"
+            ]
+          },
+          "cases": {
+            "Case_1_England": {
+              "case": "England",
+              "actions": {
+                "Set_varCountryCode_to_England": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "8de45b9e-6be7-4739-a101-f64bfd7acace"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "varCountryCode",
+                    "value": "65eeb151-30b8-ed11-b597-0022481b5e4f"
+                  }
+                }
+              }
+            },
+            "Case_2_Wales": {
+              "case": "Wales",
+              "actions": {
+                "Set_varCountryCode_to_Wales": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "9d0b8417-653d-404a-b1c4-a9f7a2ad6d03"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "varCountryCode",
+                    "value": "ab22b657-30b8-ed11-b597-0022481b5e4f"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "actions": {}
+          },
+          "expression": "@body('Parse_JSON')?['EmployerAddress']?['Country']",
+          "metadata": {
+            "operationMetadataId": "7e470db9-9eed-4398-aeaa-1af2e24650c1"
+          },
+          "type": "Switch"
+        },
+        "Initialize_varCountryCode": {
+          "runAfter": {
+            "Parse_JSON": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "0b4941d0-ec55-4d3e-a778-ee13f6de604a"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varCountryCode",
+                "type": "string"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}
