@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Reg Core" languagecode="1033" />
     </Descriptions>
-    <Version>1.17.119.0</Version>
+    <Version>1.17.120.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -376,10 +376,6 @@
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
-        <Required type="1" schemaName="bookableresource" displayName="Bookable Resource" solution="msdynce_Scheduling (9.0.0.0)" />
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="1" schemaName="campaign" displayName="Campaign" solution="msdynce_Marketing (9.0.4.37)">
           <package>msdynce_MarketingAnchor (9.0.24031.10001)</package>
         </Required>
@@ -398,12 +394,6 @@
         <Dependent type="1" schemaName="list" displayName="Marketing List" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_capacityprofile" displayName="Capacity Profile" solution="UnifiedRouting (1.0.0.4912)">
-          <package>UnifiedRoutingPrimeAnchor (1.5.26.98)</package>
-        </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="1" schemaName="msdyn_customerasset" displayName="Customer Asset" solution="msdyn_AssetCommon (1.0.46.7)">
           <package>FieldService_Anchor (8.8.110.18)</package>
           <package>msdynce_ServiceAnchor (9.0.24014.1004)</package>
@@ -418,16 +408,6 @@
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="10" schemaName="msdyn_msdyn_presence_systemuser" displayName="msdyn_msdyn_presence_systemuser" parentSchemaName="msdyn_presence" parentDisplayName="Presence" solution="OmnichannelBase (1.10.0.77)">
-          <package>UnifiedRoutingPrimeAnchor (1.5.26.98)</package>
-        </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_bacapplicationscount" displayName="BAC Applications Count" parentSchemaName="systemuser" parentDisplayName="User" solution="Active" />
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="2" schemaName="defaultpricelevelid" displayName="Price List" parentSchemaName="account" parentDisplayName="Account" solution="msdynce_ProductManagement (9.0.4.0066)">
           <package>msdynce_ProductManagementAnchor (9.0.24022.10001)</package>
         </Required>
@@ -436,42 +416,6 @@
       <MissingDependency>
         <Required type="2" schemaName="isonlinemeeting" displayName="Is Online Meeting" parentSchemaName="appointment" parentDisplayName="Appointment" solution="msft_ActivitiesInfra_Extensions (9.2.0.59)" />
         <Dependent type="60" displayName="Appointment" parentDisplayName="Appointment" id="{549a8aa3-c349-4ab9-8bac-4873fa9a7a5c}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="msdyn_agentType" displayName="User type" parentSchemaName="systemuser" parentDisplayName="User" solution="OmnichannelBotEnabler (1.5.0.4)">
-          <package>OmnichannelPrimeAnchor (1.5.26.141)</package>
-        </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="msdyn_botapplicationid" displayName="Bot application ID" parentSchemaName="systemuser" parentDisplayName="User" solution="OmnichannelBotEnabler (1.5.0.4)">
-          <package>OmnichannelPrimeAnchor (1.5.26.141)</package>
-        </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="msdyn_botdescription" displayName="Description" parentSchemaName="systemuser" parentDisplayName="User" solution="OmnichannelBase (1.10.0.77)">
-          <package>UnifiedRoutingPrimeAnchor (1.5.26.98)</package>
-        </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="msdyn_botprovider" displayName="Bot Provider" parentSchemaName="systemuser" parentDisplayName="User" solution="msdyn_OmnichannelBotEnablerPatch (1.5.26.2)">
-          <package>OmnichannelPrimeAnchor (1.5.26.141)</package>
-        </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="msdyn_capacity" displayName="Capacity" parentSchemaName="systemuser" parentDisplayName="User" solution="OmnichannelBase (1.10.0.77)">
-          <package>UnifiedRoutingPrimeAnchor (1.5.26.98)</package>
-        </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="msdyn_defaultpresenceiduser" displayName="Default Presence" parentSchemaName="systemuser" parentDisplayName="User" solution="OmnichannelBase (1.10.0.77)">
-          <package>UnifiedRoutingPrimeAnchor (1.5.26.98)</package>
-        </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="onlinemeetingjoinurl" displayName="Online Meeting Join Url" parentSchemaName="appointment" parentDisplayName="Appointment" solution="msft_ActivitiesInfra_Extensions (9.2.0.59)" />
@@ -490,32 +434,10 @@
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="siteid" displayName="Site" parentSchemaName="systemuser" parentDisplayName="User" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.24014.1004)</package>
-        </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="2" schemaName="territoryid" displayName="Territory" parentSchemaName="account" parentDisplayName="Account" solution="msdynce_Sales (9.0.4.0076)">
           <package>msdynce_SalesAnchor (9.0.24031.10007)</package>
         </Required>
         <Dependent type="60" displayName="Information" parentDisplayName="Account" id="{b053a39a-041a-4356-acef-ddf00182762b}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="territoryid" displayName="Territory" parentSchemaName="systemuser" parentDisplayName="User" solution="msdynce_AppCommon (9.0.4.0066)">
-          <package>msdynce_AppCommonAnchor (9.0.24031.10002)</package>
-        </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="26" schemaName="Active Bookable Resources" displayName="Active Bookable Resources" parentSchemaName="bookableresource" parentDisplayName="Bookable Resource" solution="msdynce_Scheduling (9.0.0.0)" id="{662706ca-6ec0-4c0e-a281-521161be48fa}" />
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="26" schemaName="Active Capacity Profiles" displayName="Active Capacity Profiles" parentSchemaName="msdyn_capacityprofile" parentDisplayName="Capacity Profile" solution="UnifiedRouting (1.0.0.4912)" id="{59137c65-5747-433b-8a7d-fd1dc252f13f}">
-          <package>UnifiedRoutingPrimeAnchor (1.5.26.98)</package>
-        </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Active Customer Assets" displayName="Active Customer Assets" parentSchemaName="msdyn_customerasset" parentDisplayName="Customer Asset" solution="msdyn_AssetCommon (1.0.46.7)" id="{6ecb03a4-acda-44ae-83e3-c60ba8338dbb}">
@@ -537,22 +459,10 @@
         <Dependent type="26" schemaName="All Contacts" displayName="All Contacts" parentSchemaName="contact" parentDisplayName="Contact" id="{0d5d377b-5e7c-47b5-bab1-a5cb8b4ac105}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="26" schemaName="Capacity profile Subgrid View" displayName="Capacity profile Subgrid View" parentSchemaName="msdyn_capacityprofile" parentDisplayName="Capacity Profile" solution="OCBaseURBase (1.1.0.702)" id="{6313eed9-e160-eb11-a812-000d3a9bbc54}">
-          <package>UnifiedRoutingPrimeAnchor (1.5.26.98)</package>
-        </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="26" schemaName="Customer Asset associated view with alerts" displayName="Customer Asset associated view with alerts" parentSchemaName="msdyn_customerasset" parentDisplayName="Customer Asset" solution="msdyn_ConnectedCustomerService (9.0.23122.1017)" id="{38cc036f-fbfe-e911-a81c-000d3ac2c6cb}">
           <package>msdynce_ServiceAnchor (9.0.24014.1004)</package>
         </Required>
         <Dependent type="60" displayName="BSR Account" parentDisplayName="Account" id="{b458eff7-c953-4dc9-abd3-87eb08bfb87b}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="26" schemaName="Omnichannel queues" displayName="Omnichannel queues" parentSchemaName="queue" parentDisplayName="Queue" solution="OmnichannelBase (1.10.0.77)" id="{475ba760-c16c-e911-8196-000d3af7379e}">
-          <package>UnifiedRoutingPrimeAnchor (1.5.26.98)</package>
-        </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="59" schemaName="Tasks by Month Due" displayName="Tasks by Month Due" parentSchemaName="task" parentDisplayName="Task" solution="msdynce_AppCommon (9.0.4.0066)" id="{9e6a8b06-6d14-46e6-bbf5-95c388c6eb7a}">
@@ -657,28 +567,10 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Account" id="{b053a39a-041a-4356-acef-ddf00182762b}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="61" schemaName="msdyn_/User/FieldService.SystemUser.js" displayName="msdyn_/User/FieldService.SystemUser.js" solution="FieldService (8.8.0.88)">
-          <package>FieldService_Anchor (8.8.110.18)</package>
-        </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="61" schemaName="msdyn_capacityprofileSubgridActions.js" displayName="msdyn_capacityprofileSubgridActions.js" solution="OCBaseURBase (1.1.0.702)">
-          <package>UnifiedRoutingPrimeAnchor (1.5.26.98)</package>
-        </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="61" schemaName="msdyn_ci_activity_form" displayName="msdyn_ci_activity_form" solution="msdyn_Conversation_Intelligence (9.0.1.1181)">
           <package>msdyn_SalesConversationIntelligenceAnchor (9.0.1.1181)</package>
         </Required>
         <Dependent type="60" displayName="Appointment" parentDisplayName="Appointment" id="{549a8aa3-c349-4ab9-8bac-4873fa9a7a5c}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="61" schemaName="msdyn_OmnichannelBotEnabler/msdyn_BotUser.js" displayName="msdyn_OmnichannelBotEnabler/msdyn_BotUser.js" solution="msdyn_OmnichannelBotEnablerPatch (1.5.26.2)">
-          <package>OmnichannelPrimeAnchor (1.5.26.141)</package>
-        </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_talkingpointsloader.js" displayName="msdyn_talkingpointsloader.js" solution="msdynce_Talkingpoints (9.1.0.59)">
@@ -687,20 +579,10 @@
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="61" schemaName="msdyn_userSettings.js" displayName="msdyn_userSettings.js" solution="OmnichannelBase (1.10.0.77)">
-          <package>UnifiedRoutingPrimeAnchor (1.5.26.98)</package>
-        </Required>
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="66" schemaName="CI.Controls.CallSummaryControlTwin" displayName="CI.Controls.CallSummaryControlTwin" solution="msdyn_Conversation_Intelligence (9.0.1.1181)">
           <package>msdyn_SalesConversationIntelligenceAnchor (9.0.1.1181)</package>
         </Required>
         <Dependent type="60" displayName="Appointment" parentDisplayName="Appointment" id="{549a8aa3-c349-4ab9-8bac-4873fa9a7a5c}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="66" schemaName="Microsoft.AddressInputUCI" displayName="Microsoft.AddressInputUCI" solution="BaseCustomControlsCore (9.0.2403.2019)" />
-        <Dependent type="60" displayName="User" parentDisplayName="User" id="{c2cd9e55-d4b4-4b55-9951-16ead79643e5}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="66" schemaName="MscrmControls.Activity.HyperlinkControlWithImage" displayName="MscrmControls.Activity.HyperlinkControlWithImage" solution="msdynce_ActivitiesPatch (9.0.24024.240216001)" />
