@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{de4b997c-f165-4975-9113-e2072b8fc9f0}</savedqueryid>
+    <layoutxml>
+      <grid name="bsr_inspectiondateshistories" jump="bsr_name" select="1" icon="1" preview="1">
+        <row name="bsr_inspectiondateshistory" id="bsr_inspectiondateshistoryid">
+          <cell name="bsr_name" width="126" />
+          <cell name="bsr_inspection" width="100" />
+          <cell name="bsr_changedby" width="110" />
+          <cell name="bsr_planneddate" width="116" />
+          <cell name="bsr_startdate" width="100" />
+          <cell name="bsr_enddate" width="100" />
+          <cell name="bsr_datechangereason" width="225" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>2</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="bsr_inspectiondateshistory">
+          <attribute name="bsr_inspectiondateshistoryid" />
+          <attribute name="bsr_name" />
+          <attribute name="createdon" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="bsr_inspection" />
+          <attribute name="bsr_changedby" />
+          <attribute name="bsr_startdate" />
+          <attribute name="bsr_planneddate" />
+          <attribute name="bsr_enddate" />
+          <attribute name="bsr_datechangereason" />
+          <order attribute="createdon" descending="true" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Inspection Dates History Associated View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
