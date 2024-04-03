@@ -11,6 +11,7 @@
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_taskcategoryid">
           <cell name="bsr_name" width="300" />
+          <cell name="bsr_bsrservicecode" width="112" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -23,9 +24,12 @@
           <attribute name="bsr_name" />
           <attribute name="createdon" />
           <order attribute="bsr_name" descending="false" />
+          <attribute name="bsr_bsrservicecode" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
-            <condition attribute="bsr_bsrservicecode" operator="eq" value="760810005" />
+            <condition attribute="bsr_bsrservicecode" operator="contain-values">
+              <value>760810005</value>
+            </condition>
           </filter>
         </entity>
       </fetch>

@@ -11,6 +11,8 @@
       <grid name="bsr_tasktypes" jump="bsr_name" select="1" icon="1" preview="0">
         <row name="bsr_tasktype" id="bsr_tasktypeid">
           <cell name="bsr_name" width="300" />
+          <cell name="bsr_bsrservicecode" width="112" />
+          <cell name="bsr_billableforbac" width="137" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -25,6 +27,8 @@
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <attribute name="bsr_bsrservicecode" />
+          <attribute name="bsr_billableforbac" />
         </entity>
       </fetch>
     </fetchxml>
