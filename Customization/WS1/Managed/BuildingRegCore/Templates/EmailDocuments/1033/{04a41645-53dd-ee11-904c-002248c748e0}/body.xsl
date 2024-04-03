@@ -2,27 +2,27 @@
 <div>&nbsp;</div>
 <div><span style="font-family:Arial,Helvetica,sans-serif">As the principal accountable person for %buildingName%, you are now being directed under section 79(1) of the Building Safety Act 2022 to apply for your building assessment certificate by the Building Safety Regulator (BSR). You must apply within 28 days of this direction.</span></div>
 <div>&nbsp;</div>
-<div><span style="font-family:Arial,Helvetica,sans-serif">You must submit your application online at:&nbsp;<a href="https://www.gov.uk/guidance/apply-for-building-assessment-certification">www.gov.uk/guidance/apply-for-building-assessment-certification</a>.</span></div>
+<div><span style="font-family:Arial,Helvetica,sans-serif">You must submit your application online at:&nbsp;<a href="https://www.gov.uk/guidance/apply-for-a-building-assessment-certificate">https://www.gov.uk/guidance/apply-for-a-building-assessment-certificate</a>.</span></div>
 <div>&nbsp;</div>
 <div><span style="font-family:Arial,Helvetica,sans-serif">The application reference for&nbsp;%buildingName% is %applicationId%.</span></div>
 <div>&nbsp;</div>
-<div><span style="font-family:Arial,Helvetica,sans-serif">Find out what must be included in your application at:&nbsp;<a href="https://www.gov.uk/guidance/applying-for-building-assessment-certification">www.gov.uk/guidance/applying-for-building-assessment-certification</a></span></div>
+<div><span style="font-family:Arial,Helvetica,sans-serif">Find out what must be included in your application at:&nbsp;<a href="https://www.gov.uk/guidance/preparing-a-building-assessment-certificate-application">https://www.gov.uk/guidance/preparing-a-building-assessment-certificate-application</a></span></div>
 <div>&nbsp;</div>
 <div><span style="font-family:Arial,Helvetica,sans-serif"><strong><span style="font-size:18pt">If you do not apply for a building assessment certificate</span></strong></span></div>
 <div>&nbsp;</div>
-<div><span style="font-family:Arial,Helvetica,sans-serif">Failure to submit your building assessment certificate application within 28 days of being directed to apply is a criminal offence, under section 79(3) of the Building Safety Act 2022. BSR may consider taking enforcement action against you. Any enforcement action will be considered in line with our enforcement policy statement:&nbsp;<a href="https://www.hse.gov.uk/building-safety/enforcement-policy.htm">www.hse.gov.uk/building-safety/enforcement-policy.htm</a></span></div>
+<div><span style="font-family:Arial,Helvetica,sans-serif">Failure to submit your building assessment certificate application within 28 days of being directed to apply is a criminal offence, without reasonable excuse, under section 79(3) of the Building Safety Act 2022. BSR may consider taking enforcement action against you. Any enforcement action will be considered in line with our enforcement policy statement:&nbsp;<a href="https://www.hse.gov.uk/building-safety/enforcement-policy.htm">www.hse.gov.uk/building-safety/enforcement-policy.htm</a></span></div>
 <div>&nbsp;</div>
 <div><span style="font-family:Arial,Helvetica,sans-serif"><strong><span style="font-size:18pt">You will need to pay</span></strong></span></div>
 <div>&nbsp;</div>
-<div><span style="font-family:Arial,Helvetica,sans-serif">There is an application charge of £288, this can be paid by card or invoice.</span></div>
+<div><span style="font-family:Arial,Helvetica,sans-serif">There is an application charge of £288 (including VAT), this can be paid by card or invoice.</span></div>
 <div>&nbsp;</div>
 <div><span style="font-family:Arial,Helvetica,sans-serif">The&nbsp;assessment of your application will also incur further ongoing charges. You will need to provide details so we can send you invoices for the work undertaken to assess your application. <span style="font-size:12pt"><span style="background-color:#ffffff; color:#000000; display:inline!important; float:none; font-style:normal; font-variant-caps:normal; font-weight:400; letter-spacing:normal; text-align:left; text-decoration-color:initial; text-decoration-style:initial; text-indent:0px; text-transform:none; white-space:normal; word-spacing:0px">If you need to include a purchase order number on the invoices, then you will need to provide it in your application</span>.</span></span></div>
 <div>&nbsp;</div>
-<div><span style="font-family:Arial,Helvetica,sans-serif">Find out more about the charges which apply in the Building Safety Regulator charging scheme at:&nbsp;<a href="https://www.hse.gov.uk/building-safety/charging-scheme.htm">www.hse.gov.uk/building-safety/charging-scheme.htm</a></span></div>
+<div><span style="font-family:Arial,Helvetica,sans-serif">Find out more about the charges which apply in the Building Safety Regulator charging scheme at:&nbsp;<a href="https://www.hse.gov.uk/building-safety/charging-scheme.htm">https://www.hse.gov.uk/building-safety/charging-scheme.htm</a></span></div>
 <div>&nbsp;</div>
 <div><span style="font-family:Arial,Helvetica,sans-serif"><strong><span style="font-size:18pt">If you do not think you should have received this email&nbsp;</span></strong></span></div>
 <div>&nbsp;</div>
-<div><span style="font-family:Arial,Helvetica,sans-serif">If you are not&nbsp;principal accountable person for&nbsp;%buildingName%, contact BSR at:&nbsp;<a href="https://www.contact-building-safety-regulator.service.gov.uk">www.contact-building-safety-regulator.service.gov.uk&nbsp;</a></span></div>
+<div><span style="font-family:Arial,Helvetica,sans-serif">If you are not&nbsp;principal accountable person for&nbsp;%buildingName%, contact BSR at:&nbsp;<a href="https://www.gov.uk/guidance/contact-the-building-safety-regulator">https://www.gov.uk/guidance/contact-the-building-safety-regulator</a></span></div>
 <div>&nbsp;</div>
 <div><div><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:12pt"><span style="line-height:115%">From the Health and Safety Executive<br>as the Building Safety Regulator</span></span></span><br>&nbsp;</div>
 <div><div align="center" style="margin-bottom:16px; text-align:center"><hr align="center" size="2" width="100%"></div><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:12pt"><span style="line-height:115%">Do not reply to this email. It’s an automatic message from an unmonitored account.</span></span></span></div></div>
