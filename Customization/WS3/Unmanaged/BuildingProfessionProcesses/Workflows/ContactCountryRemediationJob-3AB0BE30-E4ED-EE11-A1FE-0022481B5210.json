@@ -1,0 +1,193 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_excelonlinebusiness": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_ExcelOnlineBusinessWS3"
+        },
+        "api": {
+          "name": "shared_excelonlinebusiness"
+        }
+      },
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS3"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "6a7f912e-1413-4eb4-949a-6c9f8d44c8d5"
+          },
+          "type": "Request",
+          "kind": "Button",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          }
+        }
+      },
+      "actions": {
+        "List_rows_present_in_a_table": {
+          "runAfter": {
+            "Initialize_varContactIDs": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "01N5F5O6NR2TOO4I7FQZGIXR2SAQ57XPP5": "/Philip Ryan - Data Remediation/DevContactsToUpdate.xlsx",
+            "operationMetadataId": "5b9d0819-a512-4e98-ac3e-2a32998115b9",
+            "tableId": "{81B4BDA0-D68D-420B-AB68-F49D4C10EED6}"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_excelonlinebusiness",
+              "operationId": "GetItems",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_excelonlinebusiness"
+            },
+            "parameters": {
+              "source": "sites/hsegov.sharepoint.com,735471fa-9c7c-45c5-87dd-26844f598ef1,2ed686a9-2677-4641-a4bd-bee922381d5f",
+              "drive": "b!-nFUc3ycxUWH3SaET1mO8amG1i53JkFGpL2-6SI4HV_ndFTuyYFgQoApQZ8XCgxC",
+              "file": "01N5F5O6NR2TOO4I7FQZGIXR2SAQ57XPP5",
+              "table": "{81B4BDA0-D68D-420B-AB68-F49D4C10EED6}"
+            },
+            "authentication": {
+              "type": "Raw",
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+            }
+          }
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('List_rows_present_in_a_table')?['body/value']",
+          "actions": {
+            "List_rows": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "3b1cc0bd-9c38-441d-a7b5-67753b9689f8"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "bsr_buildingprofessionapplications",
+                  "$filter": "bsr_buildingproappid eq '@{items('Apply_to_each')?['id']}'"
+                },
+                "authentication": {
+                  "type": "Raw",
+                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                }
+              }
+            },
+            "Apply_to_each_2": {
+              "foreach": "@outputs('List_rows')?['body/value']",
+              "actions": {
+                "Update_a_row": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "a4a06a92-cbd8-4c81-af06-9a2baf1e97dc"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "contacts",
+                      "recordId": "@items('Apply_to_each_2')?['_bsr_applicantid_value']",
+                      "item/address1_country": "@items('Apply_to_each')?['Country']",
+                      "item/bsr_Address1CountryCode@odata.bind": "\\bsr_countries\\@{items('Apply_to_each')?['Country Guid']}"
+                    },
+                    "authentication": {
+                      "type": "Raw",
+                      "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                    }
+                  }
+                }
+              },
+              "runAfter": {
+                "List_rows": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "a409e7bd-581a-4764-8aec-669b5b99bae9"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "List_rows_present_in_a_table": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "992e657d-0ac0-45d8-b7d5-7e0042d2afa3"
+          },
+          "type": "Foreach"
+        },
+        "Initialize_varContactIDs": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "7300c433-efc9-4bc6-adbd-d6b1b5ac7da2"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varContactIDs",
+                "type": "array"
+              }
+            ]
+          }
+        },
+        "Terminate": {
+          "runAfter": {
+            "Apply_to_each": [
+              "Failed",
+              "Skipped",
+              "TimedOut"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "224bcb1b-5e2e-4412-b904-9a50c98b7298"
+          },
+          "type": "Terminate",
+          "inputs": {
+            "runStatus": "Failed"
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}
