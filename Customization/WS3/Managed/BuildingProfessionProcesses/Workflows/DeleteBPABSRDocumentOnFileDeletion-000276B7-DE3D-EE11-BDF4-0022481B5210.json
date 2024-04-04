@@ -1,0 +1,135 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS3"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_sharepointonline": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_SharePointWS3"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "SharePoint BPA Folder ID (bsr_sharepointbpafolderid)": {
+          "defaultValue": "da7f221b-4b37-4155-92eb-c1b62e0fd6f3",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_sharepointbpafolderid"
+          }
+        },
+        "SharePoint Site URL (bsr_sharepointsiteurl)": {
+          "defaultValue": "https://hsegov.sharepoint.com/sites/bsr-ws3-dev",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_sharepointsiteurl"
+          }
+        }
+      },
+      "triggers": {
+        "When_a_file_is_deleted": {
+          "recurrence": {
+            "interval": 1,
+            "frequency": "Minute"
+          },
+          "splitOn": "@triggerOutputs()?['body/value']",
+          "metadata": {
+            "operationMetadataId": "c0db646e-500e-4f91-bbe5-9fba17ea469a"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_sharepointonline",
+              "operationId": "GetOnDeletedFileItems",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+            },
+            "parameters": {
+              "dataset": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
+              "table": "@parameters('SharePoint BPA Folder ID (bsr_sharepointbpafolderid)')"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "List_rows": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "6aa15c9b-6864-43e1-a83c-dd90f48419a1"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_bsrdocuments",
+              "$filter": "bsr_sharepointfileid eq '@{triggerOutputs()?['body/ID']}'"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('List_rows')?['body/value']",
+          "actions": {
+            "Update_a_row": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "fe5247f3-c736-4303-9e1d-8a5dfca65a91"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "bsr_bsrdocuments",
+                  "recordId": "@items('Apply_to_each')?['activityid']",
+                  "item/subject": "[Deleted] @{items('Apply_to_each')?['subject']}",
+                  "item/statecode": 2
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "List_rows": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "8f59361e-6262-40ff-916c-6f64fd3bb58c"
+          },
+          "type": "Foreach"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

@@ -5,7 +5,7 @@
     <IntroducedVersion>6.0.0.0</IntroducedVersion>
     <FormPresentation>1</FormPresentation>
     <FormActivationState>1</FormActivationState>
-    <form headerdensity="HighWithControls" solutionaction="Modified">
+    <form>
       <tabs>
         <tab name="TASK_TAB" verticallayout="true" id="{ADFD103B-691E-4A92-B4CF-F844B645A1F7}" IsUserDefined="0" showlabel="false" expanded="true" ordinalvalue="0">
           <columns>
@@ -14,40 +14,18 @@
                 <section name="TASK" showlabel="false" showbar="false" id="{EBB3C46D-5E9B-4EBB-A9E4-B8C25D364BB3}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" celllabelposition="Left" ordinalvalue="0">
                   <rows>
                     <row>
-                      <cell id="{5FD2BE87-C1CF-41A6-9AD9-4D273733422E}" showlabel="true" locklevel="0" colspan="1" labelid="{f670bd68-6ea9-4665-b504-834f4c254a07}" ordinalvalue="10002" solutionaction="Modified">
+                      <cell id="{5FD2BE87-C1CF-41A6-9AD9-4D273733422E}" showlabel="true" locklevel="0" colspan="1" labelid="{f670bd68-6ea9-4665-b504-834f4c254a07}" ordinalvalue="10000" solutionaction="Modified">
                         <labels>
                           <label description="Subject" languagecode="1033" solutionaction="Added" />
                         </labels>
                       </cell>
                     </row>
                     <row>
-                      <cell id="{193ec769-b599-4221-8f78-998b0b5c565f}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10000" solutionaction="Added">
+                      <cell id="{980b9022-129b-a278-deb4-380396a6a442}" showlabel="true" locklevel="0" ordinalvalue="10001" solutionaction="Added">
                         <labels>
-                          <label description="Task Category" languagecode="1033" />
+                          <label description="Block" languagecode="1033" />
                         </labels>
-                        <control id="bsr_taskcategoryid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_taskcategoryid" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{e7009466-97e9-46d0-bcf4-afd6d162e8be}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10001" solutionaction="Added">
-                        <labels>
-                          <label description="Task Type" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_tasktypeid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_tasktypeid" disabled="false">
-                          <parameters>
-                            <DependentAttributeName>task.bsr_taskcategoryid</DependentAttributeName>
-                            <DependentAttributeType>bsr_taskcategory</DependentAttributeType>
-                            <FilterRelationshipName>bsr_tasktype_taskcategoryid_bsr_taskcateg</FilterRelationshipName>
-                          </parameters>
-                        </control>
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{6b187bcd-36be-4c6e-a168-aa28cddf591d}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10003" solutionaction="Added">
-                        <labels>
-                          <label description="Invoiced" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_invoicedcode" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="bsr_invoicedcode" disabled="false" />
+                        <control id="bsr_block_taskid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_block_taskid" disabled="false" />
                       </cell>
                     </row>
                   </rows>
@@ -63,7 +41,7 @@
                     </row>
                   </rows>
                 </section>
-                <section name="task details" showlabel="false" showbar="false" locklevel="0" id="{96BF03F6-399F-42D0-8295-08E1B8890D01}" IsUserDefined="0" layout="varwidth" columns="11" labelid="{a75b944b-2152-476c-8a9c-73cfeda7c0fa}" ordinalvalue="3" solutionaction="Modified">
+                <section name="task details" showlabel="false" showbar="false" locklevel="0" id="{96BF03F6-399F-42D0-8295-08E1B8890D01}" IsUserDefined="0" layout="varwidth" columns="11" labelid="{a75b944b-2152-476c-8a9c-73cfeda7c0fa}" ordinalvalue="2">
                   <rows>
                     <row>
                       <cell showlabel="true" id="{E1DB7569-03E5-4B12-A5C0-4E875D1163D8}" locklevel="0" colspan="2" labelid="{1f99d1b9-9de8-4d2f-86f7-0c589f6c24df}" ordinalvalue="10000">
@@ -73,31 +51,12 @@
                       </cell>
                     </row>
                     <row>
-                      <cell showlabel="true" id="{CC840E7F-65AB-4F53-B495-4AEA458370B0}" labelid="{a7a7baec-6af8-4ab9-8952-8f009923ee1d}" visible="false" ordinalvalue="10001" solutionaction="Modified">
+                      <cell showlabel="true" id="{CC840E7F-65AB-4F53-B495-4AEA458370B0}" labelid="{a7a7baec-6af8-4ab9-8952-8f009923ee1d}" ordinalvalue="10001">
                         <labels>
                           <label description="Duration" languagecode="1033" solutionaction="Added" />
                         </labels>
                       </cell>
                     </row>
-                  </rows>
-                </section>
-                <section name="Outcome" id="3c324d89-58ad-45c0-903e-b6753f217bbb" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" ordinalvalue="2" solutionaction="Added">
-                  <labels>
-                    <label description="Outcome" languagecode="1033" />
-                  </labels>
-                  <rows>
-                    <row>
-                      <cell id="{bc844416-f316-4d1a-a876-d03846e9998d}" locklevel="0" colspan="1" rowspan="5" ordinalvalue="10000">
-                        <labels>
-                          <label description="Outcome" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_outcome" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_outcome" disabled="false" />
-                      </cell>
-                    </row>
-                    <row></row>
-                    <row />
-                    <row />
-                    <row />
                   </rows>
                 </section>
               </sections>
@@ -112,229 +71,6 @@
                     </row>
                   </rows>
                 </section>
-                <section name="TASK_TAB_section_6" id="add9e746-a67a-44a8-a31b-e406d454cd12" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115" ordinalvalue="1" solutionaction="Added">
-                  <labels>
-                    <label description="Time Recording" languagecode="1033" />
-                  </labels>
-                  <rows>
-                    <row>
-                      <cell id="{fea77ff5-7a21-4b7c-8367-6644f5d20862}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10000">
-                        <labels>
-                          <label description="Time Spent (Mins)" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_timespentminutes" classid="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}" datafieldname="bsr_timespentminutes" disabled="false" />
-                      </cell>
-                      <cell showlabel="false" locklevel="0" id="{cac305a8-ea16-431c-bb51-138e8be7174f}" ordinalvalue="20001">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{05559966-118e-469b-b6f4-f036d033021e}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10002">
-                        <labels>
-                          <label description="Time Spent (Hrs)" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_timespenthours" classid="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}" datafieldname="bsr_timespenthours" disabled="false" />
-                      </cell>
-                      <cell locklevel="0" id="{300a9ab6-27b3-46e4-850e-137b881095dd}" ordinalvalue="20003">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{0ddc20ea-9582-40a6-acb8-6f23dfd99fac}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10004">
-                        <labels>
-                          <label description="Total Duration (Mins)" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_totaldurationminutes" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_totaldurationminutes" disabled="false" />
-                      </cell>
-                      <cell locklevel="0" id="{214a1e10-dcbc-46c3-a375-4b96aaa0bc63}" ordinalvalue="20005">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{96c0d665-3ea8-4e96-b00b-55fb1a05ada0}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10006">
-                        <labels>
-                          <label description="Total Duration (Hrs)" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_totaltimehours" classid="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}" datafieldname="bsr_totaltimehours" disabled="false" />
-                      </cell>
-                      <cell locklevel="0" id="{cb962eb6-0ff5-4a6e-bed2-253d322aa03d}" ordinalvalue="20007">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
-                  </rows>
-                </section>
-                <section name="TASK_TAB_section_7" id="6de80056-dbd6-450a-90bc-723881b4b976" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115" ordinalvalue="2" solutionaction="Added">
-                  <labels>
-                    <label description="Key Dates" languagecode="1033" />
-                  </labels>
-                  <rows>
-                    <row>
-                      <cell id="{fd3fd34f-6b08-4374-b8ee-ef6d4e59d8a4}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10000">
-                        <labels>
-                          <label description="Planned Start" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_plannedstart" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_plannedstart" disabled="false" />
-                      </cell>
-                      <cell showlabel="false" locklevel="0" id="{c1680b55-89cb-4841-a05b-863c84707191}" ordinalvalue="20001">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{a952f795-40cf-4361-8300-11ed73a7ac32}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10002">
-                        <labels>
-                          <label description="Assigned On" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_assignedon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="bsr_assignedon" disabled="false" />
-                      </cell>
-                      <cell locklevel="0" id="{bc17d1b2-aab7-4ed8-b6c0-d7d870da18bb}" ordinalvalue="20003">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{9decff49-0255-4a46-9bcd-7776f5040314}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10004">
-                        <labels>
-                          <label description="Due Date" languagecode="1033" />
-                        </labels>
-                        <control id="scheduledend" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="scheduledend" disabled="false" />
-                      </cell>
-                      <cell locklevel="0" id="{b25f7076-ac8c-459e-8dbf-1c701b660145}" ordinalvalue="20005">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{f68b4180-88c9-47f1-809c-bc57a2c2ecfe}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10006">
-                        <labels>
-                          <label description="Actual Start" languagecode="1033" />
-                        </labels>
-                        <control id="actualstart" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="actualstart" disabled="false" />
-                      </cell>
-                      <cell locklevel="0" id="{866b8e9c-0c57-4ca0-8db0-48cc74798e80}" ordinalvalue="20007">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{c14fda6f-bb6e-4587-b5cf-a70c4659d281}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10008">
-                        <labels>
-                          <label description="Actual End" languagecode="1033" />
-                        </labels>
-                        <control id="actualend" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="actualend" disabled="false" />
-                      </cell>
-                      <cell locklevel="0" id="{7fa449ee-ecc9-4be3-a516-133824ff2efc}" ordinalvalue="20009">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
-                  </rows>
-                </section>
-                <section name="TASK_TAB_section_9" id="b95ab4b0-bd30-4bce-a6a7-07990a9ebb5b" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115" ordinalvalue="3" solutionaction="Added">
-                  <labels>
-                    <label description="Payment Info" languagecode="1033" />
-                  </labels>
-                  <rows>
-                    <row>
-                      <cell id="{62d4a187-5124-4faf-a372-1c517475175f}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10000">
-                        <labels>
-                          <label description="Payment Due" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_paymentdue" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="bsr_paymentdue" disabled="true" />
-                      </cell>
-                      <cell showlabel="false" locklevel="0" id="{04a5274f-3749-4505-8d35-183cbaf33331}" ordinalvalue="20001">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{f7808892-3831-4d11-9ecd-25ba96abce6a}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10002">
-                        <labels>
-                          <label description="Rate" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_rate" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="bsr_rate" disabled="true" />
-                      </cell>
-                      <cell locklevel="0" id="{844676eb-97da-4861-a34f-e9738f708eb4}" ordinalvalue="20003">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{ab5104f1-8565-463e-b64a-26616bfcf575}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10004">
-                        <labels>
-                          <label description="Cost Recoverable" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_iscostrecoverable" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="bsr_iscostrecoverable" disabled="false" />
-                      </cell>
-                      <cell locklevel="0" id="{95742cd0-2843-4ea8-86b8-f66e69108de4}" ordinalvalue="20005">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
-                  </rows>
-                </section>
-                <section name="TASK_TAB_section_8" id="b9861b51-823e-45f9-8187-3c29a134596c" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115" ordinalvalue="4" solutionaction="Added">
-                  <labels>
-                    <label description="Details" languagecode="1033" />
-                  </labels>
-                  <rows>
-                    <row>
-                      <cell id="{9b18dfd9-b332-409d-85f3-26aafc642f06}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10000">
-                        <labels>
-                          <label description="Dutyholder" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_dutyholderid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_dutyholderid" disabled="false" />
-                      </cell>
-                      <cell showlabel="false" locklevel="0" id="{ad5deabd-e567-487a-8b07-6a626fb4cbe2}" ordinalvalue="20001">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{506e0f94-be2e-4c31-8a1c-18c4f23cf371}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10002">
-                        <labels>
-                          <label description="Date Exception" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_dateexception" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_dateexception" disabled="false" />
-                      </cell>
-                      <cell locklevel="0" id="{3e304e9a-9a34-4e10-a700-3c45e20a302a}" ordinalvalue="20003">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{bc844416-f316-4d1a-a876-d03846e9998d}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10004">
-                        <labels>
-                          <label description="Outcome" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_outcome" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="bsr_outcome" disabled="false" />
-                      </cell>
-                      <cell locklevel="0" id="{b7fe215b-9ef5-4457-9093-065772808821}" ordinalvalue="20005">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
-                  </rows>
-                </section>
               </sections>
             </column>
           </columns>
@@ -343,73 +79,19 @@
       <header id="{D7EF0A4A-7B76-4B39-A2E0-4207EC3C8C2D}" columns="1111" celllabelposition="Top" labelwidth="115">
         <rows>
           <row>
-            <cell id="{0A9B5273-AD20-4A08-8990-64CB20861D81}" showlabel="true" ordinalvalue="20001" solutionaction="Modified">
+            <cell id="{0A9B5273-AD20-4A08-8990-64CB20861D81}" showlabel="true" ordinalvalue="10000">
               <labels>
                 <label description="Priority" languagecode="1033" solutionaction="Added" />
               </labels>
             </cell>
-            <cell showlabel="true" locklevel="0" rowspan="1" colspan="1" id="{E3CC7544-665F-4BDC-874C-FD933C7C05ED}" ordinalvalue="20001" solutionaction="Removed" />
-            <cell id="{6A04844E-9375-4428-BF70-85C6C3556B8B}" ordinalvalue="40003" solutionaction="Modified">
+            <cell id="{6A04844E-9375-4428-BF70-85C6C3556B8B}" ordinalvalue="30002">
               <labels>
                 <label description="Activity Status" languagecode="1033" solutionaction="Added" />
               </labels>
             </cell>
-            <cell id="{59BF22C1-8C1D-4235-8516-4647EDEAE36C}" showlabel="true" locklevel="1" ordinalvalue="10004" solutionaction="Modified">
+            <cell id="{59BF22C1-8C1D-4235-8516-4647EDEAE36C}" showlabel="true" locklevel="1" ordinalvalue="40003">
               <labels>
                 <label description="Owner" languagecode="1033" solutionaction="Added" />
-              </labels>
-            </cell>
-          </row>
-          <row>
-            <cell id="{3a1f0ba5-bf25-41ac-93a3-a50428587162}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10000" solutionaction="Added">
-              <labels>
-                <label description="Task ID" languagecode="1033" />
-              </labels>
-              <control id="header_bsr_taskcode" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_taskcode" disabled="false" />
-            </cell>
-            <cell locklevel="0" id="{84507e1c-7263-443d-94d6-ed70a768df1f}" ordinalvalue="30002" solutionaction="Added">
-              <labels>
-                <label description="" languagecode="1033" />
-              </labels>
-            </cell>
-          </row>
-          <row>
-            <cell id="{de1fa596-6298-4bcd-8edb-fab49e07e280}" ordinalvalue="20005" solutionaction="Added">
-              <labels>
-                <label description="" languagecode="1033" />
-              </labels>
-            </cell>
-            <cell id="{f82d87d3-0dc5-4109-b86c-17dc1dc50f4e}" ordinalvalue="30006" solutionaction="Added">
-              <labels>
-                <label description="" languagecode="1033" />
-              </labels>
-            </cell>
-            <cell id="{a56dab87-2551-4e09-bbf5-0020e76e306b}" ordinalvalue="40007" solutionaction="Added">
-              <labels>
-                <label description="" languagecode="1033" />
-              </labels>
-            </cell>
-          </row>
-          <row>
-            <cell id="{d4bf710d-7a15-490b-bbd9-667b23dbdf74}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10008" solutionaction="Added">
-              <labels>
-                <label description="Status Reason" languagecode="1033" />
-              </labels>
-              <control id="header_statuscode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="statuscode" disabled="false" />
-            </cell>
-            <cell id="{1d578ee7-07cc-4016-9247-165eaa61f58a}" ordinalvalue="20009" solutionaction="Added">
-              <labels>
-                <label description="" languagecode="1033" />
-              </labels>
-            </cell>
-            <cell id="{0ef21277-17b7-46cc-bb12-c52073515510}" ordinalvalue="30010" solutionaction="Added">
-              <labels>
-                <label description="" languagecode="1033" />
-              </labels>
-            </cell>
-            <cell id="{296e34b1-71dc-46c9-b64a-dc7bb128ac64}" ordinalvalue="40011" solutionaction="Added">
-              <labels>
-                <label description="" languagecode="1033" />
               </labels>
             </cell>
           </row>
@@ -445,9 +127,6 @@
           </NavBarArea>
         </NavBarAreas>
       </Navigation>
-      <footer id="{e3f59205-fa18-4481-bbc5-abf87642566f}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left" solutionaction="Added">
-        <rows></rows>
-      </footer>
     </form>
     <LocalizedNames>
       <LocalizedName description="Task" languagecode="1033" />

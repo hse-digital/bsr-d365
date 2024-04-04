@@ -16,9 +16,23 @@
               <sections>
                 <section name="ACCOUNT_INFORMATION" showlabel="true" showbar="false" id="{0ec2e053-634c-4955-8f61-bfc599ce53c1}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" celllabelposition="Left" labelid="{593e1434-9b29-40cc-a9b3-cacc4c610f7a}">
                   <labels>
-                    <label description="Account Information" languagecode="1033" />
+                    <label description="ACCOUNT INFORMATION" languagecode="1033" />
                   </labels>
                   <rows>
+                    <row>
+                      <cell id="{83dccaff-09d9-41d0-b821-40ba54552999}" showlabel="false" labelid="{52664474-286e-481b-9f07-e3decdac2670}">
+                        <labels>
+                          <label description="Primary Contact" languagecode="1033" />
+                        </labels>
+                        <control id="contactquickform" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="primarycontactid" disabled="false">
+                          <parameters>
+                            <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="contact"&gt;29de27bc-a257-4f29-99cf-bab4a84e688f&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
+                            <ControlMode>Edit</ControlMode>
+                            <DisplayAsCustomer360Tile>true</DisplayAsCustomer360Tile>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
                     <row>
                       <cell id="{a8c64b24-9fec-493b-bfd4-49637c243132}" showlabel="true" labelid="{0191fae2-efce-4296-94e5-70d2c148692d}">
                         <labels>
@@ -28,11 +42,19 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{6a0f0d79-c190-4b52-8cc4-06b3a901158a}" locklevel="0" colspan="1" rowspan="1">
+                      <cell id="{a0381997-5d9b-4958-b38d-e2695835309c}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Organisation Type" languagecode="1033" />
                         </labels>
-                        <control id="bsr_customernumber" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_customernumber" disabled="false" />
+                        <control id="bsr_accounttype_accountid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_accounttype_accountid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7f435be0-68d4-4d4a-aee2-75ba765234cb}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Other Organisation type" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_otherorganisationtype" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_otherorganisationtype" disabled="false" />
                       </cell>
                     </row>
                     <row>
@@ -52,20 +74,6 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{83dccaff-09d9-41d0-b821-40ba54552999}" showlabel="false" labelid="{52664474-286e-481b-9f07-e3decdac2670}" colspan="1" rowspan="1">
-                        <labels>
-                          <label description="Primary Contact" languagecode="1033" />
-                        </labels>
-                        <control id="contactquickform" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="primarycontactid" disabled="false">
-                          <parameters>
-                            <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="contact"&gt;29de27bc-a257-4f29-99cf-bab4a84e688f&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
-                            <ControlMode>Edit</ControlMode>
-                            <DisplayAsCustomer360Tile>true</DisplayAsCustomer360Tile>
-                          </parameters>
-                        </control>
-                      </cell>
-                    </row>
-                    <row>
                       <cell id="{b5e71955-f9cf-48d4-8f2f-c5f847a0667d}" labelid="{1f9100c0-cc94-44a6-b53a-c55c8b868b35}">
                         <labels>
                           <label description="Parent Account" languagecode="1033" />
@@ -80,19 +88,7 @@
                         <control id="parentaccountid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="parentaccountid" />
                       </cell>
                     </row>
-                  </rows>
-                </section>
-                <section name="SUMMARY_TAB_section_5" id="c03b015c-0264-4b44-a449-011f5f56bf96" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115">
-                  <labels>
-                    <label description="Address" languagecode="1033" />
-                  </labels>
-                  <rows>
                     <row>
-                      <cell showlabel="false" locklevel="0" id="{f1996b8a-aeda-42f8-ba8b-1f50c629900f}">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
                       <cell id="{458bb3bc-0660-4517-bee2-9718b802039c}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="Manual Address" languagecode="1033" />
@@ -101,11 +97,14 @@
                       </cell>
                     </row>
                     <row>
-                      <cell locklevel="0" id="{b1f0fba2-043f-4cd3-b6b1-be11cdba8031}">
+                      <cell id="{05ac703d-b577-c116-02bc-012ed2da493a}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Other Organisation type" languagecode="1033" />
                         </labels>
+                        <control id="bsr_otherorganisationtype" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="bsr_otherorganisationtype" disabled="false" />
                       </cell>
+                    </row>
+                    <row>
                       <cell id="{f5bf5265-7a16-4f8c-abf8-0401c68f51d9}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="Address 1: Address Type" languagecode="1033" />
@@ -114,30 +113,11 @@
                       </cell>
                     </row>
                     <row>
-                      <cell locklevel="0" id="{a1429c4b-e5a7-44b8-a113-4ae01d519e66}">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                      <cell id="{1f3c37fa-cb18-44f1-9ba1-550ec33e5027}" locklevel="0" colspan="1" rowspan="1">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_address1uprn" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_address1uprn" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{cbeb02bf-cf1a-43e1-a6aa-a727eb0d8edf}" showlabel="true" locklevel="0" labelid="{293059d9-1f00-4319-8b38-803c947136a8}" colspan="1" rowspan="1">
+                      <cell id="{cbeb02bf-cf1a-43e1-a6aa-a727eb0d8edf}" showlabel="true" locklevel="0" labelid="{293059d9-1f00-4319-8b38-803c947136a8}">
                         <labels>
                           <label description="Address 1" languagecode="1033" />
                         </labels>
                         <control id="address1_composite" classid="{E0DECE4B-6FC8-4a8f-A065-082708572369}" datafieldname="address1_composite" disabled="false" uniqueid="{27e66de8-4b4b-18a8-ce66-2d285c891b5c}" />
-                      </cell>
-                      <cell id="{c5e8f13e-a68a-4e6a-9731-0c6ab7a53c17}" locklevel="0" colspan="1" rowspan="1">
-                        <labels>
-                          <label description="Address 1: USRN" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_address1usrn" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_address1usrn" disabled="false" />
                       </cell>
                     </row>
                     <row>
@@ -147,25 +127,6 @@
                         </labels>
                         <control id="bsr_address1countrycode" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_address1countrycode" disabled="false" />
                       </cell>
-                      <cell id="{29655f37-910d-4ead-b807-748336475d54}" locklevel="0" colspan="1" rowspan="1">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_address1lacode" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_address1lacode" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell locklevel="0" id="{c205b68b-5390-4b2d-ba72-cd5f8ba56025}">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                      <cell id="{4c370cc2-12fc-4e1d-b4a1-08691082028b}" locklevel="0" colspan="1" rowspan="1">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_address1ladescription" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_address1ladescription" disabled="false" />
-                      </cell>
                     </row>
                   </rows>
                 </section>
@@ -173,51 +134,6 @@
             </column>
             <column width="38%">
               <sections>
-                <section name="SUMMARY_TAB_section_6" id="929a7b2a-3458-42d1-84ab-ccb921449299" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115">
-                  <labels>
-                    <label description="Account Types" languagecode="1033" />
-                  </labels>
-                  <rows>
-                    <row>
-                      <cell id="{a0381997-5d9b-4958-b38d-e2695835309c}" showlabel="true" locklevel="0" colspan="1" rowspan="1">
-                        <labels>
-                          <label description="Account Type" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_accounttype_accountid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_accounttype_accountid" disabled="false" />
-                      </cell>
-                      <cell id="{7f435be0-68d4-4d4a-aee2-75ba765234cb}" locklevel="0" colspan="1" rowspan="1">
-                        <labels>
-                          <label description="Other Account Type" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_otherorganisationtype" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="bsr_otherorganisationtype" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell locklevel="0" id="{f652f509-3890-4aa7-afc6-2a38c166eed2}" rowspan="4" colspan="2" auto="false" showlabel="false">
-                        <labels>
-                          <label description="Related Account Types" languagecode="1033" />
-                        </labels>
-                        <control indicationOfSubgrid="true" id="Subgrid_new_1" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
-                          <parameters>
-                            <RecordsPerPage>4</RecordsPerPage>
-                            <AutoExpand>Fixed</AutoExpand>
-                            <EnableQuickFind>false</EnableQuickFind>
-                            <EnableViewPicker>false</EnableViewPicker>
-                            <EnableChartPicker>true</EnableChartPicker>
-                            <ChartGridMode>All</ChartGridMode>
-                            <TargetEntityType>bsr_accounttype</TargetEntityType>
-                            <ViewId>{9B1DCBDE-129B-45AE-B646-327B766BF38C}</ViewId>
-                            <ViewIds>{9B1DCBDE-129B-45AE-B646-327B766BF38C}</ViewIds>
-                            <RelationshipName>bsr_Account_bsr_accounttype_bsr_accounttype</RelationshipName>
-                          </parameters>
-                        </control>
-                      </cell>
-                    </row>
-                    <row />
-                    <row />
-                    <row />
-                  </rows>
-                </section>
                 <section name="Timeline" showlabel="true" showbar="false" locklevel="0" id="{be648143-8f66-4279-b19a-9301e58bc0dd}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left" labelid="{2db8bca8-1047-4971-83be-b6e2108ca5d8}">
                   <labels>
                     <label description="Timeline" languagecode="1033" />
@@ -258,7 +174,7 @@
               <sections>
                 <section name="ref_pan_SUMMARY_TAB_section_6" showlabel="true" showbar="false" locklevel="0" id="{2de57b8f-b251-411d-802c-ad2c696fc51c}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Top" labelid="{0529cdd5-5ca0-49d7-8065-08273cb26a9f}">
                   <labels>
-                    <label description="Related" languagecode="1033" />
+                    <label description="RELATED" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
@@ -623,57 +539,6 @@
                         <control id="address1_freighttermscode" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="address1_freighttermscode" />
                       </cell>
                     </row>
-                  </rows>
-                </section>
-              </sections>
-            </column>
-          </columns>
-        </tab>
-        <tab name="tab_4" id="8b8b25be-eda9-4f5c-a244-7806a24f190a" IsUserDefined="0" locklevel="0" showlabel="true">
-          <labels>
-            <label description="Buildings" languagecode="1033" />
-          </labels>
-          <columns>
-            <column width="100%">
-              <sections>
-                <section name="tab_4_section_1" id="a0afeb8e-52e8-4917-99c9-d7ab224f99db" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
-                  <labels>
-                    <label description="New Section" languagecode="1033" />
-                  </labels>
-                  <rows>
-                    <row />
-                    <row>
-                      <cell id="{22544b07-90d4-4a81-93ad-4295da6b2db8}" locklevel="0" colspan="1" rowspan="1">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                        <control id="bsr_numberofassociatedbuildings" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="bsr_numberofassociatedbuildings" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell locklevel="0" id="{c5820f06-5711-4fe7-b821-324330a0583a}" rowspan="4" colspan="1" auto="false" showlabel="true">
-                        <labels>
-                          <label description="Associated Buildings" languagecode="1033" />
-                        </labels>
-                        <control indicationOfSubgrid="true" id="Subgrid_new_2" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
-                          <parameters>
-                            <RecordsPerPage>4</RecordsPerPage>
-                            <AutoExpand>Fixed</AutoExpand>
-                            <EnableQuickFind>false</EnableQuickFind>
-                            <EnableViewPicker>false</EnableViewPicker>
-                            <EnableChartPicker>true</EnableChartPicker>
-                            <ChartGridMode>All</ChartGridMode>
-                            <TargetEntityType>bsr_building</TargetEntityType>
-                            <ViewId>{9759D269-F239-451C-AD15-4377C104678D}</ViewId>
-                            <RelationshipName>bsr_account_bsr_building_618</RelationshipName>
-                            <ViewIds>{9759D269-F239-451C-AD15-4377C104678D}</ViewIds>
-                          </parameters>
-                        </control>
-                      </cell>
-                    </row>
-                    <row />
-                    <row />
-                    <row />
                   </rows>
                 </section>
               </sections>

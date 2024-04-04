@@ -11,10 +11,6 @@
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_qualityassuranceid">
           <cell name="bsr_name" width="300" />
-          <cell name="bsr_buildingapplication" width="159" />
-          <cell name="bsr_description" width="106" />
-          <cell name="bsr_qaresult" width="100" />
-          <cell name="bsr_resultdetails" width="119" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -27,15 +23,10 @@
           <attribute name="bsr_name" />
           <attribute name="createdon" />
           <order attribute="bsr_name" descending="false" />
-          <attribute name="bsr_description" />
-          <attribute name="bsr_qaresult" />
-          <attribute name="bsr_resultdetails" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
             <condition attribute="ownerid" operator="eq-userid" />
-            <condition attribute="bsr_buildingapplication" operator="not-null" />
           </filter>
-          <attribute name="bsr_buildingapplication" />
         </entity>
       </fetch>
     </fetchxml>

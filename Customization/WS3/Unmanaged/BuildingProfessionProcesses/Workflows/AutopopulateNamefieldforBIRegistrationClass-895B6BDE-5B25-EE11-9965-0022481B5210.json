@@ -1,0 +1,249 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS3"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "aa529937-9da6-46e9-8382-b33eea66c7d7"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "bsr_biregclass",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "bsr_biclassid, bsr_biapplicationid, bsr_buildinginspectorid"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Update_the_BI_Reg_Class_row_Name": {
+          "runAfter": {
+            "Condition": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "18fd8152-eb26-4ec9-b785-d303881bf96f"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_biregclasses",
+              "recordId": "@triggerOutputs()?['body/bsr_biregclassid']",
+              "item/bsr_name": "@{variables('varBPA')}: @{variables('varClass')}"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Initialize_varBPA": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "aa4ea130-6d52-48a5-8231-6d2e1375ae74"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varBPA",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_varClass": {
+          "runAfter": {
+            "Initialize_varBPA": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e505a083-ec3a-462a-ae9a-5d8f47bc88ae"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varClass",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Condition_set_varBPA": {
+          "actions": {
+            "Set_varBPA_NULL": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "2c0ad0e0-4985-4a6e-ae2c-b651a1b2398e"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "varBPA",
+                "value": " "
+              }
+            }
+          },
+          "runAfter": {
+            "Initialize_varClass": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Get_a_Building_Profession_Application_row_by_ID": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "bb55c880-8a9f-4b9c-82e9-b9bbb2d7524a"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps",
+                    "operationId": "GetItem",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "bsr_buildingprofessionapplications",
+                    "recordId": "@triggerOutputs()?['body/_bsr_biapplicationid_value']"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              },
+              "Set_varBPA_BPA": {
+                "runAfter": {
+                  "Get_a_Building_Profession_Application_row_by_ID": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "b90b7d6b-31a1-4bdc-9965-404e727f8cdb"
+                },
+                "type": "SetVariable",
+                "inputs": {
+                  "name": "varBPA",
+                  "value": "@outputs('Get_a_Building_Profession_Application_row_by_ID')?['body/bsr_name']"
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/_bsr_biapplicationid_value']",
+              null
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "cfe32d08-67a3-4885-927b-3c043e52b022"
+          },
+          "type": "If"
+        },
+        "Condition": {
+          "actions": {
+            "Set_varClass_to_NULL": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "1506d5bf-cf5b-46d5-8d09-5ea9bb348e94"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "varClass",
+                "value": " "
+              }
+            }
+          },
+          "runAfter": {
+            "Condition_set_varBPA": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Get_a_BI_Class_row_by_ID": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "cb2bff28-1033-4513-a609-7ce49f2e6e33"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps",
+                    "operationId": "GetItem",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "bsr_biclasses",
+                    "recordId": "@triggerOutputs()?['body/_bsr_biclassid_value']"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              },
+              "Set_varClass_to_Class": {
+                "runAfter": {
+                  "Get_a_BI_Class_row_by_ID": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "51e59ca7-13be-45d3-a4dd-535508e2fc75"
+                },
+                "type": "SetVariable",
+                "inputs": {
+                  "name": "varClass",
+                  "value": "@outputs('Get_a_BI_Class_row_by_ID')?['body/bsr_name']"
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/_bsr_biclassid_value']",
+              null
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "6bae08ba-0f32-40a3-b61b-3acc55668567"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

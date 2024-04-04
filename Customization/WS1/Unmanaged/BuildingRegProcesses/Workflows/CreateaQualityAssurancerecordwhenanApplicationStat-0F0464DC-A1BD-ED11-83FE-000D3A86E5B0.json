@@ -48,90 +48,26 @@
         }
       },
       "actions": {
-        "Condition": {
-          "actions": {
-            "Compose": {
-              "runAfter": {
-                "Get_Building_by_ID": [
-                  "Succeeded"
-                ]
-              },
-              "metadata": {
-                "operationMetadataId": "428463d9-2533-4b47-a597-0a9342349af2"
-              },
-              "type": "Compose",
-              "inputs": "@{triggerOutputs()?['body/bsr_applicationid']} - @{outputs('Get_Building_by_ID')?['body/bsr_name']}"
-            },
-            "Add_a_new_row_in_Quality_Assurance_table": {
-              "runAfter": {
-                "Compose": [
-                  "Succeeded"
-                ]
-              },
-              "metadata": {
-                "operationMetadataId": "a3406a3d-3150-404d-a77e-06c052105638"
-              },
-              "type": "OpenApiConnection",
-              "inputs": {
-                "host": {
-                  "connectionName": "shared_commondataserviceforapps_1",
-                  "operationId": "CreateRecord",
-                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                },
-                "parameters": {
-                  "entityName": "bsr_qualityassurances",
-                  "item/bsr_BuildingApplication@odata.bind": "\\bsr_buildingapplications\\@{triggerOutputs()?['body/bsr_buildingapplicationid']}",
-                  "item/bsr_name": "@outputs('Compose')",
-                  "item/ownerid@odata.bind": "systemusers(@{triggerOutputs()?['body/_ownerid_value']})"
-                },
-                "authentication": "@parameters('$authentication')"
-              }
-            },
-            "Get_Building_by_ID": {
-              "runAfter": {},
-              "metadata": {
-                "operationMetadataId": "28b48c6e-f90d-4109-a4ce-578b9ca732e0"
-              },
-              "type": "OpenApiConnection",
-              "inputs": {
-                "host": {
-                  "connectionName": "shared_commondataserviceforapps_1",
-                  "operationId": "GetItem",
-                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                },
-                "parameters": {
-                  "entityName": "bsr_buildings",
-                  "recordId": "@triggerOutputs()?['body/_bsr_building_value']"
-                },
-                "authentication": "@parameters('$authentication')"
-              }
-            }
-          },
+        "Add_a_new_row_in_Quality_Assurance_table": {
           "runAfter": {},
-          "expression": {
-            "and": [
-              {
-                "not": {
-                  "equals": [
-                    "@triggerOutputs()?['body/bsr_buildingapplicationid']",
-                    "@null"
-                  ]
-                }
-              },
-              {
-                "not": {
-                  "equals": [
-                    "@triggerOutputs()?['body/_bsr_building_value']",
-                    "@null"
-                  ]
-                }
-              }
-            ]
-          },
           "metadata": {
-            "operationMetadataId": "e95a06bb-44a6-4a42-b340-70c88eb9a012"
+            "operationMetadataId": "a3406a3d-3150-404d-a77e-06c052105638"
           },
-          "type": "If"
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_qualityassurances",
+              "item/bsr_BuildingApplication@odata.bind": "\\bsr_buildingapplications\\@{triggerOutputs()?['body/bsr_buildingapplicationid']}",
+              "item/bsr_name": "@triggerOutputs()?['body/bsr_name']",
+              "item/ownerid@odata.bind": "systemusers(@{triggerOutputs()?['body/_ownerid_value']})"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
         }
       }
     },

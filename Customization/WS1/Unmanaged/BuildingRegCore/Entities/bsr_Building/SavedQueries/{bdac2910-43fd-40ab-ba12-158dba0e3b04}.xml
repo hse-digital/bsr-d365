@@ -11,13 +11,6 @@
       <grid name="bsr_buildings" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="bsr_building" id="bsr_buildingid">
           <cell name="bsr_name" width="300" />
-          <cell name="a_b8eb3bef36694de4b163b03ec5792a43.bsr_applicationid" width="298" />
-          <cell name="bsr_numberofsectionsassociatedtoabuilding" width="285" />
-          <cell name="a_b8eb3bef36694de4b163b03ec5792a43.bsr_paptype" width="224" />
-          <cell name="a_b8eb3bef36694de4b163b03ec5792a43.bsr_registreeid" width="272" />
-          <cell name="a_b8eb3bef36694de4b163b03ec5792a43.bsr_applicationstage" width="325" />
-          <cell name="a_b8eb3bef36694de4b163b03ec5792a43.statuscode" width="276" />
-          <cell name="ownerid" width="100" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -33,15 +26,6 @@
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
-          <link-entity alias="a_b8eb3bef36694de4b163b03ec5792a43" name="bsr_buildingapplication" to="bsr_buildingapplication_buildingid" from="bsr_buildingapplicationid" link-type="outer" visible="false">
-            <attribute name="bsr_applicationid" />
-            <attribute name="bsr_paptype" />
-            <attribute name="bsr_registreeid" />
-            <attribute name="bsr_applicationstage" />
-            <attribute name="statuscode" />
-          </link-entity>
-          <attribute name="bsr_numberofsectionsassociatedtoabuilding" />
-          <attribute name="ownerid" />
         </entity>
       </fetch>
     </fetchxml>

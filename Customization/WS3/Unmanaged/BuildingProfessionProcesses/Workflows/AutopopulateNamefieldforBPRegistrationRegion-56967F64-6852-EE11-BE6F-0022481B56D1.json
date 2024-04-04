@@ -1,0 +1,121 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS3"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_BP_Registration_Region_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "643e7d97-256f-4f6a-b38e-d61f94ffdfab"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "bsr_registrationregion",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "bsr_regionid, bsr_bpaapplicationid"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Update_a_row": {
+          "runAfter": {
+            "Get_a_Building_Profession_App_by_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "cce40e21-4698-4a97-96b4-1bbc83c840ed"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_registrationregions",
+              "recordId": "@triggerOutputs()?['body/bsr_registrationregionid']",
+              "item/bsr_name": "@{outputs('Get_a_Building_Profession_App_by_ID')?['body/bsr_name']}: @{outputs('Get_a_Region_row_by_ID')?['body/bsr_name']}"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_a_Region_row_by_ID": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "ff156e51-5d20-41b6-9c68-0122f0e86116"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_regions",
+              "recordId": "@triggerOutputs()?['body/_bsr_regionid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_a_Building_Profession_App_by_ID": {
+          "runAfter": {
+            "Get_a_Region_row_by_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "97bb037f-6900-469e-b28b-ba753a351831"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_buildingprofessionapplications",
+              "recordId": "@triggerOutputs()?['body/_bsr_bpaapplicationid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}
