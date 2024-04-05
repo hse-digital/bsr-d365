@@ -50,6 +50,13 @@
           "metadata": {
             "schemaName": "bsr_datareturnoverwrittenemailtemplateid"
           }
+        },
+        "Data Return Failed Email Template ID (bsr_datareturnfailedemailtemplateid)": {
+          "defaultValue": "c24daaf7-09f1-ee11-904c-0022481b5210",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_datareturnfailedemailtemplateid"
+          }
         }
       },
       "triggers": {
@@ -247,7 +254,7 @@
                           },
                           "parameters": {
                             "actionName": "SendEmailFromTemplate",
-                            "item/TemplateId": "@variables('Email Template ID')",
+                            "item/TemplateId": "@parameters('Data Return Failed Email Template ID (bsr_datareturnfailedemailtemplateid)')",
                             "item/Regarding": "contacts(@{outputs('Get_Sender_Contact')?['body/value']?[0]?['contactid']})",
                             "item/Target": {
                               "email_activity_parties": [
@@ -326,7 +333,7 @@
                   },
                   "parameters": {
                     "actionName": "SendEmailFromTemplate",
-                    "item/TemplateId": "@variables('Email Template ID')",
+                    "item/TemplateId": "@parameters('Data Return Failed Email Template ID (bsr_datareturnfailedemailtemplateid)')",
                     "item/Regarding": "contacts(@{outputs('Get_Sender_Contact')?['body/value']?[0]?['contactid']})",
                     "item/Target": {
                       "email_activity_parties": [
