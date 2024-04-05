@@ -1,0 +1,3236 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_SharePointWS3"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      },
+      "shared_excelonlinebusiness_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_ExcelOnlineBusinessWS3"
+        },
+        "api": {
+          "name": "shared_excelonlinebusiness"
+        }
+      },
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS3"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "SharePoint Site URL (bsr_sharepointsiteurl)": {
+          "defaultValue": "https://hsegov.sharepoint.com/sites/bsr-ws3-dev",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_sharepointsiteurl"
+          }
+        },
+        "SharePoint Data Returns Landing Directory (bsr_spdatareturnslandingdirectory)": {
+          "defaultValue": "b!77pp_QTXqUW7EA4T1KyEUvD01srcLYxGn3iNvELCSPci8_qR7b1ARaciFqzHHfxu",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_spdatareturnslandingdirectory"
+          }
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "e2cf1461-85c0-4f15-a4db-43efb627a9dd"
+          },
+          "type": "Request",
+          "kind": "Button",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "title": "File Content",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "text_1": {
+                  "title": "Sender Email",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "text_2": {
+                  "title": "File Name",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                }
+              },
+              "required": [
+                "text",
+                "text_1",
+                "text_2"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Compose": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "ebda40b5-0539-44ed-82ba-8ba2bd5150bc"
+          },
+          "type": "Compose",
+          "inputs": [
+            {
+              "bcbTypeLabel": "Local Authority",
+              "accountType": "Local Authority",
+              "periodTypeLabel": "Annual Data Return",
+              "bcbTypeCode": 1,
+              "periodTypeCode": 2,
+              "quarter_mapping": [],
+              "data": [
+                {
+                  "sysRefId": "1",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "2",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "3",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "4",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "5",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "6",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "7",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "8",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "9",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "10",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "11",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "12",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "13",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "14",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "15",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "16",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "17",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "18",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "19",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "20",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "21",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "22",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "23",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "24",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "25",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "26",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "27",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "28",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "29",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "30",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "31",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "32",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "33",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "34",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "35",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "36",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "37",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "38",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "39",
+                  "mandatory": false
+                },
+                {
+                  "sysRefId": "40",
+                  "mandatory": false
+                },
+                {
+                  "sysRefId": "41",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "42",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "43",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "44",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "45",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "46",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "47",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "48",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "49",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "50",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "51",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "52",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "53",
+                  "mandatory": true
+                }
+              ]
+            },
+            {
+              "bcbtypeLabel": "Local Authority",
+              "accountType": "Local Authority",
+              "periodTypeLabel": "Quarterly Data Return",
+              "bcbTypeCode": 1,
+              "periodTypeCode": 1,
+              "quarter_mapping": [
+                {
+                  "Label": "Q1 (Apr-Jun)",
+                  "Value": 1
+                },
+                {
+                  "Label": "Q2 (Jul-Sep)",
+                  "Value": 2
+                },
+                {
+                  "Label": "Q3 (Oct-Dec)",
+                  "Value": 3
+                },
+                {
+                  "Label": "Q4 (Jan-Mar)",
+                  "Value": 4
+                }
+              ],
+              "data": [
+                {
+                  "sysRefId": "112",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "113",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "114",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "115",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "116",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "117",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "118",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "119",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "120",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "121",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "122",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "123",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "124",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "125",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "54",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "55",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "56",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "57",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "58",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "59",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "126",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "127",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "128",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "129",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "130",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "131",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "132",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "133",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "134",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "135",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "136",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "137",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "138",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "139",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "60",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "61",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "62",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "63",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "64",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "65",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "66",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "67",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "68",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "69",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "70",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "71",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "72",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "73",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "74",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "75",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "76",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "77",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "78",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "79",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "80",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "81",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "82",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "83",
+                  "mandatory": true
+                }
+              ]
+            },
+            {
+              "bcbtypeLabel": "Registered Building Control Approver",
+              "periodtypeLabel": "Annual Data Return",
+              "accountType": "Registered RBCA",
+              "bcbTypeCode": 2,
+              "periodTypeCode": 2,
+              "quarter_mapping": [],
+              "data": [
+                {
+                  "sysRefId": "1",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "2",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "3",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "4",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "5",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "6",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "7",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "8",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "9",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "10",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "11",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "12",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "13",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "14",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "15",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "16",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "17",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "18",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "19",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "20",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "21",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "22",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "23",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "24",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "25",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "26",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "27",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "28",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "29",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "30",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "31",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "32",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "33",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "34",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "35",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "36",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "37",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "38",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "39",
+                  "mandatory": false
+                },
+                {
+                  "sysRefId": "40",
+                  "mandatory": false
+                },
+                {
+                  "sysRefId": "41",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "42",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "43",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "44",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "45",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "46",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "47",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "48",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "49",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "50",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "51",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "52",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "53",
+                  "mandatory": true
+                }
+              ]
+            },
+            {
+              "bcbTypeLabel": "Registered Building Control Approver",
+              "periodTypeLabel": "Quarterly Data Return",
+              "accountType": "Registered RBCA",
+              "bcbTypeCode": 2,
+              "periodTypeCode": 1,
+              "quarter_mapping": [
+                {
+                  "Label": "Q1 (Apr-Jun)",
+                  "Value": 1
+                },
+                {
+                  "Label": "Q2 (Jul-Sep)",
+                  "Value": 2
+                },
+                {
+                  "Label": "Q3 (Oct-Dec)",
+                  "Value": 3
+                },
+                {
+                  "Label": "Q4 (Jan-Mar)",
+                  "Value": 4
+                }
+              ],
+              "data": [
+                {
+                  "sysRefId": "84",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "85",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "86",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "87",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "88",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "89",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "90",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "91",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "92",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "93",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "94",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "95",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "96",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "97",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "98",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "99",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "100",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "101",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "102",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "103",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "104",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "105",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "54",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "55",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "56",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "57",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "58",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "59",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "106",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "107",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "108",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "109",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "110",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "111",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "60",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "61",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "62",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "63",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "64",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "65",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "66",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "67",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "68",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "69",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "70",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "71",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "72",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "73",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "74",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "75",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "76",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "77",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "78",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "79",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "80",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "81",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "82",
+                  "mandatory": true
+                },
+                {
+                  "sysRefId": "83",
+                  "mandatory": true
+                }
+              ]
+            }
+          ]
+        },
+        "Number_of_excel_attachments": {
+          "runAfter": {
+            "Parse_JSON_2": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2580943c-53f7-47f3-8e3f-fbce0e4ff01f"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Number of excel attachments",
+                "type": "integer",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "Parse_JSON_2": {
+          "runAfter": {
+            "Compose": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2d24ad4b-e005-41b9-8888-997a148de09d"
+          },
+          "type": "ParseJson",
+          "inputs": {
+            "content": "@outputs('Compose')",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "bcbTypeLabel": {
+                    "type": "string"
+                  },
+                  "accountType": {
+                    "type": "string"
+                  },
+                  "periodTypeLabel": {
+                    "type": "string"
+                  },
+                  "bcbTypeCode": {
+                    "type": "integer"
+                  },
+                  "periodTypeCode": {
+                    "type": "integer"
+                  },
+                  "quarter_mapping": {
+                    "type": "array"
+                  },
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "sysRefId": {
+                          "type": "string"
+                        },
+                        "mandatory": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "sysRefId",
+                        "mandatory"
+                      ]
+                    }
+                  },
+                  "bcbtypeLabel": {
+                    "type": "string"
+                  },
+                  "periodtypeLabel": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "accountType",
+                  "bcbTypeCode",
+                  "periodTypeCode",
+                  "quarter_mapping",
+                  "data"
+                ]
+              }
+            }
+          }
+        },
+        "Initialize_variable_2": {
+          "runAfter": {
+            "Number_of_excel_attachments": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "370643c1-b2f6-4433-9ebd-2355a1893ee8"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Quarter",
+                "type": "integer"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_3": {
+          "runAfter": {
+            "Initialize_variable_2": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "276aeafc-2b02-40a3-a5ae-131fca2cc807"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Attachment ID",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_4": {
+          "runAfter": {
+            "Initialize_variable_3": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "58128b3b-1433-4b57-9f1f-0581aade4011"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Overwritten Data Return ID",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_ParentLocation": {
+          "runAfter": {
+            "Initialize_variable_4": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "6926c38b-849b-4ce2-afe3-3603267418aa"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "ParentLocation",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_5": {
+          "runAfter": {
+            "Initialize_ParentLocation": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e3b317df-7ed7-4e49-ad67-ae7dde638cd6"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "LockFile",
+                "type": "boolean",
+                "value": "@true"
+              }
+            ]
+          }
+        },
+        "Initialize_File_ID": {
+          "runAfter": {
+            "Initialize_variable_5": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "a68d6601-3297-485d-971a-eb74e548e6e3"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "File ID",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_File_Name": {
+          "runAfter": {
+            "Initialize_File_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "94d9a8a8-8b87-4dbe-bd91-4c8d3103aeb6"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "File Name",
+                "type": "string",
+                "value": "@triggerBody()['text_2']"
+              }
+            ]
+          }
+        },
+        "Initialize_variable": {
+          "runAfter": {
+            "Initialize_Temp_folder_name": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "37375398-37d3-4c66-859b-b88cf1f4fa04"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "MissingMandatoryResponses",
+                "type": "boolean",
+                "value": false
+              }
+            ]
+          }
+        },
+        "Create_file": {
+          "runAfter": {
+            "Compose_Timestamp": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "078b059d-5272-45e4-845a-4f721344fd38"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_sharepointonline",
+              "operationId": "CreateFile",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+            },
+            "parameters": {
+              "dataset": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
+              "folderPath": "/Shared Documents/@{variables('TempFolderName')}",
+              "name": "@concat(substring(variables('File Name'), 0, lastIndexOf(variables('File Name'), '.')),'_',outputs('Compose_Timestamp'),substring(variables('File Name'), lastIndexOf(variables('File Name'), '.')))\r\n",
+              "body": "@base64ToBinary(triggerBody()['text'])"
+            },
+            "authentication": {
+              "type": "Raw",
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+            }
+          },
+          "runtimeConfiguration": {
+            "contentTransfer": {
+              "transferMode": "Chunked"
+            }
+          }
+        },
+        "Get_tables": {
+          "runAfter": {
+            "Create_file": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "01A4U6YUOHP5VPL5HN4VF3CTQ26HFKCM7Y": "/LA Annual v4.1.xlsx",
+            "operationMetadataId": "a316d59e-528e-4e26-8eb9-c8782ef58bcf",
+            "tableId": null
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_excelonlinebusiness_1",
+              "operationId": "GetTables",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_excelonlinebusiness"
+            },
+            "parameters": {
+              "source": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
+              "drive": "@parameters('SharePoint Data Returns Landing Directory (bsr_spdatareturnslandingdirectory)')",
+              "file": "@outputs('Create_file')?['body/Id']"
+            },
+            "authentication": {
+              "type": "Raw",
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+            }
+          }
+        },
+        "Parse_JSON_3": {
+          "runAfter": {
+            "Get_tables": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "a9aaf317-f4d6-47ed-96d4-f98b0612aaf1"
+          },
+          "type": "ParseJson",
+          "inputs": {
+            "content": "@outputs('Get_tables')?['body/value']",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "@@odata.id": {
+                    "type": "string"
+                  },
+                  "showFilterButton": {
+                    "type": "boolean"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "highlightLastColumn": {
+                    "type": "boolean"
+                  },
+                  "highlightFirstColumn": {
+                    "type": "boolean"
+                  },
+                  "legacyId": {
+                    "type": "string"
+                  },
+                  "style": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "showBandedColumns": {
+                    "type": "boolean"
+                  },
+                  "showBandedRows": {
+                    "type": "boolean"
+                  },
+                  "showHeaders": {
+                    "type": "boolean"
+                  },
+                  "showTotals": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "@@odata.id",
+                  "showFilterButton",
+                  "id",
+                  "highlightLastColumn",
+                  "highlightFirstColumn",
+                  "legacyId",
+                  "style",
+                  "name",
+                  "showBandedColumns",
+                  "showBandedRows",
+                  "showHeaders",
+                  "showTotals"
+                ]
+              }
+            }
+          }
+        },
+        "Table1": {
+          "runAfter": {
+            "Parse_JSON_3": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "90b6e120-99e1-4b91-a872-a6f89ced6c59"
+          },
+          "type": "Query",
+          "inputs": {
+            "from": "@body('Parse_JSON_3')",
+            "where": "@equals(item()['name'], string('Table_1'))"
+          }
+        },
+        "Table2": {
+          "runAfter": {
+            "Table1": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3831afd8-4d18-409a-b54a-008e13ba271d"
+          },
+          "type": "Query",
+          "inputs": {
+            "from": "@body('Parse_JSON_3')",
+            "where": "@equals(item()['name'], string('Table_2'))"
+          }
+        },
+        "Table3": {
+          "runAfter": {
+            "Table2": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "26371eeb-a1da-4100-90e6-f9ff9b8d428d"
+          },
+          "type": "Query",
+          "inputs": {
+            "from": "@body('Parse_JSON_3')",
+            "where": "@equals(item()['name'], string('Table_3'))"
+          }
+        },
+        "List_rows_present_in_a_table": {
+          "runAfter": {
+            "Table3": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "01A4U6YUOHP5VPL5HN4VF3CTQ26HFKCM7Y": "/LA Annual v4.1.xlsx",
+            "operationMetadataId": "ba2be6f3-76eb-4888-a3eb-9a4b9dbd67d2",
+            "tableId": "@body('Table1')?[0]?['id']"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_excelonlinebusiness_1",
+              "operationId": "GetItems",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_excelonlinebusiness"
+            },
+            "parameters": {
+              "source": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
+              "drive": "@parameters('SharePoint Data Returns Landing Directory (bsr_spdatareturnslandingdirectory)')",
+              "file": "@outputs('Create_file')?['body/Id']",
+              "table": "@body('Table1')?[0]?['id']"
+            },
+            "authentication": {
+              "type": "Raw",
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+            }
+          }
+        },
+        "Parse_JSON_4": {
+          "runAfter": {
+            "List_rows_present_in_a_table": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "18ddf73e-16d3-42eb-8b0b-2046b938e297"
+          },
+          "type": "ParseJson",
+          "inputs": {
+            "content": "@outputs('List_rows_present_in_a_table')?['body/value']",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "@@odata.etag": {
+                    "type": "string"
+                  },
+                  "ItemInternalId": {
+                    "type": "string"
+                  },
+                  "Column1": {
+                    "type": "string"
+                  },
+                  "Column2": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "@@odata.etag",
+                  "ItemInternalId",
+                  "Column1",
+                  "Column2"
+                ]
+              }
+            }
+          }
+        },
+        "BCB_Type": {
+          "runAfter": {
+            "Parse_JSON_4": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "16419e8a-d905-4f9a-a3db-f1e41f26af8b"
+          },
+          "type": "Compose",
+          "inputs": "@body('Parse_JSON_4')?[0]?['Column1']"
+        },
+        "Period_Type": {
+          "runAfter": {
+            "BCB_Type": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "0f66e03a-3625-4092-8c64-11bc5b86f62f"
+          },
+          "type": "Compose",
+          "inputs": "@body('Parse_JSON_4')?[0]?['Column2']"
+        },
+        "Filter_array": {
+          "runAfter": {
+            "Period_Type": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f18cb883-077d-453d-817e-9ba6b4d49d3e"
+          },
+          "type": "Query",
+          "inputs": {
+            "from": "@body('Parse_JSON_2')",
+            "where": "@equals(item()?['bcbTypeLabel'], outputs('BCB_Type'))"
+          }
+        },
+        "Filter_array_2": {
+          "runAfter": {
+            "Filter_array": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "1f1343da-d591-4fa0-b6f7-de1e115b11c0"
+          },
+          "type": "Query",
+          "inputs": {
+            "from": "@body('Filter_array')",
+            "where": "@equals(item()?['periodTypeLabel'], outputs('Period_Type'))"
+          }
+        },
+        "List_rows_present_in_a_table_2": {
+          "runAfter": {
+            "Filter_array_2": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "01A4U6YUOHP5VPL5HN4VF3CTQ26HFKCM7Y": "/LA Annual v4.1.xlsx",
+            "operationMetadataId": "ccbf6439-94fe-4112-bb8d-8fc488d7d83d",
+            "tableId": "@body('Table2')?[0]?['id']"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_excelonlinebusiness_1",
+              "operationId": "GetItems",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_excelonlinebusiness"
+            },
+            "parameters": {
+              "source": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
+              "drive": "@parameters('SharePoint Data Returns Landing Directory (bsr_spdatareturnslandingdirectory)')",
+              "file": "@outputs('Create_file')?['body/Id']",
+              "table": "@body('Table2')?[0]?['id']"
+            },
+            "authentication": {
+              "type": "Raw",
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+            }
+          }
+        },
+        "Table_2_Results": {
+          "runAfter": {
+            "List_rows_present_in_a_table_2": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "d8d67400-8e8c-4646-b5ac-a91d443db9ef"
+          },
+          "type": "ParseJson",
+          "inputs": {
+            "content": "@outputs('List_rows_present_in_a_table_2')?['body/value']",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "@@odata.etag": {
+                    "type": "string"
+                  },
+                  "ItemInternalId": {
+                    "type": "string"
+                  },
+                  "Column1": {
+                    "type": "string"
+                  },
+                  "Column2": {
+                    "type": "string"
+                  },
+                  "Column3": {
+                    "type": "string"
+                  },
+                  "Column4": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "@@odata.etag",
+                  "ItemInternalId",
+                  "Column1",
+                  "Column2",
+                  "Column3"
+                ]
+              }
+            }
+          }
+        },
+        "Get_Account": {
+          "runAfter": {
+            "Table_2_Results": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e3fe9fb0-ec46-4d69-a96f-555e43de8b53"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "accounts",
+              "fetchXml": "<fetch>\n  <entity name=\"account\">\n    <attribute name=\"accountid\" />\n    <attribute name=\"name\" />\n      <filter type=\"or\">\n        <condition entityname=\"c\" attribute=\"contactid\" operator=\"not-null\" />\n        <condition entityname=\"spc\" attribute=\"contactid\" operator=\"not-null\" />\n      </filter>\n    <link-entity name=\"contact\" from=\"parentcustomerid\" to=\"accountid\" link-type=\"outer\" alias=\"c\">\n      <attribute name=\"contactid\" />\n      <filter>\n        <condition attribute=\"emailaddress1\" operator=\"eq\" value=\"@{triggerBody()['text_1']}\" />\n        <condition attribute=\"bsr_allowbcbdatareturns\" operator=\"eq\" value=\"1\" />\n      </filter>\n    </link-entity>\n    <link-entity name=\"bsr_account_bsr_accounttype\" from=\"accountid\" to=\"accountid\" alias=\"acctypes\" intersect=\"true\">\n      <link-entity name=\"bsr_accounttype\" from=\"bsr_accounttypeid\" to=\"bsr_accounttypeid\" alias=\"acctype\" intersect=\"true\">\n        <filter>\n          <condition attribute=\"bsr_name\" operator=\"eq\" value=\"@{body('Filter_array_2')?[0]?['accountType']}\" />\n        </filter>\n      </link-entity>\n    </link-entity>\n    <link-entity name=\"account\" from=\"accountid\" to=\"bsr_lasharedserviceprovider\" link-type=\"outer\" alias=\"sp\">\n      <link-entity name=\"contact\" from=\"parentcustomerid\" to=\"accountid\" link-type=\"outer\" alias=\"spc\">\n        <attribute name=\"contactid\" />\n        <filter>\n          <condition attribute=\"emailaddress1\" operator=\"eq\" value=\"@{triggerBody()['text_1']}\" />\n          <condition attribute=\"bsr_allowbcbdatareturns\" operator=\"eq\" value=\"1\" />\n        </filter>\n      </link-entity>\n    </link-entity>\n  </entity>\n</fetch>"
+            },
+            "authentication": {
+              "type": "Raw",
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+            }
+          }
+        },
+        "Validate_if_there_is_BCB_account_with_sender_contact_whitelisted": {
+          "actions": {
+            "Parse_JSON_5": {
+              "runAfter": {
+                "List_rows_present_in_a_table_3": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "7b04052d-21f4-4ad3-bc65-96b568641a0f"
+              },
+              "type": "ParseJson",
+              "inputs": {
+                "content": "@outputs('List_rows_present_in_a_table_3')?['body/value']",
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "@@odata.etag": {
+                        "type": "string"
+                      },
+                      "ItemInternalId": {
+                        "type": "string"
+                      },
+                      "System reference ID\n(For internal use only)": {
+                        "type": "string"
+                      },
+                      "KPI": {
+                        "type": "string"
+                      },
+                      "Reference ID": {
+                        "type": "string"
+                      },
+                      "Description": {
+                        "type": "string"
+                      },
+                      "Response": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "@@odata.etag",
+                      "ItemInternalId",
+                      "System reference ID\n(For internal use only)",
+                      "KPI",
+                      "Reference ID",
+                      "Description",
+                      "Response"
+                    ]
+                  }
+                }
+              }
+            },
+            "Apply_to_each_2": {
+              "foreach": "@body('Parse_JSON_5')",
+              "actions": {
+                "Create_Data_Return_Response": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "c9db72d4-cdb9-451a-942b-989b3d071893"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "CreateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "bsr_datareturnresponses",
+                      "item/bsr_datareturnid@odata.bind": "/bsr_datareturns/@{outputs('Create_Data_Return')?['body/bsr_datareturnid']}",
+                      "item/bsr_name": "@items('Apply_to_each_2')['System reference ID\n(For internal use only)']",
+                      "item/bsr_description": "@items('Apply_to_each_2')['Description']",
+                      "item/bsr_referenceid": "@items('Apply_to_each_2')['Reference ID']",
+                      "item/bsr_response": "@items('Apply_to_each_2')['Response']",
+                      "item/bsr_systemreferenceid": "@items('Apply_to_each_2')['System reference ID\n(For internal use only)']"
+                    },
+                    "authentication": {
+                      "type": "Raw",
+                      "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                    }
+                  }
+                }
+              },
+              "runAfter": {
+                "Get_Data_Return_ID": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "edc54bd3-9b73-4f0f-9387-c370bbdfbd5d"
+              },
+              "type": "Foreach",
+              "runtimeConfiguration": {
+                "concurrency": {
+                  "repetitions": 50
+                }
+              }
+            },
+            "Filter_array_3": {
+              "runAfter": {
+                "Parse_JSON_5": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "584304ff-8568-4e2e-bf84-49e941937fa9"
+              },
+              "type": "Query",
+              "inputs": {
+                "from": "@body('Filter_array_2')?[0]?['quarter_mapping']",
+                "where": "@equals(item()?['Label'], body('Table_2_Results')?[1]?['Column4'])"
+              }
+            },
+            "Get_existing_submissions_for_same_period": {
+              "runAfter": {
+                "Get_Year": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "35881f2f-f231-4626-8dad-ab3882768154"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "bsr_datareturns",
+                  "fetchXml": "<fetch>760810002\n  <entity name=\"bsr_datareturn\">\n    <attribute name=\"bsr_datareturnid\" />\n    <attribute name=\"bsr_name\" />\n    <filter>\n<condition attribute=\"@{if(empty(outputs('Account_ID')),'bsr_bcbnameprovided','bsr_bcbaccountid')}\" operator=\"eq\" value=\"@{if(empty(body('Filter_Accounts')?[0]?['accountid']),body('Table_2_Results')?[1]?['Column1'],body('Filter_Accounts')?[0]?['accountid'])}\" />\n      <condition attribute=\"bsr_bcbtypecode\" operator=\"eq\" value=\"@{body('Filter_array_2')?[0]?['bcbTypeCode']}\" />\n      <condition attribute=\"bsr_periodtypecode\" operator=\"eq\" value=\"@{body('Filter_array_2')?[0]?['periodTypeCode']}\" />\n      <condition attribute=\"bsr_yearid\" operator=\"eq\" value=\"@{if(empty(outputs('Get_Year')?['body/value']?[0]?['bsr_yearid']),null,outputs('Get_Year')?['body/value']?[0]?['bsr_yearid'])}\" />\n    @{if(empty(body('Filter_array_3')?[0]?['Label']),null,concat('<condition attribute=\"bsr_quartercode\" operator=\"eq\" value=\"',body('Filter_array_3')?[0]?['Value'],'\"/>'))}\n  <filter type=\"or\">\n      <condition attribute=\"statuscode\" operator=\"eq\" value=\"1\" />\n     <condition attribute=\"statuscode\" operator=\"eq\" value=\"760810002\" />\n   </filter>\n    </filter>\n  </entity>\n</fetch>"
+                },
+                "authentication": {
+                  "type": "Raw",
+                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                }
+              }
+            },
+            "Validate_if_has_previous_submission_for_same_period": {
+              "actions": {
+                "Apply_to_each_3": {
+                  "foreach": "@outputs('Get_existing_submissions_for_same_period')?['body/value']",
+                  "actions": {
+                    "Update_a_row": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "c3f437ec-63c5-45db-9d3c-7f5c5042198e"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps_1",
+                          "operationId": "UpdateRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "bsr_datareturns",
+                          "recordId": "@items('Apply_to_each_3')?['bsr_datareturnid']",
+                          "item/statecode": 1,
+                          "item/statuscode": 760810001
+                        },
+                        "authentication": {
+                          "type": "Raw",
+                          "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                        }
+                      }
+                    },
+                    "Set_variable": {
+                      "runAfter": {
+                        "Update_a_row": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "210d2484-2354-49eb-a502-74d1aecbd9fe"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "Overwritten Data Return ID",
+                        "value": "@items('Apply_to_each_3')?['bsr_name']"
+                      }
+                    }
+                  },
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "10a3ba3c-55c5-432d-af24-21c01f0ff8e2"
+                  },
+                  "type": "Foreach"
+                },
+                "Set_Overwritten_to_true": {
+                  "runAfter": {
+                    "Apply_to_each_3": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "831e5eb7-bbcb-4e3d-a6fb-ba4eebc27d7a"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Overwritten",
+                    "value": "@true"
+                  }
+                }
+              },
+              "runAfter": {
+                "Get_existing_submissions_for_same_period": [
+                  "Succeeded"
+                ]
+              },
+              "else": {
+                "actions": {
+                  "Set_Overwritten_to_false": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "49341c0d-a7a2-4d08-9063-0753712e5b6c"
+                    },
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "Overwritten",
+                      "value": "@false"
+                    }
+                  }
+                }
+              },
+              "expression": {
+                "greater": [
+                  "@length(outputs('Get_existing_submissions_for_same_period')?['body/value'])",
+                  0
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "4ebde886-626a-45c8-bbea-c3da159f673a"
+              },
+              "type": "If"
+            },
+            "Get_SharePoint_Site": {
+              "runAfter": {
+                "Apply_to_each_2": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "9de933fa-3f7b-4c7e-83e3-133bb7e786eb"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "sharepointsites",
+                  "$filter": "(isdefault eq true)"
+                },
+                "authentication": {
+                  "type": "Raw",
+                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                }
+              }
+            },
+            "Get_Parent_Doc_Location": {
+              "runAfter": {
+                "Get_SharePoint_Site": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "59a55737-0fd6-4e0a-8061-9ea7de62ea36"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "sharepointdocumentlocations",
+                  "$filter": "relativeurl eq 'bsr_datareturn'"
+                },
+                "authentication": {
+                  "type": "Raw",
+                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                }
+              }
+            },
+            "Condition_5": {
+              "actions": {
+                "Apply_to_each_4": {
+                  "foreach": "@outputs('Get_Parent_Doc_Location')?['body/value']",
+                  "actions": {
+                    "Set_variable_2": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "4a1114fa-b745-44ee-8f38-85d498d00244"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "ParentLocation",
+                        "value": "@items('Apply_to_each_4')?['sharepointdocumentlocationid']"
+                      }
+                    }
+                  },
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "b75dfa9e-18e9-4b04-b321-a8d1e0f1355b"
+                  },
+                  "type": "Foreach"
+                }
+              },
+              "runAfter": {
+                "Get_Parent_Doc_Location": [
+                  "Succeeded"
+                ]
+              },
+              "else": {
+                "actions": {
+                  "Apply_to_each_5": {
+                    "foreach": "@outputs('Get_SharePoint_Site')?['body/value']",
+                    "actions": {
+                      "Create_Parent_Doc_Location": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "983f9988-b640-4ebe-b562-ded2c0839ba0"
+                        },
+                        "type": "OpenApiConnection",
+                        "inputs": {
+                          "host": {
+                            "connectionName": "shared_commondataserviceforapps_1",
+                            "operationId": "CreateRecord",
+                            "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                          },
+                          "parameters": {
+                            "entityName": "sharepointdocumentlocations",
+                            "item/name": "Documents on Default Site 1",
+                            "item/servicetype": 0,
+                            "item/locationtype": 0,
+                            "item/parentsiteorlocation_sharepointsite@odata.bind": "/sharepointsites/@{items('Apply_to_each_5')?['sharepointsiteid']}",
+                            "item/relativeurl": "bsr_datareturn"
+                          },
+                          "authentication": {
+                            "type": "Raw",
+                            "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                          }
+                        }
+                      },
+                      "Set_variable_3": {
+                        "runAfter": {
+                          "Create_Parent_Doc_Location": [
+                            "Succeeded"
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "b02e4ffb-7775-4a28-8c1e-839fda7905aa"
+                        },
+                        "type": "SetVariable",
+                        "inputs": {
+                          "name": "ParentLocation",
+                          "value": "@outputs('Create_Parent_Doc_Location')?['body/sharepointdocumentlocationid']"
+                        }
+                      }
+                    },
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "f0010a26-b9c3-4277-a30c-7af644303cbb"
+                    },
+                    "type": "Foreach"
+                  }
+                }
+              },
+              "expression": {
+                "greater": [
+                  "@length(outputs('Get_Parent_Doc_Location')?['body/value'])",
+                  0
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "19dca0b4-6952-488a-ad16-4077ed5b1e77"
+              },
+              "type": "If"
+            },
+            "Create_Data_Return_Document_Location": {
+              "runAfter": {
+                "Condition_5": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "3434eacd-edf1-42d7-9ff1-0c7c6905704e"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "sharepointdocumentlocations",
+                  "item/name": "Documents on Default Site 1",
+                  "item/servicetype": 0,
+                  "item/locationtype": 0,
+                  "item/parentsiteorlocation_sharepointdocumentlocation@odata.bind": "/sharepointdocumentlocations/@{variables('ParentLocation')}",
+                  "item/regardingobjectid_bsr_datareturn@odata.bind": "/bsr_datareturns/@{outputs('Create_Data_Return')?['body/bsr_datareturnid']}",
+                  "item/relativeurl": "@outputs('Get_Data_Return_ID')?['body/bsr_name']"
+                },
+                "authentication": {
+                  "type": "Raw",
+                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                }
+              }
+            },
+            "Create_file_2": {
+              "runAfter": {
+                "Create_Data_Return_Document_Location": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "6f381d3b-e77d-4b68-bbda-69f5040f3501"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_sharepointonline",
+                  "operationId": "CreateFile",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                },
+                "parameters": {
+                  "dataset": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
+                  "folderPath": "bsr_datareturn/@{outputs('Get_Data_Return_ID')?['body/bsr_name']}",
+                  "name": "@variables('File Name')",
+                  "body": "@triggerBody()['text']"
+                },
+                "authentication": {
+                  "type": "Raw",
+                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                }
+              },
+              "runtimeConfiguration": {
+                "contentTransfer": {
+                  "transferMode": "Chunked"
+                }
+              }
+            },
+            "Do_until": {
+              "actions": {
+                "Delete_file": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "c7fd1b18-bff1-4f82-a3e8-0d70e85b8189"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_sharepointonline",
+                      "operationId": "DeleteFile",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                    },
+                    "parameters": {
+                      "dataset": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
+                      "id": "@outputs('Create_file')?['body/Id']"
+                    },
+                    "authentication": {
+                      "type": "Raw",
+                      "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                    }
+                  }
+                },
+                "Condition_6": {
+                  "actions": {
+                    "Set_variable_4": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "1a977453-40f6-47ee-9858-74ec38653f00"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "LockFile",
+                        "value": "@true"
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Parse_JSON": [
+                      "Succeeded"
+                    ]
+                  },
+                  "else": {
+                    "actions": {
+                      "Set_variable_5": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "95b47a2f-5a6c-4f01-a23e-afece153f589"
+                        },
+                        "type": "SetVariable",
+                        "inputs": {
+                          "name": "LockFile",
+                          "value": "@false"
+                        }
+                      }
+                    }
+                  },
+                  "expression": {
+                    "contains": [
+                      "@body('Parse_JSON')?['message']",
+                      "locked"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "3f2ee014-6a0e-4256-956e-e9c5a4a5c8c1"
+                  },
+                  "type": "If"
+                },
+                "Parse_JSON": {
+                  "runAfter": {
+                    "Delete_file": [
+                      "Succeeded",
+                      "Failed"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "85c89f38-fdc6-4e0a-9748-fd5df2192884"
+                  },
+                  "type": "ParseJson",
+                  "inputs": {
+                    "content": "@body('Delete_file')",
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "integer"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "source": {
+                          "type": "string"
+                        },
+                        "errors": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "runAfter": {
+                "Respond_to_a_PowerApp_or_flow": [
+                  "Succeeded"
+                ]
+              },
+              "expression": "@equals(variables('LockFile'), false)",
+              "limit": {
+                "count": 500,
+                "timeout": "PT1H"
+              },
+              "metadata": {
+                "operationMetadataId": "7ed879be-e982-4151-9c5c-ee86def6449b"
+              },
+              "type": "Until"
+            },
+            "Get_Data_Return_ID": {
+              "runAfter": {
+                "Create_Data_Return": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "05857286-1920-42de-aa2f-c56dafe12b73"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "bsr_datareturns",
+                  "recordId": "@outputs('Create_Data_Return')?['body/bsr_datareturnid']"
+                },
+                "authentication": {
+                  "type": "Raw",
+                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                }
+              }
+            },
+            "Create_Data_Return": {
+              "runAfter": {
+                "Validate_if_has_previous_submission_for_same_period": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "7d2f92c9-c955-42fc-b14d-a496decfd91c"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "bsr_datareturns",
+                  "item/bsr_bcbaccountid@odata.bind": "@if(empty(body('Filter_Accounts')?[0]?['accountid']),null,concat('/accounts/',body('Filter_Accounts')?[0]?['accountid']))",
+                  "item/bsr_bcbnameprovided": "@body('Table_2_Results')?[1]?['Column1']",
+                  "item/bsr_bcbtypecode": "@body('Filter_array_2')?[0]?['bcbTypeCode']",
+                  "item/bsr_name": "@variables('Overwritten Data Return ID')",
+                  "item/bsr_periodtypecode": "@body('Filter_array_2')?[0]?['periodTypeCode']",
+                  "item/bsr_quartercode": "@body('Filter_array_3')?[0]?['Value']",
+                  "item/bsr_yearid@odata.bind": "@if(empty(outputs('Get_Year')?['body/value']?[0]?['bsr_yearid']),null,concat('/bsr_years/',outputs('Get_Year')?['body/value']?[0]?['bsr_yearid']))",
+                  "item/statuscode": "@if(empty(body('Filter_Accounts')?[0]?['accountid']),760810002,1)",
+                  "item/bsr_submittedbycontactid@odata.bind": "@concat('/contacts/',if(empty(outputs('Get_Account')?['body/value']?[0]?['c.contactid']),outputs('Get_Account')?['body/value']?[0]?['spc.contactid'],outputs('Get_Account')?['body/value']?[0]?['c.contactid']))"
+                },
+                "authentication": {
+                  "type": "Raw",
+                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                }
+              }
+            },
+            "Loop_through_responses": {
+              "foreach": "@body('Parse_JSON_5')",
+              "actions": {
+                "Validate_if_question_is_mandatory_and_response_is_missing": {
+                  "actions": {
+                    "Set_variable_6": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "29551a03-64c6-485e-84bc-bcf36ea44ff1"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "MissingMandatoryResponses",
+                        "value": "@true"
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Get_Question_Config": [
+                      "Succeeded"
+                    ]
+                  },
+                  "expression": {
+                    "and": [
+                      {
+                        "equals": [
+                          "@body('Get_Question_Config')?[0]?['mandatory']",
+                          "@true"
+                        ]
+                      },
+                      {
+                        "or": [
+                          {
+                            "equals": [
+                              "@items('Loop_through_responses')['Response']",
+                              "@null"
+                            ]
+                          },
+                          {
+                            "equals": [
+                              "@length(items('Loop_through_responses')['Response'])",
+                              0
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "0c7d2df1-f15d-4d52-a465-0203d6fc1a11"
+                  },
+                  "type": "If"
+                },
+                "System_Ref_ID": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "8b98b987-c00e-4ed6-a69e-70500d7fa4da"
+                  },
+                  "type": "Compose",
+                  "inputs": "@items('Loop_through_responses')['System reference ID\n(For internal use only)']"
+                },
+                "Get_Question_Config": {
+                  "runAfter": {
+                    "System_Ref_ID": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "10406322-5c09-4063-9c0d-a25ca4a53b2c"
+                  },
+                  "type": "Query",
+                  "inputs": {
+                    "from": "@body('Filter_array_2')?[0]?['data']",
+                    "where": "@equals(item()?['sysRefId'], outputs('System_Ref_ID'))"
+                  }
+                }
+              },
+              "runAfter": {
+                "Filter_array_3": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "edc54bd3-9b73-4f0f-9387-c370bbdfbd5d"
+              },
+              "type": "Foreach",
+              "runtimeConfiguration": {
+                "concurrency": {
+                  "repetitions": 50
+                }
+              }
+            },
+            "If_Missing_Responses": {
+              "actions": {
+                "Terminate_4": {
+                  "runAfter": {
+                    "Do_until_4": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "b030aba9-fcb6-4b2a-b91c-8b588cbe3fbc"
+                  },
+                  "type": "Terminate",
+                  "inputs": {
+                    "runStatus": "Failed"
+                  }
+                },
+                "Do_until_4": {
+                  "actions": {
+                    "Delete_file_4": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "c7fd1b18-bff1-4f82-a3e8-0d70e85b8189"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_sharepointonline",
+                          "operationId": "DeleteFile",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                        },
+                        "parameters": {
+                          "dataset": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
+                          "id": "@outputs('Create_file')?['body/Id']"
+                        },
+                        "authentication": {
+                          "type": "Raw",
+                          "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                        }
+                      }
+                    },
+                    "Condition_7": {
+                      "actions": {
+                        "Set_variable_11": {
+                          "runAfter": {},
+                          "metadata": {
+                            "operationMetadataId": "1a977453-40f6-47ee-9858-74ec38653f00"
+                          },
+                          "type": "SetVariable",
+                          "inputs": {
+                            "name": "LockFile",
+                            "value": "@true"
+                          }
+                        }
+                      },
+                      "runAfter": {
+                        "Parse_JSON_7": [
+                          "Succeeded"
+                        ]
+                      },
+                      "else": {
+                        "actions": {
+                          "Set_variable_12": {
+                            "runAfter": {},
+                            "metadata": {
+                              "operationMetadataId": "95b47a2f-5a6c-4f01-a23e-afece153f589"
+                            },
+                            "type": "SetVariable",
+                            "inputs": {
+                              "name": "LockFile",
+                              "value": "@false"
+                            }
+                          }
+                        }
+                      },
+                      "expression": {
+                        "contains": [
+                          "@body('Parse_JSON_7')?['message']",
+                          "locked"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "3f2ee014-6a0e-4256-956e-e9c5a4a5c8c1"
+                      },
+                      "type": "If"
+                    },
+                    "Parse_JSON_7": {
+                      "runAfter": {
+                        "Delete_file_4": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "7e64beb4-ba35-4ccc-9885-63e32f30817d"
+                      },
+                      "type": "ParseJson",
+                      "inputs": {
+                        "content": "@body('Delete_file_4')",
+                        "schema": {
+                          "type": "object",
+                          "properties": {
+                            "status": {
+                              "type": "integer"
+                            },
+                            "message": {
+                              "type": "string"
+                            },
+                            "source": {
+                              "type": "string"
+                            },
+                            "errors": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Respond_to_a_PowerApp_or_flow_4": [
+                      "Succeeded"
+                    ]
+                  },
+                  "expression": "@equals(variables('LockFile'), false)",
+                  "limit": {
+                    "count": 500,
+                    "timeout": "PT1H"
+                  },
+                  "metadata": {
+                    "operationMetadataId": "7ed879be-e982-4151-9c5c-ee86def6449b"
+                  },
+                  "type": "Until"
+                },
+                "Respond_to_a_PowerApp_or_flow_4": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "e98a6c38-1025-4d62-bd34-aa18fa3c6d09"
+                  },
+                  "type": "Response",
+                  "kind": "PowerApp",
+                  "inputs": {
+                    "statusCode": 200,
+                    "body": {
+                      "status": "NOK",
+                      "message": "Missing Responses",
+                      "data_return_guid": "@{null}"
+                    },
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "title": "Status",
+                          "x-ms-dynamically-added": true,
+                          "type": "string"
+                        },
+                        "message": {
+                          "title": "Message",
+                          "x-ms-dynamically-added": true,
+                          "type": "string"
+                        },
+                        "data_return_guid": {
+                          "title": "Data Return GUID",
+                          "x-ms-dynamically-added": true,
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "runAfter": {
+                "Compose_2": [
+                  "Succeeded"
+                ]
+              },
+              "expression": {
+                "equals": [
+                  "@variables('MissingMandatoryResponses')",
+                  "@true"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "6b472e06-58d7-499d-b1e1-229b8fb1ad46"
+              },
+              "type": "If"
+            },
+            "Get_Year": {
+              "runAfter": {
+                "If_Missing_Responses": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "ed3c2c59-8d42-4172-a4bf-f2feea031560"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "bsr_years",
+                  "$filter": "bsr_name eq '@{body('Table_2_Results')?[1]?['Column3']}'"
+                },
+                "authentication": {
+                  "type": "Raw",
+                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                }
+              }
+            },
+            "List_rows_present_in_a_table_3": {
+              "runAfter": {
+                "Account_ID": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "01A4U6YUOHP5VPL5HN4VF3CTQ26HFKCM7Y": "/LA Annual v4.1.xlsx",
+                "operationMetadataId": "9088b5d5-dc1f-42d3-8ebe-4b067dec8ac8",
+                "tableId": "@body('Table3')?[0]?['id']",
+                "01A4U6YUNOOBQAW4SJRBDZ2LII47VZYCBA": "/LA Quarterly v4.1.xlsx"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_excelonlinebusiness_1",
+                  "operationId": "GetItems",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_excelonlinebusiness"
+                },
+                "parameters": {
+                  "source": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
+                  "drive": "@parameters('SharePoint Data Returns Landing Directory (bsr_spdatareturnslandingdirectory)')",
+                  "file": "@outputs('Create_file')?['body/Id']",
+                  "table": "@body('Table3')?[0]?['id']"
+                },
+                "authentication": {
+                  "type": "Raw",
+                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                }
+              }
+            },
+            "Account_ID": {
+              "runAfter": {
+                "Filter_Accounts": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "624e27de-c311-4752-840c-8e969a5fc426"
+              },
+              "type": "Compose",
+              "inputs": "@body('Filter_Accounts')?[0]?['accountid']"
+            },
+            "Validate_File_Headers": {
+              "actions": {
+                "Do_until_5": {
+                  "actions": {
+                    "Delete_file_5": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "c7fd1b18-bff1-4f82-a3e8-0d70e85b8189"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_sharepointonline",
+                          "operationId": "DeleteFile",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                        },
+                        "parameters": {
+                          "dataset": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
+                          "id": "@outputs('Create_file')?['body/Id']"
+                        },
+                        "authentication": {
+                          "type": "Raw",
+                          "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                        }
+                      }
+                    },
+                    "Condition": {
+                      "actions": {
+                        "Set_variable_13": {
+                          "runAfter": {},
+                          "metadata": {
+                            "operationMetadataId": "1a977453-40f6-47ee-9858-74ec38653f00"
+                          },
+                          "type": "SetVariable",
+                          "inputs": {
+                            "name": "LockFile",
+                            "value": "@true"
+                          }
+                        }
+                      },
+                      "runAfter": {
+                        "Parse_JSON_8": [
+                          "Succeeded"
+                        ]
+                      },
+                      "else": {
+                        "actions": {
+                          "Set_variable_14": {
+                            "runAfter": {},
+                            "metadata": {
+                              "operationMetadataId": "95b47a2f-5a6c-4f01-a23e-afece153f589"
+                            },
+                            "type": "SetVariable",
+                            "inputs": {
+                              "name": "LockFile",
+                              "value": "@false"
+                            }
+                          }
+                        }
+                      },
+                      "expression": {
+                        "contains": [
+                          "@body('Parse_JSON_8')?['message']",
+                          "@string('locked')"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "3f2ee014-6a0e-4256-956e-e9c5a4a5c8c1"
+                      },
+                      "type": "If"
+                    },
+                    "Parse_JSON_8": {
+                      "runAfter": {
+                        "Delete_file_5": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "5120e267-19e4-4926-8ba2-fd549ed0937f"
+                      },
+                      "type": "ParseJson",
+                      "inputs": {
+                        "content": "@body('Delete_file_5')",
+                        "schema": {
+                          "type": "object",
+                          "properties": {
+                            "status": {
+                              "type": "integer"
+                            },
+                            "message": {
+                              "type": "string"
+                            },
+                            "source": {
+                              "type": "string"
+                            },
+                            "errors": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {},
+                  "expression": "@equals(variables('LockFile'), false)",
+                  "limit": {
+                    "count": 500,
+                    "timeout": "PT1H"
+                  },
+                  "metadata": {
+                    "operationMetadataId": "7ed879be-e982-4151-9c5c-ee86def6449b"
+                  },
+                  "type": "Until"
+                },
+                "Terminate_5": {
+                  "runAfter": {
+                    "Respond_to_a_PowerApp_or_flow_3": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "2d39bd0b-057d-48cd-a974-329a317af2f2"
+                  },
+                  "type": "Terminate",
+                  "inputs": {
+                    "runStatus": "Failed"
+                  }
+                },
+                "Respond_to_a_PowerApp_or_flow_3": {
+                  "runAfter": {
+                    "Do_until_5": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "e98a6c38-1025-4d62-bd34-aa18fa3c6d09"
+                  },
+                  "type": "Response",
+                  "kind": "PowerApp",
+                  "inputs": {
+                    "statusCode": 200,
+                    "body": {
+                      "status": "NOK",
+                      "message": "Missing Headers",
+                      "data_return_guid": "@{null}"
+                    },
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "title": "Status",
+                          "x-ms-dynamically-added": true,
+                          "type": "string"
+                        },
+                        "message": {
+                          "title": "Message",
+                          "x-ms-dynamically-added": true,
+                          "type": "string"
+                        },
+                        "data_return_guid": {
+                          "title": "Data Return GUID",
+                          "x-ms-dynamically-added": true,
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "runAfter": {},
+              "expression": {
+                "or": [
+                  {
+                    "equals": [
+                      "@body('Table_2_Results')?[1]?['Column1']",
+                      "@null"
+                    ]
+                  },
+                  {
+                    "equals": [
+                      "@body('Table_2_Results')?[1]?['Column2']",
+                      "@null"
+                    ]
+                  },
+                  {
+                    "equals": [
+                      "@body('Table_2_Results')?[1]?['Column3']",
+                      "@null"
+                    ]
+                  },
+                  {
+                    "and": [
+                      {
+                        "not": {
+                          "equals": [
+                            "@body('Table_2_Results')?[0]?['Column4']",
+                            "@null"
+                          ]
+                        }
+                      },
+                      {
+                        "equals": [
+                          "@body('Table_2_Results')?[1]?['Column4']",
+                          "@null"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "fe73a669-7a94-4baf-8403-5021531b4ee6"
+              },
+              "type": "If"
+            },
+            "Filter_Accounts": {
+              "runAfter": {
+                "Validate_File_Headers": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "3d136285-cb41-4551-8292-ab520652bc0c"
+              },
+              "type": "Query",
+              "inputs": {
+                "from": "@outputs('Get_Account')?['body/value']",
+                "where": "@equals(item()?['name'], body('Table_2_Results')?[1]?['Column1'])"
+              }
+            },
+            "Compose_2": {
+              "runAfter": {
+                "Loop_through_responses": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "fc9ddf4c-8978-4123-b925-9c3738454be9"
+              },
+              "type": "Compose",
+              "inputs": "@@odata.type"
+            },
+            "Respond_to_a_PowerApp_or_flow": {
+              "runAfter": {
+                "Create_file_2": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "e98a6c38-1025-4d62-bd34-aa18fa3c6d09"
+              },
+              "type": "Response",
+              "kind": "PowerApp",
+              "inputs": {
+                "statusCode": 200,
+                "body": {
+                  "status": "OK",
+                  "message": "@{if(variables('Overwritten'),'Overwritten','New')}",
+                  "data_return_guid": "@outputs('Create_Data_Return')?['body/bsr_datareturnid']"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "title": "Status",
+                      "x-ms-dynamically-added": true,
+                      "type": "string"
+                    },
+                    "message": {
+                      "title": "Message",
+                      "x-ms-dynamically-added": true,
+                      "type": "string"
+                    },
+                    "data_return_guid": {
+                      "title": "Data Return GUID",
+                      "x-ms-dynamically-added": true,
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Get_Account": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Terminate_2": {
+                "runAfter": {
+                  "Do_until_2": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "45d36f5f-1e86-4c82-b04c-157847296f07"
+                },
+                "type": "Terminate",
+                "inputs": {
+                  "runStatus": "Cancelled"
+                }
+              },
+              "Respond_to_a_PowerApp_or_flow_2": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "e98a6c38-1025-4d62-bd34-aa18fa3c6d09"
+                },
+                "type": "Response",
+                "kind": "PowerApp",
+                "inputs": {
+                  "statusCode": 200,
+                  "body": {
+                    "status": "NOK",
+                    "message": "Ignore",
+                    "data_return_guid": "@{null}"
+                  },
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "title": "Status",
+                        "x-ms-dynamically-added": true,
+                        "type": "string"
+                      },
+                      "message": {
+                        "title": "Message",
+                        "x-ms-dynamically-added": true,
+                        "type": "string"
+                      },
+                      "data_return_guid": {
+                        "title": "Data Return GUID",
+                        "x-ms-dynamically-added": true,
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "Do_until_2": {
+                "actions": {
+                  "Delete_file_2": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "c7fd1b18-bff1-4f82-a3e8-0d70e85b8189"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_sharepointonline",
+                        "operationId": "DeleteFile",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                      },
+                      "parameters": {
+                        "dataset": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
+                        "id": "@outputs('Create_file')?['body/Id']"
+                      },
+                      "authentication": {
+                        "type": "Raw",
+                        "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                      }
+                    }
+                  },
+                  "Condition_3": {
+                    "actions": {
+                      "Set_variable_7": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "1a977453-40f6-47ee-9858-74ec38653f00"
+                        },
+                        "type": "SetVariable",
+                        "inputs": {
+                          "name": "LockFile",
+                          "value": "@true"
+                        }
+                      }
+                    },
+                    "runAfter": {
+                      "Parse_JSON_6": [
+                        "Succeeded"
+                      ]
+                    },
+                    "else": {
+                      "actions": {
+                        "Set_variable_8": {
+                          "runAfter": {},
+                          "metadata": {
+                            "operationMetadataId": "95b47a2f-5a6c-4f01-a23e-afece153f589"
+                          },
+                          "type": "SetVariable",
+                          "inputs": {
+                            "name": "LockFile",
+                            "value": "@false"
+                          }
+                        }
+                      }
+                    },
+                    "expression": {
+                      "contains": [
+                        "@body('Parse_JSON_6')?['message']",
+                        "locked"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "3f2ee014-6a0e-4256-956e-e9c5a4a5c8c1"
+                    },
+                    "type": "If"
+                  },
+                  "Parse_JSON_6": {
+                    "runAfter": {
+                      "Delete_file_2": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "f70bd4e8-4f7e-4ca5-af6a-75cee70a0911"
+                    },
+                    "type": "ParseJson",
+                    "inputs": {
+                      "content": "@body('Delete_file_2')",
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "status": {
+                            "type": "integer"
+                          },
+                          "message": {
+                            "type": "string"
+                          },
+                          "source": {
+                            "type": "string"
+                          },
+                          "errors": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "runAfter": {
+                  "Respond_to_a_PowerApp_or_flow_2": [
+                    "Succeeded"
+                  ]
+                },
+                "expression": "@equals(variables('LockFile'), false)",
+                "limit": {
+                  "count": 500,
+                  "timeout": "PT1H"
+                },
+                "metadata": {
+                  "operationMetadataId": "7ed879be-e982-4151-9c5c-ee86def6449b"
+                },
+                "type": "Until"
+              }
+            }
+          },
+          "expression": {
+            "greater": [
+              "@length(outputs('Get_Account')?['body/value'])",
+              0
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "20e88aa3-bf05-4721-a8b1-19ec84eb311d"
+          },
+          "type": "If"
+        },
+        "Initialize_Temp_folder_name": {
+          "runAfter": {
+            "Initialize_File_Name": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f0c6a7d0-611c-4126-9fe6-c1d256bc974c"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "TempFolderName",
+                "type": "string",
+                "value": "BCB_Temp"
+              }
+            ]
+          }
+        },
+        "Compose_Timestamp": {
+          "runAfter": {
+            "Initialize_Overwritten_": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c863c6e6-4378-4fe8-a2b0-94f88642d516"
+          },
+          "type": "Compose",
+          "inputs": "@ticks(utcNow())"
+        },
+        "Initialize_Overwritten_": {
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "08811d85-ea71-4724-9d8c-6674b832671f"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Overwritten",
+                "type": "boolean",
+                "value": "@false"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}
