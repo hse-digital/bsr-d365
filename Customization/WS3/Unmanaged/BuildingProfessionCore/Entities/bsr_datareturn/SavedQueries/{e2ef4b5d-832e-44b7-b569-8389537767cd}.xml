@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{e2ef4b5d-832e-44b7-b569-8389537767cd}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
+        <row name="result" id="bsr_datareturnid">
+          <cell name="bsr_name" width="130" />
+          <cell name="bsr_submittedbycontactid" width="118" />
+          <cell name="bsr_bcbaccountid" width="100" />
+          <cell name="bsr_bcbtypecode" width="100" />
+          <cell name="bsr_periodtypecode" width="108" />
+          <cell name="bsr_yearid" width="130" />
+          <cell name="bsr_quartercode" width="191" />
+          <cell name="createdon" width="125" />
+          <cell name="statuscode" width="119" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="bsr_datareturn">
+          <attribute name="bsr_datareturnid" />
+          <attribute name="bsr_name" />
+          <attribute name="createdon" />
+          <order attribute="bsr_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="bsr_bcbaccountid" />
+          <attribute name="bsr_bcbtypecode" />
+          <attribute name="bsr_periodtypecode" />
+          <attribute name="bsr_yearid" />
+          <attribute name="bsr_quartercode" />
+          <attribute name="bsr_submittedbycontactid" />
+          <attribute name="statuscode" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Data Returns" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

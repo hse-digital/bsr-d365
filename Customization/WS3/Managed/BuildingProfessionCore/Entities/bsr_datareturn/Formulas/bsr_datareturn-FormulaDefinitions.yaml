@@ -1,0 +1,9 @@
+bsr_reportingperiodcalc: |-
+    =Concatenate(
+        If(bsr_quartercode = [@global_bsr_reportingperiodquarter].'1',"Q1 (Apr-Jun)"),
+        If(bsr_quartercode = [@global_bsr_reportingperiodquarter].'2',"Q2 (Jul-Sep)"),
+        If(bsr_quartercode = [@global_bsr_reportingperiodquarter].'3',"Q3 (Oct-Dec)"),
+        If(bsr_quartercode = [@global_bsr_reportingperiodquarter].'4',"Q4 (Jan-Mar)"),
+        If(!IsBlank(bsr_quartercode)," "),
+        bsr_yearid.bsr_name
+    )

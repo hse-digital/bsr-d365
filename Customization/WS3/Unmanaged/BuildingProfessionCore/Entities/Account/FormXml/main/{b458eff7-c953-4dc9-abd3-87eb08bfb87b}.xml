@@ -74,7 +74,7 @@
             </column>
             <column width="38%" id="1">
               <sections>
-                <section name="Timeline" showlabel="true" showbar="false" locklevel="0" id="{be648143-8f66-4279-b19a-9301e58bc0dd}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left" labelid="{2db8bca8-1047-4971-83be-b6e2108ca5d8}" ordinalvalue="2" solutionaction="Modified" />
+                <section name="Timeline" showlabel="true" showbar="false" locklevel="0" id="{be648143-8f66-4279-b19a-9301e58bc0dd}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left" labelid="{2db8bca8-1047-4971-83be-b6e2108ca5d8}" ordinalvalue="3" solutionaction="Modified" />
                 <section name="bcbinformation" id="eb04b9e2-b9c1-498a-b05e-f150be57fe5c" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" ordinalvalue="1" solutionaction="Added">
                   <labels>
                     <label description="BCB Information" languagecode="1033" />
@@ -120,6 +120,37 @@
                         <control id="bsr_aiserviceprovider" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_aiserviceprovider" disabled="false" />
                       </cell>
                     </row>
+                  </rows>
+                </section>
+                <section name="SUMMARY_TAB_section_9" id="b7670bd6-a9f3-4757-8afb-e41851c131bd" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" ordinalvalue="2" solutionaction="Added">
+                  <labels>
+                    <label description="BCB Data Returns" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{b1b7229b-559c-4060-b93c-2687c6a63f7f}" rowspan="4" colspan="1" auto="false" showlabel="false" ordinalvalue="10000">
+                        <labels>
+                          <label description="New SG control 1711547865220" languagecode="1033" />
+                        </labels>
+                        <control indicationOfSubgrid="true" id="Subgrid_new_3" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                          <parameters>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <ChartGridMode>All</ChartGridMode>
+                            <TargetEntityType>bsr_datareturn</TargetEntityType>
+                            <ViewId>{126975E8-41EC-EE11-A1FD-002248C72690}</ViewId>
+                            <ViewIds>{E2EF4B5D-832E-44B7-B569-8389537767CD},{126975E8-41EC-EE11-A1FD-002248C72690}</ViewIds>
+                            <RelationshipName>bsr_datareturn_bcbaccountid_account</RelationshipName>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
                   </rows>
                 </section>
               </sections>
@@ -252,6 +283,15 @@
           </columns>
         </tab>
       </tabs>
+      <Navigation>
+        <NavBar>
+          <NavBarByRelationshipItem Area="Info" Show="true" RelationshipName="bsr_account_lasharedserviceprovider" Id="nav_bsr_account_lasharedserviceprovider" Sequence="9028" solutionaction="Added">
+            <Titles>
+              <Title Text="Accounts Managed As SP" LCID="1033" />
+            </Titles>
+          </NavBarByRelationshipItem>
+        </NavBar>
+      </Navigation>
       <footer id="{db159986-f098-4806-a813-be1db26ea67e}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
         <rows>
           <row>
