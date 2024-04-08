@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.24032.186" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.24033.188" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>BuildingControlProcesses</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Control Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.60.0</Version>
+    <Version>1.0.61.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -131,6 +131,7 @@
       <RootComponent type="29" id="{bc7ba397-6f79-ee11-8179-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{c21aabfe-5d59-ee11-be6f-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="29" id="{c4a776c2-e48a-ee11-be36-6045bdd0e4cf}" behavior="0" />
+      <RootComponent type="29" id="{c891928c-99f2-ee11-904b-7c1e52049a19}" behavior="0" />
       <RootComponent type="29" id="{c98ae97b-465c-ee11-8def-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{ca7fdd69-d73d-ee11-bdf4-6045bdd0ef54}" behavior="0" />
       <RootComponent type="29" id="{cba8db8d-8c79-ee11-8179-6045bdd2c0c0}" behavior="0" />
@@ -565,6 +566,14 @@
         <Dependent type="29" displayName="[DV] Add Project Task Document Name on creation" id="{d98b493c-a662-ee11-8df0-6045bdd0e4cf}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="bsr_timeentry" displayName="Time Entry" solution="Active" />
+        <Dependent type="29" displayName="Create Time Entry Amendment record" id="{c891928c-99f2-ee11-904b-7c1e52049a19}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_timeentryamendment" displayName="Time Entry Amendment" solution="Active" />
+        <Dependent type="29" displayName="Create Time Entry Amendment record" id="{c891928c-99f2-ee11-904b-7c1e52049a19}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="10" schemaName="bsr_inspection_mdtproject_bsr_mdtproject" displayName="bsr_inspection_mdtproject_bsr_mdtproject" parentSchemaName="bsr_mdtproject" parentDisplayName="MDT Project" solution="Active" />
         <Dependent type="29" displayName="Map Fields to MDT Schedule from MDT Project" id="{f02503ac-21e2-ee11-904c-6045bdcf5aa2}" />
       </MissingDependency>
@@ -793,6 +802,10 @@
         <Dependent type="29" displayName="[DV] Set Name field when MDT Member created" id="{d03ad382-ce58-ee11-be6f-6045bdd0e4cf}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="bsr_description" displayName="Description" parentSchemaName="bsr_timeentry" parentDisplayName="Time Entry" solution="Active" />
+        <Dependent type="29" displayName="Create Time Entry Amendment record" id="{c891928c-99f2-ee11-904b-7c1e52049a19}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="bsr_disablemdtaccount" displayName="Disable MDT Account" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
         <Dependent type="29" displayName="[DV] Enable/Disable Contact MDT Account" id="{f6af5bc5-093d-ee11-bdf4-6045bdc208e3}" />
       </MissingDependency>
@@ -819,6 +832,10 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_fireconsulteerequestdate" displayName="Request Date " parentSchemaName="bsr_buildingcontrollifecycle" parentDisplayName="Building Control Lifecycle" solution="Active" />
         <Dependent type="29" displayName="[DV] Populate Statutory Fire consultation Request Failure Date when Fire Request Date is modified" id="{bb83c958-443c-ee11-bdf4-6045bdd0e4cf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_hours" displayName="Hours" parentSchemaName="bsr_timeentry" parentDisplayName="Time Entry" solution="Active" />
+        <Dependent type="29" displayName="Create Time Entry Amendment record" id="{c891928c-99f2-ee11-904b-7c1e52049a19}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_hrbworkid" displayName="HRB Work" parentSchemaName="bsr_buildingdetails" parentDisplayName="Building Details" solution="Active" />
@@ -951,6 +968,10 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_mdttask" displayName="MDT Task" parentSchemaName="task" parentDisplayName="Task" solution="Active" />
         <Dependent type="29" displayName="Populate Dutyholder on Create of MDT Task" id="{3ab23961-60e1-ee11-904d-6045bdf1e965}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_minutes" displayName="Minutes" parentSchemaName="bsr_timeentry" parentDisplayName="Time Entry" solution="Active" />
+        <Dependent type="29" displayName="Create Time Entry Amendment record" id="{c891928c-99f2-ee11-904b-7c1e52049a19}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_bacapplication" parentDisplayName="BAC Application" solution="BuildingRegCore (1.17.121.0)" />
