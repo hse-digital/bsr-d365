@@ -55,6 +55,22 @@
                     <Sequence DisplayName="SetVisibilityStep3: Hide BAC Application">
                       <mcwc:SetVisibility ControlId="bsr_bacapplicationid" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_projecttaskdocument" IsVisible="False" />
                     </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep6: Show BSR Document">
+                      <mcwc:SetVisibility ControlId="bsr_bsrdocumentid" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_projecttaskdocument" IsVisible="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep8: Set BSR Document Mandatory">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;bsr_projecttaskdocument&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="bsr_bsrdocumentid" ControlType="standard" DisplayName="SetFieldRequiredLevelStep8" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_projecttaskdocument" RequiredLevel="Required" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep11: Hide BAC BSR Document">
+                      <mcwc:SetVisibility ControlId="bsr_bacbsrdocumentid" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_projecttaskdocument" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep15: Set BAC BSR Document Optional">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;bsr_projecttaskdocument&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="bsr_bacbsrdocumentid" ControlType="standard" DisplayName="SetFieldRequiredLevelStep15" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_projecttaskdocument" RequiredLevel="None" />
+                    </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
               </mxswa:ActivityReference>
@@ -93,6 +109,22 @@
                     </Sequence>
                     <Sequence DisplayName="SetVisibilityStep4: Show BAC Application">
                       <mcwc:SetVisibility ControlId="bsr_bacapplicationid" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_projecttaskdocument" IsVisible="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep7: Hide BSR Document">
+                      <mcwc:SetVisibility ControlId="bsr_bsrdocumentid" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_projecttaskdocument" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep14: Set BSR Document Optional">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;bsr_projecttaskdocument&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="bsr_bsrdocumentid" ControlType="standard" DisplayName="SetFieldRequiredLevelStep14" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_projecttaskdocument" RequiredLevel="None" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep12: Show BAC BSR Document">
+                      <mcwc:SetVisibility ControlId="bsr_bacbsrdocumentid" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_projecttaskdocument" IsVisible="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep13: Set BAC BSR Document Mandatory">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;bsr_projecttaskdocument&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="bsr_bacbsrdocumentid" ControlType="standard" DisplayName="SetFieldRequiredLevelStep13" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_projecttaskdocument" RequiredLevel="Required" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
