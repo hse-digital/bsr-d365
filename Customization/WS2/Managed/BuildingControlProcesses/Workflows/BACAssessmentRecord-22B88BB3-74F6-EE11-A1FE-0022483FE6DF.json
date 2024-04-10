@@ -1,0 +1,563 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUserWS2"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_wordonlinebusiness_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_wordonlinews2"
+        },
+        "api": {
+          "name": "shared_wordonlinebusiness"
+        }
+      },
+      "shared_sharepointonline_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_SharePointWS2"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "SharePoint Site URL (bsr_sharepointsiteurl)": {
+          "defaultValue": "https://hsegov.sharepoint.com/sites/bsr-ws2-dev",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_sharepointsiteurl"
+          }
+        },
+        "BAC Document Templates SP Directory (bsr_bacdocumenttemplatesspdirectory)": {
+          "defaultValue": "b!Qy2bnfkKy0qkQmVjLesiFfD01srcLYxGn3iNvELCSPci8_qR7b1ARaciFqzHHfxu",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_bacdocumenttemplatesspdirectory"
+          }
+        },
+        "BAC Assessment Record MOR File ID (bsr_bacassessmentrecordmorfileid)": {
+          "defaultValue": "01PCH354TSKHMWB3MHIJBZGEXBW4QQCS25",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_bacassessmentrecordmorfileid"
+          }
+        },
+        "BAC Assessment Record Safety Reg Lead File ID (bsr_bacassessmentrecordsafetyregleadfileid)": {
+          "defaultValue": "01PCH354RTJNM7RVYYQBH2XHYXESXRK2DH",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_bacassessmentrecordsafetyregleadfileid",
+            "description": "BAC assessment record - safety case report - BSR regulatory lead"
+          }
+        },
+        "BAC Assessment Record Resident File ID (bsr_bcaassessmentrecordresidentfileid)": {
+          "defaultValue": "01PCH354XAMZLHKVZHNVBIPOGCJX53MLAW",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_bcaassessmentrecordresidentfileid",
+            "description": "BAC assessment record  - resident's engagement strategy - day 1 operational version"
+          }
+        },
+        "BAC Assessment Record Safety Fire File ID (bsr_bacassessmentrecordsafetyfileid)": {
+          "defaultValue": "01PCH354SPG5UTTVTKBVCZQ7DUG7NJKEGN",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_bacassessmentrecordsafetyfileid",
+            "description": "BAC Assessment Record - Safety Case Report - Fire - Day 1 Operational Version"
+          }
+        },
+        "BAC Assessment Record Safety Structure File ID (bsr_bacassessmentrecordsafetystructurefileid)": {
+          "defaultValue": "01PCH354U6Z4G42AX6ERDYS2NKQEIFE7DX",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_bacassessmentrecordsafetystructurefileid",
+            "description": "BAC Assessment Record - Safety Case Report - Structure - Day 1 Operational Version"
+          }
+        }
+      },
+      "triggers": {
+        "When_BAC_MDT_Task_is_created_or_updated": {
+          "metadata": {
+            "operationMetadataId": "6751f393-2656-4750-a059-e12436ae2fa2"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "task",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "bsr_taskcategoryid,bsr_tasktypeid",
+              "subscriptionRequest/filterexpression": "_bsr_mdtbacapplicationid_value ne null"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_BAC_record": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "4f8bf41f-7b12-4d2a-b765-af9ce7a3fd73"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_bacapplications",
+              "recordId": "@triggerOutputs()?['body/_bsr_mdtbacapplicationid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_Building_Application": {
+          "runAfter": {
+            "Get_BAC_record": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b5ca5181-2652-4673-ba73-dff06dfc54cd"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_buildingapplications",
+              "recordId": "@outputs('Get_BAC_record')?['body/_bsr_buildingapplicationid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_Building": {
+          "runAfter": {
+            "Get_Building_Application": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "1c241dba-9b57-4054-9afe-62068eab1a44"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_buildings",
+              "recordId": "@outputs('Get_BAC_record')?['body/_bsr_buildingid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Switch_on_Task_Category": {
+          "runAfter": {
+            "Get_Building": [
+              "Succeeded"
+            ]
+          },
+          "cases": {
+            "Equals_Reg_Lead_Assessment": {
+              "case": "bff84888-0df1-ee11-904c-0022481b5bf5",
+              "actions": {
+                "If_Task_Type_equals_Complete_Assessment_Record": {
+                  "actions": {
+                    "Populate_MOR_Template": {
+                      "runAfter": {},
+                      "metadata": {
+                        "01PCH354SVS3R33ME2OJFZURU2GE7SM5TV": "/BAC Document Templates/BAC_Assessment_Record_MOR.docx",
+                        "operationMetadataId": "d601fe61-cbee-4324-9a92-5cd127d6a485",
+                        "01PCH354TUVQTPQVYZKNCY5ULOV3O2LA45": "/BAC Document Templates/BAC_Assessment_Record_MOR.docx",
+                        "01PCH354TSKHMWB3MHIJBZGEXBW4QQCS25": "/BAC Document Templates/BAC_Assessment_Record_MOR.docx"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_wordonlinebusiness_1",
+                          "operationId": "CreateFileItem",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_wordonlinebusiness"
+                        },
+                        "parameters": {
+                          "source": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
+                          "drive": "@parameters('BAC Document Templates SP Directory (bsr_bacdocumenttemplatesspdirectory)')",
+                          "file": "@parameters('BAC Assessment Record MOR File ID (bsr_bacassessmentrecordmorfileid)')",
+                          "dynamicFileSchema/399025937": "@outputs('Get_BAC_record')?['body/_bsr_pappapnamedcontactid_value@OData.Community.Display.V1.FormattedValue']",
+                          "dynamicFileSchema/-2025468217": "@outputs('Get_Building_Application')?['body/bsr_applicationid']",
+                          "dynamicFileSchema/-1612498469": "@outputs('Get_BAC_record')?['body/_bsr_regulatoryleadid_value@OData.Community.Display.V1.FormattedValue']",
+                          "dynamicFileSchema/-1710571593": "@outputs('Get_BAC_record')?['body/_bsr_caseofficerid_value@OData.Community.Display.V1.FormattedValue']",
+                          "dynamicFileSchema/-265466009": "@outputs('Get_Building')?['body/bsr_name']"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Populate_Resident_Engagement_Strategy_Template": {
+                      "runAfter": {
+                        "Populate_MOR_Template": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "01PCH354XAMZLHKVZHNVBIPOGCJX53MLAW": "/BAC Document Templates/BAC_Assessment_Record_Residents_Engagement_Strategy.docx",
+                        "operationMetadataId": "5deb4f5d-960b-4b10-8300-a94cb8741005"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_wordonlinebusiness_1",
+                          "operationId": "CreateFileItem",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_wordonlinebusiness"
+                        },
+                        "parameters": {
+                          "source": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
+                          "drive": "@parameters('BAC Document Templates SP Directory (bsr_bacdocumenttemplatesspdirectory)')",
+                          "file": "@parameters('BAC Assessment Record Resident File ID (bsr_bcaassessmentrecordresidentfileid)')",
+                          "dynamicFileSchema/645704072": "@outputs('Get_Building')?['body/bsr_name']",
+                          "dynamicFileSchema/1558502941": "@outputs('Get_BAC_record')?['body/_bsr_pappapnamedcontactid_value@OData.Community.Display.V1.FormattedValue']",
+                          "dynamicFileSchema/1669141052": "@outputs('Get_BAC_record')?['body/_bsr_regulatoryleadid_value@OData.Community.Display.V1.FormattedValue']",
+                          "dynamicFileSchema/-56639204": "@outputs('Get_Building_Application')?['body/bsr_applicationid']",
+                          "dynamicFileSchema/-988544193": "@outputs('Get_BAC_record')?['body/_bsr_caseofficerid_value@OData.Community.Display.V1.FormattedValue']"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Populate_Safety_Case_Report_Reg_Lead_Template": {
+                      "runAfter": {
+                        "Populate_Resident_Engagement_Strategy_Template": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "01PCH354XAMZLHKVZHNVBIPOGCJX53MLAW": "/BAC Document Templates/BAC_Assessment_Record_Residents_Engagement_Strategy.docx",
+                        "operationMetadataId": "5deb4f5d-960b-4b10-8300-a94cb8741005"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_wordonlinebusiness_1",
+                          "operationId": "CreateFileItem",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_wordonlinebusiness"
+                        },
+                        "parameters": {
+                          "source": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
+                          "drive": "@parameters('BAC Document Templates SP Directory (bsr_bacdocumenttemplatesspdirectory)')",
+                          "file": "@parameters('BAC Assessment Record Safety Reg Lead File ID (bsr_bacassessmentrecordsafetyregleadfileid)')",
+                          "dynamicFileSchema/876586837": "@outputs('Get_BAC_record')?['body/_bsr_caseofficerid_value@OData.Community.Display.V1.FormattedValue']",
+                          "dynamicFileSchema/915756168": "@outputs('Get_Building_Application')?['body/bsr_applicationid']",
+                          "dynamicFileSchema/-15469324": "@outputs('Get_BAC_record')?['body/_bsr_regulatoryleadid_value@OData.Community.Display.V1.FormattedValue']",
+                          "dynamicFileSchema/-881626983": "@outputs('Get_BAC_record')?['body/_bsr_pappapnamedcontactid_value@OData.Community.Display.V1.FormattedValue']",
+                          "dynamicFileSchema/-695011313": "@outputs('Get_Building')?['body/bsr_name']"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Create_MOR_file": {
+                      "runAfter": {
+                        "Populate_Safety_Case_Report_Reg_Lead_Template": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "20b05adc-9e53-4da1-873d-f02c74eb1013"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_sharepointonline_1",
+                          "operationId": "CreateFile",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                        },
+                        "parameters": {
+                          "dataset": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
+                          "folderPath": "bsr_bacapplication/@{outputs('Get_BAC_record')?['body/bsr_bacapplicationnumber']}/BAC Document",
+                          "name": "BAC assessment record - mandatory occurrence reporting.docx",
+                          "body": "@body('Populate_MOR_Template')"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      },
+                      "runtimeConfiguration": {
+                        "contentTransfer": {
+                          "transferMode": "Chunked"
+                        }
+                      }
+                    },
+                    "Create_Resident_Engagement_Strategy_File": {
+                      "runAfter": {
+                        "Create_MOR_file": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "20b05adc-9e53-4da1-873d-f02c74eb1013"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_sharepointonline_1",
+                          "operationId": "CreateFile",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                        },
+                        "parameters": {
+                          "dataset": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
+                          "folderPath": "bsr_bacapplication/@{outputs('Get_BAC_record')?['body/bsr_bacapplicationnumber']}/BAC Document",
+                          "name": "BAC assessment record  - resident's engagement strategy - day 1 operational version.docx",
+                          "body": "@body('Populate_Resident_Engagement_Strategy_Template')"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      },
+                      "runtimeConfiguration": {
+                        "contentTransfer": {
+                          "transferMode": "Chunked"
+                        }
+                      }
+                    },
+                    "Populate_Safety_Case_Report_Reg_Lead_File": {
+                      "runAfter": {
+                        "Create_Resident_Engagement_Strategy_File": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "20b05adc-9e53-4da1-873d-f02c74eb1013"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_sharepointonline_1",
+                          "operationId": "CreateFile",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                        },
+                        "parameters": {
+                          "dataset": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
+                          "folderPath": "bsr_bacapplication/@{outputs('Get_BAC_record')?['body/bsr_bacapplicationnumber']}/BAC Document",
+                          "name": "BAC assessment record - safety case report - BSR regulatory lead.docx",
+                          "body": "@body('Populate_Safety_Case_Report_Reg_Lead_Template')"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      },
+                      "runtimeConfiguration": {
+                        "contentTransfer": {
+                          "transferMode": "Chunked"
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {},
+                  "expression": {
+                    "equals": [
+                      "@triggerOutputs()?['body/_bsr_tasktypeid_value']",
+                      "a292ffc8-10f7-ee11-a1fe-6045bd0ec720"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "2a02f01f-c02d-49c0-bbbb-c853e1a7c8bc"
+                  },
+                  "type": "If"
+                }
+              }
+            },
+            "Equals_Fire_Engineer_Assessment": {
+              "case": "eba20bdf-809a-ee11-be37-6045bdd03244",
+              "actions": {
+                "If_Fire_Task_Type_equals_complete_building_safety_case": {
+                  "actions": {
+                    "Populate_Fire_Safety_Case_Report_Template": {
+                      "runAfter": {},
+                      "metadata": {
+                        "01PCH354SVS3R33ME2OJFZURU2GE7SM5TV": "/BAC Document Templates/BAC_Assessment_Record_MOR.docx",
+                        "operationMetadataId": "d601fe61-cbee-4324-9a92-5cd127d6a485",
+                        "01PCH354TUVQTPQVYZKNCY5ULOV3O2LA45": "/BAC Document Templates/BAC_Assessment_Record_MOR.docx",
+                        "01PCH354TSKHMWB3MHIJBZGEXBW4QQCS25": "/BAC Document Templates/BAC_Assessment_Record_MOR.docx"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_wordonlinebusiness_1",
+                          "operationId": "CreateFileItem",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_wordonlinebusiness"
+                        },
+                        "parameters": {
+                          "source": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
+                          "drive": "@parameters('BAC Document Templates SP Directory (bsr_bacdocumenttemplatesspdirectory)')",
+                          "file": "@parameters('BAC Assessment Record Safety Fire File ID (bsr_bacassessmentrecordsafetyfileid)')",
+                          "dynamicFileSchema/47957128": "@outputs('Get_BAC_record')?['body/_bsr_caseofficerid_value@OData.Community.Display.V1.FormattedValue']",
+                          "dynamicFileSchema/785086554": "@outputs('Get_BAC_record')?['body/_bsr_pappapnamedcontactid_value@OData.Community.Display.V1.FormattedValue']",
+                          "dynamicFileSchema/971258687": "@outputs('Get_BAC_record')?['body/_bsr_regulatoryleadid_value@OData.Community.Display.V1.FormattedValue']",
+                          "dynamicFileSchema/1469700836": "@outputs('Get_Building')?['body/bsr_name']",
+                          "dynamicFileSchema/-1936819860": "@outputs('Get_Building_Application')?['body/bsr_applicationid']"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Create_Fire_Safety_Case_Report_File": {
+                      "runAfter": {
+                        "Populate_Fire_Safety_Case_Report_Template": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "20b05adc-9e53-4da1-873d-f02c74eb1013"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_sharepointonline_1",
+                          "operationId": "CreateFile",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                        },
+                        "parameters": {
+                          "dataset": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
+                          "folderPath": "bsr_bacapplication/@{outputs('Get_BAC_record')?['body/bsr_bacapplicationnumber']}/BAC Document",
+                          "name": "BAC Assessment Record - Safety Case Report - Fire - Day 1 Operational Version.docx",
+                          "body": "@body('Populate_Fire_Safety_Case_Report_Template')"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      },
+                      "runtimeConfiguration": {
+                        "contentTransfer": {
+                          "transferMode": "Chunked"
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {},
+                  "expression": {
+                    "equals": [
+                      "@triggerOutputs()?['body/_bsr_tasktypeid_value']",
+                      "3fe554ad-18f1-ee11-904c-0022481b5fed"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "0fc19025-05fd-4985-9803-066c652a6f80"
+                  },
+                  "type": "If"
+                }
+              }
+            },
+            "Equals_Structural_Engineer_Assessment": {
+              "case": "bdf84888-0df1-ee11-904c-0022481b5bf5",
+              "actions": {
+                "If_Structural_Task_Type_equals_complete_building_safety_case": {
+                  "actions": {
+                    "Populate_Structural_Safety_Case_Report_Template": {
+                      "runAfter": {},
+                      "metadata": {
+                        "01PCH354SVS3R33ME2OJFZURU2GE7SM5TV": "/BAC Document Templates/BAC_Assessment_Record_MOR.docx",
+                        "operationMetadataId": "d601fe61-cbee-4324-9a92-5cd127d6a485",
+                        "01PCH354TUVQTPQVYZKNCY5ULOV3O2LA45": "/BAC Document Templates/BAC_Assessment_Record_MOR.docx",
+                        "01PCH354TSKHMWB3MHIJBZGEXBW4QQCS25": "/BAC Document Templates/BAC_Assessment_Record_MOR.docx"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_wordonlinebusiness_1",
+                          "operationId": "CreateFileItem",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_wordonlinebusiness"
+                        },
+                        "parameters": {
+                          "source": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
+                          "drive": "@parameters('BAC Document Templates SP Directory (bsr_bacdocumenttemplatesspdirectory)')",
+                          "file": "@parameters('BAC Assessment Record Safety Structure File ID (bsr_bacassessmentrecordsafetystructurefileid)')",
+                          "dynamicFileSchema/1767340452": "@outputs('Get_Building')?['body/bsr_name']",
+                          "dynamicFileSchema/-368994337": "@outputs('Get_Building_Application')?['body/bsr_applicationid']",
+                          "dynamicFileSchema/-2070643894": "@outputs('Get_BAC_record')?['body/_bsr_regulatoryleadid_value@OData.Community.Display.V1.FormattedValue']",
+                          "dynamicFileSchema/-625775534": "@outputs('Get_BAC_record')?['body/_bsr_caseofficerid_value@OData.Community.Display.V1.FormattedValue']",
+                          "dynamicFileSchema/-1652740107": "@outputs('Get_BAC_record')?['body/_bsr_pappapnamedcontactid_value@OData.Community.Display.V1.FormattedValue']"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Create_Structural_Safety_Case_Report_File": {
+                      "runAfter": {
+                        "Populate_Structural_Safety_Case_Report_Template": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "20b05adc-9e53-4da1-873d-f02c74eb1013"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_sharepointonline_1",
+                          "operationId": "CreateFile",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                        },
+                        "parameters": {
+                          "dataset": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
+                          "folderPath": "bsr_bacapplication/@{outputs('Get_BAC_record')?['body/bsr_bacapplicationnumber']}/BAC Document",
+                          "name": "BAC Assessment Record - Safety Case Report - Structure - Day 1 Operational Version.docx",
+                          "body": "@body('Populate_Structural_Safety_Case_Report_Template')"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      },
+                      "runtimeConfiguration": {
+                        "contentTransfer": {
+                          "transferMode": "Chunked"
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {},
+                  "expression": {
+                    "equals": [
+                      "@triggerOutputs()?['body/_bsr_tasktypeid_value']",
+                      "51e554ad-18f1-ee11-904c-0022481b5fed"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "034d13e4-36e4-4007-a19c-a324d52af681"
+                  },
+                  "type": "If"
+                }
+              }
+            }
+          },
+          "default": {
+            "actions": {}
+          },
+          "expression": "@triggerOutputs()?['body/_bsr_taskcategoryid_value']",
+          "metadata": {
+            "operationMetadataId": "9d3f1696-54ae-420f-bb27-efd3881dfcaf"
+          },
+          "type": "Switch"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}
