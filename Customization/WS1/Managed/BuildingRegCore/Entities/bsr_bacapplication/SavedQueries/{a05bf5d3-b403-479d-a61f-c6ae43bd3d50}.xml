@@ -29,20 +29,21 @@
         <entity name="bsr_bacapplication">
           <attribute name="bsr_name" />
           <attribute name="createdon" />
-          <order attribute="bsr_name" descending="false" />
           <attribute name="bsr_buildingapplicationid" />
           <attribute name="bsr_buildingid" />
           <attribute name="bsr_submittedbyid" />
           <attribute name="bsr_bacstageid" />
           <attribute name="statuscode" />
           <attribute name="bsr_bacapplicationid" />
-          <filter type="and">
-            <condition attribute="statuscode" operator="ne" value="760810007" />
-            <condition attribute="statuscode" operator="ne" value="760810006" />
-          </filter>
           <attribute name="bsr_caseofficerid" />
           <attribute name="bsr_principalregulatoryleadid" />
           <attribute name="bsr_regulatoryleadid" />
+          <filter type="and">
+            <condition attribute="statuscode" operator="ne" value="760810007" />
+            <condition attribute="statuscode" operator="ne" value="760810006" />
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <order attribute="createdon" descending="true" />
         </entity>
       </fetch>
     </fetchxml>
