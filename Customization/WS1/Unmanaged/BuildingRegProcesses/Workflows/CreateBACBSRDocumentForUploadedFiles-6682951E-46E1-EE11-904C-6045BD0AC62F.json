@@ -1,0 +1,215 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUser"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_sharepointonline_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_SharePointWS1"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "SharePoint Site URL (bsr_sharepointsiteurl)": {
+          "defaultValue": "https://hsegov.sharepoint.com/sites/bsr-ws1-dev",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_sharepointsiteurl"
+          }
+        },
+        "SharePoint BAC Folder ID (bsr_sharepointbacfolderid)": {
+          "defaultValue": "b5ee69a2-8194-4a35-b7b1-5eba18bc37f2",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_sharepointbacfolderid"
+          }
+        }
+      },
+      "triggers": {
+        "When_a_file_is_created_(properties_only)": {
+          "recurrence": {
+            "interval": 1,
+            "frequency": "Minute"
+          },
+          "splitOn": "@triggerOutputs()?['body/value']",
+          "metadata": {
+            "operationMetadataId": "df892484-7de4-4605-82ba-fd47c9979be9"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_sharepointonline_1",
+              "operationId": "GetOnNewFileItems",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+            },
+            "parameters": {
+              "dataset": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
+              "table": "@parameters('SharePoint BAC Folder ID (bsr_sharepointbacfolderid)')"
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "conditions": [
+            {
+              "expression": "@equals(triggerOutputs()?['body/{IsFolder}'],false)"
+            }
+          ]
+        }
+      },
+      "actions": {
+        "List_rows": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "71cc9a1e-f1a1-4a81-ba04-2be8e3c73452"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_bsrdocuments",
+              "$filter": "bsr_sharepointfileid eq '@{triggerOutputs()?['body/ID']}'"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Condition": {
+          "actions": {
+            "Compose_2": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "b5b10429-260a-4b62-a1e3-377b975e865c"
+              },
+              "type": "Compose",
+              "inputs": "@triggerOutputs()?['body/{Path}']"
+            },
+            "Compose_3": {
+              "runAfter": {
+                "Compose_2": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "169e00b0-ba6c-4392-a259-23d17cc4cf48"
+              },
+              "type": "Compose",
+              "inputs": "@split(split(outputs('Compose_2'), '/')[1], '/')[0]"
+            },
+            "List_rows_2": {
+              "runAfter": {
+                "Compose_3": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "d1dade94-da3d-433f-a418-20fb40d25697"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "sharepointdocumentlocations",
+                  "$filter": "relativeurl eq '@{outputs('Compose_3')}'",
+                  "$top": 1
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Apply_to_each": {
+              "foreach": "@outputs('List_rows_2')?['body/value']",
+              "actions": {
+                "Add_a_new_row": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "301e6156-a780-49fb-8a94-04d8d3bc87f2"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "CreateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "bsr_bsrdocuments",
+                      "item/subject": "@triggerOutputs()?['body/{FilenameWithExtension}']",
+                      "item/bsr_documentlocationcode": 760810000,
+                      "item/bsr_bsrdocumentorigincode": 760810001,
+                      "item/regardingobjectid_bsr_bacapplication_bsr_bsrdocument@odata.bind": "/bsr_bacapplications/@{items('Apply_to_each')?['_regardingobjectid_value']}",
+                      "item/bsr_sharepointfileid": "@triggerOutputs()?['body/ID']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "List_rows_2": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "a247c001-5ef8-4609-8e86-4c526bfc7b46"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "List_rows": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "and": [
+              {
+                "less": [
+                  "@length(outputs('List_rows')?['body/value'])",
+                  1
+                ]
+              },
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/{IsFolder}']",
+                  false
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "cbbf220c-f42c-46c4-bed1-3d9d97e8e0ed"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

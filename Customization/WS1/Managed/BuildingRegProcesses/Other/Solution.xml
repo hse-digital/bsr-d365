@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Reg Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.12.71.0</Version>
+    <Version>1.12.72.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -110,6 +110,7 @@
       <RootComponent type="29" id="{64521b66-6527-47d1-b4aa-b2795f4e694a}" behavior="0" />
       <RootComponent type="29" id="{65643344-016c-ee11-9ae6-6045bd0c1726}" behavior="0" />
       <RootComponent type="29" id="{65983779-34dd-ee11-904c-002248c748e0}" behavior="0" />
+      <RootComponent type="29" id="{6682951e-46e1-ee11-904c-6045bd0ac62f}" behavior="0" />
       <RootComponent type="29" id="{715d9903-e8ec-4bf5-b53d-e15ea8a1b9eb}" behavior="0" />
       <RootComponent type="29" id="{76ece167-ba7f-ee11-8179-6045bd0c1726}" behavior="0" />
       <RootComponent type="29" id="{782adde6-65dd-ee11-904c-002248c748e0}" behavior="0" />
@@ -277,6 +278,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="Active" />
         <Dependent type="29" displayName="Upload Azure Document to SharePoint" id="{1b5ac829-a021-ee11-9966-6045bdf1e965}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="Active" />
+        <Dependent type="29" displayName="Create BAC BSR Document For Uploaded Files" id="{6682951e-46e1-ee11-904c-6045bd0ac62f}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_bsrdocument" displayName="BSR Document" solution="Active" />
@@ -1073,6 +1078,10 @@
         <Dependent type="29" displayName="Send Email notification on update of BAC Stage for BAC Application" id="{11a2b767-b7d0-ee11-9079-6045bd0c14e5}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointbacfolderid" solution="Active" id.schemaname="bsr_sharepointbacfolderid" />
+        <Dependent type="29" displayName="Create BAC BSR Document For Uploaded Files" id="{6682951e-46e1-ee11-904c-6045bd0ac62f}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointbafolderid" solution="Active" id.schemaname="bsr_sharepointbafolderid" />
         <Dependent type="29" displayName="Create BA BSR Document For Uploaded Files" id="{a329224e-c166-ee11-9ae6-6045bd0c1726}" />
       </MissingDependency>
@@ -1087,6 +1096,10 @@
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointsiteurl" solution="Active" id.schemaname="bsr_sharepointsiteurl" />
         <Dependent type="29" displayName="Upload Azure Document to SharePoint" id="{1b5ac829-a021-ee11-9966-6045bdf1e965}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointsiteurl" solution="Active" id.schemaname="bsr_sharepointsiteurl" />
+        <Dependent type="29" displayName="Create BAC BSR Document For Uploaded Files" id="{6682951e-46e1-ee11-904c-6045bd0ac62f}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointsiteurl" solution="Active" id.schemaname="bsr_sharepointsiteurl" />
