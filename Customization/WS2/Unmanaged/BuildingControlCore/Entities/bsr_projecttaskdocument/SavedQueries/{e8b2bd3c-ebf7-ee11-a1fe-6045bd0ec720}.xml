@@ -6,12 +6,13 @@
     <isquickfindquery>0</isquickfindquery>
     <isprivate>0</isprivate>
     <isdefault>0</isdefault>
-    <savedqueryid>{8678935a-1140-ee11-bdf3-6045bdd0e4cf}</savedqueryid>
+    <savedqueryid>{e8b2bd3c-ebf7-ee11-a1fe-6045bd0ec720}</savedqueryid>
     <layoutxml>
       <grid name="resultset" jump="bsr_name" select="1" icon="1" preview="1">
         <row name="result" id="bsr_projecttaskdocumentid">
-          <cell name="bsr_bsrdocumentid" width="129" />
-          <cell name="a_1b46806749c7461794fb9c1ef4dbca12.description" width="207" />
+          <cell name="bsr_bacbsrdocumentid" width="300" />
+          <cell name="a_d122e7a151fb45128ab4c6a3750627a3.description" width="239" />
+          <cell name="a_d122e7a151fb45128ab4c6a3750627a3.createdon" width="247" />
         </row>
       </grid>
     </layoutxml>
@@ -19,21 +20,22 @@
     <fetchxml>
       <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
         <entity name="bsr_projecttaskdocument">
-          <attribute name="bsr_bsrdocumentid" />
           <attribute name="bsr_projecttaskdocumentid" />
+          <attribute name="bsr_bacbsrdocumentid" />
           <filter type="and">
             <condition attribute="bsr_typecode" operator="eq" value="760810000" />
-            <condition attribute="bsr_buildingcontrolapplicationid" operator="not-null" />
+            <condition attribute="bsr_bacapplicationid" operator="not-null" />
           </filter>
-          <link-entity alias="a_1b46806749c7461794fb9c1ef4dbca12" name="bsr_bsrdocument" to="bsr_bsrdocumentid" from="activityid" link-type="outer" visible="false">
+          <link-entity alias="a_d122e7a151fb45128ab4c6a3750627a3" name="bsr_bsrdocument" to="bsr_bacbsrdocumentid" from="activityid" link-type="outer" visible="false">
+            <attribute name="createdon" />
             <attribute name="description" />
           </link-entity>
         </entity>
       </fetch>
     </fetchxml>
-    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <IntroducedVersion>1.0.99.0</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="Related MDT Task Document Attached by BSR" languagecode="1033" />
+      <LocalizedName description="Related BAC MDT Task Documents Attached by BSR" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>
