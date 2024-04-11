@@ -240,6 +240,14 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{ab8fbf5b-409b-4557-a5fe-f911636c21e4}" locklevel="0" colspan="1" rowspan="1" visible="false">
+                        <labels>
+                          <label description="Case Inspection" languagecode="1033" />
+                        </labels>
+                        <control id="bsr_caseinspection" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="bsr_caseinspection" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{a37a04d5-92c8-4db5-880c-cf7ac9d65957}" locklevel="0" colspan="1" rowspan="1" visible="false">
                         <labels>
                           <label description="MOR" languagecode="1033" />
@@ -287,10 +295,11 @@
                   </labels>
                   <rows>
                     <row>
-                      <cell showlabel="false" locklevel="0" id="{5385ca0a-7370-43ce-ba02-7d0c58387148}">
+                      <cell id="{51dfa5b5-8653-45f6-a191-7de4d5c975da}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Triggered Case?" languagecode="1033" />
                         </labels>
+                        <control id="bsr_triggeredcasecode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="bsr_triggeredcasecode" disabled="false" />
                       </cell>
                     </row>
                     <row>
@@ -994,8 +1003,8 @@
                             <EnableChartPicker>true</EnableChartPicker>
                             <ChartGridMode>All</ChartGridMode>
                             <TargetEntityType>incident</TargetEntityType>
-                            <ViewId>{00000000-0000-0000-00AA-000010001030}</ViewId>
-                            <ViewIds>{00000000-0000-0000-00AA-000010001032},{00000000-0000-0000-00AA-000010001030}</ViewIds>
+                            <ViewId>{410FB171-31F7-EE11-A1FE-7C1E521D78BF}</ViewId>
+                            <ViewIds>{00000000-0000-0000-00AA-000010001032},{00000000-0000-0000-00AA-000010001030},{410FB171-31F7-EE11-A1FE-7C1E521D78BF}</ViewIds>
                             <RelationshipName>bsr_incident_OriginatingCase_incident</RelationshipName>
                             <VisualizationId>{4143B74E-4A07-4D01-9FFE-2CDCAA4208FD}</VisualizationId>
                           </parameters>
@@ -1030,76 +1039,6 @@
                             <EnableChartPicker>false</EnableChartPicker>
                             <RecordsPerPage>5</RecordsPerPage>
                             <EnableContextualActions>false</EnableContextualActions>
-                          </parameters>
-                        </control>
-                      </cell>
-                    </row>
-                    <row />
-                    <row />
-                    <row />
-                    <row />
-                    <row />
-                    <row />
-                  </rows>
-                </section>
-                <section name="ChildCases" showlabel="false" showbar="false" id="{b1f997ea-9b7b-4a2d-9a33-eb3cb14e08f7}" IsUserDefined="0" layout="varwidth" labelwidth="102" celllabelposition="Left" labelid="{4f8fe919-15ca-4bdd-ab5a-309046b6b0dc}">
-                  <labels>
-                    <label description="" languagecode="1033" />
-                  </labels>
-                  <rows>
-                    <row>
-                      <cell id="{363a5e29-8bfe-492f-8a8f-d0e1c114f2f9}" showlabel="true" colspan="1" auto="false" rowspan="7" labelid="{eb189930-036a-4df5-8f5e-11166cf07ef2}">
-                        <labels>
-                          <label description="CHILD CASES" languagecode="1033" />
-                        </labels>
-                        <control id="ChildCasesGrid" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}">
-                          <parameters>
-                            <ViewId>{72210bbb-d9d5-42df-8efd-39395a3cd7a7}</ViewId>
-                            <RelationshipName>incident_parent_incident</RelationshipName>
-                            <TargetEntityType>incident</TargetEntityType>
-                            <AutoExpand>Auto</AutoExpand>
-                            <EnableQuickFind>false</EnableQuickFind>
-                            <EnableViewPicker>false</EnableViewPicker>
-                            <EnableJumpBar>false</EnableJumpBar>
-                            <ChartGridMode>Grid</ChartGridMode>
-                            <EnableChartPicker>false</EnableChartPicker>
-                            <RecordsPerPage>5</RecordsPerPage>
-                            <EnableContextualActions>true</EnableContextualActions>
-                          </parameters>
-                        </control>
-                      </cell>
-                    </row>
-                    <row />
-                    <row />
-                    <row />
-                    <row />
-                    <row />
-                    <row />
-                  </rows>
-                </section>
-                <section name="Solutions" showlabel="false" showbar="false" id="{d2609a6b-8ee5-4731-9895-97c00b502e7c}" IsUserDefined="0" layout="varwidth" labelwidth="102" celllabelposition="Left" labelid="{11b47f02-523a-4361-b00b-1a0b496e2361}">
-                  <labels>
-                    <label description="" languagecode="1033" />
-                  </labels>
-                  <rows>
-                    <row>
-                      <cell id="{75bc5581-dde6-d9e8-a877-5a28e96246ee}" showlabel="true" colspan="1" auto="false" rowspan="7" labelid="{5ee7ce06-e25d-4ddd-8962-4598ba4bd1c4}">
-                        <labels>
-                          <label description="SIMILAR CASES" languagecode="1033" />
-                        </labels>
-                        <control id="RelatedSolutionGrid" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}">
-                          <parameters>
-                            <ViewId>{23FB1036-E41D-4D75-8AA7-27569B5B6512}</ViewId>
-                            <RelationshipName>incident_connections1</RelationshipName>
-                            <TargetEntityType>connection</TargetEntityType>
-                            <AutoExpand>Auto</AutoExpand>
-                            <EnableQuickFind>false</EnableQuickFind>
-                            <EnableViewPicker>false</EnableViewPicker>
-                            <EnableJumpBar>false</EnableJumpBar>
-                            <ChartGridMode>Grid</ChartGridMode>
-                            <EnableChartPicker>false</EnableChartPicker>
-                            <RecordsPerPage>5</RecordsPerPage>
-                            <EnableContextualActions>true</EnableContextualActions>
                           </parameters>
                         </control>
                       </cell>
@@ -1720,6 +1659,11 @@
           <NavBarByRelationshipItem Area="Info" Show="false" RelationshipName="bsr_inspection_Case_incident" Id="nav_bsr_inspection_Case_incident" Sequence="10000">
             <Titles>
               <Title Text="Inspections" LCID="1033" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem Area="Info" Show="false" RelationshipName="bsr_caseinspection_case" Id="nav_bsr_caseinspection_case" Sequence="10000">
+            <Titles>
+              <Title Text="Case Inspections" LCID="1033" />
             </Titles>
           </NavBarByRelationshipItem>
         </NavBar>
