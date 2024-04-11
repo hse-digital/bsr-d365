@@ -56,14 +56,14 @@
           }
         },
         "BAC Assessment Record MOR File ID (bsr_bacassessmentrecordmorfileid)": {
-          "defaultValue": "01PCH354TSKHMWB3MHIJBZGEXBW4QQCS25",
+          "defaultValue": "01PCH354QBGEKT32774NAIKZLU3633YAEB",
           "type": "String",
           "metadata": {
             "schemaName": "bsr_bacassessmentrecordmorfileid"
           }
         },
         "BAC Assessment Record Safety Reg Lead File ID (bsr_bacassessmentrecordsafetyregleadfileid)": {
-          "defaultValue": "01PCH354RTJNM7RVYYQBH2XHYXESXRK2DH",
+          "defaultValue": "01PCH354XNDVSE4S3CTZFJ4S4ELBUWN67S",
           "type": "String",
           "metadata": {
             "schemaName": "bsr_bacassessmentrecordsafetyregleadfileid",
@@ -71,7 +71,7 @@
           }
         },
         "BAC Assessment Record Resident File ID (bsr_bcaassessmentrecordresidentfileid)": {
-          "defaultValue": "01PCH354XAMZLHKVZHNVBIPOGCJX53MLAW",
+          "defaultValue": "01PCH354RHWNWRK33RP5B32DTZCWTNZUQI",
           "type": "String",
           "metadata": {
             "schemaName": "bsr_bcaassessmentrecordresidentfileid",
@@ -79,7 +79,7 @@
           }
         },
         "BAC Assessment Record Safety Fire File ID (bsr_bacassessmentrecordsafetyfileid)": {
-          "defaultValue": "01PCH354SPG5UTTVTKBVCZQ7DUG7NJKEGN",
+          "defaultValue": "01PCH354V7LXGC4DFAFJEYHH24ITKBENYG",
           "type": "String",
           "metadata": {
             "schemaName": "bsr_bacassessmentrecordsafetyfileid",
@@ -87,11 +87,19 @@
           }
         },
         "BAC Assessment Record Safety Structure File ID (bsr_bacassessmentrecordsafetystructurefileid)": {
-          "defaultValue": "01PCH354U6Z4G42AX6ERDYS2NKQEIFE7DX",
+          "defaultValue": "01PCH354XUT442LTC7N5GLGE45QKM7AC2I",
           "type": "String",
           "metadata": {
             "schemaName": "bsr_bacassessmentrecordsafetystructurefileid",
             "description": "BAC Assessment Record - Safety Case Report - Structure - Day 1 Operational Version"
+          }
+        },
+        "BAC Assessment Record Conclusions File ID (bsr_bacassessmentrecordconclusionsfileid)": {
+          "defaultValue": "01PCH354XTCBBYGU2MBZBJLP43N4LJGASY",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_bacassessmentrecordconclusionsfileid",
+            "description": "BSR Building Assessment Certificate Application   Assessment Conclusions Record "
           }
         }
       },
@@ -112,7 +120,7 @@
               "subscriptionRequest/entityname": "task",
               "subscriptionRequest/scope": 4,
               "subscriptionRequest/filteringattributes": "bsr_taskcategoryid,bsr_tasktypeid",
-              "subscriptionRequest/filterexpression": "_bsr_mdtbacapplicationid_value ne null"
+              "subscriptionRequest/filterexpression": "_bsr_mdtbacapplicationid_value ne null and (_bsr_tasktypeid_value eq a292ffc8-10f7-ee11-a1fe-6045bd0ec720 or _bsr_tasktypeid_value eq 3fe554ad-18f1-ee11-904c-0022481b5fed or _bsr_tasktypeid_value eq 51e554ad-18f1-ee11-904c-0022481b5fed or _bsr_tasktypeid_value eq 6de554ad-18f1-ee11-904c-0022481b5fed)"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -540,6 +548,83 @@
                   },
                   "metadata": {
                     "operationMetadataId": "034d13e4-36e4-4007-a19c-a324d52af681"
+                  },
+                  "type": "If"
+                }
+              }
+            },
+            "Equals_Review_Assessment": {
+              "case": "c1f84888-0df1-ee11-904c-0022481b5bf5",
+              "actions": {
+                "If_Task_Type_equals_Complete_BACAM": {
+                  "actions": {
+                    "Populate_BACAM_Template": {
+                      "runAfter": {},
+                      "metadata": {
+                        "01PCH354SVS3R33ME2OJFZURU2GE7SM5TV": "/BAC Document Templates/BAC_Assessment_Record_MOR.docx",
+                        "operationMetadataId": "d601fe61-cbee-4324-9a92-5cd127d6a485",
+                        "01PCH354TUVQTPQVYZKNCY5ULOV3O2LA45": "/BAC Document Templates/BAC_Assessment_Record_MOR.docx",
+                        "01PCH354TSKHMWB3MHIJBZGEXBW4QQCS25": "/BAC Document Templates/BAC_Assessment_Record_MOR.docx",
+                        "01PCH354XTCBBYGU2MBZBJLP43N4LJGASY": "/BAC Document Templates/BAC_Assessment_Record_Conclusions_Record.docx"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_wordonlinebusiness_1",
+                          "operationId": "CreateFileItem",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_wordonlinebusiness"
+                        },
+                        "parameters": {
+                          "source": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
+                          "drive": "@parameters('BAC Document Templates SP Directory (bsr_bacdocumenttemplatesspdirectory)')",
+                          "file": "@parameters('BAC Assessment Record Conclusions File ID (bsr_bacassessmentrecordconclusionsfileid)')",
+                          "dynamicFileSchema/1237749892": "@outputs('Get_Building')?['body/bsr_name']",
+                          "dynamicFileSchema/-623314271": "@outputs('Get_Building_Application')?['body/bsr_applicationid']",
+                          "dynamicFileSchema/-636107998": "@outputs('Get_BAC_record')?['body/_bsr_pappapnamedcontactid_value@OData.Community.Display.V1.FormattedValue']"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Create_BACAM_File": {
+                      "runAfter": {
+                        "Populate_BACAM_Template": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "20b05adc-9e53-4da1-873d-f02c74eb1013"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_sharepointonline_1",
+                          "operationId": "CreateFile",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                        },
+                        "parameters": {
+                          "dataset": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
+                          "folderPath": "bsr_bacapplication/@{outputs('Get_BAC_record')?['body/bsr_bacapplicationnumber']}/BAC Document",
+                          "name": "BAC Assessment Record - Conclusions Record - Day 1 Operational Version.docx",
+                          "body": "@body('Populate_BACAM_Template')"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      },
+                      "runtimeConfiguration": {
+                        "contentTransfer": {
+                          "transferMode": "Chunked"
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {},
+                  "expression": {
+                    "equals": [
+                      "@triggerOutputs()?['body/_bsr_tasktypeid_value']",
+                      "6de554ad-18f1-ee11-904c-0022481b5fed"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "607bbca0-7e10-4dc3-894f-2d417cb3c146"
                   },
                   "type": "If"
                 }
