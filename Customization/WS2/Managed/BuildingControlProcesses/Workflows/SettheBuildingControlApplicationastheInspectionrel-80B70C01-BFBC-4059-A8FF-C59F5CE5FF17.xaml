@@ -58,10 +58,36 @@
                         <Variable x:TypeArguments="x:Object" Name="UpdateStep7_7" />
                         <Variable x:TypeArguments="x:Object" Name="UpdateStep7_8" />
                         <Variable x:TypeArguments="x:Object" Name="UpdateStep7_9" />
+                        <Variable x:TypeArguments="x:Object" Name="UpdateStep7_10" />
+                        <Variable x:TypeArguments="x:Object" Name="UpdateStep7_11" />
                       </Sequence.Variables>
                       <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;bsr_inspectiondocument&quot;)]" />
                       <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
-                      <mxswa:GetEntityProperty Attribute="bsr_inspectioncode" Entity="[InputEntities(&quot;related_bsr_inspectionid#bsr_inspection&quot;)]" EntityName="bsr_inspection" Value="[UpdateStep7_3]">
+                      <mxswa:GetEntityProperty Attribute="bsr_buildingcontrolapplicationid" Entity="[InputEntities(&quot;related_bsr_inspectionid#bsr_inspection&quot;)]" EntityName="bsr_inspection" Value="[UpdateStep7_2]">
+                        <mxswa:GetEntityProperty.TargetType>
+                          <InArgument x:TypeArguments="s:Type">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />
+                          </InArgument>
+                        </mxswa:GetEntityProperty.TargetType>
+                      </mxswa:GetEntityProperty>
+                      <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateExpression, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateExpression">
+                        <mxswa:ActivityReference.Arguments>
+                          <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">SelectFirstNonNull</InArgument>
+                          <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { UpdateStep7_2 }]</InArgument>
+                          <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />
+                          </InArgument>
+                          <OutArgument x:TypeArguments="x:Object" x:Key="Result">[UpdateStep7_1]</OutArgument>
+                        </mxswa:ActivityReference.Arguments>
+                      </mxswa:ActivityReference>
+                      <mxswa:SetEntityProperty Attribute="bsr_buildingcontrolapplicationid" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="bsr_inspectiondocument" Value="[UpdateStep7_1]">
+                        <mxswa:SetEntityProperty.TargetType>
+                          <InArgument x:TypeArguments="s:Type">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />
+                          </InArgument>
+                        </mxswa:SetEntityProperty.TargetType>
+                      </mxswa:SetEntityProperty>
+                      <mxswa:GetEntityProperty Attribute="bsr_inspectioncode" Entity="[InputEntities(&quot;related_bsr_inspectionid#bsr_inspection&quot;)]" EntityName="bsr_inspection" Value="[UpdateStep7_5]">
                         <mxswa:GetEntityProperty.TargetType>
                           <InArgument x:TypeArguments="s:Type">
                             <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:String" />
@@ -71,11 +97,11 @@
                       <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateExpression, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateExpression">
                         <mxswa:ActivityReference.Arguments>
                           <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">SelectFirstNonNull</InArgument>
-                          <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { UpdateStep7_3 }]</InArgument>
+                          <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { UpdateStep7_5 }]</InArgument>
                           <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
                             <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:String" />
                           </InArgument>
-                          <OutArgument x:TypeArguments="x:Object" x:Key="Result">[UpdateStep7_2]</OutArgument>
+                          <OutArgument x:TypeArguments="x:Object" x:Key="Result">[UpdateStep7_4]</OutArgument>
                         </mxswa:ActivityReference.Arguments>
                       </mxswa:ActivityReference>
                       <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateExpression, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateExpression">
@@ -85,10 +111,10 @@
                           <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
                             <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:String" />
                           </InArgument>
-                          <OutArgument x:TypeArguments="x:Object" x:Key="Result">[UpdateStep7_4]</OutArgument>
+                          <OutArgument x:TypeArguments="x:Object" x:Key="Result">[UpdateStep7_6]</OutArgument>
                         </mxswa:ActivityReference.Arguments>
                       </mxswa:ActivityReference>
-                      <mxswa:GetEntityProperty Attribute="subject" Entity="[InputEntities(&quot;related_bsr_bsrdocumentid#bsr_bsrdocument&quot;)]" EntityName="bsr_bsrdocument" Value="[UpdateStep7_6]">
+                      <mxswa:GetEntityProperty Attribute="subject" Entity="[InputEntities(&quot;related_bsr_bsrdocumentid#bsr_bsrdocument&quot;)]" EntityName="bsr_bsrdocument" Value="[UpdateStep7_8]">
                         <mxswa:GetEntityProperty.TargetType>
                           <InArgument x:TypeArguments="s:Type">
                             <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:String" />
@@ -98,61 +124,54 @@
                       <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateExpression, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateExpression">
                         <mxswa:ActivityReference.Arguments>
                           <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">SelectFirstNonNull</InArgument>
-                          <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { UpdateStep7_6 }]</InArgument>
-                          <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
-                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:String" />
-                          </InArgument>
-                          <OutArgument x:TypeArguments="x:Object" x:Key="Result">[UpdateStep7_5]</OutArgument>
-                        </mxswa:ActivityReference.Arguments>
-                      </mxswa:ActivityReference>
-                      <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateExpression, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateExpression">
-                        <mxswa:ActivityReference.Arguments>
-                          <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">CreateCrmType</InArgument>
-                          <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { Microsoft.Xrm.Sdk.Workflow.WorkflowPropertyType.String, " ", "String" }]</InArgument>
+                          <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { UpdateStep7_8 }]</InArgument>
                           <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
                             <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:String" />
                           </InArgument>
                           <OutArgument x:TypeArguments="x:Object" x:Key="Result">[UpdateStep7_7]</OutArgument>
                         </mxswa:ActivityReference.Arguments>
                       </mxswa:ActivityReference>
-                      <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateExpression, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateExpression">
-                        <mxswa:ActivityReference.Arguments>
-                          <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">Add</InArgument>
-                          <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { UpdateStep7_2, UpdateStep7_4, UpdateStep7_5, UpdateStep7_7 }]</InArgument>
-                          <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
-                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:String" />
-                          </InArgument>
-                          <OutArgument x:TypeArguments="x:Object" x:Key="Result">[UpdateStep7_1]</OutArgument>
-                        </mxswa:ActivityReference.Arguments>
-                      </mxswa:ActivityReference>
-                      <mxswa:SetEntityProperty Attribute="bsr_name" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="bsr_inspectiondocument" Value="[UpdateStep7_1]">
-                        <mxswa:SetEntityProperty.TargetType>
-                          <InArgument x:TypeArguments="s:Type">
-                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:String" />
-                          </InArgument>
-                        </mxswa:SetEntityProperty.TargetType>
-                      </mxswa:SetEntityProperty>
-                      <mxswa:GetEntityProperty Attribute="bsr_buildingcontrolapplicationid" Entity="[InputEntities(&quot;related_bsr_inspectionid#bsr_inspection&quot;)]" EntityName="bsr_inspection" Value="[UpdateStep7_9]">
+                      <mxswa:GetEntityProperty Attribute="subject" Entity="[InputEntities(&quot;related_bsr_bacbsrdocument#bsr_bsrdocument&quot;)]" EntityName="bsr_bsrdocument" Value="[UpdateStep7_10]">
                         <mxswa:GetEntityProperty.TargetType>
                           <InArgument x:TypeArguments="s:Type">
-                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:String" />
                           </InArgument>
                         </mxswa:GetEntityProperty.TargetType>
                       </mxswa:GetEntityProperty>
                       <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateExpression, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateExpression">
                         <mxswa:ActivityReference.Arguments>
                           <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">SelectFirstNonNull</InArgument>
-                          <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { UpdateStep7_9 }]</InArgument>
+                          <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { UpdateStep7_10 }]</InArgument>
                           <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
-                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:String" />
                           </InArgument>
-                          <OutArgument x:TypeArguments="x:Object" x:Key="Result">[UpdateStep7_8]</OutArgument>
+                          <OutArgument x:TypeArguments="x:Object" x:Key="Result">[UpdateStep7_9]</OutArgument>
                         </mxswa:ActivityReference.Arguments>
                       </mxswa:ActivityReference>
-                      <mxswa:SetEntityProperty Attribute="bsr_buildingcontrolapplicationid" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="bsr_inspectiondocument" Value="[UpdateStep7_8]">
+                      <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateExpression, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateExpression">
+                        <mxswa:ActivityReference.Arguments>
+                          <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">CreateCrmType</InArgument>
+                          <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters" xml:space="preserve">[New Object() { Microsoft.Xrm.Sdk.Workflow.WorkflowPropertyType.String, "  ", "String" }]</InArgument>
+                          <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:String" />
+                          </InArgument>
+                          <OutArgument x:TypeArguments="x:Object" x:Key="Result">[UpdateStep7_11]</OutArgument>
+                        </mxswa:ActivityReference.Arguments>
+                      </mxswa:ActivityReference>
+                      <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateExpression, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateExpression">
+                        <mxswa:ActivityReference.Arguments>
+                          <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">Add</InArgument>
+                          <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { UpdateStep7_4, UpdateStep7_6, UpdateStep7_7, UpdateStep7_9, UpdateStep7_11 }]</InArgument>
+                          <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:String" />
+                          </InArgument>
+                          <OutArgument x:TypeArguments="x:Object" x:Key="Result">[UpdateStep7_3]</OutArgument>
+                        </mxswa:ActivityReference.Arguments>
+                      </mxswa:ActivityReference>
+                      <mxswa:SetEntityProperty Attribute="bsr_name" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="bsr_inspectiondocument" Value="[UpdateStep7_3]">
                         <mxswa:SetEntityProperty.TargetType>
                           <InArgument x:TypeArguments="s:Type">
-                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:String" />
                           </InArgument>
                         </mxswa:SetEntityProperty.TargetType>
                       </mxswa:SetEntityProperty>
