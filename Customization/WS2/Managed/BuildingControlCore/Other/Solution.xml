@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Control Core" languagecode="1033" />
     </Descriptions>
-    <Version>1.0.99.0</Version>
+    <Version>1.0.100.0</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -155,6 +155,7 @@
       <RootComponent type="29" id="{628ccafb-5751-ee11-be6e-6045bdf1ea4d}" behavior="0" />
       <RootComponent type="29" id="{68a1ac8a-3057-ee11-be6f-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{68e9995c-0c83-ee11-8179-6045bdd2c0c0}" behavior="0" />
+      <RootComponent type="29" id="{6917f945-5ff7-ee11-a1fe-6045bd0d54e3}" behavior="0" />
       <RootComponent type="29" id="{6c26aacb-8d30-ee11-bdf3-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{6cf146e8-954c-ee11-be6f-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{6eab4f90-3f82-ee11-8179-6045bdf1e965}" behavior="0" />
@@ -173,6 +174,7 @@
       <RootComponent type="29" id="{8b91d1b0-2a31-ee11-bdf3-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{8cea04cd-6b84-ee11-8179-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{8e1a0169-8c79-ee11-8179-6045bdd2c0c0}" behavior="0" />
+      <RootComponent type="29" id="{8e92fcaa-cfea-ee11-a1fd-6045bd0ac62f}" behavior="0" />
       <RootComponent type="29" id="{90255bb6-3452-ee11-be6f-6045bdd2c0c0}" behavior="0" />
       <RootComponent type="29" id="{946c126b-9e4c-ee11-be6f-6045bdd0e4cf}" behavior="0" />
       <RootComponent type="29" id="{960d5df8-5451-ee11-be6f-6045bdd0e4cf}" behavior="0" />
@@ -278,6 +280,7 @@
       <RootComponent type="9" schemaName="bsr_appassesscomplete" behavior="0" />
       <RootComponent type="9" schemaName="bsr_applicationtypechoice" behavior="0" />
       <RootComponent type="9" schemaName="bsr_bacissuetype" behavior="0" />
+      <RootComponent type="9" schemaName="bsr_bacpreliminaryoutcome" behavior="0" />
       <RootComponent type="9" schemaName="bsr_bacrequesttypecode" behavior="0" />
       <RootComponent type="9" schemaName="bsr_bcaacancellationreason" behavior="0" />
       <RootComponent type="9" schemaName="bsr_bcaacompletionreason" behavior="0" />
@@ -383,22 +386,6 @@
         <Dependent type="1" schemaName="bsr_building" displayName="Building" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="BuildingRegCore (1.17.127.0)" />
-        <Dependent type="10" schemaName="bsr_bacapplication_buildingapplicationid" displayName="bsr_bacapplication_buildingapplicationid" parentSchemaName="bsr_bacapplication" parentDisplayName="BAC Application" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="1" schemaName="bsr_buildingapplication" displayName="Building Application" solution="BuildingRegCore (1.17.127.0)" />
-        <Dependent type="10" schemaName="bsr_buildingapplication_building" displayName="bsr_buildingapplication_building" parentSchemaName="bsr_building" parentDisplayName="Building" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="1" schemaName="bsr_buildingtype" displayName="Building Type" solution="BuildingRegCore (1.17.127.0)" />
-        <Dependent type="10" schemaName="bsr_bsr_building_BuildingTypeID_bsr_buildingt" displayName="bsr_bsr_building_BuildingTypeID_bsr_buildingt" parentSchemaName="bsr_building" parentDisplayName="Building" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="1" schemaName="bsr_cancellationreason" displayName="Cancellation reason" solution="BuildingRegCore (1.17.127.0)" />
-        <Dependent type="10" schemaName="bsr_building_cancellationreason" displayName="bsr_building_cancellationreason" parentSchemaName="bsr_building" parentDisplayName="Building" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="1" schemaName="bsr_change" displayName="Change" solution="BuildingRegCore (1.17.127.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Change Request" id="{e80c0676-2f9a-4c01-966c-0f7fe8f1140e}" />
       </MissingDependency>
@@ -421,10 +408,6 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_jobrole" displayName="Job Role" solution="BuildingRegCore (1.17.127.0)" />
         <Dependent type="1" schemaName="bsr_jobrole" displayName="Job Role" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="1" schemaName="bsr_onholdreason" displayName="On Hold Reason" solution="BuildingRegCore (1.17.127.0)" />
-        <Dependent type="10" schemaName="bsr_bacapplication_onholdreasonid_onholdr" displayName="bsr_bacapplication_onholdreasonid_onholdr" parentSchemaName="bsr_bacapplication" parentDisplayName="BAC Application" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_payment" displayName="Payment" solution="BuildingRegCore (1.17.127.0)" />
@@ -646,14 +629,6 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="activityid" displayName="Activity" parentSchemaName="bsr_bsrdocument" parentDisplayName="BSR Document" solution="Active" />
-        <Dependent type="10" schemaName="bsr_bsr_projecttaskdocument_bsrdocumentid_bsr" displayName="bsr_bsr_projecttaskdocument_bsrdocumentid_bsr" parentSchemaName="bsr_bsrdocument" parentDisplayName="BSR Document" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="activityid" displayName="Activity" parentSchemaName="bsr_bsrdocument" parentDisplayName="BSR Document" solution="Active" />
-        <Dependent type="10" schemaName="bsr_inspectiondocument_bsrdocumentid" displayName="bsr_inspectiondocument_bsrdocumentid" parentSchemaName="bsr_bsrdocument" parentDisplayName="BSR Document" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="activityid" displayName="Activity" parentSchemaName="bsr_bsrdocument" parentDisplayName="BSR Document" solution="Active" />
         <Dependent type="26" schemaName="BSR Document Lookup View" displayName="BSR Document Lookup View" parentSchemaName="bsr_bsrdocument" parentDisplayName="BSR Document" id="{09e795d7-ee8d-4e6d-9a97-6c32bc4ccfad}" />
       </MissingDependency>
       <MissingDependency>
@@ -785,14 +760,6 @@
         <Dependent type="26" schemaName="My BAC QA records created this year" displayName="My BAC QA records created this year" parentSchemaName="bsr_qualityassurance" parentDisplayName="Quality Assurance" id="{8f938423-fde5-ee11-904c-0022480749bf}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_buildingapplicationid" displayName="Building Application" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="BuildingRegCore (1.17.127.0)" />
-        <Dependent type="10" schemaName="bsr_bacapplication_buildingapplicationid" displayName="bsr_bacapplication_buildingapplicationid" parentSchemaName="bsr_bacapplication" parentDisplayName="BAC Application" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_buildingapplicationid" displayName="Building Application" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="BuildingRegCore (1.17.127.0)" />
-        <Dependent type="10" schemaName="bsr_buildingapplication_building" displayName="bsr_buildingapplication_building" parentSchemaName="bsr_building" parentDisplayName="Building" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="2" schemaName="bsr_buildingapplicationid" displayName="Building application" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.127.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Change Request" id="{e80c0676-2f9a-4c01-966c-0f7fe8f1140e}" />
       </MissingDependency>
@@ -807,14 +774,6 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_buildingapplicationid" displayName="Building Application" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.127.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{df2e7875-038a-465a-835a-0dbea4894335}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_buildingtypeid" displayName="Building Type" parentSchemaName="bsr_buildingtype" parentDisplayName="Building Type" solution="BuildingRegCore (1.17.127.0)" />
-        <Dependent type="10" schemaName="bsr_bsr_building_BuildingTypeID_bsr_buildingt" displayName="bsr_bsr_building_BuildingTypeID_bsr_buildingt" parentSchemaName="bsr_building" parentDisplayName="Building" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_cancellationreasonid" displayName="Cancellation reason" parentSchemaName="bsr_cancellationreason" parentDisplayName="Cancellation reason" solution="BuildingRegCore (1.17.127.0)" />
-        <Dependent type="10" schemaName="bsr_building_cancellationreason" displayName="bsr_building_cancellationreason" parentSchemaName="bsr_building" parentDisplayName="Building" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_cardbrandegvisa" displayName="Card brand (e.g. Visa)" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.127.0)" />
@@ -1073,10 +1032,6 @@
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_jobroleid" displayName="Job Role" parentSchemaName="bsr_jobrole" parentDisplayName="Job Role" solution="BuildingRegCore (1.17.127.0)" />
-        <Dependent type="10" schemaName="bsr_mdtmember_jobrole" displayName="bsr_mdtmember_jobrole" parentSchemaName="bsr_jobrole" parentDisplayName="Job Role" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="2" schemaName="bsr_lastfourdigitsofcardnumber" displayName="Last four digits of card number" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.127.0)" />
         <Dependent type="26" schemaName="Building Control Payments " displayName="Building Control Payments " parentSchemaName="bsr_payment" parentDisplayName="Payment" id="{20dff1cd-704b-ee11-be6f-6045bdd2c0c0}" />
       </MissingDependency>
@@ -1113,22 +1068,6 @@
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="BuildingRegCore (1.17.127.0)" />
-        <Dependent type="10" schemaName="bsr_bacapplication_buildingapplicationid" displayName="bsr_bacapplication_buildingapplicationid" parentSchemaName="bsr_bacapplication" parentDisplayName="BAC Application" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_buildingapplication" parentDisplayName="Building Application" solution="BuildingRegCore (1.17.127.0)" />
-        <Dependent type="10" schemaName="bsr_buildingapplication_building" displayName="bsr_buildingapplication_building" parentSchemaName="bsr_building" parentDisplayName="Building" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_buildingtype" parentDisplayName="Building Type" solution="BuildingRegCore (1.17.127.0)" />
-        <Dependent type="10" schemaName="bsr_bsr_building_BuildingTypeID_bsr_buildingt" displayName="bsr_bsr_building_BuildingTypeID_bsr_buildingt" parentSchemaName="bsr_building" parentDisplayName="Building" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_cancellationreason" parentDisplayName="Cancellation reason" solution="BuildingRegCore (1.17.127.0)" />
-        <Dependent type="10" schemaName="bsr_building_cancellationreason" displayName="bsr_building_cancellationreason" parentSchemaName="bsr_building" parentDisplayName="Building" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_changecategory" parentDisplayName="Change Category" solution="BuildingRegCore (1.17.127.0)" />
         <Dependent type="26" schemaName="Proposed Works" displayName="Proposed Works" parentSchemaName="bsr_changecategory" parentDisplayName="Change Category" id="{2a04a823-a47c-ee11-8179-6045bdf1e965}" />
       </MissingDependency>
@@ -1155,10 +1094,6 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_jobrole" parentDisplayName="Job Role" solution="BuildingRegCore (1.17.127.0)" />
         <Dependent type="10" schemaName="bsr_mdtmember_jobrole" displayName="bsr_mdtmember_jobrole" parentSchemaName="bsr_jobrole" parentDisplayName="Job Role" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_onholdreason" parentDisplayName="On Hold Reason" solution="BuildingRegCore (1.17.127.0)" />
-        <Dependent type="10" schemaName="bsr_bacapplication_onholdreasonid_onholdr" displayName="bsr_bacapplication_onholdreasonid_onholdr" parentSchemaName="bsr_bacapplication" parentDisplayName="BAC Application" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_name" displayName="Name" parentSchemaName="bsr_payment" parentDisplayName="Payment" solution="BuildingRegCore (1.17.127.0)" />
@@ -1203,10 +1138,6 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_numberofassociatedbuildingspap" displayName="MBP Count(PAP)" parentSchemaName="contact" parentDisplayName="Contact" solution="BuildingRegCore (1.17.127.0)" />
         <Dependent type="60" displayName="BSR Contact" parentDisplayName="Contact" id="{8a72e683-1c9b-ed11-aad1-0022481b568f}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="bsr_onholdreasonid" displayName="On Hold Reason" parentSchemaName="bsr_onholdreason" parentDisplayName="On Hold Reason" solution="BuildingRegCore (1.17.127.0)" />
-        <Dependent type="10" schemaName="bsr_bacapplication_onholdreasonid_onholdr" displayName="bsr_bacapplication_onholdreasonid_onholdr" parentSchemaName="bsr_bacapplication" parentDisplayName="BAC Application" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_otherorganisationtype" displayName="Other Account Type" parentSchemaName="account" parentDisplayName="Account" solution="BuildingRegCore (1.17.127.0)" />
@@ -1363,6 +1294,10 @@
       <MissingDependency>
         <Required type="2" schemaName="bsr_submittedondate" displayName="Submitted On" parentSchemaName="bsr_changerequest" parentDisplayName="Change Request" solution="BuildingRegCore (1.17.127.0)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Change Request" id="{e80c0676-2f9a-4c01-966c-0f7fe8f1140e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bsr_taskcategoryid" displayName="Task Category" parentSchemaName="task" parentDisplayName="Task" solution="BuildingRegCore (1.17.127.0)" />
+        <Dependent type="26" schemaName="Completed BAC MDT Tasks" displayName="Completed BAC MDT Tasks" parentSchemaName="task" parentDisplayName="Task" id="{0195652a-47f8-ee11-a1fe-6045bdfbd9c7}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bsr_taskcategoryid" displayName="Task Category" parentSchemaName="task" parentDisplayName="Task" solution="BuildingRegCore (1.17.127.0)" />
@@ -1587,6 +1522,10 @@
       <MissingDependency>
         <Required type="2" schemaName="subject" displayName="Document Name" parentSchemaName="bsr_bsrdocument" parentDisplayName="BSR Document" solution="BuildingRegCore (1.17.127.0)" />
         <Dependent type="10" schemaName="bsr_bsr_projecttaskdocument_bsrdocumentid_bsr" displayName="bsr_bsr_projecttaskdocument_bsrdocumentid_bsr" parentSchemaName="bsr_bsrdocument" parentDisplayName="BSR Document" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="subject" displayName="Document Name" parentSchemaName="bsr_bsrdocument" parentDisplayName="BSR Document" solution="BuildingRegCore (1.17.127.0)" />
+        <Dependent type="10" schemaName="bsr_inspectiondocument_bacbsrdocument" displayName="bsr_inspectiondocument_bacbsrdocument" parentSchemaName="bsr_bsrdocument" parentDisplayName="BSR Document" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="subject" displayName="Document Name" parentSchemaName="bsr_bsrdocument" parentDisplayName="BSR Document" solution="BuildingRegCore (1.17.127.0)" />
@@ -1827,6 +1766,10 @@
         <Dependent type="29" displayName="Set preliminary outcome date" id="{573ec7ed-c8ea-ee11-a1fd-6045bd0ac62f}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="29" displayName="Show/Hide Required Compliance" solution="BuildingRegCore (1.17.127.0)" id="{6917f945-5ff7-ee11-a1fe-6045bd0d54e3}" />
+        <Dependent type="29" displayName="Show/Hide Required Compliance" id="{6917f945-5ff7-ee11-a1fe-6045bd0d54e3}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="29" displayName="Set Status to on hold: prompt remedy" solution="BuildingRegCore (1.17.127.0)" id="{8e92fcaa-cfea-ee11-a1fd-6045bd0ac62f}" />
         <Dependent type="29" displayName="Set Status to on hold: prompt remedy" id="{8e92fcaa-cfea-ee11-a1fd-6045bd0ac62f}" />
       </MissingDependency>
@@ -2009,6 +1952,10 @@
       <MissingDependency>
         <Required type="66" schemaName="MscrmControls.OptionSet.OptionSetControl" displayName="MscrmControls.OptionSet.OptionSetControl" solution="CustomControlsCore (9.2.24033.00188)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Building Control Application" id="{e775f7c6-149b-429d-bd84-417d949d6bae}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="9" schemaName="bsr_bacpreliminaryoutcome" displayName="BAC Preliminary Outcome" solution="BuildingRegCore (1.17.127.0)" />
+        <Dependent type="9" schemaName="bsr_bacpreliminaryoutcome" displayName="BAC Preliminary Outcome" />
       </MissingDependency>
       <MissingDependency>
         <Required type="9" schemaName="bsr_bsrservicecode" displayName="BSR Service" solution="BuildingRegCore (1.17.127.0)" />

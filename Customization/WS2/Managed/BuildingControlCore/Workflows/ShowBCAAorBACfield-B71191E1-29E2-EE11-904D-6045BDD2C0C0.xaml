@@ -19,7 +19,7 @@
         <sco:Collection x:TypeArguments="Variable" x:Key="Variables">
           <Variable x:TypeArguments="x:Boolean" Default="False" Name="ConditionBranchStep2_condition" />
           <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep2_1" />
-          <Variable x:TypeArguments="x:Boolean" Default="False" Name="True" />
+          <Variable x:TypeArguments="x:Boolean" Default="False" Name="ConditionBranchStep3_condition" />
           <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep3_1" />
         </sco:Collection>
         <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
@@ -55,6 +55,22 @@
                     <Sequence DisplayName="SetVisibilityStep3: Hide BAC">
                       <mcwc:SetVisibility ControlId="bsr_bacapplicationid" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_inspectiondocument" IsVisible="False" />
                     </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep6: Show BSR Document">
+                      <mcwc:SetVisibility ControlId="bsr_bsrdocumentid" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_inspectiondocument" IsVisible="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep10: Set BSR Document Mandatory">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;bsr_inspectiondocument&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="bsr_bsrdocumentid" ControlType="standard" DisplayName="SetFieldRequiredLevelStep10" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_inspectiondocument" RequiredLevel="Required" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep8: Hide BAC BSR Document">
+                      <mcwc:SetVisibility ControlId="bsr_bacbsrdocument" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_inspectiondocument" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep12: Set BAC BSR Document Optional">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;bsr_inspectiondocument&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="bsr_bacbsrdocument" ControlType="standard" DisplayName="SetFieldRequiredLevelStep12" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_inspectiondocument" RequiredLevel="None" />
+                    </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
               </mxswa:ActivityReference>
@@ -62,19 +78,26 @@
               <x:String x:Key="Description">If BCAA contains data</x:String>
             </mxswa:ActivityReference.Properties>
           </mxswa:ActivityReference>
-          <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateExpression, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateExpression">
-            <mxswa:ActivityReference.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">CreateCrmType</InArgument>
-              <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { Microsoft.Xrm.Sdk.Workflow.WorkflowPropertyType.Boolean, "True" }]</InArgument>
-              <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
-                <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:Boolean" />
+          <mxswa:GetEntityProperty Attribute="bsr_bacapplicationid" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_inspectiondocument" Value="[ConditionBranchStep3_1]">
+            <mxswa:GetEntityProperty.TargetType>
+              <InArgument x:TypeArguments="s:Type">
+                <mxswa:ReferenceLiteral x:TypeArguments="s:Type">
+                  <x:Null />
+                </mxswa:ReferenceLiteral>
               </InArgument>
-              <OutArgument x:TypeArguments="x:Object" x:Key="Result">[ConditionBranchStep3_1]</OutArgument>
+            </mxswa:GetEntityProperty.TargetType>
+          </mxswa:GetEntityProperty>
+          <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateCondition, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateCondition">
+            <mxswa:ActivityReference.Arguments>
+              <InArgument x:TypeArguments="mxsq:ConditionOperator" x:Key="ConditionOperator">NotNull</InArgument>
+              <x:Null x:Key="Parameters" />
+              <InArgument x:TypeArguments="x:Object" x:Key="Operand">[ConditionBranchStep3_1]</InArgument>
+              <OutArgument x:TypeArguments="x:Boolean" x:Key="Result">[ConditionBranchStep3_condition]</OutArgument>
             </mxswa:ActivityReference.Arguments>
           </mxswa:ActivityReference>
           <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.ConditionBranch, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="ConditionBranchStep3">
             <mxswa:ActivityReference.Arguments>
-              <InArgument x:TypeArguments="x:Boolean" x:Key="Condition">[True]</InArgument>
+              <InArgument x:TypeArguments="x:Boolean" x:Key="Condition">[ConditionBranchStep3_condition]</InArgument>
             </mxswa:ActivityReference.Arguments>
             <mxswa:ActivityReference.Properties>
               <mxswa:ActivityReference x:Key="Then" AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.Composite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="ConditionBranchStep3">
@@ -87,11 +110,27 @@
                     <Sequence DisplayName="SetVisibilityStep2: Hide BCAA">
                       <mcwc:SetVisibility ControlId="bsr_buildingcontrolapplicationid" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_inspectiondocument" IsVisible="False" />
                     </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep7: Hide BSR Document">
+                      <mcwc:SetVisibility ControlId="bsr_bsrdocumentid" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_inspectiondocument" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep11: Set BSR Document Optional">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;bsr_inspectiondocument&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="bsr_bsrdocumentid" ControlType="standard" DisplayName="SetFieldRequiredLevelStep11" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_inspectiondocument" RequiredLevel="None" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep9: Show BAC BSR Document">
+                      <mcwc:SetVisibility ControlId="bsr_bacbsrdocument" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_inspectiondocument" IsVisible="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep13: Set BAC BSR Document Mandatory">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;bsr_inspectiondocument&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="bsr_bacbsrdocument" ControlType="standard" DisplayName="SetFieldRequiredLevelStep13" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="bsr_inspectiondocument" RequiredLevel="Required" />
+                    </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
               </mxswa:ActivityReference>
               <x:Null x:Key="Else" />
-              <x:String x:Key="Description"></x:String>
+              <x:String x:Key="Description">If BAC Contains data</x:String>
             </mxswa:ActivityReference.Properties>
           </mxswa:ActivityReference>
         </sco:Collection>
