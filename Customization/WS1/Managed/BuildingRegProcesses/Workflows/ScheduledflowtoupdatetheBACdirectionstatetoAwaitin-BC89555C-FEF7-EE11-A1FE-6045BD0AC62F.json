@@ -1,0 +1,155 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_2": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedcommondataserviceforapps_12864"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Recurrence": {
+          "recurrence": {
+            "frequency": "Day",
+            "interval": 1,
+            "timeZone": "GMT Standard Time",
+            "schedule": {
+              "hours": [
+                "7"
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "c4e3e668-df9f-4305-8c97-6caebb0048a3"
+          },
+          "type": "Recurrence"
+        }
+      },
+      "actions": {
+        "List_rows_from_Building": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "44ce2311-6134-4ec0-8e88-721a0f568a4f"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_2",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_buildings",
+              "fetchXml": "<fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\">\n  <entity name=\"bsr_building\">\n    <attribute name=\"bsr_buildingid\" />\n    <attribute name=\"bsr_name\" />\n    <attribute name=\"createdon\" />\n    <order attribute=\"bsr_name\" descending=\"false\" />\n    <filter type=\"and\">\n      <condition attribute=\"bsr_bacdirectionstatecode\" operator=\"eq\" value=\"760810002\" />\n    </filter>\n  </entity>\n</fetch>"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('List_rows_from_Building')?['body/value']",
+          "actions": {
+            "Get_a_row_by_ID": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "700f4684-387a-45c8-a45f-a7cde2032928"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_2",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "bsr_buildings",
+                  "recordId": "@items('Apply_to_each')?['bsr_buildingid']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "ComposeDateDifference": {
+              "runAfter": {
+                "Get_a_row_by_ID": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "e0ab70ec-e391-4737-9a74-2df2d92c8983"
+              },
+              "type": "Compose",
+              "inputs": "@dateDifference(outputs('Get_a_row_by_ID')?['body/bsr_date'],outputs('Get_a_row_by_ID')?['body/bsr_bacexpirydate'])"
+            },
+            "Condition": {
+              "actions": {
+                "Update_a_row": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "742572d7-7b6f-4c79-b279-404138178316"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_2",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "bsr_buildings",
+                      "recordId": "@items('Apply_to_each')?['bsr_buildingid']",
+                      "item/bsr_bacdirectionstatecode": 760810000
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "ComposeDateDifference": [
+                  "Succeeded"
+                ]
+              },
+              "expression": {
+                "startsWith": [
+                  "@outputs('ComposeDateDifference')",
+                  "120."
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "45d5225a-7403-4501-8baa-5a987687c26f"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "List_rows_from_Building": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "644c1a5e-db5f-462c-9f7d-8e30ee293e0e"
+          },
+          "type": "Foreach"
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}
