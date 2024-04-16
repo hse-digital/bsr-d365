@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Upgrade of Building Reg Processes" languagecode="1033" />
     </Descriptions>
-    <Version>1.12.73.0</Version>
+    <Version>1.12.74.0</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>bsr</UniqueName>
@@ -88,6 +88,7 @@
       <RootComponent type="29" id="{09659c69-dee5-ee11-904c-6045bd0ac62f}" behavior="0" />
       <RootComponent type="29" id="{0f0464dc-a1bd-ed11-83fe-000d3a86e5b0}" behavior="0" />
       <RootComponent type="29" id="{11a2b767-b7d0-ee11-9079-6045bd0c14e5}" behavior="0" />
+      <RootComponent type="29" id="{130c8e46-1cfb-ee11-9f89-6045bd0d54e3}" behavior="0" />
       <RootComponent type="29" id="{1b5ac829-a021-ee11-9966-6045bdf1e965}" behavior="0" />
       <RootComponent type="29" id="{1cfbd44f-cd09-ee11-8f6e-002248c727e7}" behavior="0" />
       <RootComponent type="29" id="{1db9cdb9-57eb-ee11-a1fd-002248c748e0}" behavior="0" />
@@ -104,6 +105,7 @@
       <RootComponent type="29" id="{49442064-3ff3-ed11-8848-6045bd0d6904}" behavior="0" />
       <RootComponent type="29" id="{4ad47eb0-43eb-ee11-a1fd-002248c748e0}" behavior="0" />
       <RootComponent type="29" id="{4d6e1a16-d806-ee11-8f6e-002248c727e7}" behavior="0" />
+      <RootComponent type="29" id="{4e1de203-0efb-ee11-9f89-6045bd0d54e3}" behavior="0" />
       <RootComponent type="29" id="{4e9f01c2-58a9-ed11-aad1-0022481b5e4f}" behavior="0" />
       <RootComponent type="29" id="{53791bc6-edbc-ed11-83fe-000d3a86ecac}" behavior="0" />
       <RootComponent type="29" id="{57e520cc-43b1-ee11-a569-6045bd0c14e5}" behavior="0" />
@@ -173,6 +175,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_bacapplication" displayName="BAC Application" solution="Active" />
         <Dependent type="29" displayName="Send Email notification on update of BAC Stage for BAC Application" id="{11a2b767-b7d0-ee11-9079-6045bd0c14e5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_bacapplication" displayName="BAC Application" solution="Active" />
+        <Dependent type="29" displayName="Response - Generate Tranche List of Buildings" id="{130c8e46-1cfb-ee11-9f89-6045bd0d54e3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_bacapplication" displayName="BAC Application" solution="Active" />
@@ -349,6 +355,10 @@
       <MissingDependency>
         <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
         <Dependent type="29" displayName="Set 'BAC Request' table Name" id="{4ad47eb0-43eb-ee11-a1fd-002248c748e0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
+        <Dependent type="29" displayName="Generate Tranch List of Buildings" id="{4e1de203-0efb-ee11-9f89-6045bd0d54e3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bsr_building" displayName="Building" solution="Active" />
@@ -1015,46 +1025,50 @@
         <Dependent type="29" displayName="Set Completed Date based on Status Reason in Quality Assurance Date" id="{715d9903-e8ec-4bf5-b53d-e15ea8a1b9eb}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="connectionreference" displayName="new_sharedcommondataserviceforapps_12864" solution="msdyn_Conversation_Intelligence (9.0.1.1181)" id.connectionreferencelogicalname="new_sharedcommondataserviceforapps_12864">
-          <package>msdyn_SalesConversationIntelligenceAnchor (9.0.1.1181)</package>
+        <Required type="connectionreference" displayName="new_sharedcommondataserviceforapps_12864" solution="msdyn_Conversation_Intelligence (9.0.1.1213)" id.connectionreferencelogicalname="new_sharedcommondataserviceforapps_12864">
+          <package>msdyn_SalesConversationIntelligenceAnchor (9.0.1.1213)</package>
         </Required>
         <Dependent type="29" displayName="Set 'BAC Application Direction' table Name" id="{1db9cdb9-57eb-ee11-a1fd-002248c748e0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="connectionreference" displayName="new_sharedcommondataserviceforapps_12864" solution="msdyn_Conversation_Intelligence (9.0.1.1181)" id.connectionreferencelogicalname="new_sharedcommondataserviceforapps_12864">
-          <package>msdyn_SalesConversationIntelligenceAnchor (9.0.1.1181)</package>
+        <Required type="connectionreference" displayName="new_sharedcommondataserviceforapps_12864" solution="msdyn_Conversation_Intelligence (9.0.1.1213)" id.connectionreferencelogicalname="new_sharedcommondataserviceforapps_12864">
+          <package>msdyn_SalesConversationIntelligenceAnchor (9.0.1.1213)</package>
         </Required>
         <Dependent type="29" displayName="Set Quality Assurance record Name when an BAC Application has value" id="{2df56090-a3f5-ee11-a1fe-6045bd0d54e3}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="connectionreference" displayName="new_sharedcommondataserviceforapps_12864" solution="msdyn_Conversation_Intelligence (9.0.1.1181)" id.connectionreferencelogicalname="new_sharedcommondataserviceforapps_12864">
-          <package>msdyn_SalesConversationIntelligenceAnchor (9.0.1.1181)</package>
+        <Required type="connectionreference" displayName="new_sharedcommondataserviceforapps_12864" solution="msdyn_Conversation_Intelligence (9.0.1.1213)" id.connectionreferencelogicalname="new_sharedcommondataserviceforapps_12864">
+          <package>msdyn_SalesConversationIntelligenceAnchor (9.0.1.1213)</package>
         </Required>
         <Dependent type="29" displayName="Set 'BAC Request' table Name" id="{4ad47eb0-43eb-ee11-a1fd-002248c748e0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="connectionreference" displayName="new_sharedcommondataserviceforapps_12864" solution="msdyn_Conversation_Intelligence (9.0.1.1181)" id.connectionreferencelogicalname="new_sharedcommondataserviceforapps_12864">
-          <package>msdyn_SalesConversationIntelligenceAnchor (9.0.1.1181)</package>
+        <Required type="connectionreference" displayName="new_sharedcommondataserviceforapps_12864" solution="msdyn_Conversation_Intelligence (9.0.1.1213)" id.connectionreferencelogicalname="new_sharedcommondataserviceforapps_12864">
+          <package>msdyn_SalesConversationIntelligenceAnchor (9.0.1.1213)</package>
         </Required>
         <Dependent type="29" displayName="Set the 'BAC Direction State' field on the Building to 'Pending the next BAC submission request' ba" id="{7f5b7d2e-e0f7-ee11-a1fe-6045bd0d54e3}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="connectionreference" displayName="new_sharedcommondataserviceforapps_12864" solution="msdyn_Conversation_Intelligence (9.0.1.1181)" id.connectionreferencelogicalname="new_sharedcommondataserviceforapps_12864">
-          <package>msdyn_SalesConversationIntelligenceAnchor (9.0.1.1181)</package>
+        <Required type="connectionreference" displayName="new_sharedcommondataserviceforapps_12864" solution="msdyn_Conversation_Intelligence (9.0.1.1213)" id.connectionreferencelogicalname="new_sharedcommondataserviceforapps_12864">
+          <package>msdyn_SalesConversationIntelligenceAnchor (9.0.1.1213)</package>
         </Required>
         <Dependent type="29" displayName="Scheduled flow to update the BAC direction state to 'Awaiting Direction to submit BAC' based on BAC" id="{bc89555c-fef7-ee11-a1fe-6045bd0ac62f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="connectionreference" displayName="new_sharedcommondataserviceforapps_12864" solution="msdyn_Conversation_Intelligence (9.0.1.1181)" id.connectionreferencelogicalname="new_sharedcommondataserviceforapps_12864">
-          <package>msdyn_SalesConversationIntelligenceAnchor (9.0.1.1181)</package>
+        <Required type="connectionreference" displayName="new_sharedcommondataserviceforapps_12864" solution="msdyn_Conversation_Intelligence (9.0.1.1213)" id.connectionreferencelogicalname="new_sharedcommondataserviceforapps_12864">
+          <package>msdyn_SalesConversationIntelligenceAnchor (9.0.1.1213)</package>
         </Required>
         <Dependent type="29" displayName="Send Email notification when 'Validation Outcome' is Valid for BAC Application" id="{d8c3b7ec-0fed-ee11-a1fd-002248c748e0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="connectionreference" displayName="new_sharedcommondataserviceforapps_12864" solution="msdyn_Conversation_Intelligence (9.0.1.1181)" id.connectionreferencelogicalname="new_sharedcommondataserviceforapps_12864">
-          <package>msdyn_SalesConversationIntelligenceAnchor (9.0.1.1181)</package>
+        <Required type="connectionreference" displayName="new_sharedcommondataserviceforapps_12864" solution="msdyn_Conversation_Intelligence (9.0.1.1213)" id.connectionreferencelogicalname="new_sharedcommondataserviceforapps_12864">
+          <package>msdyn_SalesConversationIntelligenceAnchor (9.0.1.1213)</package>
         </Required>
         <Dependent type="29" displayName="Scheduled flow to Check 'Submission Due date' is yesterday and update 'BAC Application Direction' t" id="{ea0366fe-0dec-ee11-a1fd-6045bd0ac62f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_azuredocblobstorageaccount" solution="Active" id.schemaname="bsr_azuredocblobstorageaccount" />
+        <Dependent type="29" displayName="Response - Generate Tranche List of Buildings" id="{130c8e46-1cfb-ee11-9f89-6045bd0d54e3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_azuredocblobstorageaccount" solution="Active" id.schemaname="bsr_azuredocblobstorageaccount" />
@@ -1163,6 +1177,10 @@
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointsiteurl" solution="Active" id.schemaname="bsr_sharepointsiteurl" />
         <Dependent type="29" displayName="Send Email notification on update of BAC Stage for BAC Application" id="{11a2b767-b7d0-ee11-9079-6045bd0c14e5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointsiteurl" solution="Active" id.schemaname="bsr_sharepointsiteurl" />
+        <Dependent type="29" displayName="Response - Generate Tranche List of Buildings" id="{130c8e46-1cfb-ee11-9f89-6045bd0d54e3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="bsr_sharepointsiteurl" solution="Active" id.schemaname="bsr_sharepointsiteurl" />

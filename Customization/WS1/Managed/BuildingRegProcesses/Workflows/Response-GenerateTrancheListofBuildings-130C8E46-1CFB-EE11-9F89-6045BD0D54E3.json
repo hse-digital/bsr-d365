@@ -1,0 +1,238 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_azureblob_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_azureblobstoragews1"
+        },
+        "api": {
+          "name": "shared_azureblob"
+        }
+      },
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUser"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_sharepointonline": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_SharePointWS1"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      },
+      "shared_servicebus-1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_servicebusws1"
+        },
+        "api": {
+          "name": "shared_servicebus"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "Azure Doc Blob Storage Account  (bsr_azuredocblobstorageaccount)": {
+          "defaultValue": "AccountNameFromSettings",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_azuredocblobstorageaccount"
+          }
+        },
+        "SharePoint Site URL (bsr_sharepointsiteurl)": {
+          "defaultValue": "https://hsegov.sharepoint.com/sites/bsr-ws1-dev",
+          "type": "String",
+          "metadata": {
+            "schemaName": "bsr_sharepointsiteurl"
+          }
+        }
+      },
+      "triggers": {
+        "When_a_message_is_received_in_a_queue_(peek-lock)": {
+          "recurrence": {
+            "interval": 1,
+            "frequency": "Minute"
+          },
+          "metadata": {
+            "operationMetadataId": "16f44297-e3e9-4222-af5b-c7362e0c12ee"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_servicebus-1",
+              "operationId": "GetNewMessageFromQueueWithPeekLock",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_servicebus"
+            },
+            "parameters": {
+              "queueName": "export-response",
+              "queueType": "Main",
+              "sessionId": "None"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Parse_JSON": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "870db370-fd46-42c4-946f-abefb8019755"
+          },
+          "type": "ParseJson",
+          "inputs": {
+            "content": "@decodeBase64(triggerOutputs()?['body/ContentData'])",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "BuildingId": {
+                  "type": "string"
+                },
+                "Tranche": {
+                  "type": "integer"
+                },
+                "BlobPath": {
+                  "type": "string"
+                },
+                "FileName": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "Get_blob_content_(V2)": {
+          "runAfter": {
+            "Parse_JSON": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "7eb183c3-c70d-4259-a125-162485921252"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_azureblob_1",
+              "operationId": "GetFileContent_V2",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_azureblob"
+            },
+            "parameters": {
+              "dataset": "@parameters('Azure Doc Blob Storage Account  (bsr_azuredocblobstorageaccount)')",
+              "id": "@body('Parse_JSON')?['blobPath']",
+              "inferContentType": true
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "List_Related_BACs": {
+          "runAfter": {
+            "Get_blob_content_(V2)": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "1c3acd7c-ac3f-43c9-9513-1f2cf2db44c7"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_bacapplications",
+              "$filter": "_bsr_buildingid_value eq @{body('Parse_JSON')?['BuildingId']}"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "For_each": {
+          "foreach": "@outputs('List_Related_BACs')?['body/value']",
+          "actions": {
+            "Create_file": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "c9ff81b7-c56d-4303-bf86-9526a73ecf59"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_sharepointonline",
+                  "operationId": "CreateFile",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                },
+                "parameters": {
+                  "dataset": "@parameters('SharePoint Site URL (bsr_sharepointsiteurl)')",
+                  "folderPath": "bsr_bacapplication/@{item()?['bsr_bacapplicationnumber']}",
+                  "name": "@{body('Parse_JSON')?['FileName']}.xls",
+                  "body": "@body('Get_blob_content_(V2)')"
+                },
+                "authentication": "@parameters('$authentication')"
+              },
+              "runtimeConfiguration": {
+                "contentTransfer": {
+                  "transferMode": "Chunked"
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "List_Related_BACs": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "bb2c5e4d-29ac-49ad-be70-2db4bb6bec30"
+          },
+          "type": "Foreach"
+        },
+        "Complete_the_message_in_a_queue": {
+          "runAfter": {
+            "For_each": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "64fd0ba9-f991-4096-9fb5-b027745f2d98"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_servicebus-1",
+              "operationId": "CompleteMessageInQueue",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_servicebus"
+            },
+            "parameters": {
+              "queueName": "export-response",
+              "lockToken": "@triggerOutputs()?['body/LockToken']",
+              "queueType": "Main",
+              "sessionId": ""
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

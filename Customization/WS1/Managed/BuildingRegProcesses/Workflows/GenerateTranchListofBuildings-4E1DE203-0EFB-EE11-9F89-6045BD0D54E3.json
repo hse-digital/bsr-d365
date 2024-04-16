@@ -1,0 +1,156 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataservice_1": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_dataverselegacyws1"
+        },
+        "api": {
+          "name": "shared_commondataservice"
+        }
+      },
+      "shared_servicebus_1": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_servicebusws1"
+        },
+        "api": {
+          "name": "shared_servicebus"
+        }
+      },
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "bsr_DataverseApplicationUser"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "splitOn": "@triggerBody()['rows']",
+          "metadata": {
+            "operationMetadataId": "a20fd974-e0b4-42b6-9f2d-e524a4b109da"
+          },
+          "type": "Request",
+          "kind": "ApiConnection",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "rows": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "entity": {
+                        "type": "object",
+                        "properties": {
+                          "bsr_buildingid": {
+                            "title": "Building",
+                            "type": "string",
+                            "format": "uuid"
+                          }
+                        },
+                        "required": [
+                          "bsr_buildingid"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "entity"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "rows"
+              ]
+            },
+            "host": {
+              "connection": {
+                "name": "@parameters('$connections')['shared_commondataservice_1']['connectionId']"
+              }
+            },
+            "operationId": "GetOnNewItems_V2",
+            "parameters": {
+              "dataset": "default.cds",
+              "table": "bsr_buildings"
+            }
+          }
+        }
+      },
+      "actions": {
+        "Send_message": {
+          "runAfter": {
+            "Get_Building": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3dba8a40-4f20-4690-a622-22d9f0e7a50a"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_servicebus_1",
+              "operationId": "SendMessage",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_servicebus"
+            },
+            "parameters": {
+              "entityName": "export-request",
+              "message/ContentData": "{\n  \"Tranche\": @{outputs('Get_Building')?['body/bsr_tranchecode']},\n  \"BuildingId\": \"@{outputs('Get_Building')?['body/bsr_buildingid']}\"\n}",
+              "message/ContentType": "application/json",
+              "systemProperties": "None"
+            },
+            "authentication": {
+              "type": "Raw",
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+            }
+          }
+        },
+        "Get_Building": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "bbb3856d-7225-4570-8f48-663c5210edc2"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bsr_buildings",
+              "recordId": "@triggerBody()?['entity']?['bsr_buildingid']",
+              "$select": "bsr_tranchecode,bsr_tranchequartercode,bsr_buildingid"
+            },
+            "authentication": {
+              "type": "Raw",
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+            }
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}
