@@ -3,8 +3,6 @@
 
 This page documents the process of deploying customizations from DEV to the downstream environments.
 
-[[_TOC_]]
-
 ## Solutions
 
 Each squad has 3 main Dynamics 365 solutions: Core, UX and Processes:
