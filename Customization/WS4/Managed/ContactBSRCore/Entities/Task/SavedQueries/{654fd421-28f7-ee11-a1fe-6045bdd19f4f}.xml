@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{654fd421-28f7-ee11-a1fe-6045bdd19f4f}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="subject" select="1" icon="1" preview="1">
+        <row name="result" id="activityid">
+          <cell name="subject" width="200" />
+          <cell name="bsr_tasktypeid" width="100" />
+          <cell name="regardingobjectid" width="100" />
+          <cell name="ownerid" width="100" />
+          <cell name="scheduledend" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
+        <entity name="task">
+          <attribute name="subject" />
+          <attribute name="activityid" />
+          <attribute name="bsr_tasktypeid" />
+          <attribute name="regardingobjectid" />
+          <attribute name="ownerid" />
+          <attribute name="scheduledend" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+            <filter type="or">
+              <condition attribute="ownerid" operator="in">
+                <value uiname="Investigation Managers" uitype="team">{8eea690b-2f59-ee11-be6f-6045bdd2cb7b}</value>
+                <value uiname="SPOE Task Team" uitype="team">{93afe4ff-a2b3-ee11-a568-6045bdd2cb7b}</value>
+              </condition>
+              <condition attribute="bsr_taskcategoryid" operator="in">
+                <value uiname="Receipt &amp; Assessment" uitype="bsr_taskcategory">{f89c5d37-8feb-ee11-a1fd-6045bd0ac62f}</value>
+                <value uiname="Resident Complaints" uitype="bsr_taskcategory">{fdc22bcf-90eb-ee11-a1fd-6045bd0ac62f}</value>
+                <value uiname="MOR Notice" uitype="bsr_taskcategory">{1f067300-91eb-ee11-a1fd-6045bd0ac62f}</value>
+                <value uiname="MOR Report" uitype="bsr_taskcategory">{cf44d037-91eb-ee11-a1fd-6045bd0ac62f}</value>
+                <value uiname="Breaches" uitype="bsr_taskcategory">{aacdf14f-91eb-ee11-a1fd-6045bd0ac62f}</value>
+                <value uiname="Enforcement" uitype="bsr_taskcategory">{d49f5069-91eb-ee11-a1fd-6045bd0ac62f}</value>
+                <value uiname="Disclosure" uitype="bsr_taskcategory">{f1089775-91eb-ee11-a1fd-6045bd0ac62f}</value>
+                <value uiname="Professional Standards" uitype="bsr_taskcategory">{de5ae5d9-90f5-ee11-a1fe-002248011b32}</value>
+              </condition>
+            </filter>
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Open Tasks - SPOE/PSU" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
