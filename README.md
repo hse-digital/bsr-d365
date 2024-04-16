@@ -9,11 +9,11 @@ This page documents the process of deploying customizations from DEV to the down
 
 Each squad has 3 main Dynamics 365 solutions: Core, UX and Processes:
 
-![image.png](/images/item.png)
+![image.png](/images/Item.png)
 
 At all times, there should be a patch for each one of the three solutions:
 
-![image.png](/images/item(1).png)
+![image.png](/images/Item (1).png)
 
 Each solution will hold different types of components. The Core solution will hold any kind of table-related components, environment variables, email templates or web resources. Processes solution will hold any kind of processes such as cloud flows or standard workflows. UX solution should only hold a model-driven app or sitemap. **It's very important that this is respected to avoid layering and dependency related issues.** 
 
